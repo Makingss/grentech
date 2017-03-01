@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>;
+    <meta charset="UTF-8">
+    <title>Vue-test</title>
+    <link rel="stylesheet" href="./css/app.css">
+    <style>
+        .completed {
+            color: #00ca6d;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top"></nav>
+<todo-items id='todo-itmes-complate'></todo-items>
+<div class="container" id="app">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Welcome</div>
+                <div class="panel-body"><h1>{{message}}</h1>
+                    <input type="text" class="form-control" v-model="message">
+                </div>
+                <div class="panel-body" id="apptodo"><h3>My todos</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item" v-for="todo in todos">{{todo.title}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" id="apptodos">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-body"><h3>My todos {{todoCount}}</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item"
+                            v-for="(todo,index) in todos"
+                            v-bind:class="{'completed':todo.completed}"
+                        >{{todo.title}}
+                            <button class="btn btn-success btn-xs pull-right"
+                                    v-on:click="toggleCompletedion(todo)"
+                                    v-bind:class="[todo.completed?'btn-danger':btn-success]"
+                            >{{todo.completed?'untodo':'completed'}}
+                            </button>
+                            <button class="btn btn-warning pull-right btn-xs"
+                                    v-on:click="deleteTodo(index)"
+                            >Delete
+
+                            </button>
+                        </li>
+                    </ul>
+                    <form v-on:submit.prevent="addTodo(newTodo)">
+                        <div class="form-group">
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Add a new todos"
+                                   v-model="newTodo.title"
+
+                            >
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Add Todo</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./js/vue.js"></script>
+<script type="text/x-template">
+
+</script>
+<script>
+    Vue.component('todo-items', {
+        template: '#todo-itmes-complate'
+    })
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!' + new Date()
+        }
+    })
+    var apptodos = new Vue({
+        el: '#apptodos',
+        data: {
+            todos: [
+                {id: 1},
+                {title: '试试todo in todos', completed: true}
+            ],
+            newTodo: {id: null, title: '', completed: false}
+        },
+        computed: {
+            todoCount(){
+                return this.todos.length;
+            }
+        },
+        methods: {
+            addTodo(newTodo){
+                this.todos.push(newTodo)
+                this.newTodo = {id: null, title: ''}
+            },
+            deleteTodo(index){
+                this.todos.splice(index, 1)
+            },
+            toggleCompletedion(todo){
+                todo.completed = !todo.completed
+            }
+        }
+    })
+</script>
+</body>
+</html>;

@@ -1,0 +1,1 @@
+@extends('mall.layouts.app')
