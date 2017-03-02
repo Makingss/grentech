@@ -70,6 +70,9 @@ class ProductController extends Controller
             $grid->mktprice('市场价')->editable();
             $grid->column('活动价')->editable();
             $grid->unit('单位');
+//            $grid->options('单位','unit')->select([
+//                '测试'=>'测试'
+//            ]);
             $grid->marketable('上架')->switch($states);
             $grid->is_default('默认货品')->switch($states);
             $grid->store_place('库位');
@@ -79,6 +82,7 @@ class ProductController extends Controller
             });
 //            dd($grid->build());
         });
+//        dd($grid);
         return $grid;
     }
 
@@ -168,7 +172,7 @@ class ProductController extends Controller
      */
 //    public function update(Request $request, $id)
 //    {
-//        //
+//        dd($request);
 //    }
 
     /**

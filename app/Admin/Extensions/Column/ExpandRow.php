@@ -24,7 +24,7 @@ $('.grid-expand').on('click', function () {
         var row = $(this).closest('tr');
         var html = $('template.grid-expand-'+key).html();
 
-        row.after("<tr><td colspan='"+row.find('td').length+"' style='padding:0 !important; border:0px;'>"+html+"</td></tr>");
+        row.after("<td colspan='"+row.find('td').length+"' style='padding:0 !important; border:0px;'>"+html+"</td>");
 
         $(this).data('inserted', 1);
     }
@@ -33,11 +33,8 @@ $('.grid-expand').on('click', function () {
 });
 EOT;
 		Admin::script($script);
-
 		$btn = $btn ?: $this->column->getName();
-
 		$key = $this->getKey();
-
 		return <<<EOT
 <a class="btn btn-xs btn-default grid-expand" data-inserted="0" data-key="{$key}" data-toggle="collapse" data-target="#grid-collapse-{$key}">
     <i class="fa fa-caret-right"></i> $btn
