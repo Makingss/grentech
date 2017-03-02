@@ -22,7 +22,7 @@
               </div>
             </flexbox-item>
             <flexbox-item :span="4/12">
-              <x-button type="warn" class="bar-item">
+              <x-button type="warn" class="bar-item font-1x">
                 立即结算
               </x-button>
             </flexbox-item>
