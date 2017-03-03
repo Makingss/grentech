@@ -1,9 +1,7 @@
 
     function plugin(Vue){
       //全局header控制
-      Vue.prototype.router_action=function(conf,callback){
-        console.log("路由header处理");
-      }
+
       Vue.prototype.handler_xheader=function(name){
         console.log("x_header:"+name);
         var name_conf={
@@ -11,103 +9,120 @@
             title:'商城主页',
             show_back:false,
             is_show:false,
-            show_search_bar:true
+            show_search_bar:true,
+            navbar_active:0,
           },
           'login':{
             title:"用户注册",
             show_back:false,
             is_show:true,
-            show_search_bar:false
+            show_search_bar:false,
+            navbar_active:2,
           },
           'user':{
             title:'用户中心',
             show_back:false,
             is_show:false,
-            show_search_bar:false
+            show_search_bar:false,
+            navbar_active:2,
           },
           'cart':{
             title:'购物车',
             show_back:false,
             is_show:true,
-            show_search_bar:false
+            show_search_bar:false,
+            navbar_active:3,
           },
           'category':{
             title:'分类',
             show_back:false,
             is_show:false,
-            show_search_bar:true
+            show_search_bar:true,
+            navbar_active:1,
           },
           'list':{
             title:'商品列表',
             show_back:false,
             is_show:false,
-            show_search_bar:false
+            show_search_bar:false,
+            navbar_active:1,
           },
           'activity':{
             title:'活动广场',
             show_back:false,
             is_show:true,
-            show_search_bar:false
+            show_search_bar:false,
+            navbar_active:4,
           },
           'register':{
             title:'立即注册',
             show_back:false,
             is_show:true,
-            show_search_bar:false
+            show_search_bar:false,
+            navbar_active:2,
           },
           'order':{
             title:'订单',
             show_back:false,
             is_show:true,
             show_search_bar:false,
+            navbar_active:2,
           },
           'goods':{
             title:'商品详情',
             show_back:false,
             is_show:false,
-            show_search_bar:false
+            show_search_bar:false,
+            navbar_active:2,
           },
           'address':{
             title:'地址管理',
             show_back:false,
             is_show:true,
-            show_search_bar:false
+            show_search_bar:false,
+            navbar_active:2,
           },
           'setting':{
             title:'设置',
             show_back:false,
             is_show:true,
-            show_search_bar:false
+            show_search_bar:false,
+            navbar_active:2,
           },
           'wallet':{
             title:'我的钱包',
             show_back:false,
             is_show:false,
-            show_search_bar:false
+            show_search_bar:false,
+            navbar_active:2,
           },
           'qrcode':{
             title:'二维码',
             show_back:false,
             is_show:false,
-            show_search_bar:false
+            show_search_bar:false,
+            navbar_active:2,
           },
           'favgoods':{
             title:"收藏商品",
             show_back:false,
             is_show:true,
             show_search_bar:false,
+            navbar_active:2,
           },
           'find-pwd':{
             title:'找回密码',
             show_back:false,
             is_show:true,
             show_search_bar:false,
+            navbar_active:2,
           },
           'service':{
             title:'服务支持',
             show_back:false,
             is_show:true,
             show_search_bar:false,
+            navbar_active:2,
           }
         }
         return name_conf[name];
@@ -120,30 +135,6 @@
         //console.log(str1);
         return str1;
       };
-
-      /**
-       * [send_operation_log description]
-       * @return {[type]} [description]
-       *发送操作日志
-       *parms
-       *--user_id
-       *--event_time//秒
-       *--event_data
-       *--login_ip
-       */
-      Vue.prototype.send_operation_log=function(parms,callback){
-          parms.method='config_log';
-          parms.event_time=parseInt(new Date().getTime()/1000);
-
-          var user_id='';
-          if(!!window.sessionStorage.admin_info){
-            user_id=JSON.parse(window.sessionStorage.admin_info).user_id;
-          }
-          parms.user_id=user_id;
-          $.post("/ueditor/server/controller/component.php",parms,function(res){
-              console.log(res);
-          })
-      }
 
       Vue.prototype.wx_upload_img=function(absolute_path,relative_path,callback){
         $.post('/index.php/wap2/groupactivity_wxcard/wx_upload',{
@@ -205,9 +196,18 @@
             minute: minute < 10 ? "0" + minute : minute,
             second: second < 10 ? "0" + second : second
           };
+
           return local_date;
         }
       };
+
+      Vue.prototype.get_url_parm=function(parm){
+        var reg = new RegExp("(^|&)" + url + "=([^&]*)(&|$)");
+        var r = window.location.search.slice(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+      }
+
     }
 
   export default plugin;

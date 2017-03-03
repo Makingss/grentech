@@ -4,10 +4,9 @@ import Vue from 'vue'
 import FastClick from 'fastclick'
 import router from './router'
 import App from './App'
-// import infiniteScroll from './directives/infiniteScroll'
-import {loading} from './util/util.js'
-
-
+import * as util from './util/util.js'
+import  * as filters from './filter/filter.js'
+import * as config from './config/config.js'
 //引入 nprogress
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -15,30 +14,49 @@ import 'nprogress/nprogress.css'
 //引入 zepto 插件
 import $ from 'n-zepto'
 
-// Vue.use(NProgress)
 //引入 animate.css 动画库
 // require('vue2-animate/dist/vue2-animate.min.css')
-
+let ad=config.app_config.ad;
 router.beforeEach((to, from, next) => {
   NProgress.start();
-  loading.show();
-  //console.log(loading);
+  if(!from.name&&to.name=="home"){
+    //init app
+    console.log("首次进入");
+    router.app.isIndex=true;
+
+    if(ad.is_show){
+      util.init_ad.show(ad.url,ad.src,ad.show_time,ad.text);
+    }
+  }else{
+    util.loading.show();
+    router.app.isIndex=false;
+  }
   next()
 })
 router.afterEach(transition => {
   NProgress.done();
-  loading.hide();
+  util.loading.hide();
+  if(ad.is_show){
+    setTimeout(function(){
+      $(".init-ad").addClass("init-ad-leave");
+      setTimeout(function(){
+          util.init_ad.hide();
+      },750);
+    },ad.show_time-750);
+  }
 });
 
 FastClick.attach(document.body)
 //引入资源文件
-import YingerVue from './js/yinger-vue.js'
+// import YingerVue from './js/yinger-vue.js'
 import Style from './styles/style.css'
 import Reset from './styles/reset.css'
 
 //引入vue插件扩展
 import Plugin from './plugin/plugin'
 Vue.use(Plugin);
+
+Vue.filter('date',filters.dateFilter)
 
 // Vue.directive('infiniteScroll',infiniteScroll)
 

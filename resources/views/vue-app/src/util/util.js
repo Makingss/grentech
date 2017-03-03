@@ -1,19 +1,5 @@
 import {Spinner} from 'vux'
 
-export const loader={
-  show(){
-    if($(".ball-beat")[0]){
-      return;
-    }
-    let modalContainer=document.body;
-    $(modalContainer).append('<div class="loader-inner ball-beat modal"><div></div><div></div><div></div></div>');
-    console.log("append");
-  },
-  hide(){
-    $(".ball-beat").remove();
-  }
-}
-
 export const loading={
   show:function(){
     if($(".loading")[0]){
@@ -24,5 +10,17 @@ export const loading={
   },
   hide:function(){
     $(".loading").remove();
+  }
+}
+export const init_ad={
+  show:function(url,src,show_time,text){
+    if($(".init-ad")[0]){
+      return;
+    }
+    let modalContainer=document.body;
+    $(modalContainer).append('<div class="init-ad"><div class="link-img"><a href="'+url+'"><img src="'+src+'" alt=""></a></div><div class="font-normal padding-10 text-center">'+text+'</div></div>');
+  },
+  hide:function(){
+    $(".init-ad").remove();
   }
 }

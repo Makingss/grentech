@@ -173,11 +173,12 @@ export default {
   top:5rem;
   left: 0;
 }
+
 .category .category-swiper{
   height:100%;
-
   .vux-swiper{
     height: inherit !important;
+    padding-bottom: 2.7rem;
   }
 }
 .bar.bar-header{

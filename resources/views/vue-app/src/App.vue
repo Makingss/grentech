@@ -2,8 +2,8 @@
   <div id="app" :class="'page-'+page_name">
       <x-header :left-options="{showBack:header_conf.show_back}" :title="header_conf.title" v-if="!!header_conf&&header_conf.is_show">
       </x-header>
-      <tabbar class="text-center">
-        <tabbar-item v-for="(item,index) in navbar.data" :link="item.url">
+      <tabbar class="text-center navbar">
+        <tabbar-item v-for="(item,index) in navbar.data" :link="item.url" :class="{'link-active':header_conf.navbar_active!=undefined&&header_conf.navbar_active==index}">
           <span slot="icon" class="icon iconfont"><i v-html="item.iconfont"></i></span>
           <span slot="label">{{item.title}}</span>
         </tabbar-item>
@@ -93,9 +93,10 @@ export default {
       this.popup_login=false;
       this.page_name=this.$route.name;
       this.xheader_handler(this.$route);
+      //处理 navbar 的 active
+
     },
     popup:function(){
-
       this.popup_login=!this.popup_login;
     },
     xheader_handler:function(route){
@@ -107,6 +108,7 @@ export default {
     //调用header处理
     this.page_name=this.$route.name;
     var header_conf=this.handler_xheader(this.$route.name);
+    //console.log(header_conf);
     this.header_conf=header_conf;
   },
   watch:{
@@ -131,7 +133,7 @@ export default {
   opacity: 0;
 }
 .slide-enter-active,.slide-leave-active{
-  transition:opacity .3s ease;
+  transition:opacity .1s ease;
 }
 .switch{
   position: absolute;
