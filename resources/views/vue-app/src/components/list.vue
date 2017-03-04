@@ -1,14 +1,8 @@
 <template lang="html">
   <div class="template-content">
-    <!-- <flexbox class="search-box bg-gray" :gutter="0" wrap="nowrap">
-      <flexbox-item class="text-center padding-rl-6" :span="1">
-        <span class="iconfont">&#xe616;</span>
-      </flexbox-item>
-      <flexbox-item :span="11">
-      </flexbox-item>
-    </flexbox> -->
+    <div class="search-icon" @click="toggleType">
+    </div>
     <search v-model="search_input" position="static" top="0"  class="list-search border-box"></search>
-
     <div class="content list">
       <scroller lock-x use-pullup height="100%"
       @on-pullup-loading="load"
@@ -137,7 +131,14 @@ export default {
     Scroller,
     Spinner
   },
+  created:function(){
+    //console.log($(".page-list .weui_search_bar:before"));
+  },
   methods:{
+    toggleType:function(){
+      //console.log("切换");
+      this.type=this.type=='medium'?'large':'medium';
+    },
     load:function(){
       console.log("上拉加载");
       setTimeout(()=>{
@@ -169,7 +170,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
   .list.content{
     overflow-y: scroll;
     height:100%;
@@ -181,4 +181,12 @@ export default {
   .list.content .scroll-content{
     padding-bottom: 0;
   }
+.search-icon{
+  width:38px;
+  height:44px;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index:199;
+}
 </style>
