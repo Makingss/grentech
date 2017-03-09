@@ -40,43 +40,43 @@
                 </a>
             </div>
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            {{--<div class="collapse navbar-collapse" id="app-navbar-collapse">--}}
                 <!-- Left Side Of Navbar -->
-                <ul class="nav nav-tabs nav-justified" role="tablist">
-                    <li><a href="{{ url('/#') }}">
-                            <button type="button" class="btn btn-link">站点</button>
-                        </a></li>
-                    <li><a href="{{ url('/#') }}">
-                            <button type="button" class="btn btn-link">订单</button>
-                        </a></li>
-                    <li><a href="{{ url('/#') }}">
-                            <button type="button" class="btn btn-link">商品</button>
-                        </a></li>
-                    <li><a href="{{ url('/#') }}">
-                            <button type="button" class="btn btn-link">会员</button>
-                        </a></li>
-                    <li><a href="{{ url('/#') }}">
-                            <button type="button" class="btn btn-link">营销</button>
-                        </a></li>
-                    <li><a href="{{ url('/#') }}">
-                            <button type="button" class="btn btn-link">报表</button>
-                        </a></li>
-                    <li><a href="{{ url('/#') }}">
-                            <button type="button" class="btn btn-link">微店</button>
-                        </a></li>
-                    <li><a href="{{ url('/#') }}">
-                            <button type="button" class="btn btn-link">文章</button>
-                        </a></li>
-                    <li><a href="{{ url('/#') }}">
-                            <button type="button" class="btn btn-link">视频</button>
-                        </a></li>
-                    <li><a href="{{ url('/#') }}">
-                            <button type="button" class="btn btn-link">问答</button>
-                        </a></li>
+                {{--<ul class="nav nav-tabs nav-justified" role="tablist">--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">站点</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">订单</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">商品</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">会员</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">营销</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">报表</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">微店</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">文章</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">视频</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">问答</button>--}}
+                {{--</a></li>--}}
 
-                </ul>
+                {{--</ul>--}}
 
-                <!-- Right Side Of Navbar -->
+                        <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
@@ -109,12 +109,12 @@
                     @endif
                 </ul>
             </div>
-        </div>
+        {{--</div>--}}
     </nav>
 
     @yield('content')
 </div>
-
+{{--<script src="https://unpkg.com/vue/dist/vue.js"></script>--}}
 <!-- Scripts -->
 <script src="/js/app.js"></script>
 <script>

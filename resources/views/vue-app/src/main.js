@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import FastClick from 'fastclick'
 import router from './router'
-import App from './App'
+import App from './App.vue'
 import * as util from './util/util.js'
 import  * as filters from './filter/filter.js'
 import * as config from './config/config.js'

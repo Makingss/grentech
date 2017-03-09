@@ -9,7 +9,7 @@
 namespace App\Admin\Controllers;
 
 
-use App\Admin\Models\Spec_values;
+use App\Admin\Models\Spec_value;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Facades\Admin;
 use Illuminate\Http\Request;
@@ -38,7 +38,7 @@ class SpecvaluesController extends Controller
 	public function spec_value($spec_id = null, $spec_value_id = null)
 	{
 		if ($spec_id) {
-			$spec_value = Spec_values::select(['spec_value_id', 'spec_id', 'spec_value', 'alias', 'spec_image', 'p_order'])->where(['spec_id' => $spec_id]);
+			$spec_value = Spec_value::select(['spec_value_id', 'spec_id', 'spec_value', 'alias', 'spec_image', 'p_order'])->where(['spec_id' => $spec_id]);
 		} elseif ($spec_value_id) {
 			$spec_value = Spec_values::select(['spec_value_id', 'spec_id', 'spec_value', 'alias', 'spec_image', 'p_order'])->where(['spec_value_id' => $spec_value_id]);
 		}
@@ -66,7 +66,7 @@ class SpecvaluesController extends Controller
 			} else if ($ajax_data['action'] == 'remove') {
 				DB::table('spec_values')->where(['spec_value_id' => $requsetValue['spec_value_id']])->delete();
 			}
-	
+
 		}
 		if ($ajax_data['action'] == 'remove') {
 			$res = $this->spec_value($requsetValue['spec_id']);

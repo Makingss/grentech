@@ -1,4 +1,5 @@
 <template>
+  {{$goods}}
   <div class="home content">
     <swiper :list="swiper_list" dots-position="center"></swiper>
     <div class="cat-goods">

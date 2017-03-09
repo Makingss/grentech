@@ -449,14 +449,5 @@ class GoodsController extends Controller
 
 	}
 
-	/**
-	 * 显示前端首页面
-	 */
-	public function getindex($number = 30)
-	{
-		$goods = Good::with('images', 'products', 'Goods_types', 'mechanics', 'goods_ports', 'assemblies', 'standardfits', 'electrics')->get()->toArray();
-		dd($goods);
-		return $goods;
-	}
 
 }

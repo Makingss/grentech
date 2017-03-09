@@ -41,6 +41,10 @@ Route::get('/captcha/{config?}', 'CaptchaController@getCaptcha');
 Route::get('/datatables', 'DatatablesController@index');
 Route::get('/datatables/data/{goods_id}', 'DatatablesController@anyData');
 Route::post('/datatables/editor', 'DatatablesController@editor');
+Route::get('/apps', 'GoodsController@getindex');
+Route::get('/demo', function () {
+	return view('demo');
+});
 //Route::resource('datatables', 'DatatablesController', [
 //    'anyData'  => 'datatables.data',
 //    'getIndex' => 'datatables',
