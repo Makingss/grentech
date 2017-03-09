@@ -9,7 +9,7 @@ return [
     /*
      是否关闭浏览器打印log，这里可选字符串的 `true` 或 `false` ，参考：http://www.kancloud.cn/wangfupeng/wangeditor2/113982 
      */
-    'printLog' => 'true',
+    'printLog' => 'false',
 
     /*
     上传文件接口，详细介绍：http://www.kancloud.cn/wangfupeng/wangeditor2/113990

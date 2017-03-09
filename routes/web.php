@@ -38,7 +38,7 @@ Route::get('notification', 'Notification@showNotitfcation');
 Route::get('generate', 'Notification@generate');
 Route::get('/notification/is_read/{id}', 'Notification@is_read');
 Route::get('/captcha/{config?}', 'CaptchaController@getCaptcha');
-Route::get('/datatables', 'DatatablesController@index');
+Route::get('/datatables/{key?}', 'DatatablesController@index');
 Route::get('/datatables/data/{goods_id}', 'DatatablesController@anyData');
 Route::post('/datatables/editor', 'DatatablesController@editor');
 Route::get('/apps', 'GoodsController@getindex');

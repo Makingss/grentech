@@ -185,19 +185,19 @@ class Good extends Model
 				'content' => $goods['content'],
 				'image_default_id' => $imagePaths['image_id']
 			]);
-			foreach ($goods['products'] as $product) {
-				$goodsObj = Good::find($id);
-				if ($product['marketable'] == 'off')
-					$product['marketable'] = 0;
-				else
-					$product['marketable'] = 1;
-
-				if ($product['is_default'] == 'off')
-					$product['is_default'] = 0;
-				else
-					$product['is_default'] = 1;
-				$goodsObj->products()->create($product);
-			}
+//			foreach (@$goods['products'] as $product) {
+//				$goodsObj = Good::find($id);
+//				if ($product['marketable'] == 'off')
+//					$product['marketable'] = 0;
+//				else
+//					$product['marketable'] = 1;
+//
+//				if ($product['is_default'] == 'off')
+//					$product['is_default'] = 0;
+//				else
+//					$product['is_default'] = 1;
+//				$goodsObj->products()->create($product);
+//			}
 			foreach ($goods['goods_keywords'] as $keyword) {
 				$goodsObj->goods_keywords()->create($keyword);
 			}

@@ -130,18 +130,20 @@ class GoodsController extends Controller
 			$grid->cat_id($getGoodColumns['cat_id'])->value(function ($cat_id) {
 				return Goods_cat::find($cat_id)->cat_name;
 			});
-			/**
-			 * $grid->actions(function ($actions) {
-			 * // 当前行的数据数组
-			 * $actions->row;
-			 * // 获取当前行主键值
-			 * $actions->getKey();
-			 * $url = url('/admin/product?goods_id=' . $actions->getKey());
-			 * $actions->prepend('<a href=' . $url . '>编辑货品 | ');
-			 * });
-			 * $grid->created_at(trans('admin::lang.created_at'));
-			 * $grid->updated_at(trans('admin::lang.updated_at'));
-			 */
+
+			  $grid->actions(function ($actions) {
+			  // 当前行的数据数组
+			  $actions->row;
+			  // 获取当前行主键值
+			  $actions->getKey();
+			  $url = url('/datatables',$actions->getKey());
+			  $actions->prepend('<a href=' . $url . '>编辑货品 | ');
+			  });
+			/*
+			  $grid->created_at(trans('admin::lang.created_at'));
+			  $grid->updated_at(trans('admin::lang.updated_at'));
+			*/
+
 		});
 	}
 
@@ -182,7 +184,7 @@ class GoodsController extends Controller
 					'on' => ['value' => 1, 'text' => 'YES', 'color' => 'success'],
 					'off' => ['value' => 0, 'text' => 'NO', 'color' => 'danger'],
 				];
-				$form->hidden('goods_id', $getGoodColumns['goods_id']);
+//				$form->hidden('goods_id', $getGoodColumns['goods_id']);
 				$form->hidden('jooge_goods_id', $getGoodColumns['jooge_goods_id'])->md5(uniqid());
 				//[1 => 'foo', 2 => 'bar', 'val' => 'Option name']
 				$form->select('type_id', $getGoodColumns['type_id'])->options(function () {
@@ -385,13 +387,13 @@ class GoodsController extends Controller
 			 * });
 			 * });
 			 */
+			/*
 			$form->tab(trans('admin::lang.products.details'), function ($form) use ($getPoductColumns) {
 				$form->divide();
 				$getPoductColumns['view'] = 'editordatetable';
 				$form->editordatetable($getPoductColumns);
 			});
-
-
+			*/
 		});
 	}
 

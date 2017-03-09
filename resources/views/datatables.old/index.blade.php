@@ -4,8 +4,8 @@
         <thead>
         <tr>
             <th></th>
-            <th>ID</th>
-            <th>编码</th>
+            <th>{{$column['id']}}</th>
+            <th>{{$column['bn']}}</th>
             <th>销售价</th>
             <th>成本价</th>
             <th>市场价</th>

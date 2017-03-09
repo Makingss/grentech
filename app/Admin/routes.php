@@ -27,8 +27,6 @@ Route::group([
 	$router->post('/specvalue/specvalueeditor', 'SpecvaluesController@specvalue_editor');
 	$router->get('/electric/getindex/{id}', 'ElectricController@getIndex');
 	$router->post('/electric/setajax', 'ElectricController@setAjax');
-	
-
 });
 
 

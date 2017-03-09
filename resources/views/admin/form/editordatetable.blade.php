@@ -25,9 +25,10 @@
             'X-CSRF-TOKEN': '{{csrf_token()}}'
         }
     });
+    var geturl;
     var editor;
     $(document).ready(function () {
-
+        $.fn.dataTable.ext.errMode = function(s,h,m){}
         editor = new $.fn.dataTable.Editor({
             ajax: '{!! url('/datatables/editor') !!}',
             table: '#product',
@@ -111,7 +112,6 @@
                 onBlur: 'submit'
             });
         });
-
         $('#product').DataTable({
             dom: "Bfrtip",
             ajax: '{!! url('/datatables/data',$column['getKey']) !!}',
