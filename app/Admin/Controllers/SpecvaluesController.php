@@ -12,25 +12,28 @@ namespace App\Admin\Controllers;
 use App\Admin\Models\Spec_values;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Facades\Admin;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Yajra\Datatables\Datatables;
 
 class SpecvaluesController extends Controller
 {
-	public function index(){
-		Admin::content();
-	}
-
-	public function grid(){
-
-	}
-	public function form(){
-
-	}
-	public function edit(){
-
-	}
-	public function create(){
-
-	}
+//	public function index(){
+//		Admin::content();
+//	}
+//
+//	public function grid(){
+//
+//	}
+//	public function form(){
+//
+//	}
+//	public function edit(){
+//
+//	}
+//	public function create(){
+//
+//	}
 
 	public function spec_value($spec_id = null, $spec_value_id = null)
 	{
@@ -52,22 +55,21 @@ class SpecvaluesController extends Controller
 	public function specvalue_editor(Request $request)
 	{
 		$ajax_data = $request->all();
-		dd($ajax_data);
 		foreach ($ajax_data['data'] as $requsetKey => $requsetValue) {
 			if ($ajax_data['action'] == 'edit') {
-				DB::table('products')->where(['product_id' => array_keys($ajax_data['data'])])->update($requsetValue);//[current($k_val) => current($requsetValue)]
-				$goods_id = DB::table('products')->where('product_id', array_keys($ajax_data['data']))->value('goods_id');;
-				$res = $this->anyData($goods_id);
+				DB::table('spec_values')->where(['spec_value_id' => array_keys($ajax_data['data'])])->update($requsetValue);//[current($k_val) => current($requsetValue)]
+				$spec_id = DB::table('spec_values')->where('spec_value_id', array_keys($ajax_data['data']))->value('spec_id');;
+				$res = $this->spec_value($spec_id);
 			} elseif ($ajax_data['action'] == 'create') {
-				$id = DB::table('products')->insertGetId($requsetValue);
-				$res = $this->anyData(null, $id);
+				$id = DB::table('spec_values')->insertGetId($requsetValue);
+				$res = $this->spec_value(null, $id);
 			} else if ($ajax_data['action'] == 'remove') {
-				DB::table('products')->where(['product_id' => $requsetValue['product_id']])->delete();
+				DB::table('spec_values')->where(['spec_value_id' => $requsetValue['spec_value_id']])->delete();
 			}
-
+	
 		}
 		if ($ajax_data['action'] == 'remove') {
-			$res = $this->anyData($requsetValue['goods_id']);
+			$res = $this->spec_value($requsetValue['spec_id']);
 		}
 		return $res;
 

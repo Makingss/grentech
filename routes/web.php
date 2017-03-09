@@ -10,9 +10,9 @@
  * |
  */
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-    Route::get('/users', function () {
-        return '我是管理员，我有授权！';
-    });
+	Route::get('/users', function () {
+		return '我是管理员，我有授权！';
+	});
 });
 Route::get('/', 'SitesController@index');
 Route::get('/about', 'SitesController@about');
@@ -38,3 +38,10 @@ Route::get('notification', 'Notification@showNotitfcation');
 Route::get('generate', 'Notification@generate');
 Route::get('/notification/is_read/{id}', 'Notification@is_read');
 Route::get('/captcha/{config?}', 'CaptchaController@getCaptcha');
+Route::get('/datatables', 'DatatablesController@index');
+Route::get('/datatables/data/{goods_id}', 'DatatablesController@anyData');
+Route::post('/datatables/editor', 'DatatablesController@editor');
+//Route::resource('datatables', 'DatatablesController', [
+//    'anyData'  => 'datatables.data',
+//    'getIndex' => 'datatables',
+//]);

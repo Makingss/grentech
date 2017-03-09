@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Bases\SchemaBuilder;
 use App\Admin\Models\Product;
 use Encore\Admin\Controllers\ModelForm;
 use Encore\Admin\Grid;
@@ -23,8 +24,8 @@ class ProductController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-            $content->header('产品信息');
-            $content->description('产品信息列表');
+            $content->header(trans('admin::lang.products.product').trans('admin::lang.headers.header'));
+            $content->description(trans('admin::lang.products.product').trans('admin::lang.headers.description'));
             $content->body($this->grid());
         });
 
@@ -45,66 +46,70 @@ class ProductController extends Controller
     public function grid()
     {
         $grid = Admin::grid(Product::class, function (Grid $grid){
+            $options=['件','台','套'];
 //            $grid->model()->where('goods_id',$id);
 //            if(!is_numeric($id)){
 //                $grid->disableCreation();
 //            }
+            $model=$this->form()->model();
+            $schemaBuilder= new SchemaBuilder();
+            $getProductColumns=$schemaBuilder->getTableColumns($model['table']);
             $grid->disableCreation();
             $grid->disableExport();
-            $grid->disableFilter();
-            $grid->filter(function ($filter) {
+//            $grid->disableFilter();
+            $grid->filter(function ($filter) use ($getProductColumns){
                 $filter->useModal();
-                $filter->is('goods_id', '商品ID');
-                $filter->like('bn', '货号');
+                $filter->is('goods_id', $getProductColumns['goods_id']);
+                $filter->like('bn', $getProductColumns['bn']);
+                $filter->is('store_place',$getProductColumns['store_place']);
+                $filter->between('created_at', 'Created Time')->datetime();
                 $filter->disableIdFilter();
             });
             $states = [
                 'on' => ['value' => 1, 'text' => 'YES', 'color' => 'success'],
                 'off' => ['value' => 0, 'text' => 'NO', 'color' => 'danger'],
             ];
-            $grid->bn('货号')->editable();
-            $grid->store('库存')->editable();
-            $grid->freez('冻结库存');
-            $grid->price('售销价')->editable();
-            $grid->cost('成本价')->editable();
-            $grid->mktprice('市场价')->editable();
+            $grid->bn($getProductColumns['bn'])->editable();
+            $grid->store($getProductColumns['store'])->editable();
+            $grid->freez($getProductColumns['freez']);
+            $grid->price($getProductColumns['price'])->editable();
+            $grid->cost($getProductColumns['cost'])->editable();
+            $grid->mktprice($getProductColumns['mktprice'])->editable();
             $grid->column('活动价')->editable();
-            $grid->unit('单位');
-//            $grid->options('单位','unit')->select([
-//                '测试'=>'测试'
-//            ]);
-            $grid->marketable('上架')->switch($states);
-            $grid->is_default('默认货品')->switch($states);
-            $grid->store_place('库位');
+            $grid->unit($getProductColumns['unit'])->editable('select',array_combine($options,$options));
+            $grid->marketable($getProductColumns['marketable'])->switch($states);
+            $grid->is_default($getProductColumns['is_default'])->switch($states);
+            $grid->store_place($getProductColumns['store_place']);
             $grid->actions(function ($actions) {
 //                $actions->disableDelete();
-                $actions->disableEdit();
+//                $actions->disableEdit();
             });
-//            dd($grid->build());
         });
-//        dd($grid);
         return $grid;
     }
 
     public function form()
     {
         return Admin::form(Product::class, function (\Encore\Admin\Form $form) {
+            $model=$form->model();
+            $schemaBuilder=new SchemaBuilder();
+            $getPruductColumns=$schemaBuilder->getTableColumns($model['table']);
             $states = [
                 'on' => ['value' => 1, 'text' => 'YES', 'color' => 'success'],
                 'off' => ['value' => 0, 'text' => 'NO', 'color' => 'danger'],
             ];
-            $form->text('bn', '货号')->rules('required|min:3');
-            $form->number('goods_id');
-            $form->text('store', '库存')->rules('required|min:1');
-            $form->display('freez', '冻结库存');
+            $form->text('bn', $getPruductColumns['bn'])->rules('required|min:3');
+            $form->text('goods_id',$getPruductColumns['goods_id']);
+            $form->text('store', $getPruductColumns['store'])->rules('required|min:1');
+            $form->display('freez', $getPruductColumns['freez']);
 //            $form->text('freez', '冻结库存');
-            $form->text('price', '售销价')->rules('required|min:1');
-            $form->text('cost', '成本价')->rules('required|min:1');
-            $form->text('mktprice', '市场价')->rules('required|min:1');
+            $form->text('price', $getPruductColumns['price'])->rules('required|min:1');
+            $form->text('cost', $getPruductColumns['cost'])->rules('required|min:1');
+            $form->text('mktprice', $getPruductColumns['mktprice'])->rules('required|min:1');
 //            $form->text('', '活动价');
-            $form->text('unit', '单位');
-            $form->switch('marketable', '上架')->states($states);
-            $form->switch('is_default', '默认货品')->states($states);
+            $form->text('unit', $getPruductColumns['unit']);
+            $form->switch('marketable', $getPruductColumns['marketable'])->states($states);
+            $form->switch('is_default', $getPruductColumns['is_default'])->states($states);
 //            $form->setAction('/admin/product/store');
 //            $form->select('store_place','库位')->options(function(){
 //                return '';
@@ -120,8 +125,8 @@ class ProductController extends Controller
     public function create()
     {
         return Admin::content(function (Content $content) {
-            $content->header('产品信息');
-            $content->description('产品信息列表');
+            $content->header(trans('admin::lang.products.product').trans('admin::lang.headers.header'));
+            $content->description(trans('admin::lang.products.product').trans('admin::lang.headers.description'));
             $content->body($this->form());
         });
     }
@@ -157,8 +162,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         return Admin::content(function (Content $content) use ($id) {
-            $content->header('产品信息');
-            $content->description('产品信息列表');
+            $content->header(trans('admin::lang.products.product').trans('admin::lang.headers.header'));
+            $content->description(trans('admin::lang.products.product').trans('admin::lang.headers.description'));
             $content->body($this->form()->edit($id));
         });
     }

@@ -1,130 +1,194 @@
-{{--<head>--}}
-    {{--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">--}}
-    {{--<link rel="stylesheet" href="../../extensions/Editor/css/editor.dataTables.min.css">--}}
-    {{--<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->--}}
-    {{--<script src="//code.jquery.com/jquery-1.12.4.js"></script>--}}
-    {{--<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>--}}
-    {{--<script src="../../extensions/Editor/js/dataTables.editor.min.js"></script>--}}
-
-{{--</head>--}}
-<table id="example" class="display" cellspacing="0" width="100%">
+<table id="product" class="display" cellspacing="0" width="100%">
     <thead>
     <tr>
-        <th>规格值</th>
-        <th>货号</th>
-        <th>上架</th>
-        <th>库存</th>
-        <th>冻结库存</th>
-        <th>售销价</th>
-        <th>成本价</th>
-        <th>市场价</th>
-        <th>活动价</th>
-        <th>货位</th>
-        <th>默认货品</th>
-        <th>操作</th>
+        <th></th>
+        <th>ID</th>
+        <th>{{$column['goods_id']}}</th>
+        <th>{{$column['spec_info']}}</th>
+        <th>{{$column['bn']}}</th>
+        <th>{{$column['price']}}</th>
+        <th>{{$column['cost']}}</th>
+        <th>{{$column['mktprice']}}</th>
+        <th>{{$column['store']}}</th>
+        <th>{{$column['freez']}}</th>
+        <th>{{$column['store_place']}}</th>
+        <th>{{$column['unit']}}</th>
+        <th>{{$column['is_default']}}</th>
+
     </tr>
     </thead>
 </table>
 
-<script type="application/x-javascript">
-    var editor; // use a global for the submit and return data rendering in the examples
-
+<script>
+    $.ajaxSetup({
+        'headers': {
+            'X-CSRF-TOKEN': '{{csrf_token()}}'
+        }
+    });
+    var editor;
     $(document).ready(function () {
+
         editor = new $.fn.dataTable.Editor({
-            ajax: "../php/staff.php",
-            table: "#example",
-            fields: [{
-                label: "规格值:",
-                name: "规格值"
-            }, {
-                label: "货号:",
-                name: "货号"
-            }, {
-                label: "上架:",
-                name: "上架"
-            }, {
-                label: "库存:",
-                name: "库存"
-            }, {
-                label: "冻结库存:",
-                name: "冻结库存"
-            }, {
-                label: "售销价:",
-                name: "售销价",
-//                type: "datetime"
-            }, {
-                label: "成本价:",
-                name: "成本价"
-            }, {
-                label: "市场价:",
-                name: "市场价"
-            }, {
-                label: "活动价:",
-                name: "活动价"
-            }, {
-                label: "货位:",
-                name: "货位"
-            }, {
-                label: "默认货品:",
-                name: "默认货品"
-            }, {
-                label: "操作:",
-                name: "操作"
-            }
-            ],
-            formOptions: {
-                bubble: {
-                    title: 'Edit',
-                    buttons: false
+            ajax: '{!! url('/datatables/editor') !!}',
+            table: '#product',
+            fields: [
+//                {
+//                    label: "Active:",
+//                    name: "active",
+//                    type: "checkbox",
+//                    separator: "|",
+//                    options: [
+//                        {label: '', value: 1}
+//                    ]
+//
+//                },
+//                {
+//                    label: "Active:",
+//                    name: "active2",
+//                    type: "checkbox",
+//                    separator: "|",
+//                    options: [
+//                        {label: '', value: 2}
+//                    ]
+//
+//                },
+                {
+                    label: "{{$column['goods_id']}}",
+                    name: '{{$column['keys']['goods_id']}}',
+                    type: "select",
+                    options: [
+                        {label: "{{$column['getKey']}}", value: "{{$column['getKey']}}"},
+                    ]
+                },
+                {
+                    label: "{{$column['spec_info']}}",
+                    name: "{{$column['keys']['spec_info']}}"
+                },
+                {
+                    label: "{{$column['bn']}}:",
+                    name: "{{$column['keys']['bn']}}"
+                }, {
+                    label: "{{$column['price']}}:",
+                    name: "{{$column['keys']['price']}}"
+                }, {
+                    label: "{{$column['cost']}}:",
+                    name: "{{$column['keys']['cost']}}"
+                }, {
+                    label: "{{$column['mktprice']}}:",
+                    name: "{{$column['keys']['mktprice']}}"
+                }, {
+                    label: "{{$column['store']}}:",
+                    name: "{{$column['keys']['store']}}"
+                },
+                {
+                    label: "{{$column['is_default']}}:",
+                    name: "{{$column['keys']['is_default']}}",
+                    type: "select",
+                    options: [
+                        {label: "是", value: 1},
+                        {label: "否", value: 0}
+                    ],
+                    def: 0
+                },
+                {
+                    label: "{{$column['unit']}}",
+                    name: "{{$column['keys']['unit']}}",
+                    type: "select",
+                    options: [
+                        {label: "件", value: "件"},
+                        {label: "台", value: "台"},
+                        {label: "套", value: "套"}
+                    ]
+                },
+                {
+                    label: "{{$column['store_place']}}:",
+                    name: "{{$column['keys']['store_place']}}"
                 }
-            }
+            ],
+        });
+        $('#product').on('click', 'tbody td:not(:first-child)', function (e) {
+            editor.inline(this, {
+                onBlur: 'submit'
+            });
         });
 
-        $('button.new').on('click', function () {
-            editor
-                    .title('Create new row')
-                    .buttons({
-                        "label": "Add", "fn": function () {
-                            editor.submit()
-                        }
-                    })
-                    .create();
-        });
-
-        $('#example').on('click', 'tbody td', function (e) {
-            if ($(this).index() < 6) {
-                editor.bubble(this);
-            }
-        });
-
-        $('#example').on('click', 'a.remove', function (e) {
-            editor
-                    .title('Delete row')
-                    .message('Are you sure you wish to delete this row?')
-                    .buttons({
-                        "label": "Delete", "fn": function () {
-                            editor.submit()
-                        }
-                    })
-                    .remove($(this).closest('tr'));
-        });
-
-        $('#example').DataTable({
-            ajax: "../php/staff.php",
+        $('#product').DataTable({
+            dom: "Bfrtip",
+            ajax: '{!! url('/datatables/data',$column['getKey']) !!}',
             columns: [
-                {data: "first_name"},
-                {data: "last_name"},
-                {data: "position"},
-                {data: "office"},
-                {data: "start_date"},
-                {data: "salary", render: $.fn.dataTable.render.number(',', '.', 0, '$')},
                 {
                     data: null,
-                    defaultContent: '<a href="#" class="remove">Delete</a>',
+                    defaultContent: '',
+                    className: 'select-checkbox',
                     orderable: false
                 },
-            ]
+                {data: "goods_id"},
+                {data: "product_id"},
+                {data: "spec_info"},
+                {data: "bn"},
+                {data: "price", render: $.fn.dataTable.render.number(',', '.', 0, '￥')},
+                {data: "cost", render: $.fn.dataTable.render.number(',', '.', 0, '￥')},
+                {data: "mktprice", render: $.fn.dataTable.render.number(',', '.', 0, '￥')},
+                {data: "store"},
+                {data: "freez"},
+                {data: "store_place"},
+                {data: "unit"},
+                {data: "is_default", editField: "is_default"}
+
+            ],
+            columnDefs: [
+                {
+                    "targets": [1],
+                    "visible": false,
+                    "searchable": false
+                },
+                {
+                    "targets": [2],
+                    "visible": false
+                }
+            ],
+            order: [1, 'asc'],
+            select: {
+                style: 'os',
+                selector: 'td:first-child'
+            },
+            buttons: [
+                {extend: "create", editor: editor},
+                {extend: "edit", editor: editor},
+                {extend: "remove", editor: editor}
+            ],
+            language: {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                },
+                "buttons": {
+                    "create": "新建",
+                    "edit": "编辑",
+                    "remove": "删除",
+                },
+                "Delete": "删除"
+            }
         });
+
     });
 
 </script>

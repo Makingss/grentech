@@ -1,13 +1,25 @@
-<table id="spec_value" class="display" cellspacing="0" width="100%">
+<table id="electric" class="display" cellspacing="0" width="100%">
     <thead>
     <tr>
         <th></th>
-        <th>{{$column['spec_value_id']}}</th>
-        <th>{{$column['spec_id']}}</th>
-        <th>{{$column['spec_value']}}</th>
-        <th>{{$column['alias']}}</th>
-        {{--<th>{{$column['spec_image']}}</th>--}}
-        {{--<th>{{$column['p_order']}}</th>--}}
+        <th>{{$column['product_id']}}</th>
+        <th>{{$column['workingband']}}</th>
+        <th>{{$column['x_beamwidth']}}</th>
+        <th>{{$column['y_beamwidth']}}</th>
+        <th>{{$column['beamgain']}}</th>
+        <th>{{$column['polarization']}}</th>
+
+        <th>{{$column['dipangle']}}</th>
+        <th>{{$column['xpd']}}</th>
+        <th>{{$column['ratio']}}</th>
+        <th>{{$column['inhibition']}}</th>
+        <th>{{$column['voltagebobbi']}}</th>
+
+        <th>{{$column['isolation']}}</th>
+        <th>{{$column['imd3']}}</th>
+
+        <th>{{$column['impedance']}}</th>
+        <th>{{$column['capacity']}}</th>
     </tr>
     </thead>
 </table>
@@ -23,46 +35,78 @@
 
 
         editor = new $.fn.dataTable.Editor({
-            table: '#spec_value',
-            ajax: '{!! url('/admin/specvalue/specvalueeditor') !!}',
+            table: '#electric',
+            ajax: '{!! url('/admin/electric/setajax') !!}',
             fields: [
                 {
-                    label: "{{$column['spec_id']}}",
-                    name: '{{$column['keys']['spec_id']}}',
+                    label: "{{$column['product_id']}}",
+                    name: '{{$column['keys']['product_id']}}',
                     type: "select",
                     options: [
                         {label: "{{$column['getKey']}}", value: "{{$column['getKey']}}"},
                     ]
                 },
                 {
-                    label: "{{$column['spec_value']}}:",
-                    name: "{{$column['keys']['spec_value']}}"
+                    label: "{{$column['workingband']}}:",
+                    name: "{{$column['keys']['workingband']}}"
                 },
                 {
-                    label: "{{$column['alias']}}:",
-                    name: "{{$column['keys']['alias']}}"
+                    label: "{{$column['x_beamwidth']}}:",
+                    name: "{{$column['keys']['x_beamwidth']}}"
                 },
-                {{--{--}}
-                    {{--label: "{{$column['spec_image']}}:",--}}
-                    {{--name: "{{$column['keys']['spec_image']}}"--}}
-                {{--},--}}
-                {{--{--}}
-                    {{--label: "{{$column['p_order']}}:",--}}
-                    {{--name: "{{$column['keys']['p_order']}}"--}}
-                {{--},--}}
+                {
+                    label: "{{$column['y_beamwidth']}}:",
+                    name: "{{$column['keys']['y_beamwidth']}}"
+                },
+                {
+                    label: "{{$column['beamgain']}}:",
+                    name: "{{$column['keys']['beamgain']}}"
+                },
+
+                {
+                    label: "{{$column['polarization']}}:",
+                    name: "{{$column['keys']['polarization']}}"
+                },
+                {
+                    label: "{{$column['dipangle']}}:",
+                    name: "{{$column['keys']['dipangle']}}"
+                },
+
+                {
+                    label: "{{$column['xpd']}}:",
+                    name: "{{$column['keys']['xpd']}}"
+                },
+                {
+                    label: "{{$column['isolation']}}:",
+                    name: "{{$column['keys']['isolation']}}"
+                },
+                {
+                    label: "{{$column['imd3']}}:",
+                    name: "{{$column['keys']['imd3']}}"
+                },
+
+                {
+                    label: "{{$column['impedance']}}:",
+                    name: "{{$column['keys']['impedance']}}"
+                },
+                {
+                    label: "{{$column['capacity']}}:",
+                    name: "{{$column['keys']['capacity']}}"
+                },
+
             ],
         });
 
 
-        $('#spec_value').on('click', 'tbody td:not(:first-child)', function (e) {
+        $('#electric').on('click', 'tbody td:not(:first-child)', function (e) {
             editor.inline(this, {
                 onBlur: 'submit'
             });
         });
 
-        $('#spec_value').DataTable({
+        $('#electric').DataTable({
             dom: "Bfrtip",
-            ajax: '{!! url('/admin/specvalue/values',$column['getKey']) !!}',
+            ajax: '{!! url('/admin/electric/getindex',$column['getKey']) !!}',
             columns: [
                 {
                     data: null,
@@ -70,12 +114,25 @@
                     className: 'select-checkbox',
                     orderable: false
                 },
-                {data: "spec_value_id"},
-                {data: "spec_id"},
-                {data: "spec_value"},
-                {data: "alias"},
-//                {data: "spec_image"},
-//                {data: "p_order"},
+                {data: "product_id"},
+                {data: "workingband"},
+                {data: "x_beamwidth"},
+                {data: "y_beamwidth"},
+                {data: "beamgain"},
+                {data: "polarization"},
+
+
+                {data: "dipangle"},
+                {data: "xpd"},
+                {data: "ratio"},
+                {data: "inhibition"},
+                {data: "voltagebobbi"},
+                {data: "isolation"},
+
+                {data: "imd3"},
+                {data: "impedance"},
+                {data: "capacity"},
+
 
             ],
             order: [1, 'asc'],

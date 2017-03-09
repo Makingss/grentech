@@ -99,6 +99,14 @@
         });
     });
 
+    $(function(){
+        $('.sidebar-menu li:not(.treeview) > a').on('click', function(){
+            var $parent = $(this).parent().addClass('active');
+            $parent.siblings('.treeview.active').find('> a').trigger('click');
+            $parent.siblings().removeClass('active').find('li').removeClass('active');
+        });
+    });
+
 </script>
 
 </body>

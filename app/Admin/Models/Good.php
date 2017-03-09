@@ -30,6 +30,46 @@ class Good extends Model
 	}
 
 	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function mechanics()
+	{
+		return $this->hasOne(Mechanic::class, 'goods_id');
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function goods_ports()
+	{
+		return $this->hasMany(Goods_port::class, 'goods_id');
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function assemblies()
+	{
+		return $this->hasMany(Assemblie::class, 'goods_id');
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function standardfits()
+	{
+		return $this->hasMany(Standardfit::class, 'goods_id');
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function electrics()
+	{
+		return $this->hasMany(Electric::class, 'goods_id');
+	}
+
+	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function goods_keywords()
@@ -43,6 +83,15 @@ class Good extends Model
 	public function products()
 	{
 		return $this->hasMany(Product::class, 'goods_id');
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 *
+	 */
+	public function brands()
+	{
+		return $this->belongsTo(Brand::class, 'brand_id');
 	}
 
 	/**
@@ -75,26 +124,29 @@ class Good extends Model
 		return $this->hasMany(Image_attach::class, 'target_id');
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
 	public function images()
 	{
 		return $this->hasMany(Image::class, 'image_id', 'image_default_id');
 	}
 
-	public function getTableColumns()
+
+	public function getTableColumns($table = null)
 	{
-		$getTable = [];
-		$getTables = DB::table($this->table)->select('show full columns')->get();
-		dd($getTables);
-		foreach ($getTables as $key=>$getTable) {
+		$table = $table ?: $this->table;
+		$getTableArrbs = [];
+		$getTables = DB::select('show full columns from ' . $table);
+		foreach ($getTables as $key => $getTable) {
 			if (is_object($getTable)) {
-				$getTable=$getTable->toArray();
+				$getTable = (array)$getTable;
+				$getTableArrbs[$getTable['Field']] = $getTable['Comment'];
 			} else {
-				$getTable[] = $getTable;
+				$getTableArrbs[] = $getTable;
 			}
-//			$getTable[]=$getTable;
 		}
-		dd($getTable);
-//		return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
+		return $getTableArrbs;
 	}
 
 	/**
@@ -166,5 +218,22 @@ class Good extends Model
 		}
 		return $save_status;
 
+	}
+
+
+	public function setOptionsAttribute($options)
+	{
+		if (is_array($options)) {
+			$this->attributes['goods_prot'] = join(',', $options);
+		}
+	}
+
+	public function getOptionsAttribute($options)
+	{
+		if (is_string($options)) {
+			return explode(',', $options);
+		}
+
+		return $options;
 	}
 }

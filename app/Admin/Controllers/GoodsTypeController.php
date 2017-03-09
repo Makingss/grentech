@@ -7,6 +7,7 @@
  */
 namespace App\Admin\Controllers;
 
+use App\Admin\Bases\SchemaBuilder;
 use App\Http\Controllers\Controller;
 use App\Admin\Models\Goods_type;
 use Encore\Admin\Controllers\ModelForm;
@@ -22,8 +23,8 @@ class GoodsTypeController extends Controller
     public function index()
     {
         $content = Admin::content(function (Content $content) {
-            $content->header('商品类型');
-            $content->description('商品类型列表');
+            $content->header(trans('admin::lang.goods.goodstype').trans('admin::lang.headers.header'));
+            $content->description(trans('admin::lang.goods.goodstype').trans('admin::lang.headers.description'));
             $content->body($this->grid());
 
         });
@@ -33,8 +34,8 @@ class GoodsTypeController extends Controller
     public function edit($id)
     {
         return Admin::content(function (Content $content) use ($id) {
-            $content->header('商品类型');
-            $content->description('商品类型列表');
+            $content->header(trans('admin::lang.goods.goodstype').trans('admin::lang.headers.header'));
+            $content->description(trans('admin::lang.goods.goodstype').trans('admin::lang.headers.description'));
             $content->body($this->form()->edit($id));
         });
     }
@@ -42,9 +43,8 @@ class GoodsTypeController extends Controller
     public function create()
     {
         return Admin::content(function (Content $content) {
-            $content->header('新建商品类型');
-            $content->description('新建商品类型列表');
-//            dd($this->form());
+            $content->header(trans('admin::lang.goods.goodstype').trans('admin::lang.headers.header'));
+            $content->description(trans('admin::lang.goods.goodstype').trans('admin::lang.headers.description'));
             $content->body($this->form());
         });
     }
@@ -52,18 +52,21 @@ class GoodsTypeController extends Controller
     protected function grid()
     {
         $grid = Admin::grid(Goods_type::class, function (Grid $grid) {
-            $grid->type_id('type_id');
-            $grid->name('类型名称')->editable();
-            $grid->alias('别名')->label();
+            $schemaBuilder=new SchemaBuilder();
+            $model=$this->form()->model();
+            $getGoodsTypeColumns=$schemaBuilder->getTableColumns($model['table']);
+            $grid->type_id($getGoodsTypeColumns['type_id']);
+            $grid->name($getGoodsTypeColumns['name'])->editable();
+            $grid->alias($getGoodsTypeColumns['alias'])->label();
 //            $grid->type_alias('别名')->value(function ($type_alias) {
 //                return \GuzzleHttp\json_decode($type_alias);
 //            })->label();
-            $grid->is_physical('实体商品')->value(function ($is_physical) {
-                return $is_physical ? '是' : '否';
+            $grid->is_physical($getGoodsTypeColumns['is_physical'])->value(function ($is_physical) {
+                return $is_physical ? trans('admin::lang.yes') : trans('admin::lang.no');
             });
-            $grid->schema_id('供应商编码')->editable();
-            $grid->created_at('创建时间');
-            $grid->updated_at('最后更新时间');
+            $grid->schema_id($getGoodsTypeColumns['schema_id'])->editable();
+            $grid->created_at();
+            $grid->updated_at();
 
         });
         return $grid;
@@ -73,21 +76,24 @@ class GoodsTypeController extends Controller
     protected function form()
     {
         return Admin::Form(Goods_type::class,function(\Encore\Admin\Form $form){
-            $form->tab('基本设置',function($form){
-                $form->text('name','类型名称');
-                $form->text('alias','类型别名');
-                $form->radio('is_physical','是否为实体商品')->options(['1' => '是', '0'=> '否'])->default('1');
-                $form->text('schema_id','供应商编码');
-                $form->display('created_at','新建时间');
-                $form->display('updated_at','更新时间');
+            $form->tab(trans('admin::lang.goods.baseset'),function($form){
+                $model=$form->model();
+                $schemaBuilder=new SchemaBuilder();
+                $getGoodsTypeColumns=$schemaBuilder->getTableColumns($model['table']);
+                $form->text('name',$getGoodsTypeColumns['name']);
+                $form->text('alias',$getGoodsTypeColumns['alias']);
+                $form->radio('is_physical',$getGoodsTypeColumns['is_physical'])->options(['1' => trans('admin::lang.yes'), '0'=> trans('admin::lang.no')])->default('1');
+                $form->text('schema_id',$getGoodsTypeColumns['schema_id']);
+                $form->display('created_at');
+                $form->display('updated_at');
             });
-            $form->tab('规格',function($form){
+            $form->tab(trans('admin::lang.goods.spec'),function($form){
                 $form->text();
             });
-            $form->tab('价格区间',function($form){
+            $form->tab(trans('admin::lang.goods.pricerange'),function($form){
                 $form->text();
             });
-            $form->tab('扩展属性',function($form){
+            $form->tab(trans('admin::lang.goods.extattribute'),function($form){
                 $form->text();
             });
 

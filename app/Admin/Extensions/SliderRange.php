@@ -9,7 +9,60 @@
 namespace App\Admin\Extensions;
 
 
-class SliderRange
-{
+use Encore\Admin\Admin;
+use Encore\Admin\Form\Field;
 
+class SliderRange extends Field
+{
+	public function __construct($column, array $arguments)
+	{
+		$this->column = $column;
+
+		parent::__construct($column, $arguments);
+	}
+
+	protected $view = 'admin.form.slider';
+//	protected static $css = [
+//		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.css',
+//		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.skinNice.css',
+//	];
+//
+//	protected static $js = [
+//		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.min.js',
+//	];
+
+	protected $options = [
+		'type' => 'single',
+		'prettify' => false,
+		'hasGrid' => true
+	];
+
+	public function render()
+	{
+		$columns = collect(explode('.', $this->column));
+		$model = $this->form->model();
+		$collects = collect($model['relations']);
+//		$collections = $this->form->model()->get()->toArray();
+//		foreach ($collections as $collection) {
+//			if ($collection[$this->column]) {
+//				$param_datas=$collection[$this->column];
+//				$datas = collect(explode(';', $param_datas));
+//			}
+//		}
+		$param_datas = [];
+		$collections = $collects->get($columns->first())->get()->toArray();
+		foreach ($collections as $collection) {
+			foreach (array_keys($collection) as $item) {
+				if ($item == $columns->last()) {
+					$param_datas = $collection[$columns->last()];
+				}
+			}
+		}
+		$datas = collect(explode(';', $param_datas));
+		$this->options['from'] = (int)$datas->first();
+		$this->options['to'] = (int)$datas->last();
+		$option = json_encode($this->options);
+		$this->script = "$('{$this->getElementClassSelector()}').ionRangeSlider($option)";
+		return parent::render();
+	}
 }

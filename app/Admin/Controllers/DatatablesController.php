@@ -1,5 +1,6 @@
 <?php
-namespace App\Admin\Bases;
+namespace App\Admin\Controllers;
+
 /**
  * Created by PhpStorm.
  * User: Making
@@ -7,18 +8,19 @@ namespace App\Admin\Bases;
  * Time: 10:16
  */
 
-namespace App\Admin\Bases;
-
 
 use App\Admin\Models\Good;
+use App\Admin\Models\Product;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
 class DatatablesController extends Controller
 {
-	public function getIndex()
+	public function index()
 	{
-		return view('datatables.index');
+		$products = Product::findOrFail(1);
+		return view('datatables.index', compact('products'));
 	}
 
 	public function anyData()

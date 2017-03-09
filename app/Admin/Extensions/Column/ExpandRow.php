@@ -17,6 +17,7 @@ class ExpandRow extends AbstractDisplayer
 		// TODO: Implement display() method.
 		$callback = $callback->bindTo($this->row);
 		$html = call_user_func($callback);
+
 		$script = <<<EOT
 $('.grid-expand').on('click', function () {
     if ($(this).data('inserted') == '0') {
