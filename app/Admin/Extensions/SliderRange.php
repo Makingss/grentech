@@ -49,18 +49,22 @@ class SliderRange extends Field
 //				$datas = collect(explode(';', $param_datas));
 //			}
 //		}
+//		dd($collects);
 		$param_datas = [];
-		$collections = $collects->get($columns->first())->get()->toArray();
-		foreach ($collections as $collection) {
-			foreach (array_keys($collection) as $item) {
-				if ($item == $columns->last()) {
-					$param_datas = $collection[$columns->last()];
+		if ($collects->get($columns->first())) {
+
+			$collections = $collects->get($columns->first())->get()->toArray();
+			foreach ($collections as $collection) {
+				foreach (array_keys($collection) as $item) {
+					if ($item == $columns->last()) {
+						$param_datas = $collection[$columns->last()];
+					}
 				}
 			}
+			$datas = collect(explode(';', $param_datas));
+			$this->options['from'] = (int)$datas->first();
+			$this->options['to'] = (int)$datas->last();
 		}
-		$datas = collect(explode(';', $param_datas));
-		$this->options['from'] = (int)$datas->first();
-		$this->options['to'] = (int)$datas->last();
 		$option = json_encode($this->options);
 		$this->script = "$('{$this->getElementClassSelector()}').ionRangeSlider($option)";
 		return parent::render();
