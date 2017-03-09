@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image_attach extends Model
 {
-    protected $table='Image_attach';
+    protected $table='image_attach';
     protected $primaryKey='attach_id';
 
     protected $fillable=['target_id','target_type','image_id','last_modified'];
