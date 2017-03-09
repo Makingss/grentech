@@ -55,7 +55,8 @@ class UserController extends Controller
         return Admin::content(function (Content $content) {
             $content->header(trans('admin::lang.administrator'));
             $content->description(trans('admin::lang.create'));
-            $content->body($this->form());
+//            $content->body($this->form());
+            $content->body($this->form()->render());
         });
     }
 
