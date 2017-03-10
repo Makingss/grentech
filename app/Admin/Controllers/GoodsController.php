@@ -40,6 +40,7 @@ class GoodsController extends Controller
 	public function grid()
 	{
 		return Admin::grid(Good::class, function (Grid $grid) {
+			$grid->model()->orderBy('goods_id', 'desc');
 			$goodObj = new Good();
 			$getGoodColumns = $goodObj->getTableColumns('goods');
 			$getPoductColumns = $goodObj->getTableColumns('products');
@@ -409,6 +410,7 @@ class GoodsController extends Controller
 	public function store(Request $request)
 	{
 		$goodsObj = new Good();
+		
 		$res = $goodsObj->save_goods($request, '', 'create');
 //		return $this->form()->store($id);
 		if ($res)

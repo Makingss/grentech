@@ -157,6 +157,9 @@ class Good extends Model
 	public function save_goods($request, $id = null, $method = '')
 	{
 		$goods = $request->all();
+//		if(!empty(Good::where('bn',$goods['bn'])->get()->toArray())){
+//			return '保存成功';
+//		}
 		if ($goods['marketable'] == 'off')
 			$goods['marketable'] = 0;
 		else
@@ -167,6 +170,7 @@ class Good extends Model
 		/**
 		 * create&&update return info
 		 */
+
 		if ($method == 'update' && $id) {
 			$goodsObj = Good::findOrFail($id);
 			if ($imagePaths)
@@ -226,8 +230,11 @@ class Good extends Model
 			foreach (@$goods['electrics'] as $electric) {
 				$goodsObj->electrics()->create($electric);
 			}
-			if ($id && $imagePaths)
+//			dd($imagePaths);
+			if ($id && $imagePaths) {
 				return $this->save_attach($imagePaths, $id);
+			}
+			return $id;
 		}
 	}
 
