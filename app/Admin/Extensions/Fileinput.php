@@ -39,7 +39,6 @@ class Fileinput extends Field
 	{
 		$url = url('/admin/fileupload');
 		$removeUrl = url('/admin/fileupload/remove');
-
 		$csrf_token = csrf_token();
 		$good_model = $this->form->model();
 		if ($good_model['goods_id']) {

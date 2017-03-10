@@ -93,9 +93,9 @@
                 },
                 {
                     label: "{{$column['unit']}}",
-                    name: "{{$column['keys']['unit']}}",
-                    type: "select",
-                    options: [
+                        name: "{{$column['keys']['unit']}}",
+                type: "select",
+                options: [
                         {label: "件", value: "件"},
                         {label: "台", value: "台"},
                         {label: "套", value: "套"}
@@ -114,6 +114,7 @@
         });
         $('#product').DataTable({
             dom: "Bfrtip",
+
             ajax: '{!! url('/datatables/data',$column['getKey']) !!}',
             columns: [
                 {

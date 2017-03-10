@@ -11,13 +11,14 @@ namespace App\Http\Controllers;
 
 use App\Admin\Bases\SchemaBuilder;
 use App\Admin\Models\Product;
+use Encore\Admin\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
 
 class DatatablesController extends Controller
 {
-	
+
 	public function index($key)
 	{
 		$schemaBuilder = new SchemaBuilder();
@@ -28,7 +29,7 @@ class DatatablesController extends Controller
 		foreach ($keys['keys'] as $key_value) {
 			$column['keys'][$key_value] = $key_value;
 		}
-		return view('admin.form.editordatetable', compact('column'));
+		return view('admin.form.editordatatable', compact('column'));
 	}
 
 	public function anyData($goods_id = null, $product_id = null)
@@ -45,6 +46,7 @@ class DatatablesController extends Controller
 		])->setRowAttr([
 			'color' => '#C0C0C0',
 		])->make(true);
+
 		return $product_datas;
 	}
 

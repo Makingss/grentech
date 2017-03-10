@@ -16,8 +16,8 @@ class CreateGoodsTable extends Migration {
 		{
 			$table->engine='InnoDB';
 			$table->bigInteger('goods_id', true)->unsigned()->comment('商品ID');
-			$table->string('jooge_goods_id', 200)->comment('商品ID');
-			$table->string('bn', 200)->nullable()->unique('uni_bn')->comment('商品编号');
+			$table->string('jooge_goods_id', 200)->nullable()->comment('商品ID');
+			$table->string('bn', 200)->nullable()->unique('bn')->comment('商品编号');
 			$table->string('name', 200)->default('')->comment('商品名称');
 			$table->decimal('price', 20)->default(0.00)->comment('销售价');
 			$table->integer('type_id')->unsigned()->nullable()->comment('类型');

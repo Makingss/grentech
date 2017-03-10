@@ -35,6 +35,7 @@ class ToolsbaseController extends Controller
                     'ident' => $path
                 ])->toArray();
             }
+            session([$image_id=>$imagePath]);
             return json_encode(['path' => $imagePath,'image_id'=>$image_id], true);
         } else {
             return response()->json(['status' => 'true', 'msg' => '没有图片']);

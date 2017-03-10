@@ -9,7 +9,7 @@ Route::group([
 ], function (Router $router) {
 	$router->get('/', 'IndexController@index');
 	$router->get('/goods/getgoods', 'GoodsController@getgoods');
-	$router->get('/goods/getindex','GoodsController@getindex');
+	$router->get('/goods/getindex', 'GoodsController@getindex');
 	$router->post('/fileupload', 'ToolsbaseController@fileUpload');
 	$router->post('/fileupload/remove', 'ToolsbaseController@remove');
 //    $router->post('/goods/update_z','GoodsController@update_z');
@@ -27,6 +27,10 @@ Route::group([
 	$router->post('/specvalue/specvalueeditor', 'SpecvaluesController@specvalue_editor');
 	$router->get('/electric/getindex/{id}', 'ElectricController@getIndex');
 	$router->post('/electric/setajax', 'ElectricController@setAjax');
+
+//	$router->get('/products/{key?}', 'DatatablesController@index');
+//	$router->get('/products/data/{goods_id}', 'DatatablesController@anyData');
+//	$router->post('/products/editor', 'DatatablesController@editor');
 });
 
 

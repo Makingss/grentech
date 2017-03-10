@@ -133,9 +133,9 @@ class GoodsController extends Controller
 
 			  $grid->actions(function ($actions) {
 			  // 当前行的数据数组
-			  $actions->row;
+			  //$actions->row;
 			  // 获取当前行主键值
-			  $actions->getKey();
+			  //$actions->getKey();
 			  $url = url('/datatables',$actions->getKey());
 			  $actions->prepend('<a href=' . $url . '>编辑货品 | ');
 			  });
@@ -410,6 +410,7 @@ class GoodsController extends Controller
 	{
 		$goodsObj = new Good();
 		$res = $goodsObj->save_goods($request, '', 'create');
+//		return $this->form()->store($id);
 		if ($res)
 			return redirect('/admin/goods');
 		else
