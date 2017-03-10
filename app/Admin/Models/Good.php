@@ -176,6 +176,7 @@ class Good extends Model
 			if ($imagePaths)
 				$this->save_attach($imagePaths, $id);
 //            $goods = array_add($goods, 'image_default_id', $image_default_id);
+			$goods['image_default_id'] = $imagePaths['image_id'];
 			return $goodsObj->update($goods);
 		} else if ($method == 'create') {
 			$id = DB::table('goods')->insertGetId([
@@ -204,32 +205,32 @@ class Good extends Model
 //					$product['is_default'] = 1;
 //				$goodsObj->products()->create($product);
 //			}
-			if(@$goods['goods_keywords'])
-			foreach (@$goods['goods_keywords'] as $keyword) {
-				$keyword['goods_id']=$id;
-				$goodsObj->goods_keywords()->create($keyword);
-			}
-			if(@$goods['goods_ports'])
-			foreach (@$goods['goods_ports'] as $goods_port) {
-				$goodsObj->goods_ports()->create($goods_port);
-			}
-			if(@$goods['mechanics'])
+			if (@$goods['goods_keywords'])
+				foreach (@$goods['goods_keywords'] as $keyword) {
+					$keyword['goods_id'] = $id;
+					$goodsObj->goods_keywords()->create($keyword);
+				}
+			if (@$goods['goods_ports'])
+				foreach (@$goods['goods_ports'] as $goods_port) {
+					$goodsObj->goods_ports()->create($goods_port);
+				}
+			if (@$goods['mechanics'])
 				$goodsObj->mechanics()->create($goods['mechanics']);
 //			foreach (@$goods['mechanics'] as $mechanic) {
 //
 //			}
-			if(@$goods['assemblies'])
-			foreach (@$goods['assemblies'] as $assemblie) {
-				$goodsObj->assemblies()->create($assemblie);
-			}
-			if(@$goods['standardfits'])
-			foreach (@$goods['standardfits'] as $standardfit) {
-				$goodsObj->standardfits()->create($standardfit);
-			}
-			if(@$goods['electrics'])
-			foreach (@$goods['electrics'] as $electric) {
-				$goodsObj->electrics()->create($electric);
-			}
+			if (@$goods['assemblies'])
+				foreach (@$goods['assemblies'] as $assemblie) {
+					$goodsObj->assemblies()->create($assemblie);
+				}
+			if (@$goods['standardfits'])
+				foreach (@$goods['standardfits'] as $standardfit) {
+					$goodsObj->standardfits()->create($standardfit);
+				}
+			if (@$goods['electrics'])
+				foreach (@$goods['electrics'] as $electric) {
+					$goodsObj->electrics()->create($electric);
+				}
 //			dd($imagePaths);
 			if ($id && $imagePaths) {
 				return $this->save_attach($imagePaths, $id);
