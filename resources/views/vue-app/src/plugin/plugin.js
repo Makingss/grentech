@@ -123,6 +123,13 @@
             is_show:true,
             show_search_bar:false,
             navbar_active:2,
+          },
+          'test':{
+            title:'测试',
+            show_back:false,
+            is_show:false,
+            show_search_bar:false,
+            navbar_active:2
           }
         }
         return name_conf[name];

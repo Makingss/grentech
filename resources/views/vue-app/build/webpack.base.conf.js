@@ -13,7 +13,7 @@ function resolve (dir) {
 
 let webpackConfig = {
   entry: {
-    app: './src/main.js'
+    app: './src/app.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -33,7 +33,7 @@ let webpackConfig = {
       'src': resolve('src'),
       'assets': resolve('src/assets'),
       'components': resolve('src/components')
-      
+
     }
   },
   module: {

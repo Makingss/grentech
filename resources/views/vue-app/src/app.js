@@ -1,6 +1,10 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import VueResource from 'vue-resource'
+ // import store from './store'
+import Vuex from 'vuex'
+
 import FastClick from 'fastclick'
 import router from './router'
 import App from './App.vue'
@@ -54,7 +58,11 @@ import Reset from './styles/reset.css'
 
 //引入vue插件扩展
 import Plugin from './plugin/plugin'
+//调用模块
 Vue.use(Plugin);
+Vue.use(VueResource);
+// Vue.use(Vuex);
+
 
 Vue.filter('date',filters.dateFilter)
 
@@ -63,5 +71,6 @@ Vue.filter('date',filters.dateFilter)
 /* eslint-disable no-new */
 new Vue({
   router,
+  // store,
   render: h => h(App)
 }).$mount('#app')

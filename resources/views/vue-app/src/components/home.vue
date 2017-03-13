@@ -2,6 +2,9 @@
   {{$goods}}
   <div class="home content">
     <swiper :list="swiper_list" dots-position="center"></swiper>
+
+    <router-link to="/test" class="color-danger">test 测试</router-link>
+
     <div class="cat-goods">
       <divider class="padding-10">产品分类</divider>
       <div class="cat-cover link-img">

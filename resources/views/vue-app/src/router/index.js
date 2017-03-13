@@ -17,6 +17,7 @@ import Qrcode from 'components/qrcode'
 import Favgoods from 'components/favgoods'
 import FindPwd from 'components/find-pwd'
 import Service from 'components/service'
+import Test from 'components/test'
 
 Vue.use(Router)
 
@@ -103,6 +104,10 @@ export default new Router({
       name:"service",
       path:'/service',
       component:Service
+    },{
+      name:'test',
+      path:'/test',
+      component:Test
     }
   ],
   scrollBehavior (to, from, savedPosition) {
