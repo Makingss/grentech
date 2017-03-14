@@ -15,6 +15,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 	});
 });
 Route::get('/', 'SitesController@index');
+Route::get('/app', 'SitesController@app');
 Route::get('/about', 'SitesController@about');
 Route::get('content', 'SitesController@content');
 /*
