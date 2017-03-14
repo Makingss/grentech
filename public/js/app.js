@@ -10688,8 +10688,10 @@ __webpack_require__(37);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
 // Vue.component('app', require('./vue-app/src/App.vue'));
 Vue.component('question-follow-button', __webpack_require__(13));
+
 Vue.component('send-code-field', __webpack_require__(14));
 Vue.component('example', __webpack_require__(12));
 Vue.component('passport-clients', __webpack_require__(16));

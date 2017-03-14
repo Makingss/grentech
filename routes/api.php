@@ -26,5 +26,3 @@ Route::post('/question/follower', function (Request $request) {
 	return response()->json(['followed' => false]);
 })->middleware('auth:api');
 
-
-
