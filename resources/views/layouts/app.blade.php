@@ -17,8 +17,7 @@
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
-        ]); ?>;
-        Laravel.apiToken = "{{Auth::check()? 'Bearer '.Auth::user()->api_token : 'Bearer '}}";
+        ]); ?>
     </script>
 </head>
 <body>
@@ -42,93 +41,83 @@
             </div>
 
             {{--<div class="collapse navbar-collapse" id="app-navbar-collapse">--}}
-                    <!-- Left Side Of Navbar -->
-            {{--<ul class="nav nav-tabs nav-justified" role="tablist">--}}
-            {{--<li><a href="{{ url('/#') }}">--}}
-            {{--<button type="button" class="btn btn-link">站点</button>--}}
-            {{--</a></li>--}}
-            {{--<li><a href="{{ url('/#') }}">--}}
-            {{--<button type="button" class="btn btn-link">订单</button>--}}
-            {{--</a></li>--}}
-            {{--<li><a href="{{ url('/#') }}">--}}
-            {{--<button type="button" class="btn btn-link">商品</button>--}}
-            {{--</a></li>--}}
-            {{--<li><a href="{{ url('/#') }}">--}}
-            {{--<button type="button" class="btn btn-link">会员</button>--}}
-            {{--</a></li>--}}
-            {{--<li><a href="{{ url('/#') }}">--}}
-            {{--<button type="button" class="btn btn-link">营销</button>--}}
-            {{--</a></li>--}}
-            {{--<li><a href="{{ url('/#') }}">--}}
-            {{--<button type="button" class="btn btn-link">报表</button>--}}
-            {{--</a></li>--}}
-            {{--<li><a href="{{ url('/#') }}">--}}
-            {{--<button type="button" class="btn btn-link">微店</button>--}}
-            {{--</a></li>--}}
-            {{--<li><a href="{{ url('/#') }}">--}}
-            {{--<button type="button" class="btn btn-link">文章</button>--}}
-            {{--</a></li>--}}
-            {{--<li><a href="{{ url('/#') }}">--}}
-            {{--<button type="button" class="btn btn-link">视频</button>--}}
-            {{--</a></li>--}}
-            {{--<li><a href="{{ url('/#') }}">--}}
-            {{--<button type="button" class="btn btn-link">问答</button>--}}
-            {{--</a></li>--}}
+                <!-- Left Side Of Navbar -->
+                {{--<ul class="nav nav-tabs nav-justified" role="tablist">--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">站点</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">订单</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">商品</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">会员</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">营销</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">报表</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">微店</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">文章</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">视频</button>--}}
+                {{--</a></li>--}}
+                {{--<li><a href="{{ url('/#') }}">--}}
+                {{--<button type="button" class="btn btn-link">问答</button>--}}
+                {{--</a></li>--}}
 
-            {{--</ul>--}}
+                {{--</ul>--}}
 
-                    <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
-                @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">
-                            <button type="button" class="btn btn-primary">登录</button>
-                        </a></li>
-                    <li><a href="{{ url('/register') }}">
-                            <button type="button" class="btn btn-primary">加入MAKING</button>
-                        </a></li>
-                @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
+                        <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li><a href="{{ url('/login') }}">
+                                <button type="button" class="btn btn-primary">登录</button>
+                            </a></li>
+                        <li><a href="{{ url('/register') }}">
+                                <button type="button" class="btn btn-primary">加入MAKING</button>
+                            </a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
 
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ url('/logout') }}"
-                                   onclick="event.preventDefault();
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ url('/logout') }}"
+                                       onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    退出登录
-                                </a>
+                                        退出登录
+                                    </a>
 
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                @endif
-            </ul>
-        </div>
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
+            </div>
         {{--</div>--}}
     </nav>
-    <div class="navbar-default">
-        {{--@include('flash::message');--}}
-        @if (session()->has('flash_notification.message'))
-            <div class="alert alert-{{ session('flash_notification.level') }}">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
-                {!! session('flash_notification.message') !!}
-            </div>
-        @endif
-    </div>
     @yield('content')
 </div>
 {{--<script src="https://unpkg.com/vue/dist/vue.js"></script>--}}
-        <!-- Scripts -->
+<!-- Scripts -->
 <script src="/js/app.js"></script>
 <script>
-    $('#flash-overlay-modal').modal();
     $('#captcha').on('click', function () {
         var captcha = $(this);
         var url = '/captcha/' + captcha.attr('data-captcha-config') + '/?' + Math.random();

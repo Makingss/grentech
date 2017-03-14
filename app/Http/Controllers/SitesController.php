@@ -12,7 +12,6 @@ class SitesController extends Controller
     }
     //about
     public function about(){
-
         $fisrt = 'this is making';
         $last = 'i.am master';
         return  view('sites.about',compact('fisrt','last'));
@@ -22,5 +21,8 @@ class SitesController extends Controller
         $fisrt = ['making','master','wuyanping'];
         $last = 'master';
         return view('sites.content',compact('fisrt','last','name'));
+    }
+    public function app(){
+        return view('index');
     }
 }

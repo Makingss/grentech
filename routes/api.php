@@ -11,20 +11,31 @@
 |
 */
 use Illuminate\Http\Request;
-
 Route::get('/user', function (Request $request) {
-	return $request->user();
+    return $request->user();
 })->middleware('auth:api');
-
-
-Route::post('/question/follower', function (Request $request) {
-//	return Auth::guard('api')->user();
-	$comment = \App\Models\Comment::where('id', $request->get('question'))->count();
-	if ($comment) {
-		return response()->json(['followed' => true]);
-	}
-	return response()->json(['followed' => false]);
-})->middleware('auth:api');
-
-
-
+Route::get('/news', function() {
+//    session(['name'=>'pengbd3']);
+    return [
+        ['id' => 1, 'title' => 'new1'],
+        ['id' => 2, 'title' => 'new2'],
+        ['id' => 3, 'title' => 'new3'],
+        ['id' => 4, 'title' => 'new4'],
+    ];
+});
+Route::get('/newslist', function() {
+    return [
+        ['id' => 1, 'title' => 'new1'],
+        ['id' => 2, 'title' => 'new2'],
+        ['id' => 3, 'title' => 'new3'],
+        ['id' => 4, 'title' => 'new4'],
+    ];
+});
+Route::get('/newsdetail/{id}', function($id,Request $request) {
+    return [
+        'id' => 1,
+        'title' => 'news',
+        'content' => 'content',
+        'created_at' => date('Y-m-d H:i:s')
+    ];
+});

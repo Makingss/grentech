@@ -5,17 +5,17 @@ return [
     /*
      * Laravel-admin name.
      */
-    'name'      => '国人销售管理系统',
+    'name'      => 'grentech',
 
     /*
      * Logo in admin panel header.
      */
-    'logo'      => '<b>国人</b> 售销管理系统',
+    'logo'      => '<b>grentech</b> admin',
 
     /*
      * Mini-logo in admin panel header.
      */
-    'logo-mini' => '<b>国人</b>',
+    'logo-mini' => '<b>La</b>',
 
     /*
      * Laravel-admin url prefix.
@@ -30,7 +30,7 @@ return [
     /*
      * Laravel-admin html title.
      */
-    'title'  => '国人销售管理系统',
+    'title'  => 'Admin',
 
     /*
      * Laravel-admin auth setting.

@@ -100,9 +100,6 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
-        'email'=>[
-            'unique'=>'该邮箱已注册,请换个邮箱试试！'
-        ]
     ],
 
     /*
