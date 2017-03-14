@@ -14,7 +14,7 @@ class UpdateUsersNameToUnique extends Migration
 	public function up()
 	{
 		Schema::table('users', function (Blueprint $table) {
-			$table->unique('name');
+//			$table->unique('name');
 		});
 	}
 
