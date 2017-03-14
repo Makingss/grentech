@@ -1,10 +1,11 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import news from './news.js'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import news from './news.js';
 
 Vue.use(Vuex);
-export default new Vuex.store({
-  modules:{
-    news
-  }
-})
+export default new Vuex.Store({
+    // 可以设置多个模块
+    modules: {
+        news
+    }
+});

@@ -1,12 +1,14 @@
-import api from '../api'
+import api from '../api/index.js'
+
 export default {
   state:{
-    recommend:'',
+    recommend:[],
     lists:[],
     detail:{}
   },
   mutations:{
-      SETRECOMMEND(state, recommend) {
+    // 注意，这里可以设置 state 属性，但是不能异步调用，异步操作写到 actions 中
+       SETRECOMMEND(state, recommend) {
            state.recommend = recommend;
        },
        SETLISTS(state, lists) {
@@ -17,25 +19,25 @@ export default {
        }
   },
   actions:{
-    GETDETAIL({commit}, id) {
-           // 获取详情，并调用 mutations 设置 detail
-           api.getNewsDetail(id).then(function(res) {
-               commit('SETDETAIL', res.data);
-               document.body.scrollTop = 0;
-           });
-    },
-    GETRECOMMEND({commit}) {
-           // 获取推荐，并调用 mutations 设置 recommend
-           api.getNewsRecommend().then(function(res) {
-               console.log(res);
-               commit('SETRECOMMEND', res.data);
-           });
-    },
-    GETLISTS({commit}) {
-           // 获取列表，并调用 mutations 设置 lists
-           api.getNewsLists().then(function(res) {
-               commit('SETLISTS', res.data);
-           });
-    }
+        GETDETAIL({commit}, id) {
+             // 获取详情，并调用 mutations 设置 detail
+             api.getNewsDetail(id).then(function(res) {
+                 commit('SETDETAIL', res.data);
+                 document.body.scrollTop = 0;
+             });
+         },
+         GETRECOMMEND({commit}) {
+             // 获取推荐，并调用 mutations 设置 recommend
+             api.getNewsRecommend().then(function(res) {
+                 commit('SETRECOMMEND', res.data);
+             });
+            // store.commit('SETRECOMMEND')
+         },
+         GETLISTS({commit}) {
+             // 获取列表，并调用 mutations 设置 lists
+             api.getNewsLists().then(function(res) {
+                 commit('SETLISTS', res.data);
+             });
+         }
   }
 }
