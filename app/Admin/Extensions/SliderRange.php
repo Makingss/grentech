@@ -1,15 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Making
- * Date: 2017/3/8
- * Time: 14:16
- */
-
 namespace App\Admin\Extensions;
 
-
-use Encore\Admin\Admin;
+use App\Admin\Models\Mechanic;
 use Encore\Admin\Form\Field;
 
 class SliderRange extends Field
@@ -22,19 +14,20 @@ class SliderRange extends Field
 	}
 
 	protected $view = 'admin.form.slider';
-//	protected static $css = [
-//		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.css',
-//		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.skinNice.css',
-//	];
-//
-//	protected static $js = [
-//		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.min.js',
-//	];
+	protected static $css = [
+		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.css',
+		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.skinNice.css',
+	];
+
+	protected static $js = [
+		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.min.js',
+	];
 
 	protected $options = [
 		'type' => 'single',
 		'prettify' => false,
-		'hasGrid' => true
+		'hasGrid' => true,
+		'grid' => true
 	];
 
 	public function render()
@@ -42,14 +35,6 @@ class SliderRange extends Field
 		$columns = collect(explode('.', $this->column));
 		$model = $this->form->model();
 		$collects = collect($model['relations']);
-//		$collections = $this->form->model()->get()->toArray();
-//		foreach ($collections as $collection) {
-//			if ($collection[$this->column]) {
-//				$param_datas=$collection[$this->column];
-//				$datas = collect(explode(';', $param_datas));
-//			}
-//		}
-//		dd($collects);
 		$param_datas = [];
 		if ($collects->get($columns->first())) {
 
@@ -57,16 +42,96 @@ class SliderRange extends Field
 			foreach ($collections as $collection) {
 				foreach (array_keys($collection) as $item) {
 					if ($item == $columns->last()) {
-						$param_datas = $collection[$columns->last()];
+						$mechanics=Mechanic::where('goods_id',$model->getKey())->firstOrFail();
+						$param=$columns->last();
+//						dd($mechanics->$param);
+						$param_datas = $mechanics->$param;
+//						dd($param_datas);
 					}
 				}
 			}
 			$datas = collect(explode(';', $param_datas));
 			$this->options['from'] = (int)$datas->first();
 			$this->options['to'] = (int)$datas->last();
+
+
+			$option = json_encode($this->options);
+//			dd($option);
+			$this->script = "$('.{$this->getElementClass()}').ionRangeSlider($option)";
+
+			return parent::render();
 		}
-		$option = json_encode($this->options);
-		$this->script = "$('{$this->getElementClassSelector()}').ionRangeSlider($option)";
-		return parent::render();
 	}
 }
+///**
+// * Created by PhpStorm.
+// * User: Making
+// * Date: 2017/3/8
+// * Time: 14:16
+// */
+//
+//namespace App\Admin\Extensions;
+//
+//
+//use Encore\Admin\Admin;
+//use Encore\Admin\Form\Field;
+//
+//class SliderRange extends Field
+//{
+//	public function __construct($column, array $arguments)
+//	{
+//		$this->column = $column;
+//
+//		parent::__construct($column, $arguments);
+//	}
+//
+//	protected $view = 'admin.form.slider';
+////	protected static $css = [
+////		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.css',
+////		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.skinNice.css',
+////	];
+////
+////	protected static $js = [
+////		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.min.js',
+////	];
+//
+//	protected $options = [
+//		'type' => 'single',
+//		'prettify' => false,
+//		'hasGrid' => true,
+//		'grid' => true
+//	];
+//
+//	public function render()
+//	{
+//		$columns = collect(explode('.', $this->column));
+//		$model = $this->form->model();
+//		$collects = collect($model['relations']);
+////		$collections = $this->form->model()->get()->toArray();
+////		foreach ($collections as $collection) {
+////			if ($collection[$this->column]) {
+////				$param_datas=$collection[$this->column];
+////				$datas = collect(explode(';', $param_datas));
+////			}
+////		}
+////		dd($collects);
+//		$param_datas = [];
+//		if ($collects->get($columns->first())) {
+//
+//			$collections = $collects->get($columns->first())->get()->toArray();
+//			foreach ($collections as $collection) {
+//				foreach (array_keys($collection) as $item) {
+//					if ($item == $columns->last()) {
+//						$param_datas = $collection[$columns->last()];
+//					}
+//				}
+//			}
+//			$datas = collect(explode(';', $param_datas));
+//			$this->options['from'] = (int)$datas->first();
+//			$this->options['to'] = (int)$datas->last();
+//		}
+//		$option = json_encode($this->options);
+//		$this->script = "$('{$this->getElementClassSelector()}').ionRangeSlider($option)";
+//		return parent::render();
+//	}
+//}

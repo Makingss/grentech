@@ -157,16 +157,12 @@ class Good extends Model
 	public function save_goods($request, $id = null, $method = '')
 	{
 		$goods = $request->all();
-//		if(!empty(Good::where('bn',$goods['bn'])->get()->toArray())){
-//			return '保存成功';
-//		}
 		if ($goods['marketable'] == 'off')
 			$goods['marketable'] = 0;
 		else
 			$goods['marketable'] = 1;
 		$fileupload = new ToolsbaseController();
 		$imagePaths = json_decode($fileupload->fileUpload($request), true);
-//		dd($request);
 		/**
 		 * create&&update return info
 		 */
@@ -215,10 +211,8 @@ class Good extends Model
 					$goodsObj->goods_ports()->create($goods_port);
 				}
 			if (@$goods['mechanics'])
-				$goodsObj->mechanics()->create($goods['mechanics']);
-//			foreach (@$goods['mechanics'] as $mechanic) {
-//
-//			}
+				foreach ($goods['mechanics'] as $mechanic)
+				$goodsObj->mechanics()->create($mechanic);
 			if (@$goods['assemblies'])
 				foreach (@$goods['assemblies'] as $assemblie) {
 					$goodsObj->assemblies()->create($assemblie);
@@ -231,7 +225,6 @@ class Good extends Model
 				foreach (@$goods['electrics'] as $electric) {
 					$goodsObj->electrics()->create($electric);
 				}
-//			dd($imagePaths);
 			if ($id && $imagePaths) {
 				return $this->save_attach($imagePaths, $id);
 			}

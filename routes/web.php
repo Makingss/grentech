@@ -14,7 +14,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 		return '我是管理员，我有授权！';
 	});
 });
-Route::get('/', 'SitesController@index');
+//Route::get('/', 'SitesController@index');
 Route::get('/about', 'SitesController@about');
 Route::get('content', 'SitesController@content');
 /*
@@ -23,13 +23,13 @@ Route::get('/articles/create','ArticleController@create');
 Route::get('/articles/{id}','ArticleController@show');
 Route::post('/articles','ArticleController@store');
 */
-
+Route::get('/email/verify/{token}', ['as' => 'email.verify', 'uses' => 'EmailController@verify']);
 Route::resource('articles', 'ArticleController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::resource('mall', 'Mall\MallController');
+Route::resource('/', 'Mall\MallController');
 
 Route::get('oauth/redirect', 'OauthController@redirect');
 Route::get('callback', 'OauthController@oauth');
@@ -42,8 +42,10 @@ Route::get('/datatables/{key?}', 'DatatablesController@index');
 Route::get('/datatables/data/{goods_id}', 'DatatablesController@anyData');
 Route::post('/datatables/editor', 'DatatablesController@editor');
 Route::get('/apps', 'GoodsController@getindex');
+
 Route::get('/demo', function () {
-	return view('demo');
+	$question=\App\Models\Comment::find(1);
+	return view('demo',compact('question'));
 });
 //Route::resource('datatables', 'DatatablesController', [
 //    'anyData'  => 'datatables.data',

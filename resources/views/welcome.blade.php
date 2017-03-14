@@ -15,7 +15,8 @@
 @endif
 <form>
     <div id="app">
-    <send-code-field></send-code-field>
+        <question-follow-button question="" user="{{Auth::id()}}"></question-follow-button>
+        {{--<send-code-field></send-code-field>--}}
     </div>
 </form>
 @stop

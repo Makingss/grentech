@@ -11,6 +11,8 @@ require('./bootstrap');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// Vue.component('app', require('./vue-app/src/App.vue'));
+Vue.component('question-follow-button', require('./components/QuestionFollowBotton.vue'));
 Vue.component('send-code-field', require('./components/SendCodeField.vue'));
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('passport-clients', require('./components/passport/Clients.vue'));

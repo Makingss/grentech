@@ -102,6 +102,9 @@ return [
         ],
         'email'=>[
             'unique'=>'该邮箱已注册,请换个邮箱试试！'
+        ],
+        'password'=>[
+            'confirmed'=>'二次密码输入不一致！'
         ]
     ],
 
