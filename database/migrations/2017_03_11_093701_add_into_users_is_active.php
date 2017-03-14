@@ -14,9 +14,9 @@ class AddIntoUsersIsActive extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-//            $table->smallInteger('is_active')->default(0)->comment('邮箱是否验证');
-//            $table->string('confirmation_token')->nullable()->comment('验证信息');
-//            $table->string('avatar')->nullable()->comment('头像');
+            $table->smallInteger('is_active')->default(0)->comment('邮箱是否验证');
+            $table->string('confirmation_token')->nullable()->comment('验证信息');
+            $table->string('avatar')->nullable()->comment('头像');
         });
     }
 
