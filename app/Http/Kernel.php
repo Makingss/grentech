@@ -36,6 +36,10 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+//		\Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+//		\App\Http\Middleware\TrimStrings::class,
+//		\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
 
     /**

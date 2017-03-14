@@ -170,6 +170,7 @@ return [
 
 		Mews\Captcha\CaptchaServiceProvider::class,
 		Encore\Admin\Providers\AdminServiceProvider::class,
+		Laravel\Tinker\TinkerServiceProvider::class,
 		/*
 		 * Application Service Providers...
 		 */
@@ -179,10 +180,12 @@ return [
 		App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
 		Overtrue\LaravelUEditor\UEditorServiceProvider::class,
-		Way\Generators\GeneratorsServiceProvider::class,
+//		Way\Generators\GeneratorsServiceProvider::class,
 		Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
 		Douyasi\WangEditor\EditorServiceProvider::class,
 		Yajra\Datatables\DatatablesServiceProvider::class,
+		Naux\Mail\SendCloudServiceProvider::class,
+		Laracasts\Flash\FlashServiceProvider::class,
 	],
 
 
