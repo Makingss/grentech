@@ -13,14 +13,14 @@ const API_ROOT='';
 export default{
   // 首页推荐信息
     getNewsRecommend: function() {
-        return Vue.resource(API_ROOT + '/news').get();
+        return Vue.resource(API_ROOT + '/api/news').get();
     },
     // 列表信息
     getNewsLists: function() {
-        return Vue.resource(API_ROOT + '/newslist').get();
+        return Vue.resource(API_ROOT + '/api/newslist').get();
     },
     // 详情
     getNewsDetail: function(id) {
-        return Vue.resource(API_ROOT + '/newsdetail/' + id).get();
+        return Vue.resource(API_ROOT + '/api/newsdetail/' + id).get();
     }
 }
