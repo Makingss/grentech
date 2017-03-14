@@ -11,9 +11,9 @@ export default{
   computed:mapState({
     recommend:state=>state.news.recommend
   }),
-  // created:function(){
-  //   this.GETRECOMMEND();
-  // },
+  created:function(){
+    this.GETRECOMMEND();
+  },
   methods:{
     ...mapActions(['GETRECOMMEND'])
   }

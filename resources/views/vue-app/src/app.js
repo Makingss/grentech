@@ -58,6 +58,9 @@ import Reset from './styles/reset.css'
 
 //引入vue插件扩展
 import Plugin from './plugin/plugin'
+
+
+
 //调用模块
 Vue.use(Plugin);
 Vue.use(VueResource);
