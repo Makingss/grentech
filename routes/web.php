@@ -14,7 +14,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 		return '我是管理员，我有授权！';
 	});
 });
-Route::get('/', 'SitesController@index');
+//Route::get('/', 'SitesController@index');
 Route::get('/app', 'SitesController@app');
 Route::get('/about', 'SitesController@about');
 Route::get('content', 'SitesController@content');
