@@ -12,6 +12,7 @@ Route::group([
 	$router->get('/goods/getindex', 'GoodsController@getindex');
 	$router->post('/fileupload', 'ToolsbaseController@fileUpload');
 	$router->post('/fileupload/remove', 'ToolsbaseController@remove');
+	
 //    $router->post('/goods/update_z','GoodsController@update_z');
 	$router->resource('/painter', 'PainterController');
 	$router->resource('/goods', 'GoodsController');
