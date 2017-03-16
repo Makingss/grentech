@@ -466,10 +466,17 @@ export default {
   },
   created:function(){
     this.choose_node=this.category_list[0];
+    this.fetch_goods_data();
   },
   methods:{
     clear_history:function(){
       console.log("清除历史记录");
+
+    },
+    fetch_goods_data:function(){
+      this.$http.post('/api/goods',{'per_page':10}).then((res)=>{
+        console.log(res);
+      })
     },
     handle_folder:function(index){
       var self=this;
