@@ -40,7 +40,7 @@ export default{
         'image_attach',
         'images'
       ]*/
-      return Vue.http.post(API_ROOT+'/api/goods');
+      return Vue.http.get(API_ROOT+'/api/goods');
     }
 
 }
