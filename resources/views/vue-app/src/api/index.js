@@ -25,6 +25,7 @@ export default{
     },
     getGoodsData:function(data){
       // filtered:[brand_id, goods_id, type_id, cat_id, bn]
+      // parameters  relations  per_page
       /*type:[
         Goods_types',
         'mechanics',
@@ -40,7 +41,7 @@ export default{
         'image_attach',
         'images'
       ]*/
-      return Vue.http.get(API_ROOT+'/api/goods');
+      return Vue.http.get(API_ROOT+'/api/goods',{relations:["image_attach","member_goods"],parameters:[]});
     }
 
 }

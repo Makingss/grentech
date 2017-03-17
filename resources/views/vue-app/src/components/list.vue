@@ -20,9 +20,9 @@
              v-for="(item,index) in goods_data"
              :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" :data-i="index%2">
               <router-link to="/goods" class="block">
-                <div>
+                <!-- <div>
                   <img :src="item.img" alt="">
-                </div>
+                </div> -->
                 <div class="padding-rl-10">
                   <div class="item-title line-ellispse-2">
                     {{item.name}}
