@@ -23,8 +23,7 @@ export default{
     getNewsDetail: function(id) {
         return Vue.resource(API_ROOT + '/api/newsdetail/' + id).get();
     },
-
-    getGoodsData:function({}){
+    getGoodsData:function(data){
       // filtered:[brand_id, goods_id, type_id, cat_id, bn]
       /*type:[
         Goods_types',
@@ -41,7 +40,7 @@ export default{
         'image_attach',
         'images'
       ]*/
-      return Vue.resource(API_ROOT+'/api/goods').post();
+      return Vue.http.post(API_ROOT+'/api/goods',{'per_page':10});
     }
 
 }
