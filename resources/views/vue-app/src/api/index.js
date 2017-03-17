@@ -41,7 +41,7 @@ export default{
         'image_attach',
         'images'
       ]*/
-      return Vue.http.post(API_ROOT+'/api/goods',{relations:["image_attach","member_goods"],parameters:[]});
+      return Vue.http.post(API_ROOT+'/api/goods',{relations:["image_attach","member_goods"],parameters:[],per_page:10});
       // return Vue.http.post(API_ROOT+'/api/goods',{relations:"image_attach",parameters:""});
     }
 

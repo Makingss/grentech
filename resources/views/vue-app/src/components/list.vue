@@ -11,7 +11,7 @@
         :pullup-config="pullupConfig"
       class="x-scroller-container">
         <div class="">
-          <!-- <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
+          <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
             <flexbox-item :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
              v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
               <router-link to="/goods" class="block">
@@ -28,7 +28,7 @@
                 </div>
               </router-link>
             </flexbox-item>
-          </flexbox> -->
+          </flexbox>
           <!-- :to="item.url" -->
           <card-list
            v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
