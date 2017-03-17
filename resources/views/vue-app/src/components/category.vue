@@ -101,6 +101,7 @@
 
 <script>
 import TreeList from './tree-list'
+import * as api from '../api'
 //import SidePanel from './side-panel'
 import {Tab,TabItem,Search,Sticky,Swiper,SwiperItem,Group,Cell,XInput,Flexbox,FlexboxItem,XButton,Icon} from 'vux'
 export default {
@@ -474,7 +475,7 @@ export default {
 
     },
     fetch_goods_data:function(){
-      this.$http.post('/api/goods',{'per_page':10}).then((res)=>{
+      api.getGoodsData().then((res)=>{
         console.log(res);
       })
     },
