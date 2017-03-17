@@ -30,9 +30,9 @@
             </flexbox-item>
           </flexbox> -->
           <!-- :to="item.url" -->
-          <card-list class="2"
+          <card-list
            v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
-            <router-link :to="item.url" class="block" slot="card-media">
+            <router-link to="/goods" class="block" slot="card-media">
               <img :src="item.img" alt="">
             </router-link>
             <router-link to="/goods" slot="card-title">
