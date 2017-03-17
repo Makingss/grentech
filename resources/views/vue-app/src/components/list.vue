@@ -5,7 +5,10 @@
     </div>
     <search v-model="search_input" position="static" top="0"  class="list-search border-box"></search>
     <div class="content list">
-      <scroller lock-x use-pullup height="100%"
+      <div class="11" v-for="(item,index) in goods_data">
+        {{item.name}}:{{item.price}}
+      </div>
+      <!-- <scroller lock-x use-pullup height="100%"
         ref="listScroll"
         :pullup-config="pullupConfig"
       class="x-scroller-container">
@@ -19,14 +22,14 @@
              v-for="(item,index) in goods_data"
              :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" :data-i="index%2">
               <router-link to="/goods" class="block">
-                <!-- @on-pullup-loading="load" -->
-                <!-- <div>
+
+                <div>
                   <img :src="item.img" alt="">
-                </div> -->
+                </div>
                 <div class="padding-rl-10">
-                  <!-- <div class="item-title line-ellispse-2">
+                  <div class="item-title line-ellispse-2">
                     {{item.name}}
-                  </div> -->
+                  </div>
                   <div class="item-subtitle color-danger">
                     ￥{{item.price}}
                   </div>
@@ -42,10 +45,10 @@
            :data-perpage="per_page"
            v-if="type=='medium'">
             <router-link :to="item.url" class="block" slot="card-media">
-              <!-- <img :src="item.img" alt=""> -->
+              <img :src="item.img" alt="">
             </router-link>
             <router-link :to="item.url" slot="card-title">
-              <!-- <div class="item-title">{{item.name}}</div> -->
+              <div class="item-title">{{item.name}}</div>
             </router-link>
               <div class="item-subtitle color-danger" slot="card-subtitle">¥{{item.price}}</div>
           </card-list>
@@ -53,11 +56,11 @@
             <spinner type="circles"></spinner>
           </div>
         </div>
-      </scroller>
+      </scroller> -->
     </div>
   </div>
 </template>
-
+  <!-- @on-pullup-loading="load" -->
 <script>
 import {mapState,mapActions} from 'vuex'
 import CardList from './card-list'
