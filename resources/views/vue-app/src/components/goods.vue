@@ -81,7 +81,7 @@ export default {
 
   },
   created:function(){
-    console.log(this.$store.state.goods_list);
+    console.log(this.$store.state.goods);
   },
   components:{
     Swiper,
