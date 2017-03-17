@@ -19,6 +19,7 @@ class GoodsController extends Controller
 	 */
 	public function getGoods(Request $request)
 	{
+		dd($request->all());
 		$per_page = $request->get('per_page');
 		$relations = $request->get('relations');
 		$parameters = $request->get('parameters');
