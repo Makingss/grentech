@@ -6,13 +6,12 @@
     <search v-model="search_input" position="static" top="0"  class="list-search border-box"></search>
     <div class="content list">
       <scroller lock-x use-pullup height="100%"
-
         ref="listScroll"
         :pullup-config="pullupConfig"
       class="x-scroller-container">
         <div class="">
           <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
-            <flexbox-item
+            <flexbox-item class="1"
             :data-currentpage="current_page"
             :data-lastpage="last_page"
             :data-total="total"
@@ -35,7 +34,7 @@
               </router-link>
             </flexbox-item>
           </flexbox>
-          <card-list
+          <card-list class="2"
            v-for="(item,index) in goods_data"
            :data-currentpage="current_page"
            :data-lastpage="last_page"
