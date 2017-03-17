@@ -103,7 +103,7 @@
 import TreeList from './tree-list'
 import api from '../api'
 //import SidePanel from './side-panel'
-import {mapState,mapActions} from 'vuex'
+
 import {Tab,TabItem,Search,Sticky,Swiper,SwiperItem,Group,Cell,XInput,Flexbox,FlexboxItem,XButton,Icon} from 'vux'
 export default {
   name:"category",
@@ -469,13 +469,9 @@ export default {
   created:function(){
     this.choose_node=this.category_list[0];
     //this.fetch_goods_data();
-    this.GETGOODSLIST();
+
   },
-  computed:mapState({
-    goods_list:state=>state.goods.goods_list
-  }),
   methods:{
-    ...mapActions(['GETGOODSLIST']),
     clear_history:function(){
       console.log("清除历史记录");
     },

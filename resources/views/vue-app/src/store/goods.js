@@ -14,7 +14,7 @@ export default {
   actions:{
     GETGOODSLIST({commit},params){
       api.getGoodsData().then(function(res){
-        console.log(res);
+        commit('SETGOODSLIST',res.data);
       })
     }
   }
