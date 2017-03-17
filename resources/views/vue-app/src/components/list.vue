@@ -13,10 +13,10 @@
         <div class="">
           <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
             <flexbox-item
-            :data-current_page="current_page"
-            :data-last_page="last_page"
+            :data-currentpage="current_page"
+            :data-lastpage="last_page"
             :data-total="total"
-            :data-per_page="per_page"
+            :data-perpage="per_page"
              v-for="(item,index) in goods_data"
              :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" :data-i="index%2">
               <router-link to="/goods" class="block">
@@ -37,10 +37,10 @@
           </flexbox>
           <card-list
            v-for="(item,index) in goods_data"
-           :data-current_page="current_page"
-           :data-last_page="last_page"
+           :data-currentpage="current_page"
+           :data-lastpage="last_page"
            :data-total="total"
-           :data-per_page="per_page"
+           :data-perpage="per_page"
            v-if="type=='medium'">
             <router-link :to="item.url" class="block" slot="card-media">
               <!-- <img :src="item.img" alt=""> -->
@@ -80,62 +80,6 @@ export default {
         upContent: '上拉加载更多',
         loadingContent: '加载中...'
       },
-      list_data:[
-        {
-          url:'/goods',
-          name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-          img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
-          title:'',
-          price:'276.00',
-          mktprice:'1380.00'
-        },
-        {
-          url:'/goods',
-          name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-          img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
-          title:'',
-          price:'276.00',
-          mktprice:'1380.00'
-        },
-        {
-          url:'/goods',
-          name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-          img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
-          title:'',
-          name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-          price:'276.00',
-          mktprice:'1380.00'
-        },
-        {
-          url:'/goods',
-          img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
-          title:'',
-          name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-          price:'276.00',
-          mktprice:'1380.00'
-        },{
-          url:'/goods',
-          img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
-          title:'',
-          name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-          price:'276.00',
-          mktprice:'1380.00'
-        },{
-          url:'/goods',
-          img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
-          title:'',
-          name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-          price:'276.00',
-          mktprice:'1380.00'
-        },{
-          url:'/goods',
-          img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
-          title:'',
-          name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-          price:'276.00',
-          mktprice:'1380.00'
-        }
-      ]
     }
   },
   components:{
