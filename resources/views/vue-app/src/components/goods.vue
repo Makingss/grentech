@@ -80,6 +80,9 @@ export default {
   methods:{
 
   },
+  created:function(){
+    console.log(this.$store.state.goods_list);
+  },
   components:{
     Swiper,
     Flexbox,
