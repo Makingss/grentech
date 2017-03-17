@@ -19,7 +19,7 @@ class GoodsController extends Controller
 	 */
 	public function getGoods(Request $request)
 	{
-		dd($request->all());
+//		dd($request->all());
 		$per_page = $request->get('per_page');
 		$relations = $request->get('relations');
 		$parameters = $request->get('parameters');
@@ -28,8 +28,8 @@ class GoodsController extends Controller
 		$where = $filtered->all();
 
 		$withRelations = collect($relations);
-		$filteredRelations = $withRelations->only('Goods_types', 'mechanics', 'goods_ports', 'assemblies', 'standardfits', 'electrics',
-			'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images'
+		$filteredRelations = $withRelations->only(['Goods_types', 'mechanics', 'goods_ports', 'assemblies', 'standardfits', 'electrics',
+			'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images']
 		);
 		$with = $filteredRelations->all();
 		$goods = Good::with($with)->where($where)->paginate($per_page)->toJson();
