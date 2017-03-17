@@ -22,5 +22,28 @@ export default{
     // 详情
     getNewsDetail: function(id) {
         return Vue.resource(API_ROOT + '/api/newsdetail/' + id).get();
+    },
+    getGoodsData:function(data){
+      // filtered:[brand_id, goods_id, type_id, cat_id, bn]
+      // parameters  relations  per_page
+      /*type:[
+        Goods_types',
+        'mechanics',
+        'goods_ports',
+        'assemblies',
+        'standardfits',
+        'electrics',
+        'goods_keywords',
+        'products',
+        'brands',
+        'goods_lv_price',
+        'member_goods',
+        'image_attach',
+        'images'
+      ]*/
+      // return Vue.http.get(API_ROOT+'/api/goods',{relations:["image_attach","member_goods"],parameters:[]});
+      console.log({relations:"image_attach",parameters:""});
+      return Vue.http.get(API_ROOT+'/api/goods',{relations:"image_attach",parameters:""});
     }
+
 }

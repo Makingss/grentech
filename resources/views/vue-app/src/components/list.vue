@@ -12,15 +12,21 @@
       class="x-scroller-container">
         <div class="">
           <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
-            <flexbox-item v-for="(item,index) in list_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" :data-i="index%2">
+            <flexbox-item
+            :data-current_page="current_page"
+            :data-last_page="last_page"
+            :data-total="total"
+            :data-per_page="per_page"
+             v-for="(item,index) in goods_data"
+             :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" :data-i="index%2">
               <router-link to="/goods" class="block">
-                <div>
+                <!-- <div>
                   <img :src="item.img" alt="">
-                </div>
+                </div> -->
                 <div class="padding-rl-10">
-                  <div class="item-title line-ellispse-2">
+                  <!-- <div class="item-title line-ellispse-2">
                     {{item.name}}
-                  </div>
+                  </div> -->
                   <div class="item-subtitle color-danger">
                     ￥{{item.price}}
                   </div>
@@ -28,12 +34,18 @@
               </router-link>
             </flexbox-item>
           </flexbox>
-          <card-list v-for="(item,index) in list_data" v-if="type=='medium'">
+          <card-list
+           v-for="(item,index) in goods_data"
+           :data-current_page="current_page"
+           :data-last_page="last_page"
+           :data-total="total"
+           :data-per_page="per_page"
+           v-if="type=='medium'">
             <router-link :to="item.url" class="block" slot="card-media">
-              <img :src="item.img" alt="">
+              <!-- <img :src="item.img" alt=""> -->
             </router-link>
             <router-link :to="item.url" slot="card-title">
-              <div class="item-title">{{item.name}}</div>
+              <!-- <div class="item-title">{{item.name}}</div> -->
             </router-link>
               <div class="item-subtitle color-danger" slot="card-subtitle">¥{{item.price}}</div>
           </card-list>
@@ -47,6 +59,7 @@
 </template>
 
 <script>
+import {mapState,mapActions} from 'vuex'
 import CardList from './card-list'
 import {Flexbox,FlexboxItem,Search,Scroller,Spinner} from 'vux'
 const list_type=['small','medium','large'] //small--小图, medium--横向  large --并排
@@ -134,8 +147,20 @@ export default {
   },
   created:function(){
     //console.log($(".page-list .weui_search_bar:before"));
+      this.GETGOODSLIST();
   },
+  computed:mapState({
+    goods_data:state=>state.goods.goods_list.data,
+    current_page:state=>state.goods.goods_list.current_page,
+    last_page:state=>state.goods.goods_list.last_page,
+    total:state=>state.goods.goods_list.total,
+    from:state=>state.goods.goods_list.from,
+    to:state=>state.goods.goods_list.to,
+    per_page:state=>state.goods.goods_list.per_page
+  }),
   methods:{
+    ...mapActions(['GETGOODSLIST']),
+
     toggleType:function(){
       //console.log("切换");
       this.type=this.type=='medium'?'large':'medium';

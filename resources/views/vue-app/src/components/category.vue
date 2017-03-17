@@ -101,7 +101,9 @@
 
 <script>
 import TreeList from './tree-list'
+import api from '../api'
 //import SidePanel from './side-panel'
+
 import {Tab,TabItem,Search,Sticky,Swiper,SwiperItem,Group,Cell,XInput,Flexbox,FlexboxItem,XButton,Icon} from 'vux'
 export default {
   name:"category",
@@ -466,15 +468,16 @@ export default {
   },
   created:function(){
     this.choose_node=this.category_list[0];
-    this.fetch_goods_data();
+    //this.fetch_goods_data();
+
   },
   methods:{
     clear_history:function(){
       console.log("清除历史记录");
-
     },
     fetch_goods_data:function(){
-      this.$http.post('/api/goods',{'per_page':10}).then((res)=>{
+      console.log(api);
+      api.getGoodsData().then((res)=>{
         console.log(res);
       })
     },
