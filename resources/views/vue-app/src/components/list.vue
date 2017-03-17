@@ -24,9 +24,9 @@
                   <img :src="item.img" alt="">
                 </div> -->
                 <div class="padding-rl-10">
-                  <div class="item-title line-ellispse-2">
+                  <!-- <div class="item-title line-ellispse-2">
                     {{item.name}}
-                  </div>
+                  </div> -->
                   <div class="item-subtitle color-danger">
                     ￥{{item.price}}
                   </div>
@@ -42,10 +42,10 @@
            :data-per_page="per_page"
            v-if="type=='medium'">
             <router-link :to="item.url" class="block" slot="card-media">
-              <img :src="item.img" alt="">
+              <!-- <img :src="item.img" alt=""> -->
             </router-link>
             <router-link :to="item.url" slot="card-title">
-              <div class="item-title">{{item.name}}</div>
+              <!-- <div class="item-title">{{item.name}}</div> -->
             </router-link>
               <div class="item-subtitle color-danger" slot="card-subtitle">¥{{item.price}}</div>
           </card-list>
