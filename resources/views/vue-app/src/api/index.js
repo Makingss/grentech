@@ -24,7 +24,7 @@ export default{
         return Vue.resource(API_ROOT + '/api/newsdetail/' + id).get();
     },
     getGoodsData:function(data){
-      // filtered:[brand_id, goods_id, type_id, cat_id, bn]
+      // filtered:[brand_id, goods_id, type_id, cat_id, bn]  pa
       // parameters  relations  per_page
       /*type:[
         Goods_types',

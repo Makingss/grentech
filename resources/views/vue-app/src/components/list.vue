@@ -14,7 +14,7 @@
           <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
             <flexbox-item :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
              v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
-              <router-link to="/goods" class="block">
+              <router-link :to="'/goods/:goods_id='+item.goods_id" class="block">
                 <div>
                   <img :src="item.img" alt="">
                 </div>
