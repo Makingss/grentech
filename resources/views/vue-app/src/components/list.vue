@@ -12,7 +12,7 @@
       class="x-scroller-container">
         <div class="">
           <flexbox wrap="wrap" :gutter="0" class="scroll-content">
-            <flexbox-item :data-currentpage="goods_list.current_page" :data-lastpage="goods_list.last_page"  :data-total="goods_list.total"  :data-perpage="goods_list.per_page" :data-i="index%2"
+            <flexbox-item :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
              v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
               <router-link to="/goods" class="block">
                 <!-- v-if="type=='large'" -->
