@@ -6,7 +6,7 @@
     <search v-model="search_input" position="static" top="0"  class="list-search border-box"></search>
     <div class="content list">
       <scroller lock-x use-pullup height="100%"
-      @on-pullup-loading="load"
+
         ref="listScroll"
         :pullup-config="pullupConfig"
       class="x-scroller-container">
@@ -20,6 +20,7 @@
              v-for="(item,index) in goods_data"
              :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" :data-i="index%2">
               <router-link to="/goods" class="block">
+                <!-- @on-pullup-loading="load" -->
                 <!-- <div>
                   <img :src="item.img" alt="">
                 </div> -->
