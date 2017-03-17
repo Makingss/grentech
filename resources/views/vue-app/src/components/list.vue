@@ -32,10 +32,10 @@
           <!-- :to="item.url" -->
           <card-list
            v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
-            <router-link :to="{name:'/goods',params:{goods_id:item.goods_id}}"  class="block" slot="card-media">
+            <router-link :to="{name:'goods',params:{goods_id:item.goods_id}}"  class="block" slot="card-media">
               <img :src="item.img" alt="">
             </router-link>
-            <router-link :to="{name:'/goods',params:{goods_id:item.goods_id}}"  slot="card-title">
+            <router-link :to="{name:'goods',params:{goods_id:item.goods_id}}"  slot="card-title">
               <div class="item-title">{{item.name}}</div>
             </router-link>
               <div class="item-subtitle color-danger" slot="card-subtitle">¥{{item.price}}</div>
