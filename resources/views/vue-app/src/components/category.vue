@@ -28,7 +28,7 @@
                 </x-button>
               </div>
             </div>
-            <div class="node-box" v-if="node_index!=0" v-for="child in choose_node.children">
+            <div class="node-box" v-if="node_index!=0&&child.children.length" v-for="child in choose_node.children">
               <div class="node-title border-1px-b padding-b-10 padding-tb-4">
                 {{child.name}}
               </div>
@@ -52,42 +52,40 @@
       </div>
       <div class="tab-item-content" v-if="index==2">
         <group class="range-content">
-          <flexbox wrap="nowrap" :gutter="0">
-            <flexbox-item :span="3" class="text-center font-normal">
-              频段范围
-              <p class="font-mini">(MHZ)</p>
-            </flexbox-item>
-            <flexbox-item :span="4">
-              <x-input title="" type="text" keyboard="number" v-model="range_1">
-              </x-input>
-            </flexbox-item>
-            <flexbox-item :span="1" class="text-center">
-              <span class="iconfont">&#xe64b;</span>
-            </flexbox-item>
-            <flexbox-item :span="4">
-              <x-input title="" type="text" keyboard="number" v-model="range_2">
-              </x-input>
-            </flexbox-item>
-          </flexbox>
-        </group>
-        <group class="range-content">
-          <flexbox wrap="nowrap" :gutter="0">
-            <flexbox-item :span="3" class="text-center font-normal">
-              覆盖范围
-              <p class="font-mini">(㎡)</p>
-            </flexbox-item>
-            <flexbox-item :span="4">
-              <x-input title="" type="text" keyboard="number" v-model="area1">
-              </x-input>
-            </flexbox-item>
-            <flexbox-item :span="1" class="text-center">
-              <span class="iconfont">&#xe64b;</span>
-            </flexbox-item>
-            <flexbox-item :span="4">
-              <x-input title="" type="text" keyboard="number" v-model="area2">
-              </x-input>
-            </flexbox-item>
-          </flexbox>
+            <flexbox wrap="nowrap" :gutter="0">
+              <flexbox-item :span="3" class="text-center font-normal">
+                频段范围
+                <p class="font-mini">(MHZ)</p>
+              </flexbox-item>
+              <flexbox-item :span="4">
+                <x-input title="" type="text" keyboard="number" v-model="range_1" class="font-normal">
+                </x-input>
+              </flexbox-item>
+              <flexbox-item :span="1" class="text-center">
+                <span class="iconfont">&#xe64b;</span>
+              </flexbox-item>
+              <flexbox-item :span="4">
+                <x-input title="" type="text" keyboard="number" v-model="range_2" class="font-normal">
+                </x-input>
+              </flexbox-item>
+            </flexbox>
+            <flexbox wrap="nowrap" class="border-1px-t" :gutter="0">
+              <flexbox-item :span="3" class="text-center font-normal">
+                覆盖范围
+                <p class="font-mini">(㎡)</p>
+              </flexbox-item>
+              <flexbox-item :span="4">
+                <x-input title="" type="text" keyboard="number" v-model="area1" class="font-normal">
+                </x-input>
+              </flexbox-item>
+              <flexbox-item :span="1" class="text-center">
+                <span class="iconfont">&#xe64b;</span>
+              </flexbox-item>
+              <flexbox-item :span="4">
+                <x-input title="" type="text" keyboard="number" v-model="area2" class="font-normal">
+                </x-input>
+              </flexbox-item>
+            </flexbox>
         </group>
         <div class="tab-80 block-center margin-tb-20">
           <x-button class="font-1x">
@@ -510,7 +508,7 @@ export default {
     Flexbox,
     FlexboxItem,
     XButton,
-    Icon
+    Icon,
   }
 }
 </script>
@@ -518,6 +516,7 @@ export default {
 <style lang="less">
 .tab-item-content{
   height: 100%;
+  overflow-y: scroll;
 }
 .node-active{
   background-color:#FB4F5B;
@@ -526,6 +525,8 @@ export default {
 .tree-box{
   align-items: flex-start;
   height: 100%;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
   //overflow-y: hidden;
   // margin-bottom: 5rem;
 }
@@ -555,8 +556,7 @@ export default {
   // margin-top:0px;
 }
 .list-search{
-  position:absolute;
-  top:2.2rem;
+  position:static!important;
 }
 .category>.tree-list{
   position: absolute;
@@ -564,7 +564,6 @@ export default {
   top:5rem;
   left: 0;
 }
-
 
 .bar.bar-header{
   position: relative;
@@ -598,6 +597,7 @@ export default {
   }
 }
 .category-scene{
-  padding-bottom: 7.1rem;
+  padding-bottom: 2.5rem;
+  // overflow-y: scroll;
 }
 </style>
