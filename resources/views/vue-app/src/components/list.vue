@@ -11,14 +11,13 @@
         :pullup-config="pullupConfig"
       class="x-scroller-container">
         <div class="">
-          <flexbox wrap="wrap" :gutter="0" class="scroll-content">
+          <!-- <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
             <flexbox-item :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
              v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
               <router-link to="/goods" class="block">
-                <!-- v-if="type=='large'" -->
-                <!-- <div>
+                <div>
                   <img :src="item.img" alt="">
-                </div> -->
+                </div>
                 <div class="padding-rl-10">
                   <div class="item-title line-ellispse-2">
                     {{item.name}}
@@ -29,22 +28,18 @@
                 </div>
               </router-link>
             </flexbox-item>
-          </flexbox>
-          <!-- <card-list class="2"
-           v-for="(item,index) in goods_data"
-           :data-currentpage="current_page"
-           :data-lastpage="last_page"
-           :data-total="total"
-           :data-perpage="per_page"
-           v-if="type=='medium'">
+          </flexbox> -->
+          <!-- :to="item.url" -->
+          <card-list class="2"
+           v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
             <router-link :to="item.url" class="block" slot="card-media">
               <img :src="item.img" alt="">
             </router-link>
-            <router-link :to="item.url" slot="card-title">
+            <router-link to="/goods" slot="card-title">
               <div class="item-title">{{item.name}}</div>
             </router-link>
               <div class="item-subtitle color-danger" slot="card-subtitle">¥{{item.price}}</div>
-          </card-list> -->
+          </card-list>
           <div class="spinner text-center" slot="pull-up" v-if="true">
             <spinner type="circles"></spinner>
           </div>
