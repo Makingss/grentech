@@ -4,7 +4,7 @@
     </swiper>
     <flexbox :gutter="0" wrap="nowrap" class="bg-white">
       <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="9">
-        <!--<p class="line-ellispse-2">{{goods_data_list[item_index].name}}</p> -->
+        <p class="line-ellispse-2">{{goods_data_list[item_index].name}}</p>
         <p class="color-danger">¥{{goods_data_list[item_index].price}}</p>
         <p class="color-gray">市场价:<s>{{goods_data_list[item_index].mktprice}}</s></p>
       </flexbox-item>
@@ -58,7 +58,9 @@ export default {
       item_index:0,
       page_goods_data:{},
       current_page:0,
-      goods_data_list:[],
+      goods_data_list:{
+        
+      },
       from:0,
       last_page:0,
       per_page:0,
@@ -90,7 +92,7 @@ export default {
       if(init_data.goods_list.length){
         var page_goods_data=init_data.goods_list;
         this.current_page=page_goods_data.current_page;
-        this.goods_data_list=page_goods_data.data;
+        this.goods_data_list=page_goods_data.data[this.item_index];
         this.from=page_goods_data.from;
         this.last_page=page_goods_data.last_page;
         this.per_page=page_goods_data.per_page;
@@ -100,12 +102,13 @@ export default {
     }
   },
   created:function(){
-    console.log(this.$store.state.goods);
-    this.init_goods_page(this.$store.state.goods);
-    console.log(this.$route.query);
     var query=this.$route.query;
     this.goods_id=query.goods_id;
     this.item_index=query.item_index;
+    console.log(this.$store.state.goods);
+    this.init_goods_page(this.$store.state.goods);
+    console.log(this.$route.query);
+   
   },
   components:{
     Swiper,
