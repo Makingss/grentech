@@ -9,7 +9,7 @@ export default {
   mutations:{
     SETGOODSLIST(state,goods_data){
       state.goods_list=goods_data;
-      console.log(state.goods_list);
+      // console.log(state.goods_list);
     }
   },
   actions:{

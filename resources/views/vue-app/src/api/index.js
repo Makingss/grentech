@@ -42,7 +42,7 @@ export default {
           'images'
         ]*/
         console.log(">>>>>>");
-        console.log(data);
+        // console.log(data);
         return Vue.http.post(API_ROOT + '/api/goods', data);
         // return Vue.http.post(API_ROOT+'/api/goods',{relations:"image_attach",parameters:""});
     }
