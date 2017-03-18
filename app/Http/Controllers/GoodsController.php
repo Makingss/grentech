@@ -34,12 +34,12 @@ class GoodsController extends Controller
 				'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images']
 		);
 		$with = $filteredRelations->all();
-		$goods = Good::with('image_attach')->where($where)->paginate($per_page)->toArray();
+		$goods = Good::with($with)->where($where)->paginate($per_page)->toArray();
 		foreach ($goods['data'] as $dataK => $data) {
-
-			foreach ($data['image_attach'] as $itemK => $item)
+			foreach ($data['image_attach'] as $itemK => $item) {
 				$image_attach = Image_attach::with('images')->where('image_id', $item['image_id'])->get()->toArray();
-			$goods['data'][$dataK]['image_attach'] = $image_attach;
+				$goods['data'][$dataK]['image_attach'][$itemK] = $image_attach;
+			}
 
 		}
 		return json_encode($goods);
