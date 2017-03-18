@@ -24,7 +24,7 @@
         </flexbox-item>
       </flexbox>
     </div>
-    <div class="margin-tb-10 padding-10 bg-white">
+    <div class="margin-tb-10 padding-tb-6 padding-rl-10 bg-white">
       <x-button mini plain type="warn">优惠</x-button>
     </div>
     <div class="goods-desc" style="height:100%;padding-bottom:3rem;box-sizing:border-box">
