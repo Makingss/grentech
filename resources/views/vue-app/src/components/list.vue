@@ -90,7 +90,7 @@ export default {
     Spinner
   },
   watch:{
-    '$route'(to,from){
+    '$route':function(to,from){
       console.log("切换");
     }
   },
