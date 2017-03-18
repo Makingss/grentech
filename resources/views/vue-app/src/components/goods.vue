@@ -4,9 +4,9 @@
     </swiper>
     <flexbox :gutter="0" wrap="nowrap" class="bg-white">
       <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="9">
-        <p class="line-ellispse-2">{{goods_data_list[item_index].name}}</p>
-        <p class="color-danger">¥{{goods_data_list[item_index].price}}</p>
-        <p class="color-gray">市场价:<s>{{goods_data_list[item_index].mktprice}}</s></p>
+        <p class="line-ellispse-2">{{goods_data_list[item_index].name||''}}</p>
+        <p class="color-danger">¥{{goods_data_list[item_index].price|''}}</p>
+        <p class="color-gray">市场价:<s>{{goods_data_list[item_index].mktprice||''}}</s></p>
       </flexbox-item>
       <flexbox-item :span="3" class="link-img padding-rl-6 border-box">
         <img src="/static/slice/code.jpg" alt="">
@@ -59,7 +59,7 @@ export default {
       page_goods_data:{},
       current_page:0,
       goods_data_list:{
-        
+
       },
       from:0,
       last_page:0,
