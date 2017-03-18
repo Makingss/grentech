@@ -108,7 +108,7 @@ import {mapState,mapActions} from 'vuex'
           this.to = page_goods_data.to;
           this.total = page_goods_data.total;
         }else{
-          this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:[{goods_id:39}]})
+          this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}})
         }
       },
       fetch_goods_data:function(){
