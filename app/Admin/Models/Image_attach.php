@@ -15,6 +15,6 @@ class Image_attach extends Model
     }
 
     public function images(){
-        return $this->hasOne(Image::class,'iamge_id','image_id');
+        return $this->hasOne(Image::class,'image_id','image_id');
     }
 }
