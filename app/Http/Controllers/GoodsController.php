@@ -10,6 +10,8 @@ namespace App\Http\Controllers;
 
 
 use App\Admin\Models\Good;
+use App\Admin\Models\Image;
+use App\Admin\Models\Image_attach;
 use Illuminate\Http\Request;
 
 class GoodsController extends Controller
@@ -32,8 +34,14 @@ class GoodsController extends Controller
 				'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images']
 		);
 		$with = $filteredRelations->all();
-		$goods = Good::with($with)->where($where)->paginate($per_page)->toJson();
-		return $goods;
+		$goods = Good::with($with)->where($where)->paginate($per_page)->toArray();
+		foreach ($goods['data'] as $dataK => $data) {
+			foreach ($data['image_attach'] as $itemK => $item)
+				$image_attach = Image_attach::with('images')->where('image_id', $item)->get()->toArray();
+			$goods['data'][$dataK]['image_attach'] = $image_attach;
+
+		}
+		return json_encode($goods);
 	}
 
 }
