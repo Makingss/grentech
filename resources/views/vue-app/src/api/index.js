@@ -8,10 +8,10 @@ Vue.http.interceptors.push((request, next) => {
     next();
 });
 
-const API_ROOT='';
+const API_ROOT = '';
 
-export default{
-  // 首页推荐信息
+export default {
+    // 首页推荐信息
     getNewsRecommend: function() {
         return Vue.resource(API_ROOT + '/api/news').get();
     },
@@ -23,26 +23,26 @@ export default{
     getNewsDetail: function(id) {
         return Vue.resource(API_ROOT + '/api/newsdetail/' + id).get();
     },
-    getGoodsData:function(data){
-      // filtered:[brand_id, goods_id, type_id, cat_id, bn]  pa
-      // parameters  relations  per_page
-      /*type:[
-        Goods_types',
-        'mechanics',
-        'goods_ports',
-        'assemblies',
-        'standardfits',
-        'electrics',
-        'goods_keywords',
-        'products',
-        'brands',
-        'goods_lv_price',
-        'member_goods',
-        'image_attach',
-        'images'
-      ]*/
-      return Vue.http.post(API_ROOT+'/api/goods',{relations:["image_attach","member_goods"],parameters:[],per_page:10});
-      // return Vue.http.post(API_ROOT+'/api/goods',{relations:"image_attach",parameters:""});
+    getGoodsData: function(data) {
+        // filtered:[brand_id, goods_id, type_id, cat_id, bn]  
+        // parameters  relations  per_page
+        /*type:[
+          Goods_types',
+          'mechanics',
+          'goods_ports',
+          'assemblies',
+          'standardfits',
+          'electrics',
+          'goods_keywords',
+          'products',
+          'brands',
+          'goods_lv_price',
+          'member_goods',
+          'image_attach',
+          'images'
+        ]*/
+        return Vue.http.post(API_ROOT + '/api/goods', { relations: ["image_attach", "images"], parameters: [], per_page: 10 });
+        // return Vue.http.post(API_ROOT+'/api/goods',{relations:"image_attach",parameters:""});
     }
 
 }
