@@ -43,11 +43,15 @@ Route::get('/datatables/{key?}', 'DatatablesController@index');
 Route::get('/datatables/data/{goods_id}', 'DatatablesController@anyData');
 Route::post('/datatables/editor', 'DatatablesController@editor');
 Route::get('/apps', 'GoodsController@getindex');
+//Route::get('mall/login','');
 
 Route::get('/demo', function () {
-	$question=\App\Models\Comment::find(1);
-	return view('demo',compact('question'));
+	$question = \App\Models\Comment::find(1);
+	return view('demo', compact('question'));
 });
+Route::post('/api/login', 'Apis\LoginController@login');
+
+Route::post('/table', 'GoodsController@getTableColumns');
 //Route::resource('datatables', 'DatatablesController', [
 //    'anyData'  => 'datatables.data',
 //    'getIndex' => 'datatables',
