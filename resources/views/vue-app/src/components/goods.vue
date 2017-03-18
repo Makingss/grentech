@@ -110,7 +110,8 @@ import {mapState,mapActions} from 'vuex'
           this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
           console.log("********");
           console.log(this.$store.state.goods);
-          // console.log(this.$store.state.)
+          console.log(this.$store.state.goods.goods_list);
+          console.log(this.$store.state.goods.goods_list.data);
         }
       }
     },
