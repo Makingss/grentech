@@ -89,7 +89,7 @@ export default {
     Scroller,
     Spinner
   },
-  created: function() {
+  mounted: function() {
     console.log("init");
     //console.log($(".page-list .weui_search_bar:before"));
     // { relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 }
