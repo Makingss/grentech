@@ -26,15 +26,17 @@ class GoodsController extends Controller
 //		$relations = ['mechanics', 'goods_ports', 'assemblies', 'standardfits', 'electrics',
 //			'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images'];
 		$parameters = $request->get('parameters');
+//		$parameters = ['brand_id' => 1, 'goods_id' => 1];
 		$collection = collect($parameters);
 		$filtered = $collection->only(['brand_id', 'goods_id', 'type_id', 'cat_id', 'bn']);
+		dd($filtered);
 		$where = $filtered->all();
 		$withRelations = collect($relations);
 		$filteredRelations = $withRelations->except(['Goods_types', 'mechanics', 'goods_ports', 'assemblies', 'standardfits', 'electrics',
 				'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images']
 		);
 		$with = $filteredRelations->all();
-		$goods = Good::with($with)->where($where)->paginate($per_page)->toArray();
+		$goods = Good::with('image_attach')->where($where)->paginate($per_page)->toArray();
 		foreach ($goods['data'] as $dataK => $data) {
 			foreach ($data['image_attach'] as $itemK => $item) {
 				$image_attach = Image_attach::with('images')->where('image_id', $item['image_id'])->get()->toArray();
@@ -44,6 +46,7 @@ class GoodsController extends Controller
 
 			}
 		}
+		dd($goods);
 		return json_encode($goods);
 	}
 }
