@@ -82,7 +82,7 @@ export default {
   },
   created:function(){
     console.log(this.$store.state.goods);
-    console.log(this.$router.query);
+    console.log(this.$route.query);
   },
   components:{
     Swiper,
