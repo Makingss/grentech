@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="goods content">
-    <swiper :list="swiper_list">
+  <div style="height:100%">
+      <swiper :list="swiper_list">
     </swiper>
     <flexbox :gutter="0" wrap="nowrap" class="bg-white">
       <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="9">
@@ -26,13 +27,13 @@
     <div class="margin-tb-10 padding-10 bg-white">
       <x-button mini plain type="warn">优惠</x-button>
     </div>
-    <div class="goods-desc">
+    <div class="goods-desc" style="height:100%;padding-bottom:3rem;box-sizing:border-box">
         <tab v-model="index" active-color="#FB4F5B">
           <tab-item>商品详情</tab-item>
           <tab-item>主要参数</tab-item>
           <tab-item>服务信息</tab-item>
         </tab>
-        <swiper v-model="index" :show-dots="false">
+        <swiper v-model="index" :show-dots="false" class="goods-content-swiper">
           <swiper-item class="padding-10">
             <div v-html="goods_data_list.content"></div>
           </swiper-item>
@@ -44,6 +45,8 @@
           </swiper-item>
         </swiper>
     </div>
+  </div>
+  
   </div>
 </template>
 
@@ -130,5 +133,15 @@ export default {
 <style lang="css">
 .page-goods .content{
   background-color: #f7f7f7;
+}
+.goods-content-swiper{
+  height:100%;
+  padding-bottom:2rem;
+  box-sizing:border-box;
+}
+ .goods-content-swiper>.vux-swiper{
+  height:100%!important;
+  overflow-y:scroll;
+  box-sizing:border-box;
 }
 </style>
