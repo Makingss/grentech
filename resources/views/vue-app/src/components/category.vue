@@ -467,7 +467,7 @@ export default {
   created:function(){
     this.choose_node=this.category_list[0];
     //this.fetch_goods_data();
-    api.get_trans_params_table({relations: ["image_attach","goods_cats"]}).then((res)=>{
+    api.get_trans_params_table({relations: ['mechanics','goods_ports','assemblies','standardfits','electrics',]}).then((res)=>{
       console.log(res);
     })
   },
