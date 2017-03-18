@@ -34,7 +34,7 @@
         </tab>
         <swiper v-model="index" :show-dots="false">
           <swiper-item class="padding-10">
-            <div v-rawHtml="page_goods_data[item_index].content"></div>
+            <div v-rawHtml="page_goods_data.content"></div>
           </swiper-item>
           <swiper-item class="padding-10">
             主要参数内容
