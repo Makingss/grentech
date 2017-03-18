@@ -2,7 +2,7 @@
   <div class="goods content">
     <div style="height:100%">
       <swiper>
-        <swiper-item v-for="(item,index) in image_attach">
+        <swiper-item v-for="(item,index) in goods_data_list.image_attach">
            <img :src="item.images.url" alt="">
         </swiper-item>
       </swiper>
