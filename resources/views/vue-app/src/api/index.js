@@ -45,6 +45,9 @@ export default {
         // console.log(data);
         return Vue.http.post(API_ROOT + '/api/goods', data);
         // return Vue.http.post(API_ROOT+'/api/goods',{relations:"image_attach",parameters:""});
+    },
+    get_trans_params_table:function(data){
+        return Vue.http.post("/table",data);
     }
 
 }

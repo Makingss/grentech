@@ -467,7 +467,7 @@ export default {
   created:function(){
     this.choose_node=this.category_list[0];
     //this.fetch_goods_data();
-    api.getGoodsData({relations: ["image_attach","images","goods_cats"], parameters:{}}).then((res)=>{
+    api.get_trans_params_table({relations: ["image_attach","images","goods_cats"]}).then((res)=>{
       console.log(res);
     })
   },
