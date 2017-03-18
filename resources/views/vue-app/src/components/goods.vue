@@ -4,7 +4,7 @@
     </swiper>
     <flexbox :gutter="0" wrap="nowrap" class="bg-white">
       <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="9">
-        <p class="line-ellispse-2">{{goods_data_list[item_index].name}}</p>
+        <!--<p class="line-ellispse-2">{{goods_data_list[item_index].name}}</p> -->
         <p class="color-danger">¥{{goods_data_list[item_index].price}}</p>
         <p class="color-gray">市场价:<s>{{goods_data_list[item_index].mktprice}}</s></p>
       </flexbox-item>
