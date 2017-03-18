@@ -16,7 +16,7 @@
              v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
               <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block">
                 <div>
-                  <img :src="!!item.images?item.images.url:''" alt="">
+                  <img :src="item.images?item.images.url:''" alt="">
                 </div>
                 <div class="padding-rl-10">
                   <div class="item-title line-ellispse-2">
@@ -33,7 +33,7 @@
           <card-list
            v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
             <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  class="block" slot="card-media">
-              <!--<img :src="item.images.url" alt="">-->
+              <img :src="item.images?item.images.url:''" alt="">
             </router-link>
             <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  slot="card-title">
               <div class="item-title">{{item.name}}</div>
