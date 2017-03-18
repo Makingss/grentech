@@ -112,6 +112,8 @@ import {mapState,mapActions} from 'vuex'
           console.log("********");
           console.log(this.$store.state.goods);
           this.temp_data=this.$store.state.goods;
+          this.goods_data_list=this.$store.state.goods.goods_list.data[0];
+          console.log(this.goods_data_list);
           // console.log(this.$store.state.goods["goods_list"]);
           // console.log(this.$store.state.goods["goods_list"].data);
           console.log(this.temp_data);
