@@ -91,7 +91,7 @@ export default {
   },
   created: function() {
     //console.log($(".page-list .weui_search_bar:before"));
-    this.GETGOODSLIST();
+    this.GETGOODSLIST({ relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 });
   },
   computed: mapState({
     goods_data: state => state.goods.goods_list.data,
