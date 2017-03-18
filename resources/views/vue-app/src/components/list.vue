@@ -95,8 +95,9 @@ export default {
     }
   },
   created: function() {
-    console.log("init");
-    console.log(this.$route.params);
+    console.log("init111");
+    console.log(this.$route);
+     console.log(this.$router);
     //console.log($(".page-list .weui_search_bar:before"));
     // { relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 }
     this.GETGOODSLIST({ relations: ["image_attach", "images"], parameters:{}, per_page: 10 });
