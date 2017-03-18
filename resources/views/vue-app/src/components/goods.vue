@@ -1,9 +1,13 @@
 <template lang="html">
   <div class="goods content">
     <div style="height:100%">
-      <swiper :list="goods_data_list.image_attach">
+      <swiper>
+        <swiper-item v-for="(item,index) in image_attach">
+           <img :src="item.images.url" alt="">
+        </swiper-item>
       </swiper>
       <flexbox :gutter="0" wrap="nowrap" class="bg-white">
+        
         <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="9">
           <p class="line-ellispse-2">{{goods_data_list.name}}</p>
           <p class="color-danger">¥{{goods_data_list.price}}</p>
