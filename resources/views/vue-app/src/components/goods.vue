@@ -101,7 +101,6 @@ import {mapState,mapActions} from 'vuex'
           var page_goods_data = init_data.goods_list;
           this.current_page = page_goods_data.current_page;
           this.goods_data_list = page_goods_data.data[this.item_index];
-          console.log(this.goods_data_list);
           this.from = page_goods_data.from;
           this.last_page = page_goods_data.last_page;
           this.per_page = page_goods_data.per_page;
@@ -110,7 +109,6 @@ import {mapState,mapActions} from 'vuex'
         }else{
           this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
           console.log("********");
-          console.log(this.goods_data_list);
           console.log(this.$store.state.goods);
         }
       }
@@ -119,9 +117,7 @@ import {mapState,mapActions} from 'vuex'
       var query = this.$route.query;
       this.goods_id = query.goods_id;
       this.item_index = query.item_index;
-      console.log(this.$store.state.goods);
       this.init_goods_page(this.$store.state.goods);
-      console.log(this.$route.query);
 
     },
     components: {
