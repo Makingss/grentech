@@ -91,7 +91,7 @@ import {mapState,mapActions} from 'vuex'
       }
     },
     computed:mapState({
-      goods_data_list:state=>state.goods.goods_list.data
+      goods_data_list:state=>state.goods.goods_list.data[0]
     }),
     methods: {
       ...mapActions(["GETGOODSLIST"]),
