@@ -14,7 +14,7 @@
           <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
             <flexbox-item :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
              v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
-              <router-link :to="{name:'goods',query:{goods_id:item.goods_id}}" class="block">
+              <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block">
                 <div>
                   <img :src="item.img" alt="">
                 </div>
@@ -32,10 +32,10 @@
           <!-- :to="item.url" -->
           <card-list
            v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
-            <router-link :to="{name:'goods',query:{goods_id:item.goods_id}}"  class="block" slot="card-media">
+            <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  class="block" slot="card-media">
               <img :src="item.img" alt="">
             </router-link>
-            <router-link :to="{name:'goods',query:{goods_id:item.goods_id}}"  slot="card-title">
+            <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  slot="card-title">
               <div class="item-title">{{item.name}}</div>
             </router-link>
               <div class="item-subtitle color-danger" slot="card-subtitle">¥{{item.price}}</div>

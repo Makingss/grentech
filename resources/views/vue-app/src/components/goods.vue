@@ -22,7 +22,6 @@
           <span class="iconfont">&#xe65f;</span>
         </flexbox-item>
       </flexbox>
-
     </div>
     <div class="margin-tb-10 padding-10 bg-white">
       <x-button mini plain type="warn">优惠</x-button>
@@ -55,7 +54,14 @@ export default {
   data:function(){
     return {
       index:0,
-
+      page_goods_data:{},
+      current_page:0,
+      data:[],
+      from:0,
+      last_page:0,
+      per_page:0,
+      to:0,
+      total:0,
       swiper_list:[
         {
           url:'/home',
@@ -78,10 +84,22 @@ export default {
     }
   },
   methods:{
-
+    init_goods_page:function(init_data){
+      if(init_data.goods_list.length){
+        var page_goods_data=init_data.goods_list;
+        this.current_page=page_goods_data.current_page;
+        this.data=page_goods_data.data;
+        this.from=page_goods_data.from;
+        this.last_page=page_goods_data.last_page;
+        this.per_page=page_goods_data.per_page;
+        this.to=page_goods_data.to;
+        this.total=page_goods_data.total;
+      }
+    }
   },
   created:function(){
     console.log(this.$store.state.goods);
+    this.init_goods_page(this.$store.state.goods);
     console.log(this.$route.query);
   },
   components:{
