@@ -38,11 +38,12 @@ class GoodsController extends Controller
 		foreach ($goods['data'] as $dataK => $data) {
 			foreach ($data['image_attach'] as $itemK => $item) {
 				$image_attach = Image_attach::with('images')->where('image_id', $item['image_id'])->get()->toArray();
-				$goods['data'][$dataK]['image_attach'][$itemK] = $image_attach;
+				$collects = collect($image_attach);
+				$collapse = $collects->collapse();
+				$goods['data'][$dataK]['image_attach'][$itemK] = $collapse->toArray();
+
 			}
-
+			return json_encode($goods);
 		}
-		return json_encode($goods);
 	}
-
 }
