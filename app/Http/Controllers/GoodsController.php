@@ -43,7 +43,7 @@ class GoodsController extends Controller
 				$goods['data'][$dataK]['image_attach'][$itemK] = $collapse->toArray();
 
 			}
-			return json_encode($goods);
 		}
+		return json_encode($goods);
 	}
 }
