@@ -11,8 +11,10 @@
 
     <span @click="popup" class="switch">开关</span>
     <transition name="slide" mode="out-in">
-     <!-- <keep-alive></keep-alive>-->
-       <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+      
     </transition>
 
     <popup v-model="popup_login" height="100%">
