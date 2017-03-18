@@ -92,7 +92,8 @@ export default {
   },
   methods:{
     init_goods_page:function(init_data){
-      if(init_data.goods_list.length){
+      // console.log()
+      if(init_data.goods_list.length&&init_data.goods_list.data.length){
         var page_goods_data=init_data.goods_list;
         this.current_page=page_goods_data.current_page;
         this.goods_data_list=page_goods_data.data[this.item_index];
