@@ -4,9 +4,9 @@
     </swiper>
     <flexbox :gutter="0" wrap="nowrap" class="bg-white">
       <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="9">
-        <p class="line-ellispse-2">SongofSong歌中歌X型黑色钉珠连衣裙75305020X型廓形，修身显瘦，彰显优雅的女人味</p>
-        <p class="color-danger">¥7390.00</p>
-        <p class="color-gray">市场价:<s>¥7390.00</s></p>
+        <p class="line-ellispse-2">{{goods_data_list[item_index].name}}</p>
+        <p class="color-danger">¥{{goods_data_list[item_index].price}}</p>
+        <p class="color-gray">市场价:<s>{{goods_data_list[item_index].mktprice}}</s></p>
       </flexbox-item>
       <flexbox-item :span="3" class="link-img padding-rl-6 border-box">
         <img src="/static/slice/code.jpg" alt="">
@@ -34,7 +34,7 @@
         </tab>
         <swiper v-model="index" :show-dots="false">
           <swiper-item class="padding-10">
-            商品详情内容
+            <div v-rawHtml="page_goods_data[item_index].content"></div>
           </swiper-item>
           <swiper-item class="padding-10">
             主要参数内容
@@ -54,9 +54,11 @@ export default {
   data:function(){
     return {
       index:0,
+      goods_id:0,
+      item_index:0,
       page_goods_data:{},
       current_page:0,
-      data:[],
+      goods_data_list:[],
       from:0,
       last_page:0,
       per_page:0,
@@ -88,7 +90,7 @@ export default {
       if(init_data.goods_list.length){
         var page_goods_data=init_data.goods_list;
         this.current_page=page_goods_data.current_page;
-        this.data=page_goods_data.data;
+        this.goods_data_list=page_goods_data.data;
         this.from=page_goods_data.from;
         this.last_page=page_goods_data.last_page;
         this.per_page=page_goods_data.per_page;
@@ -101,6 +103,9 @@ export default {
     console.log(this.$store.state.goods);
     this.init_goods_page(this.$store.state.goods);
     console.log(this.$route.query);
+    var query=this.$route.query;
+    this.goods_id=query.goods_id;
+    this.item_index=query.item_index;
   },
   components:{
     Swiper,
