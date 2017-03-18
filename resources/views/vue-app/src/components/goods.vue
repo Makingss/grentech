@@ -57,6 +57,7 @@
 </template>
 
 <script>
+import api from '../api/index.js'
 import {mapState,mapActions} from 'vuex'
   import {
     Swiper,
@@ -95,7 +96,7 @@ import {mapState,mapActions} from 'vuex'
       goods_data_list:state => state.goods.goods_list.data[0]
     }),
     methods: {
-      ...mapActions(["GETGOODSLIST"]),
+      ...mapActions(['GETGOODSLIST']),
       init_goods_page: function (init_data) {
         // console.log()
         if (!!init_data.goods_list.data && init_data.goods_list.data.length) {
@@ -109,14 +110,16 @@ import {mapState,mapActions} from 'vuex'
           this.total = page_goods_data.total;
         }else{
           this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
-          console.log("********");
-          console.log(this.$store.state.goods);
-          this.temp_data=this.$store.state.goods;
-          this.goods_data_list=this.$store.state.goods.goods_list.data[0];
-          console.log(this.goods_data_list);
-          // console.log(this.$store.state.goods["goods_list"]);
-          // console.log(this.$store.state.goods["goods_list"].data);
-          console.log(this.temp_data);
+          var src=api.getGoodsData({relations: ["image_attach", "images"], parameters:{goods_id:39}});
+          console.log(src);
+          // console.log("********");
+          // console.log(this.$store.state.goods);
+          // this.temp_data=this.$store.state.goods;
+          // this.goods_data_list=this.$store.state.goods.goods_list.data[0];
+          // console.log(this.goods_data_list);
+          // // console.log(this.$store.state.goods["goods_list"]);
+          // // console.log(this.$store.state.goods["goods_list"].data);
+          // console.log(this.temp_data);
         }
       }
     },
