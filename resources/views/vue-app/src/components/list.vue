@@ -33,7 +33,7 @@
           <card-list
            v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
             <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  class="block" slot="card-media">
-              <img :src="item.image_attach[0].images.url" alt="">
+              <img :src="item.image_attach[0][0].images.url" alt="">
             </router-link>
             <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  slot="card-title">
               <div class="item-title">{{item.name}}</div>
