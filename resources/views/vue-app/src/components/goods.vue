@@ -90,8 +90,8 @@ import {mapState,mapActions} from 'vuex'
         total: 0,
       }
     },
-    computed:mapState({
-      goods_data_list:state=>state.goods.goods_list.data[0]
+    computed: mapState({
+      goods_data_list:state => state.goods.goods_list.data[0]
     }),
     methods: {
       ...mapActions(["GETGOODSLIST"]),
@@ -109,7 +109,8 @@ import {mapState,mapActions} from 'vuex'
         }else{
           this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
           console.log("********");
-          console.log(this.$store.state.goods.goods_list);
+          console.log(this.$store.state.goods);
+          // console.log(this.$store.state.)
         }
       }
     },
