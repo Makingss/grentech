@@ -76,6 +76,7 @@ import {mapState,mapActions} from 'vuex'
         item_index: 0,
         page_goods_data: {},
         current_page: 0,
+        temp_data:{},
         goods_data_list: {
           name: '',
           content: '',
@@ -110,8 +111,10 @@ import {mapState,mapActions} from 'vuex'
           this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
           console.log("********");
           console.log(this.$store.state.goods);
-          console.log(this.$store.state.goods["goods_list"]);
-          console.log(this.$store.state.goods["goods_list"].data);
+          this.temp_data=this.$store.state.goods;
+          // console.log(this.$store.state.goods["goods_list"]);
+          // console.log(this.$store.state.goods["goods_list"].data);
+          console.log(this.temp_data);
         }
       }
     },
