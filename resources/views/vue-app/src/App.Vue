@@ -14,7 +14,6 @@
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
-      
     </transition>
 
     <popup v-model="popup_login" height="100%">

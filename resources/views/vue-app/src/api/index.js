@@ -25,9 +25,10 @@ export default {
     },
     getGoodsData: function(data) {
         // filtered:[brand_id, goods_id, type_id, cat_id, bn]  
-        // parameters  relations  per_page
+        // parameters  relations  per_page 
         /*type:[
           Goods_types',
+          "goods_cats"
           'mechanics',
           'goods_ports',
           'assemblies',
