@@ -162,5 +162,7 @@ import {mapState,mapActions} from 'vuex'
     overflow-y: scroll;
     box-sizing: border-box;
   }
-
+  .goods-content-swiper>.vux-swiper .vux-swiper-item{
+    box-sizing:border-box;
+  }
 </style>
