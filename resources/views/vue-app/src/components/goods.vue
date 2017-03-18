@@ -57,6 +57,7 @@
 </template>
 
 <script>
+import {mapState,mapActions} from 'vuex'
   import {
     Swiper,
     Flexbox,
@@ -87,26 +88,13 @@
         per_page: 0,
         to: 0,
         total: 0,
-        swiper_list: [{
-          url: '/home',
-          img: 'https://static.vux.li/demo/2.jpg',
-          title: '送你一朵小花'
-        }, {
-          url: '/home',
-          img: 'https://static.vux.li/demo/2.jpg',
-          title: '送你一朵小花'
-        }, {
-          url: '/home',
-          img: 'https://static.vux.li/demo/2.jpg',
-          title: '送你一朵小花'
-        }, {
-          url: '/home',
-          img: 'https://static.vux.li/demo/2.jpg',
-          title: '送你一朵小花'
-        }]
       }
     },
+    computed:mapState({
+      goods_data_list:state=>state.goods.goods_list.data
+    }),
     methods: {
+      ...mapActions(["GETGOODSLIST"]),
       init_goods_page: function (init_data) {
         // console.log()
         if (!!init_data.goods_list.data && init_data.goods_list.data.length) {
@@ -119,7 +107,12 @@
           this.per_page = page_goods_data.per_page;
           this.to = page_goods_data.to;
           this.total = page_goods_data.total;
+        }else{
+          this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:[{goods_id:39}]})
         }
+      },
+      fetch_goods_data:function(){
+        
       }
     },
     created: function () {
