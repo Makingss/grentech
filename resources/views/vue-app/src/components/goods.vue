@@ -109,9 +109,11 @@ import {mapState,mapActions} from 'vuex'
           this.to = page_goods_data.to;
           this.total = page_goods_data.total;
         }else{
-          this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
+          var self=this;
+          // this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
           api.getGoodsData({relations: ["image_attach", "images"], parameters:{goods_id:39}}).then((res)=>{
             console.log(res);
+            self.goods_data_list=res.data.data[0];
           });
           
           // console.log("********");
