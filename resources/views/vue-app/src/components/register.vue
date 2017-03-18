@@ -7,7 +7,14 @@
       <group label-width="4rem" label-margin-right="2rem" label-align="left">
         <x-input placeholder="手机号" class="font-normal" v-model="phone"></x-input>
         <x-input placeholder="密码" class="font-normal" v-model="pwd"></x-input>
-        <x-input placeholder="获取验证码" class="font-normal" v-model="sms_code"></x-input>
+        <flexbox class="border-1px-t vcode-box">
+          <flexbox-item :span="9">
+              <x-input placeholder="获取验证码" class="font-normal" v-model="sms_code"></x-input>
+          </flexbox-item>
+          <flexbox-item :span="3">
+                <x-button mini plain class="font-mini vcode-btn">验证码</x-button>
+          </flexbox-item>
+        </flexbox>
       </group>
     </div>
     <div class="margin-tb-20">
@@ -25,7 +32,7 @@
 </template>
 
 <script>
-import {Group,XInput,XButton} from 'vux'
+import {Group,XInput,XButton,Flexbox,FlexboxItem} from 'vux'
 export default {
   name:"register",
   data:function(){
@@ -38,7 +45,9 @@ export default {
   components:{
     Group,
     XInput,
-    XButton
+    XButton,
+    Flexbox,
+    FlexboxItem
   },
   methods:{
 
@@ -53,5 +62,20 @@ export default {
 .login-btn{
   width: 80%;
   margin: 0 auto;
+}
+.vcode-btn{
+  // position: absolute;
+  // right: 0;
+  z-index:99;
+  background-color: #1ABC9C;
+  border:none;
+  color:#fff;
+}
+.vcode-btn:active{
+  background-color: #169a85;
+  color:#fff;
+}
+.vcode-box:before{
+  left:15px;
 }
 </style>

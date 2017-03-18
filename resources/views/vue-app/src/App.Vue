@@ -4,7 +4,7 @@
   </x-header>
   <tabbar class="text-center navbar" v-if="!!header_conf&&!header_conf.hide_tabbar">
     <tabbar-item v-for="(item,index) in navbar.data" :link="item.url" :class="{'link-active':header_conf.navbar_active!=undefined&&header_conf.navbar_active==index}">
-      <span slot="icon" class="icon iconfont font-3x"><i v-html="item.iconfont"></i></span>
+      <span slot="icon" class="icon iconfont font-4x"><i v-html="item.iconfont"></i></span>
       <span slot="label">{{item.title}}</span>
     </tabbar-item>
   </tabbar>

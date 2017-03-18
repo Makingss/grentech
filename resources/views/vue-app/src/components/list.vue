@@ -11,10 +11,10 @@
         :pullup-config="pullupConfig"
       class="x-scroller-container">
         <div class="">
-          <!-- <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
+          <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
             <flexbox-item :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
              v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
-              <router-link to="/goods" class="block">
+              <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block">
                 <div>
                   <img :src="item.img" alt="">
                 </div>
@@ -28,14 +28,14 @@
                 </div>
               </router-link>
             </flexbox-item>
-          </flexbox> -->
+          </flexbox>
           <!-- :to="item.url" -->
           <card-list
            v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
-            <router-link to="/goods" class="block" slot="card-media">
+            <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  class="block" slot="card-media">
               <img :src="item.img" alt="">
             </router-link>
-            <router-link to="/goods" slot="card-title">
+            <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  slot="card-title">
               <div class="item-title">{{item.name}}</div>
             </router-link>
               <div class="item-subtitle color-danger" slot="card-subtitle">¥{{item.price}}</div>

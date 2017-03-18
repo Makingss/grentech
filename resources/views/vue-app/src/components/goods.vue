@@ -4,9 +4,9 @@
     </swiper>
     <flexbox :gutter="0" wrap="nowrap" class="bg-white">
       <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="9">
-        <p class="line-ellispse-2">SongofSong歌中歌X型黑色钉珠连衣裙75305020X型廓形，修身显瘦，彰显优雅的女人味</p>
-        <p class="color-danger">¥7390.00</p>
-        <p class="color-gray">市场价:<s>¥7390.00</s></p>
+        <p class="line-ellispse-2">{{goods_data_list.name}}</p>
+        <p class="color-danger">¥{{goods_data_list.price}}</p>
+        <p class="color-gray">市场价:<s>{{goods_data_list.mktprice}}</s></p>
       </flexbox-item>
       <flexbox-item :span="3" class="link-img padding-rl-6 border-box">
         <img src="/static/slice/code.jpg" alt="">
@@ -22,7 +22,6 @@
           <span class="iconfont">&#xe65f;</span>
         </flexbox-item>
       </flexbox>
-
     </div>
     <div class="margin-tb-10 padding-10 bg-white">
       <x-button mini plain type="warn">优惠</x-button>
@@ -35,7 +34,7 @@
         </tab>
         <swiper v-model="index" :show-dots="false">
           <swiper-item class="padding-10">
-            商品详情内容
+            <div v-html="goods_data_list.content"></div>
           </swiper-item>
           <swiper-item class="padding-10">
             主要参数内容
@@ -55,7 +54,21 @@ export default {
   data:function(){
     return {
       index:0,
-
+      goods_id:0,
+      item_index:0,
+      page_goods_data:{},
+      current_page:0,
+      goods_data_list:{
+        name:'',
+        content:'',
+        price:'',
+        mktprice:''
+      },
+      from:0,
+      last_page:0,
+      per_page:0,
+      to:0,
+      total:0,
       swiper_list:[
         {
           url:'/home',
@@ -78,7 +91,29 @@ export default {
     }
   },
   methods:{
-
+    init_goods_page:function(init_data){
+      // console.log()
+      if(!!init_data.goods_list.data&&init_data.goods_list.data.length){
+        var page_goods_data=init_data.goods_list;
+        this.current_page=page_goods_data.current_page;
+        this.goods_data_list=page_goods_data.data[this.item_index];
+        console.log(this.goods_data_list);
+        this.from=page_goods_data.from;
+        this.last_page=page_goods_data.last_page;
+        this.per_page=page_goods_data.per_page;
+        this.to=page_goods_data.to;
+        this.total=page_goods_data.total;
+      }
+    }
+  },
+  created:function(){
+    var query=this.$route.query;
+    this.goods_id=query.goods_id;
+    this.item_index=query.item_index;
+    console.log(this.$store.state.goods);
+    this.init_goods_page(this.$store.state.goods);
+    console.log(this.$route.query);
+   
   },
   components:{
     Swiper,

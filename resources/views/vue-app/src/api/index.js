@@ -24,7 +24,7 @@ export default{
         return Vue.resource(API_ROOT + '/api/newsdetail/' + id).get();
     },
     getGoodsData:function(data){
-      // filtered:[brand_id, goods_id, type_id, cat_id, bn]
+      // filtered:[brand_id, goods_id, type_id, cat_id, bn]  pa
       // parameters  relations  per_page
       /*type:[
         Goods_types',
@@ -41,7 +41,7 @@ export default{
         'image_attach',
         'images'
       ]*/
-      return Vue.http.post(API_ROOT+'/api/goods',{relations:["image_attach","member_goods"],parameters:[]});
+      return Vue.http.post(API_ROOT+'/api/goods',{relations:["image_attach","member_goods"],parameters:[],per_page:10});
       // return Vue.http.post(API_ROOT+'/api/goods',{relations:"image_attach",parameters:""});
     }
 

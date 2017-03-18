@@ -31,7 +31,7 @@
         </div>
       </div>
     </card>
-    <card :header="{title:'菜单'}">
+    <card :header="{title:'菜单'}" class="noborder-before margin-0">
       <div slot="content">
         <flexbox :gutter="0" wrap="wrap">
           <flexbox-item :span="1/4" v-for="(item,index) in others_data" class="text-center padding-tb-10">
