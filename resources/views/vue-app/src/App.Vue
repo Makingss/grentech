@@ -139,8 +139,8 @@ import api from './api'
         //get 一用户信息测试
           api.get_user_info({
               headers:{
-                'accept':'application/json',
-                'authorization':"Bearer "+access_token,
+                'Accept':'application/json',
+                'Authorization':"Bearer "+access_token,
               }
           }).then(res=>{
             console.log(res.data);
