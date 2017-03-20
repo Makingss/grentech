@@ -44,7 +44,7 @@
       <div class="tab-item-content" v-if="index==1">
         <ul class="category-scene">
           <li v-for="(item,index) in scene">
-          <router-link :to="item.url" class="link-img">
+          <router-link :to="{name:'list',query:{cat_id:item.cat_id}}" class="link-img">
             <img :src="item.img" alt="">
           </router-link>
           </li>
@@ -434,32 +434,62 @@ export default {
           img:'/static/grentech/1.jpg',
           title:'',
           desc:'',
+          "cat_id": 1,
+          "parent_id": null,
+          "type_id": 2,
+          "cat_name": "美化天线",
+          "p_order": 1
         },{
           url:'/list',
           img:'/static/grentech/2.jpg',
           title:'',
           desc:'',
+          "cat_id": 1,
+          "parent_id": null,
+          "type_id": 2,
+          "cat_name": "美化天线",
+          "p_order": 1
         },{
           url:'/list',
           img:'/static/grentech/3.jpg',
           title:'',
           desc:'',
+          "cat_id": 1,
+          "parent_id": null,
+          "type_id": 2,
+          "cat_name": "美化天线",
+          "p_order": 1
         },{
           url:'/list',
           img:'/static/grentech/4.jpg',
           title:'',
           desc:'',
+          "cat_id": 1,
+          "parent_id": null,
+          "type_id": 2,
+          "cat_name": "美化天线",
+          "p_order": 1
         },{
           url:'/list',
           img:'/static/grentech/5.jpg',
           title:'',
           desc:'',
+          "cat_id": 1,
+          "parent_id": null,
+          "type_id": 2,
+          "cat_name": "美化天线",
+          "p_order": 1
         },
         {
           url:'/list',
           img:'/static/grentech/6.jpg',
           title:'',
           desc:'',
+          "cat_id": 1,
+          "parent_id": null,
+          "type_id": 2,
+          "cat_name": "美化天线",
+          "p_order": 1
         }
       ]
     }
@@ -472,6 +502,7 @@ export default {
     });
     api.get_cat_list().then(res=>{
       console.log(res);
+      
     })
   },
   methods:{
