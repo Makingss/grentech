@@ -47,6 +47,7 @@
   </div>
 </template>
 <script>
+import api from './api'
   import {
     XHeader,
     Tabbar,
@@ -122,8 +123,31 @@
       //调用header处理
       this.page_name = this.$route.name;
       var header_conf = this.handler_xheader(this.$route.name);
-      //console.log(header_conf);
       this.header_conf = header_conf;
+
+      //拉取 token 测试
+      api.get_api_token({
+        grant_type:"password",
+        client_id:3,
+        scope:"",
+        username:"pengbd3@163.com",
+        password:"5230178",
+        client_secret:"okDZ28XNOjIE4n7gy07jnKxWizIOmQPKhQrWuQ6S"
+      }).then(res=>{
+        console.log(res);
+        var access_token=res.data.access_token;
+        //get 一用户信息测试
+          api.get_user_info({
+              headers:{
+                'Accept':'application/json',
+                'Authorization':"Bearer "+access_token,
+              }
+          }).then(res=>{
+            console.log(res.data);
+          })
+      });
+
+      
     },
     watch: {
       $route: 'fetch_data'
@@ -144,15 +168,15 @@
 
 <style lang="less">
   @import '~vux/src/styles/reset.less';
-  .slide-enter,
-  .slide-leave {
-    opacity: 0;
-  }
+  // .slide-enter,
+  // .slide-leave {
+  //   opacity: 0;
+  // }
   
-  .slide-enter-active,
-  .slide-leave-active {
-    transition: opacity 0.1s ease;
-  }
+  // .slide-enter-active,
+  // .slide-leave-active {
+  //   transition: opacity 0.5s ease;
+  // }
   
   .switch {
     position: absolute;

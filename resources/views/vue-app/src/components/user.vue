@@ -119,7 +119,7 @@ export default {
         },{
           title:'报表中心',
           icon:"&#xe61f;",
-          url:'/setting',
+          url:'/vchart',
           show_badge:false
         },{
           title:'商品收藏',

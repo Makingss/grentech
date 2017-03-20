@@ -104,6 +104,13 @@
             show_search_bar:false,
             navbar_active:2,
           },
+          'vchart':{
+            title:'我的报表',
+            show_back:false,
+            is_show:true,
+            show_search_bar:false,
+            navbar_active:2,
+          },
           'favgoods':{
             title:"收藏商品",
             show_back:false,

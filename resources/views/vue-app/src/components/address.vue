@@ -24,7 +24,7 @@
                 </flexbox-item>
               </flexbox>
             </flexbox-item>
-            <flexbox-item :span="1">
+            <flexbox-item :span="1" @click.native="edit_address">
               <span class="iconfont">&#xe627;</span>
             </flexbox-item>
           </flexbox>
@@ -34,15 +34,34 @@
     <div class="margin-tb-20 padding-rl-10 tab-80 block-center">
       <x-button plain>添加地址</x-button>
     </div>
+    <popup v-model="popup_address" height="70%" :hide-on-blur="true">
+      <div class="padding-rl-10"><span @click="edit_address" class="iconfont text-center circle pull-right popup-close-btn font-2x bg-danger color-white">&#xe606;</span></div>
+        <group class="edit_address_content" title="修改地址">
+          <x-input title="姓名" class="font-normal" :value="address_data.name" placeholder="收件人姓名" :show-clear="false"></x-input>
+          <x-input title="手机" class="font-normal" :value="address_data.ship_mobile" plaplaceholderce="收件人手机" :show-clear="false"></x-input>
+          <x-input title="电话" class="font-normal" :value="address_data.ship_tel" placeholder="可选" :show-clear="false"></x-input>
+          <x-input title="邮编" class="font-normal" :value="address_data.ship_zip" placeholder="可选" :show-clear="false"></x-input>
+          <x-input title="地址" class="font-normal" :value="address_data.ship_area" placeholder="地址" :show-clear="false"></x-input>
+        </group>
+    </popup>
   </div>
 </template>
 
 <script>
-import {Swipeout,Flexbox,FlexboxItem,SwipeoutItem,SwipeoutButton,XButton} from 'vux'
+import {Swipeout,Flexbox,FlexboxItem,SwipeoutItem,SwipeoutButton,XButton,Popup,Group,Cell,XInput} from 'vux'
 export default {
   name:'address',
   data:function(){
     return {
+      popup_address:false,
+      address_data:{
+        name:'王小明',
+        ship_mobile:'18503009595',
+        ship_tel:'',
+        ship_zip:'',
+        ship_addr:'大浪街道',
+        ship_area:'广东省/深圳市/龙华新区'
+      },
       address_list:[
         {
           ship_name:'吴燕平',
@@ -67,7 +86,10 @@ export default {
     }
   },
   methods:{
-
+    edit_address:function(){
+      console.log("edit_address");
+      this.popup_address=!this.popup_address;
+    }
   },
   components:{
     Swipeout,
@@ -75,7 +97,11 @@ export default {
     Flexbox,
     FlexboxItem,
     SwipeoutButton,
-    XButton
+    XButton,
+    Popup,
+    Group,
+    Cell,
+    XInput
   }
 }
 </script>
@@ -86,5 +112,18 @@ export default {
   height:2.6rem;
   line-height: 2.6rem;
   color:#aaa;
+}
+.popup-close-btn{
+  width:2rem;
+  line-height:2rem;
+  height:2rem;
+  transform:translateY(-1rem);
+  box-shadow:0 0 10px #E53935;
+}
+.edit_address_content{
+  width:100%;
+}
+.edit_address_content .weui-cells{
+  width:100%;
 }
 </style>
