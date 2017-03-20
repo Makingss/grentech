@@ -46,6 +46,7 @@
           <li v-for="(item,index) in scene">
           <router-link :to="{name:'list',query:{cat_id:item.cat_id}}" class="link-img">
             <img :src="item.img" alt="">
+
           </router-link>
           </li>
         </ul>
@@ -428,52 +429,52 @@ export default {
       area2:100,
       range_1:25,
       range_2:75,
+      scene_images:[
+        {
+          img:'/static/grentech/1.jpg',
+        },{
+          img:'/static/grentech/2.jpg',
+        },{
+          img:'/static/grentech/3.jpg',
+        },{
+          img:'/static/grentech/4.jpg',
+        },{
+          img:'/static/grentech/5.jpg',
+        },{
+          img:'/static/grentech/6.jpg',
+        }
+      ],
       scene:[
         {
-          url:'/list',
           img:'/static/grentech/1.jpg',
-          title:'',
-          desc:'',
           "cat_id": 1,
           "parent_id": null,
           "type_id": 2,
           "cat_name": "美化天线",
           "p_order": 1
         },{
-          url:'/list',
           img:'/static/grentech/2.jpg',
-          title:'',
-          desc:'',
           "cat_id": 1,
           "parent_id": null,
           "type_id": 2,
           "cat_name": "美化天线",
           "p_order": 1
         },{
-          url:'/list',
           img:'/static/grentech/3.jpg',
-          title:'',
-          desc:'',
           "cat_id": 1,
           "parent_id": null,
           "type_id": 2,
           "cat_name": "美化天线",
           "p_order": 1
         },{
-          url:'/list',
           img:'/static/grentech/4.jpg',
-          title:'',
-          desc:'',
           "cat_id": 1,
           "parent_id": null,
           "type_id": 2,
           "cat_name": "美化天线",
           "p_order": 1
         },{
-          url:'/list',
           img:'/static/grentech/5.jpg',
-          title:'',
-          desc:'',
           "cat_id": 1,
           "parent_id": null,
           "type_id": 2,
@@ -481,10 +482,7 @@ export default {
           "p_order": 1
         },
         {
-          url:'/list',
           img:'/static/grentech/6.jpg',
-          title:'',
-          desc:'',
           "cat_id": 1,
           "parent_id": null,
           "type_id": 2,
@@ -495,14 +493,19 @@ export default {
     }
   },
   created:function(){
+     var self=this;
     this.choose_node=this.category_list[0];
     //this.fetch_goods_data();
     api.get_trans_params_table({relations: ['mechanics','goods_ports','assemblies','standardfits','electrics',]}).then((res)=>{
       console.log(res);
     });
+   
     api.get_cat_list().then(res=>{
       console.log(res);
-      
+      self.scene=res.data;
+      for(var i=0;i<self.scene.length;i++){
+        self.scene[i].img=self.scene_images[i].img;
+      }
     })
   },
   methods:{
