@@ -144,15 +144,15 @@
 
 <style lang="less">
   @import '~vux/src/styles/reset.less';
-  .slide-enter,
-  .slide-leave {
-    opacity: 0;
-  }
+  // .slide-enter,
+  // .slide-leave {
+  //   opacity: 0;
+  // }
   
-  .slide-enter-active,
-  .slide-leave-active {
-    transition: opacity 0.5s ease;
-  }
+  // .slide-enter-active,
+  // .slide-leave-active {
+  //   transition: opacity 0.5s ease;
+  // }
   
   .switch {
     position: absolute;
