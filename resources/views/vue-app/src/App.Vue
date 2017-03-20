@@ -126,7 +126,14 @@ import api from './api'
       this.header_conf = header_conf;
 
       //拉取 token 测试
-      api.get_api_token().then(res=>{
+      api.get_api_token({
+        grant_type:"password",
+        client_id:3,
+        scope:"",
+        username:"pengbd3@163.com",
+        password:"5230178",
+        client_secret:"okDZ28XNOjIE4n7gy07jnKxWizIOmQPKhQrWuQ6S"
+      }).then(res=>{
         console.log(res);
       })
     },
