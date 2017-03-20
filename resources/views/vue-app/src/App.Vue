@@ -47,7 +47,7 @@
   </div>
 </template>
 <script>
-import api from './store'
+import api from './api'
   import {
     XHeader,
     Tabbar,
