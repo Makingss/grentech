@@ -20,14 +20,7 @@
         ]); ?>;
         Laravel.apiToken = "{{Auth::check()? 'Bearer '.Auth::user()->api_token : 'Bearer '}}";
     </script>
-    <style>
-    @media screen and (max-width:640px){
-        #app .web-navbar{
-            display:none;
-        }
-    }
-        
-    </style>
+   
 </head>
 <body>
 <div id="app">
