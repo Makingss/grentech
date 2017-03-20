@@ -21,6 +21,12 @@ import $ from 'n-zepto'
 // require('vue2-animate/dist/vue2-animate.min.css')
 let ad=config.app_config.ad;
 router.beforeEach((to, from, next) => {
+  //判断token
+  
+
+
+
+
   NProgress.start();
   if(!from.name&&to.name=="home"){
     //init app

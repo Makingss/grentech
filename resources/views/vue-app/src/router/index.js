@@ -18,6 +18,7 @@ import Favgoods from 'components/favgoods'
 import FindPwd from 'components/find-pwd'
 import Service from 'components/service'
 import Test from 'components/test'
+import Vchart from 'components/vchart'
 
 Vue.use(Router)
 
@@ -86,8 +87,11 @@ export default new Router({
       name:'address',
       path:'/address',
       component:Address
-    },
-    {
+    },{
+      name:'vchart',
+      path:'/vchart',
+      component:Vchart
+    },{
       name:'setting',
       path:'/setting',
       component:Setting

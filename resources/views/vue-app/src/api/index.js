@@ -11,17 +11,8 @@ Vue.http.interceptors.push((request, next) => {
 const API_ROOT = '';
 
 export default {
-    // 首页推荐信息
-    getNewsRecommend: function() {
-        return Vue.resource(API_ROOT + '/api/news').get();
-    },
-    // 列表信息
-    getNewsLists: function() {
-        return Vue.resource(API_ROOT + '/api/newslist').get();
-    },
-    // 详情
-    getNewsDetail: function(id) {
-        return Vue.resource(API_ROOT + '/api/newsdetail/' + id).get();
+    get_api_token:function(){
+        return Vue.http.post(API_ROOT+'/oauth/token',data);
     },
     getGoodsData: function(data) {
         // filtered:[brand_id, goods_id, type_id, cat_id, bn]  
@@ -47,10 +38,10 @@ export default {
         // return Vue.http.post(API_ROOT+'/api/goods',{relations:"image_attach",parameters:""});
     },
     get_trans_params_table:function(data){
-        return Vue.http.post("/table",data);
+        return Vue.http.post(API_ROOT+"/table",data);
     },
     get_cat_list:function(data){
-        return Vue.http.get("/goods/cat",data);
+        return Vue.http.get(API_ROOT+"/goods/cat",data);
     }
 
 }

@@ -16,13 +16,20 @@
       </swiper-item>
     </swiper>
     <div class="padding-rl-10 text-center">
-      消费明细
+      <group title="收支明细" class="text-left">
+       <cell title="¥100.00" class="font-normal" v-for="item in 10">
+        <div class="slot">
+           <p>170316143214739</p>
+           <p>2017-03-20 00:00:00</p>
+        </div>
+       </cell>
+      </group>
     </div>
   </div>
 </template>
 
 <script>
-import {Swiper,SwiperItem} from 'vux'
+import {Swiper,SwiperItem,Group,Cell} from 'vux'
 export default {
   name:'wallet',
   data:function(){
@@ -40,7 +47,9 @@ export default {
   },
   components:{
     Swiper,
-    SwiperItem
+    SwiperItem,
+    Group,
+    Cell
   },
   methods:{
 
@@ -49,9 +58,12 @@ export default {
 </script>
 
 <style lang="less">
-.user-logo .circle{
-  overflow: hidden;
+.user-logo .circle {
+  overflow:hidden;
   width: 4rem;
   height: 4rem;
+}
+.user-logo .circle{
+
 }
 </style>

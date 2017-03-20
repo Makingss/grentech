@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "fastclick": "^1.0.6",
+    "g2": "^2.2.5",
+    "g2-mobile": "^2.1.14",
     "nprogress": "^0.2.0",
+    "v-qrcode": "^1.0.3",
     "vue": "^2.1.10",
     "vue-qart": "^2.0.0",
     "vue-resource": "^1.2.1",

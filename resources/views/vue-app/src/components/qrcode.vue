@@ -1,19 +1,23 @@
 <template lang="html">
-  <div class="myqrcode content">
-     <vue-q-art :config="config"></vue-q-art>
+  <div class="myqrcode content text-center">
+      <div class="user-logo margin-tb-20">
+        <img :src="config.imagePath" alt="" class="circle">
+      </div>
+     <vue-q-art :config="config" class="qrcode-content"></vue-q-art>
+     <div>创建时间</div>
+      <div>03.20.2017</div>
   </div>
 </template>
 
 <script>
 import VueQArt from 'vue-qart'
 import QArt from 'qartjs'
-// import { Qrcode } from 'vux'
 export default {
   name:'qrcode',
   data:function(){
     return {
        config: {
-          value: 'https://www.baidu.com',
+          value: 'http://119.23.22.185/app',
           imagePath: '/static/slice/girl_avatar.jpg',
           filter: 'color'
         },
@@ -32,4 +36,14 @@ export default {
 </script>
 
 <style lang="css">
+.myqrcode button{
+  display:none;
+}
+.qrcode-content{
+  margin-top:10%;
+}
+.qrcode-content canvas{
+  width:7rem;
+  height:7rem;
+}
 </style>

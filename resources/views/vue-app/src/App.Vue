@@ -122,8 +122,12 @@
       //调用header处理
       this.page_name = this.$route.name;
       var header_conf = this.handler_xheader(this.$route.name);
-      //console.log(header_conf);
       this.header_conf = header_conf;
+
+      //拉取 token 测试
+      this.get_api_token().then(res=>{
+        console.log(res);
+      })
     },
     watch: {
       $route: 'fetch_data'
