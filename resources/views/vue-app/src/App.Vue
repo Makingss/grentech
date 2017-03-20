@@ -11,9 +11,7 @@
 
     <span @click="popup" class="switch">开关</span>
     <transition name="slide" mode="out-in">
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
+        <router-view transition="slide" keep-alive></router-view>
     </transition>
 
     <popup v-model="popup_login" height="100%">
@@ -47,6 +45,7 @@
   </div>
 </template>
 <script>
+// <keep-alive> </keep-alive>
 import api from './api'
   import {
     XHeader,
@@ -167,7 +166,6 @@ import api from './api'
 </script>
 
 <style lang="less">
-  @import '~vux/src/styles/reset.less';
   // .slide-enter,
   // .slide-leave {
   //   opacity: 0;
@@ -177,7 +175,9 @@ import api from './api'
   // .slide-leave-active {
   //   transition: opacity 0.5s ease;
   // }
-  
+  .slide-transition { 
+   transition: all 0.1s ease;
+  }
   .switch {
     position: absolute;
     top: 10px;

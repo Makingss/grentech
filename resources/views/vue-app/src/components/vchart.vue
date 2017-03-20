@@ -1,16 +1,15 @@
 <template>
     <div class="chart">
-      <div id="c1"></div>
+      <canvas id="chart"></canvas>
     </div>
-
 </template>
 <script>
-    import G2 from 'g2';
+    import GM from 'g2-mobile';
     // import GM from 'g2-mobile'
     export default {
         name:'vchart',
         components:{
-            G2
+            GM
         },
         data:function(){
             return {
@@ -20,43 +19,78 @@
         },
         methods:{
            draw_chart:function(){
-               var data = [
-                {genre: 'Sports', sold: 275},
-                {genre: 'Strategy', sold: 115},
-                {genre: 'Action', sold: 120},
-                {genre: 'Shooter', sold: 350},
-                {genre: 'Other', sold: 150},
-                ]; // G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
-                // Step 1: 创建 Chart 对象
-                var chart = new G2.Chart({
-                    id: 'c1', // 指定图表容器 ID
-                    width : 600, // 指定图表宽度
-                    height : 300 // 指定图表高度
+               GM.Global.pixelRatio = 2;
+               var Util = GM.Util;
+                
+                var data = [
+                    {"time": '周一',"tem": 10,"city": "beijing"},
+                    {"time": '周二',"tem": 22,"city": "beijing"},
+                    {"time": '周三',"tem": 20,"city": "beijing"},
+                    {"time": '周四',"tem": 26,"city": "beijing"},
+                    {"time": '周五',"tem": 20,"city": "beijing"},
+                    {"time": '周六',"tem": 26,"city": "beijing"},
+                    {"time": '周日',"tem": 28,"city": "beijing"},
+                    {"time": '周一',"tem": 5,"city": "newYork"},
+                    {"time": '周二',"tem": 12,"city": "newYork"},
+                    {"time": '周三',"tem": 26,"city": "newYork"},
+                    {"time": '周四',"tem": 20,"city": "newYork"},
+                    {"time": '周五',"tem": 28,"city": "newYork"},
+                    {"time": '周六',"tem": 26,"city": "newYork"},
+                    {"time": '周日',"tem": 20,"city": "newYork"}
+                ];
+                var chart=new GM.Chart({id:"chart"});
+                var defs = {
+                    time: {
+                        tickCount: 7,
+                        range:[0,1]
+                    },
+                    tem: {
+                        tickCount: 5,
+                        min: 0
+                    }
+                };
+                //配置time刻度文字样式
+                var label = {
+                    fill: '#979797',
+                    font: '14px san-serif',
+                    offset: 6
+                };
+                chart.axis('time', {
+                    label: function (text, index, total) {
+                    var cfg = Util.mix({}, label);
+                    // 第一个点左对齐，最后一个点右对齐，其余居中，只有一个点时左对齐
+                    if (index === 0) {
+                        cfg.textAlign = 'start';
+                    }
+                    if (index > 0 && index === total - 1) {
+                        cfg.textAlign = 'end';
+                    }
+                    return cfg;
+                    }
                 });
-                // Step 2: 载入数据源
-                chart.source(data, {
-                genre: {
-                    alias: '游戏种类' // 列定义，定义该属性显示的别名
-                },
-                sold: {
-                    alias: '销售量'
-                }
+                //配置刻度文字大小，供PC端显示用(移动端可以使用默认值20px)
+                chart.axis('tem', {
+                    label: {
+                        fontSize: 14
+                    }
                 });
-                // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
-                chart.interval().position('genre*sold').color('genre')
-                // Step 4: 渲染图表
+                 chart.source(data, defs);
+                chart.line().position('time*tem').color('city').shape('smooth');
                 chart.render();
            }
         },
         mounted:function(){
-           
+           this. draw_chart();
         },
         created:function(){
-           this. draw_chart();
+           
         }
-
     }
 </script>
 <style lang="css" scoped>
-    
+    #chart{
+        width:105%;
+        height:260px;
+        margin-top:1.5rem;
+    }
 </style>

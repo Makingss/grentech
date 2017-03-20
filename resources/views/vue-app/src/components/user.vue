@@ -1,7 +1,8 @@
 <template lang="html">
   <div class="user content bg-white">
-    <blur :blur-amount="40" :url="user_avatar_bg" :height="160" class="text-center">
-      <p class="center user-avatar">
+    
+    <div class="text-center user-bg">
+     <p class="center user-avatar">
         <img :src="user_avatar" alt="" class="circle">
       </p>
       <div class="user-login">
@@ -10,13 +11,13 @@
             登陆
           </router-link>
         </p>
-        <p>
+        <p class="padding-tb-10">
           <router-link to="/register" class="color-white">
             立即注册
           </router-link>
         </p>
       </div>
-    </blur>
+    </div>
     <card :header="{title:'订单'}" v-if="false">
       <div slot="content" class="flex-nowrap order-list text-center">
         <div class="vux-1px-l vux-1px-r" v-for="(item,index) in order_list_data">
@@ -34,11 +35,11 @@
     <card :header="{title:'菜单'}" class="noborder-before margin-0">
       <div slot="content">
         <flexbox :gutter="0" wrap="wrap">
-          <flexbox-item :span="1/4" v-for="(item,index) in others_data" class="text-center padding-tb-10">
+          <flexbox-item :span="1/4" v-for="(item,index) in others_data" class="text-center padding-tb-15">
             <router-link :to="item.url" class="block">
               <div class="vux-1px-r vux-1px-l">
                 <span><i class="iconfont font-2x" v-html="item.icon"></i></span>
-                <div class="">
+                <div>
                   {{item.title}}
                 </div>
               </div>
@@ -53,7 +54,7 @@
   </div>
 </template>
 <script>
-import {Blur,Card,Flexbox,FlexboxItem} from 'vux'
+import {Card,Flexbox,FlexboxItem} from 'vux'
 export default {
   name:'user',
   data:function(){
@@ -137,7 +138,6 @@ export default {
     }
   },
   components:{
-    Blur,
     Card,
     Flexbox,
     FlexboxItem
@@ -151,9 +151,10 @@ export default {
   z-index:88;
 }
 .user-avatar{
-  margin-top:.8rem;
+  // margin-top:.8rem;
   position:relative;
   z-index:88;
+  padding-top:15px;
 }
 .user-avatar img{
   width: 4rem;
@@ -162,5 +163,9 @@ export default {
 .order-list>div{
   padding:.5rem 0;
 }
-
+.user-bg{
+   background: -webkit-radial-gradient(center, ellipse cover, rgba(101, 100, 109, 1) 0%, rgba(46, 61, 82, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+   background: radial-gradient(ellipse at center, rgba(101, 100, 109, 1) 0%, rgba(46, 61, 82, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#65646d', endColorstr='#2e3d52', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+}
 </style>

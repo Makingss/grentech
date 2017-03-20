@@ -11,8 +11,8 @@ import * as util from './util/util.js'
 import  * as filters from './filter/filter.js'
 import * as config from './config/config.js'
 //引入 nprogress
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
+// import NProgress from 'nprogress'
+// import 'nprogress/nprogress.css'
 
 //引入 zepto 插件
 import $ from 'n-zepto'
@@ -22,17 +22,11 @@ import $ from 'n-zepto'
 let ad=config.app_config.ad;
 router.beforeEach((to, from, next) => {
   //判断token
-  
-
-
-
-
-  NProgress.start();
+  // NProgress.start();
   if(!from.name&&to.name=="home"){
     //init app
     console.log("首次进入");
     router.app.isIndex=true;
-
     if(ad.is_show){
       util.init_ad.show(ad.url,ad.src,ad.show_time,ad.text);
     }
@@ -43,7 +37,7 @@ router.beforeEach((to, from, next) => {
   next()
 })
 router.afterEach(transition => {
-  NProgress.done();
+  // NProgress.done();
   util.loading.hide();
   if(ad.is_show){
     setTimeout(function(){
@@ -63,8 +57,6 @@ import Reset from './styles/reset.css'
 
 //引入vue插件扩展
 import Plugin from './plugin/plugin'
-
-
 
 //调用模块
 Vue.use(Plugin);
