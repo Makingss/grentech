@@ -8,6 +8,7 @@
 
       <scroller lock-x use-pullup height="100%"
         ref="listScroll"
+        @on-pullup-loading="load"
         :pullup-config="pullupConfig"
       class="x-scroller-container">
         <div class="">
@@ -40,7 +41,7 @@
             </router-link>
               <div class="item-subtitle color-danger" slot="card-subtitle">¥{{item.price}}</div>
           </card-list>
-          <div class="spinner text-center" slot="pull-up" v-if="true">
+          <div class="spinner text-center" slot="pull-up" v-if="loading">
             <spinner type="circles"></spinner>
           </div>
         </div>
@@ -48,7 +49,7 @@
     </div>
   </div>
 </template>
-  <!-- @on-pullup-loading="load" -->
+  
 <script>
 import {
   mapState,
@@ -113,34 +114,13 @@ export default {
   }),
   methods: {
     ...mapActions(['GETGOODSLIST']),
-
     toggleType: function() {
       //console.log("切换");
       this.type = this.type == 'medium' ? 'large' : 'medium';
     },
     load: function() {
       console.log("上拉加载");
-      setTimeout(() => {
-        this.list_data.push({
-          url: '/goods',
-          name: 'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-          img: 'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
-          title: '',
-          price: '276.00',
-          mktprice: '1380.00'
-        }, {
-          url: '/goods',
-          name: 'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-          img: 'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
-          title: '',
-          price: '276.00',
-          mktprice: '1380.00'
-        })
-        setTimeout(() => {
-          this.$refs.listScroll.donePullup();
-        }, 100)
-
-      }, 2000)
+      this.loading=true;
     }
   }
 
