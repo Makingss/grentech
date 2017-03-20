@@ -135,7 +135,19 @@ import api from './api'
         client_secret:"okDZ28XNOjIE4n7gy07jnKxWizIOmQPKhQrWuQ6S"
       }).then(res=>{
         console.log(res);
-      })
+        var access_token=res.data.access_token;
+        //get 一用户信息测试
+          api.get_user_info({
+              headers:{
+                'accept':'application/json',
+                'authorization':"Bearer "+access_token,
+              }
+          }).then(res=>{
+            console.log(res.data);
+          })
+      });
+
+      
     },
     watch: {
       $route: 'fetch_data'

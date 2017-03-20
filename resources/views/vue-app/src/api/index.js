@@ -21,6 +21,9 @@ export default {
         console.log(root_host);
         return Vue.http.post(root_host+'/oauth/token',data);
     },
+    get_user_info:function(data){
+        return Vue.http.get(root_host+'/api/user',data);
+    },
     getGoodsData: function(data) {
         // filtered:[brand_id, goods_id, type_id, cat_id, bn]  
         // parameters  relations  per_page 
