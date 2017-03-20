@@ -95,7 +95,7 @@ class GoodsCatController extends Controller
                 }
                 return $type_names;
             });
-            $form->text('p_order','排序');
+            $form->text('p_order','排序')->default(10);
             $form->display('created_at','新建时间');
             $form->display('updated_at','更新时间');
 
