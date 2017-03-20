@@ -47,6 +47,7 @@
   </div>
 </template>
 <script>
+import api from './store'
   import {
     XHeader,
     Tabbar,
@@ -125,7 +126,7 @@
       this.header_conf = header_conf;
 
       //拉取 token 测试
-      this.get_api_token().then(res=>{
+      api.get_api_token().then(res=>{
         console.log(res);
       })
     },
