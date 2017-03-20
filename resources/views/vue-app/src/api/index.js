@@ -48,6 +48,9 @@ export default {
     },
     get_trans_params_table:function(data){
         return Vue.http.post("/table",data);
+    },
+    get_cat_list:function(data){
+        return Vue.http.post("/goods/cat",data);
     }
 
 }

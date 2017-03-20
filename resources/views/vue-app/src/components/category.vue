@@ -469,6 +469,9 @@ export default {
     //this.fetch_goods_data();
     api.get_trans_params_table({relations: ['mechanics','goods_ports','assemblies','standardfits','electrics',]}).then((res)=>{
       console.log(res);
+    });
+    api.get_cat_list().then(res=>{
+      console.log(res);
     })
   },
   methods:{
