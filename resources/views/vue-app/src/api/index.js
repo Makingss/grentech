@@ -50,7 +50,7 @@ export default {
         return Vue.http.post("/table",data);
     },
     get_cat_list:function(data){
-        return Vue.http.post("/goods/cat",data);
+        return Vue.http.get("/goods/cat",data);
     }
 
 }
