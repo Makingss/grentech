@@ -25,9 +25,10 @@ export default {
     },
     getGoodsData: function(data) {
         // filtered:[brand_id, goods_id, type_id, cat_id, bn]  
-        // parameters  relations  per_page
+        // parameters  relations  per_page 
         /*type:[
           Goods_types',
+          "goods_cats"
           'mechanics',
           'goods_ports',
           'assemblies',
@@ -44,6 +45,9 @@ export default {
         // console.log(data);
         return Vue.http.post(API_ROOT + '/api/goods', data);
         // return Vue.http.post(API_ROOT+'/api/goods',{relations:"image_attach",parameters:""});
+    },
+    get_trans_params_table:function(data){
+        return Vue.http.post("/table",data);
     }
 
 }

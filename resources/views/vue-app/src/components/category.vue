@@ -99,7 +99,7 @@
 
 <script>
 import TreeList from './tree-list'
-import api from '../api'
+import api from '../api/index.js'
 //import SidePanel from './side-panel'
 
 import {Tab,TabItem,Search,Sticky,Swiper,SwiperItem,Group,Cell,XInput,Flexbox,FlexboxItem,XButton,Icon} from 'vux'
@@ -467,7 +467,9 @@ export default {
   created:function(){
     this.choose_node=this.category_list[0];
     //this.fetch_goods_data();
-
+    api.get_trans_params_table({relations: ['mechanics','goods_ports','assemblies','standardfits','electrics',]}).then((res)=>{
+      console.log(res);
+    })
   },
   methods:{
     clear_history:function(){

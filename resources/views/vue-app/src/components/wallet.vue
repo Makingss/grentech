@@ -8,7 +8,7 @@
         王小明
       </div>
     </div>
-    <swiper :height="200">
+    <swiper height="200px">
       <swiper-item v-for="(item,index) in card_list">
         <div class="link-img tab-80 block-center border-radius-5" :show-dots="false">
           <img :src="item.img" alt="">

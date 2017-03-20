@@ -7,7 +7,6 @@
         </swiper-item>
       </swiper>
       <flexbox :gutter="0" wrap="nowrap" class="bg-white">
-        
         <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="9">
           <p class="line-ellispse-2">{{goods_data_list.name}}</p>
           <p class="color-danger">¥{{goods_data_list.price}}</p>
@@ -162,5 +161,7 @@ import {mapState,mapActions} from 'vuex'
     overflow-y: scroll;
     box-sizing: border-box;
   }
-
+  .goods-content-swiper>.vux-swiper .vux-swiper-item{
+    box-sizing:border-box;
+  }
 </style>
