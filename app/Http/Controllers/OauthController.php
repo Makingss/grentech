@@ -18,15 +18,15 @@ class OauthController extends Controller
 
     public function oauth(Request $request)
     {
-        $response = $this->http->post('http://192.168.254.128/oauth/token', [
+        $response = $this->http->post(url('/oauth/token'), [
             'form_params' => [
                 'grant_type' => 'password',//'authorization_code',
-                'client_id' => '5',
-                'client_secret' => 'zJs1YxdzOupnHEEA5eATEsia0bcTmQlHLU7L3dz7',//'W8IuK4Ighp56qNGnweMiY0NsmYswhSusy4L1aEF9',
+                'client_id' => '4',
+                'client_secret' => 'fHltrh0ZZJrTqTAqcPQ4rh4JErPnuyNMUOjxMzvS',//'W8IuK4Ighp56qNGnweMiY0NsmYswhSusy4L1aEF9',
                 // 'redirect_uri' => 'http://192.168.254.128/callback',
                 //'code' => $request->code,
-                'username' => '542397809@qq.com',
-                'password' => '111111',
+                'username' => 'pengbd3',
+                'password' => '5230178',
                 'scope' => '',
             ],
         ]);
