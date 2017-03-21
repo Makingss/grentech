@@ -558,8 +558,8 @@ export default {
   overflow-y: scroll;
 }
 .node-active{
-  background-color:#FB4F5B;
-  color: #fff;
+  // background-color:#FB4F5B;
+  color: #FB4F5B;
 }
 .tree-box{
   align-items: flex-start;
