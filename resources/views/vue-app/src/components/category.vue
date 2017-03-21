@@ -513,7 +513,7 @@ export default {
   },
   methods:{
     submit_search:function(){
-      api.get_search_result({search:'测试'}),then(res=>{
+      api.get_search_result({search:'测试'}).then(res=>{
         console.log(res);
       })
     },
