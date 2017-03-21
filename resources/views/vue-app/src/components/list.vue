@@ -129,11 +129,15 @@ export default {
     submit_search:function(){
       console.log("搜索测试");
       var self=this;
-      this.handler_query();
+      this.handler_query({search:true});
     },
-    handler_query:function(){
+    handler_query:function(params){
        var self=this;
        var query=this.$route.query;
+        console.log(query);
+        if(params.search){
+          query={search:slef.search_input};
+        }
         console.log(query);
         query.relations=["images"];
         if(query["search"]){
