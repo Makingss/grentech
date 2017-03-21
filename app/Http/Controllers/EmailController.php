@@ -27,12 +27,12 @@ class EmailController extends Controller
 
 	}
 
-	public function create($userId, $name, $secret, $redirect, $personalAccess = false, $password = false)
+	public function create($userId, $name, $secret, $redirect, $personalAccess = false, $password = true)
 	{
 		$client = (new Client())->forceFill([
 			'user_id' => $userId,
 			'name' => $name,
-			'secret' => $secret,
+			'secret' => md5($secret.$userId),
 			'redirect' => $redirect,
 			'personal_access_client' => $personalAccess,
 			'password_client' => $password,
