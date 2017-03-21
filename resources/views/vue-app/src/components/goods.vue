@@ -45,27 +45,27 @@
           <swiper-item >
                <div @click="collapse(1)" class="collapse_title color-danger padding-rl-10 padding-tb-6">端口</div>
               <group class="margin-0" v-for="(item,index) in goods_data_list.goods_ports" v-show="collapse1">
-                <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'">
+                <cell v-for="(item1,index1) in item" class="font-normal" :title="parms_table.goods_ports[index1]||index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'">
                 </cell>
               </group>
                <div @click="collapse(2)" class="collapse_title color-danger padding-rl-10 padding-tb-6">电信号</div>
                <group class="margin-0" v-for="(item,index) in goods_data_list.electrics" v-show="collapse2">
-                <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'">
+                <cell v-for="(item1,index1) in item" class="font-normal" :title="parms_table.electrics[index1]||index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'">
                 </cell>
               </group>
                <div @click="collapse(3)" class="collapse_title color-danger padding-rl-10 padding-tb-6">组合</div>
               <group class="margin-0" v-for="(item,index) in goods_data_list.assemblies" v-show="collapse3">
-                <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'">
+                <cell v-for="(item1,index1) in item" class="font-normal" :title="parms_table.assemblies[index1]||index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'">
                 </cell>
               </group>
                <div @click="collapse(4)" class="collapse_title color-danger padding-rl-10 padding-tb-6">标准</div>
               <group class="margin-0" v-for="(item,index) in goods_data_list.standardfits" v-show="collapse4">
-                <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'">
+                <cell v-for="(item1,index1) in item" class="font-normal" :title="parms_table.standardfits[index1]||index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'">
                 </cell>
               </group>
                 <div @click="collapse(5)" class="collapse_title color-danger padding-rl-10 padding-tb-6">机械性能</div>
                <group class="margin-0" v-show="collapse5">
-                <cell v-for="(item,index) in goods_data_list.mechanics" class="font-normal" :title="index" :value="item" v-if="item&&item!='0'&&index!='created_at'&&index!='updated_at'">
+                <cell v-for="(item,index) in goods_data_list.mechanics" class="font-normal" :title="parms_table.mechanics[index]||index" :value="item" v-if="item&&item!='0'&&index!='created_at'&&index!='updated_at'">
                 </cell>
               </group>
           </swiper-item>
@@ -108,6 +108,13 @@ import {mapState,mapActions} from 'vuex'
         collapse3:true,
         collapse4:true,
         collapse5:true,
+        parms_table:{
+          assemblies:{},
+          electrics:{},
+          goods_ports:{},
+          mechanics:{},
+          standardfits:{}
+        },
         goods_data_list: {
           name: '',
           content: '',
@@ -161,8 +168,10 @@ import {mapState,mapActions} from 'vuex'
         }
       },
       get_parms_data:function(){
+        var self=this;
         api.get_trans_params_table({relations: ['mechanics','goods_ports','assemblies','standardfits','electrics',]}).then((res)=>{
           console.log(res);
+          self.parms_table=res.data;
         });
       }
     },
