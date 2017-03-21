@@ -159,6 +159,11 @@ import {mapState,mapActions} from 'vuex'
           // // console.log(this.$store.state.goods["goods_list"].data);
           // console.log(this.temp_data);
         }
+      },
+      get_parms_data:function(){
+        api.get_trans_params_table({relations: ['mechanics','goods_ports','assemblies','standardfits','electrics',]}).then((res)=>{
+          console.log(res);
+        });
       }
     },
     created: function () {
