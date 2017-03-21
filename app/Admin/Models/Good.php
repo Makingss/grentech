@@ -47,7 +47,7 @@ class Good extends Model
 		],
 		'joins' => [
 			'goods_keywords' => ['goods.goods_id', 'goods_keywords.goods_id'],
-			'Goods_types' => ['goods.type_id', 'Goods_types.type_id'],
+			'goods_types' => ['goods.type_id', 'goods_types.type_id'],
 			'mechanics' => ['goods.goods_id', 'mechanics.goods_id'],
 			'goods_ports' => ['goods.goods_id', 'goods_ports.goods_id'],
 			'assemblies' => ['goods.goods_id', 'assemblies.goods_id'],
