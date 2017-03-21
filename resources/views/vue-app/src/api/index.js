@@ -50,6 +50,9 @@ export default {
     },
     get_cat_list:function(data){
         return Vue.http.get(root_host+"/goods/cat",data);
+    },
+    get_search_result:function(data){
+        return Vue.http.post(root_host+'/search',data);
     }
 
 }
