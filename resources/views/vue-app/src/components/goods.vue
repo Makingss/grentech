@@ -43,8 +43,8 @@
             <div v-html="goods_data_list.content"></div>
           </swiper-item>
           <swiper-item class="padding-10">
-              <group title="电信号">
-                <cell v-for="(item,index) in goods_data_list.goods_ports[0]" :title="index" :value="item" v-if="item">
+              <group title="电信号" v-for="(item,index) in goods_data_list.goods_ports">
+                <cell v-for="(item1,index1) in item" :title="index1" :value="item1" v-if="item1">
 
                 </cell>
               </group>
