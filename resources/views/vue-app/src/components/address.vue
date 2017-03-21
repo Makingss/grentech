@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="address content">
-    <swipeout>
+  <div class="content-box">
+  <swipeout>
       <swipeout-item v-for="(item,index) in address_list" transition-mode="follow" :right-menu-width="80" class="padding-rl-10 padding-tb-6 border-1px-b">
         <div slot="right-menu">
           <swipeout-button type="warn">
@@ -34,6 +35,8 @@
     <div class="margin-tb-20 padding-rl-10 tab-80 block-center">
       <x-button plain>添加地址</x-button>
     </div>
+  </div>
+    
     <popup v-model="popup_address" height="70%" :hide-on-blur="true">
       <div class="padding-rl-10"><span @click="edit_address" class="iconfont text-center circle pull-right popup-close-btn font-2x bg-danger color-white">&#xe606;</span></div>
         <group class="edit_address_content" title="修改地址">

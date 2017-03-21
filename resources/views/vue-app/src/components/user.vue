@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="user content bg-white">
-    
-    <div class="text-center user-bg">
+    <div class="content-box">
+ <div class="text-center user-bg">
      <p class="center user-avatar">
         <img :src="user_avatar" alt="" class="circle">
       </p>
@@ -51,6 +51,8 @@
     <div class="margin-tb-20 text-center color-gray">
       <!-- <p>影儿时尚官方商城</p> -->
     </div>
+    </div>
+   
   </div>
 </template>
 <script>

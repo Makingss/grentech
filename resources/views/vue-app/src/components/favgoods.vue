@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="favgoods content">
-    <swipeout>
+  <div class="content-box">
+   <swipeout>
       <swipeout-item class="border-1px-b" v-for="(item,index) in favgoods_data">
         <div slot="right-menu" transition-mode="follow">
           <swipeout-button type="warn">
@@ -23,6 +24,8 @@
         </div>
       </swipeout-item>
     </swipeout>
+  </div>
+   
   </div>
 </template>
 
