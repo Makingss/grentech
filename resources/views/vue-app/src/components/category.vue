@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="template-content">
    <div class="bar bar-header">
-        <search v-model="search_input" :cancel-text="cancel_text" @on-change="input_change" @on-submit="submit_search" position="absolute" top="0"  class="list-search"></search>
+        <search v-model="search_input" :cancel-text="cancel_text" @on-submit="submit_search" position="absolute" top="0"  class="list-search"></search>
         <tab active-color='#FB4F5B' v-model="index">
           <tab-item>分类</tab-item>
           <tab-item>场景</tab-item>
@@ -494,7 +494,6 @@ export default {
     }
   },
   created:function(){
-    
     this.choose_node=this.category_list[0];
     //this.fetch_goods_data()
     //初始化场景类别
