@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="template-content">
    <div class="bar bar-header">
-        <search v-model="search_input" position="absolute" top="0"  class="list-search"></search>
+        <search v-model="search_input" :cancel-text="cancel_text" on-submit="submit_search" position="absolute" top="0"  class="list-search"></search>
         <tab active-color='#FB4F5B' v-model="index">
           <tab-item>分类</tab-item>
           <tab-item>场景</tab-item>
@@ -111,6 +111,7 @@ export default {
       search_input:'',
       index:0,
       node_index:0,
+      cancel_text:'取消',
       choose_node:{},
       category_list:[
         {
@@ -513,6 +514,7 @@ export default {
     });
     },
     submit_search:function(){
+      console.log("搜索测试");
       api.get_search_result({search:'测试'}).then(res=>{
         console.log(res);
       })
@@ -528,9 +530,7 @@ export default {
     },
     handle_folder:function(index){
       var self=this;
-      // console.log(index);
       var _children=this.category_list[index];
-      // console.log(_children.children.length);
       if(!!_children.children&&_children.children.length>0&&index!=0){
         this.choose_node=_children;
         this.node_index=index;
@@ -538,7 +538,6 @@ export default {
         this.choose_node=this.category_list[0];
         this.node_index=0;
       }
-      // console.log(this.node_index);
     }
   },
   components:{
