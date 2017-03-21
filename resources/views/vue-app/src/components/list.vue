@@ -132,7 +132,7 @@ export default {
         if(query["search"]){
            api.get_search_result({search:'测试'}).then(res=>{
                console.log(res);
-               self.$store.state.goods.goods_list.data=res.data;
+               self.$store.state.goods.goods_list.data=res.data.data;
                console.log(self.$store.state);
            })
         }else{
