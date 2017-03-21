@@ -43,23 +43,28 @@
             <div v-html="goods_data_list.content"></div>
           </swiper-item>
           <swiper-item >
-              <group title="端口" v-for="(item,index) in goods_data_list.goods_ports">
+               <div @click="collapse(1)" class="collapse_title">端口</div>
+              <group v-for="(item,index) in goods_data_list.goods_ports" v-show="collapse1">
                 <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="!!item1">
                 </cell>
               </group>
-               <group title="电信号" v-for="(item,index) in goods_data_list.electrics">
+               <div @click="collapse(2)" class="collapse_title">电信号</div>
+               <group v-for="(item,index) in goods_data_list.electrics" v-show="collapse2">
                 <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="!!item1">
                 </cell>
               </group>
-              <group title="组合" v-for="(item,index) in goods_data_list.assemblies">
+               <div @click="collapse(3)" class="collapse_title">组合</div>
+              <group v-for="(item,index) in goods_data_list.assemblies" v-show="collapse3">
                 <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="!!item1">
                 </cell>
               </group>
-              <group title="标准" v-for="(item,index) in goods_data_list.standardfits">
+               <div @click="collapse(4)" class="collapse_title">标准</div>
+              <group v-for="(item,index) in goods_data_list.standardfits" v-show="collapse4">
                 <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="!!item1">
                 </cell>
               </group>
-               <group title="机械性能">
+                <div @click="collapse(5)" class="collapse_title">机械性能</div>
+               <group v-show="collapse5">
                 <cell v-for="(item,index) in goods_data_list.mechanics" class="font-normal" :title="index" :value="item" v-if="!!item">
                 </cell>
               </group>
@@ -98,6 +103,11 @@ import {mapState,mapActions} from 'vuex'
         page_goods_data: {},
         current_page: 0,
         temp_data:{},
+        collapse1:true,
+        collapse2:true,
+        collapse3:true,
+        collapse4:true,
+        collapse5:true,
         goods_data_list: {
           name: '',
           content: '',
@@ -116,6 +126,10 @@ import {mapState,mapActions} from 'vuex'
       goods_data_list:state => state.goods.goods_list.data[0]
     }),
     methods: {
+      collapse:function(index){
+        console.log(index);
+        this["collapse"+index]=!this["collapse"+index];
+      },
       ...mapActions(['GETGOODSLIST']),
       init_goods_page: function (init_data) {
         // console.log()
