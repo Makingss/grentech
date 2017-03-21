@@ -98,7 +98,6 @@ export default {
     }
   },
   created: function() {
-    console.log("init111");
     console.log(this.$route.query);
     var query=this.$route.query;
     

@@ -10,15 +10,13 @@ Vue.http.interceptors.push((request, next) => {
 
 const API_ROOT = '';
 const TEST_ROOT="http://119.22.23.185"
-console.log(window.location.host);
 var root_host='';
 if(window.location.host=="127.0.0.1"||window.location.host=="localhost:8080"){
     root_host=TEST_ROOT
 }
 export default {
     get_api_token:function(data){
-        console.log("-----");
-        console.log(root_host);
+        
         return Vue.http.post(root_host+'/oauth/token',data);
     },
     get_user_info:function(data){
