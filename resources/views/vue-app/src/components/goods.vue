@@ -110,7 +110,7 @@ import {mapState,mapActions} from 'vuex'
         }else{
           var self=this;
           // this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
-          api.getGoodsData({relations: ["image_attach", "images"], parameters:{goods_id:39}}).then((res)=>{
+          api.getGoodsData({relations: ["image_attach", "images","mechanics","goods_ports","assemblies","standardfits","electrics"], parameters:{goods_id:39}}).then((res)=>{
             console.log(res);
             self.goods_data_list=res.data.data[0];
           });
