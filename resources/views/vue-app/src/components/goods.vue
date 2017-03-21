@@ -69,7 +69,9 @@ import {mapState,mapActions} from 'vuex'
     XButton,
     Tab,
     TabItem,
-    SwiperItem
+    SwiperItem,
+    Group,
+    Cell
   } from 'vux'
   export default {
     name: 'goods',
@@ -143,7 +145,9 @@ import {mapState,mapActions} from 'vuex'
       XButton,
       Tab,
       TabItem,
-      SwiperItem
+      SwiperItem,
+      Group,
+      Cell
     }
   }
 
