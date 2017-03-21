@@ -499,8 +499,6 @@ export default {
     //this.fetch_goods_data()
     //初始化场景类别
     this.init_scene_list();
-    //搜索
-     this.submit_search();
   },
   methods:{
     input_change:function(){
@@ -518,9 +516,10 @@ export default {
     },
     submit_search:function(){
       console.log("搜索测试");
-      api.get_search_result({search:'测试'}).then(res=>{
-        console.log(res);
-      })
+      var self=this;
+      console.log(self.$router);
+      self.$router.push({name:'list',query:{search:self.search_input}});
+      
     },
     clear_history:function(){
       console.log("清除历史记录");

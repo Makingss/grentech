@@ -4,7 +4,7 @@
       <div class="search-icon text-center" @click="toggleType">
         <span class="iconfont font-3x color-success block" style="margin-top:8px;">&#xe62a;</span>
       </div>
-      <search v-model="search_input" position="static" top="0"  class="list-search border-box"></search>
+      <search v-model="search_input" position="static" top="0" @on-submit="submit_search"  class="list-search border-box"></search>
       <div class="content list">
 
         <scroller lock-x use-pullup height="100%"
@@ -57,6 +57,7 @@ import {
   mapState,
   mapActions
 } from 'vuex'
+import api from '../api'
 import CardList from './card-list'
 import {
   Flexbox,
@@ -98,11 +99,7 @@ export default {
     }
   },
   created: function() {
-    console.log(this.$route.query);
-    var query=this.$route.query;
-    
-    // { relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 }
-    this.GETGOODSLIST({ relations: ["image_attach", "images"], parameters:query, per_page: 10 });
+    this.handler_query();
   },
   computed: mapState({
     goods_data: state => state.goods.goods_list.data,
@@ -122,6 +119,23 @@ export default {
     load: function() {
       console.log("上拉加载");
       this.loading=true;
+    },
+    submit_search:function(){
+      console.log("搜索测试");
+      var self=this;
+      this.handler_query();
+    },
+    handler_query:function(){
+       var query=this.$route.query;
+        console.log(query);
+        if(query["search"]){
+           api.get_search_result({search:'测试'}).then(res=>{
+               console.log(res);
+           })
+        }else{
+           // { relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 }
+          this.GETGOODSLIST({ relations: ["image_attach", "images"], parameters:query, per_page: 10 });
+        }
     }
   }
 
