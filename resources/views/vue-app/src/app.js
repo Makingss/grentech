@@ -10,6 +10,8 @@ import App from './App.vue'
 import * as util from './util/util.js'
 import  * as filters from './filter/filter.js'
 import * as config from './config/config.js'
+
+import api from './api'
 //引入 nprogress
 // import NProgress from 'nprogress'
 // import 'nprogress/nprogress.css'
@@ -22,6 +24,31 @@ import $ from 'n-zepto'
 let ad=config.app_config.ad;
 router.beforeEach((to, from, next) => {
   //判断token
+  console.log(store.state.token);
+  api.get_api_token({
+        grant_type:"password",
+        client_id:3,
+        scope:"",
+        username:"pengbd3@163.com",
+        password:"5230178",
+        client_secret:"okDZ28XNOjIE4n7gy07jnKxWizIOmQPKhQrWuQ6S"
+      }).then(res=>{
+        console.log("------");
+        console.log(res);
+        var access_token=res.data.access_token;
+        store.state.token.token=res.data;
+        console.log("/////////");
+        console.log(store.state.token);
+        //get 一用户信息测试
+          // api.get_user_info({
+          //     headers:{
+          //       'Accept':'application/json',
+          //       'Authorization':"Bearer "+access_token,
+          //     }
+          // }).then(res=>{
+          //   console.log(res.data);
+          // })
+      });
   // NProgress.start();
   if(!from.name&&to.name=="home"){
     //init app
