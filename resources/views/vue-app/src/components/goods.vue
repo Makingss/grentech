@@ -43,7 +43,11 @@
             <div v-html="goods_data_list.content"></div>
           </swiper-item>
           <swiper-item class="padding-10">
-            主要参数内容
+              <group title="电信号">
+                <cell v-for="(item,index) in goods_data_list.goods_ports[0]" :title="index" :value="item" v-if="item">
+
+                </cell>
+              </group>
           </swiper-item>
           <swiper-item class="padding-10">
             服务信息内容

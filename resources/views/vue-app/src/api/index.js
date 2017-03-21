@@ -53,6 +53,6 @@ export default {
     },
     get_search_result:function(data){
         return Vue.http.post(root_host+'/search',data);
-    }
+    },
 
 }
