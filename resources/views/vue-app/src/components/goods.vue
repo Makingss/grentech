@@ -140,32 +140,39 @@ import {mapState,mapActions} from 'vuex'
       ...mapActions(['GETGOODSLIST']),
       init_goods_page: function (init_data) {
         // console.log()
-        if (!!init_data.goods_list.data && init_data.goods_list.data.length) {
-          var page_goods_data = init_data.goods_list;
-          this.current_page = page_goods_data.current_page;
-          this.goods_data_list = page_goods_data.data[this.item_index];
-          this.from = page_goods_data.from;
-          this.last_page = page_goods_data.last_page;
-          this.per_page = page_goods_data.per_page;
-          this.to = page_goods_data.to;
-          this.total = page_goods_data.total;
-        }else{
-          var self=this;
+        // if (!!init_data.goods_list.data && init_data.goods_list.data.length) {
+        //   var page_goods_data = init_data.goods_list;
+        //   this.current_page = page_goods_data.current_page;
+        //   this.goods_data_list = page_goods_data.data[this.item_index];
+        //   this.from = page_goods_data.from;
+        //   this.last_page = page_goods_data.last_page;
+        //   this.per_page = page_goods_data.per_page;
+        //   this.to = page_goods_data.to;
+        //   this.total = page_goods_data.total;
+        // }else{
+        //   var self=this;
+        //   // this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
+        //   api.getGoodsData({relations: ["image_attach", "images","mechanics","goods_ports","assemblies","standardfits","electrics"], parameters:{goods_id:39}}).then((res)=>{
+        //     console.log(res);
+        //     self.goods_data_list=res.data.data[0];
+        //   });
+          
+        //   // console.log("********");
+        //   // console.log(this.$store.state.goods);
+        //   // this.temp_data=this.$store.state.goods;
+        //   // this.goods_data_list=this.$store.state.goods.goods_list.data[0];
+        //   // console.log(this.goods_data_list);
+        //   // // console.log(this.$store.state.goods["goods_list"]);
+        //   // // console.log(this.$store.state.goods["goods_list"].data);
+        //   // console.log(this.temp_data);
+        // }
+        
+         var self=this;
           // this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
           api.getGoodsData({relations: ["image_attach", "images","mechanics","goods_ports","assemblies","standardfits","electrics"], parameters:{goods_id:39}}).then((res)=>{
             console.log(res);
             self.goods_data_list=res.data.data[0];
           });
-          
-          // console.log("********");
-          // console.log(this.$store.state.goods);
-          // this.temp_data=this.$store.state.goods;
-          // this.goods_data_list=this.$store.state.goods.goods_list.data[0];
-          // console.log(this.goods_data_list);
-          // // console.log(this.$store.state.goods["goods_list"]);
-          // // console.log(this.$store.state.goods["goods_list"].data);
-          // console.log(this.temp_data);
-        }
        console.log("laqu ");
       },
       get_parms_data:function(){
