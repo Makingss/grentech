@@ -34,16 +34,15 @@ router.beforeEach((to, from, next) => {
         password:"5230178",
         client_secret:"okDZ28XNOjIE4n7gy07jnKxWizIOmQPKhQrWuQ6S"
       }).then(res=>{
-        console.log("------");
-        console.log(res);
+       //vuex 状态控制
         var access_token=res.data.access_token;
         store.state.token.token=res.data;
-        console.log("/////////");
-        window.localStorage.access_token=res.data.access_token;
-        window.localStorage.expires_in=res.data.expires_in;
-        window.localStorage.refresh_token=res.data.refresh_token;
-        window.localStorage.token_type=res.data.token_type;
-        //get 一用户信息测试
+        //加入 localStorage存储静态数据 
+        window[config.app_config.storage].access_token=res.data.access_token;
+        window[config.app_config.storage].expires_in=res.data.expires_in;
+        window[config.app_config.storage].refresh_token=res.data.refresh_token;
+        window[config.app_config.storage].token_type=res.data.token_type;
+        //get 一用户信息测试 
           // api.get_user_info({
           //     headers:{
           //       'Accept':'application/json',

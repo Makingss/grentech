@@ -9,5 +9,12 @@ export const app_config={
      text:'广告文字',
      desc:'',
      url:'#/home',
-  }
+  },
+  /* 
+    storage配置项
+    localStorage,
+    sessionStorage,
+    cookie,
+  */
+  storage:'localStorage'
 }
