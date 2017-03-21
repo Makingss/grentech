@@ -150,7 +150,7 @@ export default {
                console.log("********************");
            })
         }else{
-          api.getGoodsData({relations: ["images"], parameters:query, per_page: 10 }).then(res=>{
+          api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
                 console.log(res);
                 self.$store.state.goods.goods_list=res.data;
                 self.goods_data=res.data.data;
