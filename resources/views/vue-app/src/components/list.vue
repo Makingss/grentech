@@ -135,7 +135,7 @@ export default {
        var self=this;
        var query=this.$route.query;
         console.log(query);
-        if(params.search){
+        if(!!params&&params.search){
           query={search:slef.search_input};
         }
         console.log(query);
