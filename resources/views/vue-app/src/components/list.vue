@@ -6,7 +6,6 @@
       </div>
       <search v-model="search_input" position="static" top="0" @on-submit="submit_search"  class="list-search border-box"></search>
       <div class="content list">
-
         <scroller lock-x use-pullup height="100%"
           ref="listScroll"
           @on-pullup-loading="load"
@@ -133,7 +132,15 @@ export default {
            api.get_search_result({search:'测试'}).then(res=>{
                console.log(res);
               //  self.$store.state.goods.goods_list=res.data.data;
-               self.goods_data=res.data.data
+                self.goods_data=res.data.data;
+                self.current_page=res.data.current_page;
+                self.last_page=res.data.last_page;
+                self.total=res.data.total;
+                self.from=res.data.from;
+                self.to=res.data.to;
+                self.per_page=res.data.per_page;
+                console.log("********************");
+               console.log(self.goods_data);
            })
         }else{
            // { relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 }
