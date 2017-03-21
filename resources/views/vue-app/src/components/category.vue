@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="template-content">
    <div class="bar bar-header">
-        <search v-model="search_input" :cancel-text="cancel_text" on-submit="submit_search" position="absolute" top="0"  class="list-search"></search>
+        <search v-model="search_input" :cancel-text="cancel_text" @on-change="input_change" @on-submit="submit_search" position="absolute" top="0"  class="list-search"></search>
         <tab active-color='#FB4F5B' v-model="index">
           <tab-item>分类</tab-item>
           <tab-item>场景</tab-item>
@@ -503,6 +503,9 @@ export default {
      this.submit_search();
   },
   methods:{
+    input_change:function(){
+      console.log("change");
+    },
     init_scene_list:function(){
       var self=this;
       api.get_cat_list().then(res=>{
