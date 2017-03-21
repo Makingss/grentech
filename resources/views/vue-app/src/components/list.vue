@@ -149,7 +149,7 @@ export default {
               //   console.log("********************");
               //  console.log(self.goods_data);
               // console.log(self);
-               self.$store.state.goods.goods_list=res.data.data;
+               self.$store.state.goods.goods_list=res.data;
                console.log("********************");
                console.log(self.goods_data);
                console.log(self.$store.state.goods);
