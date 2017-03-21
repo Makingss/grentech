@@ -70,6 +70,13 @@ export default {
   name: 'list',
   data: function() {
     return {
+     goods_data:[],
+     current_page: 0,
+     last_page: 0,
+     total: 0,
+     from:0,
+     to:0,
+     per_page:0,
       demo4Value: {
         pullupStatus: 'default'
       },
@@ -132,15 +139,20 @@ export default {
            api.get_search_result({search:'测试'}).then(res=>{
                console.log(res);
               //  self.$store.state.goods.goods_list=res.data.data;
-                self.goods_data=res.data.data;
-                self.current_page=res.data.current_page;
-                self.last_page=res.data.last_page;
-                self.total=res.data.total;
-                self.from=res.data.from;
-                self.to=res.data.to;
-                self.per_page=res.data.per_page;
-                console.log("********************");
+              //   self.goods_data=res.data.data;
+              //   self.current_page=res.data.current_page;
+              //   self.last_page=res.data.last_page;
+              //   self.total=res.data.total;
+              //   self.from=res.data.from;
+              //   self.to=res.data.to;
+              //   self.per_page=res.data.per_page;
+              //   console.log("********************");
+              //  console.log(self.goods_data);
+              // console.log(self);
+               self.$store.state.goods.goods_list=res.data.data;
+               console.log("********************");
                console.log(self.goods_data);
+               console.log(self.$store.state.goods);
            })
         }else{
            // { relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 }
