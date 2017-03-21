@@ -506,9 +506,17 @@ export default {
       for(var i=0;i<self.scene.length;i++){
         self.scene[i].img=self.scene_images[i].img;
       }
-    })
+    });
+    
+    //搜索测试
+     this.submit_search();
   },
   methods:{
+    submit_search:function(){
+      api.get_search_result({search:'测试'}),then(res=>{
+        console.log(res);
+      })
+    },
     clear_history:function(){
       console.log("清除历史记录");
     },
