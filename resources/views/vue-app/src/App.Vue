@@ -74,11 +74,13 @@ import api from './api'
           is_show: true,
           show_back: false
         },
-       
         navbar: {
           
         }
       }
+    },
+    computed:{
+      
     },
     methods: {
       fetch_data: function () {
