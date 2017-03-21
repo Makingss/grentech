@@ -171,6 +171,7 @@ import {mapState,mapActions} from 'vuex'
       this.goods_id = query.goods_id;
       this.item_index = query.item_index;
       this.init_goods_page(this.$store.state.goods);
+      this.get_parms_data();
     },
     components: {
       Swiper,
