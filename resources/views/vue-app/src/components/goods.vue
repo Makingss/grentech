@@ -42,10 +42,25 @@
           <swiper-item class="padding-10">
             <div v-html="goods_data_list.content"></div>
           </swiper-item>
-          <swiper-item class="padding-10">
-              <group title="电信号" v-for="(item,index) in goods_data_list.goods_ports">
-                <cell v-for="(item1,index1) in item" :title="index1" :value="item1" v-if="item1">
-
+          <swiper-item >
+              <group title="端口" v-for="(item,index) in goods_data_list.goods_ports">
+                <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="!!item1">
+                </cell>
+              </group>
+               <group title="电信号" v-for="(item,index) in goods_data_list.electrics">
+                <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="!!item1">
+                </cell>
+              </group>
+              <group title="组合" v-for="(item,index) in goods_data_list.assemblies">
+                <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="!!item1">
+                </cell>
+              </group>
+              <group title="标准" v-for="(item,index) in goods_data_list.standardfits">
+                <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="!!item1">
+                </cell>
+              </group>
+               <group title="机械性能">
+                <cell v-for="(item,index) in goods_data_list.mechanics" class="font-normal" :title="index" :value="item" v-if="!!item">
                 </cell>
               </group>
           </swiper-item>
