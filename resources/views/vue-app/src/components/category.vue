@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="template-content">
-    <div class="bar bar-header">
+   <div class="bar bar-header">
         <search v-model="search_input" position="absolute" top="0"  class="list-search"></search>
         <tab active-color='#FB4F5B' v-model="index">
           <tab-item>分类</tab-item>
@@ -563,7 +563,7 @@ export default {
 }
 .tree-box{
   align-items: flex-start;
-  height: 100%;
+  height: 100.1%;
   padding-bottom: 2rem;
   box-sizing: border-box;
   //overflow-y: hidden;

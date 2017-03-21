@@ -1,51 +1,53 @@
 <template lang="html">
   <div class="template-content">
-    <div class="search-icon text-center" @click="toggleType">
-      <span class="iconfont font-3x color-success">&#xe62a;</span>
-    </div>
-    <search v-model="search_input" position="static" top="0"  class="list-search border-box"></search>
-    <div class="content list">
+  <div class="content-box">
+      <div class="search-icon text-center" @click="toggleType">
+        <span class="iconfont font-3x color-success block" style="margin-top:8px;">&#xe62a;</span>
+      </div>
+      <search v-model="search_input" position="static" top="0"  class="list-search border-box"></search>
+      <div class="content list">
 
-      <scroller lock-x use-pullup height="100%"
-        ref="listScroll"
-        @on-pullup-loading="load"
-        :pullup-config="pullupConfig"
-      class="x-scroller-container">
-        <div class="">
-          <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
-            <flexbox-item :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
-             v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
-              <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block">
-                <div>
-                  <img :src="item.images?item.images.url:''" alt="">
-                </div>
-                <div class="padding-rl-10">
-                  <div class="item-title line-ellispse-2">
-                    {{item.name}}
+        <scroller lock-x use-pullup height="100%"
+          ref="listScroll"
+          @on-pullup-loading="load"
+          :pullup-config="pullupConfig"
+        class="x-scroller-container">
+          <div class="">
+            <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
+              <flexbox-item :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
+              v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
+                <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block">
+                  <div>
+                    <img :src="item.images?item.images.url:''" alt="">
                   </div>
-                  <div class="item-subtitle color-danger">
-                    ￥{{item.price}}
+                  <div class="padding-rl-10">
+                    <div class="item-title line-ellispse-2">
+                      {{item.name}}
+                    </div>
+                    <div class="item-subtitle color-danger">
+                      ￥{{item.price}}
+                    </div>
                   </div>
-                </div>
+                </router-link>
+              </flexbox-item>
+            </flexbox>
+            <!-- :to="item.url" -->
+            <card-list
+            v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
+              <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  class="block" slot="card-media">
+                <img :src="item.images?item.images.url:''" alt="">
               </router-link>
-            </flexbox-item>
-          </flexbox>
-          <!-- :to="item.url" -->
-          <card-list
-           v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
-            <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  class="block" slot="card-media">
-              <img :src="item.images?item.images.url:''" alt="">
-            </router-link>
-            <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  slot="card-title">
-              <div class="item-title">{{item.name}}</div>
-            </router-link>
-              <div class="item-subtitle color-danger" slot="card-subtitle">¥{{item.price}}</div>
-          </card-list>
-          <div class="spinner text-center" slot="pull-up" v-if="loading">
-            <spinner type="circles"></spinner>
+              <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  slot="card-title">
+                <div class="item-title">{{item.name}}</div>
+              </router-link>
+                <div class="item-subtitle color-danger" slot="card-subtitle">¥{{item.price}}</div>
+            </card-list>
+            <div class="spinner text-center" slot="pull-up" v-if="loading">
+              <spinner type="circles"></spinner>
+            </div>
           </div>
-        </div>
-      </scroller>
+        </scroller>
+      </div>
     </div>
   </div>
 </template>
@@ -99,7 +101,7 @@ export default {
     console.log("init111");
     console.log(this.$route.query);
     var query=this.$route.query;
-    //console.log($(".page-list .weui_search_bar:before"));
+    
     // { relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 }
     this.GETGOODSLIST({ relations: ["image_attach", "images"], parameters:query, per_page: 10 });
   },
@@ -143,8 +145,8 @@ export default {
 }
 
 .search-icon {
-  width: 38px;
-  height: 44px;
+  width: 2.2rem;
+  height: 2.2rem;
   position: absolute;
   top: 0;
   left: 0;

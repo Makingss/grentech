@@ -1,6 +1,8 @@
 <template lang="html">
   <div class="service content">
-      <collapse v-for="(item,index) in list" :conf="item"></collapse>
+  <div class="content-box">
+    <collapse v-for="(item,index) in list" :conf="item"></collapse>
+  </div>
   </div>
 </template>
 

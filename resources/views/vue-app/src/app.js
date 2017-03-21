@@ -10,6 +10,8 @@ import App from './App.vue'
 import * as util from './util/util.js'
 import  * as filters from './filter/filter.js'
 import * as config from './config/config.js'
+
+import api from './api'
 //引入 nprogress
 // import NProgress from 'nprogress'
 // import 'nprogress/nprogress.css'
@@ -21,7 +23,35 @@ import $ from 'n-zepto'
 // require('vue2-animate/dist/vue2-animate.min.css')
 let ad=config.app_config.ad;
 router.beforeEach((to, from, next) => {
-  //判断token
+  //判断 token
+  console.log(store.state.token);
+  //拉取 token
+  api.get_api_token({
+        grant_type:"password",
+        client_id:3,
+        scope:"",
+        username:"pengbd3@163.com",
+        password:"5230178",
+        client_secret:"okDZ28XNOjIE4n7gy07jnKxWizIOmQPKhQrWuQ6S"
+      }).then(res=>{
+       //vuex 状态控制
+        var access_token=res.data.access_token;
+        store.state.token.token=res.data;
+        //加入 localStorage存储静态数据 
+        window[config.app_config.storage].access_token=res.data.access_token;
+        window[config.app_config.storage].expires_in=res.data.expires_in;
+        window[config.app_config.storage].refresh_token=res.data.refresh_token;
+        window[config.app_config.storage].token_type=res.data.token_type;
+        //get 一用户信息测试 
+          // api.get_user_info({
+          //     headers:{
+          //       'Accept':'application/json',
+          //       'Authorization':"Bearer "+access_token,
+          //     }
+          // }).then(res=>{
+          //   console.log(res.data);
+          // })
+      });
   // NProgress.start();
   if(!from.name&&to.name=="home"){
     //init app

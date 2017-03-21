@@ -1,8 +1,10 @@
 <template>
     <div class="chart content">
-      <canvas id="chart"></canvas>
+    <div class="content-box">
+     <canvas id="chart"></canvas>
       <canvas id="circlechart"></canvas>
       <canvas id="rangechart"></canvas>
+    </div>
     </div>
 </template>
 <script>

@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="login font-normal content">
+  <div class="content-box">
     <div class="login-logo block-center link-img margin-tb-20">
       <img src="/static/slice/logo_300.png" alt="" class="margin-tb-20">
     </div>
@@ -23,6 +24,7 @@
         <router-link to="/home">商城主页</router-link>
       </div>
     </div>
+  </div>
   </div>
 </template>
 

@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="register font-normal content">
+  <div class="content-box">
     <div class="login-logo block-center link-img margin-tb-20">
       <img src="/static/slice/logo_300.png" alt="" class="margin-tb-20">
     </div>
@@ -27,6 +28,7 @@
       <div class="tab-50 pull-left">
         <router-link to="/login">已有账号</router-link>
       </div>
+    </div>
     </div>
   </div>
 </template>

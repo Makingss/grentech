@@ -82,6 +82,7 @@
 }
 
 #app > .content {
+  box-sizing: border-box;
   position: absolute;
   overflow: auto;
   top: 0;
@@ -89,13 +90,14 @@
   left: 0;
   right: 0;
   width: 100%;
-  height:101%;
+  height:100%;
   -webkit-overflow-scrolling: touch;
   // background-color: @light-gray;
 }
 
 #app > .vux-header ~ .content {
-  top: 2.3rem;
+  // top: 2.3rem;
+  padding-top:2.3rem;
 }
 
 #app>.weui_tabbar ~ .content {
@@ -289,4 +291,10 @@
   background-color: @green*0.9;
   color:@white;
 }
-
+#app .vux-popup-dialog{
+  z-index:9999;
+}
+#app .content-box{
+  //防止网页拖动
+  min-height: 100.5%;
+}
