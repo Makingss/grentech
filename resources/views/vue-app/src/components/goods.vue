@@ -43,28 +43,28 @@
             <div v-html="goods_data_list.content"></div>
           </swiper-item>
           <swiper-item >
-               <div @click="collapse(1)" class="collapse_title">端口</div>
-              <group v-for="(item,index) in goods_data_list.goods_ports" v-show="collapse1">
+               <div @click="collapse(1)" class="collapse_title color-danger padding-rl-10 padding-tb-6">端口</div>
+              <group class="margin-0" v-for="(item,index) in goods_data_list.goods_ports" v-show="collapse1">
                 <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="!!item1">
                 </cell>
               </group>
-               <div @click="collapse(2)" class="collapse_title">电信号</div>
-               <group v-for="(item,index) in goods_data_list.electrics" v-show="collapse2">
+               <div @click="collapse(2)" class="collapse_title color-danger padding-rl-10 padding-tb-6">电信号</div>
+               <group class="margin-0" v-for="(item,index) in goods_data_list.electrics" v-show="collapse2">
                 <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="!!item1">
                 </cell>
               </group>
-               <div @click="collapse(3)" class="collapse_title">组合</div>
-              <group v-for="(item,index) in goods_data_list.assemblies" v-show="collapse3">
+               <div @click="collapse(3)" class="collapse_title color-danger padding-rl-10 padding-tb-6">组合</div>
+              <group class="margin-0" v-for="(item,index) in goods_data_list.assemblies" v-show="collapse3">
                 <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="!!item1">
                 </cell>
               </group>
-               <div @click="collapse(4)" class="collapse_title">标准</div>
-              <group v-for="(item,index) in goods_data_list.standardfits" v-show="collapse4">
+               <div @click="collapse(4)" class="collapse_title color-danger padding-rl-10 padding-tb-6">标准</div>
+              <group class="margin-0" v-for="(item,index) in goods_data_list.standardfits" v-show="collapse4">
                 <cell v-for="(item1,index1) in item" class="font-normal" :title="index1" :value="item1" v-if="!!item1">
                 </cell>
               </group>
-                <div @click="collapse(5)" class="collapse_title">机械性能</div>
-               <group v-show="collapse5">
+                <div @click="collapse(5)" class="collapse_title color-danger padding-rl-10 padding-tb-6">机械性能</div>
+               <group class="margin-0" v-show="collapse5">
                 <cell v-for="(item,index) in goods_data_list.mechanics" class="font-normal" :title="index" :value="item" v-if="!!item">
                 </cell>
               </group>
