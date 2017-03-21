@@ -30,8 +30,8 @@
           </flexbox-item>
         </flexbox>
       </div>
-      <div class="margin-tb-10 padding-tb-6 padding-rl-10 bg-white" v-if="false">
-        <x-button mini plain type="warn">优惠</x-button>
+      <div class="margin-t-10 padding-tb-6 padding-rl-10 bg-white">
+        <x-button v-if="false" mini plain type="warn">优惠</x-button>
       </div>
       <div class="goods-desc" style="height:100%;padding-bottom:3rem;box-sizing:border-box">
         <tab v-model="index" active-color="#FB4F5B">
