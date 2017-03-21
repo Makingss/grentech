@@ -139,7 +139,7 @@ export default {
           query={search:self.search_input};
         }
         console.log(query);
-        query.relations=["images"];
+        query.relations=["images","image_attach"];
         if(query["search"]){
            api.get_search_result(query).then(res=>{
                console.log(res);
