@@ -2,7 +2,7 @@
   <div class="template-content">
   <div class="content-box">
       <div class="search-icon text-center" @click="toggleType">
-        <span class="iconfont font-3x color-success">&#xe62a;</span>
+        <span class="iconfont font-3x color-success block" style="margin-top:8px;">&#xe62a;</span>
       </div>
       <search v-model="search_input" position="static" top="0"  class="list-search border-box"></search>
       <div class="content list">
@@ -101,7 +101,7 @@ export default {
     console.log("init111");
     console.log(this.$route.query);
     var query=this.$route.query;
-    //console.log($(".page-list .weui_search_bar:before"));
+    
     // { relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 }
     this.GETGOODSLIST({ relations: ["image_attach", "images"], parameters:query, per_page: 10 });
   },
@@ -145,8 +145,8 @@ export default {
 }
 
 .search-icon {
-  width: 38px;
-  height: 44px;
+  width: 2.2rem;
+  height: 2.2rem;
   position: absolute;
   top: 0;
   left: 0;
