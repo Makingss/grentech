@@ -166,6 +166,7 @@ import {mapState,mapActions} from 'vuex'
           // // console.log(this.$store.state.goods["goods_list"].data);
           // console.log(this.temp_data);
         }
+       console.log("laqu ");
       },
       get_parms_data:function(){
         var self=this;
@@ -176,11 +177,12 @@ import {mapState,mapActions} from 'vuex'
       }
     },
     created: function () {
+      console.log("created");
       var query = this.$route.query;
       this.goods_id = query.goods_id;
       this.item_index = query.item_index;
       this.init_goods_page(this.$store.state.goods);
-      this.get_parms_data();
+       this.get_parms_data();
     },
     components: {
       Swiper,
