@@ -8,8 +8,7 @@
         <span slot="label">{{item.title}}</span>
       </tabbar-item>
     </tabbar>
-
-    <span @click="popup" class="switch">开关</span>
+    <span @click="popup" v-if="false" class="switch">开关</span>
     <transition name="slide" mode="out-in">
         <router-view transition="slide" keep-alive></router-view>
     </transition>

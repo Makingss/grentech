@@ -493,25 +493,25 @@ export default {
     }
   },
   created:function(){
-     var self=this;
+    
     this.choose_node=this.category_list[0];
-    //this.fetch_goods_data();
-    api.get_trans_params_table({relations: ['mechanics','goods_ports','assemblies','standardfits','electrics',]}).then((res)=>{
-      console.log(res);
-    });
-   
-    api.get_cat_list().then(res=>{
+    //this.fetch_goods_data()
+    //初始化场景类别
+    this.init_scene_list();
+    //搜索
+     this.submit_search();
+  },
+  methods:{
+    init_scene_list:function(){
+      var self=this;
+      api.get_cat_list().then(res=>{
       console.log(res);
       self.scene=res.data;
       for(var i=0;i<self.scene.length;i++){
         self.scene[i].img=self.scene_images[i].img;
       }
     });
-    
-    //搜索测试
-     this.submit_search();
-  },
-  methods:{
+    },
     submit_search:function(){
       api.get_search_result({search:'测试'}).then(res=>{
         console.log(res);
