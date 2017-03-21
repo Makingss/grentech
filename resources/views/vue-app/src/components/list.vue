@@ -136,7 +136,7 @@ export default {
        var query=this.$route.query;
         console.log(query);
         if(!!params&&params.search){
-          query={search:slef.search_input};
+          query={search:self.search_input};
         }
         console.log(query);
         query.relations=["images"];
