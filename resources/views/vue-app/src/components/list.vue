@@ -136,7 +136,8 @@ export default {
        var query=this.$route.query;
         console.log(query);
         if(query["search"]){
-           api.get_search_result({search:'测试'}).then(res=>{
+           query.relations=["images"];
+           api.get_search_result(query).then(res=>{
                console.log(res);
                 self.$store.state.goods.goods_list=res.data;
                 self.goods_data=res.data.data;
