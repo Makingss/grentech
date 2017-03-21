@@ -29,10 +29,11 @@ router.beforeEach((to, from, next) => {
   
      if(!!localStorage.access_token&&localStorage.access_token!='undefined'){
 
-    }else{
-          //弹出登陆框
-          store.state.popuplogin.popup_login=true;
+      }else{
+            //弹出登陆框
+          
       }
+      store.state.popuplogin.popup_login=true;
   }
   
   //拉取 token
