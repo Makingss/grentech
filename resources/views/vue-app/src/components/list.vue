@@ -126,11 +126,14 @@ export default {
       this.handler_query();
     },
     handler_query:function(){
+       var self=this;
        var query=this.$route.query;
         console.log(query);
         if(query["search"]){
            api.get_search_result({search:'测试'}).then(res=>{
                console.log(res);
+               self.$store.state.goods.goods_list.data=res.data;
+               console.log(self.$store.state);
            })
         }else{
            // { relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 }
