@@ -132,8 +132,8 @@ export default {
         if(query["search"]){
            api.get_search_result({search:'测试'}).then(res=>{
                console.log(res);
-               self.$store.state.goods.goods_list=res.data.data;
-               console.log(self.$store.state);
+              //  self.$store.state.goods.goods_list=res.data.data;
+               self.goods_data=res.data.data
            })
         }else{
            // { relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 }
