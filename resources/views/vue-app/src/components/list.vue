@@ -120,7 +120,7 @@ export default {
       console.log("搜索测试");
       var self=this;
       this.$router.push({name:'list',query:{search:self.search_input}});
-      this.handler_query();
+      this.handler_query({loading:true});
     },
     handler_query:function(params){
        var self=this;
@@ -133,7 +133,7 @@ export default {
         if(query["search"]){
            api.get_search_result(query).then(res=>{
                console.log(res);
-               self.commit_resdata(res.data);
+               self.commit_resdata(res.data,params);
            })
         }else{
           api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
@@ -144,10 +144,12 @@ export default {
           //this.GETGOODSLIST({ relations: ["image_attach", "images"], parameters:query, per_page: 10 });
         }
     },
-    commit_resdata:function(res_data){
+    commit_resdata:function(res_data,params){
                 var self=this;
+                console.log(params);
                 // self.$store.state.goods.goods_list=res_data;
-                self.goods_data=self.goods_data.concat(res_data.data);
+                // self.goods_data=self.goods_data.concat(res_data.data);
+                self.goods_data=res_data.data;
                 console.log(self.goods_data);
                 self.current_page=res_data.current_page;
                 self.last_page=res_data.last_page;
