@@ -13,8 +13,9 @@
 use Illuminate\Http\Request;
 
 Route::get('/user', function (Request $request) {
-	return $request->user();
+    return $request->user();
 })->middleware('auth:api');
+
 
 Route::post('/question/follower', 'GoodsController@getGoods')->middleware('auth:api');
 //function (Request $request) {
@@ -35,3 +36,11 @@ Route::post('/goods', 'GoodsController@getGoods')->middleware('api');
 //Route::post('/api/login',function(Request $request){
 //	dd($request->all());
 //})->middleware('api');
+
+##########################################################################
+Route::group(['namespace' => 'Apis'], function () {
+
+    Route::post('/register', 'RegisterController@register');
+    Route::get('/verify/{token}/secret/{secret}', 'RegisterController@registerVerify')->name('api.email.verify');
+
+});
