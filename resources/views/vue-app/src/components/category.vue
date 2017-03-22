@@ -566,6 +566,8 @@ export default {
 }
 .category-scene{
   padding-bottom: 2.5rem;
-  // overflow-y: scroll;
+}
+.node-title:active{
+  color:#FB4F5B;
 }
 </style>
