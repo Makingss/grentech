@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app.backup') @section('content')
 
 <h1>Article</h1>
 @foreach($article as $key => $values)

@@ -8,17 +8,17 @@
         <span slot="label">{{item.title}}</span>
       </tabbar-item>
     </tabbar>
-
-    <span @click="popup" class="switch">开关</span>
+    <span @click="popup" v-if="false" class="switch">开关</span>
     <transition name="slide" mode="out-in">
-        <router-view transition="slide" keep-alive></router-view>
+    <!-- keep-alive -->
+        <router-view transition="slide"></router-view>
     </transition>
 
-    <popup v-model="popup_login" height="100%">
-      <div class="popup-login-close">
+    <popup v-model="popup_login" class="popup-login" height="100%">
+      <div class="popup-login-close pull-left" v-if="intercept_closeable">
         <span @click="popup" class="iconfont padding-rl-10 padding-tb-6 color-danger inline-block">&#xe606;</span>
       </div>
-      <div class="login-logo block-center link-img">
+      <div class="login-logo block-center link-img" style="margin-top:30%">
         <img src="/static/slice/logo_300.png" alt="" class="margin-tb-20">
       </div>
       <div class="login-form">
@@ -46,6 +46,7 @@
 </template>
 <script>
 // <keep-alive> </keep-alive>
+import * as config from './config/config.js'
 import api from './api'
   import {
     XHeader,
@@ -67,6 +68,8 @@ import api from './api'
         search_input: '',
         phone: '',
         pwd: '',
+        
+        intercept_closeable:true,
         // title:'用户注册',
         header_conf: {
           title: '',
@@ -74,33 +77,12 @@ import api from './api'
           show_back: false
         },
         navbar: {
-          data: [{
-              iconfont: '&#xe6b8;',
-              title: '商城',
-              url: '/home'
-            }, {
-              iconfont: '&#xe616;',
-              title: '分类',
-              url: '/category'
-            },
-            {
-              iconfont: '&#xe694;',
-              title: '用户中心',
-              url: '/user'
-            },
-            // {
-            //   iconfont: '&#xe67b;',
-            //   title: '购物车',
-            //   url: '/cart'
-            // }, {
-            //   iconfont: '&#xe657;',
-            //   title: '活动广场',
-            //   url: '/activity'
-            // }
-          ],
-          conf: {}
+          
         }
       }
+    },
+    computed:{
+      
     },
     methods: {
       fetch_data: function () {
@@ -108,7 +90,24 @@ import api from './api'
         this.page_name = this.$route.name;
         this.xheader_handler(this.$route);
         //处理 navbar 的 active
+      },
+      init_app:function(){
+        var self=this;
 
+        //调用header处理
+        this.page_name = this.$route.name;
+        var header_conf = this.handler_xheader(this.$route.name);
+        this.header_conf = header_conf;
+
+        this.navbar=config.app_config.navbar;
+
+         //3s后启用登陆拦截
+        setTimeout(function(){
+            self.popup_login=self.$store.state.popuplogin.popup_login;
+            self.intercept_closeable=config.app_config.intercept_closeable;
+            console.log(self.popup_login);
+            console.log("登陆拦截");
+         },config.app_config.intercept_time)
       },
       popup: function () {
         this.popup_login = !this.popup_login;
@@ -119,11 +118,9 @@ import api from './api'
       }
     },
     created: function () {
-      //调用header处理
-      this.page_name = this.$route.name;
-      var header_conf = this.handler_xheader(this.$route.name);
-      this.header_conf = header_conf;
-
+      this.init_app();
+      // console.log("////////////");
+      // console.log(config.app_config.navbar);
       //拉取 token 测试
       // api.get_api_token({
       //   grant_type:"password",
@@ -145,8 +142,6 @@ import api from './api'
       //       console.log(res.data);
       //     })
       // });
-
-      
     },
     watch: {
       $route: 'fetch_data'
@@ -194,5 +189,5 @@ import api from './api'
   #app .vux-popup-dialog {
     background-color: #fff;
   }
-
+  
 </style>

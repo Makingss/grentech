@@ -4,9 +4,8 @@
       <div class="search-icon text-center" @click="toggleType">
         <span class="iconfont font-3x color-success block" style="margin-top:8px;">&#xe62a;</span>
       </div>
-      <search v-model="search_input" position="static" top="0"  class="list-search border-box"></search>
+      <search v-model="search_input" position="static" top="0" @on-submit="submit_search"  class="list-search border-box"></search>
       <div class="content list">
-
         <scroller lock-x use-pullup height="100%"
           ref="listScroll"
           @on-pullup-loading="load"
@@ -53,10 +52,8 @@
 </template>
   
 <script>
-import {
-  mapState,
-  mapActions
-} from 'vuex'
+
+import api from '../api'
 import CardList from './card-list'
 import {
   Flexbox,
@@ -70,6 +67,13 @@ export default {
   name: 'list',
   data: function() {
     return {
+     goods_data:[],
+     current_page: 0,
+     last_page: 0,
+     total: 0,
+     from:0,
+     to:0,
+     per_page:0,
       demo4Value: {
         pullupStatus: 'default'
       },
@@ -95,27 +99,15 @@ export default {
   watch:{
     '$route':function(to,from){
       console.log("切换");
+      this.handler_query();
     }
   },
   created: function() {
-    console.log("init111");
-    console.log(this.$route.query);
-    var query=this.$route.query;
-    
-    // { relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 }
-    this.GETGOODSLIST({ relations: ["image_attach", "images"], parameters:query, per_page: 10 });
+    this.handler_query();
   },
-  computed: mapState({
-    goods_data: state => state.goods.goods_list.data,
-    current_page: state => state.goods.goods_list.current_page,
-    last_page: state => state.goods.goods_list.last_page,
-    total: state => state.goods.goods_list.total,
-    from: state => state.goods.goods_list.from,
-    to: state => state.goods.goods_list.to,
-    per_page: state => state.goods.goods_list.per_page
-  }),
+  
   methods: {
-    ...mapActions(['GETGOODSLIST']),
+    // ...mapActions(['GETGOODSLIST']),
     toggleType: function() {
       //console.log("切换");
       this.type = this.type == 'medium' ? 'large' : 'medium';
@@ -123,6 +115,49 @@ export default {
     load: function() {
       console.log("上拉加载");
       this.loading=true;
+      this.handler_query();
+    },
+    submit_search:function(){
+      console.log("搜索测试");
+      var self=this;
+      this.$router.push({name:'list',query:{search:self.search_input}});
+      this.handler_query({loading:true});
+    },
+    handler_query:function(params){
+       var self=this;
+       var query=this.$route.query;
+        if(!!params&&params.search){
+          query={search:self.search_input};
+        }
+        console.log(query);
+        query.relations=["images","image_attach"];
+        if(query["search"]){
+           api.get_search_result(query).then(res=>{
+               console.log(res);
+               self.commit_resdata(res.data,params);
+           })
+        }else{
+          api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
+                console.log(res);
+               self.commit_resdata(res.data);
+           })
+           // { relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 }
+          //this.GETGOODSLIST({ relations: ["image_attach", "images"], parameters:query, per_page: 10 });
+        }
+    },
+    commit_resdata:function(res_data,params){
+                var self=this;
+                console.log(params);
+                // self.$store.state.goods.goods_list=res_data;
+                // self.goods_data=self.goods_data.concat(res_data.data);
+                self.goods_data=res_data.data;
+                console.log(self.goods_data);
+                self.current_page=res_data.current_page;
+                self.last_page=res_data.last_page;
+                self.total=res_data.total;
+                self.from=res_data.from;
+                self.to=res_data.to;
+                self.per_page=res_data.per_page;
     }
   }
 

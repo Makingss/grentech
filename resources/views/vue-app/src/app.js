@@ -23,8 +23,19 @@ import $ from 'n-zepto'
 // require('vue2-animate/dist/vue2-animate.min.css')
 let ad=config.app_config.ad;
 router.beforeEach((to, from, next) => {
-  //判断 token
-  console.log(store.state.token);
+  console.log("路由切换");
+  //判断 token---登陆拦截
+  if(config.app_config.intercept){
+  
+     if(!!localStorage.access_token&&localStorage.access_token!='undefined'){
+
+      }else{
+            //弹出登陆框
+          
+      }
+      store.state.popuplogin.popup_login=true;
+  }
+  
   //拉取 token
   api.get_api_token({
         grant_type:"password",

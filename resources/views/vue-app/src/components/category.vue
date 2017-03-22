@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="template-content">
    <div class="bar bar-header">
-        <search v-model="search_input" position="absolute" top="0"  class="list-search"></search>
+        <search v-model="search_input" :cancel-text="cancel_text" @on-submit="submit_search" position="absolute" top="0"  class="list-search"></search>
         <tab active-color='#FB4F5B' v-model="index">
           <tab-item>分类</tab-item>
           <tab-item>场景</tab-item>
@@ -12,7 +12,7 @@
       <div class="tab-item-content" v-if="index==0">
         <flexbox class="tree-box" wrap="nowrap" :gutter="0">
           <flexbox-item :span="3" class="tree-box-left">
-            <div class="padding-tb-6 padding-rl-10" :class="{'border-1px-b':index==(category_list.length-1),'node-active':index==node_index}" v-for="(item,index) in category_list" @click="handle_folder(index)">
+            <div class="padding-tb-6 padding-rl-10" :class="{'node-active':index==node_index}" v-for="(item,index) in category_list" @click="handle_folder(index)">
               {{item.name}}
             </div>
           </flexbox-item>
@@ -28,13 +28,13 @@
                 </x-button>
               </div>
             </div>
-            <div class="node-box" v-if="node_index!=0&&child.children.length" v-for="child in choose_node.children">
-              <div class="node-title border-1px-b padding-b-10 padding-tb-4">
-                {{child.name}}
+            <div class="node-box" v-if="node_index!=0" v-for="child in choose_node">
+              <div class="node-title border-1px-b padding-b-10 padding-tb-10 color-primary">
+                {{child.cat_name}}
               </div>
-              <div class="node-content clear-float">
+              <div class="node-content clear-float" v-if="false">
                 <div class="margin-tb-4 margin-rl-6 pull-left" v-for="_item in child.children">
-                  <x-button mini>{{_item.name}}</x-button>
+                  <x-button mini>{{_item.cat_name}}</x-button>
                 </div>
               </div>
             </div>
@@ -43,10 +43,9 @@
       </div>
       <div class="tab-item-content" v-if="index==1">
         <ul class="category-scene">
-          <li v-for="(item,index) in scene">
-          <router-link :to="{name:'list',query:{cat_id:item.cat_id}}" class="link-img">
+          <li v-for="(item,index) in category_list">
+          <router-link :to="{name:'list',query:{type_id:item.type_id}}" class="link-img">
             <img :src="item.img" alt="">
-
           </router-link>
           </li>
         </ul>
@@ -111,318 +110,218 @@ export default {
       search_input:'',
       index:0,
       node_index:0,
-      choose_node:{},
-      category_list:[
-        {
+      cancel_text:'取消',
+      choose_node:{
+        name:'',
+      },
+      history_data:{
           name:"搜索记录",
           title:'history',
           kwds:['室内天线','手机','无线基站','室外设备','耗材',"50-100",'天线','手机','基站','无线设备','耗材'],
           children:[]
         },
-        {
-          name:"子类1",
-          children:[
-            {
-              name:"子类1-1",
-              children:[
-                {
-                  name:'子类1-1-1',
-                  children:[]
-                },
-                {
-                  name:'子类1-1-2',
-                  children:[]
-                },
-                {
-                  name:'子类1-1-3',
-                  children:[]
-                }
-              ]
-            },{
-              name:"子类1-2",
-              children:[]
-            },{
-              name:"子类1-3",
-              children:[]
-            },{
-              name:"子类1-4",
-              children:[]
-            },{
-              name:"子类1-5",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类2",
-          children:[
-            {
-              name:"子类2-1",
-              children:[]
-            },{
-              name:"子类2-2",
-              children:[]
-            },{
-              name:"子类2-3",
-              children:[]
-            },{
-              name:"子类2-4",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类3",
-          children:[
-            {
-              name:"子类3-1",
-              children:[]
-            },{
-              name:"子类3-2",
-              children:[]
-            },{
-              name:"子类3-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类4",
-          children:[
-            {
-              name:"子类4-1",
-              children:[]
-            },{
-              name:"子类4-2",
-              children:[]
-            },{
-              name:"子类4-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类5",
-          children:[
-            {
-              name:"子类5-1",
-              children:[]
-            },{
-              name:"子类5-2",
-              children:[]
-            },{
-              name:"子类5-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类6",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类6",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类7",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类8",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类9",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类10",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类11",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类11",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类11",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类11",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类11",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类11",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类11",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类11",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类11",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },
+      category_list:[
+       
       ],
+      // category_list:[
+      //   {
+      //     name:"搜索记录",
+      //     title:'history',
+      //     kwds:['室内天线','手机','无线基站','室外设备','耗材',"50-100",'天线','手机','基站','无线设备','耗材'],
+      //     children:[]
+      //   },
+      //   {
+      //     name:"子类1",
+      //     children:[
+      //       {
+      //         name:"子类1-1",
+      //         children:[
+      //           {
+      //             name:'子类1-1-1',
+      //             children:[]
+      //           },
+      //           {
+      //             name:'子类1-1-2',
+      //             children:[]
+      //           },
+      //           {
+      //             name:'子类1-1-3',
+      //             children:[]
+      //           }
+      //         ]
+      //       },{
+      //         name:"子类1-2",
+      //         children:[]
+      //       },{
+      //         name:"子类1-3",
+      //         children:[]
+      //       },{
+      //         name:"子类1-4",
+      //         children:[]
+      //       },{
+      //         name:"子类1-5",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类2",
+      //     children:[
+      //       {
+      //         name:"子类2-1",
+      //         children:[]
+      //       },{
+      //         name:"子类2-2",
+      //         children:[]
+      //       },{
+      //         name:"子类2-3",
+      //         children:[]
+      //       },{
+      //         name:"子类2-4",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类3",
+      //     children:[
+      //       {
+      //         name:"子类3-1",
+      //         children:[]
+      //       },{
+      //         name:"子类3-2",
+      //         children:[]
+      //       },{
+      //         name:"子类3-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类4",
+      //     children:[
+      //       {
+      //         name:"子类4-1",
+      //         children:[]
+      //       },{
+      //         name:"子类4-2",
+      //         children:[]
+      //       },{
+      //         name:"子类4-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类5",
+      //     children:[
+      //       {
+      //         name:"子类5-1",
+      //         children:[]
+      //       },{
+      //         name:"子类5-2",
+      //         children:[]
+      //       },{
+      //         name:"子类5-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类6",
+      //     children:[
+      //       {
+      //         name:"子类6-1",
+      //         children:[]
+      //       },{
+      //         name:"子类6-2",
+      //         children:[]
+      //       },{
+      //         name:"子类6-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类6",
+      //     children:[
+      //       {
+      //         name:"子类6-1",
+      //         children:[]
+      //       },{
+      //         name:"子类6-2",
+      //         children:[]
+      //       },{
+      //         name:"子类6-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类7",
+      //     children:[
+      //       {
+      //         name:"子类6-1",
+      //         children:[]
+      //       },{
+      //         name:"子类6-2",
+      //         children:[]
+      //       },{
+      //         name:"子类6-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类8",
+      //     children:[
+      //       {
+      //         name:"子类6-1",
+      //         children:[]
+      //       },{
+      //         name:"子类6-2",
+      //         children:[]
+      //       },{
+      //         name:"子类6-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类9",
+      //     children:[
+      //       {
+      //         name:"子类6-1",
+      //         children:[]
+      //       },{
+      //         name:"子类6-2",
+      //         children:[]
+      //       },{
+      //         name:"子类6-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类10",
+      //     children:[
+      //       {
+      //         name:"子类6-1",
+      //         children:[]
+      //       },{
+      //         name:"子类6-2",
+      //         children:[]
+      //       },{
+      //         name:"子类6-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类11",
+      //     children:[
+      //       {
+      //         name:"子类6-1",
+      //         children:[]
+      //       },{
+      //         name:"子类6-2",
+      //         children:[]
+      //       },{
+      //         name:"子类6-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   }
+      // ],
       range_min:0,
       range_max:100,
       area1:1,
@@ -493,44 +392,67 @@ export default {
     }
   },
   created:function(){
-     var self=this;
-    this.choose_node=this.category_list[0];
-    //this.fetch_goods_data();
-    api.get_trans_params_table({relations: ['mechanics','goods_ports','assemblies','standardfits','electrics',]}).then((res)=>{
-      console.log(res);
-    });
-   
-    api.get_cat_list().then(res=>{
-      console.log(res);
-      self.scene=res.data;
-      for(var i=0;i<self.scene.length;i++){
-        self.scene[i].img=self.scene_images[i].img;
-      }
-    })
+    //初始化场景类别
+    // this.init_scene_list();
+    this.init_goods_category();
   },
   methods:{
+    input_change:function(){
+      console.log("change");
+    },
+    init_scene_list:function(){
+      var self=this;
+      api.get_cat_list().then(res=>{
+        console.log(res);
+        self.scene=res.data;
+        for(var i=0;i<self.scene.length;i++){
+          self.scene[i].img=self.scene_images[i].img;
+        }
+     });
+    },
+    init_goods_category:function(){
+      var self=this;
+      api.get_goods_type().then(res=>{
+        var category_data=res.data;
+        // category_data.children=category_data.goods_cats;
+        for(var i=0;i<category_data.length;i++){
+          category_data[i].children=category_data[i].goods_cats;
+          category_data[i].goods_cats=null;//主动释放
+          category_data[i].img=self.scene_images[i].img
+          // self.scene[i].img=self.scene_images[i].img;
+        }
+        console.log(self.scene);
+        category_data.unshift(self.history_data);
+        self.category_list=category_data;
+        self.choose_node=self.category_list[0];
+        console.log(self.category_list);
+      });
+    },
+    submit_search:function(){
+      var self=this;
+      self.$router.push({name:'list',query:{search:self.search_input}});
+      
+    },
     clear_history:function(){
       console.log("清除历史记录");
     },
-    fetch_goods_data:function(){
-      console.log(api);
-      api.getGoodsData().then((res)=>{
-        console.log(res);
-      })
-    },
+    // fetch_goods_data:function(){
+    //   console.log(api);
+    //   api.getGoodsData().then((res)=>{
+    //     console.log(res);
+    //   })
+    // },
     handle_folder:function(index){
       var self=this;
-      // console.log(index);
       var _children=this.category_list[index];
-      // console.log(_children.children.length);
       if(!!_children.children&&_children.children.length>0&&index!=0){
-        this.choose_node=_children;
+        this.choose_node=_children.children;
         this.node_index=index;
+        
       }else if(index==0){
         this.choose_node=this.category_list[0];
         this.node_index=0;
       }
-      // console.log(this.node_index);
     }
   },
   components:{
@@ -637,6 +559,8 @@ export default {
 }
 .category-scene{
   padding-bottom: 2.5rem;
-  // overflow-y: scroll;
+}
+.node-title:active{
+  color:#1ABC9C;
 }
 </style>

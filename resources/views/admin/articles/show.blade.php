@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app.backup') @section('content')
 
     <h1>{{$article->title}}</h1>
     <article>

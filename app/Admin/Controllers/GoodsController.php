@@ -132,14 +132,14 @@ class GoodsController extends Controller
 				return Goods_cat::find($cat_id)->cat_name;
 			});
 
-			$grid->actions(function ($actions) {
-				// 当前行的数据数组
-				//$actions->row;
-				// 获取当前行主键值
-				//$actions->getKey();
-				$url = url('/datatables', $actions->getKey());
-				$actions->prepend('<a href=' . $url . '>编辑货品 | ');
-			});
+//			$grid->actions(function ($actions) {
+			// 当前行的数据数组
+			//$actions->row;
+			// 获取当前行主键值
+			//$actions->getKey();
+//				$url = url('/datatables', $actions->getKey());
+//				$actions->prepend('<a href=' . $url . '>编辑货品 | ');
+//			});
 			/*
 			  $grid->created_at(trans('admin::lang.created_at'));
 			  $grid->updated_at(trans('admin::lang.updated_at'));

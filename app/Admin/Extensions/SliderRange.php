@@ -14,6 +14,7 @@ class SliderRange extends Field
 	}
 
 	protected $view = 'admin.form.slider';
+
 	protected static $css = [
 		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.css',
 		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.skinNice.css',
@@ -22,6 +23,7 @@ class SliderRange extends Field
 	protected static $js = [
 		'/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.min.js',
 	];
+
 
 	protected $options = [
 		'type' => 'single',
@@ -44,9 +46,7 @@ class SliderRange extends Field
 					if ($item == $columns->last()) {
 						$mechanics=Mechanic::where('goods_id',$model->getKey())->firstOrFail();
 						$param=$columns->last();
-//						dd($mechanics->$param);
 						$param_datas = $mechanics->$param;
-//						dd($param_datas);
 					}
 				}
 			}
@@ -54,10 +54,8 @@ class SliderRange extends Field
 			$this->options['from'] = (int)$datas->first();
 			$this->options['to'] = (int)$datas->last();
 
-
 			$option = json_encode($this->options);
-//			dd($option);
-			$this->script = "$('.{$this->getElementClass()}').ionRangeSlider($option)";
+			$this->script = "$('{$this->getElementClassSelector()}').ionRangeSlider($option)";
 
 			return parent::render();
 		}

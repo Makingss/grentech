@@ -5,9 +5,11 @@ namespace App\Admin\Models;
 use App\Admin\Controllers\ToolsbaseController;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Good extends Model
 {
+	use SearchableTrait;
 //    public $incrementing =false;
 	protected $table = 'goods';
 	protected $fillable = ['goods_id', 'jooge_goods_id', 'bn', 'name', 'type_id', 'cat_id', 'brand_id', 'marketable', 'store', 'fav',
@@ -25,6 +27,39 @@ class Good extends Model
 		'p_45', 'p_46', 'p_47', 'p_48', 'p_49', 'p_50'
 	];
 	protected $primaryKey = 'goods_id';
+
+	/**
+	 * @var array
+	 * Searchable
+	 */
+	protected $searchable = [
+		/**
+		 * Columns and their priority in search results.
+		 * Columns with higher values are more important.
+		 * Columns with equal values have equal importance.
+		 *
+		 * @var array
+		 */
+		'columns' => [
+			'goods.bn' => 10,
+			'goods.name' => 10,
+			'goods.content' => 2,
+		],
+		'joins' => [
+			'goods_keywords' => ['goods.goods_id', 'goods_keywords.goods_id'],
+			'goods_types' => ['goods.type_id', 'goods_types.type_id'],
+			'mechanics' => ['goods.goods_id', 'mechanics.goods_id'],
+			'goods_ports' => ['goods.goods_id', 'goods_ports.goods_id'],
+			'assemblies' => ['goods.goods_id', 'assemblies.goods_id'],
+			'standardfits' => ['goods.goods_id', 'standardfits.goods_id'],
+			'electrics' => ['goods.goods_id', 'electrics.goods_id'],
+			'brands' => ['goods.brand_id', 'brands.brand_id'],
+			'member_goods' => ['goods.goods_id', 'member_goods.goods_id'],
+//			'image_attach' => ['goods.goods_id' => 'image_attach.target_id'],
+			'image' => ['goods.image_default_id', 'image.image_id'],
+			'goods_cats' => ['goods.cat_id', 'goods_cats.cat_id']
+		],
+	];
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
