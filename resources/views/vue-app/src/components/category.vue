@@ -561,6 +561,6 @@ export default {
   padding-bottom: 2.5rem;
 }
 .node-title:active{
-  color:#FB4F5B;
+  color:#1ABC9C;
 }
 </style>
