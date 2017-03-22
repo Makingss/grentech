@@ -147,7 +147,8 @@ export default {
     commit_resdata:function(res_data){
                 var self=this;
                 // self.$store.state.goods.goods_list=res_data;
-                self.goods_data.concat(res_data.data);
+                self.goods_data=self.goods_data.concat(res_data.data);
+                console.log(self.goods_data);
                 self.current_page=res_data.current_page;
                 self.last_page=res_data.last_page;
                 self.total=res_data.total;
