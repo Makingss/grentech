@@ -392,10 +392,8 @@ export default {
     }
   },
   created:function(){
-   
-    //this.fetch_goods_data()
     //初始化场景类别
-    this.init_scene_list();
+    // this.init_scene_list();
     this.init_goods_category();
   },
   methods:{
@@ -415,13 +413,12 @@ export default {
     init_goods_category:function(){
       var self=this;
       api.get_goods_type().then(res=>{
-        console.log("获取 type 列表...........");
-        console.log(res.data);
         var category_data=res.data;
         // category_data.children=category_data.goods_cats;
         for(var i=0;i<category_data.length;i++){
           category_data[i].children=category_data[i].goods_cats;
           category_data[i].goods_cats=null;//主动释放
+          self.scene[i].img=self.scene_images[i].img;
         }
         category_data.unshift(self.history_data);
         self.category_list=category_data;
@@ -430,31 +427,25 @@ export default {
       });
     },
     submit_search:function(){
-      console.log("搜索测试");
       var self=this;
-      console.log(self.$router);
       self.$router.push({name:'list',query:{search:self.search_input}});
       
     },
     clear_history:function(){
       console.log("清除历史记录");
     },
-    fetch_goods_data:function(){
-      console.log(api);
-      api.getGoodsData().then((res)=>{
-        console.log(res);
-      })
-    },
+    // fetch_goods_data:function(){
+    //   console.log(api);
+    //   api.getGoodsData().then((res)=>{
+    //     console.log(res);
+    //   })
+    // },
     handle_folder:function(index){
       var self=this;
-      console.log(this.category_list);
       var _children=this.category_list[index];
-      console.log(_children);
-      console.log(index);
       if(!!_children.children&&_children.children.length>0&&index!=0){
         this.choose_node=_children.children;
         this.node_index=index;
-        console.log(this.choose_node);
         
       }else if(index==0){
         this.choose_node=this.category_list[0];
