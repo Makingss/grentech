@@ -43,8 +43,8 @@
       </div>
       <div class="tab-item-content" v-if="index==1">
         <ul class="category-scene">
-          <li v-for="(item,index) in scene">
-          <router-link :to="{name:'list',query:{cat_id:item.cat_id}}" class="link-img">
+          <li v-for="(item,index) in category_data">
+          <router-link :to="{name:'list',query:{type_id:item.type_id}}" class="link-img">
             <img :src="item.img" alt="">
           </router-link>
           </li>
@@ -418,8 +418,10 @@ export default {
         for(var i=0;i<category_data.length;i++){
           category_data[i].children=category_data[i].goods_cats;
           category_data[i].goods_cats=null;//主动释放
-          self.scene[i].img=self.scene_images[i].img;
+          category_data[i].img=self.scene_images[i].img
+          // self.scene[i].img=self.scene_images[i].img;
         }
+        console.log(self.scene);
         category_data.unshift(self.history_data);
         self.category_list=category_data;
         self.choose_node=self.category_list[0];
