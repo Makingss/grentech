@@ -10,7 +10,8 @@
     </tabbar>
     <span @click="popup" v-if="false" class="switch">开关</span>
     <transition name="slide" mode="out-in">
-        <router-view transition="slide" keep-alive></router-view>
+    <!-- keep-alive -->
+        <router-view transition="slide"></router-view>
     </transition>
 
     <popup v-model="popup_login" class="popup-login" height="100%">
@@ -67,6 +68,7 @@ import api from './api'
         search_input: '',
         phone: '',
         pwd: '',
+        
         intercept_closeable:true,
         // title:'用户注册',
         header_conf: {
