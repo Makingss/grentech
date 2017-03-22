@@ -417,9 +417,11 @@ export default {
         console.log("获取 type 列表...........");
         console.log(res.data);
         var category_data=res.data;
-        category_data.children=category_data.goods_cats;
-        category_data.goods_cats=null;
-        // self.category_list.push(self.history_data).push(res.data);
+        // category_data.children=category_data.goods_cats;
+        for(var i=0;i<category_data.length;i++){
+          category_data[i].children=category_data[i].goods_cats;
+          category_data[i].goods_cats=null;
+        }
         category_data.unshift(self.history_data);
         console.log(category_data);
       });
