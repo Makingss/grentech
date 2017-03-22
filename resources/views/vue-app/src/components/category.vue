@@ -43,7 +43,7 @@
       </div>
       <div class="tab-item-content" v-if="index==1">
         <ul class="category-scene">
-          <li v-for="(item,index) in category_data">
+          <li v-for="(item,index) in category_list">
           <router-link :to="{name:'list',query:{type_id:item.type_id}}" class="link-img">
             <img :src="item.img" alt="">
           </router-link>
