@@ -18,7 +18,7 @@
           </flexbox-item>
           <flexbox-item :span="9" class="tree-box-right padding-l-6 border-box">
             <div class="node-box" v-if="node_index==0">
-              <div class="node-title padding-tb-6 color-gray border-1px-b" v-if="false">
+              <div class="node-title padding-tb-6 color-gray border-1px-b">
                 {{choose_node.name}}
                 <div class="pull-right color-danger" @click="clear_history">清除记录 <icon type="cancel"></icon></div>
               </div>
@@ -28,7 +28,7 @@
                 </x-button>
               </div>
             </div>
-            <div class="node-box" v-if="node_index!=0&&child.children.length&&false" v-for="child in choose_node.children">
+            <div class="node-box" v-if="node_index!=0&&child.children.length" v-for="child in choose_node.children">
               <div class="node-title border-1px-b padding-b-10 padding-tb-4">
                 {{child.cat_name}}
               </div>
