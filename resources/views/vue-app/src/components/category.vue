@@ -13,13 +13,13 @@
         <flexbox class="tree-box" wrap="nowrap" :gutter="0">
           <flexbox-item :span="3" class="tree-box-left">
             <div class="padding-tb-6 padding-rl-10" :class="{'border-1px-b':index==(category_list.length-1),'node-active':index==node_index}" v-for="(item,index) in category_list" @click="handle_folder(index)">
-              {{item.name}}
+              {{item.name||item.cat_name}}
             </div>
           </flexbox-item>
           <flexbox-item :span="9" class="tree-box-right padding-l-6 border-box">
             <div class="node-box" v-if="node_index==0">
               <div class="node-title padding-tb-6 color-gray border-1px-b">
-                {{choose_node.name}}
+                {{choose_node.name||choose_node.cat_name}}
                 <div class="pull-right color-danger" @click="clear_history">清除记录 <icon type="cancel"></icon></div>
               </div>
               <div class="node-content" v-for="child in choose_node.kwds">
@@ -30,11 +30,11 @@
             </div>
             <div class="node-box" v-if="node_index!=0&&child.children.length" v-for="child in choose_node.children">
               <div class="node-title border-1px-b padding-b-10 padding-tb-4">
-                {{child.name}}
+                {{child.name||child.cat_name}}
               </div>
               <div class="node-content clear-float">
                 <div class="margin-tb-4 margin-rl-6 pull-left" v-for="_item in child.children">
-                  <x-button mini>{{_item.name}}</x-button>
+                  <x-button mini>{{_item.name||_item.cat_name}}</x-button>
                 </div>
               </div>
             </div>
@@ -46,7 +46,6 @@
           <li v-for="(item,index) in scene">
           <router-link :to="{name:'list',query:{cat_id:item.cat_id}}" class="link-img">
             <img :src="item.img" alt="">
-
           </router-link>
           </li>
         </ul>
@@ -424,7 +423,7 @@ export default {
         }
         category_data.unshift(self.history_data);
         self.category_list=category_data;
-        console.log(category_data);
+        console.log(self.category_list);
       });
     },
     submit_search:function(){
