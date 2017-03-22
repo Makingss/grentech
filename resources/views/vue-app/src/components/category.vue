@@ -29,7 +29,7 @@
               </div>
             </div>
             <div class="node-box" v-if="node_index!=0" v-for="child in choose_node">
-              <div class="node-title border-1px-b padding-b-10 padding-tb-4">
+              <div class="node-title border-1px-b padding-b-10 padding-tb-10">
                 {{child.cat_name}}
               </div>
               <div class="node-content clear-float" v-if="false">
