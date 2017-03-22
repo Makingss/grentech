@@ -126,10 +126,10 @@ class GoodsController extends Controller
 			];
 			$grid->marketable($getGoodColumns['marketable'])->switch($states);
 			$grid->type_id($getGoodColumns['type_id'])->value(function ($type_id) {
-				return Goods_type::findOrFail($type_id)->name;
+				return Goods_type::find($type_id)->name;
 			});
 			$grid->cat_id($getGoodColumns['cat_id'])->value(function ($cat_id) {
-				return Goods_cat::findOrFail($cat_id)->cat_name;
+				return Goods_cat::find($cat_id)->cat_name;
 			});
 
 //			$grid->actions(function ($actions) {
