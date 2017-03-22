@@ -62,6 +62,7 @@ export default {
   methods:{
     submit_register:function(){
       console.log("提交注册");
+      var register_data=this.register_data;
       if(!!register_data.email&&!!register_data.name&&!!register_data.password&&!!register_data.password_confirmation&&register_data.password==register_data.password_confirmation){
         api.register_user(register_data).then(res=>{
           console.log(res);
