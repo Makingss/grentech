@@ -114,11 +114,13 @@ export default {
     load: function() {
       console.log("上拉加载");
       this.loading=true;
+      this.handler_query();
     },
     submit_search:function(){
       console.log("搜索测试");
       var self=this;
-      this.handler_query({search:true});
+      this.$router.push({name:'list',query:{search:self.search_input}});
+      // this.handler_query({search:true});
     },
     handler_query:function(params){
        var self=this;
