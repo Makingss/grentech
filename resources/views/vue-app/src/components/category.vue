@@ -451,8 +451,8 @@ export default {
       var _children=this.category_list[index];
       console.log(_children);
       console.log(index);
-      if(!!_children&&_children.length>0&&index!=0){
-        this.choose_node=_children;
+      if(!!_children.children&&_children.children.length>0&&index!=0){
+        this.choose_node=_children.children;
         this.node_index=index;
         console.log(this.choose_node);
         
