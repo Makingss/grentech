@@ -28,11 +28,11 @@
                 </x-button>
               </div>
             </div>
-            <div class="node-box" v-if="node_index!=0&&child.children.length" v-for="child in choose_node.children">
+            <div class="node-box" v-if="node_index!=0" v-for="child in choose_node">
               <div class="node-title border-1px-b padding-b-10 padding-tb-4">
                 {{child.cat_name}}
               </div>
-              <div class="node-content clear-float">
+              <div class="node-content clear-float" v-if="false">
                 <div class="margin-tb-4 margin-rl-6 pull-left" v-for="_item in child.children">
                   <x-button mini>{{_item.cat_name}}</x-button>
                 </div>
@@ -453,6 +453,7 @@ export default {
       if(!!_children&&_children.length>0&&index!=0){
         this.choose_node=_children;
         this.node_index=index;
+        console.log(this.choose_node);
       }else if(index==0){
         this.choose_node=this.category_list[0];
         this.node_index=0;
