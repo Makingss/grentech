@@ -94,15 +94,15 @@ export default {
         {
           url:'javascript:',
           img:'https://static.vux.li/demo/1.jpg',
-          title:'送你一朵小红花1'
+          title:'测试轮播标题1'
         },{
           url:'javascript:',
           img:'https://static.vux.li/demo/2.jpg',
-          title:'送你一朵小红花2'
+          title:'测试轮播标题2'
         },{
           url:'javascript:',
           img:'https://static.vux.li/demo/3.jpg',
-          title:'送你一朵小红花3'
+          title:'测试轮播标题3'
         },
       ],
       uuid:'',
@@ -196,50 +196,50 @@ export default {
         data:[
           {
             url:'#',
-            name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-            img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
+            name:'测试商品列表',
+            img:'/static/grentech/201611221355144218.jpg',
             title:'',
             price:'276.00',
             mktprice:'1380.00'
           },
           {
             url:'#',
-            name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-            img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
+            name:'测试商品列表',
+            img:'/static/grentech/201611051243571562.jpg',
             title:'',
             price:'276.00',
             mktprice:'1380.00'
           },
           {
             url:'#',
-            name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-            img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
+            name:'测试商品列表',
+            img:'/static/grentech/201611221355144218.jpg',
             title:'',
-            name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
+            name:'测试商品列表',
             price:'276.00',
             mktprice:'1380.00'
           },
           {
             url:'#',
-            img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
+            img:'/static/grentech/201611231413171562.jpg',
             title:'',
-            name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
+            name:'测试商品列表',
             price:'276.00',
             mktprice:'1380.00'
           },
           {
             url:'#',
-            img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
+            img:'/static/grentech/201611071754125468.jpg',
             title:'',
-            name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
+            name:'测试商品列表',
             price:'276.00',
             mktprice:'1380.00'
           },
           {
             url:'#',
-            img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
+            img:'/static/grentech/201611071754125468.jpg',
             title:'',
-            name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
+            name:'测试商品列表',
             price:'276.00',
             mktprice:'1380.00'
           }
@@ -291,20 +291,20 @@ export default {
       setTimeout(()=>{
         let i=this.length;
         this.scroller_data.data.push({
-          url:'#',
-          name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-          img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
-          title:'',
-          price:'2xxxxx0',
-          mktprice:'1380.00'
-        },{
-          url:'#',
-          name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
-          img:'http://mall.yingerfashion.com/public/images/cd/6a/4b/1a799542c9d0a4919d14dba60da2e2246d799cbe.jpg',
-          title:'',
-          price:'2xxxxx0',
-          mktprice:'1380.00'
-        })
+            url:'#',
+            img:'/static/grentech/201611071754125468.jpg',
+            title:'',
+            name:'测试商品列表',
+            price:'276.00',
+            mktprice:'1380.00'
+          },{
+            url:'#',
+            img:'/static/grentech/201611071754125468.jpg',
+            title:'',
+            name:'测试商品列表',
+            price:'276.00',
+            mktprice:'1380.00'
+          })
         let scrollTop=scroller[0].scrollHeight-scroller.height()-20;
         scroller.scrollTop(scrollTop);
         self.loading=false;
