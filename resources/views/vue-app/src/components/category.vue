@@ -423,6 +423,7 @@ export default {
           category_data[i].goods_cats=null;
         }
         category_data.unshift(self.history_data);
+        category_list=category_data;
         console.log(category_data);
       });
     },
