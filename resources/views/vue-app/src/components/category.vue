@@ -111,7 +111,9 @@ export default {
       index:0,
       node_index:0,
       cancel_text:'取消',
-      choose_node:{},
+      choose_node:{
+        name:'',
+      },
       history_data:{
           name:"搜索记录",
           title:'history',
