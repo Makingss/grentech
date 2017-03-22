@@ -52,10 +52,7 @@
 </template>
   
 <script>
-import {
-  mapState,
-  mapActions
-} from 'vuex'
+
 import api from '../api'
 import CardList from './card-list'
 import {
@@ -107,17 +104,9 @@ export default {
   created: function() {
     this.handler_query();
   },
-  computed: mapState({
-    goods_data: state => state.goods.goods_list.data,
-    current_page: state => state.goods.goods_list.current_page,
-    last_page: state => state.goods.goods_list.last_page,
-    total: state => state.goods.goods_list.total,
-    from: state => state.goods.goods_list.from,
-    to: state => state.goods.goods_list.to,
-    per_page: state => state.goods.goods_list.per_page
-  }),
+  
   methods: {
-    ...mapActions(['GETGOODSLIST']),
+    // ...mapActions(['GETGOODSLIST']),
     toggleType: function() {
       //console.log("切换");
       this.type = this.type == 'medium' ? 'large' : 'medium';
@@ -154,7 +143,8 @@ export default {
         }
     },
     commit_resdata:function(res_data){
-                self.$store.state.goods.goods_list=res_data;
+                var self=this;
+                // self.$store.state.goods.goods_list=res_data;
                 self.goods_data=res_data.data;
                 self.current_page=res_data.current_page;
                 self.last_page=res_data.last_page;
