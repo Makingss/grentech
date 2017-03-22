@@ -99,6 +99,7 @@ export default {
   watch:{
     '$route':function(to,from){
       console.log("切换");
+      this.handler_query();
     }
   },
   created: function() {
