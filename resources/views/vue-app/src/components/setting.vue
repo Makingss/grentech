@@ -3,7 +3,7 @@
   <div class="content-box">
    <group>
       <cell :title="user_data.avatar.title" class="font-normal">
-        <img :src="user_data.avatar.value" alt="" style="width:2rem;height:2rem;">
+        <img :src="user_data.avatar.value" class="circle" alt="" style="width:2rem;height:2rem;">
       </cell>
       <cell class="font-normal" :title="item.title" :is-link="item.is_link" :value="item.value" v-for="(item,index) in user_data" link="/home" v-if="index!='avatar'"></cell>
     </group>

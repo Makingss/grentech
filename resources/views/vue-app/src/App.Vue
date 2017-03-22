@@ -28,7 +28,7 @@
         </group>
       </div>
       <div class="margin-tb-20 tab-80 block-center">
-        <x-button type="primary" class="block-center login-btn btn-80">登陆</x-button>
+        <x-button type="warn" class="block-center login-btn btn-80">登陆</x-button>
       </div>
       <div class="login-link text-center clear-float">
         <div class="tab-50 pull-left">
@@ -63,7 +63,7 @@ import api from './api'
     name: 'app',
     data: function () {
       return {
-        popup_login: false,
+        popup_login: true,
         page_name: '',
         search_input: '',
         phone: '',
@@ -102,12 +102,12 @@ import api from './api'
         this.navbar=config.app_config.navbar;
 
          //3s后启用登陆拦截
-        setTimeout(function(){
-            self.popup_login=self.$store.state.popuplogin.popup_login;
-            self.intercept_closeable=config.app_config.intercept_closeable;
-            console.log(self.popup_login);
-            console.log("登陆拦截");
-         },config.app_config.intercept_time)
+        // setTimeout(function(){
+        //     self.popup_login=self.$store.state.popuplogin.popup_login;
+        //     self.intercept_closeable=config.app_config.intercept_closeable;
+        //     console.log(self.popup_login);
+        //     console.log("登陆拦截");
+        //  },config.app_config.intercept_time)
       },
       popup: function () {
         this.popup_login = !this.popup_login;
@@ -188,6 +188,7 @@ import api from './api'
   
   #app .vux-popup-dialog {
     background-color: #fff;
+    // background-color:#283852;
   }
   
 </style>
