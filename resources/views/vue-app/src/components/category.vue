@@ -113,205 +113,214 @@ export default {
       node_index:0,
       cancel_text:'取消',
       choose_node:{},
-      category_list:[
-        {
+      history_data:{
           name:"搜索记录",
           title:'history',
           kwds:['室内天线','手机','无线基站','室外设备','耗材',"50-100",'天线','手机','基站','无线设备','耗材'],
           children:[]
         },
-        {
-          name:"子类1",
-          children:[
-            {
-              name:"子类1-1",
-              children:[
-                {
-                  name:'子类1-1-1',
-                  children:[]
-                },
-                {
-                  name:'子类1-1-2',
-                  children:[]
-                },
-                {
-                  name:'子类1-1-3',
-                  children:[]
-                }
-              ]
-            },{
-              name:"子类1-2",
-              children:[]
-            },{
-              name:"子类1-3",
-              children:[]
-            },{
-              name:"子类1-4",
-              children:[]
-            },{
-              name:"子类1-5",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类2",
-          children:[
-            {
-              name:"子类2-1",
-              children:[]
-            },{
-              name:"子类2-2",
-              children:[]
-            },{
-              name:"子类2-3",
-              children:[]
-            },{
-              name:"子类2-4",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类3",
-          children:[
-            {
-              name:"子类3-1",
-              children:[]
-            },{
-              name:"子类3-2",
-              children:[]
-            },{
-              name:"子类3-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类4",
-          children:[
-            {
-              name:"子类4-1",
-              children:[]
-            },{
-              name:"子类4-2",
-              children:[]
-            },{
-              name:"子类4-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类5",
-          children:[
-            {
-              name:"子类5-1",
-              children:[]
-            },{
-              name:"子类5-2",
-              children:[]
-            },{
-              name:"子类5-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类6",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类6",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类7",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类8",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类9",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类10",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        },{
-          name:"子类11",
-          children:[
-            {
-              name:"子类6-1",
-              children:[]
-            },{
-              name:"子类6-2",
-              children:[]
-            },{
-              name:"子类6-3",
-              children:[]
-            }
-          ],
-        }
+      category_list:[
+       
       ],
+      // category_list:[
+      //   {
+      //     name:"搜索记录",
+      //     title:'history',
+      //     kwds:['室内天线','手机','无线基站','室外设备','耗材',"50-100",'天线','手机','基站','无线设备','耗材'],
+      //     children:[]
+      //   },
+      //   {
+      //     name:"子类1",
+      //     children:[
+      //       {
+      //         name:"子类1-1",
+      //         children:[
+      //           {
+      //             name:'子类1-1-1',
+      //             children:[]
+      //           },
+      //           {
+      //             name:'子类1-1-2',
+      //             children:[]
+      //           },
+      //           {
+      //             name:'子类1-1-3',
+      //             children:[]
+      //           }
+      //         ]
+      //       },{
+      //         name:"子类1-2",
+      //         children:[]
+      //       },{
+      //         name:"子类1-3",
+      //         children:[]
+      //       },{
+      //         name:"子类1-4",
+      //         children:[]
+      //       },{
+      //         name:"子类1-5",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类2",
+      //     children:[
+      //       {
+      //         name:"子类2-1",
+      //         children:[]
+      //       },{
+      //         name:"子类2-2",
+      //         children:[]
+      //       },{
+      //         name:"子类2-3",
+      //         children:[]
+      //       },{
+      //         name:"子类2-4",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类3",
+      //     children:[
+      //       {
+      //         name:"子类3-1",
+      //         children:[]
+      //       },{
+      //         name:"子类3-2",
+      //         children:[]
+      //       },{
+      //         name:"子类3-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类4",
+      //     children:[
+      //       {
+      //         name:"子类4-1",
+      //         children:[]
+      //       },{
+      //         name:"子类4-2",
+      //         children:[]
+      //       },{
+      //         name:"子类4-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类5",
+      //     children:[
+      //       {
+      //         name:"子类5-1",
+      //         children:[]
+      //       },{
+      //         name:"子类5-2",
+      //         children:[]
+      //       },{
+      //         name:"子类5-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类6",
+      //     children:[
+      //       {
+      //         name:"子类6-1",
+      //         children:[]
+      //       },{
+      //         name:"子类6-2",
+      //         children:[]
+      //       },{
+      //         name:"子类6-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类6",
+      //     children:[
+      //       {
+      //         name:"子类6-1",
+      //         children:[]
+      //       },{
+      //         name:"子类6-2",
+      //         children:[]
+      //       },{
+      //         name:"子类6-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类7",
+      //     children:[
+      //       {
+      //         name:"子类6-1",
+      //         children:[]
+      //       },{
+      //         name:"子类6-2",
+      //         children:[]
+      //       },{
+      //         name:"子类6-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类8",
+      //     children:[
+      //       {
+      //         name:"子类6-1",
+      //         children:[]
+      //       },{
+      //         name:"子类6-2",
+      //         children:[]
+      //       },{
+      //         name:"子类6-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类9",
+      //     children:[
+      //       {
+      //         name:"子类6-1",
+      //         children:[]
+      //       },{
+      //         name:"子类6-2",
+      //         children:[]
+      //       },{
+      //         name:"子类6-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类10",
+      //     children:[
+      //       {
+      //         name:"子类6-1",
+      //         children:[]
+      //       },{
+      //         name:"子类6-2",
+      //         children:[]
+      //       },{
+      //         name:"子类6-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   },{
+      //     name:"子类11",
+      //     children:[
+      //       {
+      //         name:"子类6-1",
+      //         children:[]
+      //       },{
+      //         name:"子类6-2",
+      //         children:[]
+      //       },{
+      //         name:"子类6-3",
+      //         children:[]
+      //       }
+      //     ],
+      //   }
+      // ],
       range_min:0,
       range_max:100,
       area1:1,
@@ -403,9 +412,15 @@ export default {
      });
     },
     init_goods_category:function(){
+      var self=this;
       api.get_goods_type().then(res=>{
         console.log("获取 type 列表...........");
         console.log(res.data);
+        var category_data=res.data;
+        category_data.children=category_data.goods_cats;
+        category_data.goods_cats=null;
+        self.category_list.push(self.history_data).push(res.data);
+        console.log(self.category_list);
       });
     },
     submit_search:function(){
