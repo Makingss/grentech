@@ -16,7 +16,7 @@
               {{item.name}}
             </div>
           </flexbox-item>
-          <flexbox-item :span="9" class="tree-box-right padding-l-6 border-box">
+          <flexbox-item :span="9" class="tree-box-right padding-l-6 border-box" v-if="false">
             <div class="node-box" v-if="node_index==0">
               <div class="node-title padding-tb-6 color-gray border-1px-b">
                 {{choose_node.name}}
