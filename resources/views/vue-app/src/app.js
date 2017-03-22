@@ -103,6 +103,10 @@ import Plugin from './plugin/plugin'
 Vue.use(Plugin);
 Vue.use(VueResource);
 
+//引入组件
+import  { ToastPlugin } from 'vux'
+Vue.use(ToastPlugin)
+
 
 Vue.filter('date',filters.dateFilter)
 
