@@ -43,6 +43,7 @@ Route::get('/datatables/{key?}', 'DatatablesController@index');
 Route::get('/datatables/data/{goods_id}', 'DatatablesController@anyData');
 Route::post('/datatables/editor', 'DatatablesController@editor');
 Route::get('/apps', 'GoodsController@getindex');
+Route::resource('/search','SearchController');
 //Route::get('mall/login','');
 
 Route::get('/demo', function () {
@@ -52,6 +53,8 @@ Route::get('/demo', function () {
 Route::post('/api/login', 'Apis\LoginController@login');
 
 Route::post('/table', 'GoodsController@getTableColumns');
+Route::get('/goods/cat','GoodsCatController@index');
+Route::resource('/goods/type','GoodsTypeController');
 //Route::resource('datatables', 'DatatablesController', [
 //    'anyData'  => 'datatables.data',
 //    'getIndex' => 'datatables',
