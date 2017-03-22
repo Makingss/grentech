@@ -419,8 +419,9 @@ export default {
         var category_data=res.data;
         category_data.children=category_data.goods_cats;
         category_data.goods_cats=null;
-        self.category_list.push(self.history_data).push(res.data);
-        console.log(self.category_list);
+        // self.category_list.push(self.history_data).push(res.data);
+        category_data.unshift(self.history_data);
+        console.log(category_data);
       });
     },
     submit_search:function(){
