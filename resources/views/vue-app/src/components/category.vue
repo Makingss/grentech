@@ -12,7 +12,7 @@
       <div class="tab-item-content" v-if="index==0">
         <flexbox class="tree-box" wrap="nowrap" :gutter="0">
           <flexbox-item :span="3" class="tree-box-left">
-            <div class="padding-tb-6 padding-rl-10" :class="{'border-1px-b':index==(category_list.length-1),'node-active':index==node_index}" v-for="(item,index) in category_list" @click="handle_folder(index)">
+            <div class="padding-tb-6 padding-rl-10" :class="{'node-active':index==node_index}" v-for="(item,index) in category_list" @click="handle_folder(index)">
               {{item.name}}
             </div>
           </flexbox-item>
