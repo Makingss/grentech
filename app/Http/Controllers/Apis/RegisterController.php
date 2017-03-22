@@ -36,7 +36,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -72,11 +72,11 @@ class RegisterController extends Controller
     public function sendVerifyEmailTo($user, $key)
     {
         //设置邮箱验证API路由
-//        $urlObj = redirect('/jump?token=' . $user->confirmation_token . '&secret=' . authcode($key, 'ENCODE'));
-//        $bind_data = ['url' => $urlObj->getTargetUrl(), 'name' => $user->name];
-        $bind_data = ['url' => route('api.email.verify', ['token' => $user->confirmation_token, 'secret' => authcode($key, 'ENCODE')]),
-            'name' => $user->name
-        ];
+        $urlObj = redirect('/jump?token=' . $user->confirmation_token . '&secret=' . authcode($key, 'ENCODE'));
+        $bind_data = ['url' => $urlObj->getTargetUrl(), 'name' => $user->name];
+//        $bind_data = ['url' => route('api.email.verify', ['token' => $user->confirmation_token, 'secret' => authcode($key, 'ENCODE')]),
+//            'name' => $user->name
+//        ];
         $template = new SendCloudTemplate('app_register', $bind_data);
 
         Mail::raw($template, function ($message) use ($user) {
