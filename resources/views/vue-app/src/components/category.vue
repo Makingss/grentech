@@ -392,7 +392,7 @@ export default {
     }
   },
   created:function(){
-    this.choose_node=this.category_list[0];
+   
     //this.fetch_goods_data()
     //初始化场景类别
     this.init_scene_list();
@@ -421,10 +421,11 @@ export default {
         // category_data.children=category_data.goods_cats;
         for(var i=0;i<category_data.length;i++){
           category_data[i].children=category_data[i].goods_cats;
-          category_data[i].goods_cats=null;
+          category_data[i].goods_cats=null;//主动释放
         }
         category_data.unshift(self.history_data);
         self.category_list=category_data;
+        self.choose_node=self.category_list[0];
         console.log(self.category_list);
       });
     },
