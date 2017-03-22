@@ -120,7 +120,7 @@ export default {
       console.log("搜索测试");
       var self=this;
       this.$router.push({name:'list',query:{search:self.search_input}});
-      // this.handler_query({search:true});
+      this.handler_query();
     },
     handler_query:function(params){
        var self=this;
