@@ -54,5 +54,8 @@ export default {
     get_search_result:function(data){
         return Vue.http.post(root_host+'/search',data);
     },
+    get_goods_type:function(){
+        return Vue.http.get(API_ROOT+"/goods/type");
+    }
 
 }

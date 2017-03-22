@@ -386,6 +386,7 @@ export default {
     //this.fetch_goods_data()
     //初始化场景类别
     this.init_scene_list();
+    this.init_goods_category();
   },
   methods:{
     input_change:function(){
@@ -394,12 +395,18 @@ export default {
     init_scene_list:function(){
       var self=this;
       api.get_cat_list().then(res=>{
-      console.log(res);
-      self.scene=res.data;
-      for(var i=0;i<self.scene.length;i++){
-        self.scene[i].img=self.scene_images[i].img;
-      }
-    });
+        console.log(res);
+        self.scene=res.data;
+        for(var i=0;i<self.scene.length;i++){
+          self.scene[i].img=self.scene_images[i].img;
+        }
+     });
+    },
+    init_goods_category:function(){
+      api.get_goods_type().then(res=>{
+        console.log("获取 type 列表...........");
+        console.log(res.data);
+      });
     },
     submit_search:function(){
       console.log("搜索测试");
