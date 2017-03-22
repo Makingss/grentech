@@ -134,7 +134,6 @@ export default {
     handler_query:function(params){
        var self=this;
        var query=this.$route.query;
-        console.log(query);
         if(!!params&&params.search){
           query={search:self.search_input};
         }
@@ -143,32 +142,26 @@ export default {
         if(query["search"]){
            api.get_search_result(query).then(res=>{
                console.log(res);
-                self.$store.state.goods.goods_list=res.data;
-                self.goods_data=res.data.data;
-                self.current_page=res.data.current_page;
-                self.last_page=res.data.last_page;
-                self.total=res.data.total;
-                self.from=res.data.from;
-                self.to=res.data.to;
-                self.per_page=res.data.per_page;
-               console.log("********************");
+               self.commit_resdata(res.data);
            })
         }else{
           api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
                 console.log(res);
-                self.$store.state.goods.goods_list=res.data;
-                self.goods_data=res.data.data;
-                self.current_page=res.data.current_page;
-                self.last_page=res.data.last_page;
-                self.total=res.data.total;
-                self.from=res.data.from;
-                self.to=res.data.to;
-                self.per_page=res.data.per_page;
-               console.log("**************222******");
+               self.commit_resdata(res.data);
            })
            // { relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 }
           //this.GETGOODSLIST({ relations: ["image_attach", "images"], parameters:query, per_page: 10 });
         }
+    },
+    commit_resdata:function(res_data){
+                self.$store.state.goods.goods_list=res_data;
+                self.goods_data=res_data.data;
+                self.current_page=res_data.current_page;
+                self.last_page=res_data.last_page;
+                self.total=res_data.total;
+                self.from=res_data.from;
+                self.to=res_data.to;
+                self.per_page=res_data.per_page;
     }
   }
 
