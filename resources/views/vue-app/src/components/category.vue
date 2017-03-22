@@ -447,7 +447,9 @@ export default {
     },
     handle_folder:function(index){
       var self=this;
+      console.log(this.category_list);
       var _children=this.category_list[index];
+      console.log(_children);
       if(!!_children.children&&_children.children.length>0&&index!=0){
         this.choose_node=_children;
         this.node_index=index;
