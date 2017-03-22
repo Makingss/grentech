@@ -18,7 +18,7 @@
           </flexbox-item>
           <flexbox-item :span="9" class="tree-box-right padding-l-6 border-box">
             <div class="node-box" v-if="node_index==0">
-              <div class="node-title padding-tb-6 color-gray border-1px-b">
+              <div class="node-title padding-tb-6 color-gray border-1px-b" v-if="false">
                 {{choose_node.name}}
                 <div class="pull-right color-danger" @click="clear_history">清除记录 <icon type="cancel"></icon></div>
               </div>
