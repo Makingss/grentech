@@ -126,20 +126,20 @@ class GoodsController extends Controller
 			];
 			$grid->marketable($getGoodColumns['marketable'])->switch($states);
 			$grid->type_id($getGoodColumns['type_id'])->value(function ($type_id) {
-				return Goods_type::find($type_id)->name;
+				return Goods_type::findOrFail($type_id)->name;
 			});
 			$grid->cat_id($getGoodColumns['cat_id'])->value(function ($cat_id) {
-				return Goods_cat::find($cat_id)->cat_name;
+				return Goods_cat::findOrFail($cat_id)->cat_name;
 			});
 
-			$grid->actions(function ($actions) {
-				// 当前行的数据数组
-				//$actions->row;
-				// 获取当前行主键值
-				//$actions->getKey();
-				$url = url('/datatables', $actions->getKey());
-				$actions->prepend('<a href=' . $url . '>编辑货品 | ');
-			});
+//			$grid->actions(function ($actions) {
+			// 当前行的数据数组
+			//$actions->row;
+			// 获取当前行主键值
+			//$actions->getKey();
+//				$url = url('/datatables', $actions->getKey());
+//				$actions->prepend('<a href=' . $url . '>编辑货品 | ');
+//			});
 			/*
 			  $grid->created_at(trans('admin::lang.created_at'));
 			  $grid->updated_at(trans('admin::lang.updated_at'));
