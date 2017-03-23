@@ -242,7 +242,7 @@ export default {
   },
   created:function(){
     this.get_home_list({});
-    api.get_page_data("http://119.23.22.185/api/goods?page=1").then(res=>{
+    api.get_page_data("http://119.23.22.185/api/goods?page=1&per_page=10").then(res=>{
       console.log("222222222");
       console.log(res);
     })
