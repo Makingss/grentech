@@ -11,7 +11,7 @@
             登陆
           </router-link>
         </p>
-        <p class="padding-tb-10">
+        <p class="padding-tb-10" v-if="false">
           <router-link to="/register" class="color-white">
             立即注册
           </router-link>
