@@ -266,15 +266,16 @@ export default {
        api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
             console.log(">>>>>>>>>>>>>>>");
             console.log(res.data.data);
+            console.log(self.scroller_data);
             if(res.data.data&&res.data.data.length>0){
               console.log("aaa");
               self.scroller_data.data.concat(res.data.data);
-              scroller_data.current_page=res.data.current_page;
-              scroller_data.from=res.data.from;
-              scroller_data.last_page=res.data.last_page;
-              scroller_data.per_page=res.data.per_page;
-              scroller_data.to=res.data.to;
-              scroller_data.total=res.data.total;
+              self.scroller_data.current_page=res.data.current_page;
+              self.scroller_data.from=res.data.from;
+              self.scroller_data.last_page=res.data.last_page;
+              self.scroller_data.per_page=res.data.per_page;
+              self.scroller_data.to=res.data.to;
+              self.scroller_data.total=res.data.total;
               console.log(self.scroller_data);
               
             }
