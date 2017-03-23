@@ -16,7 +16,6 @@ var root_host='';
 // }
 export default {
     get_api_token:function(data){
-        
         return Vue.http.post(root_host+'/oauth/token',data);
     },
     get_user_info:function(data){
