@@ -265,8 +265,9 @@ export default {
       var self=this;
        api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
             console.log(">>>>>>>>>>>>>>>");
-            console.log(res);
+            console.log(res.data.data);
             if(res.data.data&&res.data.data.length>0){
+              console.log("aaa");
               self.scroller_data.data.concat(res.data.data);
               scroller_data.current_page=res.data.current_page;
               scroller_data.from=res.data.from;
