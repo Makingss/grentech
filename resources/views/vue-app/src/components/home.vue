@@ -269,7 +269,7 @@ export default {
             console.log(self.scroller_data);
             if(res.data.data&&res.data.data.length>0){
               console.log("aaa");
-              self.scroller_data=self.scroller_data.data.concat(res.data.data);
+              self.scroller_data.data=self.scroller_data.data.concat(res.data.data);
               self.scroller_data.current_page=res.data.current_page;
               self.scroller_data.from=res.data.from;
               self.scroller_data.last_page=res.data.last_page;
