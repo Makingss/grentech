@@ -26,7 +26,6 @@ router.beforeEach((to, from, next) => {
   console.log("路由切换");
   //判断 token---登陆拦截
   if(config.app_config.intercept){
-  
      if(!!localStorage.access_token&&localStorage.access_token!='undefined'){
 
       }else{
@@ -57,8 +56,6 @@ router.beforeEach((to, from, next) => {
         // window[config.app_config.storage].token_type=res.data.token_type;
       }
      
-       
-
   // NProgress.start();
   if(!from.name&&to.name=="home"){
     //init app

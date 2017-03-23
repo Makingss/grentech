@@ -83,6 +83,7 @@
 
 <script>
 //import {loader} from '../util/util.js'
+import api from '../api'
 import {Swiper,Flexbox,FlexboxItem,Scroller,Spinner,Divider} from 'vux'
 export default {
   name: 'home',
@@ -260,6 +261,9 @@ export default {
       self.handle_scroll($(this));
     })
   },
+  created:function(){
+    this.get_home_list({});
+  },
   methods:{
     handle_scroll:function(el){
       //console.log(el);
@@ -277,6 +281,13 @@ export default {
         self.loadMore();
         return;
       }
+    },
+    get_home_list:function(query){
+       api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
+            console.log(">>>>>>>>>>>>>>>");
+            console.log(res);
+            self.commit_resdata(res.data);
+      })
     },
     loadMore:function(){
       var self=this;
