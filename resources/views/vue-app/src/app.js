@@ -46,7 +46,6 @@ router.beforeEach((to, from, next) => {
   //       client_secret:"okDZ28XNOjIE4n7gy07jnKxWizIOmQPKhQrWuQ6S"
   //     }).then(res=>{
   //      //vuex 状态控制
-       
   //       //get 一用户信息测试 
   //         // api.get_user_info({
   //         //     headers:{
@@ -60,21 +59,27 @@ router.beforeEach((to, from, next) => {
 
       // --- get_user_info
       if(!!window.localStorage.access_token){
-         api.get_user_info({access_token:window.localStorage.access_token}).then(res=>{
-            console.log(res);
-         })
+         api.get_user_info({
+              headers:{
+                'Accept':'application/json',
+                'Authorization':"Bearer "+window.location.access_token,
+              }
+          }).then(res=>{
+             console.log(res.data);
+          })
       }else{
         //刷新 access_token
+        // var access_token=res.data.access_token;
+        // store.state.token.token=res.data;
+        
+        // //加入 localStorage存储静态数据 
+        // window[config.app_config.storage].access_token=res.data.access_token;
+        // window[config.app_config.storage].expires_in=res.data.expires_in;
+        // window[config.app_config.storage].refresh_token=res.data.refresh_token;
+        // window[config.app_config.storage].token_type=res.data.token_type;
       }
      
-       var access_token=res.data.access_token;
-        store.state.token.token=res.data;
-        
-        //加入 localStorage存储静态数据 
-        window[config.app_config.storage].access_token=res.data.access_token;
-        window[config.app_config.storage].expires_in=res.data.expires_in;
-        window[config.app_config.storage].refresh_token=res.data.refresh_token;
-        window[config.app_config.storage].token_type=res.data.token_type;
+       
 
   // NProgress.start();
   if(!from.name&&to.name=="home"){
