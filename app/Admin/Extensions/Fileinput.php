@@ -48,7 +48,10 @@ class Fileinput extends Field
 					$initialPreviewConfig[] = [
 						'caption' => 'transport',
 						'size' => '',
+						'is_default' => '',
 						'url' => $removeUrl,
+						'width' => '120px',
+						'extra' => ['id' => 100],
 						'key' => $image_attach['image_id']
 					];
 					$images = Image::where('image_id', $image_attach['image_id'])->get()->toArray();
@@ -57,27 +60,50 @@ class Fileinput extends Field
 				}
 			}
 		}
-			$json_string = @json_encode($image_url);
-			if ($json_string == 'null') {
-				$json_string = '[]';
-			}
-			$initialPreview = @json_encode($initialPreviewConfig);
-			if ($initialPreview == 'null') {
-				$initialPreview = '[]';
-			}
+		$json_string = @json_encode($image_url);
+		if ($json_string == 'null') {
+			$json_string = '[]';
+		}
 
-			$this->script = <<<EOT
+		$initialPreview = @json_encode($initialPreviewConfig);
+		if ($initialPreview == 'null') {
+			$initialPreview = '[]';
+		}
+		$this->script = <<<EOT
  $.ajaxSetup({
         'headers': {
             'X-CSRF-TOKEN': '$csrf_token'
         }
     });
     $('#file-fr').fileinput({
+    showCaption:false,
+    showRemove:false,
+    showUpload:false,
+    showCancel:false,
+    showClose:false,
+    showBrowse:true,
+    browseOnZoneClick:true,
+    removeFromPreviewOnError:true,
+   
+    
+    initialPreviewThumbTags:[{
+		 '{CUSTOM_TAG_NEW}':' ',
+		 '{CUSTOM_TAG_INIT}':'<span class=\'custom-css\'>CUSTOM MARKUP 1</span>'
+		},
+		{
+		 '{CUSTOM_TAG_NEW}':' ',
+		 '{CUSTOM_TAG_INIT}':'<span class=\'custom-css\'>CUSTOM MARKUP 2</span>'
+		}
+		],
+    
+    
+    
 //        uploadAsync: false, //默认异步上传
-//        showUpload: true,
-//        maxFilesNum : 2,//上传最大的文件数量 
+          showUpload:false,//是否显示上传按钮
+        maxFilesNum:10,//上传最大的文件数量 
+		
         actionUpload:true,
-        showCaption: false,
+        showCaption:false,
         language: 'zh',
         uploadUrl: '$url',
         previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
@@ -87,6 +113,7 @@ class Fileinput extends Field
         initialPreviewAsData: true,
         initialPreview: $json_string,
         initialPreviewConfig: $initialPreview,
+		
     });
      $('#file-fr').on('fileuploaded', function(event, data, previewId, index) {
              var form = data.form, files = data.files, extra = data.extra,
