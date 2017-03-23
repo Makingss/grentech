@@ -16,7 +16,7 @@
           </p>
         </flexbox-item>
         <flexbox-item :span="3" class="link-img padding-rl-6 border-box">
-          <img src="/static/slice/code.jpg" alt="">
+          <vue-q-art :config="config" class="qrcode-content"></vue-q-art>
         </flexbox-item>
       </flexbox>
       <div class="padding-10 margin-tb-10 bg-white" v-if="false">
@@ -112,10 +112,13 @@
 
   </div>
 </template>
-
 <script>
+import VueQArt from 'vue-qart'
+import QArt from 'qartjs'
+
 import api from '../api/index.js'
 import {mapState,mapActions} from 'vuex'
+
   import {
     Swiper,
     Flexbox,
@@ -131,6 +134,11 @@ import {mapState,mapActions} from 'vuex'
     name: 'goods',
     data: function () {
       return {
+        config: {
+          value: window.location.href,
+          imagePath: '/static/slice/girl_avatar.jpg',
+          filter: 'color'
+        },
         index: 0,
         goods_id: 0,
         item_index: 0,
@@ -187,6 +195,7 @@ import {mapState,mapActions} from 'vuex'
     },
     created: function () {
       var query = this.$route.query;
+      
       this.goods_id = query.goods_id;
       this.item_index = query.item_index;
       this.init_goods_page(this.$store.state.goods);
@@ -201,7 +210,8 @@ import {mapState,mapActions} from 'vuex'
       TabItem,
       SwiperItem,
       Group,
-      Cell
+      Cell,
+      VueQArt
     }
   }
 
@@ -226,4 +236,5 @@ import {mapState,mapActions} from 'vuex'
   .goods-content-swiper>.vux-swiper .vux-swiper-item{
     box-sizing:border-box;
   }
+
 </style>

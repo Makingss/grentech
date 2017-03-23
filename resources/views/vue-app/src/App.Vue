@@ -119,6 +119,8 @@ import api from './api'
     },
     created: function () {
       this.init_app();
+      var fullpath=this.$route.fullPath;
+      console.log(fullpath);
       // console.log("////////////");
       // console.log(config.app_config.navbar);
       //拉取 token 测试
