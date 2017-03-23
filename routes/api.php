@@ -41,6 +41,6 @@ Route::get('/goods', 'GoodsController@getGoods')->middleware('api');
 Route::group(['namespace' => 'Apis'], function () {
 
     Route::post('/register', 'RegisterController@register');
-    Route::get('/verify/{token}/secret/{secret}', 'RegisterController@registerVerify')->name('api.email.verify');
+    Route::post('/verify', 'RegisterController@registerVerify')->name('api.email.verify');
     Route::post('/login','LoginController@login');
 });

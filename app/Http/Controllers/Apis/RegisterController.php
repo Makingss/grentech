@@ -103,8 +103,10 @@ class RegisterController extends Controller
      * @param $secret mixed secret
      * @return string ;
      */
-    public function registerVerify($token, $secret)
+    public function registerVerify(Request $request)
     {
+        $token = $request->input('token');
+        $secret = $request->input('secret');
         $user = User::where('confirmation_token', $token)->first();
         if (is_null($user)) {
             return response()->json(['res' => false, 'data' => null, 'req' => '激活失败']);
