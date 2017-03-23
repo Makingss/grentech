@@ -35,7 +35,7 @@ class AuthServiceProvider extends ServiceProvider
          * The date when access tokens expire.
          *   访问令牌过期的日期
          */
-        Passport::tokensExpireIn(Carbon::now()->addDays(15));
+        Passport::tokensExpireIn(Carbon::now()->addHour(5));
         /**
          * The date when refresh tokens expire.
          * 刷新令牌过期的日期

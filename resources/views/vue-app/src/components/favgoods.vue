@@ -16,7 +16,8 @@
               </flexbox-item>
               <flexbox-item :span="9" class="padding-r-10 border-box">
                 <p class="line-ellispse-2">{{item.name}}</p>
-                <p>收藏日期:{{item.createtime}}</p>
+                 <p class="color-gray">商品编码:{{item.bn}}</p>
+                <p>收藏日期 : {{item.createtime}}</p>
               </flexbox-item>
             </flexbox>
           </router-link>
@@ -37,21 +38,24 @@ export default {
     return {
       favgoods_data:[
         {
-          img:'http://mall.yingerfashion.com/public/images/aa/07/eb/0e8312e96e944b17dd28b7365bafaaaff7cec765.jpg',
+          img:'/static/grentech/201611051243571562.jpg',
           url:'/goods',
-          name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
+          bn:'0161105124357156',
+          name:'001无线测试商品86319660',
           price:'1290.00',
           createtime:'2017-02-02',
         },{
-          img:'http://mall.yingerfashion.com/public/images/aa/07/eb/0e8312e96e944b17dd28b7365bafaaaff7cec765.jpg',
+          img:'/static/grentech/201611071753107968.jpg',
           url:'/goods',
-          name:'YINER音儿2016秋款/时尚绵羊真皮修身机车皮衣外套86319660',
+          bn:'0161105124357156',
+          name:'002无线测试商品86319660',
           price:'1290.00',
           createtime:'2017-02-03',
         },{
-          img:'http://mall.yingerfashion.com/public/images/aa/07/eb/0e8312e96e944b17dd28b7365bafaaaff7cec765.jpg',
+          img:'/static/grentech/201611071844501875.jpg',
           url:'/goods',
-          name:'测试商品',
+          bn:'0161105124357156',
+          name:'003无线测试商品86319660',
           price:'1290.00',
           createtime:'2017-02-04',
         }

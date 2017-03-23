@@ -103,7 +103,6 @@ export default {
     }
   },
   created: function() {
-    console.log("cccccccccccccccc");
     this.handler_query();
   },
   
