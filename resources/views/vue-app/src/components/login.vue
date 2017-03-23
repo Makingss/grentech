@@ -14,10 +14,10 @@
       <x-button type="warn" class="block-center login-btn btn-80">登陆</x-button>
     </div>
     <div class="login-link text-center clear-float">
-      <div class="tab-50 pull-left">
+      <div class="tab-50 pull-left" v-if="false">
         <router-link to="/register">快速注册</router-link>
       </div>
-      <div class="tab-50 pull-left">
+      <div class="tab-50 pull-left" v-if="false">
         <router-link to="/find-pwd">忘记密码</router-link>
       </div>
       <div class="tab-50 pull-left">
