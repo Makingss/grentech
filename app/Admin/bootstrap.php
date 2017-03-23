@@ -43,7 +43,7 @@ Form::extend('fileinput', \App\Admin\Extensions\Fileinput::class);
 Form::extend('wangeditor', \App\Admin\Extensions\WangEditor::class);
 Form::extend('slider',\App\Admin\Extensions\SliderRange::class);
 //Form::extend('datetable', \App\Admin\Extensions\Datetable::class);
-Form::extend('editordatetable', \App\Admin\Extensions\EditorDatetable::class);
+//Form::extend('editordatetable', \App\Admin\Extensions\EditorDatetable::class);
 Column::extend('electric', \App\Admin\Extensions\Column\ExpandRow::class);
 //Column::extend('product', \App\Admin\Extensions\Column\ProductRow::class);
 Column::extend('urlwrapper', \App\Admin\Extensions\Column\UrlWrapper::class);

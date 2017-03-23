@@ -1,13 +1,13 @@
 <!-- PAGE WRAPPER -->
-<body class="home">
+{{--<body class="home">--}}
 <div id="page-wrapper">
     {{--heade--}}
     {{--<body class="home">--}}
-    @include('layouts.app')
+    {{--@include('layouts.app')--}}
     {{--</body>--}}
             <!-- SITE HEADER -->
     <header id="site-header" role="banner">
-        @include('mall.layouts.header')
+        @include('layouts.header')
     </header>
 
     <!-- // SITE HEADER -->
@@ -16,21 +16,21 @@
 
     <!-- HOMEPAGE SLIDER -->
     <div id="home-slider">
-        @include('mall.layouts.home')
+        @include('layouts.home')
     </div>
     <!-- // HOMEPAGE SLIDER -->
 
     <!-- SITE MAIN CONTENT -->
     <main id="main-content" role="main">
-        @include('mall.layouts.main')
+        @include('layouts.main')
     </main>
     <!-- // SITE MAIN CONTENT -->
 
     <!-- SITE FOOTER -->
-    <footer class="page-footer">
-        @include('mall.layouts.footer')
-    </footer>
+    {{--<footer class="page-footer">--}}
+        {{--@include('layouts.footer')--}}
+    {{--</footer>--}}
     <!-- // SITE FOOTER -->
 
 </div>
-</body>
+{{--</body>--}}

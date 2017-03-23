@@ -9,9 +9,9 @@
 namespace App\Admin\Extensions;
 
 
-use App\Admin\Models\Good;
-use App\Admin\Models\Image;
-use App\Admin\Models\Image_attach;
+use App\Admin\Models\Goods\Good;
+use App\Admin\Models\Images\Image;
+use App\Admin\Models\Images\Image_attach;
 use Encore\Admin\Form\Field;
 
 class Fileinput extends Field

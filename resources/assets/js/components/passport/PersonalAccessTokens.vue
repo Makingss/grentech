@@ -15,11 +15,11 @@
                 <div class="panel-heading">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span>
-                            Personal Access Tokens
+                            个人访问令牌 Tokens
                         </span>
 
                         <a class="action-link" @click="showCreateTokenForm">
-                            Create New Token
+                            创建新的 Token
                         </a>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                 <div class="panel-body">
                     <!-- No Tokens Notice -->
                     <p class="m-b-none" v-if="tokens.length === 0">
-                        You have not created any personal access tokens.
+                        你没有创造任何个人 access tokens.
                     </p>
 
                     <!-- Personal Access Tokens -->

@@ -1,6 +1,3 @@
-{{--<header id="site-header" role="banner">--}}
-    {{--@include('mall.layouts.headertop')--}}
-{{--</header>--}}
     <!-- // HEADER TOP -->
     <!-- MAIN HEADER -->
     <div class="main-header-wrapper">
@@ -190,4 +187,3 @@
             </div>
         </div>
     </div>
-    <!-- // MAIN HEADER -->

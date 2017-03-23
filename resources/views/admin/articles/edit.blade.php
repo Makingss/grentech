@@ -1,4 +1,4 @@
-@extends('layouts.app.backup') @section('content')
+@extends('layouts.app') @section('content')
 
     <h1>{{$article->title}}</h1>
     {!! Form::model($article,['method'=>'PATCH','url'=>'/admin/articles/'.$article->id]) !!}
