@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <div class="scroll-content infinite-scroll container">
+    <div class="scroll-content infinite-scroll container padding-b-20">
       <flexbox wrap="wrap" :gutter="0" class="scroll-content">
         <flexbox-item v-for="(item,index) in scroller_data.data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" :data-i="index%2">
           <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block">
