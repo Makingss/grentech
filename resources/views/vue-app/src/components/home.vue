@@ -15,7 +15,7 @@
             </div>
             <div class="text-center">
               <div class="item-title color-success line-ellispse-2">
-                ￥{{item.name}}
+                {{item.name}}
               </div>
               <div class="item-subtitle color-gray">
                 <span>{{item.desc||"暂无描述"}}</span>
@@ -38,7 +38,7 @@
             </div>
             <div class="text-center">
               <div class="item-title color-success line-ellispse-2">
-                ￥{{item.name}}
+                {{item.name}}
               </div>
               <div class="item-subtitle color-gray">
                 <span>{{item.desc||"暂无描述"}}</span>
