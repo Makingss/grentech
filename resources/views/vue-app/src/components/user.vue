@@ -124,12 +124,13 @@ export default {
           icon:"&#xe61f;",
           url:'/vchart',
           show_badge:false
-        },{
-          title:'商品收藏',
-          icon:"&#xe61e;",
-          url:'/favgoods',
-          show_badge:false
         },
+        // {
+        //   title:'商品收藏',
+        //   icon:"&#xe61e;",
+        //   url:'/favgoods',
+        //   show_badge:false
+        // },
         {
           title:'帮助',
           icon:"&#xe622;",

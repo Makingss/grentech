@@ -16,7 +16,7 @@
           </p>
         </flexbox-item>
         <flexbox-item :span="3" class="link-img padding-rl-6 border-box">
-          <vue-q-art :config="config" class="qrcode-content"></vue-q-art>
+          <vue-q-art v-if="false" :config="config" class="qrcode-content"></vue-q-art>
         </flexbox-item>
       </flexbox>
       <div class="padding-10 margin-tb-10 bg-white" v-if="false">
