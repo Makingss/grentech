@@ -12,6 +12,7 @@
 </template>
 <script>
     import {XButton,Icon} from 'vux'
+    import api from '../api'
     export default {
         name:'jump',
         data:function(){
@@ -28,6 +29,16 @@
             //         self.$router.push("/");
             //     }
             // },1000)
+            this.get_access_token();
+        },
+        methods:{
+            get_access_token:function(){
+                var query=this.$route.query;
+                console.log(query);
+                api.get_token(query).then(res=>{
+                    console.log(res);
+                })
+            }
         },
         components:{
             XButton,
