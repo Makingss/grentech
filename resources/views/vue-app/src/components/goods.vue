@@ -236,5 +236,8 @@ import {mapState,mapActions} from 'vuex'
   .goods-content-swiper>.vux-swiper .vux-swiper-item{
     box-sizing:border-box;
   }
-
+.goods .qrcode-content canvas{
+  width:4rem;
+  height:4rem;
+}
 </style>

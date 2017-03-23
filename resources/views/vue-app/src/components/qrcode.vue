@@ -42,8 +42,11 @@ export default {
 .qrcode-content{
   margin-top:10%;
 }
-.qrcode-content canvas{
+.myqrcode .qrcode-content canvas{
   width:7rem;
   height:7rem;
+}
+.qrcode-content button{
+  display:none;
 }
 </style>
