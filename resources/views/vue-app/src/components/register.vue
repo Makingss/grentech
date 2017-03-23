@@ -115,4 +115,8 @@ export default {
 .vcode-box:before{
   left:15px;
 }
+.register .content-box{
+  padding-top:19%;
+  box-sizing:border-box;
+}
 </style>

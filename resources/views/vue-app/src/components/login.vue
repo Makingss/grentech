@@ -11,7 +11,7 @@
       </group>
     </div>
     <div class="margin-tb-20">
-      <x-button type="primary" class="block-center login-btn btn-80">登陆</x-button>
+      <x-button type="warn" class="block-center login-btn btn-80">登陆</x-button>
     </div>
     <div class="login-link text-center clear-float">
       <div class="tab-50 pull-left">
@@ -53,5 +53,9 @@ export default {
 .login-btn{
   width: 80%;
   margin: 0 auto;
+}
+.login .content-box{
+  padding-top:20%;
+  box-sizing:border-box;
 }
 </style>
