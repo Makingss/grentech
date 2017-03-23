@@ -37,13 +37,14 @@
                 var self=this;
                 var query=this.$route.query;
                 console.log(query);
+                alert("1111");
                 api.get_token(query).then(res=>{
                     console.log(res);
                     var res_data=res.data;
                     if(res_data.res){
                         self.res_msg=self.success_msg;
                         self.res=2;
-                        self.jump_to_home();
+                        //self.jump_to_home();
                         window.location.access_token=res_data.data.access_token;
                         window.location.expires_in=res_data.data.expires_in;
                         window.location.refresh_token=res_data.data.refresh_token;
@@ -52,7 +53,7 @@
                     }else{
                         self.res_msg=self.error_msg;
                         self.res=3;
-                        self.jump_to_home();
+                        //self.jump_to_home();
                     }
                 })
             },
