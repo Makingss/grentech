@@ -61,7 +61,7 @@ export default {
         return Vue.http.post(API_ROOT+"/api/register",data);
     },
     get_token:function(data){
-        return Vue.http.get(API_ROOT+"/api/verify",data);
+        return Vue.http.post(API_ROOT+"/api/verify",data);
     }
 
 
