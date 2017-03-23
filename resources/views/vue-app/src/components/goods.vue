@@ -180,7 +180,7 @@ import {mapState,mapActions} from 'vuex'
     },
     created: function () {
       var query = this.$route.query;
-      
+      console.log("create good page");
       this.goods_id = query.goods_id;
       this.item_index = query.item_index;
       this.init_goods_page(this.$store.state.goods);
