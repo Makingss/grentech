@@ -19,6 +19,7 @@ import FindPwd from 'components/find-pwd'
 import Service from 'components/service'
 import Test from 'components/test'
 import Vchart from 'components/vchart'
+import Jump from 'components/jump'
 
 Vue.use(Router)
 
@@ -115,6 +116,10 @@ export default new Router({
       name:'test',
       path:'/test',
       component:Test
+    },{
+      name:'jump',
+      path:'/jump',
+      component:Jump
     }
   ],
   scrollBehavior (to, from, savedPosition) {

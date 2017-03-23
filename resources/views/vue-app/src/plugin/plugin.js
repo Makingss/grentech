@@ -134,6 +134,14 @@
             show_search_bar:false,
             navbar_active:2,
           },
+          'jump':{
+            title:'跳转页面',
+            show_back:false,
+            is_show: false,
+            show_search_bar:false,
+            navbar_active:2,
+            hide_tabbar:true,
+          },
           'test':{
             title:'测试',
             show_back:false,

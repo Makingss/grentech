@@ -52,7 +52,7 @@ export default {
         return Vue.http.get(API_ROOT+"/goods/cat",data);
     },
     get_search_result:function(data){
-        return Vue.http.post(API_ROOT+'/search',data);
+        return Vue.http.get(API_ROOT+'/search',data);
     },
     get_goods_type:function(){
         return Vue.http.get(API_ROOT+"/goods/type");
