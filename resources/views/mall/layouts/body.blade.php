@@ -1,10 +1,15 @@
 <!-- PAGE WRAPPER -->
+<body class="home">
 <div id="page-wrapper">
-
-    <!-- SITE HEADER -->
+    {{--heade--}}
+    {{--<body class="home">--}}
+    @include('layouts.app)
+    {{--</body>--}}
+            <!-- SITE HEADER -->
     <header id="site-header" role="banner">
         @include('mall.layouts.header')
     </header>
+
     <!-- // SITE HEADER -->
 
     <div class="copyrights">Collect from <a href="#"></a></div>
@@ -28,3 +33,4 @@
     <!-- // SITE FOOTER -->
 
 </div>
+</body>

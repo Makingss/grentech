@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Admin\Models\Products\Product;
+
 class Spec_valueController extends Controller
 {
 	public function spec_value($spec_id = null, $spec_value_id = null)

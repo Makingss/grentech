@@ -31,7 +31,7 @@ Route::post('/question/follower', 'GoodsController@getGoods')->middleware('auth:
 
 Route::post('/brand', 'BrandController@getBrand')->middleware('api');
 
-Route::post('/goods', 'GoodsController@getGoods')->middleware('api');
+Route::get('/goods', 'GoodsController@getGoods')->middleware('api');
 
 //Route::post('/api/login',function(Request $request){
 //	dd($request->all());
@@ -42,5 +42,5 @@ Route::group(['namespace' => 'Apis'], function () {
 
     Route::post('/register', 'RegisterController@register');
     Route::get('/verify/{token}/secret/{secret}', 'RegisterController@registerVerify')->name('api.email.verify');
-
+    Route::post('/login','LoginController@login');
 });

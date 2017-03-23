@@ -11,18 +11,21 @@
 	<meta name="keywords" content=""/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+
 	<!-- Favorite Icons -->
 	<link rel="icon" href="/img/favicon/favicon.html" type="image/x-icon" />
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/favicon/apple-touch-icon-144x144-precomposed.html">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/favicon/apple-touch-icon-72x72-precomposed.html">
 	<link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.html">
 	<!-- // Favorite Icons -->
+	<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/semantic-ui/2.2.9/semantic.min.css">
 
 	<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 
 	<!-- GENERAL CSS FILES -->
 	<link rel="stylesheet" href="/sites-css/minified.css">
 	<!-- // GENERAL CSS FILES -->
+
 
 	<!--[if IE 8]>
 	<script src="/sites-js/respond.min.js"></script>
@@ -49,7 +52,6 @@
 	<script src="/sites-js/owl.carousel.js"></script>
 	<script src="/sites-js/jquery.flexslider-min.js"></script>
 	<!-- // Particular Page Javascripts -->
-</head>
 </head>
 <body class="home">
 @include('mall.layouts.body')

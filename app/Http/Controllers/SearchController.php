@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Admin\Models\Good;
-use App\Admin\Models\Image_attach;
+use App\Admin\Models\Goods\Good;
+use App\Admin\Models\Images\Image_attach;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller

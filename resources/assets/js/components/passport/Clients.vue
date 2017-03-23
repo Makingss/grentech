@@ -14,11 +14,11 @@
             <div class="panel-heading">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <span>
-                        OAuth Clients
+                        OAuth 客户端
                     </span>
 
                     <a class="action-link" @click="showCreateClientForm">
-                        Create New Client
+                        创建新的客户端
                     </a>
                 </div>
             </div>
@@ -26,7 +26,7 @@
             <div class="panel-body">
                 <!-- Current Clients -->
                 <p class="m-b-none" v-if="clients.length === 0">
-                    You have not created any OAuth clients.
+                    你没有创建任何OAuth客户端.
                 </p>
 
                 <table class="table table-borderless m-b-none" v-if="clients.length > 0">
@@ -125,7 +125,7 @@
                                                     @keyup.enter="store" v-model="createForm.redirect">
 
                                     <span class="help-block">
-                                        Your application's authorization callback URL.
+                                        您的应用程序的授权回调URL.
                                     </span>
                                 </div>
                             </div>
@@ -193,7 +193,7 @@
                                                     @keyup.enter="update" v-model="editForm.redirect">
 
                                     <span class="help-block">
-                                        Your application's authorization callback URL.
+                                        您的应用程序的授权回调URL.
                                     </span>
                                 </div>
                             </div>

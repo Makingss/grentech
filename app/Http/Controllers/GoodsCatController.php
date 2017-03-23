@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Admin\Models\Goods_cat;
+use App\Admin\Models\Goods\Goods_cat;
 use Illuminate\Http\Request;
 
 class GoodsCatController extends Controller

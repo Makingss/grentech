@@ -24,7 +24,7 @@ Route::get('/articles/create','ArticleController@create');
 Route::get('/articles/{id}','ArticleController@show');
 Route::post('/articles','ArticleController@store');
 */
-Route::get('/email/verify/{token}', ['as' => 'email.verify', 'uses' => 'EmailController@verify']);
+Route::get('/email/verify/{token}', ['as' => 'email.verify', 'uses' => 'Email\EmailController@verify']);
 Route::resource('articles', 'ArticleController');
 
 Auth::routes();
@@ -50,7 +50,7 @@ Route::get('/demo', function () {
 	$question = \App\Models\Comment::find(1);
 	return view('demo', compact('question'));
 });
-Route::post('/api/login', 'Apis\LoginController@login');
+//Route::post('/api/login', 'Apis\LoginController@login');
 
 Route::post('/table', 'GoodsController@getTableColumns');
 Route::get('/goods/cat','GoodsCatController@index');

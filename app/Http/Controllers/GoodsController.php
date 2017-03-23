@@ -10,9 +10,9 @@ namespace App\Http\Controllers;
 
 
 use App\Admin\Bases\SchemaBuilder;
-use App\Admin\Models\Good;
-use App\Admin\Models\Image;
-use App\Admin\Models\Image_attach;
+use App\Admin\Models\Goods\Good;
+use App\Admin\Models\Images\Image;
+use App\Admin\Models\Images\Image_attach;
 use Illuminate\Http\Request;
 
 class GoodsController extends Controller
@@ -24,10 +24,7 @@ class GoodsController extends Controller
 	{
 		$per_page = $request->get('per_page');
 		$relations = $request->get('relations');
-//		$relations = ['mechanics', 'goods_ports', 'assemblies', 'standardfits', 'electrics',
-//			'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images'];
 		$parameters = $request->get('parameters');
-//		$parameters = ['brand_id' => 1, 'goods_id' => 1];
 		$collection = collect($parameters);
 		$filtered = $collection->only(['brand_id', 'goods_id', 'type_id', 'cat_id', 'bn']);
 		$where = $filtered->all();

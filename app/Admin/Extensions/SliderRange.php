@@ -1,7 +1,7 @@
 <?php
 namespace App\Admin\Extensions;
 
-use App\Admin\Models\Mechanic;
+use App\Admin\Models\Goods\Mechanic;
 use Encore\Admin\Form\Field;
 
 class SliderRange extends Field
