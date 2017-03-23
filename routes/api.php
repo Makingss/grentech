@@ -42,5 +42,5 @@ Route::group(['namespace' => 'Apis'], function () {
 
     Route::post('/register', 'RegisterController@register');
     Route::get('/verify/{token}/secret/{secret}', 'RegisterController@registerVerify')->name('api.email.verify');
-
+    Route::post('/login','LoginController@login');
 });

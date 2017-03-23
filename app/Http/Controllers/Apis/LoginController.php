@@ -1,99 +1,79 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Apis;
 
-use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-	/*
-	|--------------------------------------------------------------------------
-	| Login Controller
-	|--------------------------------------------------------------------------
-	|
-	| This controller handles authenticating users for the application and
-	| redirecting them to your home screen. The controller uses a trait
-	| to conveniently provide its functionality to your applications.
-	|
-	*/
+    use AuthenticatesUsers;
 
-	use AuthenticatesUsers;
+    /**
+     * 登录字段验证
+     * @param array $data
+     * @return mixed
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:6',
+        ]);
+    }
 
-	/**
-	 * Where to redirect users after login.
-	 *
-	 * @var string
-	 */
-	protected $redirectTo = '/';
+    /**
+     * 登录实现
+     * @param Request $request
+     * @return mixed
+     */
+    public function login(Request $request)
+    {
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $this->validator($request->all())->validate();
+        if ($this->hasTooManyLoginAttempts($request)) {
+            $this->fireLockoutEvent($request);
+            return $this->sendLockoutResponse($request);
+        }
 
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('guest', ['except' => 'logout']);
-	}
+        if ($this->attemptLogin($request)) {
+            $user = User::where('email', $email)->where('is_active', 1)->first();
+            $client_id = DB::table('oauth_clients')->where('user_id', $user->id)->value('id');
+            if (empty($client_id)) {
+                return response()->json(['res' => false, 'req' => '邮箱不存在或者尚未激活']);
+            }
+            $res = $this->getOauth($client_id, md5($user->email . $user->id), $user->email, $password);
+            return response()->json(['res' => true, 'req' => '登录成功', 'data' => $res]);
+        }
+        return response()->json(['res' => false, 'req' => '账号或密码错误']);
+    }
 
-	protected function validateLogin(Request $request)
-	{
-//		$login=$request->get('login');
-		$this->validate($request, [
-			$this->username() => 'required',
-			'password' => 'required',
-			'captcha' => 'required|captcha'
-		]);
-	}
-
-	public function username()
-	{
-		return 'name';
-//		return filter_var($request->get('login'), FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
-	}
-
-	public function login(Request $request)
-	{
-		$this->validateLogin($request);
-
-		// If the class is using the ThrottlesLogins trait, we can automatically throttle
-		// the login attempts for this application. We'll key this by the username and
-		// the IP address of the client making these requests into this application.
-		if ($this->hasTooManyLoginAttempts($request)) {
-			$this->fireLockoutEvent($request);
-
-			return $this->sendLockoutResponse($request);
-		}
-
-		if ($this->attemptLogin($request)) {
-			flash('欢迎回来！', 'success');
-			return $this->sendLoginResponse($request);
-		}
-
-		// If the login attempt was unsuccessful we will increment the number of attempts
-		// to login and redirect the user back to the login form. Of course, when this
-		// user surpasses their maximum number of attempts they will get locked out.
-		$this->incrementLoginAttempts($request);
-
-		return $this->sendFailedLoginResponse($request);
-	}
-
-
-	/**
-	 * Attempt to log the user into the application.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @return bool
-	 */
-	protected function attemptLogin(Request $request)
-	{
-
-		$credentials = array_merge($this->credentials($request), ['is_active'=>1]);
-		return $this->guard()->attempt(
-			$credentials, $request->has('remember')
-		);
-	}
-
+    /**
+     * 获取oauth授权基本新
+     * @param integer $client_id 客户端ID
+     * @param string $client_secret 客户端secret_id
+     * @param string $username 用户名
+     * @param string $password 密码
+     * @param string $scope 作用域
+     * @return mixed
+     */
+    public function getOauth($client_id, $client_secret, $username, $password, $scope = '')
+    {
+        $response = $this->http->post(url('/oauth/token'), [
+            'form_params' => [
+                'grant_type' => 'password',
+                'client_id' => $client_id,
+                'client_secret' => $client_secret,
+                'username' => $username,
+                'password' => $password,
+                'scope' => $scope,
+            ],
+        ]);
+        return json_decode((string)$response->getBody(), true);
+    }
 }

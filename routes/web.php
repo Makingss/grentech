@@ -50,7 +50,7 @@ Route::get('/demo', function () {
 	$question = \App\Models\Comment::find(1);
 	return view('demo', compact('question'));
 });
-Route::post('/api/login', 'Apis\LoginController@login');
+//Route::post('/api/login', 'Apis\LoginController@login');
 
 Route::post('/table', 'GoodsController@getTableColumns');
 Route::get('/goods/cat','GoodsCatController@index');
