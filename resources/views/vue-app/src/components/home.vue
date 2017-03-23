@@ -58,9 +58,9 @@
     <div class="scroll-content infinite-scroll container">
       <flexbox wrap="wrap" :gutter="0" class="scroll-content">
         <flexbox-item v-for="(item,index) in scroller_data.data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" :data-i="index%2">
-          <router-link to="/goods" class="block">
+          <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block">
             <div>
-              <img :src="item.img" alt="">
+              <img :src="item.images?item.images.url:'/static/grentech/201611071754125468.jpg'" alt="">
             </div>
             <div class="padding-rl-10">
               <div class="item-title line-ellispse-2">
@@ -194,52 +194,31 @@ export default {
           url:'',
           img:'/static/grentech/201612070950019218.jpg'
         },
+        current_page:0,
+        from:0,
+        last_page:0,
+        per_page:0,
+        to:0,
+        total:0,
         data:[
           {
             url:'/goods?goods_id=62&item_index=0',
-            name:'测试商品列表',
-            img:'/static/grentech/201611221355144218.jpg',
+            images:{
+              url:'/static/grentech/201611071754125468.jpg',
+            },
             title:'',
+            name:'测试商品列表',
             price:'276.00',
+            goods_id:'62',
             mktprice:'1380.00'
           },
           {
             url:'/goods?goods_id=62&item_index=0',
-            name:'测试商品列表',
-            img:'/static/grentech/201611051243571562.jpg',
+            images:{
+              url:'/static/grentech/201611071754125468.jpg',
+            },
             title:'',
-            price:'276.00',
-            mktprice:'1380.00'
-          },
-          {
-            url:'/goods?goods_id=62&item_index=0',
-            name:'测试商品列表',
-            img:'/static/grentech/201611221355144218.jpg',
-            title:'',
-            name:'测试商品列表',
-            price:'276.00',
-            mktprice:'1380.00'
-          },
-          {
-            url:'/goods?goods_id=62&item_index=0',
-            img:'/static/grentech/201611231413171562.jpg',
-            title:'',
-            name:'测试商品列表',
-            price:'276.00',
-            mktprice:'1380.00'
-          },
-          {
-            url:'/goods?goods_id=62&item_index=0',
-            img:'/static/grentech/201611071754125468.jpg',
-            title:'',
-            name:'测试商品列表',
-            price:'276.00',
-            mktprice:'1380.00'
-          },
-          {
-            url:'/goods?goods_id=62&item_index=0',
-            img:'/static/grentech/201611071754125468.jpg',
-            title:'',
+            goods_id:'63',
             name:'测试商品列表',
             price:'276.00',
             mktprice:'1380.00'
@@ -283,10 +262,21 @@ export default {
       }
     },
     get_home_list:function(query){
+      var self=this;
        api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
             console.log(">>>>>>>>>>>>>>>");
             console.log(res);
-            self.commit_resdata(res.data);
+            if(res.data.data&&res.data.length>0){
+              self.scroller_data.data.concat(res.data.data);
+              scroller_data.current_page=res.data.current_page;
+              scroller_data.from=res.data.from;
+              scroller_data.last_page=res.data.last_page;
+              scroller_data.per_page=res.data.per_page;
+              scroller_data.to=res.data.to;
+              scroller_data.total=res.data.total;
+            }
+            
+            
       })
     },
     loadMore:function(){
