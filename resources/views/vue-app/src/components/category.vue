@@ -395,8 +395,8 @@ export default {
     //初始化场景类别
     // this.init_scene_list();
     this.init_goods_category();
-    //  var fullpath=this.$route.fullPath;
-      console.log(window.location.href);
+    
+     
   },
   methods:{
     input_change:function(){
