@@ -37,14 +37,14 @@ router.beforeEach((to, from, next) => {
   
       // --- get_user_info
       if(!!window.localStorage.access_token){
-         api.get_user_info({
-              headers:{
-                'Accept':'application/json',
-                'Authorization':"Bearer "+window.localStorage.access_token,
-              }
-          }).then(res=>{
-             console.log(res.data);
-          })
+        //  api.get_user_info({
+        //       headers:{
+        //         'Accept':'application/json',
+        //         'Authorization':"Bearer "+window.localStorage.access_token,
+        //       }
+        //   }).then(res=>{
+        //      console.log(res.data);
+        //   })
       }else{
         //刷新 access_token
         // var access_token=res.data.access_token;
