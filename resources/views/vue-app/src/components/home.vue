@@ -92,15 +92,15 @@ export default {
       scrollTop:0,
       swiper_list:[
         {
-          url:'javascript:',
+          url:'/list?type_id=3',
           img:'https://static.vux.li/demo/1.jpg',
           title:'测试轮播标题1'
         },{
-          url:'javascript:',
+          url:'/list?type_id=3',
           img:'https://static.vux.li/demo/2.jpg',
           title:'测试轮播标题2'
         },{
-          url:'javascript:',
+          url:'/list?type_id=3',
           img:'https://static.vux.li/demo/3.jpg',
           title:'测试轮播标题3'
         },
