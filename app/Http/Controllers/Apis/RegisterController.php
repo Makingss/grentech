@@ -72,7 +72,7 @@ class RegisterController extends Controller
     public function sendVerifyEmailTo($user, $key)
     {
         //设置邮箱验证API路由
-        $urlObj = redirect('/app/jump?token=' . $user->confirmation_token . '&secret=' . authcode($key, 'ENCODE'));
+        $urlObj = redirect('/app#/jump?token=' . $user->confirmation_token . '&secret=' . authcode($key, 'ENCODE'));
         $bind_data = ['url' => $urlObj->getTargetUrl(), 'name' => $user->name];
 //        $bind_data = ['url' => route('api.email.verify', ['token' => $user->confirmation_token, 'secret' => authcode($key, 'ENCODE')]),
 //            'name' => $user->name
