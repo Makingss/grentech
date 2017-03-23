@@ -7,7 +7,7 @@
       </p>
       <div class="user-login">
         <p>
-          <router-link to="/login" class="color-white">
+          <router-link to="/login" class="color-white padding-tb-10">
             登陆
           </router-link>
         </p>
