@@ -21,7 +21,7 @@ class SearchController extends Controller
 				'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images', 'goods_cats']
 		);
 		$with = $filteredRelations->all();
-		$goods = Good::search($query)->with($with)->paginate($per_page)->toArray();
+		$goods = Good::search($query)->with($with)->orderBy('updated_at', 'DESC')->paginate($per_page)->toArray();
 		foreach ($goods['data'] as $dataK => $data) {
 			foreach ($data['image_attach'] as $itemK => $item) {
 				$image_attach = Image_attach::with('images')->where('image_id', $item['image_id'])->get()->toArray();

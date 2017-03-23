@@ -24,7 +24,7 @@ Route::get('/articles/create','ArticleController@create');
 Route::get('/articles/{id}','ArticleController@show');
 Route::post('/articles','ArticleController@store');
 */
-Route::get('/email/verify/{token}', ['as' => 'email.verify', 'uses' => 'Email\EmailController@verify']);
+Route::get('/email/verify/{token}', ['as' => 'email.verify', 'uses' => 'Email\EmailCont			roller@verify']);
 Route::resource('articles', 'ArticleController');
 
 Auth::routes();

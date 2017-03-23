@@ -24,7 +24,7 @@ class GoodsController extends Controller
 	{
 		$per_page = $request->get('per_page');
 		$relations = $request->get('relations');
-		$parameters = $request->get('parameters');
+		$parameters = $request->get('parameters')?$request->get('parameters'):'image_attach';
 		$collection = collect($parameters);
 		$filtered = $collection->only(['brand_id', 'goods_id', 'type_id', 'cat_id', 'bn']);
 		$where = $filtered->all();
@@ -33,7 +33,7 @@ class GoodsController extends Controller
 				'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images', 'goods_cats']
 		);
 		$with = $filteredRelations->all();
-		$goods = Good::with($with)->where($where)->paginate($per_page)->toArray();
+		$goods = Good::with($with)->where($where)->orderBy('updated_at', 'DESC')->paginate($per_page)->toArray();
 		foreach ($goods['data'] as $dataK => $data) {
 			foreach ($data['image_attach'] as $itemK => $item) {
 				$image_attach = Image_attach::with('images')->where('image_id', $item['image_id'])->get()->toArray();
