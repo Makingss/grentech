@@ -242,6 +242,10 @@ export default {
   },
   created:function(){
     this.get_home_list({});
+    api.get_page_data("http://119.23.22.185/api/goods?page=2").then(res=>{
+      console.log("222222222");
+      console.log(res);
+    })
   },
   methods:{
     handle_scroll:function(el){
@@ -261,14 +265,11 @@ export default {
         return;
       }
     },
-    get_home_list:function(query){
+    get_home_list:function(query,callback){
       var self=this;
        api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
             console.log(">>>>>>>>>>>>>>>");
-            console.log(res.data.data);
-            console.log(self.scroller_data);
             if(res.data.data&&res.data.data.length>0){
-              console.log("aaa");
               self.scroller_data.data=self.scroller_data.data.concat(res.data.data);
               self.scroller_data.current_page=res.data.current_page;
               self.scroller_data.from=res.data.from;
@@ -276,8 +277,9 @@ export default {
               self.scroller_data.per_page=res.data.per_page;
               self.scroller_data.to=res.data.to;
               self.scroller_data.total=res.data.total;
-              console.log(self.scroller_data.data);
             }
+            callback();
+            console.log(self.scroller_data);
       })
     },
     loadMore:function(){
@@ -288,29 +290,18 @@ export default {
       console.log("触发加载");
       this.loading=true;
       let scroller=$(".container");
-      //console.log(loader);
       this.loading=true;
-      setTimeout(()=>{
-        let i=this.length;
-        this.scroller_data.data.push({
-            url:'/goods?goods_id=62&item_index=0',
-            img:'/static/grentech/201611071754125468.jpg',
-            title:'',
-            name:'测试商品列表',
-            price:'276.00',
-            mktprice:'1380.00'
-          },{
-            url:'/goods?goods_id=62&item_index=0',
-            img:'/static/grentech/201611071754125468.jpg',
-            title:'',
-            name:'测试商品列表',
-            price:'276.00',
-            mktprice:'1380.00'
-          })
-        let scrollTop=scroller[0].scrollHeight-scroller.height()-20;
-        scroller.scrollTop(scrollTop);
-        self.loading=false;
-      },1500)
+      this.get_home_list({
+        page:2
+      });
+      // setTimeout(()=>{
+      //   let i=this.length;
+        
+      //   let scrollTop=scroller[0].scrollHeight-scroller.height()-20;
+      //   scroller.scrollTop(scrollTop);
+      //   self.loading=false;
+      // },1500)
+
     }
   },
   components:{
