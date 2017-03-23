@@ -41,7 +41,7 @@ export default {
           'images'
         ]*/
         // console.log(data);
-        return Vue.http.get(API_ROOT + '/api/goods', data);
+        return Vue.http.get(API_ROOT + '/api/goods', {parms:data});
         // return Vue.http.post(API_ROOT+'/api/goods',{relations:"image_attach",parameters:""});
     },
     get_page_data:function(page_url){

@@ -242,10 +242,7 @@ export default {
   },
   created:function(){
     this.get_home_list({});
-    api.get_page_data("http://119.23.22.185/api/goods?page=1&per_page=10").then(res=>{
-      console.log("222222222");
-      console.log(res);
-    })
+   
   },
   methods:{
     handle_scroll:function(el){
@@ -277,6 +274,7 @@ export default {
               self.scroller_data.per_page=res.data.per_page;
               self.scroller_data.to=res.data.to;
               self.scroller_data.total=res.data.total;
+              // self.
             }
             // callback();
             console.log(self.scroller_data);
@@ -291,9 +289,7 @@ export default {
       this.loading=true;
       let scroller=$(".container");
       this.loading=true;
-      this.get_home_list({
-        page:2
-      });
+      this.get_page_data(url);
       // setTimeout(()=>{
       //   let i=this.length;
         
