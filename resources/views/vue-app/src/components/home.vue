@@ -114,37 +114,37 @@ export default {
         data:[
           {
             img:'/static/grentech/201611051243571562.jpg',
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备'
           },{
             img:'/static/grentech/201611071753107968.jpg',
-            url:'',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备'
           },{
             img:'/static/grentech/201611071844501875.jpg',
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备'
           },{
             img:'/static/grentech/201611221355144218.jpg',
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备'
           },{
             img:'/static/grentech/201611231413171562.jpg',
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备'
           },{
             img:'/static/grentech/201611071754125468.jpg',
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备'
@@ -153,34 +153,34 @@ export default {
       },
       hot_sales:{
         cover:{
-          url:'app#/goods?goods_id=62&item_index=0',
+          url:'/goods?goods_id=62&item_index=0',
           img:'/static/grentech/20170116185915616-(1).jpg',
         },
         data:[
           {
             img:'/static/grentech/201611071754125468.jpg',
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备',
             price:'1209.00'
           },{
             img:'/static/grentech/201611231413171562.jpg',
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备',
             price:'1209.00'
           },{
             img:'/static/grentech/201611221355144218.jpg',
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备',
             price:'1209.00'
           },{
             img:'/static/grentech/201611051243571562.jpg',
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备',
@@ -195,7 +195,7 @@ export default {
         },
         data:[
           {
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             name:'测试商品列表',
             img:'/static/grentech/201611221355144218.jpg',
             title:'',
@@ -203,7 +203,7 @@ export default {
             mktprice:'1380.00'
           },
           {
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             name:'测试商品列表',
             img:'/static/grentech/201611051243571562.jpg',
             title:'',
@@ -211,7 +211,7 @@ export default {
             mktprice:'1380.00'
           },
           {
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             name:'测试商品列表',
             img:'/static/grentech/201611221355144218.jpg',
             title:'',
@@ -220,7 +220,7 @@ export default {
             mktprice:'1380.00'
           },
           {
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             img:'/static/grentech/201611231413171562.jpg',
             title:'',
             name:'测试商品列表',
@@ -228,7 +228,7 @@ export default {
             mktprice:'1380.00'
           },
           {
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             img:'/static/grentech/201611071754125468.jpg',
             title:'',
             name:'测试商品列表',
@@ -236,7 +236,7 @@ export default {
             mktprice:'1380.00'
           },
           {
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             img:'/static/grentech/201611071754125468.jpg',
             title:'',
             name:'测试商品列表',
@@ -291,14 +291,14 @@ export default {
       setTimeout(()=>{
         let i=this.length;
         this.scroller_data.data.push({
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             img:'/static/grentech/201611071754125468.jpg',
             title:'',
             name:'测试商品列表',
             price:'276.00',
             mktprice:'1380.00'
           },{
-            url:'app#/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=62&item_index=0',
             img:'/static/grentech/201611071754125468.jpg',
             title:'',
             name:'测试商品列表',
