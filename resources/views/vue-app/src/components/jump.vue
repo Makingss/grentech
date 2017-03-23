@@ -34,6 +34,7 @@
         },
         methods:{
             get_access_token:function(){
+                var self=this;
                 var query=this.$route.query;
                 console.log(query);
                 api.get_token(query).then(res=>{
@@ -55,7 +56,7 @@
                 })
             },
             jump_to_home:function(){
-                 var self=this;
+                var self=this;
                 self.jump_time=5;
                 setInterval(function(){
                     self.jump_time--;
