@@ -270,7 +270,7 @@ export default {
       let scroller=$(".container");
       this.loading=true;
       if(!!self.scroller_data.next_page_url){
-        this.get_page_data(self.scroller_data.next_page_url,{per_page:10}).then(res=>{
+        api.get_page_data(self.scroller_data.next_page_url,{per_page:10}).then(res=>{
           console.log(res);
           console.log("!!!!!!!!");
         });
