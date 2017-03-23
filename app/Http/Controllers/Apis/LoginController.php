@@ -47,8 +47,9 @@ class LoginController extends Controller
             if (empty($client_id)) {
                 return response()->json(['res' => false, 'req' => '邮箱不存在或者尚未激活']);
             }
-            $res = $this->getOauth($client_id, md5($user->email . $user->id), $user->email, $password);
-            return response()->json(['res' => true, 'req' => '登录成功', 'data' => $res]);
+            $data = $this->getOauth($client_id, md5($user->email . $user->id), $user->email, $password);
+            $data['service_time'] = time();
+            return response()->json(['res' => true, 'data' => $data, 'req' => '登录成功']);
         }
         return response()->json(['res' => false, 'req' => '账号或密码错误']);
     }

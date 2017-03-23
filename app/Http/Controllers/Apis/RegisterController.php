@@ -100,27 +100,34 @@ class RegisterController extends Controller
     /**
      * api注册验证
      * @param $token mixed confirmation_token
-     * @param $secret mixed secret
+     * @param $request mixed secret
      * @return string ;
      */
     public function registerVerify(Request $request)
     {
         $token = $request->input('token');
         $secret = $request->input('secret');
-        $user = User::where('confirmation_token', $token)->first();
-        if (is_null($user)) {
-            return response()->json(['res' => false, 'data' => null, 'req' => '激活失败']);
+        if ($request->has('token') && $request->has('secret')) {
+            $user = User::where('confirmation_token', $token)->first();
+            if (is_null($user)) {
+                return response()->json(['res' => false, 'data' => null, 'req' => '激活失败']);
+            }
+            $this->oauthClientCreate($user->id, $user->email, $user->email, '');
+            $id = DB::table('oauth_clients')->where('user_id', $user->id)->value('id');
+            $user->is_active = 1;
+            $user->confirmation_token = str_random(40);
+            $res = $user->save();
+            if ($res) {
+                //获取用户access_token
+                $data = $this->getOauth($id, md5($user->email . $user->id), $user->email, authcode($secret));
+                //追加服务器当前时间
+                $data['service_time'] = time();
+                return response()->json(['res' => true, 'data' => $data, 'req' => '激活成功']);
+            } else {
+                return response()->json(['res' => false, 'data' => '', 'req' => '数据存储失败请重试']);
+            }
         }
-        $this->oauthClientCreate($user->id, $user->email, $user->email, '');
-        $id = DB::table('oauth_clients')->where('user_id', $user->id)->value('id');
-        $user->is_active = 1;
-        $user->confirmation_token = str_random(40);
-        $res = $user->save();
-        if ($res) {
-            $data = $this->getOauth($id, md5($user->email . $user->id), $user->email, authcode($secret));
-            return response()->json(['res' => true, 'data' => $data, 'req' => '激活成功']);
-        }
-        return response()->json(['res' => true, 'data' => '', 'req' => '数据存储失败请重试']);
+        return response()->json(['res' => false, 'req' => '缺少必要参数']);
     }
 
     /**
