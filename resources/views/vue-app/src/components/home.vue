@@ -246,19 +246,23 @@ export default {
        api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
             console.log(">>>>>>>>>>>>>>>");
             if(res.data.data&&res.data.data.length>0){
-              self.scroller_data.data=self.scroller_data.data.concat(res.data.data);
-              self.scroller_data.current_page=res.data.current_page;
-              self.scroller_data.from=res.data.from;
-              self.scroller_data.last_page=res.data.last_page;
-              self.scroller_data.per_page=res.data.per_page;
-              self.scroller_data.next_page_url=res.data.next_page_url;
-              self.scroller_data.to=res.data.to;
-              self.scroller_data.total=res.data.total;
+              self.handle_res_data(res.data)
               // self.
             }
             // callback();
             console.log(self.scroller_data);
       })
+    },
+    handle_res_data:function(res_data){
+              var self=this;
+              self.scroller_data.data=self.scroller_data.data.concat(res_data.data);
+              self.scroller_data.current_page=res_data.current_page;
+              self.scroller_data.from=res_data.from;
+              self.scroller_data.last_page=res_data.last_page;
+              self.scroller_data.per_page=res_data.per_page;
+              self.scroller_data.next_page_url=res_data.next_page_url;
+              self.scroller_data.to=res_data.to;
+              self.scroller_data.total=res_data.total;
     },
     loadMore:function(){
       var self=this;
@@ -272,6 +276,10 @@ export default {
       if(!!self.scroller_data.next_page_url){
         api.get_page_data(self.scroller_data.next_page_url,{per_page:10}).then(res=>{
           console.log(res);
+           if(res.data.data&&res.data.data.length>0){
+              self.handle_res_data(res.data)
+              // self.
+            }
           console.log("!!!!!!!!");
         });
         
