@@ -272,7 +272,7 @@ export default {
       let scroller=$(".container");
       this.loading=true;
       if(!!self.scroller_data.next_page_url){
-        api.get_page_data(self.scroller_data.next_page_url,{per_page:10}).then(res=>{
+        api.get_page_data(self.scroller_data.next_page_url,{relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
           console.log(res);
            if(res.data.data&&res.data.data.length>0){
               self.handle_res_data(res.data)
