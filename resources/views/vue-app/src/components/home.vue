@@ -14,7 +14,7 @@
               <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
             </div>
             <div class="text-center">
-              <div class="item-title color-danger line-ellispse-2">
+              <div class="item-title color-success line-ellispse-2">
                 ￥{{item.name}}
               </div>
               <div class="item-subtitle color-gray">
@@ -37,7 +37,7 @@
               <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
             </div>
             <div class="text-center">
-              <div class="item-title color-danger line-ellispse-2">
+              <div class="item-title color-success line-ellispse-2">
                 ￥{{item.name}}
               </div>
               <div class="item-subtitle color-gray">
