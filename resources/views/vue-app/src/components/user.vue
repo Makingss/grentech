@@ -109,12 +109,14 @@ export default {
           icon:"&#xe614;",
           url:'/qrcode',
           show_badge:false
-        },{
-          title:'地址管理',
-          icon:"&#xe620;",
-          url:'/address',
-          show_badge:false
-        },{
+        },
+        // {
+        //   title:'地址管理',
+        //   icon:"&#xe620;",
+        //   url:'/address',
+        //   show_badge:false
+        // },
+        {
           title:'个人设置',
           icon:"&#xe61d;",
           url:'/setting',
