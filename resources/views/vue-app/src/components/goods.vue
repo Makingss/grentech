@@ -169,6 +169,7 @@ import {mapState,mapActions} from 'vuex'
           // this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
           api.getGoodsData({relations: ["image_attach", "images","mechanics","goods_ports","assemblies","standardfits","electrics"], parameters:query}).then((res)=>{
             self.goods_data_list=res.data.data[0];
+            console.log(res);
           });
       },
       get_parms_data:function(){
