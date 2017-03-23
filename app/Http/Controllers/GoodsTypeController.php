@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Admin\Models\Goods_type;
+use App\Admin\Models\Goods\Goods_type;
 use Illuminate\Http\Request;
 
 class GoodsTypeController extends Controller

@@ -9,7 +9,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Admin\Models\Brand;
+use App\Admin\Models\Goods\Brand;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
