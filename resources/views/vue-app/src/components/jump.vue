@@ -48,6 +48,7 @@
                         window.location.expires_in=res_data.data.expires_in;
                         window.location.refresh_token=res_data.data.refresh_token;
                         window.location.token_type=res_data.data.token_type;
+                        window.location.service_time=res_data.service_time;
                     }else{
                         self.res_msg=self.error_msg;
                         self.res=3;

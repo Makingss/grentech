@@ -40,7 +40,7 @@ router.beforeEach((to, from, next) => {
          api.get_user_info({
               headers:{
                 'Accept':'application/json',
-                'Authorization':"Bearer "+window.location.access_token,
+                'Authorization':"Bearer "+window.localStorage.access_token,
               }
           }).then(res=>{
              console.log(res.data);
