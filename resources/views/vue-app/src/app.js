@@ -37,16 +37,37 @@ router.beforeEach((to, from, next) => {
   }
   
   //拉取 token
-  api.get_api_token({
-        grant_type:"password",
-        client_id:3,
-        scope:"",
-        username:"pengbd3@163.com",
-        password:"5230178",
-        client_secret:"okDZ28XNOjIE4n7gy07jnKxWizIOmQPKhQrWuQ6S"
-      }).then(res=>{
-       //vuex 状态控制
-        var access_token=res.data.access_token;
+  // api.get_api_token({
+  //       grant_type:"password",
+  //       client_id:3,
+  //       scope:"",
+  //       username:"pengbd3@163.com",
+  //       password:"5230178",
+  //       client_secret:"okDZ28XNOjIE4n7gy07jnKxWizIOmQPKhQrWuQ6S"
+  //     }).then(res=>{
+  //      //vuex 状态控制
+       
+  //       //get 一用户信息测试 
+  //         // api.get_user_info({
+  //         //     headers:{
+  //         //       'Accept':'application/json',
+  //         //       'Authorization':"Bearer "+access_token,
+  //         //     }
+  //         // }).then(res=>{
+  //         //   console.log(res.data);
+  //         // })
+  //     });
+
+      // --- get_user_info
+      if(!!window.localStorage.access_token){
+         api.get_user_info({access_token:window.localStorage.access_token}).then(res=>{
+            console.log(res);
+         })
+      }else{
+        //刷新 access_token
+      }
+     
+       var access_token=res.data.access_token;
         store.state.token.token=res.data;
         
         //加入 localStorage存储静态数据 
@@ -54,16 +75,7 @@ router.beforeEach((to, from, next) => {
         window[config.app_config.storage].expires_in=res.data.expires_in;
         window[config.app_config.storage].refresh_token=res.data.refresh_token;
         window[config.app_config.storage].token_type=res.data.token_type;
-        //get 一用户信息测试 
-          // api.get_user_info({
-          //     headers:{
-          //       'Accept':'application/json',
-          //       'Authorization':"Bearer "+access_token,
-          //     }
-          // }).then(res=>{
-          //   console.log(res.data);
-          // })
-      });
+
   // NProgress.start();
   if(!from.name&&to.name=="home"){
     //init app
