@@ -201,28 +201,7 @@ export default {
         to:0,
         total:0,
         data:[
-          {
-            url:'/goods?goods_id=62&item_index=0',
-            images:{
-              url:'/static/grentech/201611071754125468.jpg',
-            },
-            title:'',
-            name:'测试商品列表',
-            price:'276.00',
-            goods_id:'62',
-            mktprice:'1380.00'
-          },
-          {
-            url:'/goods?goods_id=62&item_index=0',
-            images:{
-              url:'/static/grentech/201611071754125468.jpg',
-            },
-            title:'',
-            goods_id:'63',
-            name:'测试商品列表',
-            price:'276.00',
-            mktprice:'1380.00'
-          }
+          
         ]
       }
     }
@@ -272,6 +251,7 @@ export default {
               self.scroller_data.from=res.data.from;
               self.scroller_data.last_page=res.data.last_page;
               self.scroller_data.per_page=res.data.per_page;
+              self.scroller_data.next_page_url=res.data.next_page_url;
               self.scroller_data.to=res.data.to;
               self.scroller_data.total=res.data.total;
               // self.
@@ -289,7 +269,14 @@ export default {
       this.loading=true;
       let scroller=$(".container");
       this.loading=true;
-      this.get_page_data(url);
+      if(!!self.scroller_data.next_page_url){
+        this.get_page_data(self.scroller_data.next_page_url,{per_page:10}).then(res=>{
+          console.log(res);
+          console.log("!!!!!!!!");
+        });
+        
+      }
+      
       // setTimeout(()=>{
       //   let i=this.length;
         
