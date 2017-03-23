@@ -163,11 +163,11 @@ import {mapState,mapActions} from 'vuex'
       collapse:function(index){
         this["collapse"+index]=!this["collapse"+index];
       },
-      ...mapActions(['GETGOODSLIST']),
-      init_goods_page: function (init_data) {
+      // ...mapActions(['GETGOODSLIST']),
+      init_goods_page: function (query) {
          var self=this;
           // this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
-          api.getGoodsData({relations: ["image_attach", "images","mechanics","goods_ports","assemblies","standardfits","electrics"], parameters:{goods_id:39}}).then((res)=>{
+          api.getGoodsData({relations: ["image_attach", "images","mechanics","goods_ports","assemblies","standardfits","electrics"], parameters:query}).then((res)=>{
             self.goods_data_list=res.data.data[0];
           });
       },
@@ -183,7 +183,7 @@ import {mapState,mapActions} from 'vuex'
       console.log("create good page");
       this.goods_id = query.goods_id;
       this.item_index = query.item_index;
-      this.init_goods_page(this.$store.state.goods);
+      this.init_goods_page(query);
       this.get_parms_data();
     },
     components: {
