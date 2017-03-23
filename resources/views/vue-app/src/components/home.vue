@@ -8,17 +8,17 @@
         <img :src="category.cover.img" alt="">
       </div>
       <flexbox :gutter="0" wrap="wrap">
-        <flexbox-item :span="1/3" v-for="(item,index) in category.data" class="padding-tb-6">
-          <router-link :to="item.url" class="link-img">
+        <flexbox-item :span="1/3" v-for="(item,index) in scroller_data.data" :data-i="ndex>=6&&index<12" v-if="index>=6&&index<12" class="padding-tb-6">
+          <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="link-img">
             <div>
-              <img :src="item.img" alt="">
+              <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
             </div>
             <div class="text-center">
-              <div class="item-title color-danger">
-                ￥{{item.name}}
+              <div class="item-title color-success line-ellispse-2">
+                {{item.name}}
               </div>
               <div class="item-subtitle color-gray">
-                <span>{{item.desc}}</span>
+                <span>{{item.desc||"暂无描述"}}</span>
               </div>
             </div>
           </router-link>
@@ -31,17 +31,17 @@
         <img :src="hot_sales.cover.img" alt="">
       </div>
       <flexbox :gutter="0" wrap="wrap">
-        <flexbox-item :span="1/3" v-for="(item,index) in hot_sales.data" class="padding-tb-6 border-box">
-          <router-link :to="item.url" class="link-img">
+        <flexbox-item :span="1/3" v-for="(item,index) in scroller_data.data" :data-i="index<6" v-if="index<6" class="padding-tb-6 border-box">
+          <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="link-img">
             <div>
-              <img :src="item.img" alt="">
+              <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
             </div>
             <div class="text-center">
-              <div class="item-title color-danger">
-                ￥{{item.name}}
+              <div class="item-title color-success line-ellispse-2">
+                {{item.name}}
               </div>
               <div class="item-subtitle color-gray">
-                <span>{{item.desc}}</span>
+                <span>{{item.desc||"暂无描述"}}</span>
               </div>
             </div>
           </router-link>
@@ -60,7 +60,7 @@
         <flexbox-item v-for="(item,index) in scroller_data.data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" :data-i="index%2">
           <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block">
             <div>
-              <img :src="item.images?item.images.url:'/static/grentech/201611071754125468.jpg'" alt="">
+              <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
             </div>
             <div class="padding-rl-10">
               <div class="item-title line-ellispse-2">
@@ -115,13 +115,13 @@ export default {
         data:[
           {
             img:'/static/grentech/201611051243571562.jpg',
-            url:'/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=71&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备'
           },{
             img:'/static/grentech/201611071753107968.jpg',
-            url:'/goods?goods_id=62&item_index=0',
+            url:'/goods?goods_id=74&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备'
@@ -244,13 +244,11 @@ export default {
     get_home_list:function(query,callback){
       var self=this;
        api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
-            console.log(">>>>>>>>>>>>>>>");
             if(res.data.data&&res.data.data.length>0){
               self.handle_res_data(res.data)
               // self.
             }
             // callback();
-            console.log(self.scroller_data);
       })
     },
     handle_res_data:function(res_data){

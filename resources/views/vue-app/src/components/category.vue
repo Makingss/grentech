@@ -30,7 +30,7 @@
             </div>
             <div class="node-box" v-if="node_index!=0" v-for="child in choose_node">
               <div class="node-title border-1px-b padding-b-10 padding-tb-10 color-primary">
-                {{child.cat_name}}
+              <router-link :to="{name:'list',query:{cat_id:child.cat_id}}">{{child.cat_name}}</router-link>
               </div>
               <div class="node-content clear-float" v-if="false">
                 <div class="margin-tb-4 margin-rl-6 pull-left" v-for="_item in child.children">

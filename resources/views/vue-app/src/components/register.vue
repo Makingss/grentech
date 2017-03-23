@@ -76,7 +76,7 @@ export default {
               self.$vux.toast.show({
                 text:'<span class="font-normal">'+res_data.req+'</br>请查收验证邮箱</span>',
                 onHide(){
-                  self.$route.push("/login");
+                  self.$router.push("/login");
                 }
               })
           }else{
