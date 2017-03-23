@@ -63,7 +63,7 @@ import api from './api'
     name: 'app',
     data: function () {
       return {
-        popup_login: true,
+        popup_login: false,
         page_name: '',
         search_input: '',
         phone: '',
@@ -93,21 +93,19 @@ import api from './api'
       },
       init_app:function(){
         var self=this;
-
         //调用header处理
         this.page_name = this.$route.name;
         var header_conf = this.handler_xheader(this.$route.name);
         this.header_conf = header_conf;
-
         this.navbar=config.app_config.navbar;
 
          //3s后启用登陆拦截
-        // setTimeout(function(){
-        //     self.popup_login=self.$store.state.popuplogin.popup_login;
-        //     self.intercept_closeable=config.app_config.intercept_closeable;
-        //     console.log(self.popup_login);
-        //     console.log("登陆拦截");
-        //  },config.app_config.intercept_time)
+        setTimeout(function(){
+            self.popup_login=self.$store.state.popuplogin.popup_login;
+            self.intercept_closeable=config.app_config.intercept_closeable;
+            console.log(self.popup_login);
+            console.log("登陆拦截");
+         },config.app_config.intercept_time)
       },
       popup: function () {
         this.popup_login = !this.popup_login;
