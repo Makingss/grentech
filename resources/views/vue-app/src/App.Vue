@@ -118,29 +118,6 @@ import api from './api'
     created: function () {
       this.init_app();
      
-      // console.log("////////////");
-      // console.log(config.app_config.navbar);
-      //拉取 token 测试
-      // api.get_api_token({
-      //   grant_type:"password",
-      //   client_id:3,
-      //   scope:"",
-      //   username:"pengbd3@163.com",
-      //   password:"5230178",
-      //   client_secret:"okDZ28XNOjIE4n7gy07jnKxWizIOmQPKhQrWuQ6S"
-      // }).then(res=>{
-      //   console.log(res);
-      //   var access_token=res.data.access_token;
-      //   //get 一用户信息测试
-      //     api.get_user_info({
-      //         headers:{
-      //           'Accept':'application/json',
-      //           'Authorization':"Bearer "+access_token,
-      //         }
-      //     }).then(res=>{
-      //       console.log(res.data);
-      //     })
-      // });
     },
     watch: {
       $route: 'fetch_data'
