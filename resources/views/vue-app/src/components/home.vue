@@ -274,9 +274,9 @@ export default {
               scroller_data.per_page=res.data.per_page;
               scroller_data.to=res.data.to;
               scroller_data.total=res.data.total;
+              console.log(self.scroller_data);
+              
             }
-            
-            
       })
     },
     loadMore:function(){
