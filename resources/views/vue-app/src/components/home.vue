@@ -269,15 +269,14 @@ export default {
             console.log(self.scroller_data);
             if(res.data.data&&res.data.data.length>0){
               console.log("aaa");
-              self.scroller_data.data.concat(res.data.data);
+              self.scroller_data=self.scroller_data.data.concat(res.data.data);
               self.scroller_data.current_page=res.data.current_page;
               self.scroller_data.from=res.data.from;
               self.scroller_data.last_page=res.data.last_page;
               self.scroller_data.per_page=res.data.per_page;
               self.scroller_data.to=res.data.to;
               self.scroller_data.total=res.data.total;
-              console.log(self.scroller_data);
-              
+              console.log(self.scroller_data.data);
             }
       })
     },
