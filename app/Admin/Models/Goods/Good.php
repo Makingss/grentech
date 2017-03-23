@@ -221,7 +221,9 @@ class Good extends Model
 			if ($imagePaths)
 				$this->save_attach($imagePaths, $id);
 //            $goods = array_add($goods, 'image_default_id', $image_default_id);
-			$goods['image_default_id'] = $imagePaths['image_id'];
+			if (!is_null($imagePaths['image_id'])) {
+				$goods['image_default_id'] = $imagePaths['image_id'];
+			}
 			return $goodsObj->update($goods);
 		} else if ($method == 'create') {
 			$id = DB::table('goods')->insertGetId([
