@@ -41,20 +41,20 @@ export default {
           'images'
         ]*/
         // console.log(data);
-        return Vue.http.get(API_ROOT + '/api/goods', data);
+        return Vue.http.get(API_ROOT + '/api/goods', {params:data});
         // return Vue.http.post(API_ROOT+'/api/goods',{relations:"image_attach",parameters:""});
     },
-    get_page_data:function(page_url){
-        return Vue.http.get(page_url);
+    get_page_data:function(url,data){
+        return Vue.http.get(url,{params:data});
     },
     get_trans_params_table:function(data){
         return Vue.http.post(API_ROOT+"/table",data);
     },
     get_cat_list:function(data){
-        return Vue.http.get(API_ROOT+"/goods/cat",data);
+        return Vue.http.get(API_ROOT+"/goods/cat",{params:data});
     },
     get_search_result:function(data){
-        return Vue.http.get(API_ROOT+'/search',data);
+        return Vue.http.get(API_ROOT+'/search',{params:data});
     },
     get_goods_type:function(){
         return Vue.http.get(API_ROOT+"/goods/type");

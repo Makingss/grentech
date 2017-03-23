@@ -201,28 +201,7 @@ export default {
         to:0,
         total:0,
         data:[
-          {
-            url:'/goods?goods_id=62&item_index=0',
-            images:{
-              url:'/static/grentech/201611071754125468.jpg',
-            },
-            title:'',
-            name:'测试商品列表',
-            price:'276.00',
-            goods_id:'62',
-            mktprice:'1380.00'
-          },
-          {
-            url:'/goods?goods_id=62&item_index=0',
-            images:{
-              url:'/static/grentech/201611071754125468.jpg',
-            },
-            title:'',
-            goods_id:'63',
-            name:'测试商品列表',
-            price:'276.00',
-            mktprice:'1380.00'
-          }
+          
         ]
       }
     }
@@ -242,10 +221,7 @@ export default {
   },
   created:function(){
     this.get_home_list({});
-    api.get_page_data("http://119.23.22.185/api/goods?page=1").then(res=>{
-      console.log("222222222");
-      console.log(res);
-    })
+   
   },
   methods:{
     handle_scroll:function(el){
@@ -270,17 +246,23 @@ export default {
        api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
             console.log(">>>>>>>>>>>>>>>");
             if(res.data.data&&res.data.data.length>0){
-              self.scroller_data.data=self.scroller_data.data.concat(res.data.data);
-              self.scroller_data.current_page=res.data.current_page;
-              self.scroller_data.from=res.data.from;
-              self.scroller_data.last_page=res.data.last_page;
-              self.scroller_data.per_page=res.data.per_page;
-              self.scroller_data.to=res.data.to;
-              self.scroller_data.total=res.data.total;
+              self.handle_res_data(res.data)
+              // self.
             }
             // callback();
             console.log(self.scroller_data);
       })
+    },
+    handle_res_data:function(res_data){
+              var self=this;
+              self.scroller_data.data=self.scroller_data.data.concat(res_data.data);
+              self.scroller_data.current_page=res_data.current_page;
+              self.scroller_data.from=res_data.from;
+              self.scroller_data.last_page=res_data.last_page;
+              self.scroller_data.per_page=res_data.per_page;
+              self.scroller_data.next_page_url=res_data.next_page_url;
+              self.scroller_data.to=res_data.to;
+              self.scroller_data.total=res_data.total;
     },
     loadMore:function(){
       var self=this;
@@ -291,9 +273,18 @@ export default {
       this.loading=true;
       let scroller=$(".container");
       this.loading=true;
-      this.get_home_list({
-        page:2
-      });
+      if(!!self.scroller_data.next_page_url){
+        api.get_page_data(self.scroller_data.next_page_url,{per_page:10}).then(res=>{
+          console.log(res);
+           if(res.data.data&&res.data.data.length>0){
+              self.handle_res_data(res.data)
+              // self.
+            }
+          console.log("!!!!!!!!");
+        });
+        
+      }
+      
       // setTimeout(()=>{
       //   let i=this.length;
         
