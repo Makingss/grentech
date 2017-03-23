@@ -278,7 +278,7 @@ export default {
               self.scroller_data.to=res.data.to;
               self.scroller_data.total=res.data.total;
             }
-            callback();
+            // callback();
             console.log(self.scroller_data);
       })
     },
