@@ -37,32 +37,32 @@ router.beforeEach((to, from, next) => {
   }
   
   //拉取 token
-  api.get_api_token({
-        grant_type:"password",
-        client_id:3,
-        scope:"",
-        username:"pengbd3@163.com",
-        password:"5230178",
-        client_secret:"okDZ28XNOjIE4n7gy07jnKxWizIOmQPKhQrWuQ6S"
-      }).then(res=>{
-       //vuex 状态控制
-        var access_token=res.data.access_token;
-        store.state.token.token=res.data;
-        //加入 localStorage存储静态数据 
-        window[config.app_config.storage].access_token=res.data.access_token;
-        window[config.app_config.storage].expires_in=res.data.expires_in;
-        window[config.app_config.storage].refresh_token=res.data.refresh_token;
-        window[config.app_config.storage].token_type=res.data.token_type;
-        //get 一用户信息测试 
-          // api.get_user_info({
-          //     headers:{
-          //       'Accept':'application/json',
-          //       'Authorization':"Bearer "+access_token,
-          //     }
-          // }).then(res=>{
-          //   console.log(res.data);
-          // })
-      });
+  // api.get_api_token({
+  //       grant_type:"password",
+  //       client_id:3,
+  //       scope:"",
+  //       username:"pengbd3@163.com",
+  //       password:"5230178",
+  //       client_secret:"okDZ28XNOjIE4n7gy07jnKxWizIOmQPKhQrWuQ6S"
+  //     }).then(res=>{
+  //      //vuex 状态控制
+  //       var access_token=res.data.access_token;
+  //       store.state.token.token=res.data;
+  //       //加入 localStorage存储静态数据 
+  //       window[config.app_config.storage].access_token=res.data.access_token;
+  //       window[config.app_config.storage].expires_in=res.data.expires_in;
+  //       window[config.app_config.storage].refresh_token=res.data.refresh_token;
+  //       window[config.app_config.storage].token_type=res.data.token_type;
+  //       //get 一用户信息测试 
+  //         // api.get_user_info({
+  //         //     headers:{
+  //         //       'Accept':'application/json',
+  //         //       'Authorization':"Bearer "+access_token,
+  //         //     }
+  //         // }).then(res=>{
+  //         //   console.log(res.data);
+  //         // })
+  //     });
   // NProgress.start();
   if(!from.name&&to.name=="home"){
     //init app
@@ -102,6 +102,10 @@ import Plugin from './plugin/plugin'
 //调用模块
 Vue.use(Plugin);
 Vue.use(VueResource);
+
+//引入组件
+import  { ToastPlugin } from 'vux'
+Vue.use(ToastPlugin)
 
 
 Vue.filter('date',filters.dateFilter)

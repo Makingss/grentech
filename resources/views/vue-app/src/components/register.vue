@@ -6,9 +6,11 @@
     </div>
     <div class="login-form">
       <group label-width="4rem" label-margin-right="2rem" label-align="left">
-        <x-input placeholder="手机号" class="font-normal" v-model="phone"></x-input>
-        <x-input placeholder="密码" class="font-normal" v-model="pwd"></x-input>
-        <flexbox class="border-1px-t vcode-box">
+        <x-input placeholder="用户名" required class="font-normal" v-model="register_data.name"></x-input>
+        <x-input placeholder="邮箱" is-type="email" required class="font-normal" v-model="register_data.email"></x-input>
+        <x-input placeholder="密码" :min="6" required class="font-normal" v-model="register_data.password"></x-input>
+        <x-input placeholder="确认密码" :min="6" required class="font-normal" v-model="register_data.password_confirmation"></x-input>
+        <flexbox class="border-1px-t vcode-box" v-if="false">
           <flexbox-item :span="9">
               <x-input placeholder="获取验证码" class="font-normal" v-model="sms_code"></x-input>
           </flexbox-item>
@@ -19,7 +21,7 @@
       </group>
     </div>
     <div class="margin-tb-20">
-      <x-button type="primary" class="block-center login-btn btn-80">注册</x-button>
+      <x-button type="warn" class="block-center login-btn btn-80" @click.native="submit_register">注册</x-button>
     </div>
     <div class="login-link text-center clear-float">
       <div class="tab-50 pull-left">
@@ -34,13 +36,19 @@
 </template>
 
 <script>
+import api from '../api'
 import {Group,XInput,XButton,Flexbox,FlexboxItem} from 'vux'
 export default {
   name:"register",
   data:function(){
     return {
+      register_data:{
+        email:"",
+        name:'',
+        password:'',
+        password_confirmation:'',
+      },
       phone:'',
-      pwd:'',
       sms_code:''
     }
   },
@@ -52,7 +60,34 @@ export default {
     FlexboxItem
   },
   methods:{
-
+    submit_register:function(){
+      console.log("提交注册");
+      var self=this;
+      var register_data=this.register_data;
+      if(!!register_data.email&&!!register_data.name&&!!register_data.password&&!!register_data.password_confirmation&&register_data.password==register_data.password_confirmation){
+        api.register_user(register_data).then(res=>{
+          console.log(res);
+          var res_data=res.data;
+          if(res_data.res){
+            //注册成功
+              self.$vux.toast.show({
+                text:res_data.req+',请查收验证邮箱',
+                onHide(){
+                  self.$route.push("/login");
+                }
+              })
+          }else{
+            var str='';
+            for(var key in res_data){
+                str+=res_data[key].toString()+'</br>';
+            }
+              self.$vux.toast.show({
+                text:str
+              })
+          }
+        })
+      }
+    }
   }
 }
 </script>
@@ -79,5 +114,9 @@ export default {
 }
 .vcode-box:before{
   left:15px;
+}
+.register .content-box{
+  padding-top:19%;
+  box-sizing:border-box;
 }
 </style>

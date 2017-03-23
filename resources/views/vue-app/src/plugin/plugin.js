@@ -15,9 +15,10 @@
           'login':{
             title:"用户注册",
             show_back:false,
-            is_show:true,
+            is_show:false,
             show_search_bar:false,
             navbar_active:2,
+            hide_tabbar:true
           },
           'user':{
             title:'用户中心',
@@ -58,9 +59,10 @@
           'register':{
             title:'立即注册',
             show_back:false,
-            is_show:true,
+            is_show:false,
             show_search_bar:false,
             navbar_active:2,
+            hide_tabbar:true
           },
           'order':{
             title:'订单',

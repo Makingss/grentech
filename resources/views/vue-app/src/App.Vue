@@ -28,7 +28,7 @@
         </group>
       </div>
       <div class="margin-tb-20 tab-80 block-center">
-        <x-button type="primary" class="block-center login-btn btn-80">登陆</x-button>
+        <x-button type="warn" class="block-center login-btn btn-80">登陆</x-button>
       </div>
       <div class="login-link text-center clear-float">
         <div class="tab-50 pull-left">
@@ -93,12 +93,10 @@ import api from './api'
       },
       init_app:function(){
         var self=this;
-
         //调用header处理
         this.page_name = this.$route.name;
         var header_conf = this.handler_xheader(this.$route.name);
         this.header_conf = header_conf;
-
         this.navbar=config.app_config.navbar;
 
          //3s后启用登陆拦截
@@ -119,6 +117,7 @@ import api from './api'
     },
     created: function () {
       this.init_app();
+     
       // console.log("////////////");
       // console.log(config.app_config.navbar);
       //拉取 token 测试
@@ -188,6 +187,7 @@ import api from './api'
   
   #app .vux-popup-dialog {
     background-color: #fff;
+    // background-color:#283852;
   }
   
 </style>
