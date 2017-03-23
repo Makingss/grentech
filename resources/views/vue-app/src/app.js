@@ -36,26 +36,26 @@ router.beforeEach((to, from, next) => {
   }
   
       // --- get_user_info
-      // if(!!window.localStorage.access_token){
-      //    api.get_user_info({
-      //         headers:{
-      //           'Accept':'application/json',
-      //           'Authorization':"Bearer "+window.location.access_token,
-      //         }
-      //     }).then(res=>{
-      //        console.log(res.data);
-      //     })
-      // }else{
-      //   //刷新 access_token
-      //   // var access_token=res.data.access_token;
-      //   // store.state.token.token=res.data;
+      if(!!window.localStorage.access_token){
+         api.get_user_info({
+              headers:{
+                'Accept':'application/json',
+                'Authorization':"Bearer "+window.location.access_token,
+              }
+          }).then(res=>{
+             console.log(res.data);
+          })
+      }else{
+        //刷新 access_token
+        // var access_token=res.data.access_token;
+        // store.state.token.token=res.data;
         
-      //   // //加入 localStorage存储静态数据 
-      //   // window[config.app_config.storage].access_token=res.data.access_token;
-      //   // window[config.app_config.storage].expires_in=res.data.expires_in;
-      //   // window[config.app_config.storage].refresh_token=res.data.refresh_token;
-      //   // window[config.app_config.storage].token_type=res.data.token_type;
-      // }
+        // //加入 localStorage存储静态数据 
+        // window[config.app_config.storage].access_token=res.data.access_token;
+        // window[config.app_config.storage].expires_in=res.data.expires_in;
+        // window[config.app_config.storage].refresh_token=res.data.refresh_token;
+        // window[config.app_config.storage].token_type=res.data.token_type;
+      }
      
        
 
