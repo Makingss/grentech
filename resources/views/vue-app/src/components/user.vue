@@ -116,12 +116,13 @@ export default {
         //   url:'/address',
         //   show_badge:false
         // },
+        // {
+        //   title:'个人设置',
+        //   icon:"&#xe61d;",
+        //   url:'/setting',
+        //   show_badge:false
+        // },
         {
-          title:'个人设置',
-          icon:"&#xe61d;",
-          url:'/setting',
-          show_badge:false
-        },{
           title:'报表中心',
           icon:"&#xe61f;",
           url:'/vchart',
