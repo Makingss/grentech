@@ -8,6 +8,7 @@
 namespace App\Admin\Controllers\Goods;
 
 use App\Admin\Models\Goods\Brand;
+use App\Admin\Models\Goods\Goods_keyword;
 use App\Admin\Models\Goods\Goods_port;
 use App\Admin\Models\Products\Spec_value;
 use App\Http\Controllers\Controller;
@@ -278,9 +279,14 @@ class GoodsController extends Controller
 					$form->number('hexagonbolt', $getStandardfitColumns['hexagonbolt']);
 					$form->number('lightning', $getStandardfitColumns['lightning']);
 				});
-				$form->hasMany('goods_keywords', trans('admin::lang.products.keyword'), function (NestedForm $form) use ($getGoodswordColumns) {
-					$form->text('keyword', $getGoodswordColumns['keyword']);
-				});
+//				$form->hasMany('goods_keywords', trans('admin::lang.products.keyword'), function (NestedForm $form) use ($getGoodswordColumns) {
+//					$form->text('keyword', $getGoodswordColumns['keyword']);
+//				});
+
+
+				$form->multipleSelect('goodsKeywords')->options(Goods_keyword::all()->pluck('keyword', 'id'));
+
+//				$form->multipleSelecttag('goodsKeywords')->options(Goods_keyword::all()->pluck('keyword','id'));
 
 				$form->display('created_at', trans('admin::lang.created_at'));
 				$form->display('updated_at', trans('admin::lang.updated_at'));
@@ -310,43 +316,48 @@ class GoodsController extends Controller
 			});
 			$form->tab('机械性指标', function (Form $form) use ($getMechanicsColumns, $getGoodsprotColumns) {
 //				$form->hasMany('mechanics','',function(NestedForm $form)use ($getMechanicsColumns,$getGoodsprotColumns){
-				$form->select('mechanics.jointtype', $getMechanicsColumns['jointtype'])->options($getGoodsprotColumns);
-				$form->text('mechanics.antennasize', $getMechanicsColumns['antennasize'])->help('φ315*H(H=1900)');
-				$form->text('mechanics.antennanumber', $getMechanicsColumns['antennanumber'])->help('面');
-				$form->text('mechanics.x_range', $getMechanicsColumns['x_range']);
-				$form->number('mechanics.antennanweight', $getMechanicsColumns['antennanweight']);
-				$form->text('mechanics.guardmode', $getMechanicsColumns['guardmode']);
-				$form->text('mechanics.installmodel', $getMechanicsColumns['installmodel']);
-				$form->text('mechanics.maintainmodel', $getMechanicsColumns['maintainmodel']);
-				$form->text('mechanics.antennandata', $getMechanicsColumns['antennandata']);
-				$form->text('mechanics.surfacing', $getMechanicsColumns['surfacing']);
-				$form->text('mechanics.antennanageing', $getMechanicsColumns['antennanageing']);
+				$form->select('mechanics.jointtype', $getMechanicsColumns['jointtype'])->options($getGoodsprotColumns)->rules('required');
+				$form->text('mechanics.antennasize', $getMechanicsColumns['antennasize'])->help('φ315*H(H=1900)')->rules('required');
+				$form->text('mechanics.antennanumber', $getMechanicsColumns['antennanumber'])->help('面')->rules('required');
+				$form->text('mechanics.x_range', $getMechanicsColumns['x_range'])->rules('required');
+				$form->number('mechanics.antennanweight', $getMechanicsColumns['antennanweight'])->rules('required');
+				$form->text('mechanics.guardmode', $getMechanicsColumns['guardmode'])->rules('required');
+				$form->text('mechanics.installmodel', $getMechanicsColumns['installmodel'])->rules('required');
+				$form->text('mechanics.maintainmodel', $getMechanicsColumns['maintainmodel'])->rules('required');
+				$form->text('mechanics.antennandata', $getMechanicsColumns['antennandata'])->rules('required');
+				$form->text('mechanics.surfacing', $getMechanicsColumns['surfacing'])->rules('required');
+				$form->text('mechanics.antennanageing', $getMechanicsColumns['antennanageing'])->rules('required');
 				$form->slider('mechanics.temperature', $getMechanicsColumns['temperature'])->options(
 					['type' => 'double', 'max' => 100, 'min' => -100, 'step' => 1, 'postfix' => '°']
 				);
-				$form->slider('mechanics.limittemperature', $getMechanicsColumns['limittemperature'])->options(
-					['type' => 'double', 'max' => 100, 'min' => -100, 'step' => 1, 'postfix' => '°']
-				);
-				$form->slider('mechanics.relativehumidity', $getMechanicsColumns['relativehumidity'])->options(
-					['type' => 'double', 'max' => 200, 'min' => 1, 'step' => 1, 'postfix' => '°']
-				);
-				$form->slider('mechanics.atmos', $getMechanicsColumns['atmos'])->options(
-					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'kpa']
-				);
-				$form->slider('mechanics.speed', $getMechanicsColumns['speed'])->options(
-					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'km/h']
-				);
-				$form->slider('mechanics.limitspeed', $getMechanicsColumns['limitspeed'])->options(
-					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'km/h']
-				);
+				$form->text('mechanics.limittemperature', $getMechanicsColumns['limittemperature'])->default('0-0');
+				$form->text('mechanics.relativehumidity', $getMechanicsColumns['relativehumidity'])->default('0-0');
+				$form->text('mechanics.atmos', $getMechanicsColumns['atmos'])->default('0-0');
+				$form->text('mechanics.speed', $getMechanicsColumns['speed'])->default('0-0');
+				$form->text('mechanics.limitspeed', $getMechanicsColumns['limitspeed'])->default('0-0');
+//				$form->slider('mechanics.limittemperature', $getMechanicsColumns['limittemperature'])->options(
+//					['type' => 'double', 'max' => 100, 'min' => -100, 'step' => 1, 'postfix' => '°']
+//				);
+//				$form->slider('mechanics.relativehumidity', $getMechanicsColumns['relativehumidity'])->options(
+//					['type' => 'double', 'max' => 200, 'min' => 1, 'step' => 1, 'postfix' => '°']
+//				);
+//				$form->slider('mechanics.atmos', $getMechanicsColumns['atmos'])->options(
+//					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'kpa']
+//				);
+//				$form->slider('mechanics.speed', $getMechanicsColumns['speed'])->options(
+//					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'km/h']
+//				);
+//				$form->slider('mechanics.limitspeed', $getMechanicsColumns['limitspeed'])->options(
+//					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'km/h']
+//				);
 				$form->number('mechanics.thickness', $getMechanicsColumns['thickness'])->help('mm不被破坏');
 
-				$form->text('mechanics.flameretardant', $getMechanicsColumns['flameretardant']);
-				$form->text('mechanics.ultraviolet', $getMechanicsColumns['ultraviolet']);
-				$form->text('mechanics.PH', $getMechanicsColumns['PH']);
-				$form->text('mechanics.protect', $getMechanicsColumns['protect']);
+				$form->text('mechanics.flameretardant', $getMechanicsColumns['flameretardant'])->rules('required');
+				$form->text('mechanics.ultraviolet', $getMechanicsColumns['ultraviolet'])->rules('required');
+				$form->text('mechanics.PH', $getMechanicsColumns['PH'])->rules('required');
+				$form->text('mechanics.protect', $getMechanicsColumns['protect'])->rules('required');
 				$form->text('mechanics.other', $getMechanicsColumns['other']);
-				$form->text('mechanics.exposed', $getMechanicsColumns['exposed']);
+				$form->text('mechanics.exposed', $getMechanicsColumns['exposed'])->rules('required');
 
 
 			});
@@ -410,19 +421,18 @@ class GoodsController extends Controller
 	public function store(Request $request)
 	{
 		$goodsObj = new Good();
-
 		$res = $goodsObj->save_goods($request, '', 'create');
-//		return $this->form()->store($id);
-//		if ($res)
-//			return redirect('/admin/goods');
-//		else
-//			return '保存失败！';
+//		return $this->form()->store();
+		if ($res)
+			return redirect('/admin/goods');
+		else
+			return '保存失败！';
 	}
 
 	public function update(Request $request, $id)
 	{
 		$goods = $request->all();
-//		dd($goods);
+//		$keyword = $this->normailzeKeywords($request->get('goodsKeywords'));
 		if ($goods['marketable'] == 'off')
 			$goods['marketable'] = 0;
 		else
@@ -452,6 +462,15 @@ class GoodsController extends Controller
 		$res = $goods->save_goods($request, $id, 'update');
 		return $this->form()->update($id);
 
+	}
+
+	public function normailzeKeywords(array $keywords)
+	{
+		collect($keywords)->map(function ($keyword) {
+			if (is_numeric($keyword)) {
+				return (int)$keyword;
+			}
+		});
 	}
 
 

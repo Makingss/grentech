@@ -10,6 +10,7 @@ use App\Admin\Models\Products\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Symfony\Component\VarDumper\Dumper\DataDumperInterface;
 
 class Good extends Model
 {
@@ -122,6 +123,11 @@ class Good extends Model
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function goods_keywords()
+	{
+		return $this->hasMany(Goods_keyword::class, 'goods_id');
+	}
+
+	public function goodsKeywords()
 	{
 		return $this->hasMany(Goods_keyword::class, 'goods_id');
 	}
@@ -252,28 +258,33 @@ class Good extends Model
 //					$product['is_default'] = 1;
 //				$goodsObj->products()->create($product);
 //			}
-			if (@$goods['goods_keywords'])
-				foreach (@$goods['goods_keywords'] as $keyword) {
+			if (array_key_exists('goodsKeywords', $goods)) {
+				foreach ($goods['goodsKeywords'] as $keyword) {
 					$keyword['goods_id'] = $id;
 					$goodsObj->goods_keywords()->create($keyword);
 				}
-			if (@$goods['goods_ports'])
-				foreach (@$goods['goods_ports'] as $goods_port) {
+			}
+			if (array_key_exists('goods_ports', $goods)) {
+				foreach ($goods['goods_ports'] as $goods_port) {
 					$goodsObj->goods_ports()->create($goods_port);
 				}
-			if (@$goods['mechanics'])
-				foreach ($goods['mechanics'] as $mechanic)
-					$goodsObj->mechanics()->create($mechanic);
-			if (@$goods['assemblies'])
-				foreach (@$goods['assemblies'] as $assemblie) {
+			}
+			if (array_key_exists('mechanics', $goods)) {
+//				dd($goods);
+//				foreach ($goods['mechanics'] as $mechanic)
+					$goodsObj->mechanics()->create($goods['mechanics']);
+			}
+			if (array_key_exists('assemblies', $goods)) {
+				foreach ($goods['assemblies'] as $assemblie) {
 					$goodsObj->assemblies()->create($assemblie);
 				}
-			if (@$goods['standardfits'])
-				foreach (@$goods['standardfits'] as $standardfit) {
+			}
+			if (array_key_exists('standardfits', $goods))
+				foreach ($goods['standardfits'] as $standardfit) {
 					$goodsObj->standardfits()->create($standardfit);
 				}
-			if (@$goods['electrics'])
-				foreach (@$goods['electrics'] as $electric) {
+			if (array_key_exists('electrics', $goods))
+				foreach ($goods['electrics'] as $electric) {
 					$goodsObj->electrics()->create($electric);
 				}
 			if ($id && $imagePaths) {
