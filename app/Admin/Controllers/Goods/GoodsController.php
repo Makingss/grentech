@@ -327,14 +327,16 @@ class GoodsController extends Controller
 				$form->text('mechanics.antennandata', $getMechanicsColumns['antennandata'])->rules('required');
 				$form->text('mechanics.surfacing', $getMechanicsColumns['surfacing'])->rules('required');
 				$form->text('mechanics.antennanageing', $getMechanicsColumns['antennanageing'])->rules('required');
-				$form->slider('mechanics.temperature', $getMechanicsColumns['temperature'])->options(
-					['type' => 'double', 'max' => 100, 'min' => -100, 'step' => 1, 'postfix' => '°']
-				);
+
+				$form->text('mechanics.temperature', $getMechanicsColumns['temperature'])->default('0-0');
 				$form->text('mechanics.limittemperature', $getMechanicsColumns['limittemperature'])->default('0-0');
 				$form->text('mechanics.relativehumidity', $getMechanicsColumns['relativehumidity'])->default('0-0');
 				$form->text('mechanics.atmos', $getMechanicsColumns['atmos'])->default('0-0');
 				$form->text('mechanics.speed', $getMechanicsColumns['speed'])->default('0-0');
 				$form->text('mechanics.limitspeed', $getMechanicsColumns['limitspeed'])->default('0-0');
+//				$form->slider('mechanics.temperature', $getMechanicsColumns['temperature'])->options(
+//					['type' => 'double', 'max' => 100, 'min' => -100, 'step' => 1, 'postfix' => '°']
+//				);
 //				$form->slider('mechanics.limittemperature', $getMechanicsColumns['limittemperature'])->options(
 //					['type' => 'double', 'max' => 100, 'min' => -100, 'step' => 1, 'postfix' => '°']
 //				);
