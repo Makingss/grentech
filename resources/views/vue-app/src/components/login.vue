@@ -20,7 +20,7 @@
       <div class="tab-50 pull-left" v-if="false">
         <router-link to="/find-pwd">忘记密码</router-link>
       </div>
-      <div class="tab-50 pull-left">
+      <div class="tab-50 pull-left" v-if="false">
         <router-link to="/home">商城主页</router-link>
       </div>
     </div>
