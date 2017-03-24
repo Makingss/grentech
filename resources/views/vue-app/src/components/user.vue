@@ -7,11 +7,11 @@
       </p>
       <div class="user-login">
         <p>
-          <router-link to="/login" class="color-white">
+          <router-link to="/login" class="color-white padding-tb-10">
             登陆
           </router-link>
         </p>
-        <p class="padding-tb-10">
+        <p class="padding-tb-10" v-if="false">
           <router-link to="/register" class="color-white">
             立即注册
           </router-link>
@@ -109,27 +109,31 @@ export default {
           icon:"&#xe614;",
           url:'/qrcode',
           show_badge:false
-        },{
-          title:'地址管理',
-          icon:"&#xe620;",
-          url:'/address',
-          show_badge:false
-        },{
-          title:'个人设置',
-          icon:"&#xe61d;",
-          url:'/setting',
-          show_badge:false
-        },{
+        },
+        // {
+        //   title:'地址管理',
+        //   icon:"&#xe620;",
+        //   url:'/address',
+        //   show_badge:false
+        // },
+        // {
+        //   title:'个人设置',
+        //   icon:"&#xe61d;",
+        //   url:'/setting',
+        //   show_badge:false
+        // },
+        {
           title:'报表中心',
           icon:"&#xe61f;",
           url:'/vchart',
           show_badge:false
-        },{
-          title:'商品收藏',
-          icon:"&#xe61e;",
-          url:'/favgoods',
-          show_badge:false
         },
+        // {
+        //   title:'商品收藏',
+        //   icon:"&#xe61e;",
+        //   url:'/favgoods',
+        //   show_badge:false
+        // },
         {
           title:'帮助',
           icon:"&#xe622;",

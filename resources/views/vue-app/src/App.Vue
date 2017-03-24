@@ -31,13 +31,13 @@
         <x-button type="warn" class="block-center login-btn btn-80">登陆</x-button>
       </div>
       <div class="login-link text-center clear-float">
-        <div class="tab-50 pull-left">
+        <div class="tab-50 pull-left" v-if="false">
           <router-link to="/register">快速注册</router-link>
         </div>
-        <div class="tab-50 pull-left">
+        <div class="tab-50 pull-left" v-if="false">
           <router-link to="/find-pwd">忘记密码</router-link>
         </div>
-        <div class="tab-50 pull-left">
+        <div class="tab-50 pull-left" v-if="false">
           <router-link to="/home">商城主页</router-link>
         </div>
       </div>
@@ -118,29 +118,6 @@ import api from './api'
     created: function () {
       this.init_app();
      
-      // console.log("////////////");
-      // console.log(config.app_config.navbar);
-      //拉取 token 测试
-      // api.get_api_token({
-      //   grant_type:"password",
-      //   client_id:3,
-      //   scope:"",
-      //   username:"pengbd3@163.com",
-      //   password:"5230178",
-      //   client_secret:"okDZ28XNOjIE4n7gy07jnKxWizIOmQPKhQrWuQ6S"
-      // }).then(res=>{
-      //   console.log(res);
-      //   var access_token=res.data.access_token;
-      //   //get 一用户信息测试
-      //     api.get_user_info({
-      //         headers:{
-      //           'Accept':'application/json',
-      //           'Authorization':"Bearer "+access_token,
-      //         }
-      //     }).then(res=>{
-      //       console.log(res.data);
-      //     })
-      // });
     },
     watch: {
       $route: 'fetch_data'

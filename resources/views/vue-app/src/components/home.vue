@@ -8,17 +8,17 @@
         <img :src="category.cover.img" alt="">
       </div>
       <flexbox :gutter="0" wrap="wrap">
-        <flexbox-item :span="1/3" v-for="(item,index) in category.data" class="padding-tb-6">
-          <router-link :to="item.url" class="link-img">
+        <flexbox-item :span="1/3" v-for="(item,index) in scroller_data.data" :data-i="ndex>=6&&index<12" v-if="index>=6&&index<12" class="padding-tb-6">
+          <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="link-img">
             <div>
-              <img :src="item.img" alt="">
+              <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
             </div>
             <div class="text-center">
-              <div class="item-title color-danger">
-                ￥{{item.name}}
+              <div class="item-title color-success line-ellispse-2">
+                {{item.name}}
               </div>
               <div class="item-subtitle color-gray">
-                <span>{{item.desc}}</span>
+                <span>{{item.desc||"暂无描述"}}</span>
               </div>
             </div>
           </router-link>
@@ -31,17 +31,17 @@
         <img :src="hot_sales.cover.img" alt="">
       </div>
       <flexbox :gutter="0" wrap="wrap">
-        <flexbox-item :span="1/3" v-for="(item,index) in hot_sales.data" class="padding-tb-6 border-box">
-          <router-link :to="item.url" class="link-img">
+        <flexbox-item :span="1/3" v-for="(item,index) in scroller_data.data" :data-i="index<6" v-if="index<6" class="padding-tb-6 border-box">
+          <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="link-img">
             <div>
-              <img :src="item.img" alt="">
+              <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
             </div>
             <div class="text-center">
-              <div class="item-title color-danger">
-                ￥{{item.name}}
+              <div class="item-title color-success line-ellispse-2">
+                {{item.name}}
               </div>
               <div class="item-subtitle color-gray">
-                <span>{{item.desc}}</span>
+                <span>{{item.desc||"暂无描述"}}</span>
               </div>
             </div>
           </router-link>
@@ -54,13 +54,12 @@
         <img :src="scroller_data.cover.img" alt="">
       </div>
     </div>
-
-    <div class="scroll-content infinite-scroll container">
+    <div class="scroll-content infinite-scroll container padding-b-20">
       <flexbox wrap="wrap" :gutter="0" class="scroll-content">
         <flexbox-item v-for="(item,index) in scroller_data.data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" :data-i="index%2">
-          <router-link to="/goods" class="block">
+          <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block">
             <div>
-              <img :src="item.img" alt="">
+              <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
             </div>
             <div class="padding-rl-10">
               <div class="item-title line-ellispse-2">
@@ -83,6 +82,7 @@
 
 <script>
 //import {loader} from '../util/util.js'
+import api from '../api'
 import {Swiper,Flexbox,FlexboxItem,Scroller,Spinner,Divider} from 'vux'
 export default {
   name: 'home',
@@ -92,15 +92,15 @@ export default {
       scrollTop:0,
       swiper_list:[
         {
-          url:'javascript:',
+          url:'/list?type_id=3',
           img:'https://static.vux.li/demo/1.jpg',
           title:'测试轮播标题1'
         },{
-          url:'javascript:',
+          url:'/list?type_id=3',
           img:'https://static.vux.li/demo/2.jpg',
           title:'测试轮播标题2'
         },{
-          url:'javascript:',
+          url:'/list?type_id=3',
           img:'https://static.vux.li/demo/3.jpg',
           title:'测试轮播标题3'
         },
@@ -114,37 +114,37 @@ export default {
         data:[
           {
             img:'/static/grentech/201611051243571562.jpg',
-            url:'#',
+            url:'/goods?goods_id=71&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备'
           },{
             img:'/static/grentech/201611071753107968.jpg',
-            url:'#',
+            url:'/goods?goods_id=74&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备'
           },{
             img:'/static/grentech/201611071844501875.jpg',
-            url:'#',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备'
           },{
             img:'/static/grentech/201611221355144218.jpg',
-            url:'#',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备'
           },{
             img:'/static/grentech/201611231413171562.jpg',
-            url:'#',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备'
           },{
             img:'/static/grentech/201611071754125468.jpg',
-            url:'#',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备'
@@ -153,34 +153,34 @@ export default {
       },
       hot_sales:{
         cover:{
-          url:'#',
+          url:'/goods?goods_id=62&item_index=0',
           img:'/static/grentech/20170116185915616-(1).jpg',
         },
         data:[
           {
             img:'/static/grentech/201611071754125468.jpg',
-            url:'#',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备',
             price:'1209.00'
           },{
             img:'/static/grentech/201611231413171562.jpg',
-            url:'#',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备',
             price:'1209.00'
           },{
             img:'/static/grentech/201611221355144218.jpg',
-            url:'#',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备',
             price:'1209.00'
           },{
             img:'/static/grentech/201611051243571562.jpg',
-            url:'#',
+            url:'/goods?goods_id=62&item_index=0',
             name:'NMS 网管',
             cat:'基站',
             desc:'简单管理网络设备',
@@ -193,56 +193,14 @@ export default {
           url:'',
           img:'/static/grentech/201612070950019218.jpg'
         },
+        current_page:0,
+        from:0,
+        last_page:0,
+        per_page:0,
+        to:0,
+        total:0,
         data:[
-          {
-            url:'#',
-            name:'测试商品列表',
-            img:'/static/grentech/201611221355144218.jpg',
-            title:'',
-            price:'276.00',
-            mktprice:'1380.00'
-          },
-          {
-            url:'#',
-            name:'测试商品列表',
-            img:'/static/grentech/201611051243571562.jpg',
-            title:'',
-            price:'276.00',
-            mktprice:'1380.00'
-          },
-          {
-            url:'#',
-            name:'测试商品列表',
-            img:'/static/grentech/201611221355144218.jpg',
-            title:'',
-            name:'测试商品列表',
-            price:'276.00',
-            mktprice:'1380.00'
-          },
-          {
-            url:'#',
-            img:'/static/grentech/201611231413171562.jpg',
-            title:'',
-            name:'测试商品列表',
-            price:'276.00',
-            mktprice:'1380.00'
-          },
-          {
-            url:'#',
-            img:'/static/grentech/201611071754125468.jpg',
-            title:'',
-            name:'测试商品列表',
-            price:'276.00',
-            mktprice:'1380.00'
-          },
-          {
-            url:'#',
-            img:'/static/grentech/201611071754125468.jpg',
-            title:'',
-            name:'测试商品列表',
-            price:'276.00',
-            mktprice:'1380.00'
-          }
+          
         ]
       }
     }
@@ -259,6 +217,10 @@ export default {
       //console.log(this);
       self.handle_scroll($(this));
     })
+  },
+  created:function(){
+    this.get_home_list({});
+   
   },
   methods:{
     handle_scroll:function(el){
@@ -278,6 +240,27 @@ export default {
         return;
       }
     },
+    get_home_list:function(query,callback){
+      var self=this;
+       api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
+            if(res.data.data&&res.data.data.length>0){
+              self.handle_res_data(res.data)
+              // self.
+            }
+            // callback();
+      })
+    },
+    handle_res_data:function(res_data){
+              var self=this;
+              self.scroller_data.data=self.scroller_data.data.concat(res_data.data);
+              self.scroller_data.current_page=res_data.current_page;
+              self.scroller_data.from=res_data.from;
+              self.scroller_data.last_page=res_data.last_page;
+              self.scroller_data.per_page=res_data.per_page;
+              self.scroller_data.next_page_url=res_data.next_page_url;
+              self.scroller_data.to=res_data.to;
+              self.scroller_data.total=res_data.total;
+    },
     loadMore:function(){
       var self=this;
       if(this.loading){
@@ -286,29 +269,27 @@ export default {
       console.log("触发加载");
       this.loading=true;
       let scroller=$(".container");
-      //console.log(loader);
       this.loading=true;
-      setTimeout(()=>{
-        let i=this.length;
-        this.scroller_data.data.push({
-            url:'#',
-            img:'/static/grentech/201611071754125468.jpg',
-            title:'',
-            name:'测试商品列表',
-            price:'276.00',
-            mktprice:'1380.00'
-          },{
-            url:'#',
-            img:'/static/grentech/201611071754125468.jpg',
-            title:'',
-            name:'测试商品列表',
-            price:'276.00',
-            mktprice:'1380.00'
-          })
-        let scrollTop=scroller[0].scrollHeight-scroller.height()-20;
-        scroller.scrollTop(scrollTop);
-        self.loading=false;
-      },1500)
+      if(!!self.scroller_data.next_page_url){
+        api.get_page_data(self.scroller_data.next_page_url,{relations: ["images","image_attach"],per_page: 10 }).then(res=>{
+          console.log(res);
+           if(res.data.data&&res.data.data.length>0){
+              self.handle_res_data(res.data)
+              // self.
+            }
+          console.log("!!!!!!!!");
+        });
+        
+      }
+      
+      // setTimeout(()=>{
+      //   let i=this.length;
+        
+      //   let scrollTop=scroller[0].scrollHeight-scroller.height()-20;
+      //   scroller.scrollTop(scrollTop);
+      //   self.loading=false;
+      // },1500)
+
     }
   },
   components:{

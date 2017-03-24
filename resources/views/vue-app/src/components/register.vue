@@ -59,6 +59,9 @@ export default {
     Flexbox,
     FlexboxItem
   },
+  created:function(){
+   
+  },
   methods:{
     submit_register:function(){
       console.log("提交注册");
@@ -71,9 +74,9 @@ export default {
           if(res_data.res){
             //注册成功
               self.$vux.toast.show({
-                text:res_data.req+',请查收验证邮箱',
+                text:'<span class="font-normal">'+res_data.req+'</br>请查收验证邮箱</span>',
                 onHide(){
-                  self.$route.push("/login");
+                  self.$router.push("/login");
                 }
               })
           }else{
@@ -82,7 +85,7 @@ export default {
                 str+=res_data[key].toString()+'</br>';
             }
               self.$vux.toast.show({
-                text:str
+                text:'<span class="font-normal">'+str+'</span>'
               })
           }
         })

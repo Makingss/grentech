@@ -23,8 +23,8 @@ class GoodsController extends Controller
 	public function getGoods(Request $request)
 	{
 		$per_page = $request->get('per_page');
-		$relations = $request->get('relations');
-		$parameters = $request->get('parameters')?$request->get('parameters'):'image_attach';
+		$relations = $request->get('relations')?$request->get('relations'):'image_attach';
+		$parameters = $request->get('parameters');
 		$collection = collect($parameters);
 		$filtered = $collection->only(['brand_id', 'goods_id', 'type_id', 'cat_id', 'bn']);
 		$where = $filtered->all();
@@ -34,6 +34,7 @@ class GoodsController extends Controller
 		);
 		$with = $filteredRelations->all();
 		$goods = Good::with($with)->where($where)->orderBy('updated_at', 'DESC')->paginate($per_page)->toArray();
+//		$goods->withPath('custom/url');
 		foreach ($goods['data'] as $dataK => $data) {
 			foreach ($data['image_attach'] as $itemK => $item) {
 				$image_attach = Image_attach::with('images')->where('image_id', $item['image_id'])->get()->toArray();
