@@ -279,12 +279,12 @@ class GoodsController extends Controller
 					$form->number('hexagonbolt', $getStandardfitColumns['hexagonbolt']);
 					$form->number('lightning', $getStandardfitColumns['lightning']);
 				});
-//				$form->hasMany('goods_keywords', trans('admin::lang.products.keyword'), function (NestedForm $form) use ($getGoodswordColumns) {
-//					$form->text('keyword', $getGoodswordColumns['keyword']);
-//				});
+				$form->hasMany('goods_keywords', trans('admin::lang.products.keyword'), function (NestedForm $form) use ($getGoodswordColumns) {
+					$form->text('keyword', $getGoodswordColumns['keyword']);
+				});
 
 
-				$form->multipleSelect('goodsKeywords')->options(Goods_keyword::all()->pluck('keyword', 'id'));
+//				$form->multipleSelect('goodsKeywords')->options(Goods_keyword::all()->pluck('keyword', 'id'));
 
 //				$form->multipleSelecttag('goodsKeywords')->options(Goods_keyword::all()->pluck('keyword','id'));
 
