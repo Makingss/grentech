@@ -99,7 +99,6 @@ class RegisterController extends Controller
 
     /**
      * api注册验证
-     * @param $token mixed confirmation_token
      * @param $request mixed secret
      * @return string ;
      */
