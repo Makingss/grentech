@@ -10,7 +10,7 @@
           lock-x 
           scrollbar-y
           use-pullup 
-          height="400px"
+          height="100%"
           ref="listScroll"
           @on-pullup-loading="load"
           :pullup-config="pullupConfig"
