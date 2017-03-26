@@ -10,7 +10,7 @@
           lock-x 
           scrollbar-y
           use-pullup 
-          height="600px"
+          height="400px"
           ref="listScroll"
           @on-pullup-loading="load"
           :pullup-config="pullupConfig"
@@ -35,7 +35,7 @@
               </flexbox-item>
             </flexbox>
             <!-- :to="item.url" -->
-            <card-list
+            <card-list style="height:100px" 
             v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
               <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  class="block" slot="card-media">
                 <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
