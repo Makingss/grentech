@@ -35,10 +35,7 @@
               </router-link>
                 <div class="item-subtitle color-danger" slot="card-subtitle">¥{{item.price}}</div>
             </card-list>
-            <p class="padding-tb-10" v-for="item in 20" v-if="type=='11'">1111111</p>
-            <div class="spinner text-center" slot="pull-up" v-if="loading">
-              <spinner type="circles"></spinner>
-            </div>   
+            
        <div class="load-more text-center" v-show="loading">
         <spinner type="circles"></spinner>
        </div>    
