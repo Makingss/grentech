@@ -260,6 +260,12 @@ export default {
               self.scroller_data.next_page_url=res_data.next_page_url;
               self.scroller_data.to=res_data.to;
               self.scroller_data.total=res_data.total;
+               if(!res_data.next_page_url){
+                  self.$vux.toast.show({
+                    type:'text',
+                    text:'已加载完毕...'
+                  });
+                }
     },
     loadMore:function(){
       var self=this;
