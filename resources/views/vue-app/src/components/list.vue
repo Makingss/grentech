@@ -14,7 +14,7 @@
           ref="listScroll"
           @on-pullup-loading="load"
           :pullup-config="pullupConfig"
-        class="x-scroller-container">
+          class="x-scroller-container">
           <div>
             <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
               <flexbox-item style="height:100px" :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
@@ -36,7 +36,7 @@
             </flexbox>
             <!-- :to="item.url" -->
             <card-list style="height:100px" 
-            v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
+            v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='11'">
               <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  class="block" slot="card-media">
                 <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
               </router-link>
@@ -45,6 +45,7 @@
               </router-link>
                 <div class="item-subtitle color-danger" slot="card-subtitle">¥{{item.price}}</div>
             </card-list>
+            <p class="padding-tb-10" v-for="item in 20" v-if="type=='medium'">1111111</p>
             <div class="spinner text-center" slot="pull-up" v-if="loading">
               <spinner type="circles"></spinner>
             </div>
