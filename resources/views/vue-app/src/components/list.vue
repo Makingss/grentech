@@ -8,13 +8,14 @@
       <div class="content list">
         <scroller 
           lock-x 
+          scrollbar-y
           use-pullup 
           height="600px"
           ref="listScroll"
           @on-pullup-loading="load"
           :pullup-config="pullupConfig"
         class="x-scroller-container">
-          <div>
+          <div style="height:100px">
             <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
               <flexbox-item :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
               v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
