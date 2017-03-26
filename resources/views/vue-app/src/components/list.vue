@@ -112,7 +112,7 @@ export default {
   methods: {
     handle_scroll:function(el){
       console.log(el);
-      $el=$(el.target);
+      var $el=$(el.target);
       var self=this;
       let height=parseFloat($el.height());
       let scrollTop=parseFloat($el.scrollTop());
