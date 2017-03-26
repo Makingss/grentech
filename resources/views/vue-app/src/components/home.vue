@@ -269,7 +269,6 @@ export default {
       console.log("触发加载");
       this.loading=true;
       let scroller=$(".container");
-      this.loading=true;
       if(!!self.scroller_data.next_page_url){
         api.get_page_data(self.scroller_data.next_page_url,{relations: ["images","image_attach"],per_page: 10 }).then(res=>{
           console.log(res);
@@ -278,10 +277,8 @@ export default {
               // self.
             }
           console.log("!!!!!!!!");
-        });
-        
+        }); 
       }
-      
     }
   },
   components:{

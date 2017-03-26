@@ -69,7 +69,7 @@ export default {
   name: 'list',
   data: function() {
     return {
-    loading:true,
+    loading:false,
      goods_data:[],
      current_page: 0,
      last_page: 0,
@@ -148,7 +148,6 @@ export default {
       console.log("触发加载");
       this.loading=true;
       let scroller=$(".container");
-      this.loading=true;
       if(!!self.next_page_url){
         api.get_page_data(self.next_page_url,{relations: ["images","image_attach"],per_page: 10 }).then(res=>{
           console.log(res);
