@@ -112,10 +112,10 @@ export default {
   methods: {
     handle_scroll:function(el){
       console.log(el);
-      var $el=$(el.target);
+      el=$(el.target);
       var self=this;
-      let height=parseFloat($el.height());
-      let scrollTop=parseFloat($el.scrollTop());
+      let height=parseFloat(el.height());
+      let scrollTop=parseFloat(el.scrollTop());
       //console.log(height,scrollTop);
       var view_height=height+scrollTop;
       var scrollHeight=el[0].scrollHeight;
