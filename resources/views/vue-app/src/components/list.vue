@@ -5,7 +5,7 @@
         <span class="iconfont font-3x color-success block" style="margin-top:8px;">&#xe62a;</span>
       </div>
       <search v-model="search_input" position="static" top="0" @on-submit="submit_search"  class="list-search border-box"></search>
-      <div class="content list">
+      <div class="content list" @scroll="handle_scroll">
             <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
               <flexbox-item style="height:100px" :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
               v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
@@ -110,6 +110,9 @@ export default {
   },
   
   methods: {
+    handle_scroll:function(){
+      console.log("滚动");
+    },
     // ...mapActions(['GETGOODSLIST']),
     toggleType: function() {
       //console.log("切换");
@@ -176,7 +179,7 @@ export default {
   overflow-y: scroll;
   height: 100%;
   padding-top: 0;
-  padding-bottom:5rem;
+  padding-bottom:3rem;
 }
 
 .list-search {
