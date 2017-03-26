@@ -31,7 +31,7 @@
         <img :src="hot_sales.cover.img" alt="">
       </div>
       <flexbox :gutter="0" wrap="wrap">
-        <flexbox-item style="padding:0 3px;" :span="1/3" v-for="(item,index) in scroller_data.data" :data-i="index<6" v-if="index<6" class="padding-tb-6 border-box">
+        <flexbox-item style="padding:0 3px;" :span="1/3" v-for="(item,index) in scroller_data.data" :data-i="index<6" v-if="index<6" class="padding-tb-6 border-box cell-list-3">
           <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="link-img">
             <div>
               <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
