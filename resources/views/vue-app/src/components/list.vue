@@ -77,6 +77,7 @@ export default {
      from:0,
      to:0,
      per_page:0,
+     toast_msg:false,
       demo4Value: {
         pullupStatus: 'default'
       },
@@ -157,7 +158,6 @@ export default {
               self.commit_resdata(res.data)
               // self.
             }
-          console.log("!!!!!!!!");
         }); 
       }else{
          self.loading=false;
@@ -197,6 +197,12 @@ export default {
                 self.from=res_data.from;
                 self.to=res_data.to;
                 self.per_page=res_data.per_page;
+                if(!self.next_page_url){
+                  self.$toast.show({
+                    type:'text',
+                    text:'已加载完毕...'
+                  });
+                }
     }
   }
 

@@ -277,7 +277,6 @@ export default {
               self.handle_res_data(res.data)
               // self.
             }
-          console.log("!!!!!!!!");
         }); 
       }else{
          self.loading=false;
