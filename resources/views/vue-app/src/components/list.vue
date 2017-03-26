@@ -6,12 +6,16 @@
       </div>
       <search v-model="search_input" position="static" top="0" @on-submit="submit_search"  class="list-search border-box"></search>
       <div class="content list">
-        <scroller lock-x use-pullup height="100%"
+        <scroller 
+          lock-x 
+          use-pullup 
+          height="600px"
           ref="listScroll"
+          :bounce="false"
           @on-pullup-loading="load"
           :pullup-config="pullupConfig"
         class="x-scroller-container">
-          <div class="">
+          <div>
             <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
               <flexbox-item :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
               v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
@@ -165,6 +169,9 @@ export default {
 </script>
 
 <style scoped>
+.page-list.content-box{
+  height:100%;
+}
 .list.content {
   overflow-y: scroll;
   height: 100%;
