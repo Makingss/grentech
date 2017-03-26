@@ -185,7 +185,7 @@ export default {
                 console.log(params);
                 // self.$store.state.goods.goods_list=res_data;
                 // self.goods_data=self.goods_data.concat(res_data.data);
-                self.goods_data=res_data.data;
+                self.goods_data=self.goods_data.concat(res_data.data);
                 console.log(self.goods_data);
                 self.current_page=res_data.current_page;
                 self.next_page_url=res_data.next_page_url;
