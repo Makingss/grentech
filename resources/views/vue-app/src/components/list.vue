@@ -5,7 +5,7 @@
         <span class="iconfont font-3x color-success block" style="margin-top:8px;">&#xe62a;</span>
       </div>
       <search v-model="search_input" position="static" top="0" @on-submit="submit_search"  class="list-search border-box"></search>
-      <div class="content list" @scroll="handle_scroll">
+      <div class="content list" @scroll="handle_scroll($event)">
             <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
               <flexbox-item style="height:100px" :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
               v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
@@ -110,8 +110,23 @@ export default {
   },
   
   methods: {
-    handle_scroll:function(){
-      console.log("滚动");
+    handle_scroll:function(el){
+      console.log(el);
+      var self=this;
+      let height=parseFloat(el.height());
+      let scrollTop=parseFloat(el.scrollTop());
+      //console.log(height,scrollTop);
+      var view_height=height+scrollTop;
+      var scrollHeight=el[0].scrollHeight;
+
+      // console.log(view_height,el[0].scrollHeight);
+      if(scrollHeight-view_height<40){
+        // console.log(scrollHeight-view_height);
+        //调用加载功能
+        console.log("上拉加载");
+        // this.handler_query();
+        return;
+      }
     },
     // ...mapActions(['GETGOODSLIST']),
     toggleType: function() {
