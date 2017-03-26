@@ -83,7 +83,7 @@ export default {
       demo4Value: {
         pullupStatus: 'default'
       },
-      loading: false,
+      // loading: false,
       type: 'medium',
       search_input: '',
       pullupConfig: {
@@ -179,6 +179,7 @@ export default {
   overflow-y: scroll;
   height: 100%;
   padding-top: 0;
+  padding-bottom:5rem;
 }
 
 .list-search {
