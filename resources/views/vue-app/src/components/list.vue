@@ -11,7 +11,6 @@
           use-pullup 
           height="600px"
           ref="listScroll"
-          :bounce="false"
           @on-pullup-loading="load"
           :pullup-config="pullupConfig"
         class="x-scroller-container">
