@@ -148,6 +148,7 @@ export default {
       console.log("触发加载");
       this.loading=true;
       let scroller=$(".container");
+      console.log(self.next_page_url);
       if(!!self.next_page_url){
         api.get_page_data(self.next_page_url,{relations: ["images","image_attach"],per_page: 10 }).then(res=>{
           console.log(res);
@@ -168,17 +169,15 @@ export default {
         console.log(query);
         query.relations=["images","image_attach"];
         if(query["search"]){
-           api.get_search_result(query).then(res=>{
+           api.get_search_result({relations: ["images","image_attach"],parameters:query,per_page:10}).then(res=>{
                console.log(res);
                self.commit_resdata(res.data,params);
            })
         }else{
-          api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
-                console.log(res);
+          api.getGoodsData({relations: ["images","image_attach"], parameters:query,per_page:10}).then(res=>{
+              console.log(res);
                self.commit_resdata(res.data);
            })
-           // { relations: ["image_attach", "images"], parameters:[{goods_id:39}], per_page: 10 }
-          //this.GETGOODSLIST({ relations: ["image_attach", "images"], parameters:query, per_page: 10 });
         }
     },
     commit_resdata:function(res_data,params){
