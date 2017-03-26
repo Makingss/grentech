@@ -159,6 +159,8 @@ export default {
             }
           console.log("!!!!!!!!");
         }); 
+      }else{
+         self.loading=false;
       }
     },
     handler_query:function(params){

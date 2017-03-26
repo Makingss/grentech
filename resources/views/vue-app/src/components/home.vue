@@ -279,6 +279,8 @@ export default {
             }
           console.log("!!!!!!!!");
         }); 
+      }else{
+         self.loading=false;
       }
     }
   },
