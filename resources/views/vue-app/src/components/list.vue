@@ -152,6 +152,7 @@ export default {
       if(!!self.next_page_url){
         api.get_page_data(self.next_page_url,{relations: ["images","image_attach"],per_page: 10 }).then(res=>{
           console.log(res);
+          self.loading=false;
            if(res.data.data&&res.data.data.length>0){
               self.commit_resdata(res.data)
               // self.

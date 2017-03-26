@@ -272,6 +272,7 @@ export default {
       if(!!self.scroller_data.next_page_url){
         api.get_page_data(self.scroller_data.next_page_url,{relations: ["images","image_attach"],per_page: 10 }).then(res=>{
           console.log(res);
+          self.loading=false;
            if(res.data.data&&res.data.data.length>0){
               self.handle_res_data(res.data)
               // self.
