@@ -282,14 +282,6 @@ export default {
         
       }
       
-      // setTimeout(()=>{
-      //   let i=this.length;
-        
-      //   let scrollTop=scroller[0].scrollHeight-scroller.height()-20;
-      //   scroller.scrollTop(scrollTop);
-      //   self.loading=false;
-      // },1500)
-
     }
   },
   components:{

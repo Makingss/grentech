@@ -5,7 +5,7 @@
         <span class="iconfont font-3x color-success block" style="margin-top:8px;">&#xe62a;</span>
       </div>
       <search v-model="search_input" position="static" top="0" @on-submit="submit_search"  class="list-search border-box"></search>
-      <div class="content list" @scroll="handle_scroll($event)">
+      <div class="content list container" @scroll="handle_scroll($event)">
             <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
               <flexbox-item style="height:100px" :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
               v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
@@ -125,8 +125,8 @@ export default {
         // console.log(scrollHeight-view_height);
         //调用加载功能
         console.log("上拉加载");
-        // this.handler_query();
-        return;
+        this.loadMore();
+        return false;
       }
     },
     // ...mapActions(['GETGOODSLIST']),
@@ -134,16 +134,31 @@ export default {
       //console.log("切换");
       this.type = this.type == 'medium' ? 'large' : 'medium';
     },
-    load: function() {
-      console.log("上拉加载");
-      this.loading=true;
-      this.handler_query();
-    },
     submit_search:function(){
       console.log("搜索测试");
       var self=this;
       this.$router.push({name:'list',query:{search:self.search_input}});
       this.handler_query({loading:true});
+    },
+    loadMore:function(){
+      var self=this;
+      if(this.loading){
+        return
+      }
+      console.log("触发加载");
+      this.loading=true;
+      let scroller=$(".container");
+      this.loading=true;
+      if(!!self.next_page_url){
+        api.get_page_data(self.next_page_url,{relations: ["images","image_attach"],per_page: 10 }).then(res=>{
+          console.log(res);
+           if(res.data.data&&res.data.data.length>0){
+              self.commit_resdata(res.data)
+              // self.
+            }
+          console.log("!!!!!!!!");
+        }); 
+      }
     },
     handler_query:function(params){
        var self=this;
@@ -175,6 +190,7 @@ export default {
                 self.goods_data=res_data.data;
                 console.log(self.goods_data);
                 self.current_page=res_data.current_page;
+                self.next_page_url=res_data.next_page_url;
                 self.last_page=res_data.last_page;
                 self.total=res_data.total;
                 self.from=res_data.from;
