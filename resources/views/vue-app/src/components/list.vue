@@ -38,7 +38,10 @@
             <p class="padding-tb-10" v-for="item in 20" v-if="type=='11'">1111111</p>
             <div class="spinner text-center" slot="pull-up" v-if="loading">
               <spinner type="circles"></spinner>
-            </div>       
+            </div>   
+       <div class="load-more text-center" v-show="loading">
+        <spinner type="circles"></spinner>
+       </div>    
       </div>
     </div>
   </div>
@@ -69,6 +72,7 @@ export default {
   name: 'list',
   data: function() {
     return {
+    loading:true,
      goods_data:[],
      current_page: 0,
      last_page: 0,
@@ -167,8 +171,9 @@ export default {
 </script>
 
 <style scoped>
-.page-list.content-box{
+.page-list .content-box{
   height:100%;
+  overflow-y:scroll;
 }
 .list.content {
   overflow-y: scroll;
