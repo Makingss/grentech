@@ -6,16 +6,6 @@
       </div>
       <search v-model="search_input" position="static" top="0" @on-submit="submit_search"  class="list-search border-box"></search>
       <div class="content list">
-        <scroller 
-          lock-x 
-          scrollbar-y
-          use-pullup 
-          height="100%"
-          ref="listScroll"
-          @on-pullup-loading="load"
-          :pullup-config="pullupConfig"
-          class="x-scroller-container">
-          <div>
             <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
               <flexbox-item style="height:100px" :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
               v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
@@ -35,8 +25,8 @@
               </flexbox-item>
             </flexbox>
             <!-- :to="item.url" -->
-            <card-list style="height:100px" 
-            v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='11'">
+            <card-list 
+            v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
               <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  class="block" slot="card-media">
                 <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
               </router-link>
@@ -45,19 +35,26 @@
               </router-link>
                 <div class="item-subtitle color-danger" slot="card-subtitle">¥{{item.price}}</div>
             </card-list>
-            <p class="padding-tb-10" v-for="item in 20" v-if="type=='medium'">1111111</p>
+            <p class="padding-tb-10" v-for="item in 20" v-if="type=='11'">1111111</p>
             <div class="spinner text-center" slot="pull-up" v-if="loading">
               <spinner type="circles"></spinner>
-            </div>
-          </div>
-        </scroller>
+            </div>       
       </div>
     </div>
   </div>
 </template>
   
 <script>
-
+    // <scroller 
+    //       lock-x 
+    //       scrollbar-y
+    //       use-pullup 
+    //       height="100%"
+    //       ref="listScroll"
+    //       @on-pullup-loading="load"
+    //       :pullup-config="pullupConfig"
+    //       class="x-scroller-container">
+    //     </scroller>
 import api from '../api'
 import CardList from './card-list'
 import {
