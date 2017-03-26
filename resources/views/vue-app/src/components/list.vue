@@ -15,9 +15,9 @@
           @on-pullup-loading="load"
           :pullup-config="pullupConfig"
         class="x-scroller-container">
-          <div style="height:100px">
+          <div>
             <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
-              <flexbox-item :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
+              <flexbox-item style="height:100px" :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
               v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
                 <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block">
                   <div>
