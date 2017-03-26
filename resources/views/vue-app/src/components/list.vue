@@ -198,7 +198,7 @@ export default {
                 self.to=res_data.to;
                 self.per_page=res_data.per_page;
                 if(!self.next_page_url){
-                  self.$toast.show({
+                  self.$vux.toast.show({
                     type:'text',
                     text:'已加载完毕...'
                   });
