@@ -49,7 +49,7 @@
       </div>
     </card>
     <div class="text-center color-gray brand-info">
-      <p>国人天线</p>
+      <p>&copy;国人天线</p>
     </div>
     </div>
   </div>
@@ -182,7 +182,7 @@ export default {
 }
 .brand-info{
   position:absolute;
-  bottom:2rem;
+  bottom:4rem;
   left:0;
   width:100%;
 }
