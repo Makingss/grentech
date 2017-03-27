@@ -36,7 +36,9 @@ router.beforeEach((to, from, next) => {
     var ckeck_result=Vue.check_token();
     console.log(check_result);
   }
-
+  console.log("------------");
+   var ckeck_result=Vue.check_token();
+    console.log(check_result);
   // --- get_user_info
   if (!!window.localStorage.access_token) {
     //  api.get_user_info({
