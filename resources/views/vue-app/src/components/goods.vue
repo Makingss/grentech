@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="goods content">
     <div style="height:100%">
-      <swiper>
-        <swiper-item v-for="(item,index) in goods_data_list.image_attach">
+      <swiper style="width:100%;margin:0 auto;" :aspect-ratio="375/375" dots-position="center">
+        <swiper-item v-for="(item,index) in goods_data_list.image_attach" class="link-img">
            <img :src="item.images.url" alt="">
         </swiper-item>
       </swiper>
