@@ -1,5 +1,6 @@
     import * as config from '../config/config.js'
     import api from '../api'
+    import store from 'store'
 
     function plugin(Vue) {
       //全局header控制
@@ -171,27 +172,36 @@
         }
       }
       Vue.prototype.refresh_token = function () {
-        console.log(this);
+        var result = app.check_token();
         console.log("............................");
-        if (!!window.localStorage.refresh_token) {
-          api.refresh_token({
-            grant_type: 'refresh_token',
-            refresh_token: window.localStorage.refresh_token,
-            client_id: window.localStorage.client_id,
-            client_secret: window.localStorage.client_secret,
-            scope: '',
-          }).then(res => {
-            console.log(res);
-            if (!!res.data.refresh_token) {
-              this.save_token(res.data);
-            } else {
-              this.$vux.toast({
-                text: '<span class="font-normal">请重新登录</span>',
-                type: 'warn'
-              });
-            }
-          })
+        console.log(result);
+        if (result == 1) {
+          //空记录
+          store.state.popuplogin.popup_login = true;
+        } else if (result == 2) {
+          if (!!window.localStorage.refresh_token) {
+            api.refresh_token({
+              grant_type: 'refresh_token',
+              refresh_token: window.localStorage.refresh_token,
+              client_id: window.localStorage.client_id,
+              client_secret: window.localStorage.client_secret,
+              scope: '',
+            }).then(res => {
+              console.log(res);
+              if (!!res.data.refresh_token) {
+                this.save_token(res.data);
+              } else {
+                this.$vux.toast({
+                  text: '<span class="font-normal">请重新登录</span>',
+                  type: 'warn'
+                });
+              }
+            })
+          }
+        } else if (result == 3) {
+          //token状态正常--- 不执行任何动作
         }
+
       }
 
       /****************正则转驼峰式命名********************/
