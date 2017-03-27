@@ -70,9 +70,12 @@ import Plugin from './plugin/plugin'
 
 //引入组件
 import {
-  ToastPlugin
+  ToastPlugin,
 } from 'vux'
 Vue.use(ToastPlugin)
+import  { ConfirmPlugin } from 'vux'
+Vue.use(ConfirmPlugin)
+
 
 Vue.filter('date', filters.dateFilter)
 

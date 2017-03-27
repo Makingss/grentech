@@ -79,8 +79,19 @@
                     })
             },
             loginout:function(){
-                window.localStorage.clear();
-                window.sessionStorage.clear();
+                var self=this;
+                this.$vux.confirm.show({
+                    text:'确认',
+                    content:'确认退出当前账号?',
+                    onConfirm:function(){
+                        window.localStorage.clear();
+                        window.sessionStorage.clear();
+                        self.$router.push("/user");
+                    },
+                    onCancel:function(){
+                        
+                    }
+                })
             }
         },
         components:{

@@ -161,7 +161,7 @@ export default {
         this.loading_status=true;
         this.name=user_info.name;
         this.email=user_info.email;
-        this.avatar=user_info.avatar;
+        // this.avatar=user_info.avatar;
       }
     },
     check_locl_token:function(){
