@@ -7,7 +7,7 @@
     <div class="login-form">
       <group label-width="4rem" label-margin-right="2rem" label-align="left">
         <x-input placeholder="邮箱" is-type="email" class="font-normal" v-model="email"></x-input>
-        <x-input placeholder="密码" class="font-normal" v-model="password"></x-input>
+        <x-input placeholder="密码" class="font-normal" type="password" v-model="password"></x-input>
       </group>
     </div>
     <div class="margin-tb-20">
