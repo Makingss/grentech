@@ -42,7 +42,7 @@ router.beforeEach((to, from, next) => {
     console.log(check_result);
   }
   console.log("------------");
-   var ckeck_result=this.check_token();
+   var ckeck_result=Vue.check_token();
     console.log(check_result);
   // --- get_user_info
   if (!!window.localStorage.access_token) {
