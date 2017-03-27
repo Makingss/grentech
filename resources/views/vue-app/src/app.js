@@ -87,7 +87,7 @@ const app = new Vue({
 
 //检查登陆拦截
 if (config.app_config.intercept) {
-  console.log("进入1");
+
   console.log("--------------");
   var result = app.check_token();
   console.log(result);
@@ -96,25 +96,26 @@ if (config.app_config.intercept) {
     store.state.popuplogin.popup_login = true;
   } else if (result == 2) {
     //token过期--- 刷新 token
-    if (!!window.localStorage.refresh_token) {
-      api.refresh_token({
-        grant_type: 'refresh_token',
-        refresh_token: window.localStorage.refresh_token,
-        client_id: window.localStorage.client_id,
-        client_secret: window.localStorage.client_secret,
-        scope: '',
-      }).then(res => {
-        console.log(res);
-        if(!!res.data.refresh_token){
-           app.save_token(res.data);
-        }else{
-          app.$vux.toast({
-            text:'<span class="font-normal">请重新登录</span>',
-            type:'warn'
-          });
-        }
-      })
-    }
+    // if (!!window.localStorage.refresh_token) {
+    //   api.refresh_token({
+    //     grant_type: 'refresh_token',
+    //     refresh_token: window.localStorage.refresh_token,
+    //     client_id: window.localStorage.client_id,
+    //     client_secret: window.localStorage.client_secret,
+    //     scope: '',
+    //   }).then(res => {
+    //     console.log(res);
+    //     if(!!res.data.refresh_token){
+    //        app.save_token(res.data);
+    //     }else{
+    //       app.$vux.toast({
+    //         text:'<span class="font-normal">请重新登录</span>',
+    //         type:'warn'
+    //       });
+    //     }
+    //   })
+    // }
+    app.refresh_token();
 
   } else if (result == 3) {
     //token状态正常--- 不执行任何动作

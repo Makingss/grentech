@@ -1,4 +1,5 @@
     import * as config from '../config/config.js'
+    import * as api from '../api'
 
     function plugin(Vue) {
       //全局header控制
@@ -154,22 +155,45 @@
         return name_conf[name];
       }
       Vue.prototype.save_token = function (data) {
-        for(var key in data){
-          !!data[key]?(window[config.app_config.storage][key]=data[key]):null;
+        for (var key in data) {
+          !!data[key] ? (window[config.app_config.storage][key] = data[key]) : null;
         }
-        window[config.app_config.storage].service_time = parseInt(new Date().getTime()/1000);
+        window[config.app_config.storage].service_time = parseInt(new Date().getTime() / 1000);
       }
       Vue.prototype.check_token = function () {
         var time_stamp = parseInt(new Date().getTime() / 1000);
-        if(!localStorage.access_token || !localStorage.service_time){
-          return 1;//空记录
-        }else if(!!localStorage.expires_in && (time_stamp - localStorage.service_time > localStorage.expires_in)) {
-          return 2;//过期
+        if (!localStorage.access_token || !localStorage.service_time) {
+          return 1; //空记录
+        } else if (!!localStorage.expires_in && (time_stamp - localStorage.service_time > localStorage.expires_in)) {
+          return 2; //过期
         } else {
-          return 3;//正常
+          return 3; //正常
         }
       }
-      
+      Vue.prototype.refresh_token = function () {
+        console.log(this);
+        console.log("............................");
+        if (!!window.localStorage.refresh_token) {
+          api.refresh_token({
+            grant_type: 'refresh_token',
+            refresh_token: window.localStorage.refresh_token,
+            client_id: window.localStorage.client_id,
+            client_secret: window.localStorage.client_secret,
+            scope: '',
+          }).then(res => {
+            console.log(res);
+            if (!!res.data.refresh_token) {
+              this.save_token(res.data);
+            } else {
+              this.$vux.toast({
+                text: '<span class="font-normal">请重新登录</span>',
+                type: 'warn'
+              });
+            }
+          })
+        }
+      }
+
       /****************正则转驼峰式命名********************/
       Vue.prototype.trans_camel = function (str) {
         if (!str) return;
