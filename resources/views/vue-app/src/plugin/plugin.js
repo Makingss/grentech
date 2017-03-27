@@ -151,6 +151,13 @@
             is_show: false,
             show_search_bar: false,
             navbar_active: 2
+          },
+          'loginout':{
+            title:'登录设置',
+            show_back: false,
+            is_show: true,
+            show_search_bar: false,
+            navbar_active: 2
           }
         }
         return name_conf[name];
@@ -171,7 +178,7 @@
           return 3; //正常
         }
       }
-      Vue.prototype.refresh_token = function () {
+      Vue.prototype.refresh_token = function (callback) {
         var result = this.check_token();
         console.log("............................");
         console.log(result);
@@ -190,6 +197,9 @@
               console.log(res);
               if (!!res.data.refresh_token) {
                 this.save_token(res.data);
+                if(!!callback) {
+                   callback();
+                }
               } else {
                 this.$vux.toast({
                   text: '<span class="font-normal">请重新登录</span>',
@@ -203,6 +213,9 @@
         }
 
       }
+      Vue.prototype.get_sessionStorage_user_info=function(){
+        return !!window.sessionStorage.user_info?JSON.parse(window.sessionStorage.user_info):null;
+      } 
 
       /****************正则转驼峰式命名********************/
       Vue.prototype.trans_camel = function (str) {

@@ -3,12 +3,15 @@
     <div class="content-box">
  <div class="text-center user-bg">
      <p class="center user-avatar">
-        <img :src="user_avatar" alt="" class="circle">
+        <img :src="avatar" alt="" class="circle">
       </p>
       <div class="user-login">
         <p class="padding-tb-10">
-          <router-link to="/login" class="color-white">
-            登陆
+          <router-link to="/loginout" v-if="loading_status" class="color-white">
+            {{name}}
+          </router-link>
+          <router-link to="/login" v-else class="color-white">
+            登录
           </router-link>
         </p>
         <p class="padding-tb-10" v-if="false">
@@ -55,13 +58,17 @@
   </div>
 </template>
 <script>
+import api from '../api'
 import {Card,Flexbox,FlexboxItem} from 'vux'
 export default {
   name:'user',
   data:function(){
     return {
+      loading_status:false,
+      name:'',
+      email:'',
       user_avatar_bg:'/static/slice/a1.jpg',
-      user_avatar:'/static/slice/user_logo.jpg',
+      avatar:'/static/slice/user_logo.jpg',
       order_list_data:[
         {
           title:'待付款',
@@ -140,6 +147,59 @@ export default {
           show_badge:false
         }
       ]
+    }
+  },
+  created:function(){
+    //先执行判断
+    this.check_locl_token();
+    this.render_user_info();
+  },
+  methods:{
+    render_user_info:function(){
+      var user_info=this.get_sessionStorage_user_info();
+      if(user_info){
+        this.loading_status=true;
+        this.name=user_info.name;
+        this.email=user_info.email;
+        // this.avatar=user_info.avatar;
+      }
+    },
+    check_locl_token:function(){
+       var self=this;
+       var result=this.check_token();
+       console.log(result);
+       if(result==1){
+         //未登录用户---不做任何操作
+       }else if(result==2){
+          //token过期用户
+          self.refresh_token(function(){
+            console.log("回调执行");
+             self.fetch_user_info();
+          });
+       }else if(result==3){
+          //正常状态
+          self.fetch_user_info();
+       }
+    },
+    fetch_user_info:function(){
+          //拉取用户信息
+          console.log("拉取用户信息");
+          var self=this;
+           api.get_user_info({
+                headers:{
+                  'Accept':'application/json',
+                  'Authorization':"Bearer "+window.localStorage.access_token,
+                }
+            }).then(res=>{
+               console.log(res.data);
+               if(res.data.id){
+                  self.loading_status=true;
+                  self.name=res.data.name;
+                  // self.avatar=res.data.avatar;
+                  self.email=res.data.email;
+                  window.sessionStorage.user_info=JSON.stringify(res.data);
+               }
+            })
     }
   },
   components:{

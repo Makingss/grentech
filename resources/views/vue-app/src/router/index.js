@@ -20,6 +20,7 @@ import Service from 'components/service'
 import Test from 'components/test'
 import Vchart from 'components/vchart'
 import Jump from 'components/jump'
+import Loginout from 'components/loginout'
 
 Vue.use(Router)
 
@@ -120,6 +121,10 @@ export default new Router({
       name:'jump',
       path:'/jump',
       component:Jump
+    },{
+      name:'loginout',
+      path:'/loginout',
+      component:Loginout
     }
   ],
   scrollBehavior (to, from, savedPosition) {
