@@ -53,7 +53,7 @@ class GoodsController extends Controller
 //			$grid->products('产品货号')->pluck('bn')->map(function ($bn) {
 //				return $bn;
 //			})->implode('</br>')->editable();
-			$grid->keywords(trans('admin::lang.products.keyword'))->pluck('keyname')->label();
+
 			/**
 			 * $grid->products($getPoductColumns['bn'])->product(function () use ($getPoductColumns) {
 			 * $products = (array)$this->products;
@@ -133,7 +133,7 @@ class GoodsController extends Controller
 			$grid->cat_id($getGoodColumns['cat_id'])->value(function ($cat_id) {
 				return Goods_cat::find($cat_id)->cat_name;
 			});
-
+			$grid->keywords(trans('admin::lang.products.keyword'))->pluck('keyname')->label();
 //			$grid->actions(function ($actions) {
 			// 当前行的数据数组
 			//$actions->row;
@@ -175,7 +175,7 @@ class GoodsController extends Controller
 			$getAssemblieColumns = $goodObj->getTableColumns('assemblies');
 			$getGoodsprotColumns = $goodObj->getTableColumns('goods_ports');
 			$getMechanicsColumns = $goodObj->getTableColumns('mechanics');
-			$form->model()->electrics;
+			$electrics=$form->model()->electrics;
 			$form->tab(trans('admin::lang.goods.basedate'), function ($form) use (
 				$getGoodColumns,
 				$getGoodswordColumns,
@@ -207,6 +207,8 @@ class GoodsController extends Controller
 				});
 				$form->text('bn', $getGoodColumns['bn'])->rules('required|min:3');
 				$form->text('name', $getGoodColumns['name'])->rules('required|min:3');
+				$form->text('product_model', $getGoodColumns['product_model']);
+				$form->text('product_desc', $getGoodColumns['product_desc']);
 				$form->select('brand_id', $getGoodColumns['brand_id'])->options(function () {
 					$brands = Brand::all();
 					foreach ($brands as $brandK => $brandV) {
@@ -258,17 +260,33 @@ class GoodsController extends Controller
 
 //				$form->multipleSelect('goodsKeywords')->options(Goods_keyword::all()->pluck('keyword', 'id'));
 
-				$form->multipleSelect('keywords','产品关键字')->options(Keyword::all()->pluck('keyname', 'id'));
-
+				$form->multipleSelect('keywords', '产品关键字')->options(Keyword::all()->pluck('keyname', 'id'));
 				$form->display('created_at', trans('admin::lang.created_at'));
 				$form->display('updated_at', trans('admin::lang.updated_at'));
 			});
 
 			$form->tab('电性能指标', function ($form) use ($getElectricColumns) {
-//				$getElectricColumns['view'] = 'electric';
-//				$form->editordatetable($getElectricColumns);
-				$form->hasMany('electrics', '电性能指标', function (NestedForm $form) use ($getElectricColumns) {
 
+					$form->hasMany('electrics', '电性能指标(常规)', function (NestedForm $form) use ($getElectricColumns) {
+						$form->hidden('type')->default(1);
+						$form->text('workingband', $getElectricColumns['workingband']);
+						$form->text('polarization', $getElectricColumns['polarization']);
+						$form->text('x_beamwidth', $getElectricColumns['x_beamwidth']);
+						$form->text('y_beamwidth', $getElectricColumns['y_beamwidth']);
+						$form->text('beamgain', $getElectricColumns['beamgain']);
+
+						$form->text('dipangle', $getElectricColumns['dipangle']);
+						$form->text('xpd', $getElectricColumns['xpd']);
+						$form->text('ratio', $getElectricColumns['ratio']);
+						$form->text('inhibition', $getElectricColumns['inhibition']);
+						$form->text('voltagebobbi', $getElectricColumns['voltagebobbi']);
+						$form->text('isolation', $getElectricColumns['isolation']);
+						$form->text('imd3', $getElectricColumns['imd3']);
+						$form->text('impedance', $getElectricColumns['impedance']);
+						$form->text('capacity', $getElectricColumns['capacity']);
+					});
+				$form->hasMany('electrics_inte', '电性能指标(智能)', function (NestedForm $form) use ($getElectricColumns) {
+					$form->hidden('type')->default(2);
 					$form->text('workingband', $getElectricColumns['workingband']);
 					$form->text('polarization', $getElectricColumns['polarization']);
 					$form->text('x_beamwidth', $getElectricColumns['x_beamwidth']);
@@ -285,7 +303,6 @@ class GoodsController extends Controller
 					$form->text('impedance', $getElectricColumns['impedance']);
 					$form->text('capacity', $getElectricColumns['capacity']);
 				});
-
 			});
 			$form->tab('机械性指标', function (Form $form) use ($getMechanicsColumns, $getGoodsprotColumns) {
 //				$form->hasMany('mechanics','',function(NestedForm $form)use ($getMechanicsColumns,$getGoodsprotColumns){
@@ -460,8 +477,8 @@ class GoodsController extends Controller
 			} elseif (!empty($keyword)) {
 //				$key_exists = Keyword::where('keyname', trim($keyword))->get()->toArray();
 //				if(empty($key_exists)){
-					$newKeyword = Keyword::create(['keyname' => trim($keyword)]);
-					return $newKeyword->id;
+				$newKeyword = Keyword::create(['keyname' => trim($keyword)]);
+				return $newKeyword->id;
 //				}else{
 //					return [];
 //				}
