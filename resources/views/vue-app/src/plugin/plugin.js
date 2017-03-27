@@ -154,18 +154,19 @@
         return name_conf[name];
       }
       Vue.prototype.save_token = function (data) {
-        window[config.app_config.storage].access_token = data.access_token;
-        window[config.app_config.storage].expires_in = data.expires_in;
-        window[config.app_config.storage].refresh_token = data.refresh_token;
-        window[config.app_config.storage].service_time = data.service_time;
-        window[config.app_config.storage].token_type = data.token_type;
+        for(var key in data){
+          !!data[key]?(window[config.app_config.storage][key]=data[key]):null;
+        }
+        window[config.app_config.storage].service_time = parseInt(new Date().getTime()/1000);
       }
       Vue.prototype.check_token = function () {
         var time_stamp = parseInt(new Date().getTime() / 1000);
-        if (!!localStorage.access_token && !!localStorage.service_time && !!localStorage.expires_in && (time_stamp - localStorage.service_time > localStorage.expires_in)) {
-          return true;
+        if(!localStorage.access_token || !localStorage.service_time){
+          return 1;//空记录
+        }else if(!!localStorage.expires_in && (time_stamp - localStorage.service_time > localStorage.expires_in)) {
+          return 2;//过期
         } else {
-          return false;
+          return 3;//正常
         }
       }
       /****************正则转驼峰式命名********************/

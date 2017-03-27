@@ -30,7 +30,7 @@ let ad = config.app_config.ad;
 router.beforeEach((to, from, next) => {
   console.log("路由切换");
   //判断 token---登陆拦截
- 
+
   // NProgress.start();
   if (!from.name && to.name == "home") {
     //init app
@@ -74,50 +74,64 @@ import {
 } from 'vux'
 Vue.use(ToastPlugin)
 
-
 Vue.filter('date', filters.dateFilter)
 
 // Vue.directive('infiniteScroll',infiniteScroll)
 
 /* eslint-disable no-new */
-const app=new Vue({
+const app = new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
 
-console.log("--------------");
-var result=app.check_token();
-console.log(result);
- if (config.app_config.intercept) {
-   console.log("进入1");
-    var time_stamp = parseInt(new Date().getTime() / 1000);
-    if (!!localStorage.access_token && !!localStorage.service_time && !!localStorage.expires_in && (time_stamp - localStorage.service_time > localStorage.expires_in)) {
-
-    } else {
-      //弹出登陆框
-      store.state.popuplogin.popup_login = true;
+//检查登陆拦截
+if (config.app_config.intercept) {
+  console.log("进入1");
+  console.log("--------------");
+  var result = app.check_token();
+  console.log(result);
+  if (result == 1) {
+    //空记录
+    store.state.popuplogin.popup_login = true;
+  } else if (result == 2) {
+    //token过期--- 刷新 token
+    if (!!window.localStorage.refresh_token) {
+      api.refresh_token({
+        grant_type: 'refresh_token',
+        refresh_token: window.localStorage.refresh_token,
+        client_id: window.localStorage.client_id,
+        client_secret: window.localStorage.client_secret,
+        scope: '',
+      }).then(res => {
+        console.log(res);
+      })
     }
-  }
-  
-  // --- get_user_info
-  if (!!window.localStorage.access_token) {
-    //  api.get_user_info({
-    //       headers:{
-    //         'Accept':'application/json',
-    //         'Authorization':"Bearer "+window.localStorage.access_token,
-    //       }
-    //   }).then(res=>{
-    //      console.log(res.data);
-    //   })
-  } else {
-    //刷新 access_token
-    // var access_token=res.data.access_token;
-    // store.state.token.token=res.data;
 
-    // //加入 localStorage存储静态数据 
-    // window[config.app_config.storage].access_token=res.data.access_token;
-    // window[config.app_config.storage].expires_in=res.data.expires_in;
-    // window[config.app_config.storage].refresh_token=res.data.refresh_token;
-    // window[config.app_config.storage].token_type=res.data.token_type;
+  } else if (result == 3) {
+    //token状态正常--- 不执行任何动作
   }
+
+}
+
+// --- get_user_info
+if (!!window.localStorage.access_token) {
+  //  api.get_user_info({
+  //       headers:{
+  //         'Accept':'application/json',
+  //         'Authorization':"Bearer "+window.localStorage.access_token,
+  //       }
+  //   }).then(res=>{
+  //      console.log(res.data);
+  //   })
+} else {
+  //刷新 access_token
+  // var access_token=res.data.access_token;
+  // store.state.token.token=res.data;
+
+  // //加入 localStorage存储静态数据 
+  // window[config.app_config.storage].access_token=res.data.access_token;
+  // window[config.app_config.storage].expires_in=res.data.expires_in;
+  // window[config.app_config.storage].refresh_token=res.data.refresh_token;
+  // window[config.app_config.storage].token_type=res.data.token_type;
+}
