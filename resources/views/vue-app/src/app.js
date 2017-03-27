@@ -31,19 +31,15 @@ router.beforeEach((to, from, next) => {
   console.log("路由切换");
   //判断 token---登陆拦截
   if (config.app_config.intercept) {
-    // var time_stamp = parseInt(new Date().getTime() / 1000);
-    // if (!!localStorage.access_token && !!localStorage.service_time && !!localStorage.expires_in && (time_stamp - localStorage.service_time > localStorage.expires_in)) {
+    var time_stamp = parseInt(new Date().getTime() / 1000);
+    if (!!localStorage.access_token && !!localStorage.service_time && !!localStorage.expires_in && (time_stamp - localStorage.service_time > localStorage.expires_in)) {
 
-    // } else {
-    //   //弹出登陆框
-    //   store.state.popuplogin.popup_login = true;
-    // }
-    var ckeck_result=Vue.check_token();
-    console.log(check_result);
+    } else {
+      //弹出登陆框
+      store.state.popuplogin.popup_login = true;
+    }
   }
-  console.log("------------");
-   var ckeck_result=Vue.check_token();
-    console.log(check_result);
+  
   // --- get_user_info
   if (!!window.localStorage.access_token) {
     //  api.get_user_info({
@@ -115,8 +111,12 @@ Vue.filter('date', filters.dateFilter)
 // Vue.directive('infiniteScroll',infiniteScroll)
 
 /* eslint-disable no-new */
-new Vue({
+const app=new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+
+console.log("--------------");
+var result=app.ckeck_token();
+console.log(result);
