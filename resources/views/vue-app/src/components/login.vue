@@ -73,7 +73,7 @@ export default {
         }else{
             self.$vux.toast.show({
             text:'<span class="font-normal">'+res_data.req+'</span>',
-            type:'success'
+            type:'warn'
           })
         }
       })
