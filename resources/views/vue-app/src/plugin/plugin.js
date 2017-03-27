@@ -172,7 +172,7 @@
         }
       }
       Vue.prototype.refresh_token = function () {
-        var result = app.check_token();
+        var result = this.check_token();
         console.log("............................");
         console.log(result);
         if (result == 1) {
