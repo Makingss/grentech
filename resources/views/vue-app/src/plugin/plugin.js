@@ -1,5 +1,5 @@
     import * as config from '../config/config.js'
-    import * as api from '../api'
+    import api from '../api'
 
     function plugin(Vue) {
       //全局header控制
