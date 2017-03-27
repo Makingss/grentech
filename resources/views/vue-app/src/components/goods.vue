@@ -39,7 +39,7 @@
           <tab-item>主要参数</tab-item>
           <tab-item>服务信息</tab-item>
         </tab>
-        <div v-if="index==0" class="padding-10">
+        <div v-if="index==0" class="padding-tb-6 padding-rl-4">
             <div v-html="goods_data_list.content"></div>
         </div>
         <div v-if="index==1">
