@@ -203,7 +203,7 @@ export default {
                     type:'text',
                     text:'<span class="font-normal">已加载完毕...</span>',
                     time:2000000,
-                    position:'top'
+                    position:'middle'
                   });
                 }
     }

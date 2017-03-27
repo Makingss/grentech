@@ -44,12 +44,12 @@ export default {
       var self=this;
       if(this.email==""){
         this.$vux.toast.show({
-          text:'邮箱不能为空',
+          text:'<span class="font-normal">邮箱不能为空</span>',
           type:"warn"
         })
       }else if(this.password==""){
          this.$vux.toast.show({
-          text:'请输入密码',
+          text:'<span class="font-normal">请输入密码</span>',
           type:"warn"
         })
       };
