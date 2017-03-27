@@ -145,7 +145,7 @@ export default {
   },
   created:function(){
     //先执行判断
-
+    this.check_locl_token();
   },
   methods:{
     check_locl_token:function(){
