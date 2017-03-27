@@ -117,7 +117,6 @@ import api from './api'
     },
     created: function () {
       this.init_app();
-     
     },
     watch: {
       $route: 'fetch_data'

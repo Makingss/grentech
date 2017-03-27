@@ -6,8 +6,8 @@
         <img :src="user_avatar" alt="" class="circle">
       </p>
       <div class="user-login">
-        <p>
-          <router-link to="/login" class="color-white padding-tb-10">
+        <p class="padding-tb-10">
+          <router-link to="/login" class="color-white">
             登陆
           </router-link>
         </p>
@@ -48,11 +48,10 @@
         </flexbox>
       </div>
     </card>
-    <div class="margin-tb-20 text-center color-gray">
-      <!-- <p>影儿时尚官方商城</p> -->
+    <div class="text-center color-gray brand-info">
+      <p>&copy;国人天线</p>
     </div>
     </div>
-   
   </div>
 </template>
 <script>
@@ -180,6 +179,12 @@ export default {
   background: -webkit-linear-gradient(45deg,  #5184bc 0%,#3e60a8 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(45deg,  #5184bc 0%,#3e60a8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5184bc', endColorstr='#3e60a8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.brand-info{
+  position:absolute;
+  bottom:4rem;
+  left:0;
+  width:100%;
 }
 
 </style>

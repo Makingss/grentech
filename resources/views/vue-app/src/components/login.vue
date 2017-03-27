@@ -7,11 +7,11 @@
     <div class="login-form">
       <group label-width="4rem" label-margin-right="2rem" label-align="left">
         <x-input placeholder="邮箱" is-type="email" class="font-normal" v-model="email"></x-input>
-        <x-input placeholder="密码" class="font-normal" v-model="password"></x-input>
+        <x-input placeholder="密码" class="font-normal" type="password" v-model="password"></x-input>
       </group>
     </div>
     <div class="margin-tb-20">
-      <x-button type="warn" class="block-center login-btn btn-80" @click.native="submit_login">登陆</x-button>
+      <x-button type="warn" class="block-center login-btn btn-80" @click.native="submit_login">登录</x-button>
     </div>
     <div class="login-link text-center clear-float">
       <div class="tab-50 pull-left" v-if="false">
@@ -44,20 +44,38 @@ export default {
       var self=this;
       if(this.email==""){
         this.$vux.toast.show({
-          text:'邮箱不能为空',
+          text:'<span class="font-normal">邮箱不能为空</span>',
           type:"warn"
         })
+        return;
       }else if(this.password==""){
          this.$vux.toast.show({
-          text:'请输入密码',
+          text:'<span class="font-normal">请输入密码</span>',
           type:"warn"
         })
+        return;
       };
       api.user_login({
         email:self.email,
         password:self.password
       }).then(res=>{
         console.log(res);
+        var res_data=res.data;
+        if(res_data.res){
+          self.$vux.toast.show({
+            text:'<span class="font-normal">'+res_data.req+'</span>',
+            type:'success'
+          });
+          self.save_token(res_data.data);
+          setTimeout(function(){
+            self.$router.push("/user");
+          },2000)
+        }else{
+            self.$vux.toast.show({
+            text:'<span class="font-normal">'+res_data.req+'</span>',
+            type:'warn'
+          })
+        }
       })
     }
   },

@@ -112,15 +112,16 @@ class RegisterController extends Controller
                 return response()->json(['res' => false, 'data' => null, 'req' => '激活失败']);
             }
             $this->oauthClientCreate($user->id, $user->email, $user->email, '');
-            $id = DB::table('oauth_clients')->where('user_id', $user->id)->value('id');
+            $oauth_clients = DB::table('oauth_clients')->where('user_id', $user->id)->first();
             $user->is_active = 1;
             $user->confirmation_token = str_random(40);
             $res = $user->save();
             if ($res) {
                 //获取用户access_token
-                $data = $this->getOauth($id, md5($user->email . $user->id), $user->email, authcode($secret));
+                $data = $this->getOauth($oauth_clients->id, md5($user->email . $user->id), $user->email, authcode($secret));
                 //追加服务器当前时间
-                $data['service_time'] = time();
+                $data['client_id']=$oauth_clients->id;
+                $data['client_secret']=$oauth_clients->secret;
                 return response()->json(['res' => true, 'data' => $data, 'req' => '激活成功']);
             } else {
                 return response()->json(['res' => false, 'data' => '', 'req' => '数据存储失败请重试']);
