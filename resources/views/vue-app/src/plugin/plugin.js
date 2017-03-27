@@ -1,3 +1,4 @@
+    import * as config from '../config/config.js'
 
     function plugin(Vue){
       //全局header控制
@@ -151,6 +152,13 @@
           }
         }
         return name_conf[name];
+      }
+      Vue.prototype.save_token=function(data){
+         window[config.app_config.storage].access_token=data.access_token;
+         window[config.app_config.storage].expires_in=data.expires_in;
+         window[config.app_config.storage].refresh_token=data.refresh_token;
+         window[config.app_config.storage].service_time=data.service_time;
+         window[config.app_config.storage].token_type=data.token_type;
       }
       /****************正则转驼峰式命名********************/
       Vue.prototype.trans_camel=function(str){

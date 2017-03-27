@@ -11,7 +11,7 @@
       </group>
     </div>
     <div class="margin-tb-20">
-      <x-button type="warn" class="block-center login-btn btn-80" @click.native="submit_login">登陆</x-button>
+      <x-button type="warn" class="block-center login-btn btn-80" @click.native="submit_login">登录</x-button>
     </div>
     <div class="login-link text-center clear-float">
       <div class="tab-50 pull-left" v-if="false">
@@ -60,6 +60,22 @@ export default {
         password:self.password
       }).then(res=>{
         console.log(res);
+        var res_data=res.data;
+        if(res_data.res){
+          self.$vux.toast.show({
+            text:'<span class="font-normal">'+res_data.req+'</span>',
+            type:'success'
+          });
+          self.save_token(res_data.data);
+          setTimeout(function(){
+            self.$router.push("/user");
+          },2000)
+        }else{
+            self.$vux.toast.show({
+            text:'<span class="font-normal">'+res_data.req+'</span>',
+            type:'success'
+          })
+        }
       })
     }
   },
