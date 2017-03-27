@@ -30,38 +30,7 @@ let ad = config.app_config.ad;
 router.beforeEach((to, from, next) => {
   console.log("路由切换");
   //判断 token---登陆拦截
-  if (config.app_config.intercept) {
-    var time_stamp = parseInt(new Date().getTime() / 1000);
-    if (!!localStorage.access_token && !!localStorage.service_time && !!localStorage.expires_in && (time_stamp - localStorage.service_time > localStorage.expires_in)) {
-
-    } else {
-      //弹出登陆框
-      store.state.popuplogin.popup_login = true;
-    }
-  }
-  
-  // --- get_user_info
-  if (!!window.localStorage.access_token) {
-    //  api.get_user_info({
-    //       headers:{
-    //         'Accept':'application/json',
-    //         'Authorization':"Bearer "+window.localStorage.access_token,
-    //       }
-    //   }).then(res=>{
-    //      console.log(res.data);
-    //   })
-  } else {
-    //刷新 access_token
-    // var access_token=res.data.access_token;
-    // store.state.token.token=res.data;
-
-    // //加入 localStorage存储静态数据 
-    // window[config.app_config.storage].access_token=res.data.access_token;
-    // window[config.app_config.storage].expires_in=res.data.expires_in;
-    // window[config.app_config.storage].refresh_token=res.data.refresh_token;
-    // window[config.app_config.storage].token_type=res.data.token_type;
-  }
-
+ 
   // NProgress.start();
   if (!from.name && to.name == "home") {
     //init app
@@ -120,3 +89,35 @@ const app=new Vue({
 console.log("--------------");
 var result=app.check_token();
 console.log(result);
+ if (config.app_config.intercept) {
+   console.log("进入1");
+    var time_stamp = parseInt(new Date().getTime() / 1000);
+    if (!!localStorage.access_token && !!localStorage.service_time && !!localStorage.expires_in && (time_stamp - localStorage.service_time > localStorage.expires_in)) {
+
+    } else {
+      //弹出登陆框
+      store.state.popuplogin.popup_login = true;
+    }
+  }
+  
+  // --- get_user_info
+  if (!!window.localStorage.access_token) {
+    //  api.get_user_info({
+    //       headers:{
+    //         'Accept':'application/json',
+    //         'Authorization':"Bearer "+window.localStorage.access_token,
+    //       }
+    //   }).then(res=>{
+    //      console.log(res.data);
+    //   })
+  } else {
+    //刷新 access_token
+    // var access_token=res.data.access_token;
+    // store.state.token.token=res.data;
+
+    // //加入 localStorage存储静态数据 
+    // window[config.app_config.storage].access_token=res.data.access_token;
+    // window[config.app_config.storage].expires_in=res.data.expires_in;
+    // window[config.app_config.storage].refresh_token=res.data.refresh_token;
+    // window[config.app_config.storage].token_type=res.data.token_type;
+  }
