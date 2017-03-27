@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Electric extends Model
 {
 	protected $table = 'electrics';
-	protected $fillable = ['product_id', 'goods_id', 'workingband', 'x_beamwidth', 'y_beamwidth', 'beamgain', 'polarization', 'dipangle', 'xpd',
+	protected $fillable = ['type','product_id', 'goods_id', 'workingband', 'x_beamwidth', 'y_beamwidth', 'beamgain', 'polarization', 'dipangle', 'xpd',
 		'ratio', 'inhibition', 'voltagebobbi', 'isolation', 'imd3', 'impedance', 'capacity'
 	];
 
