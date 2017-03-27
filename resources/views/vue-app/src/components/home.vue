@@ -8,7 +8,7 @@
         <img :src="category.cover.img" alt="">
       </div>
       <flexbox :gutter="0" wrap="wrap">
-        <flexbox-item :span="1/3" v-for="(item,index) in scroller_data.data" :data-i="ndex>=6&&index<12" v-if="index>=6&&index<12" class="padding-tb-6">
+        <flexbox-item :span="1/3" style="padding:0 2px;" v-for="(item,index) in scroller_data.data" :data-i="ndex>=6&&index<12" v-if="index>=6&&index<12" class="padding-tb-6 border-box cell-list-3">
           <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="link-img">
             <div>
               <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
@@ -17,7 +17,7 @@
               <div class="item-title color-success line-ellispse-2">
                 {{item.name}}
               </div>
-              <div class="item-subtitle color-gray">
+              <div class="item-subtitle color-gray" v-if="false">
                 <span>{{item.desc||"暂无描述"}}</span>
               </div>
             </div>
@@ -31,7 +31,7 @@
         <img :src="hot_sales.cover.img" alt="">
       </div>
       <flexbox :gutter="0" wrap="wrap">
-        <flexbox-item :span="1/3" v-for="(item,index) in scroller_data.data" :data-i="index<6" v-if="index<6" class="padding-tb-6 border-box">
+        <flexbox-item style="padding:0 3px;" :span="1/3" v-for="(item,index) in scroller_data.data" :data-i="index<6" v-if="index<6" class="padding-tb-6 border-box cell-list-3">
           <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="link-img">
             <div>
               <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
@@ -40,7 +40,7 @@
               <div class="item-title color-success line-ellispse-2">
                 {{item.name}}
               </div>
-              <div class="item-subtitle color-gray">
+              <div class="item-subtitle color-gray" v-if="false">
                 <span>{{item.desc||"暂无描述"}}</span>
               </div>
             </div>
@@ -56,7 +56,7 @@
     </div>
     <div class="scroll-content infinite-scroll container padding-b-20">
       <flexbox wrap="wrap" :gutter="0" class="scroll-content">
-        <flexbox-item v-for="(item,index) in scroller_data.data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" :data-i="index%2">
+        <flexbox-item v-for="(item,index) in scroller_data.data" :span="1/2" class="link-img padding-tb-6 border-box cell-list-2" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" :data-i="index%2">
           <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block">
             <div>
               <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
@@ -260,6 +260,12 @@ export default {
               self.scroller_data.next_page_url=res_data.next_page_url;
               self.scroller_data.to=res_data.to;
               self.scroller_data.total=res_data.total;
+               if(!res_data.next_page_url){
+                  self.$vux.toast.show({
+                    type:'text',
+                    text:'已加载完毕...'
+                  });
+                }
     },
     loadMore:function(){
       var self=this;
@@ -269,27 +275,18 @@ export default {
       console.log("触发加载");
       this.loading=true;
       let scroller=$(".container");
-      this.loading=true;
       if(!!self.scroller_data.next_page_url){
         api.get_page_data(self.scroller_data.next_page_url,{relations: ["images","image_attach"],per_page: 10 }).then(res=>{
           console.log(res);
+          self.loading=false;
            if(res.data.data&&res.data.data.length>0){
               self.handle_res_data(res.data)
               // self.
             }
-          console.log("!!!!!!!!");
-        });
-        
+        }); 
+      }else{
+         self.loading=false;
       }
-      
-      // setTimeout(()=>{
-      //   let i=this.length;
-        
-      //   let scrollTop=scroller[0].scrollHeight-scroller.height()-20;
-      //   scroller.scrollTop(scrollTop);
-      //   self.loading=false;
-      // },1500)
-
     }
   },
   components:{

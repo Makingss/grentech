@@ -10,15 +10,16 @@ export const app_config={
      desc:'',
      url:'#/home',
   },
-  intercept:true,//是否启用登陆拦截
+  intercept:false,//是否启用登陆拦截
   intercept_time:2000,//登陆拦截时间
-  intercept_closeable:false,//登陆拦截是否可关闭
+  intercept_closeable:true,//登陆拦截是否可关闭
   /* 
     storage配置项
     localStorage,
     sessionStorage,
     cookie,
   */
+  list_cell_type:'large',//列表布局方式
   storage:'localStorage',
   token:'',
   popup_login:false,
