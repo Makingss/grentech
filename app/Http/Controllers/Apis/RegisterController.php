@@ -120,7 +120,6 @@ class RegisterController extends Controller
                 //获取用户access_token
                 $data = $this->getOauth($oauth_clients->id, md5($user->email . $user->id), $user->email, authcode($secret));
                 //追加服务器当前时间
-                $data['service_time'] = time();
                 $data['client_id']=$oauth_clients->id;
                 $data['client_secret']=$oauth_clients->secret;
                 return response()->json(['res' => true, 'data' => $data, 'req' => '激活成功']);
