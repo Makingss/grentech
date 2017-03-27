@@ -6,12 +6,12 @@
     </div>
     <div class="login-form">
       <group label-width="4rem" label-margin-right="2rem" label-align="left">
-        <x-input placeholder="手机号" class="font-normal" v-model="phone"></x-input>
-        <x-input placeholder="密码" class="font-normal" v-model="pwd"></x-input>
+        <x-input placeholder="邮箱" is-type="email" class="font-normal" v-model="email"></x-input>
+        <x-input placeholder="密码" class="font-normal" v-model="password"></x-input>
       </group>
     </div>
     <div class="margin-tb-20">
-      <x-button type="warn" class="block-center login-btn btn-80">登陆</x-button>
+      <x-button type="warn" class="block-center login-btn btn-80" @click.native="submit_login">登陆</x-button>
     </div>
     <div class="login-link text-center clear-float">
       <div class="tab-50 pull-left" v-if="false">
@@ -29,13 +29,36 @@
 </template>
 
 <script>
+import api from '../api'
 import {Group,XInput,XButton} from 'vux'
 export default {
   name:'login',
   data:function(){
     return {
-      phone:'',
-      pwd:''
+      email:'',
+      password:''
+    }
+  },
+  methods:{
+    submit_login:function(){
+      var self=this;
+      if(this.email==""){
+        this.$vux.toast.show({
+          text:'邮箱不能为空',
+          type:"warn"
+        })
+      }else if(this.password==""){
+         this.$vux.toast.show({
+          text:'请输入密码',
+          type:"warn"
+        })
+      };
+      api.user_login({
+        email:self.email,
+        password:self.password
+      }).then(res=>{
+        console.log(res);
+      })
     }
   },
   components:{
