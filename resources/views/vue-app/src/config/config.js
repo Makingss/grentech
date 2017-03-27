@@ -19,6 +19,7 @@ export const app_config={
     sessionStorage,
     cookie,
   */
+  list_cell_type:'large',//列表布局方式
   storage:'localStorage',
   token:'',
   popup_login:false,

@@ -56,6 +56,7 @@
     //       class="x-scroller-container">
     //     </scroller>
 import api from '../api'
+import * as config from '../config/config.js'
 import CardList from './card-list'
 import {
   Flexbox,
@@ -82,7 +83,7 @@ export default {
         pullupStatus: 'default'
       },
       // loading: false,
-      type: 'medium',
+      type: config.app_config.list_cell_type,
       search_input: '',
       pullupConfig: {
         content: '上拉加载更多',
