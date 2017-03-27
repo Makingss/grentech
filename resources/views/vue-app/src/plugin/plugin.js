@@ -76,7 +76,7 @@
             show_back:false,
             is_show:false,
             show_search_bar:false,
-            navbar_active:2,
+            navbar_active:1,
           },
           'address':{
             title:'地址管理',
