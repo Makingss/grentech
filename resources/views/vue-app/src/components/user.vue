@@ -7,7 +7,9 @@
       </p>
       <div class="user-login">
         <p class="padding-tb-10">
-          <span class="color-white" v-if="loading_status">{{name}}</span>
+          <router-link to="/loginout" v-if="loading_status" class="color-white">
+            {{name}}
+          </router-link>
           <router-link to="/login" v-else class="color-white">
             登录
           </router-link>
