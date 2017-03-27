@@ -195,7 +195,7 @@ export default {
                if(res.data.id){
                   self.loading_status=true;
                   self.name=res.data.name;
-                  self.avatar=res.data.avatar;
+                  // self.avatar=res.data.avatar;
                   self.email=res.data.email;
                   window.sessionStorage.user_info=JSON.stringify(res.data);
                }
