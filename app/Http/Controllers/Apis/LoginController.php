@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Apis;
 
 use App\User;
+use GuzzleHttp\Client as GClient;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -12,6 +13,12 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
+    protected $http;
+
+    public function __construct(GClient $http)
+    {
+        $this->http = $http;
+    }
 
     /**
      * 登录字段验证
