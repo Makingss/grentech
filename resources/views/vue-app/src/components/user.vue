@@ -6,8 +6,8 @@
         <img :src="user_avatar" alt="" class="circle">
       </p>
       <div class="user-login">
-        <p>
-          <router-link to="/login" class="color-white padding-tb-10">
+        <p class="padding-tb-10">
+          <router-link to="/login" class="color-white">
             登陆
           </router-link>
         </p>
