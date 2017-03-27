@@ -13,7 +13,7 @@
 use Illuminate\Http\Request;
 
 Route::get('/user', function (Request $request) {
-    return $request->user();
+	return $request->user();
 })->middleware('auth:api');
 
 
@@ -40,7 +40,7 @@ Route::get('/goods', 'GoodsController@getGoods')->middleware('api');
 ##########################################################################
 Route::group(['namespace' => 'Apis'], function () {
 
-    Route::post('/register', 'RegisterController@register');
-    Route::post('/verify', 'RegisterController@registerVerify')->name('api.email.verify');
-    Route::post('/login', 'LoginController@login');
+	Route::post('/register', 'RegisterController@register');
+	Route::post('/verify', 'RegisterController@registerVerify')->name('api.email.verify');
+	Route::post('/login', 'LoginController@login');
 });

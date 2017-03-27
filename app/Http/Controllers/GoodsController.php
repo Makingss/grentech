@@ -14,6 +14,7 @@ use App\Admin\Models\Goods\Good;
 use App\Admin\Models\Images\Image;
 use App\Admin\Models\Images\Image_attach;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GoodsController extends Controller
 {
@@ -23,8 +24,18 @@ class GoodsController extends Controller
 	public function getGoods(Request $request)
 	{
 		$per_page = $request->get('per_page');
-		$relations = $request->get('relations')?$request->get('relations'):'image_attach';
+		$relations = $request->get('relations') ? $request->get('relations') : 'image_attach';
 		$parameters = $request->get('parameters');
+		$cols = collect($parameters);
+		foreach ($parameters as $parameter)
+			if (is_array($parameter)) {
+				$keys = array_keys($parameter);
+				$plucked = $cols->pluck($keys[0]);
+				$multiplied = $plucked->map(function ($col) {
+					return (int)$col;
+				})->implode(',');
+				$parameters = [$keys[0] => [$multiplied]];
+			}
 		$collection = collect($parameters);
 		$filtered = $collection->only(['brand_id', 'goods_id', 'type_id', 'cat_id', 'bn']);
 		$where = $filtered->all();
@@ -34,7 +45,6 @@ class GoodsController extends Controller
 		);
 		$with = $filteredRelations->all();
 		$goods = Good::with($with)->where($where)->orderBy('updated_at', 'DESC')->paginate($per_page)->toArray();
-//		$goods->withPath('custom/url');
 		foreach ($goods['data'] as $dataK => $data) {
 			foreach ($data['image_attach'] as $itemK => $item) {
 				$image_attach = Image_attach::with('images')->where('image_id', $item['image_id'])->get()->toArray();
@@ -44,6 +54,7 @@ class GoodsController extends Controller
 
 			}
 		}
+		return $goods;
 		return json_encode($goods);
 	}
 
