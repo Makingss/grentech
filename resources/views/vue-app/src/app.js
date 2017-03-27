@@ -19,6 +19,11 @@ import api from './api'
 //引入 zepto 插件
 import $ from 'n-zepto'
 
+//调用模块
+Vue.use(Plugin);
+Vue.use(VueResource);
+
+
 //引入 animate.css 动画库
 // require('vue2-animate/dist/vue2-animate.min.css')
 let ad = config.app_config.ad;
@@ -97,9 +102,6 @@ import Reset from './styles/reset.css'
 //引入vue插件扩展
 import Plugin from './plugin/plugin'
 
-//调用模块
-Vue.use(Plugin);
-Vue.use(VueResource);
 
 //引入组件
 import {
