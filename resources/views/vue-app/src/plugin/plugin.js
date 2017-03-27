@@ -151,6 +151,13 @@
             is_show: false,
             show_search_bar: false,
             navbar_active: 2
+          },
+          'loginout':{
+            title:'登录设置',
+            show_back: false,
+            is_show: true,
+            show_search_bar: false,
+            navbar_active: 2
           }
         }
         return name_conf[name];
