@@ -92,14 +92,7 @@ if (config.app_config.intercept) {
 
 // --- get_user_info
 if (!!window.localStorage.access_token) {
-  //  api.get_user_info({
-  //       headers:{
-  //         'Accept':'application/json',
-  //         'Authorization':"Bearer "+window.localStorage.access_token,
-  //       }
-  //   }).then(res=>{
-  //      console.log(res.data);
-  //   })
+  
 } else {
   
 }

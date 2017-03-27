@@ -171,7 +171,7 @@
           return 3; //正常
         }
       }
-      Vue.prototype.refresh_token = function () {
+      Vue.prototype.refresh_token = function (callback) {
         var result = this.check_token();
         console.log("............................");
         console.log(result);
@@ -190,6 +190,9 @@
               console.log(res);
               if (!!res.data.refresh_token) {
                 this.save_token(res.data);
+                if(!!callback) {
+                   callback();
+                }
               } else {
                 this.$vux.toast({
                   text: '<span class="font-normal">请重新登录</span>',

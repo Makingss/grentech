@@ -151,13 +151,15 @@ export default {
     check_locl_token:function(){
        var self=this;
        var result=this.check_token();
+       console.log(result);
        if(result==1){
          //未登录用户---不做任何操作
-
        }else if(result==2){
           //token过期用户
-          self.refresh_token();
-          self.fetch_user_info();
+          self.refresh_token(function(){
+            console.log("回调执行");
+             self.fetch_user_info();
+          });
        }else if(result==3){
           //正常状态
           self.fetch_user_info();
