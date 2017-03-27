@@ -28,7 +28,6 @@
             }
         },
         created:function(){
-            this.check_locl_token();
             this.render_user_info();
         },
         methods:{
@@ -39,6 +38,8 @@
                     this.name=user_info.name;
                     this.email=user_info.email;
                     this.avatar=user_info.avatar;
+                }else{
+                     this.check_locl_token();
                 }
             },
             check_locl_token:function(){
