@@ -47,11 +47,13 @@ export default {
           text:'<span class="font-normal">邮箱不能为空</span>',
           type:"warn"
         })
+        return;
       }else if(this.password==""){
          this.$vux.toast.show({
           text:'<span class="font-normal">请输入密码</span>',
           type:"warn"
         })
+        return;
       };
       api.user_login({
         email:self.email,
