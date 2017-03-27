@@ -201,7 +201,8 @@ export default {
                 if(!self.next_page_url){
                   self.$vux.toast.show({
                     type:'text',
-                    text:'已加载完毕...'
+                    text:'<span class="font-normal">已加载完毕...</span>',
+                    time:2000000
                   });
                 }
     }
