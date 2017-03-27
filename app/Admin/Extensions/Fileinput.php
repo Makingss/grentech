@@ -76,9 +76,10 @@ class Fileinput extends Field
         }
     });
     $('#file-fr').fileinput({
+    showPreview:true,
     showCaption:false,
     showRemove:false,
-    showUpload:false,
+    showUpload:true,
     showCancel:false,
     showClose:false,
     showBrowse:true,
@@ -86,15 +87,15 @@ class Fileinput extends Field
     removeFromPreviewOnError:true,
    
     
-    initialPreviewThumbTags:[{
-		 '{CUSTOM_TAG_NEW}':' ',
-		 '{CUSTOM_TAG_INIT}':'<span class=\'custom-css\'>CUSTOM MARKUP 1</span>'
-		},
-		{
-		 '{CUSTOM_TAG_NEW}':' ',
-		 '{CUSTOM_TAG_INIT}':'<span class=\'custom-css\'>CUSTOM MARKUP 2</span>'
-		}
-		],
+//    initialPreviewThumbTags:[{
+//		 '{CUSTOM_TAG_NEW}':' ',
+//		 '{CUSTOM_TAG_INIT}':'<span class=\'custom-css\'>CUSTOM MARKUP 1</span>'
+//		},
+//		{
+//		 '{CUSTOM_TAG_NEW}':' ',
+//		 '{CUSTOM_TAG_INIT}':'<span class=\'custom-css\'>CUSTOM MARKUP 2</span>'
+//		}
+//		],
     
     
     

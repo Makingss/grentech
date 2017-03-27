@@ -3,6 +3,7 @@
 namespace App\Admin\Models\Members;
 
 use App\Admin\Models\Goods\Good;
+use App\Admin\Models\Products\Product;
 use Illuminate\Database\Eloquent\Model;
 
 class Member_good extends Model

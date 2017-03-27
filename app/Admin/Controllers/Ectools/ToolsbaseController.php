@@ -20,6 +20,7 @@ class ToolsbaseController extends Controller
 {
     public function fileUpload(Request $request)
     {
+
         if ($request->hasFile('img')) {
             $files = $request->file('img');
             $folderName = config('config.uploads.imageUploadPath');
@@ -35,7 +36,6 @@ class ToolsbaseController extends Controller
                     'ident' => $path
                 ])->toArray();
             }
-            session([$image_id=>$imagePath]);
             return json_encode(['path' => $imagePath,'image_id'=>$image_id], true);
         } else {
             return response()->json(['status' => 'true', 'msg' => '没有图片']);

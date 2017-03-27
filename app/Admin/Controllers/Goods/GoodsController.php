@@ -7,6 +7,7 @@
  */
 namespace App\Admin\Controllers\Goods;
 
+use App\Admin\Models\Ectools\Keyword;
 use App\Admin\Models\Goods\Brand;
 use App\Admin\Models\Goods\Goods_keyword;
 use App\Admin\Models\Goods\Goods_port;
@@ -46,13 +47,13 @@ class GoodsController extends Controller
 			$getGoodColumns = $goodObj->getTableColumns('goods');
 			$getPoductColumns = $goodObj->getTableColumns('products');
 			$getElectricColumns = $goodObj->getTableColumns('electrics');
-			$grid->goods_id('id')->sortable();
+//			$grid->goods_id('id')->sortable();
 			//$grid->jooge_goods_id()->sortable();
 			$grid->bn($getGoodColumns['bn']);
 //			$grid->products('产品货号')->pluck('bn')->map(function ($bn) {
 //				return $bn;
 //			})->implode('</br>')->editable();
-			$grid->goods_keywords(trans('admin::lang.products.keyword'))->pluck('keyword')->label();
+			$grid->keywords(trans('admin::lang.products.keyword'))->pluck('keyname')->label();
 			/**
 			 * $grid->products($getPoductColumns['bn'])->product(function () use ($getPoductColumns) {
 			 * $products = (array)$this->products;
@@ -236,36 +237,6 @@ class GoodsController extends Controller
 					$form->number('ports_18', $getGoodsprotColumns['ports_18']);
 					$form->number('ports_19', $getGoodsprotColumns['ports_19']);
 					$form->number('ports_20', $getGoodsprotColumns['ports_20']);
-					/**
-					 * $form->checkbox('spec', '端口说明')->options(
-					 * [
-					 * 1 => '1* -45° 7/16DIN阴头',
-					 * 2 => '1* +45° 7/16DIN阴头',
-					 * 3 => '2* -45° 7/16DIN阴头',
-					 * 4 => '2* +45° 7/16DIN阴头',
-					 * 5 => '3* -45° 7/16DIN阴头',
-					 * 6 => '3* +45° 7/16DIN阴头',
-					 * 7 => '4* -45° 7/16DIN阴头',
-					 * 8 => '4* +45° 7/16DIN阴头',
-					 * 9 => '4芯 集束电缆',
-					 * 10 => '5芯 集束电缆',
-					 * 11 => '8* N型阴头',
-					 * 12 => 'C',
-					 * 13 => '1* 900 -45°',
-					 * 14 => '1* 900 +45°',
-					 * 15 => '2* 900 -45°',
-					 * 16 => '2* 900 +45°',
-					 * 17 => '1* 1800 -45°',
-					 * 18 => '1* 1800 +45°',
-					 * 19 => '2* 1800 -45°',
-					 * 20 => '2* 1800 +45°',
-					 * 21 => '1* D频段集束头',
-					 * 22 => '2* D频段集束头',
-					 * 23 => '1* FA频段集束头',
-					 * 24 => '2* FA频段集束头'
-					 * ]
-					 * );
-					 */
 				});
 
 				$form->hasMany('assemblies', '组件(可选)', function (NestedForm $form) use ($getAssemblieColumns) {
@@ -279,14 +250,14 @@ class GoodsController extends Controller
 					$form->number('hexagonbolt', $getStandardfitColumns['hexagonbolt']);
 					$form->number('lightning', $getStandardfitColumns['lightning']);
 				});
-				$form->hasMany('goods_keywords', trans('admin::lang.products.keyword'), function (NestedForm $form) use ($getGoodswordColumns) {
-					$form->text('keyword', $getGoodswordColumns['keyword']);
-				});
+//				$form->hasMany('goods_keywords', trans('admin::lang.products.keyword'), function (NestedForm $form) use ($getGoodswordColumns) {
+//					$form->text('keyword', $getGoodswordColumns['keyword']);
+//				});
 
 
 //				$form->multipleSelect('goodsKeywords')->options(Goods_keyword::all()->pluck('keyword', 'id'));
 
-//				$form->multipleSelecttag('goodsKeywords')->options(Goods_keyword::all()->pluck('keyword','id'));
+				$form->multipleSelect('keywords','产品关键字')->options(Keyword::all()->pluck('keyname', 'id'));
 
 				$form->display('created_at', trans('admin::lang.created_at'));
 				$form->display('updated_at', trans('admin::lang.updated_at'));
@@ -297,36 +268,37 @@ class GoodsController extends Controller
 //				$form->editordatetable($getElectricColumns);
 				$form->hasMany('electrics', '电性能指标', function (NestedForm $form) use ($getElectricColumns) {
 
-					$form->text('workingband', $getElectricColumns['workingband'])->rules('required');
-					$form->text('x_beamwidth', $getElectricColumns['x_beamwidth'])->rules('required');
-					$form->text('y_beamwidth', $getElectricColumns['y_beamwidth'])->rules('required');
-					$form->text('beamgain', $getElectricColumns['beamgain'])->rules('required');
-					$form->text('polarization', $getElectricColumns['polarization'])->rules('required');
-					$form->text('dipangle', $getElectricColumns['dipangle'])->rules('required');
-					$form->text('xpd', $getElectricColumns['xpd'])->rules('required');
-					$form->text('ratio', $getElectricColumns['ratio'])->rules('required');
-					$form->text('inhibition', $getElectricColumns['inhibition'])->rules('required');
-					$form->text('voltagebobbi', $getElectricColumns['voltagebobbi'])->rules('required');
-					$form->text('isolation', $getElectricColumns['isolation'])->rules('required');
-					$form->text('imd3', $getElectricColumns['imd3'])->rules('required');
-					$form->text('impedance', $getElectricColumns['impedance'])->rules('required');
-					$form->text('capacity', $getElectricColumns['capacity'])->rules('required');
+					$form->text('workingband', $getElectricColumns['workingband']);
+					$form->text('polarization', $getElectricColumns['polarization']);
+					$form->text('x_beamwidth', $getElectricColumns['x_beamwidth']);
+					$form->text('y_beamwidth', $getElectricColumns['y_beamwidth']);
+					$form->text('beamgain', $getElectricColumns['beamgain']);
+
+					$form->text('dipangle', $getElectricColumns['dipangle']);
+					$form->text('xpd', $getElectricColumns['xpd']);
+					$form->text('ratio', $getElectricColumns['ratio']);
+					$form->text('inhibition', $getElectricColumns['inhibition']);
+					$form->text('voltagebobbi', $getElectricColumns['voltagebobbi']);
+					$form->text('isolation', $getElectricColumns['isolation']);
+					$form->text('imd3', $getElectricColumns['imd3']);
+					$form->text('impedance', $getElectricColumns['impedance']);
+					$form->text('capacity', $getElectricColumns['capacity']);
 				});
 
 			});
 			$form->tab('机械性指标', function (Form $form) use ($getMechanicsColumns, $getGoodsprotColumns) {
 //				$form->hasMany('mechanics','',function(NestedForm $form)use ($getMechanicsColumns,$getGoodsprotColumns){
-				$form->select('mechanics.jointtype', $getMechanicsColumns['jointtype'])->options($getGoodsprotColumns)->rules('required');
-				$form->text('mechanics.antennasize', $getMechanicsColumns['antennasize'])->help('φ315*H(H=1900)')->rules('required');
-				$form->text('mechanics.antennanumber', $getMechanicsColumns['antennanumber'])->help('面')->rules('required');
-				$form->text('mechanics.x_range', $getMechanicsColumns['x_range'])->rules('required');
-				$form->number('mechanics.antennanweight', $getMechanicsColumns['antennanweight'])->rules('required');
-				$form->text('mechanics.guardmode', $getMechanicsColumns['guardmode'])->rules('required');
-				$form->text('mechanics.installmodel', $getMechanicsColumns['installmodel'])->rules('required');
-				$form->text('mechanics.maintainmodel', $getMechanicsColumns['maintainmodel'])->rules('required');
-				$form->text('mechanics.antennandata', $getMechanicsColumns['antennandata'])->rules('required');
-				$form->text('mechanics.surfacing', $getMechanicsColumns['surfacing'])->rules('required');
-				$form->text('mechanics.antennanageing', $getMechanicsColumns['antennanageing'])->rules('required');
+				$form->select('mechanics.jointtype', $getMechanicsColumns['jointtype'])->options($getGoodsprotColumns);
+				$form->text('mechanics.antennasize', $getMechanicsColumns['antennasize'])->help('φ315*H(H=1900)');
+				$form->text('mechanics.antennanumber', $getMechanicsColumns['antennanumber'])->help('面');
+				$form->text('mechanics.x_range', $getMechanicsColumns['x_range']);
+				$form->number('mechanics.antennanweight', $getMechanicsColumns['antennanweight']);
+				$form->text('mechanics.guardmode', $getMechanicsColumns['guardmode']);
+				$form->text('mechanics.installmodel', $getMechanicsColumns['installmodel']);
+				$form->text('mechanics.maintainmodel', $getMechanicsColumns['maintainmodel']);
+				$form->text('mechanics.antennandata', $getMechanicsColumns['antennandata']);
+				$form->text('mechanics.surfacing', $getMechanicsColumns['surfacing']);
+				$form->text('mechanics.antennanageing', $getMechanicsColumns['antennanageing']);
 
 				$form->text('mechanics.temperature', $getMechanicsColumns['temperature'])->default('0-0');
 				$form->text('mechanics.limittemperature', $getMechanicsColumns['limittemperature'])->default('0-0');
@@ -354,12 +326,12 @@ class GoodsController extends Controller
 //				);
 				$form->number('mechanics.thickness', $getMechanicsColumns['thickness'])->help('mm不被破坏');
 
-				$form->text('mechanics.flameretardant', $getMechanicsColumns['flameretardant'])->rules('required');
-				$form->text('mechanics.ultraviolet', $getMechanicsColumns['ultraviolet'])->rules('required');
-				$form->text('mechanics.PH', $getMechanicsColumns['PH'])->rules('required');
-				$form->text('mechanics.protect', $getMechanicsColumns['protect'])->rules('required');
+				$form->text('mechanics.flameretardant', $getMechanicsColumns['flameretardant']);
+				$form->text('mechanics.ultraviolet', $getMechanicsColumns['ultraviolet']);
+				$form->text('mechanics.PH', $getMechanicsColumns['PH']);
+				$form->text('mechanics.protect', $getMechanicsColumns['protect']);
 				$form->text('mechanics.other', $getMechanicsColumns['other']);
-				$form->text('mechanics.exposed', $getMechanicsColumns['exposed'])->rules('required');
+				$form->text('mechanics.exposed', $getMechanicsColumns['exposed']);
 
 
 			});
@@ -422,9 +394,10 @@ class GoodsController extends Controller
 
 	public function store(Request $request)
 	{
+//		dd($request->all());
 		$goodsObj = new Good();
 		$res = $goodsObj->save_goods($request, '', 'create');
-//		return $this->form()->store();
+//		 $this->form()->store();
 		if ($res)
 			return redirect('/admin/goods');
 		else
@@ -434,12 +407,15 @@ class GoodsController extends Controller
 	public function update(Request $request, $id)
 	{
 		$goods = $request->all();
-//		$keyword = $this->normailzeKeywords($request->get('goodsKeywords'));
+
+//		$keywords = $this->normailzeKeywords($request->get('keywords'));
+
 		if ($goods['marketable'] == 'off')
 			$goods['marketable'] = 0;
 		else
 			$goods['marketable'] = 1;
 		$goods = new Good();
+
 		/**
 		 * $goodObj = Good::find($id);
 		 *
@@ -462,17 +438,36 @@ class GoodsController extends Controller
 		 * }
 		 */
 		$res = $goods->save_goods($request, $id, 'update');
+
+
+//		$goods->keywords()->attach($keywords);
+//		$re=$this->form()->update($id);
+//		dd($re);
 		return $this->form()->update($id);
 
 	}
 
 	public function normailzeKeywords(array $keywords)
 	{
-		collect($keywords)->map(function ($keyword) {
+		foreach ($keywords as $k => $v) {
+			if (!$v)
+				unset($keywords[$k]);
+		}
+		return collect($keywords)->map(function ($keyword) {
 			if (is_numeric($keyword)) {
 				return (int)$keyword;
+			} elseif (!empty($keyword)) {
+//				$key_exists = Keyword::where('keyname', trim($keyword))->get()->toArray();
+//				if(empty($key_exists)){
+					$newKeyword = Keyword::create(['keyname' => trim($keyword)]);
+					return $newKeyword->id;
+//				}else{
+//					return [];
+//				}
+
 			}
-		});
+
+		})->toArray();
 	}
 
 

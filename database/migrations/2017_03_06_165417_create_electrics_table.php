@@ -27,7 +27,7 @@ class CreateElectricsTable extends Migration
             $table->string('ratio')->nullable()->comment('前后比');
             $table->string('inhibition')->nullable()->comment('上旁瓣抑制');
             $table->string('voltagebobbi')->nullable()->comment('电压驻波比');
-            $table->string('isolation')->nullable()->comment('端品隔离度');
+            $table->string('isolation')->nullable()->comment('端口隔离度');
             $table->string('imd3')->nullable()->comment('三阶交调');
             $table->string('impedance')->nullale()->comment('端口阻抗');
             $table->string('capacity')->nullable()->comment('功率容量');

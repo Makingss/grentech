@@ -2,6 +2,7 @@
 
 namespace App\Admin\Models\Members;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Member_data extends Model
@@ -56,5 +57,13 @@ class Member_data extends Model
      */
     public function member_goods(){
         return $this->hasMany(Member_good::class,'goods_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * users.id to member_data.member_id
+     */
+    public function users(){
+        return $this->hasMany(User::class,'id');
     }
 }

@@ -41,12 +41,14 @@ use \Encore\Admin\Grid\Column;
 Form::extend('editor', \App\Admin\Extensions\UEditor::class);
 Form::extend('fileinput', \App\Admin\Extensions\Fileinput::class);
 Form::extend('wangeditor', \App\Admin\Extensions\WangEditor::class);
+Form::extend('multipleSelecttag',\App\Admin\Extensions\MultipleSelecttag::class);
 Form::extend('slider',\App\Admin\Extensions\SliderRange::class);
 //Form::extend('datetable', \App\Admin\Extensions\Datetable::class);
 //Form::extend('editordatetable', \App\Admin\Extensions\EditorDatetable::class);
 Column::extend('electric', \App\Admin\Extensions\Column\ExpandRow::class);
 //Column::extend('product', \App\Admin\Extensions\Column\ProductRow::class);
 Column::extend('urlwrapper', \App\Admin\Extensions\Column\UrlWrapper::class);
+
 app('translator')->addNamespace('admin', resource_path('lang/admin'));
 app('view')->prependNamespace('admin', resource_path('views/admin'));
 

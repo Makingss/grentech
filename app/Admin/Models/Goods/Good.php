@@ -3,6 +3,8 @@
 namespace App\Admin\Models\Goods;
 
 use App\Admin\Controllers\Ectools\ToolsbaseController;
+use App\Admin\Controllers\Goods\GoodsController;
+use App\Admin\Models\Ectools\Keyword;
 use App\Admin\Models\Images\Image_attach;
 use App\Admin\Models\Images\Image;
 use App\Admin\Models\Members\Member_good;
@@ -130,6 +132,11 @@ class Good extends Model
 	public function goodsKeywords()
 	{
 		return $this->hasMany(Goods_keyword::class, 'goods_id');
+	}
+
+	public function keywords()
+	{
+		return $this->belongsToMany(Keyword::class, 'good_keyword', 'good_id', 'keyword_id')->withTimestamps();
 	}
 
 	/**
@@ -264,6 +271,14 @@ class Good extends Model
 					$goodsObj->goods_keywords()->create($keyword);
 				}
 			}
+			if (array_key_exists('keywords', $goods)) {
+//				foreach ($goods['keywords'] as $keyword) {
+					$keyword['goods_id'] = $id;
+					$controller = new GoodsController();
+					$keywords=$controller->normailzeKeywords($goods['keywords']);
+					$goodsObj->keywords()->attach($keywords);
+//				}
+			}
 			if (array_key_exists('goods_ports', $goods)) {
 				foreach ($goods['goods_ports'] as $goods_port) {
 					$goodsObj->goods_ports()->create($goods_port);
@@ -272,7 +287,7 @@ class Good extends Model
 			if (array_key_exists('mechanics', $goods)) {
 //				dd($goods);
 //				foreach ($goods['mechanics'] as $mechanic)
-					$goodsObj->mechanics()->create($goods['mechanics']);
+				$goodsObj->mechanics()->create($goods['mechanics']);
 			}
 			if (array_key_exists('assemblies', $goods)) {
 				foreach ($goods['assemblies'] as $assemblie) {

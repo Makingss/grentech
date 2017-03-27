@@ -36,6 +36,7 @@ class SliderRange extends Field
 	{
 		$columns = collect(explode('.', $this->column));
 		$model = $this->form->model();
+//		dd($model);
 		$collects = collect($model['relations']);
 		$param_datas = [];
 		if ($collects->get($columns->first())) {
