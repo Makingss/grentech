@@ -101,13 +101,5 @@ if (!!window.localStorage.access_token) {
   //      console.log(res.data);
   //   })
 } else {
-  //刷新 access_token
-  // var access_token=res.data.access_token;
-  // store.state.token.token=res.data;
-
-  // //加入 localStorage存储静态数据 
-  // window[config.app_config.storage].access_token=res.data.access_token;
-  // window[config.app_config.storage].expires_in=res.data.expires_in;
-  // window[config.app_config.storage].refresh_token=res.data.refresh_token;
-  // window[config.app_config.storage].token_type=res.data.token_type;
+  
 }

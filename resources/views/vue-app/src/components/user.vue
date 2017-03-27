@@ -55,6 +55,7 @@
   </div>
 </template>
 <script>
+import api from '../api'
 import {Card,Flexbox,FlexboxItem} from 'vux'
 export default {
   name:'user',
@@ -140,6 +141,39 @@ export default {
           show_badge:false
         }
       ]
+    }
+  },
+  created:function(){
+    //先执行判断
+
+  },
+  methods:{
+    check_locl_token:function(){
+       var self=this;
+       var result=this.check_token();
+       if(result==1){
+         //未登录用户---不做任何操作
+
+       }else if(result==2){
+          //token过期用户
+          self.refresh_token();
+          self.fetch_user_info();
+       }else if(result==3){
+          //正常状态
+          self.fetch_user_info();
+       }
+    },
+    fetch_user_info:function(){
+          //拉取用户信息
+          console.log("拉取用户信息");
+           api.get_user_info({
+                headers:{
+                  'Accept':'application/json',
+                  'Authorization':"Bearer "+window.localStorage.access_token,
+                }
+            }).then(res=>{
+               console.log(res.data);
+            })
     }
   },
   components:{
