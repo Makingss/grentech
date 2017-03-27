@@ -3,12 +3,13 @@
     <div class="content-box">
  <div class="text-center user-bg">
      <p class="center user-avatar">
-        <img :src="user_avatar" alt="" class="circle">
+        <img :src="avatar" alt="" class="circle">
       </p>
       <div class="user-login">
         <p class="padding-tb-10">
-          <router-link to="/login" class="color-white">
-            登陆
+          <span v-if="loading_status">{{name}}</span>
+          <router-link to="/login" v-else class="color-white">
+            登录
           </router-link>
         </p>
         <p class="padding-tb-10" v-if="false">
@@ -61,8 +62,11 @@ export default {
   name:'user',
   data:function(){
     return {
+      loading_status:false,
+      name:'',
+      email:'',
       user_avatar_bg:'/static/slice/a1.jpg',
-      user_avatar:'/static/slice/user_logo.jpg',
+      avatar:'/static/slice/user_logo.jpg',
       order_list_data:[
         {
           title:'待付款',
@@ -146,8 +150,18 @@ export default {
   created:function(){
     //先执行判断
     this.check_locl_token();
+    this.render_user_info();
   },
   methods:{
+    render_user_info:function(){
+      var user_info=this.get_sessionStorage_user_info();
+      if(user_info){
+        this.loading_status=true;
+        this.name=user_info.name;
+        this.email=user_info.email;
+        this.avatar=user_info.avatar;
+      }
+    },
     check_locl_token:function(){
        var self=this;
        var result=this.check_token();
@@ -168,6 +182,7 @@ export default {
     fetch_user_info:function(){
           //拉取用户信息
           console.log("拉取用户信息");
+          var self=this;
            api.get_user_info({
                 headers:{
                   'Accept':'application/json',
@@ -175,6 +190,13 @@ export default {
                 }
             }).then(res=>{
                console.log(res.data);
+               if(res.data.id){
+                  self.loading_status=true;
+                  self.name=res.data.name;
+                  self.avatar=res.data.avatar;
+                  self.email=res.data.email;
+                  window.sessionStorage.user_info=JSON.stringify(res.data);
+               }
             })
     }
   },
