@@ -169,6 +169,7 @@
           return 3;//正常
         }
       }
+      
       /****************正则转驼峰式命名********************/
       Vue.prototype.trans_camel = function (str) {
         if (!str) return;

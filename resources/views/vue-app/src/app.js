@@ -105,6 +105,9 @@ if (config.app_config.intercept) {
         scope: '',
       }).then(res => {
         console.log(res);
+        if(!!res.data.refresh_token){
+           app.save_token(res.data);
+        }
       })
     }
 
