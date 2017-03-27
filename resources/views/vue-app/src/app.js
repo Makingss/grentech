@@ -118,5 +118,5 @@ const app=new Vue({
 }).$mount('#app')
 
 console.log("--------------");
-var result=app.ckeck_token();
+var result=app.check_token();
 console.log(result);
