@@ -49,10 +49,9 @@
       </div>
     </card>
     <div class="margin-tb-20 text-center color-gray">
-      <!-- <p>影儿时尚官方商城</p> -->
+      <p>国人天线</p>
     </div>
     </div>
-   
   </div>
 </template>
 <script>
