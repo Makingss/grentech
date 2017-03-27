@@ -163,6 +163,7 @@ class GoodsController extends Controller
 
 	protected function form()
 	{
+		
 
 		return Admin::form(Good::class, function (\Encore\Admin\Form $form) {
 			$goodObj = new Good();
