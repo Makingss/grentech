@@ -7,7 +7,7 @@
       <search v-model="search_input" position="static" top="0" @on-submit="submit_search"  class="list-search border-box"></search>
       <div class="content list container" @scroll="handle_scroll($event)">
             <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
-              <flexbox-item style="height:100px" :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
+              <flexbox-item :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
               v-for="(item,index) in goods_data" :span="1/2" class="link-img padding-tb-6 border-box" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" >
                 <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block">
                   <div>
