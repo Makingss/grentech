@@ -50,12 +50,14 @@ class LoginController extends Controller
 
         if ($this->attemptLogin($request)) {
             $user = User::where('email', $email)->where('is_active', 1)->first();
-            $client_id = DB::table('oauth_clients')->where('user_id', $user->id)->value('id');
-            if (empty($client_id)) {
+            $oauth_clients = DB::table('oauth_clients')->where('user_id', $user->id)->first();
+            if (empty($oauth_clients)) {
                 return response()->json(['res' => false, 'req' => '邮箱不存在或者尚未激活']);
             }
-            $data = $this->getOauth($client_id, md5($user->email . $user->id), $user->email, $password);
+            $data = $this->getOauth($oauth_clients->id, md5($user->email . $user->id), $user->email, $password);
             $data['service_time'] = time();
+            $data['client_id']=$oauth_clients->id;
+            $data['client_secret']=$oauth_clients->secret;
             return response()->json(['res' => true, 'data' => $data, 'req' => '登录成功']);
         }
         return response()->json(['res' => false, 'req' => '账号或密码错误']);
