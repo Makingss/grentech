@@ -48,7 +48,7 @@
         </flexbox>
       </div>
     </card>
-    <div class="margin-tb-20 text-center color-gray">
+    <div class="text-center color-gray brand-info">
       <p>国人天线</p>
     </div>
     </div>
@@ -179,6 +179,12 @@ export default {
   background: -webkit-linear-gradient(45deg,  #5184bc 0%,#3e60a8 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(45deg,  #5184bc 0%,#3e60a8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5184bc', endColorstr='#3e60a8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.brand-info{
+  position:absolute;
+  bottom:2rem;
+  left:0;
+  width:100%;
 }
 
 </style>
