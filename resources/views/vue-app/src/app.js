@@ -107,6 +107,11 @@ if (config.app_config.intercept) {
         console.log(res);
         if(!!res.data.refresh_token){
            app.save_token(res.data);
+        }else{
+          app.$vux.toast({
+            text:'<span class="font-normal">请重新登录</span>',
+            type:'warn'
+          });
         }
       })
     }
