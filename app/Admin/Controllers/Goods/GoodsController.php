@@ -47,7 +47,7 @@ class GoodsController extends Controller
 			$getGoodColumns = $goodObj->getTableColumns('goods');
 			$getPoductColumns = $goodObj->getTableColumns('products');
 			$getElectricColumns = $goodObj->getTableColumns('electrics');
-//			$grid->goods_id('id')->sortable();
+			$grid->goods_id('id')->sortable();
 			//$grid->jooge_goods_id()->sortable();
 			$grid->bn($getGoodColumns['bn']);
 //			$grid->products('产品货号')->pluck('bn')->map(function ($bn) {
@@ -163,7 +163,7 @@ class GoodsController extends Controller
 
 	protected function form()
 	{
-		
+
 
 		return Admin::form(Good::class, function (\Encore\Admin\Form $form) {
 			$goodObj = new Good();
