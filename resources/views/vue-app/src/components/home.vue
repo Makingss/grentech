@@ -4,11 +4,11 @@
     <router-link to="/test" class="color-danger" v-if="false">test 测试</router-link>
     <div class="cat-goods">
       <divider class="padding-10">产品分类</divider>
-      <div class="cat-cover link-img">
+      <div class="cat-cover link-img" v-if="false">
         <img :src="category.cover.img" alt="">
       </div>
       <flexbox :gutter="0" wrap="wrap">
-        <flexbox-item :span="1/3" style="padding:0 2px;" v-for="(item,index) in scroller_data.data" :data-i="ndex>=6&&index<12" v-if="index>=6&&index<12" class="padding-tb-6 border-box cell-list-3">
+        <flexbox-item :span="1/3" style="padding:5px 2px 10px 2px;" v-for="(item,index) in scroller_data.data" :data-i="index>=5&&index<12" v-if="index>=6&&index<12" class="padding-tb-6 border-box cell-list-3">
           <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="link-img">
             <div>
               <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
@@ -27,11 +27,11 @@
     </div>
     <div class="hot-sales">
       <divider class="padding-rl-10">热销产品</divider>
-      <div class="cat-cover link-img">
+      <div class="cat-cover link-img" v-if="false">
         <img :src="hot_sales.cover.img" alt="">
       </div>
       <flexbox :gutter="0" wrap="wrap">
-        <flexbox-item style="padding:0 3px;" :span="1/3" v-for="(item,index) in scroller_data.data" :data-i="index<6" v-if="index<6" class="padding-tb-6 border-box cell-list-3">
+        <flexbox-item style="padding:5px 2px 10px 2px;" :span="1/3" v-for="(item,index) in scroller_data.data" :data-i="index<5" v-if="index<5" class="padding-tb-6 border-box cell-list-3">
           <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="link-img">
             <div>
               <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">

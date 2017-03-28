@@ -5,7 +5,7 @@
         <tab active-color='#FB4F5B' v-model="index">
           <tab-item>分类</tab-item>
           <tab-item>场景</tab-item>
-          <tab-item>范围</tab-item>
+          <tab-item v-if="false">范围</tab-item>
         </tab>
     </div>
     <div class="category content">
@@ -18,14 +18,14 @@
           </flexbox-item>
           <flexbox-item :span="9" class="tree-box-right padding-l-6 border-box">
             <div class="node-box" v-if="node_index==0">
-              <div class="node-title padding-tb-6 color-gray border-1px-b">
+              <div class="node-title padding-tb-6 color-gray border-1px-b"  v-if="false">
                 {{choose_node.name}}
                 <div class="pull-right color-danger" @click="clear_history">清除记录 <icon type="cancel"></icon></div>
               </div>
               <div class="node-content" v-for="child in choose_node.kwds">
-                <x-button mini class="pull-left margin-rl-6 margin-tb-4">
-                    {{child}}
-                </x-button>
+                 <x-button mini class="pull-left margin-rl-6 margin-tb-4" @click.native="jump_list(child.id)">
+                      {{child.keyname}}
+                  </x-button>
               </div>
             </div>
             <div class="node-box" v-if="node_index!=0" v-for="child in choose_node">
@@ -115,9 +115,9 @@ export default {
         name:'',
       },
       history_data:{
-          name:"搜索记录",
+          name:"关键字",
           title:'history',
-          kwds:['室内天线','手机','无线基站','室外设备','耗材',"50-100",'天线','手机','基站','无线设备','耗材'],
+          kwds:[],
           children:[]
         },
       category_list:[
@@ -395,10 +395,12 @@ export default {
     //初始化场景类别
     // this.init_scene_list();
     this.init_goods_category();
-    
-     
+   
   },
   methods:{
+    jump_list:function(id){
+      this.$router.push({name:"list",query:{keyword:id}})
+    },
     input_change:function(){
       console.log("change");
     },
@@ -414,21 +416,34 @@ export default {
     },
     init_goods_category:function(){
       var self=this;
-      api.get_goods_type().then(res=>{
-        var category_data=res.data;
-        // category_data.children=category_data.goods_cats;
-        for(var i=0;i<category_data.length;i++){
-          category_data[i].children=category_data[i].goods_cats;
-          category_data[i].goods_cats=null;//主动释放
-          category_data[i].img=self.scene_images[i].img
-          // self.scene[i].img=self.scene_images[i].img;
+      //启用缓存控制
+        if(!!window.sessionStorage.category_list&&window.sessionStorage.category_list!='undefined'){
+          try{
+            self.category_list=JSON.parse(window.sessionStorage.category_list);
+            self.choose_node=self.category_list[0];
+          }catch(e){
+            console.log(e);
+            self.handle_goods_category();
+          }
+        }else{
+            self.handle_goods_category();
         }
-        console.log(self.scene);
-        category_data.unshift(self.history_data);
-        self.category_list=category_data;
-        self.choose_node=self.category_list[0];
-        console.log(self.category_list);
-      });
+    },
+    handle_goods_category:function(){
+       var self=this;
+        api.get_goods_type().then(res=>{
+          var category_data=res.data;
+          // category_data.children=category_data.goods_cats;
+          for(var i=0;i<category_data.length;i++){
+            category_data[i].children=category_data[i].goods_cats;
+            category_data[i].goods_cats=null;//主动释放
+            category_data[i].img=self.scene_images[i].img
+            // self.scene[i].img=self.scene_images[i].img;
+          }
+          self.category_list=category_data;
+           //获取关键字列表
+          this.get_goods_keywords();
+        })
     },
     submit_search:function(){
       var self=this;
@@ -438,12 +453,6 @@ export default {
     clear_history:function(){
       console.log("清除历史记录");
     },
-    // fetch_goods_data:function(){
-    //   console.log(api);
-    //   api.getGoodsData().then((res)=>{
-    //     console.log(res);
-    //   })
-    // },
     handle_folder:function(index){
       var self=this;
       var _children=this.category_list[index];
@@ -455,6 +464,41 @@ export default {
         this.choose_node=this.category_list[0];
         this.node_index=0;
       }
+    },
+    handle_data_concat:function(){
+          var self=this;
+          self.category_list.unshift(self.history_data);
+          // self.category_list=category_data;
+          self.choose_node=self.category_list[0];
+          window.sessionStorage.category_list=JSON.stringify(self.category_list);
+         
+    },
+    get_goods_keywords:function(){
+      var self=this;
+      if(!!window.sessionStorage.kwds&&window.sessionStorage.kwds!='undefined'){
+         
+          try{
+             self.history_data.kwds=JSON.parse(window.sessionStorage.kwds);
+             console.log(self.history_data);
+             self.handle_data_concat();
+          }catch(e){
+            console.log(e);
+            self.handle_goods_kwds();
+          }
+      }else{
+          self.handle_goods_kwds();
+      }
+    },
+    handle_goods_kwds:function(){
+      var self=this;
+       api.get_keywords({}).then(res=>{
+          
+            if(res.data.length){
+              self.history_data.kwds=res.data;
+              window.sessionStorage.kwds=JSON.stringify(res.data);
+              self.handle_data_concat();
+            }
+      })
     }
   },
   components:{

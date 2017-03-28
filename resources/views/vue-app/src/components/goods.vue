@@ -62,7 +62,7 @@
                 </cell>
               </group>
                <div @click="collapse(3)" v-if="goods_data_list.assemblies.length!=0" :class="{'border-1px-b':!collapse3}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
-                组合
+                组件(可选)
                 <span class="iconfont padding-rl-10" v-if="!collapse3">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>

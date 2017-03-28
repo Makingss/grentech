@@ -71,7 +71,12 @@ export default {
     get_token:function(data){
         return Vue.http.post(API_ROOT+"/api/verify",data);
     },
-
+    get_keywords:function(data){
+        return Vue.http.get(API_ROOT+'/getkeywords',{params:data})
+    },
+    get_similar_by_kwd:function(data){
+        return Vue.http.get(API_ROOT+'similar',{params:data})
+    }
 
 
 }
