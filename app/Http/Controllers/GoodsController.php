@@ -26,16 +26,6 @@ class GoodsController extends Controller
 		$per_page = $request->get('per_page');
 		$relations = $request->get('relations') ? $request->get('relations') : 'image_attach';
 		$parameters = $request->get('parameters');
-		$cols = collect($parameters);
-		foreach ($parameters as $parameter)
-			if (is_array($parameter)) {
-				$keys = array_keys($parameter);
-				$plucked = $cols->pluck($keys[0]);
-				$multiplied = $plucked->map(function ($col) {
-					return (int)$col;
-				})->implode(',');
-				$parameters = [$keys[0] => [$multiplied]];
-			}
 		$collection = collect($parameters);
 		$filtered = $collection->only(['brand_id', 'goods_id', 'type_id', 'cat_id', 'bn']);
 		$where = $filtered->all();
