@@ -10,6 +10,7 @@ export const app_config={
      desc:'',
      url:'#/home',
   },
+  logo_image:"/static/slice/logo_300.png",//logo 图片设置
   intercept:true,//是否启用登陆拦截
   intercept_time:2000,//登陆拦截时间
   intercept_closeable:true,//登陆拦截是否可关闭

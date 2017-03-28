@@ -2,7 +2,7 @@
   <div class="register font-normal content">
   <div class="content-box">
     <div class="login-logo block-center link-img margin-tb-20">
-      <img src="/static/slice/logo_300.png" alt="" class="margin-tb-20">
+      <img :src="logo_image" alt="" class="margin-tb-20">
     </div>
     <div class="login-form">
       <group label-width="4rem" label-margin-right="2rem" label-align="left">
@@ -37,11 +37,13 @@
 
 <script>
 import api from '../api'
+import * as config from '../config/config.js'
 import {Group,XInput,XButton,Flexbox,FlexboxItem} from 'vux'
 export default {
   name:"register",
   data:function(){
     return {
+      logo_image:config.app_config.logo_image,
       register_data:{
         email:"",
         name:'',
