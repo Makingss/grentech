@@ -178,7 +178,7 @@ export default {
                self.commit_resdata(res.data,params);
            })
         }else if(query["keyword"]){
-          api.get_similar_by_kwd({relations: ["images","image_attach"],parameters:{id:query.keyword},per_page:10}).then(res=>{
+          api.get_similar_by_kwd({relations: ["images","image_attach"],id:query.keyword,per_page:10}).then(res=>{
             console.log("查询关键字商品");
             console.log(res);
             self.commit_resdata(res.data,params);
