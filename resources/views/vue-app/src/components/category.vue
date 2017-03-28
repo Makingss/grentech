@@ -398,8 +398,7 @@ export default {
     //初始化场景类别
     // this.init_scene_list();
     this.init_goods_category();
-    //获取关键字列表
-    this.get_goods_keywords();
+   
   },
   methods:{
     input_change:function(){
@@ -441,12 +440,9 @@ export default {
             category_data[i].img=self.scene_images[i].img
             // self.scene[i].img=self.scene_images[i].img;
           }
-          console.log(self.scene);
-          category_data.unshift(self.history_data);
           self.category_list=category_data;
-          self.choose_node=self.category_list[0];
-          window.sessionStorage.category_list=JSON.stringify(category_data);
-          console.log(self.category_list);
+           //获取关键字列表
+          this.get_goods_keywords();
         })
     },
     submit_search:function(){
@@ -469,6 +465,16 @@ export default {
         this.node_index=0;
       }
     },
+    handle_data_concat:function(){
+          var self=this;
+          console.log(self.scene);
+          self.category_list.unshift(self.history_data);
+          // self.category_list=category_data;
+          self.choose_node=self.category_list[0];
+          window.sessionStorage.category_list=JSON.stringify(self.category_list);
+          console.log("///////////////");
+          console.log(self.category_list);
+    },
     get_goods_keywords:function(){
       var self=this;
       if(!!window.sessionStorage.kwds&&window.sessionStorage.kwds!='undefined'){
@@ -476,6 +482,7 @@ export default {
           try{
              self.history_data.kwds=JSON.parse(window.sessionStorage.kwds);
              console.log(self.history_data);
+             self.handle_data_concat();
           }catch(e){
             console.log(e);
             self.handle_goods_kwds();
@@ -491,6 +498,7 @@ export default {
             if(res.data.length){
               self.history_data.kwds=res.data;
               window.sessionStorage.kwds=JSON.stringify(res.data);
+              self.handle_data_concat();
             }
       })
     }
