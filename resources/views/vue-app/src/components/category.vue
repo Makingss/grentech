@@ -532,7 +532,6 @@ export default {
 .tree-box{
   align-items: flex-start;
   height: 100.1%;
-  padding-bottom: 2rem;
   box-sizing: border-box;
 }
 .tree-box-left,.tree-box-right{
@@ -547,9 +546,9 @@ export default {
   background-color: #ccc;
   width: 4rem;
 }
-.page-list .content{
-  padding-top:4.4rem;
-}
+// .page-list .content{
+//   padding-top:4.4rem;
+// }
 
 .category{
   width: 100%;
