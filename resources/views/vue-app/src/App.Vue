@@ -19,7 +19,7 @@
         <span @click="popup" class="iconfont padding-rl-10 padding-tb-6 color-danger inline-block">&#xe606;</span>
       </div>
       <div class="login-logo block-center link-img" style="margin-top:30%">
-        <img src="/static/slice/logo_300.png" alt="" class="margin-tb-20">
+        <img :src="logo_image" alt="" class="margin-tb-20">
       </div>
       <div class="login-form">
         <group label-width="4rem" label-margin-right="2rem" label-align="left">
@@ -63,6 +63,7 @@ import api from './api'
     name: 'app',
     data: function () {
       return {
+        logo_image:config.app_config.logo_image,
         popup_login: false,
         page_name: '',
         search_input: '',

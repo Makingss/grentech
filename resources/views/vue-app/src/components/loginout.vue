@@ -1,7 +1,7 @@
 <template>
     <div class="loginout">
         <div class="login-logo block-center link-img margin-tb-20" style="margin-top:3rem;">
-             <img src="/static/slice/logo_300.png" alt="" class="margin-tb-20">
+             <img :src="logo_image" alt="" class="margin-tb-20">
         </div>
         <group>
             <cell class="font-normal" title="头像" v-if="false">
@@ -16,11 +16,13 @@
 </template>
 <script>
     import api from '../api'
+    import * as config from '../config/config.js'
     import {Group,Cell,XButton} from 'vux'
     export default {
         name:'loginout',
         data:function(){
             return {
+                logo_image:config.app_config.logo_image,
                 email:'',
                 name:'',
                 created_at:'',

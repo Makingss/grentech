@@ -2,7 +2,7 @@
   <div class="login font-normal content">
   <div class="content-box">
     <div class="login-logo block-center link-img margin-tb-20">
-      <img src="/static/slice/logo_300.png" alt="" class="margin-tb-20">
+      <img :src="logo_image" alt="" class="margin-tb-20">
     </div>
     <div class="login-form">
       <group label-width="4rem" label-margin-right="2rem" label-align="left">
@@ -29,12 +29,14 @@
 </template>
 
 <script>
+import * as config from '../config/config.js'
 import api from '../api'
 import {Group,XInput,XButton} from 'vux'
 export default {
   name:'login',
   data:function(){
     return {
+      logo_image:config.app_config.logo_image,
       email:'',
       password:''
     }

@@ -1,35 +1,38 @@
 <template lang="html">
   <div class="wallet content">
-    <div class="user-logo margin-tb-20">
-      <div class="circle block-center link-img">
-        <img src="/static/slice/girl_avatar.jpg" alt="">
+    <div class="content-box">
+      <div class="user-logo margin-tb-20">
+        <div class="circle block-center link-img">
+          <img src="/static/slice/girl_avatar.jpg" alt="">
+        </div>
+        <div class="text-center margin-tb-10">
+          王XX
+        </div>
       </div>
-      <div class="text-center margin-tb-10">
-        王小明
+      <swiper height="200px">
+        <swiper-item v-for="(item,index) in card_list">
+          <div class="link-img tab-80 block-center border-radius-5" :show-dots="false">
+          <!-- <img :src="item.img" alt=""> -->
+          <div class="bank-card" :class="{'bank-PA':index==0,'bank-IC':index==1,'bank-BC':index==2}">
+              <p class="padding-t-10 bank-name padding-l-10">{{item.title}}</p>
+              <p class="padding-t-10 bank-type font-mini padding-l-10">{{item.bank_type}}</p>
+              <p class="padding-t-10 text-center bank-code font-2x">{{item.bank_code}}</p>
+          </div>
+          </div>
+        </swiper-item>
+      </swiper>
+      <div class="padding-rl-10 text-center">
+        <group title="收支明细" class="text-left">
+        <cell title="¥100.00" class="font-normal" v-for="item in 10">
+          <div class="slot">
+            <p>170316143214739</p>
+            <p>2017-03-20 00:00:00</p>
+          </div>
+        </cell>
+        </group>
       </div>
     </div>
-    <swiper height="200px">
-      <swiper-item v-for="(item,index) in card_list">
-        <div class="link-img tab-80 block-center border-radius-5" :show-dots="false">
-         <!-- <img :src="item.img" alt=""> -->
-         <div class="bank-card" :class="{'bank-PA':index==0,'bank-IC':index==1,'bank-BC':index==2}">
-            <p class="padding-t-10 bank-name padding-l-10">{{item.title}}</p>
-            <p class="padding-t-10 bank-type font-mini padding-l-10">{{item.bank_type}}</p>
-            <p class="padding-t-10 text-center bank-code font-2x">{{item.bank_code}}</p>
-         </div>
-        </div>
-      </swiper-item>
-    </swiper>
-    <div class="padding-rl-10 text-center">
-      <group title="收支明细" class="text-left">
-       <cell title="¥100.00" class="font-normal" v-for="item in 10">
-        <div class="slot">
-           <p>170316143214739</p>
-           <p>2017-03-20 00:00:00</p>
-        </div>
-       </cell>
-      </group>
-    </div>
+    
   </div>
 </template>
 
