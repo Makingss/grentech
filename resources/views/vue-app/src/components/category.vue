@@ -467,18 +467,16 @@ export default {
     },
     handle_data_concat:function(){
           var self=this;
-          console.log(self.scene);
           self.category_list.unshift(self.history_data);
           // self.category_list=category_data;
           self.choose_node=self.category_list[0];
           window.sessionStorage.category_list=JSON.stringify(self.category_list);
-          console.log("///////////////");
-          console.log(self.category_list);
+         
     },
     get_goods_keywords:function(){
       var self=this;
       if(!!window.sessionStorage.kwds&&window.sessionStorage.kwds!='undefined'){
-          console.log("目标缓存");
+         
           try{
              self.history_data.kwds=JSON.parse(window.sessionStorage.kwds);
              console.log(self.history_data);
@@ -494,7 +492,7 @@ export default {
     handle_goods_kwds:function(){
       var self=this;
        api.get_keywords({}).then(res=>{
-            console.log(res);
+          
             if(res.data.length){
               self.history_data.kwds=res.data;
               window.sessionStorage.kwds=JSON.stringify(res.data);
