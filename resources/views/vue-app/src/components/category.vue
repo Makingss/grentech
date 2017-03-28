@@ -5,7 +5,7 @@
         <tab active-color='#FB4F5B' v-model="index">
           <tab-item>分类</tab-item>
           <tab-item>场景</tab-item>
-          <tab-item>范围</tab-item>
+          <tab-item v-if="false">范围</tab-item>
         </tab>
     </div>
     <div class="category content">
