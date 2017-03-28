@@ -534,8 +534,6 @@ export default {
   height: 100.1%;
   padding-bottom: 2rem;
   box-sizing: border-box;
-  //overflow-y: hidden;
-  // margin-bottom: 5rem;
 }
 .tree-box-left,.tree-box-right{
   height: 100%;
@@ -552,13 +550,9 @@ export default {
 .page-list .content{
   padding-top:4.4rem;
 }
-.template-content{
-  height:100%;
-}
+
 .category{
   width: 100%;
-  height: 100%;
-  // padding-bottom: 4.7rem;
   box-sizing: border-box;
 }
 .list-search{
@@ -594,7 +588,6 @@ export default {
 }
 .category-content{
   width: 100%;
- 
   .vux-slider{
     position: inherit;
 
