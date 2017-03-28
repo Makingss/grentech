@@ -40,7 +40,7 @@
         <flexbox :gutter="0" wrap="wrap">
           <flexbox-item :span="1/4" v-for="(item,index) in others_data" class="text-center padding-tb-15">
             <router-link :to="item.url" class="block">
-              <div class="vux-1px-r vux-1px-l">
+              <div class="vux-1px-r color-success vux-1px-l">
                 <span><i class="iconfont font-2x" v-html="item.icon"></i></span>
                 <div>
                   {{item.title}}
@@ -228,18 +228,23 @@ export default {
 .order-list>div{
   padding:.5rem 0;
 }
-// .user-bg{
-//    background: -webkit-radial-gradient(center, ellipse cover, rgba(101, 100, 109, 1) 0%, rgba(46, 61, 82, 1) 100%); /* Chrome10-25,Safari5.1-6 */
-//    background: radial-gradient(ellipse at center, rgba(101, 100, 109, 1) 0%, rgba(46, 61, 82, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-//    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#65646d', endColorstr='#2e3d52', GradientType=1); /* IE6-9 fallback on horizontal gradient */
-// }
 .user-bg{
-  background: #5184bc; /* Old browsers */
-  background: -moz-linear-gradient(45deg,  #5184bc 0%, #3e60a8 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(45deg,  #5184bc 0%,#3e60a8 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(45deg,  #5184bc 0%,#3e60a8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5184bc', endColorstr='#3e60a8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#169a85+0,1abc9c+100 */
+  background: #169a85; /* Old browsers */
+  background: -moz-linear-gradient(45deg,  #169a85 0%, #1abc9c 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg,  #169a85 0%,#1abc9c 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg,  #169a85 0%,#1abc9c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#169a85', endColorstr='#1abc9c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 }
+// .user-bg{
+//   background: #5184bc; /* Old browsers */
+//   background: -moz-linear-gradient(45deg,  #5184bc 0%, #3e60a8 100%); /* FF3.6-15 */
+//   background: -webkit-linear-gradient(45deg,  #5184bc 0%,#3e60a8 100%); /* Chrome10-25,Safari5.1-6 */
+//   background: linear-gradient(45deg,  #5184bc 0%,#3e60a8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+//   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5184bc', endColorstr='#3e60a8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+// }
+
 .brand-info{
   position:absolute;
   bottom:4rem;
