@@ -18,7 +18,7 @@
           </flexbox-item>
           <flexbox-item :span="9" class="tree-box-right padding-l-6 border-box">
             <div class="node-box" v-if="node_index==0">
-              <div class="node-title padding-tb-6 color-gray border-1px-b">
+              <div class="node-title padding-tb-6 color-gray border-1px-b"  v-if="false">
                 {{choose_node.name}}
                 <div class="pull-right color-danger" @click="clear_history">清除记录 <icon type="cancel"></icon></div>
               </div>
@@ -118,7 +118,7 @@ export default {
         name:'',
       },
       history_data:{
-          name:"搜索记录",
+          name:"关键字",
           title:'history',
           kwds:[],
           children:[]
@@ -457,12 +457,6 @@ export default {
     clear_history:function(){
       console.log("清除历史记录");
     },
-    // fetch_goods_data:function(){
-    //   console.log(api);
-    //   api.getGoodsData().then((res)=>{
-    //     console.log(res);
-    //   })
-    // },
     handle_folder:function(index){
       var self=this;
       var _children=this.category_list[index];
