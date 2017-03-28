@@ -395,8 +395,8 @@ export default {
     //初始化场景类别
     // this.init_scene_list();
     this.init_goods_category();
-    
-     
+    //获取关键字列表
+    this.get_goods_keywords();
   },
   methods:{
     input_change:function(){
@@ -455,6 +455,11 @@ export default {
         this.choose_node=this.category_list[0];
         this.node_index=0;
       }
+    },
+    get_goods_keywords:function(){
+      api.get_keywords({}).then(res=>{
+        console.log(res);
+      })
     }
   },
   components:{
