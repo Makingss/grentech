@@ -23,12 +23,11 @@
                 <div class="pull-right color-danger" @click="clear_history">清除记录 <icon type="cancel"></icon></div>
               </div>
               <div class="node-content" v-for="child in choose_node.kwds">
-                <router-link :to="{name:'list',query:{keyword:child.id}}">
-                   <x-button mini class="pull-left margin-rl-6 margin-tb-4">
+                 <x-button mini class="pull-left margin-rl-6 margin-tb-4">
+                  <router-link :to="{name:'list',query:{keyword:child.id}}">
                     {{child.keyname}}
-                   </x-button>
-                </router-link>
-               
+                  </router-link>
+                 </x-button>
               </div>
             </div>
             <div class="node-box" v-if="node_index!=0" v-for="child in choose_node">
