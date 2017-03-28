@@ -181,6 +181,7 @@ export default {
           api.get_similar_by_kwd({id:query.keyword}).then(res=>{
             console.log("查询关键字商品");
             console.log(res);
+            self.commit_resdata(res.data,params);
           })
         }else{
           api.getGoodsData({relations: ["images","image_attach"], parameters:query,per_page:10}).then(res=>{
