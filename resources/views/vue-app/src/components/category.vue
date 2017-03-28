@@ -558,9 +558,8 @@ export default {
 .category{
   width: 100%;
   height: 100%;
-  padding-bottom: 4.7rem;
+  // padding-bottom: 4.7rem;
   box-sizing: border-box;
-  // margin-top:0px;
 }
 .list-search{
   position:static!important;
@@ -594,22 +593,21 @@ export default {
   left: 0;
 }
 .category-content{
-  height: 100%;
   width: 100%;
-  // position: absolute;
-  // top:5rem;
+ 
   .vux-slider{
     position: inherit;
 
   }
 }
 .category-scene{
-  padding-bottom: 2.5rem;
+  padding-bottom: 0.5rem;
 }
 .node-title:active{
   color:#1ABC9C;
 }
 #app.page-category .template-content>.content{
-  top:4.7rem;
+  top:4.5rem;
+  bottom:2.3rem;
 }
 </style>
