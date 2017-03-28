@@ -255,6 +255,8 @@ class Good extends Model
 				'marketable' => $goods['marketable'],
 				'p_order' => $goods['p_order'],
 				'content' => $goods['content'],
+				'product_model'=>$goods['product_model'],
+				'product_desc'=>$goods['product_desc'],
 				'image_default_id' => $imagePaths['image_id']
 			]);
 			$goodsObj = Good::findOrFail($id);
