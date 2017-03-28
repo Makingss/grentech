@@ -472,8 +472,10 @@ export default {
     get_goods_keywords:function(){
       var self=this;
       if(!!window.sessionStorage.kwds&&window.sessionStorage.kwds!='undefined'){
+          console.log("目标缓存");
           try{
              self.history_data.kwds=JSON.parse(window.sessionStorage.kwds);
+             console.log(self.history_data);
           }catch(e){
             console.log(e);
             self.handle_goods_kwds();
