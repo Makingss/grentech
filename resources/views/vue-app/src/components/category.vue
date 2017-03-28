@@ -609,4 +609,7 @@ export default {
 .node-title:active{
   color:#1ABC9C;
 }
+#app.page-category .template-content>.content{
+  top:4.7rem;
+}
 </style>
