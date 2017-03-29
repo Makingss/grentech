@@ -526,7 +526,6 @@ export default {
   overflow-y: scroll;
 }
 .node-active{
-  // background-color:#FB4F5B;
   color: #FB4F5B;
 }
 .tree-box{
@@ -537,7 +536,6 @@ export default {
 .tree-box-left,.tree-box-right{
   height: 100%;
   overflow-y: scroll;
-  // padding-bottom: 7rem;
 }
 .tree-box-left{
   box-shadow:0 0 5px #aaa;
@@ -546,9 +544,6 @@ export default {
   background-color: #ccc;
   width: 4rem;
 }
-// .page-list .content{
-//   padding-top:4.4rem;
-// }
 
 .category{
   width: 100%;

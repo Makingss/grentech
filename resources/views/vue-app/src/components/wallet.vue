@@ -1,15 +1,18 @@
 <template lang="html">
   <div class="wallet content">
     <div class="content-box">
-      <div class="user-logo margin-tb-20">
-        <div class="circle block-center link-img">
-          <img src="/static/slice/girl_avatar.jpg" alt="">
-        </div>
-        <div class="text-center margin-tb-10">
-          王XX
+      <div class="user-logo">
+        
+        <div class="text-center bg-dark color-white padding-tb-10">
+          <div class="circle link-img" v-if="false">
+             <img src="/static/slice/girl_avatar.jpg" alt="">
+          </div>
+          <p class="font-mini padding-tb-10">总金额</p>
+          <countup class="font-3x" :start-val="9999/10*8" :end-val="9999.00" :decimals="1" :duration="6"></countup>
+          <p class="font-mini padding-tb-10">上周收益 +100.00</p>
         </div>
       </div>
-      <swiper height="200px">
+      <swiper height="200px" class="margin-tb-20">
         <swiper-item v-for="(item,index) in card_list">
           <div class="link-img tab-80 block-center border-radius-5" :show-dots="false">
           <!-- <img :src="item.img" alt=""> -->
@@ -37,7 +40,8 @@
 </template>
 
 <script>
-import {Swiper,SwiperItem,Group,Cell} from 'vux'
+
+import {Swiper,SwiperItem,Group,Cell,Countup} from 'vux'
 export default {
   name:'wallet',
   data:function(){
@@ -69,7 +73,8 @@ export default {
     Swiper,
     SwiperItem,
     Group,
-    Cell
+    Cell,
+    Countup
   },
   methods:{
 
@@ -80,8 +85,8 @@ export default {
 <style lang="less">
 .user-logo .circle {
   overflow:hidden;
-  width: 4rem;
-  height: 4rem;
+  width: 2rem;
+  height: 2rem;
 }
 .bank-card{
   width:100%;
