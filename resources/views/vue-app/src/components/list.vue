@@ -230,11 +230,11 @@ export default {
   height:100%;
   overflow-y:scroll;
 }
-.list.content {
+#app .list.content {
   overflow-y: scroll;
   height: 100%;
-  padding-top: 0;
-  top:2.2rem;
+  padding-top: 2.2rem;
+
 }
 
 .list-search {
