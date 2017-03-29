@@ -233,7 +233,7 @@ export default {
 #app .list.content {
   overflow-y: scroll;
   height: 100%;
-  padding-top: 2.2rem;
+  margin-top: 2.2rem;
 
 }
 
@@ -252,6 +252,7 @@ export default {
   top: 2.2rem;
   left: 0;
   z-index: 199;
+  background-color: #EFEFF4;
 }
 
 .list-search {
