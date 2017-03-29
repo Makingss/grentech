@@ -12,7 +12,7 @@
           <p class="font-mini padding-tb-10">上周收益 +100.00</p>
         </div>
       </div>
-      <swiper height="200px" class="margin-tb-20">
+      <swiper height="200px" class="margin-t-20">
         <swiper-item v-for="(item,index) in card_list">
           <div class="link-img tab-80 block-center border-radius-5" :show-dots="false">
           <!-- <img :src="item.img" alt=""> -->
