@@ -245,8 +245,10 @@ class GoodsController extends Controller
 				});
 				$form->html('', '<h4>组件(可选)</h4>');
 				$form->divide();
-				$form->multipleSelect('assemblie_highs', $getAssemblieColumns['asse_high'])->options(Assemblie_high::all()->pluck('asse_high', 'id'));
 				$form->multipleSelect('assemblie_versions', $getAssemblieColumns['asse_version'])->options(Assemblie_version::all()->pluck('asse_version', 'id'));
+				$form->multipleSelect('assemblie_highs', $getAssemblieColumns['asse_high'])->options(Assemblie_high::all()->pluck('asse_high', 'id'));
+
+
 //				$form->hasMany('assemblies', '组件(可选)', function (NestedForm $form) use ($getAssemblieColumns) {
 
 //					$form->text('asse_version', $getAssemblieColumns['asse_version'])->rules('required');
