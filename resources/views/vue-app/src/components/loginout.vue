@@ -40,6 +40,7 @@
                     this.name=user_info.name;
                     this.email=user_info.email;
                     this.avatar=user_info.avatar;
+                    this.created_at=user_info.created_at;
                 }else{
                      this.check_locl_token();
                 }
@@ -77,6 +78,7 @@
                         self.name=res.data.name;
                         self.avatar=res.data.avatar;
                         self.email=res.data.email;
+                        self.created_at=res.data.created_at;
                         window.sessionStorage.user_info=JSON.stringify(res.data);
                     }
                     })
