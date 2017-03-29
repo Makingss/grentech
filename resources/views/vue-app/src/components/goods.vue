@@ -37,7 +37,7 @@
         <tab v-model="index" active-color="#FB4F5B">
           <tab-item>商品详情</tab-item>
           <tab-item>主要参数</tab-item>
-          <tab-item>服务信息</tab-item>
+          <tab-item v-if="false">服务信息</tab-item>
         </tab>
         <div v-if="index==0" class="padding-tb-6 padding-rl-4">
             <div v-html="goods_data_list.content"></div>
