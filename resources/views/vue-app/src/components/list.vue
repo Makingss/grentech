@@ -218,6 +218,14 @@ export default {
 </script>
 
 <style scoped>
+.template-content{
+  position:absolute;
+  height:100%;
+  width:100%;
+  padding-top:2.2rem;
+  bottom:2.3rem;
+  box-sizing:border-box;
+}
 .page-list .content-box{
   height:100%;
   overflow-y:scroll;
@@ -226,7 +234,7 @@ export default {
   overflow-y: scroll;
   height: 100%;
   padding-top: 0;
-  padding-bottom:3rem;
+  top:2.2rem;
 }
 
 .list-search {
@@ -241,7 +249,7 @@ export default {
   width: 2.2rem;
   height: 2.2rem;
   position: absolute;
-  top: 0;
+  top: 2.2rem;
   left: 0;
   z-index: 199;
 }
