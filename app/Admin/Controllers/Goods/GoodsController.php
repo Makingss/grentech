@@ -8,6 +8,8 @@
 namespace App\Admin\Controllers\Goods;
 
 use App\Admin\Models\Ectools\Keyword;
+use App\Admin\Models\Goods\Assemblie_high;
+use App\Admin\Models\Goods\Assemblie_version;
 use App\Admin\Models\Goods\Brand;
 use App\Admin\Models\Goods\Goods_keyword;
 use App\Admin\Models\Goods\Goods_port;
@@ -175,7 +177,7 @@ class GoodsController extends Controller
 			$getAssemblieColumns = $goodObj->getTableColumns('assemblies');
 			$getGoodsprotColumns = $goodObj->getTableColumns('goods_ports');
 			$getMechanicsColumns = $goodObj->getTableColumns('mechanics');
-			$electrics=$form->model()->electrics;
+			$electrics = $form->model()->electrics;
 			$form->tab(trans('admin::lang.goods.basedate'), function ($form) use (
 				$getGoodColumns,
 				$getGoodswordColumns,
@@ -241,11 +243,15 @@ class GoodsController extends Controller
 					$form->number('ports_19', $getGoodsprotColumns['ports_19']);
 					$form->number('ports_20', $getGoodsprotColumns['ports_20']);
 				});
+				$form->html('', '<h4>组件(可选)</h4>');
+				$form->divide();
+				$form->multipleSelect('assemblie_highs', $getAssemblieColumns['asse_high'])->options(Assemblie_high::all()->pluck('asse_high', 'id'));
+				$form->multipleSelect('assemblie_versions', $getAssemblieColumns['asse_version'])->options(Assemblie_version::all()->pluck('asse_version', 'id'));
+//				$form->hasMany('assemblies', '组件(可选)', function (NestedForm $form) use ($getAssemblieColumns) {
 
-				$form->hasMany('assemblies', '组件(可选)', function (NestedForm $form) use ($getAssemblieColumns) {
-					$form->text('asse_version', $getAssemblieColumns['asse_version'])->rules('required');
-					$form->text('asse_high', $getAssemblieColumns['asse_high'])->rules('required');
-				});
+//					$form->text('asse_version', $getAssemblieColumns['asse_version'])->rules('required');
+//					$form->text('asse_high', $getAssemblieColumns['asse_high'])->rules('required');
+//				});
 
 				$form->hasMany('standardfits', '标准配件', function (NestedForm $form) use ($getStandardfitColumns) {
 					$form->number('bracket', $getStandardfitColumns['bracket']);
@@ -267,26 +273,8 @@ class GoodsController extends Controller
 
 			$form->tab('电性能指标', function ($form) use ($getElectricColumns) {
 
-					$form->hasMany('electrics', '电性能指标(常规)', function (NestedForm $form) use ($getElectricColumns) {
-						$form->hidden('type')->default(1);
-						$form->text('workingband', $getElectricColumns['workingband']);
-						$form->text('polarization', $getElectricColumns['polarization']);
-						$form->text('x_beamwidth', $getElectricColumns['x_beamwidth']);
-						$form->text('y_beamwidth', $getElectricColumns['y_beamwidth']);
-						$form->text('beamgain', $getElectricColumns['beamgain']);
-
-						$form->text('dipangle', $getElectricColumns['dipangle']);
-						$form->text('xpd', $getElectricColumns['xpd']);
-						$form->text('ratio', $getElectricColumns['ratio']);
-						$form->text('inhibition', $getElectricColumns['inhibition']);
-						$form->text('voltagebobbi', $getElectricColumns['voltagebobbi']);
-						$form->text('isolation', $getElectricColumns['isolation']);
-						$form->text('imd3', $getElectricColumns['imd3']);
-						$form->text('impedance', $getElectricColumns['impedance']);
-						$form->text('capacity', $getElectricColumns['capacity']);
-					});
-				$form->hasMany('electrics_inte', '电性能指标(智能)', function (NestedForm $form) use ($getElectricColumns) {
-					$form->hidden('type')->default(2);
+				$form->hasMany('electrics', '电性能指标(常规)', function (NestedForm $form) use ($getElectricColumns) {
+					$form->hidden('type')->default(1);
 					$form->text('workingband', $getElectricColumns['workingband']);
 					$form->text('polarization', $getElectricColumns['polarization']);
 					$form->text('x_beamwidth', $getElectricColumns['x_beamwidth']);
@@ -302,6 +290,88 @@ class GoodsController extends Controller
 					$form->text('imd3', $getElectricColumns['imd3']);
 					$form->text('impedance', $getElectricColumns['impedance']);
 					$form->text('capacity', $getElectricColumns['capacity']);
+				});
+				$form->hasMany('electrics_inte', '电性能指标(智能)', function (NestedForm $form) use ($getElectricColumns) {
+					$form->hidden('type')->default(2);
+					$form->html('','<h4>通用参数</h4>');
+					$form->divider();
+					$form->text('workingband', $getElectricColumns['workingband']);
+					$form->text('dipangle', $getElectricColumns['dipangle']);
+					$form->text('dipangleaccuracy',$getElectricColumns['dipangleaccuracy']);
+					$form->divider();
+					$form->html('','<h4>校准与电气参数</h4>');
+					$form->divider();
+					$form->text('calibration_1',$getElectricColumns['calibration_1']);
+					$form->text('calibration_2',$getElectricColumns['calibration_2']);
+					$form->text('calibration_3',$getElectricColumns['calibration_3']);
+					$form->text('calibration_4',$getElectricColumns['calibration_4']);
+					$form->divider();
+					$form->html('','<h4>同极化辐射端口间的隔离度(dB)</h4>');
+					$form->divider();
+					$form->text('withcalibration_1',$getElectricColumns['withcalibration_1']);
+					$form->text('withcalibration_2',$getElectricColumns['withcalibration_2']);
+					$form->text('withcalibration_3',$getElectricColumns['withcalibration_3']);
+					$form->divider();
+					$form->html('','<h4>异极化辐射端口间的隔离度(dB)</h4>');
+					$form->divider();
+					$form->text('differentcalibration_1',$getElectricColumns['differentcalibration_1']);
+					$form->text('differentcalibration_2',$getElectricColumns['differentcalibration_2']);
+					$form->text('differentcalibration_3',$getElectricColumns['differentcalibration_3']);
+					$form->divider();
+					$form->html('','<h4>单元波束</h4>');
+					$form->divider();
+					$form->text('cellbeam_1',$getElectricColumns['cellbeam_1']);
+					$form->text('cellbeam_2',$getElectricColumns['cellbeam_2']);
+					$form->text('cellbeam_3',$getElectricColumns['cellbeam_3']);
+					$form->text('cellbeam_4',$getElectricColumns['cellbeam_4']);
+					$form->text('cellbeam_5',$getElectricColumns['cellbeam_5']);
+					$form->text('cellbeam_6',$getElectricColumns['cellbeam_6']);
+					$form->text('cellbeam_7',$getElectricColumns['cellbeam_7']);
+					$form->text('cellbeam_8',$getElectricColumns['cellbeam_8']);
+					$form->divider();
+					$form->html('','<h4>广播波束</h4>');
+					$form->divider();
+					$form->text('radiobeam_1',$getElectricColumns['radiobeam_1']);
+					$form->text('radiobeam_2',$getElectricColumns['radiobeam_2']);
+					$form->text('radiobeam_3',$getElectricColumns['radiobeam_3']);
+					$form->text('radiobeam_4',$getElectricColumns['radiobeam_4']);
+					$form->text('radiobeam_5',$getElectricColumns['radiobeam_5']);
+					$form->text('radiobeam_6',$getElectricColumns['radiobeam_6']);
+					$form->text('radiobeam_7',$getElectricColumns['radiobeam_7']);
+					$form->text('radiobeam_8',$getElectricColumns['radiobeam_8']);
+					$form->text('radiobeam_9',$getElectricColumns['radiobeam_9']);
+					$form->text('radiobeam_10',$getElectricColumns['radiobeam_10']);
+					$form->divider();
+					$form->html('','<h4>业务波束</h4>');
+					$form->divider();
+					$form->text('businessbeam_1',$getElectricColumns['businessbeam_1']);
+					$form->text('businessbeam_2',$getElectricColumns['businessbeam_2']);
+					$form->text('businessbeam_3',$getElectricColumns['businessbeam_3']);
+					$form->text('businessbeam_4',$getElectricColumns['businessbeam_4']);
+					$form->text('businessbeam_5',$getElectricColumns['businessbeam_5']);
+					$form->text('businessbeam_6',$getElectricColumns['businessbeam_6']);
+					$form->text('businessbeam_7',$getElectricColumns['businessbeam_7']);
+
+					$form->text('impedance',$getElectricColumns['impedance']);
+					$form->text('unitport',$getElectricColumns['unitport']);
+					$form->text('calibrationport',$getElectricColumns['calibrationport']);
+					/*
+					$form->text('workingband', $getElectricColumns['workingband']);
+					$form->text('polarization', $getElectricColumns['polarization']);
+					$form->text('x_beamwidth', $getElectricColumns['x_beamwidth']);
+					$form->text('y_beamwidth', $getElectricColumns['y_beamwidth']);
+					$form->text('beamgain', $getElectricColumns['beamgain']);
+
+					$form->text('dipangle', $getElectricColumns['dipangle']);
+					$form->text('xpd', $getElectricColumns['xpd']);
+					$form->text('ratio', $getElectricColumns['ratio']);
+					$form->text('inhibition', $getElectricColumns['inhibition']);
+					$form->text('voltagebobbi', $getElectricColumns['voltagebobbi']);
+					$form->text('isolation', $getElectricColumns['isolation']);
+					$form->text('imd3', $getElectricColumns['imd3']);
+					$form->text('impedance', $getElectricColumns['impedance']);
+					$form->text('capacity', $getElectricColumns['capacity']);
+					*/
 				});
 			});
 			$form->tab('机械性指标', function (Form $form) use ($getMechanicsColumns, $getGoodsprotColumns) {
@@ -359,6 +429,7 @@ class GoodsController extends Controller
 			$form->tab(trans('admin::lang.goods.images'), function ($form) {
 				$form->fileinput('image_default_id', trans('admin::lang.goods.images'));
 				$form->divide();
+				$form->html('', $label = '商品详细介绍');
 				$form->wangeditor('intro');//'详细介绍'
 			});
 			/**
@@ -426,6 +497,7 @@ class GoodsController extends Controller
 	{
 		$goods = $request->all();
 
+//		dd($goods);
 //		$keywords = $this->normailzeKeywords($request->get('keywords'));
 
 		if ($goods['marketable'] == 'off')
@@ -467,6 +539,7 @@ class GoodsController extends Controller
 
 	public function normailzeKeywords(array $keywords)
 	{
+
 		foreach ($keywords as $k => $v) {
 			if (!$v)
 				unset($keywords[$k]);

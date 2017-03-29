@@ -69,6 +69,21 @@ class Good extends Model
 	];
 
 	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+	 */
+	public function assemblie_highs()
+	{
+		return $this->morphedByMany(Assemblie_high::class, 'goodsassemblie','goodsassemblies','goods_id')->withTimestamps();
+	}
+
+	public function assemblie_versions()
+	{
+		return $this->morphedByMany(Assemblie_version::class, 'goodsassemblie','goodsassemblies','goods_id')->withTimestamps();
+	}
+
+	
+
+	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
 	public function Goods_types()
@@ -118,13 +133,13 @@ class Good extends Model
 	 */
 	public function electrics()
 	{
-		 $hasMany=$this->hasMany(Electric::class, 'goods_id')->where('electrics.type',1);
+		$hasMany = $this->hasMany(Electric::class, 'goods_id')->where('electrics.type', 1);
 		return $hasMany;
 	}
 
 	public function electrics_inte()
 	{
-		return $this->hasMany(Electric::class, 'goods_id')->where('electrics.type',2);
+		return $this->hasMany(Electric::class, 'goods_id')->where('electrics.type', 2);
 	}
 
 	/**
@@ -255,8 +270,8 @@ class Good extends Model
 				'marketable' => $goods['marketable'],
 				'p_order' => $goods['p_order'],
 				'content' => $goods['content'],
-				'product_model'=>$goods['product_model'],
-				'product_desc'=>$goods['product_desc'],
+				'product_model' => $goods['product_model'],
+				'product_desc' => $goods['product_desc'],
 				'image_default_id' => $imagePaths['image_id']
 			]);
 			$goodsObj = Good::findOrFail($id);
@@ -281,10 +296,10 @@ class Good extends Model
 			}
 			if (array_key_exists('keywords', $goods)) {
 //				foreach ($goods['keywords'] as $keyword) {
-					$keyword['goods_id'] = $id;
-					$controller = new GoodsController();
-					$keywords=$controller->normailzeKeywords($goods['keywords']);
-					$goodsObj->keywords()->attach($keywords);
+				$keyword['goods_id'] = $id;
+				$controller = new GoodsController();
+				$keywords = $controller->normailzeKeywords($goods['keywords']);
+				$goodsObj->keywords()->attach($keywords);
 //				}
 			}
 			if (array_key_exists('goods_ports', $goods)) {
