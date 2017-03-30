@@ -43,49 +43,40 @@
             <div v-html="goods_data_list.content"></div>
         </div>
         <div v-if="index==1">
-             <div @click="collapse(1)" v-if="goods_data_list.goods_ports.length!=0" :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
-                端口
-               <span class="iconfont padding-rl-10" v-if="!collapse1">&#xe772;</span>
-               <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
-             </div>
-              <group class="margin-0" v-for="(item,index) in goods_data_list.goods_ports" v-show="collapse1">
-                <cell v-for="(item1,index1) in item" class="font-normal" :title="parms_table.goods_ports[index1]||index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'&&index1!='goods_id'&&index1!='id'">
-                </cell>
-              </group>
-               <div @click="collapse(2)" v-if="goods_data_list.electrics.length!=0" :class="{'border-1px-b':!collapse2}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+              <div @click="collapse(1)" v-if="goods_data_list.electrics.length!=0" :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                 电性能
-                <span class="iconfont padding-rl-10" v-if="!collapse2">&#xe772;</span>
+                <span class="iconfont padding-rl-10" v-if="!collapse1">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
-               <group class="margin-0" v-for="(item,index) in goods_data_list.electrics" v-show="collapse2">
+               <group class="margin-0" v-for="(item,index) in goods_data_list.electrics" v-show="collapse1">
                 <cell v-for="(item1,index1) in item" class="font-normal" :title="parms_table.electrics[index1]||index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'&&index1!='goods_id'&&index1!='id'">
                 </cell>
               </group>
-               <div @click="collapse(3)" v-if="goods_data_list.assemblies.length!=0" :class="{'border-1px-b':!collapse3}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
-                组件(可选)
+               <div @click="collapse(2)" v-if="goods_data_list.mechanics.constructor!=Array" :class="{'border-1px-b':!collapse2}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+                  机械性能
+                  <span class="iconfont padding-rl-10" v-if="!collapse2">&#xe772;</span>
+                  <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
+                </div>
+               <group class="margin-0" v-show="collapse2">
+                <cell v-for="(item,index) in goods_data_list.mechanics" class="font-normal" :title="parms_table.mechanics[index]||index" :value="item" v-if="item&&item!='0'&&index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+                </cell>
+              </group>
+              <div @click="collapse(3)" v-if="goods_data_list.standardfits.length!=0" :class="{'border-1px-b':!collapse3}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+                标准配件
                 <span class="iconfont padding-rl-10" v-if="!collapse3">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
-              <group class="margin-0" v-for="(item,index) in goods_data_list.assemblies" v-show="collapse3">
-                <cell v-for="(item1,index1) in item" class="font-normal" :title="parms_table.assemblies[index1]||index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'&&index1!='goods_id'&&index1!='id'">
-                </cell>
-              </group>
-               <div @click="collapse(4)" v-if="goods_data_list.standardfits.length!=0" :class="{'border-1px-b':!collapse4}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
-                标准
-                <span class="iconfont padding-rl-10" v-if="!collapse4">&#xe772;</span>
-                <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
-               </div>
-              <group class="margin-0" v-for="(item,index) in goods_data_list.standardfits" v-show="collapse4">
+              <group class="margin-0" v-for="(item,index) in goods_data_list.standardfits" v-show="collapse3">
                 <cell v-for="(item1,index1) in item" class="font-normal" :title="parms_table.standardfits[index1]||index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'&&index1!='goods_id'&&index1!='id'">
                 </cell>
               </group>
-                <div @click="collapse(5)" v-if="goods_data_list.mechanics.constructor!=Array" :class="{'border-1px-b':!collapse5}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
-                  机械性能
-                  <span class="iconfont padding-rl-10" v-if="!collapse5">&#xe772;</span>
-                  <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
-                </div>
-               <group class="margin-0" v-show="collapse5">
-                <cell v-for="(item,index) in goods_data_list.mechanics" class="font-normal" :title="parms_table.mechanics[index]||index" :value="item" v-if="item&&item!='0'&&index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+               <div @click="collapse(4)" v-if="goods_data_list.assemblies.length!=0" :class="{'border-1px-b':!collapse4}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+                可选组件
+                <span class="iconfont padding-rl-10" v-if="!collapse4">&#xe772;</span>
+                <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
+               </div>
+              <group class="margin-0" v-for="(item,index) in goods_data_list.assemblies" v-show="collapse4">
+                <cell v-for="(item1,index1) in item" class="font-normal" :title="parms_table.assemblies[index1]||index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'&&index1!='goods_id'&&index1!='id'">
                 </cell>
               </group>
         </div>
