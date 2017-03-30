@@ -130,7 +130,7 @@ import {mapState,mapActions} from 'vuex'
         collapse5:true,
         previewer_list:[
           {
-            src:'',
+            src:'https://placekitten.com/800/400',
             width:650,
             height:1100
           }
