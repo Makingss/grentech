@@ -130,7 +130,7 @@ import {mapState,mapActions} from 'vuex'
         collapse5:true,
         previewer_list:[
           {
-            src:'/uploads/content/20170330/58dca48b737e0_11o.jpg',
+            src:'',
             width:650,
             height:1100
           }
