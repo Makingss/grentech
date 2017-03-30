@@ -85,6 +85,8 @@
         </div>
       </div>
     </div>
+    <x-button @click="show(0)">打开测试</x-button>
+     <previewer :list="previewer_list" ref="previewer" :options="options"></previewer>
 
   </div>
 </template>
@@ -104,7 +106,8 @@ import {mapState,mapActions} from 'vuex'
     TabItem,
     SwiperItem,
     Group,
-    Cell
+    Cell,
+    Previewer
   } from 'vux'
   export default {
     name: 'goods',
@@ -126,6 +129,28 @@ import {mapState,mapActions} from 'vuex'
         collapse3:true,
         collapse4:true,
         collapse5:true,
+        previewer_list:[
+          {
+            src:'',
+            width:650,
+            height:1100
+          }
+        ],
+        options: {
+          getThumbBoundsFn (index) {
+            // find thumbnail element
+            let thumbnail = document.querySelectorAll('.previewer-demo-img')[index]
+            // get window scroll Y
+            let pageYScroll = window.pageYOffset || document.documentElement.scrollTop
+            // optionally get horizontal scroll
+            // get position of element relative to viewport
+            let rect = thumbnail.getBoundingClientRect()
+            // w = width
+            return {x: rect.left, y: rect.top + pageYScroll, w: rect.width}
+            // Good guide on how to get element coordinates:
+            // http://javascript.info/tutorial/coordinates
+          }
+        },
         parms_table:{
           assemblies:{},
           electrics:{},
@@ -155,6 +180,9 @@ import {mapState,mapActions} from 'vuex'
       goods_data_list:state => state.goods.goods_list.data[0]
     }),
     methods: {
+      show:function(index){
+        this.$refs.previewer.show(index);
+      },
       collapse:function(index){
         this["collapse"+index]=!this["collapse"+index];
       },
@@ -226,7 +254,8 @@ import {mapState,mapActions} from 'vuex'
       SwiperItem,
       Group,
       Cell,
-      VueQArt
+      VueQArt,
+      Previewer
     }
   }
 
