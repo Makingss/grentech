@@ -84,8 +84,9 @@
           服务信息内容
         </div>
       </div>
+      <x-button @click="show(0)">打开测试</x-button>
     </div>
-    <x-button @click="show(0)">打开测试</x-button>
+    
      <previewer :list="previewer_list" ref="previewer" :options="options"></previewer>
 
   </div>
