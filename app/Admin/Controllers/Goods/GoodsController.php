@@ -54,7 +54,7 @@ class GoodsController extends Controller
 			$grid->bn($getGoodColumns['bn']);
 			$grid->filter(function ($filter) {
 //				$filter->useModal();
-				$filter->is('bn', 'SAP');
+				$filter->like('bn', 'SAP');
 				$filter->disableIdFilter();
 			});
 //			$grid->products('产品货号')->pluck('bn')->map(function ($bn) {
