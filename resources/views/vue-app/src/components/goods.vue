@@ -75,7 +75,7 @@
                 <span class="iconfont padding-rl-10" v-if="!collapse4">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
-              <group class="margin-0" v-for="(item,index) in goods_data_list.assemblies" v-show="collapse4">
+              <group class="margin-0" v-for="(item,index) in goods_data_list.new_assemblies" v-show="collapse4">
                 <cell class="font-normal" :title="parms_table.assemblies[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
