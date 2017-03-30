@@ -165,10 +165,11 @@ import {mapState,mapActions} from 'vuex'
           });
       },
       handle_goods_data:function(data){
-        for(var key data){
+        console.log(data);
+        for(var key in data){
           if(key=="electrics"||key=="assemblies"||key=="goods_ports"){
             var new_obj={};
-            for(let i=0;i<data[key].length;i++){
+            for(var i=0;i<data[key].length;i++){
               //遍历 key 值,相同做数据合并
               for(var k in data[key][i]){
                 if(!!data[key][i][k]){
