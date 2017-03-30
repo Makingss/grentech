@@ -167,7 +167,7 @@ import {mapState,mapActions} from 'vuex'
       handle_goods_data:function(data){
         console.log(data);
         for(var key in data){
-          if(key=="electrics"||key=="assemblies"||key=="goods_ports"){
+          if(key=="electrics"||key=="assemblies"||key=="goods_ports"||key=="standardfits"){
             var new_obj={};
             for(var i=0;i<data[key].length;i++){
               //遍历 key 值,相同做数据合并
