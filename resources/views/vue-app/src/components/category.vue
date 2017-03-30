@@ -17,7 +17,7 @@
             </div>
           </flexbox-item>
           <flexbox-item :span="9" class="tree-box-right padding-l-6 border-box">
-            <div class="node-box" v-if="node_index==0">
+            <div class="node-box" v-if="false">
               <div class="node-title padding-tb-6 color-gray border-1px-b"  v-if="false">
                 {{choose_node.name}}
                 <div class="pull-right color-danger" @click="clear_history">清除记录 <icon type="cancel"></icon></div>
@@ -28,7 +28,7 @@
                   </x-button>
               </div>
             </div>
-            <div class="node-box" v-if="node_index!=0" v-for="child in choose_node">
+            <div class="node-box" v-for="child in choose_node.children">
               <div class="node-title border-1px-b padding-b-10 padding-tb-10 color-primary">
               <router-link :to="{name:'list',query:{cat_id:child.cat_id}}">{{child.cat_name}}</router-link>
               </div>
@@ -441,8 +441,13 @@ export default {
             // self.scene[i].img=self.scene_images[i].img;
           }
           self.category_list=category_data;
-           //获取关键字列表
-          this.get_goods_keywords();
+          self.choose_node=this.category_list[0];
+          self.node_index=0;
+          console.log(self.category_list);
+          console.log(self.choose_node);
+          window.sessionStorage.category_list=JSON.stringify(self.category_list);
+           //获取关键字列表-----关闭
+          // this.get_goods_keywords();
         })
     },
     submit_search:function(){
@@ -457,7 +462,7 @@ export default {
       var self=this;
       var _children=this.category_list[index];
       if(!!_children.children&&_children.children.length>0&&index!=0){
-        this.choose_node=_children.children;
+        this.choose_node=_children;
         this.node_index=index;
         
       }else if(index==0){

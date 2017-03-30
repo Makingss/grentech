@@ -37,55 +37,46 @@
         <tab v-model="index" active-color="#FB4F5B">
           <tab-item>商品详情</tab-item>
           <tab-item>主要参数</tab-item>
-          <tab-item>服务信息</tab-item>
+          <tab-item v-if="false">服务信息</tab-item>
         </tab>
         <div v-if="index==0" class="padding-tb-6 padding-rl-4">
             <div v-html="goods_data_list.content"></div>
         </div>
-        <div v-if="index==1">
-             <div @click="collapse(1)" v-if="goods_data_list.goods_ports.length!=0" :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
-                端口
-               <span class="iconfont padding-rl-10" v-if="!collapse1">&#xe772;</span>
-               <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
-             </div>
-              <group class="margin-0" v-for="(item,index) in goods_data_list.goods_ports" v-show="collapse1">
-                <cell v-for="(item1,index1) in item" class="font-normal" :title="parms_table.goods_ports[index1]||index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'&&index1!='goods_id'&&index1!='id'">
-                </cell>
-              </group>
-               <div @click="collapse(2)" v-if="goods_data_list.electrics.length!=0" :class="{'border-1px-b':!collapse2}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+        <div v-if="index==1" class="params-cell">
+              <div @click="collapse(1)"  :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                 电性能
-                <span class="iconfont padding-rl-10" v-if="!collapse2">&#xe772;</span>
+                <span class="iconfont padding-rl-10" v-if="!collapse1">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
-               <group class="margin-0" v-for="(item,index) in goods_data_list.electrics" v-show="collapse2">
-                <cell v-for="(item1,index1) in item" class="font-normal" :title="parms_table.electrics[index1]||index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'&&index1!='goods_id'&&index1!='id'">
+               <group class="margin-0" v-for="(item,index) in goods_data_list.new_electrics" v-show="collapse1">
+                <cell class="font-normal" :title="parms_table.electrics[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
-               <div @click="collapse(3)" v-if="goods_data_list.assemblies.length!=0" :class="{'border-1px-b':!collapse3}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
-                组件(可选)
+               <div @click="collapse(2)" v-if="goods_data_list.mechanics.constructor!=Array" :class="{'border-1px-b':!collapse2}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+                  机械性能
+                  <span class="iconfont padding-rl-10" v-if="!collapse2">&#xe772;</span>
+                  <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
+                </div>
+               <group class="margin-0" v-show="collapse2">
+                <cell v-for="(item,index) in goods_data_list.mechanics" class="font-normal" :title="parms_table.mechanics[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+                </cell>
+              </group>
+              <div @click="collapse(3)"  :class="{'border-1px-b':!collapse3}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+                标准配件
                 <span class="iconfont padding-rl-10" v-if="!collapse3">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
-              <group class="margin-0" v-for="(item,index) in goods_data_list.assemblies" v-show="collapse3">
-                <cell v-for="(item1,index1) in item" class="font-normal" :title="parms_table.assemblies[index1]||index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'&&index1!='goods_id'&&index1!='id'">
+              <group class="margin-0" v-for="(item,index) in goods_data_list.new_standardfits" v-show="collapse3">
+                <cell class="font-normal" :title="parms_table.standardfits[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
-               <div @click="collapse(4)" v-if="goods_data_list.standardfits.length!=0" :class="{'border-1px-b':!collapse4}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
-                标准
+               <div @click="collapse(4)"  :class="{'border-1px-b':!collapse4}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+                可选组件
                 <span class="iconfont padding-rl-10" v-if="!collapse4">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
-              <group class="margin-0" v-for="(item,index) in goods_data_list.standardfits" v-show="collapse4">
-                <cell v-for="(item1,index1) in item" class="font-normal" :title="parms_table.standardfits[index1]||index1" :value="item1" v-if="item1&&item1!='0'&&index1!='created_at'&&index1!='updated_at'&&index1!='goods_id'&&index1!='id'">
-                </cell>
-              </group>
-                <div @click="collapse(5)" v-if="goods_data_list.mechanics.constructor!=Array" :class="{'border-1px-b':!collapse5}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
-                  机械性能
-                  <span class="iconfont padding-rl-10" v-if="!collapse5">&#xe772;</span>
-                  <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
-                </div>
-               <group class="margin-0" v-show="collapse5">
-                <cell v-for="(item,index) in goods_data_list.mechanics" class="font-normal" :title="parms_table.mechanics[index]||index" :value="item" v-if="item&&item!='0'&&index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+              <group class="margin-0" v-for="(item,index) in goods_data_list.new_assemblies" v-show="collapse4">
+                <cell class="font-normal" :title="parms_table.assemblies[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
         </div>
@@ -93,14 +84,17 @@
           服务信息内容
         </div>
       </div>
+      <x-button @click.native="show(0)">打开测试</x-button>
     </div>
+    
+     <previewer :list="previewer_list" ref="previewer" :options="options"></previewer>
 
   </div>
 </template>
 <script>
 import VueQArt from 'vue-qart'
 import QArt from 'qartjs'
-
+// v-if="!!goods_data_list.new_assemblies.goods_id"
 import api from '../api/index.js'
 import {mapState,mapActions} from 'vuex'
 
@@ -113,7 +107,8 @@ import {mapState,mapActions} from 'vuex'
     TabItem,
     SwiperItem,
     Group,
-    Cell
+    Cell,
+    Previewer
   } from 'vux'
   export default {
     name: 'goods',
@@ -135,6 +130,28 @@ import {mapState,mapActions} from 'vuex'
         collapse3:true,
         collapse4:true,
         collapse5:true,
+        previewer_list:[
+          {
+            src:'',
+            width:650,
+            height:1100
+          }
+        ],
+        options: {
+          getThumbBoundsFn (index) {
+            // find thumbnail element
+            let thumbnail = document.querySelectorAll('.previewer-demo-img')[index]
+            // get window scroll Y
+            let pageYScroll = window.pageYOffset || document.documentElement.scrollTop
+            // optionally get horizontal scroll
+            // get position of element relative to viewport
+            let rect = thumbnail.getBoundingClientRect()
+            // w = width
+            return {x: rect.left, y: rect.top + pageYScroll, w: rect.width}
+            // Good guide on how to get element coordinates:
+            // http://javascript.info/tutorial/coordinates
+          }
+        },
         parms_table:{
           assemblies:{},
           electrics:{},
@@ -148,6 +165,10 @@ import {mapState,mapActions} from 'vuex'
           price: '',
           mktprice: '',
           image_attach:[],
+          new_assemblies:{},
+          new_electrics:{},
+          new_goods_ports:{},
+          new_standardfits:{},
         },
         from: 0,
         last_page: 0,
@@ -160,6 +181,9 @@ import {mapState,mapActions} from 'vuex'
       goods_data_list:state => state.goods.goods_list.data[0]
     }),
     methods: {
+      show:function(index){
+        this.$refs.previewer.show(index);
+      },
       collapse:function(index){
         this["collapse"+index]=!this["collapse"+index];
       },
@@ -168,10 +192,44 @@ import {mapState,mapActions} from 'vuex'
          var self=this;
           // this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
           api.getGoodsData({relations: ["image_attach", "images","mechanics","goods_ports","assemblies","standardfits","electrics"], parameters:query}).then((res)=>{
-            self.goods_data_list=res.data.data[0];
+            // self.goods_data_list=res.data.data[0];
+            self.handle_goods_data(res.data.data[0]);
             console.log(res);
           });
       },
+      handle_goods_data:function(data){
+        console.log(data);
+        var self=this;
+        for(var key in data){
+          if(key=="electrics"||key=="assemblies"||key=="goods_ports"||key=="standardfits"){
+            var new_obj={};
+            for(var i=0;i<data[key].length;i++){
+              //遍历 key 值,相同做数据合并
+              for(var k in data[key][i]){
+                if(k=="created_at"||k=="id"||k=="updated_at"){
+                  continue;
+                }
+                if(!!data[key][i][k]){
+                  if(!!new_obj[k]){
+                    if(new_obj[k]==data[key][i][k]){
+                      continue;
+                    }
+                    new_obj[k]=new_obj[k]+'  '+data[key][i][k];
+                  }else{
+                    new_obj[k]=data[key][i][k];
+                  } 
+                }
+              }
+            }
+            console.log(new_obj);
+            data['new_'+key]=new_obj;
+            console.log(".............");
+            self.goods_data_list=data;
+          }
+        }
+        // console.log(data);
+        console.log(self.goods_data_list);
+      },  
       get_parms_data:function(){
         var self=this;
         api.get_trans_params_table({relations: ['mechanics','goods_ports','assemblies','standardfits','electrics',]}).then((res)=>{
@@ -197,7 +255,8 @@ import {mapState,mapActions} from 'vuex'
       SwiperItem,
       Group,
       Cell,
-      VueQArt
+      VueQArt,
+      Previewer
     }
   }
 
@@ -225,5 +284,12 @@ import {mapState,mapActions} from 'vuex'
 .goods .qrcode-content canvas{
   width:4rem;
   height:4rem;
+}
+.params-cell .vux-cell-primary{
+  flex:0.5
+}
+.params-cell .weui-cell__ft{
+  flex:1.2;
+  text-align:center;
 }
 </style>
