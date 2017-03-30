@@ -242,13 +242,13 @@ import {mapState,mapActions} from 'vuex'
         var self=this;
         console.log("________________________");
         console.log($(".goods-desc img"));
+        self.previewer_list=[];
         $.each($(".goods-desc img"),function(i,n){
           var obj={
             src:$(this).attr("src"),
             width:650,
             height:1100
           };
-          self.previewer_list=[];
           self.previewer_list.push(obj);
           $(this).on("click",function(){
             console.log(i);
