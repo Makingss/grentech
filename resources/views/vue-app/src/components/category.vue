@@ -28,7 +28,7 @@
                   </x-button>
               </div>
             </div>
-            <div class="node-box" v-for="child in choose_node">
+            <div class="node-box" v-for="child in choose_node.children">
               <div class="node-title border-1px-b padding-b-10 padding-tb-10 color-primary">
               <router-link :to="{name:'list',query:{cat_id:child.cat_id}}">{{child.cat_name}}</router-link>
               </div>
@@ -443,6 +443,8 @@ export default {
           self.category_list=category_data;
           self.choose_node=this.category_list[0];
           self.node_index=0;
+          console.log(self.category_list);
+          console.log(self.choose_node);
           window.sessionStorage.category_list=JSON.stringify(self.category_list);
            //获取关键字列表-----关闭
           // this.get_goods_keywords();
