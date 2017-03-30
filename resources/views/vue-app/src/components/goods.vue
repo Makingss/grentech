@@ -86,9 +86,7 @@
       </div>
       <x-button class="previewer-demo-img" @click.native="show(0)">打开测试</x-button>
     </div>
-    
      <previewer  :list="previewer_list" ref="previewer" :options="options"></previewer>
-
   </div>
 </template>
 <script>
@@ -182,8 +180,8 @@ import {mapState,mapActions} from 'vuex'
       goods_data_list:state => state.goods.goods_list.data[0]
     }),
     methods: {
-      show:function(index){
-        this.$refs.previewer.show(index);
+      show:function(){
+        this.$refs.previewer.show(0);
       },
       collapse:function(index){
         this["collapse"+index]=!this["collapse"+index];
@@ -236,6 +234,16 @@ import {mapState,mapActions} from 'vuex'
         api.get_trans_params_table({relations: ['mechanics','goods_ports','assemblies','standardfits','electrics',]}).then((res)=>{
           self.parms_table=res.data;
         });
+      },
+      show_previewer:function(){
+        var self=this;
+        $(".goods-desc image").on("click",function(){
+          console.log("点击测试");
+          var url=$(this).attr("src");
+          console.log(url);
+          self.previewer_list[0].src=url;
+          self.show();
+        })
       }
     },
     created: function () {
@@ -245,6 +253,7 @@ import {mapState,mapActions} from 'vuex'
       this.item_index = query.item_index;
       this.init_goods_page(query);
       this.get_parms_data();
+      this.show_previewer();
     },
     components: {
       Swiper,
