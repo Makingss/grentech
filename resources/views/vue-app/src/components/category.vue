@@ -462,7 +462,7 @@ export default {
       var self=this;
       var _children=this.category_list[index];
       if(!!_children.children&&_children.children.length>0&&index!=0){
-        this.choose_node=_children.children;
+        this.choose_node=_children;
         this.node_index=index;
         
       }else if(index==0){
