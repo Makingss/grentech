@@ -49,7 +49,7 @@
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
                <group class="margin-0" v-for="(item,index) in goods_data_list.new_electrics" v-show="collapse1">
-                <cell class="font-normal" :title="parms_table.electrics[index]||index" :value="item" v-if="item&&item!='0'&&index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+                <cell class="font-normal" :title="parms_table.electrics[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
                <div @click="collapse(2)" :class="{'border-1px-b':!collapse2}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
@@ -58,7 +58,7 @@
                   <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                 </div>
                <group class="margin-0" v-show="collapse2">
-                <cell v-for="(item,index) in goods_data_list.mechanics" class="font-normal" :title="parms_table.mechanics[index]||index" :value="item" v-if="item&&item!='0'&&index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+                <cell v-for="(item,index) in goods_data_list.mechanics" class="font-normal" :title="parms_table.mechanics[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
               <div @click="collapse(3)"  :class="{'border-1px-b':!collapse3}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
@@ -67,7 +67,7 @@
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
               <group class="margin-0" v-for="(item,index) in goods_data_list.new_standardfits" v-show="collapse3">
-                <cell class="font-normal" :title="parms_table.standardfits[index]||index" :value="item" v-if="item&&item!='0'&&index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+                <cell class="font-normal" :title="parms_table.standardfits[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
                <div @click="collapse(4)"  :class="{'border-1px-b':!collapse4}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
@@ -76,7 +76,7 @@
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
               <group class="margin-0" v-for="(item,index) in goods_data_list.assemblies" v-show="collapse4">
-                <cell class="font-normal" :title="parms_table.assemblies[index]||index" :value="item" v-if="item&&item!='0'&&index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+                <cell class="font-normal" :title="parms_table.assemblies[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
         </div>
