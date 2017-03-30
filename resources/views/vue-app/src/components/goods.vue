@@ -145,6 +145,7 @@ import {mapState,mapActions} from 'vuex'
             // optionally get horizontal scroll
             // get position of element relative to viewport
             let rect = thumbnail.getBoundingClientRect();
+            console.log({x: rect.left, y: rect.top + pageYScroll, w: rect.width});
             // w = width
             return {x: rect.left, y: rect.top + pageYScroll, w: rect.width}
             // Good guide on how to get element coordinates:
