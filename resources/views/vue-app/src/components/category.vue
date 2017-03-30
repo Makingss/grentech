@@ -441,8 +441,9 @@ export default {
             // self.scene[i].img=self.scene_images[i].img;
           }
           self.category_list=category_data;
-          this.choose_node=this.category_list[0];
-          this.node_index=0;
+          self.choose_node=this.category_list[0];
+          self.node_index=0;
+          window.sessionStorage.category_list=JSON.stringify(self.category_list);
            //获取关键字列表-----关闭
           // this.get_goods_keywords();
         })
