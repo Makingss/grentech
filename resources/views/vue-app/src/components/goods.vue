@@ -228,6 +228,7 @@ import {mapState,mapActions} from 'vuex'
         }
         // console.log(data);
         console.log(self.goods_data_list);
+        self.show_previewer();
       },  
       get_parms_data:function(){
         var self=this;
@@ -254,7 +255,7 @@ import {mapState,mapActions} from 'vuex'
       this.item_index = query.item_index;
       this.init_goods_page(query);
       this.get_parms_data();
-      this.show_previewer();
+     
     },
     components: {
       Swiper,
