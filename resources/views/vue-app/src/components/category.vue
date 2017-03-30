@@ -28,7 +28,7 @@
                   </x-button>
               </div>
             </div>
-            <div class="node-box" v-if="node_index!=0" v-for="child in choose_node">
+            <div class="node-box" v-for="child in choose_node">
               <div class="node-title border-1px-b padding-b-10 padding-tb-10 color-primary">
               <router-link :to="{name:'list',query:{cat_id:child.cat_id}}">{{child.cat_name}}</router-link>
               </div>
