@@ -172,8 +172,12 @@ import {mapState,mapActions} from 'vuex'
             for(var i=0;i<data[key].length;i++){
               //遍历 key 值,相同做数据合并
               for(var k in data[key][i]){
+
                 if(!!data[key][i][k]){
                   if(!!new_obj[k]){
+                    if(new_obj[k]==data[key][i][k]){
+                      continue;
+                    }
                     new_obj[k]=new_obj[k]+'  '+data[key][i][k];
                   }else{
                     new_obj[k]=data[key][i][k];
