@@ -49,6 +49,7 @@
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
                <group class="margin-0" v-for="(item,index) in goods_data_list.new_electrics" v-show="collapse1">
+                 <p>{{parms_table.electrics[index]||index}}</p>
                 <cell class="font-normal" :title="parms_table.electrics[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
@@ -139,6 +140,10 @@ import {mapState,mapActions} from 'vuex'
           price: '',
           mktprice: '',
           image_attach:[],
+          new_assemblies:{},
+          new_electrics:{},
+          new_goods_ports:{},
+          new_standardfits:{},
         },
         from: 0,
         last_page: 0,
@@ -192,7 +197,8 @@ import {mapState,mapActions} from 'vuex'
             self.goods_data_list=data;
           }
         }
-        console.log(data);
+        // console.log(data);
+        console.log(self.goods_data_list);
       },  
       get_parms_data:function(){
         var self=this;
