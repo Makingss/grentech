@@ -428,6 +428,7 @@ class GoodsController extends Controller
 			});
 //				});
 
+			
 
 			$form->tab(trans('admin::lang.goods.images'), function ($form) {
 				$form->fileinput('image_default_id', trans('admin::lang.goods.images'));
