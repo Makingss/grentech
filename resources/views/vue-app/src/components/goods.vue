@@ -130,7 +130,7 @@ import {mapState,mapActions} from 'vuex'
         collapse5:true,
         previewer_list:[
           {
-            src:'',
+            src:'/uploads/content/20170330/58dca48b737e0_11o.jpg',
             width:650,
             height:1100
           }
@@ -242,13 +242,17 @@ import {mapState,mapActions} from 'vuex'
         var self=this;
         console.log("________________________");
         console.log($(".goods-desc img"));
-        $(".goods-desc img").on("click",function(){
-          console.log("点击测试");
-          var url=$(this).attr("src");
-          console.log(url);
-          self.previewer_list[0].src=url;
-          self.show();
+        $.each($(".goods-desc img"),function(i,n){
+          var obj={
+            src:$(this).attr("src"),
+            width:650,
+            height:1100
+          };
+          self.previewer_list=[];
+          self.previewer_list.push(obj);
         })
+        console.log(self.previewer_list);
+       
       }
     },
     created: function () {
