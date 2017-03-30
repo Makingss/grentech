@@ -42,7 +42,7 @@
         <div v-if="index==0" class="padding-tb-6 padding-rl-4">
             <div v-html="goods_data_list.content"></div>
         </div>
-        <div v-if="index==1">
+        <div v-if="index==1" class="params-cell">
               <div @click="collapse(1)" v-if="goods_data_list.electrics.length!=0" :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                 电性能
                 <span class="iconfont padding-rl-10" v-if="!collapse1">&#xe772;</span>
@@ -216,5 +216,11 @@ import {mapState,mapActions} from 'vuex'
 .goods .qrcode-content canvas{
   width:4rem;
   height:4rem;
+}
+.params-cell .vux-cell-primary{
+  flex:0.5
+}
+.params-cell .weui-cell__ft{
+  flex:1.2;
 }
 </style>
