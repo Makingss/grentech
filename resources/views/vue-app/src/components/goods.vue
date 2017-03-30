@@ -237,7 +237,7 @@ import {mapState,mapActions} from 'vuex'
       },
       show_previewer:function(){
         var self=this;
-        $(".goods-desc image").on("click",function(){
+        $(".goods-desc img").on("click",function(){
           console.log("点击测试");
           var url=$(this).attr("src");
           console.log(url);
