@@ -84,7 +84,7 @@
           服务信息内容
         </div>
       </div>
-      <x-button class="previewer-demo-img" @click.native="show(0)">打开测试</x-button>
+      <img class="previewer-demo-img" :src="previewer_list[0].src" @click="show(0)"/>
     </div>
      <previewer  :list="previewer_list" ref="previewer" :options="options"></previewer>
   </div>
