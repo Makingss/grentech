@@ -222,5 +222,6 @@ import {mapState,mapActions} from 'vuex'
 }
 .params-cell .weui-cell__ft{
   flex:1.2;
+  text-align:center;
 }
 </style>
