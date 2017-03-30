@@ -171,6 +171,7 @@ import {mapState,mapActions} from 'vuex'
       },
       handle_goods_data:function(data){
         console.log(data);
+        var self=this;
         for(var key in data){
           if(key=="electrics"||key=="assemblies"||key=="goods_ports"||key=="standardfits"){
             var new_obj={};
@@ -194,6 +195,7 @@ import {mapState,mapActions} from 'vuex'
             }
             console.log(new_obj);
             data['new_'+key]=new_obj;
+            console.log(".............");
             self.goods_data_list=data;
           }
         }
