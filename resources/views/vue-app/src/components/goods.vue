@@ -228,7 +228,9 @@ import {mapState,mapActions} from 'vuex'
         }
         // console.log(data);
         console.log(self.goods_data_list);
-        self.show_previewer();
+        setTimeout(function(){
+          self.show_previewer();
+        },2000)  
       },  
       get_parms_data:function(){
         var self=this;
@@ -238,6 +240,7 @@ import {mapState,mapActions} from 'vuex'
       },
       show_previewer:function(){
         var self=this;
+        console.log("________________________");
         console.log($(".goods-desc img"));
         $(".goods-desc img").on("click",function(){
           console.log("点击测试");
@@ -255,7 +258,6 @@ import {mapState,mapActions} from 'vuex'
       this.item_index = query.item_index;
       this.init_goods_page(query);
       this.get_parms_data();
-     
     },
     components: {
       Swiper,
