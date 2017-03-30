@@ -84,9 +84,9 @@
           服务信息内容
         </div>
       </div>
-      <img class="previewer-demo-img" :src="previewer_list[0].src" @click="show(0)"/>
+      <img class="previewer-demo-img" v-if="false" :src="previewer_list[0].src" @click="show(0)"/>
     </div>
-     <previewer  :list="previewer_list" ref="previewer" :options="options"></previewer>
+     <previewer  :list="previewer_list" v-if="false" ref="previewer" :options="options"></previewer>
   </div>
 </template>
 <script>
@@ -138,19 +138,17 @@ import {mapState,mapActions} from 'vuex'
         options: {
           getThumbBoundsFn (index) {
             // find thumbnail element
-            let thumbnail = document.querySelectorAll('.previewer-demo-img')[index];
-            console.log(thumbnail);
+            let thumbnail = document.querySelectorAll('.previewer-demo-img')[index]
             // get window scroll Y
             let pageYScroll = window.pageYOffset || document.documentElement.scrollTop
             // optionally get horizontal scroll
             // get position of element relative to viewport
-            let rect = thumbnail.getBoundingClientRect();
-            console.log({x: rect.left, y: rect.top + pageYScroll, w: rect.width});
+            let rect = thumbnail.getBoundingClientRect()
             // w = width
             return {x: rect.left, y: rect.top + pageYScroll, w: rect.width}
             // Good guide on how to get element coordinates:
             // http://javascript.info/tutorial/coordinates
-          }
+         }
         },
         parms_table:{
           assemblies:{},
