@@ -52,6 +52,11 @@ class GoodsController extends Controller
 			$grid->goods_id('id')->sortable();
 			//$grid->jooge_goods_id()->sortable();
 			$grid->bn($getGoodColumns['bn']);
+			$grid->filter(function ($filter) {
+//				$filter->useModal();
+				$filter->like('bn', 'SAP');
+				$filter->disableIdFilter();
+			});
 //			$grid->products('产品货号')->pluck('bn')->map(function ($bn) {
 //				return $bn;
 //			})->implode('</br>')->editable();
@@ -428,7 +433,7 @@ class GoodsController extends Controller
 			});
 //				});
 
-			
+
 
 			$form->tab(trans('admin::lang.goods.images'), function ($form) {
 				$form->fileinput('image_default_id', trans('admin::lang.goods.images'));
