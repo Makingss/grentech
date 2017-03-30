@@ -243,6 +243,7 @@ import {mapState,mapActions} from 'vuex'
         console.log("________________________");
         console.log($(".goods-desc img"));
         self.previewer_list=[];
+        $(".goods-desc img").addClass("previewer-demo-img");
         $.each($(".goods-desc img"),function(i,n){
           var obj={
             src:$(this).attr("src"),
@@ -250,6 +251,7 @@ import {mapState,mapActions} from 'vuex'
             height:1100
           };
           self.previewer_list.push(obj);
+          // $(this).addClass("previewer-demo-img");
           $(this).on("click",function(){
             console.log(i);
             self.show(i);
