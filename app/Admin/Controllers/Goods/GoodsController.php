@@ -55,6 +55,7 @@ class GoodsController extends Controller
 			$grid->filter(function ($filter) {
 //				$filter->useModal();
 				$filter->like('bn', 'SAP');
+				$filter->is('marketable','上下架')->select(['1'=>'已上架','0'=>'下架']);
 				$filter->disableIdFilter();
 			});
 //			$grid->products('产品货号')->pluck('bn')->map(function ($bn) {
