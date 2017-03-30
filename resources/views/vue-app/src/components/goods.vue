@@ -52,7 +52,7 @@
                 <cell class="font-normal" :title="parms_table.electrics[index]||index" :value="item" v-if="item&&item!='0'&&index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
-               <div @click="collapse(2)" v-if="goods_data_list.mechanics.constructor!=Array" :class="{'border-1px-b':!collapse2}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+               <div @click="collapse(2)" :class="{'border-1px-b':!collapse2}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                   机械性能
                   <span class="iconfont padding-rl-10" v-if="!collapse2">&#xe772;</span>
                   <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
