@@ -84,10 +84,10 @@
           服务信息内容
         </div>
       </div>
-      <x-button @click.native="show(0)">打开测试</x-button>
+      <x-button class="previewer-demo-img" @click.native="show(0)">打开测试</x-button>
     </div>
     
-     <previewer :list="previewer_list" ref="previewer" :options="options"></previewer>
+     <previewer  :list="previewer_list" ref="previewer" :options="options"></previewer>
 
   </div>
 </template>
@@ -140,12 +140,13 @@ import {mapState,mapActions} from 'vuex'
         options: {
           getThumbBoundsFn (index) {
             // find thumbnail element
-            let thumbnail = document.querySelectorAll('.previewer-demo-img')[index]
+            let thumbnail = document.querySelectorAll('.previewer-demo-img')[index];
+            console.log(thumbnail);
             // get window scroll Y
             let pageYScroll = window.pageYOffset || document.documentElement.scrollTop
             // optionally get horizontal scroll
             // get position of element relative to viewport
-            let rect = thumbnail.getBoundingClientRect()
+            let rect = thumbnail.getBoundingClientRect();
             // w = width
             return {x: rect.left, y: rect.top + pageYScroll, w: rect.width}
             // Good guide on how to get element coordinates:
