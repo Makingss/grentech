@@ -180,8 +180,8 @@ import {mapState,mapActions} from 'vuex'
       goods_data_list:state => state.goods.goods_list.data[0]
     }),
     methods: {
-      show:function(){
-        this.$refs.previewer.show(0);
+      show:function(index){
+        this.$refs.previewer.show(index);
       },
       collapse:function(index){
         this["collapse"+index]=!this["collapse"+index];
@@ -250,6 +250,10 @@ import {mapState,mapActions} from 'vuex'
           };
           self.previewer_list=[];
           self.previewer_list.push(obj);
+          $(this).on("click",function(){
+            console.log(i);
+            self.show(i);
+          })
         })
         console.log(self.previewer_list);
        
