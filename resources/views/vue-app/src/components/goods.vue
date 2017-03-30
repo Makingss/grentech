@@ -159,10 +159,34 @@ import {mapState,mapActions} from 'vuex'
          var self=this;
           // this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
           api.getGoodsData({relations: ["image_attach", "images","mechanics","goods_ports","assemblies","standardfits","electrics"], parameters:query}).then((res)=>{
-            self.goods_data_list=res.data.data[0];
+            // self.goods_data_list=res.data.data[0];
+            self.handle_goods_data(res.data.data[0]);
             console.log(res);
           });
       },
+      handle_goods_data:function(data){
+        for(var key data){
+          if(key=="electrics"||key=="assemblies"||key=="goods_ports"){
+            var new_obj={};
+            for(let i=0;i<data[key].length;i++){
+              //遍历 key 值,相同做数据合并
+              for(var k in data[key][i]){
+                if(!!data[key][i][k]){
+                  if(!!new_obj[k]){
+                    new_obj[k]=new_obj[k]+'  '+data[key][i][k];
+                  }else{
+                    new_obj[k]=data[key][i][k];
+                  } 
+                }
+              }
+            }
+            console.log(new_obj);
+            data['new_'+key]=new_obj;
+            self.goods_data_list=data;
+          }
+        }
+        console.log(data);
+      },  
       get_parms_data:function(){
         var self=this;
         api.get_trans_params_table({relations: ['mechanics','goods_ports','assemblies','standardfits','electrics',]}).then((res)=>{
