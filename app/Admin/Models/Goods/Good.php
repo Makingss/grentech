@@ -26,7 +26,7 @@ class Good extends Model
 		'package_use', 'store_prompt', 'nostore_sell', 'goods_setting', 'spec_desc', 'params', 'visit_count', 'comments_count',
 		'view_w_count', 'view_count', 'count_stat', 'buy_count', 'buy_w_count', 'barcode', 'is_line', 'fx_1_price', 'fx_2_price',
 		'fx_3_price', 'goods_status', 'modify_status', 'price_modify', 'good_form', 'buy_limit', 'taxrate', 'tip_id', 'pmt_tag',
-		'pmt_id', 'goods_profit_ratio', 'is_pkg', 'pkg_info'
+		'pmt_id', 'goods_profit_ratio', 'is_pkg', 'pkg_info', 'service_into'
 	];
 	protected $hidden = ['p_1', 'p_2', 'p_3', 'p_4', 'p_5', 'p_6', 'p_7', 'p_8', 'p_9', 'p_10',
 		'p_11', 'p_12', 'p_13', 'p_14', 'p_15', 'p_16', 'p_17', 'p_18', 'p_19', 'p_20', 'p_21', 'p_22', 'p_23', 'p_24', 'p_25', 'p_26', 'p_27',
@@ -73,15 +73,14 @@ class Good extends Model
 	 */
 	public function assemblie_highs()
 	{
-		return $this->morphedByMany(Assemblie_high::class, 'goodsassemblie','goodsassemblies','goods_id')->withTimestamps();
+		return $this->morphedByMany(Assemblie_high::class, 'goodsassemblie', 'goodsassemblies', 'goods_id')->withTimestamps();
 	}
 
 	public function assemblie_versions()
 	{
-		return $this->morphedByMany(Assemblie_version::class, 'goodsassemblie','goodsassemblies','goods_id')->withTimestamps();
+		return $this->morphedByMany(Assemblie_version::class, 'goodsassemblie', 'goodsassemblies', 'goods_id')->withTimestamps();
 	}
 
-	
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -240,10 +239,12 @@ class Good extends Model
 	public function save_goods($request, $id = null, $method = '')
 	{
 		$goods = $request->all();
-		if ($goods['marketable'] == 'off')
-			$goods['marketable'] = 0;
-		else
-			$goods['marketable'] = 1;
+		if (array_key_exists('marketable', $goods)) {
+			if ($goods['marketable'] == 'off')
+				$goods['marketable'] = 0;
+			else
+				$goods['marketable'] = 1;
+		}
 		$fileupload = new ToolsbaseController();
 		$imagePaths = json_decode($fileupload->fileUpload($request), true);
 		/**
@@ -272,7 +273,9 @@ class Good extends Model
 				'content' => $goods['content'],
 				'product_model' => $goods['product_model'],
 				'product_desc' => $goods['product_desc'],
-				'image_default_id' => $imagePaths['image_id']
+				'image_default_id' => $imagePaths['image_id'],
+				'serviceword'=>$goods['serviceword'],
+//				'servicepic'=>$goods['servicepic'],
 			]);
 			$goodsObj = Good::findOrFail($id);
 //			foreach (@$goods['products'] as $product) {
@@ -362,4 +365,20 @@ class Good extends Model
 
 		return $options;
 	}
+
+	public function setServicepicAttribute($servicepic)
+	{
+
+		if (is_array($servicepic)) {
+			$this->attributes['servicepic'] = json_encode($servicepic);
+		}
+	}
+
+	public function getServicepicAttribute($servicepic)
+	{
+		return json_decode($servicepic, true);
+
+	}
+
+
 }

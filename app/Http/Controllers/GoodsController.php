@@ -29,9 +29,10 @@ class GoodsController extends Controller
 		$collection = collect($parameters);
 		$filtered = $collection->only(['brand_id', 'goods_id', 'type_id', 'cat_id', 'bn']);
 		$where = $filtered->all();
+		$where=array_add($where,'marketable','1');
 		$withRelations = collect($relations);
 		$filteredRelations = $withRelations->except(['Goods_types', 'mechanics', 'goods_ports', 'assemblies', 'standardfits', 'electrics',
-				'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images', 'goods_cats','assemblie_highs','assemblie_versions']
+				'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images', 'goods_cats', 'assemblie_highs', 'assemblie_versions']
 		);
 		$with = $filteredRelations->all();
 		$goods = Good::with($with)->where($where)->orderBy('updated_at', 'DESC')->paginate($per_page)->toArray();
@@ -41,11 +42,32 @@ class GoodsController extends Controller
 				$collects = collect($image_attach);
 				$collapse = $collects->collapse();
 				$goods['data'][$dataK]['image_attach'][$itemK] = $collapse->toArray();
-
 			}
+//			if (array_key_exists('electrics', $data) || array_key_exists('electrics_inte', $data)) {
+//				$this->merges($data);
+//			}
+
 		}
-		return $goods;
 		return json_encode($goods);
+	}
+
+	public function merges($dates)
+	{
+
+		$collection = collect($dates['electrics']);
+		foreach ($collection as $item){
+
+			$collection->merge($item);
+		}
+
+		$implodes = $collection->map(function ($colls) use ($collection) {
+			foreach ($colls as $key => $coll) {
+				return $collection->implode($key, ',');
+//				return $coll;
+			}
+		});//->implode('', ',');
+		dd($implodes);
+
 	}
 
 	/**
