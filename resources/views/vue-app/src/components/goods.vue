@@ -181,6 +181,7 @@ import api from '../api/index.js'
     methods: {
       show:function(index){
         console.log("展示");
+        console.log(this.list);
         this.$refs.previewer.show(index);
       },
       collapse:function(index){
@@ -228,9 +229,9 @@ import api from '../api/index.js'
         }
         // console.log(data);
         console.log(self.goods_data_list);
-        setTimeout(function(){
-          self.show_previewer();
-        },2000)
+        // setTimeout(function(){
+        //   self.show_previewer();
+        // },2000)
       },  
       get_parms_data:function(){
         var self=this;
