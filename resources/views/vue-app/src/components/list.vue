@@ -101,14 +101,15 @@ export default {
     Scroller,
     Spinner
   },
-  watch:{
-    '$route':function(to,from){
-      console.log("切换");
-      this.handler_query();
-    }
-  },
+  // watch:{
+  //   '$route':function(to,from){
+  //     console.log("切换");
+  //     this.handler_query();
+  //   }
+  // },
   created: function() {
     this.handler_query();
+    console.log("创建");
   },
   
   methods: {
@@ -140,7 +141,7 @@ export default {
       console.log("搜索测试");
       var self=this;
       this.$router.push({name:'list',query:{search:self.search_input}});
-      this.handler_query({loading:true});
+      // this.handler_query({loading:true});
     },
     loadMore:function(){
       var self=this;
@@ -172,9 +173,12 @@ export default {
         }
         console.log(query);
         query.relations=["images","image_attach"];
-        if(query["search"]){
-           api.get_search_result({relations: ["images","image_attach"],parameters:query,per_page:10}).then(res=>{
+        var loading=false;
+        if(query["search"]&&!loading){
+          loading=true;
+           api.get_search_result({relations: ["images","image_attach"],search:query.search,per_page:10}).then(res=>{
                console.log(res);
+               loading=false;
                self.commit_resdata(res.data,params);
            })
         }else if(query["keyword"]){

@@ -84,9 +84,9 @@
           服务信息内容
         </div>
       </div>
-      <x-button class="previewer-demo-img" @click.native="show(0)">打开测试</x-button>
+      <img class="previewer-demo-img" v-if="false" :src="previewer_list[0].src" @click="show(0)"/>
     </div>
-     <previewer  :list="previewer_list" ref="previewer" :options="options"></previewer>
+     <previewer  :list="previewer_list" v-if="false" ref="previewer" :options="options"></previewer>
   </div>
 </template>
 <script>
@@ -130,7 +130,7 @@ import {mapState,mapActions} from 'vuex'
         collapse5:true,
         previewer_list:[
           {
-            src:'',
+            src:'https://placekitten.com/800/400',
             width:650,
             height:1100
           }
@@ -138,18 +138,17 @@ import {mapState,mapActions} from 'vuex'
         options: {
           getThumbBoundsFn (index) {
             // find thumbnail element
-            let thumbnail = document.querySelectorAll('.previewer-demo-img')[index];
-            console.log(thumbnail);
+            let thumbnail = document.querySelectorAll('.previewer-demo-img')[index]
             // get window scroll Y
             let pageYScroll = window.pageYOffset || document.documentElement.scrollTop
             // optionally get horizontal scroll
             // get position of element relative to viewport
-            let rect = thumbnail.getBoundingClientRect();
+            let rect = thumbnail.getBoundingClientRect()
             // w = width
             return {x: rect.left, y: rect.top + pageYScroll, w: rect.width}
             // Good guide on how to get element coordinates:
             // http://javascript.info/tutorial/coordinates
-          }
+         }
         },
         parms_table:{
           assemblies:{},
@@ -180,8 +179,8 @@ import {mapState,mapActions} from 'vuex'
       goods_data_list:state => state.goods.goods_list.data[0]
     }),
     methods: {
-      show:function(){
-        this.$refs.previewer.show(0);
+      show:function(index){
+        this.$refs.previewer.show(index);
       },
       collapse:function(index){
         this["collapse"+index]=!this["collapse"+index];
@@ -228,7 +227,9 @@ import {mapState,mapActions} from 'vuex'
         }
         // console.log(data);
         console.log(self.goods_data_list);
-        self.show_previewer();
+        // setTimeout(function(){
+        //   self.show_previewer();
+        // },2000)  
       },  
       get_parms_data:function(){
         var self=this;
@@ -238,14 +239,25 @@ import {mapState,mapActions} from 'vuex'
       },
       show_previewer:function(){
         var self=this;
+        console.log("________________________");
         console.log($(".goods-desc img"));
-        $(".goods-desc img").on("click",function(){
-          console.log("点击测试");
-          var url=$(this).attr("src");
-          console.log(url);
-          self.previewer_list[0].src=url;
-          self.show();
+        self.previewer_list=[];
+        $(".goods-desc img").addClass("previewer-demo-img");
+        $.each($(".goods-desc img"),function(i,n){
+          var obj={
+            src:$(this).attr("src"),
+            width:650,
+            height:1100
+          };
+          self.previewer_list.push(obj);
+          // $(this).addClass("previewer-demo-img");
+          $(this).on("click",function(){
+            console.log(i);
+            self.show(i);
+          })
         })
+        console.log(self.previewer_list);
+       
       }
     },
     created: function () {
@@ -255,7 +267,6 @@ import {mapState,mapActions} from 'vuex'
       this.item_index = query.item_index;
       this.init_goods_page(query);
       this.get_parms_data();
-     
     },
     components: {
       Swiper,
