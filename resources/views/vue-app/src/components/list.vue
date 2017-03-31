@@ -173,7 +173,7 @@ export default {
         console.log(query);
         query.relations=["images","image_attach"];
         if(query["search"]){
-           api.get_search_result({relations: ["images","image_attach"],parameters:query,per_page:10}).then(res=>{
+           api.get_search_result({relations: ["images","image_attach"],search:query.search,per_page:10}).then(res=>{
                console.log(res);
                self.commit_resdata(res.data,params);
            })
