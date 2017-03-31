@@ -4,7 +4,7 @@
       <div class="search-icon text-center" @click="toggleType">
         <span class="iconfont font-3x color-success block" style="margin-top:8px;">&#xe62a;</span>
       </div>
-      <search v-model="search_input" position="static" top="0" @on-submit.prevent="submit_search"  class="list-search border-box"></search>
+      <search v-model="search_input" position="static" top="0" @on-submit="submit_search"  class="list-search border-box"></search>
       <div class="content list container" @scroll="handle_scroll($event)">
             <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
               <flexbox-item :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
