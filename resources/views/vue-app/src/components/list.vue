@@ -4,7 +4,7 @@
       <div class="search-icon text-center" @click="toggleType">
         <span class="iconfont font-3x color-success block" style="margin-top:8px;">&#xe62a;</span>
       </div>
-      <search v-model="search_input" position="static" top="0" @on-submit="submit_search"  class="list-search border-box"></search>
+      <search v-model="search_input" position="static" top="0" @on-submit.prevent="submit_search"  class="list-search border-box"></search>
       <div class="content list container" @scroll="handle_scroll($event)">
             <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="type=='large'">
               <flexbox-item :data-currentpage="current_page" :data-lastpage="last_page"  :data-total="total"  :data-perpage="per_page" :data-i="index%2"
@@ -101,12 +101,12 @@ export default {
     Scroller,
     Spinner
   },
-  watch:{
-    '$route':function(to,from){
-      console.log("切换");
-      this.handler_query();
-    }
-  },
+  // watch:{
+  //   '$route':function(to,from){
+  //     console.log("切换");
+  //     this.handler_query();
+  //   }
+  // },
   created: function() {
     this.handler_query();
   },
@@ -140,7 +140,7 @@ export default {
       console.log("搜索测试");
       var self=this;
       this.$router.push({name:'list',query:{search:self.search_input}});
-      this.handler_query({loading:true});
+      // this.handler_query({loading:true});
     },
     loadMore:function(){
       var self=this;
@@ -172,9 +172,12 @@ export default {
         }
         console.log(query);
         query.relations=["images","image_attach"];
-        if(query["search"]){
+        var loading=false;
+        if(query["search"]&&!loading){
+          loading=true;
            api.get_search_result({relations: ["images","image_attach"],search:query.search,per_page:10}).then(res=>{
                console.log(res);
+               loading=false;
                self.commit_resdata(res.data,params);
            })
         }else if(query["keyword"]){
