@@ -84,9 +84,9 @@
           服务信息内容
         </div>
       </div>
-      <img class="previewer-demo-img" v-if="false" :src="previewer_list[0].src" @click="show(0)"/>
+      <img class="previewer-demo-img" v-for="(item, index) in list" :src="item.src" width="100" @click="show(index)">
+       <previewer :list="list" ref="previewer" :options="options"></previewer>
     </div>
-     <previewer  :list="previewer_list" v-if="false" ref="previewer" :options="options"></previewer>
   </div>
 </template>
 <script>
@@ -94,7 +94,7 @@ import VueQArt from 'vue-qart'
 import QArt from 'qartjs'
 // v-if="!!goods_data_list.new_assemblies.goods_id"
 import api from '../api/index.js'
-import {mapState,mapActions} from 'vuex'
+// import {mapState,mapActions} from 'vuex'
 
   import {
     Swiper,
@@ -128,13 +128,15 @@ import {mapState,mapActions} from 'vuex'
         collapse3:true,
         collapse4:true,
         collapse5:true,
-        previewer_list:[
-          {
-            src:'https://placekitten.com/800/400',
-            width:650,
-            height:1100
-          }
-        ],
+         list: [{
+             src: 'https://placekitten.com/800/400',
+             w: 600,
+             h: 400
+            },{
+                src: 'https://placekitten.com/1200/900',
+                w: 1200,
+                h: 900
+            }],
         options: {
           getThumbBoundsFn (index) {
             // find thumbnail element
@@ -175,11 +177,11 @@ import {mapState,mapActions} from 'vuex'
         total: 0,
       }
     },
-    computed: mapState({
-      goods_data_list:state => state.goods.goods_list.data[0]
-    }),
+   
     methods: {
       show:function(index){
+        console.log("展示");
+        console.log(this.list);
         this.$refs.previewer.show(index);
       },
       collapse:function(index){
@@ -229,7 +231,7 @@ import {mapState,mapActions} from 'vuex'
         console.log(self.goods_data_list);
         // setTimeout(function(){
         //   self.show_previewer();
-        // },2000)  
+        // },2000)
       },  
       get_parms_data:function(){
         var self=this;
@@ -241,7 +243,7 @@ import {mapState,mapActions} from 'vuex'
         var self=this;
         console.log("________________________");
         console.log($(".goods-desc img"));
-        self.previewer_list=[];
+        self.list=[];
         $(".goods-desc img").addClass("previewer-demo-img");
         $.each($(".goods-desc img"),function(i,n){
           var obj={
@@ -249,14 +251,14 @@ import {mapState,mapActions} from 'vuex'
             width:650,
             height:1100
           };
-          self.previewer_list.push(obj);
+          self.list.push(obj);
           // $(this).addClass("previewer-demo-img");
           $(this).on("click",function(){
             console.log(i);
             self.show(i);
           })
         })
-        console.log(self.previewer_list);
+        console.log(self.list);
        
       }
     },
