@@ -180,6 +180,7 @@ import api from '../api/index.js'
    
     methods: {
       show:function(index){
+        console.log("展示");
         this.$refs.previewer.show(index);
       },
       collapse:function(index){
@@ -227,9 +228,9 @@ import api from '../api/index.js'
         }
         // console.log(data);
         console.log(self.goods_data_list);
-        // setTimeout(function(){
-        //   self.show_previewer();
-        // },2000)  
+        setTimeout(function(){
+          self.show_previewer();
+        },2000)
       },  
       get_parms_data:function(){
         var self=this;
@@ -241,7 +242,7 @@ import api from '../api/index.js'
         var self=this;
         console.log("________________________");
         console.log($(".goods-desc img"));
-        self.previewer_list=[];
+        self.list=[];
         $(".goods-desc img").addClass("previewer-demo-img");
         $.each($(".goods-desc img"),function(i,n){
           var obj={
@@ -249,14 +250,14 @@ import api from '../api/index.js'
             width:650,
             height:1100
           };
-          self.previewer_list.push(obj);
+          self.list.push(obj);
           // $(this).addClass("previewer-demo-img");
           $(this).on("click",function(){
             console.log(i);
             self.show(i);
           })
         })
-        console.log(self.previewer_list);
+        console.log(self.list);
        
       }
     },
