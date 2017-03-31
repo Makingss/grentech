@@ -248,8 +248,8 @@ import api from '../api/index.js'
         $.each($(".goods-desc img"),function(i,n){
           var obj={
             src:$(this).attr("src"),
-            w:650,
-            h:1100
+            w:$(this).width(),
+            h:$(this).height()
              
           };
           self.list.push(obj);
