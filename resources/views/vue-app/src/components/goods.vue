@@ -84,9 +84,9 @@
           服务信息内容
         </div>
       </div>
-      <img class="previewer-demo-img" v-if="false" :src="previewer_list[0].src" @click="show(0)"/>
+      <img class="previewer-demo-img" v-for="(item, index) in list" :src="item.src" width="100" @click="show(index)">
+       <previewer :list="list" ref="previewer" :options="options"></previewer>
     </div>
-     <previewer  :list="previewer_list" v-if="false" ref="previewer" :options="options"></previewer>
   </div>
 </template>
 <script>
@@ -94,7 +94,7 @@ import VueQArt from 'vue-qart'
 import QArt from 'qartjs'
 // v-if="!!goods_data_list.new_assemblies.goods_id"
 import api from '../api/index.js'
-import {mapState,mapActions} from 'vuex'
+// import {mapState,mapActions} from 'vuex'
 
   import {
     Swiper,
@@ -128,13 +128,15 @@ import {mapState,mapActions} from 'vuex'
         collapse3:true,
         collapse4:true,
         collapse5:true,
-        previewer_list:[
-          {
-            src:'https://placekitten.com/800/400',
-            width:650,
-            height:1100
-          }
-        ],
+         list: [{
+             src: 'https://placekitten.com/800/400',
+             w: 600,
+             h: 400
+            },{
+                src: 'https://placekitten.com/1200/900',
+                w: 1200,
+                h: 900
+            }],
         options: {
           getThumbBoundsFn (index) {
             // find thumbnail element
@@ -175,9 +177,7 @@ import {mapState,mapActions} from 'vuex'
         total: 0,
       }
     },
-    computed: mapState({
-      goods_data_list:state => state.goods.goods_list.data[0]
-    }),
+   
     methods: {
       show:function(index){
         this.$refs.previewer.show(index);
