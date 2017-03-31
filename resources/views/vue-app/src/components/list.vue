@@ -141,7 +141,9 @@ export default {
       console.log("搜索测试");
       var self=this;
       this.$router.push({name:'list',query:{search:self.search_input}});
-      // this.handler_query({loading:true});
+      self.goods_data=[];//清空记录
+      self.next_page_url=null;
+      this.handler_query({loading:true});
     },
     loadMore:function(){
       var self=this;
