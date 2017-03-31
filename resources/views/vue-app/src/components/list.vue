@@ -143,7 +143,7 @@ export default {
       this.$router.push({name:'list',query:{search:self.search_input}});
       self.goods_data=[];//清空记录
       self.next_page_url=null;
-      // this.handler_query({loading:true});
+      this.handler_query({loading:true});
     },
     loadMore:function(){
       var self=this;
