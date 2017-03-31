@@ -109,6 +109,7 @@ export default {
   // },
   created: function() {
     this.handler_query();
+    console.log("创建");
   },
   
   methods: {
