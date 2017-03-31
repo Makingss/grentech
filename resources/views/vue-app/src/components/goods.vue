@@ -84,7 +84,7 @@
           服务信息内容
         </div>
       </div>
-      <img class="previewer-demo-img" v-for="(item, index) in list" :src="item.src" width="100" @click="show(index)">
+     <img class="previewer-demo-img" v-if="false" v-for="(item, index) in list" :src="item.src" width="100" @click="show(index)">
        <previewer :list="list" ref="previewer" :options="options"></previewer>
     </div>
   </div>
@@ -128,15 +128,7 @@ import api from '../api/index.js'
         collapse3:true,
         collapse4:true,
         collapse5:true,
-         list: [{
-             src: 'https://placekitten.com/800/400',
-             w: 600,
-             h: 400
-            },{
-                src: 'https://placekitten.com/1200/900',
-                w: 1200,
-                h: 900
-            }],
+         list: [],
         options: {
           getThumbBoundsFn (index) {
             // find thumbnail element
@@ -248,7 +240,7 @@ import api from '../api/index.js'
         $.each($(".goods-desc img"),function(i,n){
           var obj={
             src:$(this).attr("src"),
-            w:$(this).width(),
+            w:$(this).width()+8,
             h:$(this).height()
              
           };
