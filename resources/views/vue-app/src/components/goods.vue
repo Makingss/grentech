@@ -248,8 +248,9 @@ import api from '../api/index.js'
         $.each($(".goods-desc img"),function(i,n){
           var obj={
             src:$(this).attr("src"),
-            width:650,
-            height:1100
+            w:650,
+            h:1100
+             
           };
           self.list.push(obj);
           // $(this).addClass("previewer-demo-img");
