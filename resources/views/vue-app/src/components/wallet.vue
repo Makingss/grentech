@@ -8,7 +8,7 @@
              <img src="/static/slice/girl_avatar.jpg" alt="">
           </div>
           <p class="font-mini padding-tb-10">总金额</p>
-          <countup class="font-3x" :start-val="9999/10*8" :end-val="9999.00" :decimals="1" :duration="4"></countup>
+          <countup class="font-5x" :start-val="9999/10*8" :end-val="9999.00" :decimals="1" :duration="3"></countup>
           <p class="font-mini padding-tb-10">上周收益 +100.00</p>
         </div>
       </div>

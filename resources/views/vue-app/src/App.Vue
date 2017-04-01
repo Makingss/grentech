@@ -86,7 +86,7 @@ import api from './api'
     },
     methods: {
       submit_login:function(){
-        var self=this;
+          var self=this;
           if(this.email==""){
             this.$vux.toast.show({
               text:'<span class="font-normal">邮箱不能为空</span>',
@@ -114,7 +114,7 @@ import api from './api'
               self.save_token(res_data.data);
               setTimeout(function(){
                 self.popup_login=false;
-              },2000)
+              },500)
             }else{
                 self.$vux.toast.show({
                 text:'<span class="font-normal">'+res_data.req+'</span>',
