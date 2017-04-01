@@ -23,12 +23,12 @@
       </div>
       <div class="login-form">
         <group label-width="4rem" label-margin-right="2rem" label-align="left">
-          <x-input class="font-normal" placeholder="手机号" v-model="phone"></x-input>
-          <x-input class="font-normal" placeholder="密码" v-model="pwd"></x-input>
+          <x-input class="font-normal" placeholder="邮箱" is-type="email" v-model="email"></x-input>
+          <x-input class="font-normal" placeholder="密码" type="password" v-model="password"></x-input>
         </group>
       </div>
       <div class="margin-tb-20 tab-80 block-center">
-        <x-button type="warn" class="block-center login-btn btn-80">登陆</x-button>
+        <x-button type="warn" class="block-center login-btn btn-80" @click.native="submit_login">登陆</x-button>
       </div>
       <div class="login-link text-center clear-float">
         <div class="tab-50 pull-left" v-if="false">
@@ -64,12 +64,11 @@ import api from './api'
     data: function () {
       return {
         logo_image:config.app_config.logo_image,
+        email:'',
+        password:'',
         popup_login: false,
         page_name: '',
         search_input: '',
-        phone: '',
-        pwd: '',
-        
         intercept_closeable:true,
         // title:'用户注册',
         header_conf: {
@@ -86,6 +85,44 @@ import api from './api'
       
     },
     methods: {
+      submit_login:function(){
+        var self=this;
+          if(this.email==""){
+            this.$vux.toast.show({
+              text:'<span class="font-normal">邮箱不能为空</span>',
+              type:"warn"
+            })
+            return;
+          }else if(this.password==""){
+            this.$vux.toast.show({
+              text:'<span class="font-normal">请输入密码</span>',
+              type:"warn"
+            })
+            return;
+          };
+          api.user_login({
+            email:self.email,
+            password:self.password
+          }).then(res=>{
+            console.log(res);
+            var res_data=res.data;
+            if(res_data.res){
+              self.$vux.toast.show({
+                text:'<span class="font-normal">'+res_data.req+'</span>',
+                type:'success'
+              });
+              self.save_token(res_data.data);
+              setTimeout(function(){
+                self.$router.push("/user");
+              },2000)
+            }else{
+                self.$vux.toast.show({
+                text:'<span class="font-normal">'+res_data.req+'</span>',
+                type:'warn'
+              })
+            }
+          })
+      },
       fetch_data: function () {
         this.popup_login = false;
         this.page_name = this.$route.name;
