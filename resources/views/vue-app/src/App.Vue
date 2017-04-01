@@ -113,7 +113,7 @@ import api from './api'
               });
               self.save_token(res_data.data);
               setTimeout(function(){
-                self.$router.push("/user");
+                self.popup_login=false;
               },2000)
             }else{
                 self.$vux.toast.show({
