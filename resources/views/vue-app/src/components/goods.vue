@@ -9,9 +9,18 @@
       <flexbox :gutter="0" wrap="nowrap" class="bg-white">
         <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="9">
           <p class="line-ellispse-2">{{goods_data_list.name}}</p>
+           <div class="item-title line-ellispse-2 font-bold">
+            频段:  <span v-for="(_item,_index) in goods_data_list.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics[_index+1].workingband">/</i></span> M
+           </div>
+           <div class="item-title line-ellispse-2 font-bold">
+             增益: <span v-for="(_item,_index) in goods_data_list.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics[_index+1].beamgain">/</i></span> dBi
+           </div>
+           <div class="item-title line-ellispse-2 font-bold">
+            电下倾: <span v-for="(_item,_index) in goods_data_list.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics[_index+1].dipangle">/</i></span> °
+           </div>
           <p class="color-gray">SAP:{{goods_data_list.bn}}</p>
           <p class="color-danger">¥{{goods_data_list.price}}</p>
-          <p class="color-gray">市场价:
+          <p class="color-gray" v-if="false">市场价:
             <s>{{goods_data_list.mktprice||'暂无'}}</s>
           </p>
         </flexbox-item>
