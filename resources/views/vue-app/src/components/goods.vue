@@ -44,6 +44,21 @@
                   </flexbox>
                 </cell>
               </group>
+              <div @click="collapse(5)" :class="{'border-1px-b':!collapse5}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+                方向图
+                <span class="iconfont padding-rl-10" v-if="!collapse5">&#xe772;</span>
+                <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
+               </div>
+               <group class="margin-0" v-show="collapse5">
+                  <flexbox :gutter="0" class="text-center">
+                    <flexbox-item v-for="(item,index) in goods_data_list.aspect_pics" :span="1/2">
+                      <div class="font-mini">{{item.title}}</div>
+                      <div class="link-img">
+                        <img :src="item.pic_url" alt="">
+                      </div>
+                    </flexbox-item>
+                  </flexbox>
+              </group>
                <div @click="collapse(2)" v-if="goods_data_list.mechanics.constructor!=Array" :class="{'border-1px-b':!collapse2}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                   机械性能
                   <span class="iconfont padding-rl-10" v-if="!collapse2">&#xe772;</span>
@@ -175,7 +190,7 @@ import api from '../api/index.js'
       init_goods_page: function (query) {
          var self=this;
           // this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
-          api.getGoodsData({relations: ["image_attach", "images","mechanics","goods_ports","assemblies","standardfits","electrics"], parameters:query}).then((res)=>{
+          api.getGoodsData({relations: ["image_attach", "images","mechanics","goods_ports","assemblies","standardfits","electrics","aspect_pics"], parameters:query}).then((res)=>{
             // self.goods_data_list=res.data.data[0];
             self.handle_goods_data(res.data.data[0]);
             console.log(res);
