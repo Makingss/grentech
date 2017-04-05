@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="scroll-content infinite-scroll container padding-b-20">
-      <flexbox wrap="wrap" :gutter="0" class="scroll-content">
+      <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="false">
         <flexbox-item v-for="(item,index) in scroller_data.data" :span="1/2" class="link-img padding-tb-6 border-box cell-list-2" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" :data-i="index%2">
           <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block">
             <div>
@@ -84,6 +84,29 @@
           </router-link>
         </flexbox-item>
       </flexbox>
+       <card-list 
+              v-for="(item,index) in scroller_data.data">
+              <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  class="block" slot="card-media">
+                <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
+              </router-link>
+              <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  slot="card-title">
+                   <div class="item-title">{{item.name}}</div>
+                    <div class="item-title line-ellispse-2 font-bold">
+                       频段:  <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span> M
+                    </div>
+                    <div class="item-title line-ellispse-2 font-bold">
+                       增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span> dBi
+                    </div>
+                    <div class="item-title line-ellispse-2 font-bold">
+                       电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span> °
+                    </div>
+                    <div class="item-title line-ellispse-2 color-gray">
+                      SAP: {{item.bn}}
+                    </div>
+              </router-link>
+                    
+                <div class="item-subtitle color-danger padding-t-4" slot="card-subtitle">¥{{item.price}}</div>
+            </card-list>
       <div class="load-more text-center" v-show="loading">
         <spinner type="circles"></spinner>
       </div>
@@ -95,6 +118,7 @@
 <script>
 //import {loader} from '../util/util.js'
 import api from '../api'
+import CardList from './card-list'
 import {Swiper,Flexbox,FlexboxItem,Scroller,Spinner,Divider} from 'vux'
 export default {
   name: 'home',
@@ -243,7 +267,8 @@ export default {
     FlexboxItem,
     Scroller,
     Spinner,
-    Divider
+    Divider,
+    CardList
   }
 }
 </script>

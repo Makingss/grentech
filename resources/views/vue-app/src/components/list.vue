@@ -58,7 +58,6 @@
                       SAP: {{item.bn}}
                     </div>
               </router-link>
-                    
                 <div class="item-subtitle color-danger padding-t-4" slot="card-subtitle">¥{{item.price}}</div>
             </card-list>
             
