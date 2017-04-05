@@ -11,7 +11,7 @@ export const app_config={
      url:'#/home',
   },
   logo_image:"/static/slice/logo_300.png",//logo 图片设置
-  intercept:true,//是否启用登陆拦截
+  intercept:false,//是否启用登陆拦截
   intercept_time:2000,//登陆拦截时间
   intercept_closeable:true,//登陆拦截是否可关闭
   /* 
@@ -20,7 +20,7 @@ export const app_config={
     sessionStorage,
     cookie,
   */
-  list_cell_type:'large',//列表布局方式
+  list_cell_type:'medium',//列表布局方式
   storage:'localStorage',
   token:'',
   popup_login:false,

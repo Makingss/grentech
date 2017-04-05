@@ -17,23 +17,49 @@
                     <div class="item-title line-ellispse-2">
                       {{item.name}}
                     </div>
-                    <div class="item-subtitle color-danger">
+                    <div class="item-title line-ellispse-2 font-bold" v-if="!!item.electrics">
+                      频段: 
+                      <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span> M
+                     
+                    </div>
+                    <div class="item-title line-ellispse-2 font-bold">
+                      增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span> dBi
+                    </div>
+                    <div class="item-title line-ellispse-2 font-bold">
+                      电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span> °
+                    </div>
+                    <div class="item-title line-ellispse-2 color-gray">
+                      SAP: {{item.bn}}
+                    </div>
+                    <div class="item-subtitle color-danger padding-t-4">
                       ￥{{item.price}}
                     </div>
                   </div>
                 </router-link>
               </flexbox-item>
             </flexbox>
-            <!-- :to="item.url" -->
             <card-list 
-            v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
+              v-for="(item,index) in goods_data" :data-currentpage="current_page" :data-lastpage="last_page" :data-total="total" :data-perpage="per_page" v-if="type=='medium'">
               <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  class="block" slot="card-media">
                 <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
               </router-link>
               <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  slot="card-title">
-                <div class="item-title">{{item.name}}</div>
+                   <div class="item-title">{{item.name}}</div>
+                    <div class="item-title line-ellispse-2 font-bold">
+                       频段:  <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span> M
+                    </div>
+                    <div class="item-title line-ellispse-2 font-bold">
+                       增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span> dBi
+                    </div>
+                    <div class="item-title line-ellispse-2 font-bold">
+                       电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span> °
+                    </div>
+                    <div class="item-title line-ellispse-2 color-gray">
+                      SAP: {{item.bn}}
+                    </div>
               </router-link>
-                <div class="item-subtitle color-danger" slot="card-subtitle">¥{{item.price}}</div>
+                    
+                <div class="item-subtitle color-danger padding-t-4" slot="card-subtitle">¥{{item.price}}</div>
             </card-list>
             
        <div class="load-more text-center" v-show="loading">
@@ -45,16 +71,6 @@
 </template>
   
 <script>
-    // <scroller 
-    //       lock-x 
-    //       scrollbar-y
-    //       use-pullup 
-    //       height="100%"
-    //       ref="listScroll"
-    //       @on-pullup-loading="load"
-    //       :pullup-config="pullupConfig"
-    //       class="x-scroller-container">
-    //     </scroller>
 import api from '../api'
 import * as config from '../config/config.js'
 import CardList from './card-list'
@@ -101,12 +117,6 @@ export default {
     Scroller,
     Spinner
   },
-  // watch:{
-  //   '$route':function(to,from){
-  //     console.log("切换");
-  //     this.handler_query();
-  //   }
-  // },
   created: function() {
     this.handler_query();
     console.log("创建");
@@ -114,27 +124,21 @@ export default {
   
   methods: {
     handle_scroll:function(el){
-      // console.log(el);
       el=$(el.target);
       var self=this;
       let height=parseFloat(el.height());
       let scrollTop=parseFloat(el.scrollTop());
-      //console.log(height,scrollTop);
       var view_height=height+scrollTop;
       var scrollHeight=el[0].scrollHeight;
 
-      // console.log(view_height,el[0].scrollHeight);
       if(scrollHeight-view_height<40){
-        // console.log(scrollHeight-view_height);
         //调用加载功能
         console.log("上拉加载");
         this.loadMore();
         return false;
       }
     },
-    // ...mapActions(['GETGOODSLIST']),
     toggleType: function() {
-      //console.log("切换");
       this.type = this.type == 'medium' ? 'large' : 'medium';
     },
     submit_search:function(){
@@ -155,7 +159,7 @@ export default {
       let scroller=$(".container");
       console.log(self.next_page_url);
       if(!!self.next_page_url){
-        api.get_page_data(self.next_page_url,{relations: ["images","image_attach"],per_page: 10 }).then(res=>{
+        api.get_page_data(self.next_page_url,{relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"],per_page: 10 }).then(res=>{
           console.log(res);
           self.loading=false;
            if(res.data.data&&res.data.data.length>0){
@@ -178,19 +182,19 @@ export default {
         var loading=false;
         if(query["search"]&&!loading){
           loading=true;
-           api.get_search_result({relations: ["images","image_attach"],search:query.search,per_page:10}).then(res=>{
+           api.get_search_result({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"],search:query.search,per_page:10}).then(res=>{
                console.log(res);
                loading=false;
                self.commit_resdata(res.data,params);
            })
         }else if(query["keyword"]){
-          api.get_similar_by_kwd({relations: ["images","image_attach"],id:query.keyword,per_page:10}).then(res=>{
+          api.get_similar_by_kwd({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"],id:query.keyword,per_page:10}).then(res=>{
             console.log("查询关键字商品");
             console.log(res);
             self.commit_resdata(res.data,params);
           })
         }else{
-          api.getGoodsData({relations: ["images","image_attach"], parameters:query,per_page:10}).then(res=>{
+          api.getGoodsData({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"], parameters:query,per_page:10}).then(res=>{
               console.log(res);
                self.commit_resdata(res.data);
            })

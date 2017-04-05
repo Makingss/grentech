@@ -65,6 +65,18 @@
               <div class="item-title line-ellispse-2">
                 {{item.name}}
               </div>
+               <div class="item-title line-ellispse-2 font-bold" v-if="!!item.electrics">
+                      频段: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span> M
+              </div>
+              <div class="item-title line-ellispse-2 font-bold">
+                  增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span> dBi
+              </div>
+              <div class="item-title line-ellispse-2 font-bold">
+                 电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span> °
+              </div>
+             <div class="item-title line-ellispse-2 color-gray">
+               SAP: {{item.bn}}
+             </div>
               <div class="item-subtitle color-danger">
                 ￥{{item.price}}
               </div>
@@ -112,43 +124,7 @@ export default {
           img:'/static/grentech/20161118174329771.jpg',
         },
         data:[
-          {
-            img:'/static/grentech/201611051243571562.jpg',
-            url:'/goods?goods_id=71&item_index=0',
-            name:'NMS 网管',
-            cat:'基站',
-            desc:'简单管理网络设备'
-          },{
-            img:'/static/grentech/201611071753107968.jpg',
-            url:'/goods?goods_id=74&item_index=0',
-            name:'NMS 网管',
-            cat:'基站',
-            desc:'简单管理网络设备'
-          },{
-            img:'/static/grentech/201611071844501875.jpg',
-            url:'/goods?goods_id=62&item_index=0',
-            name:'NMS 网管',
-            cat:'基站',
-            desc:'简单管理网络设备'
-          },{
-            img:'/static/grentech/201611221355144218.jpg',
-            url:'/goods?goods_id=62&item_index=0',
-            name:'NMS 网管',
-            cat:'基站',
-            desc:'简单管理网络设备'
-          },{
-            img:'/static/grentech/201611231413171562.jpg',
-            url:'/goods?goods_id=62&item_index=0',
-            name:'NMS 网管',
-            cat:'基站',
-            desc:'简单管理网络设备'
-          },{
-            img:'/static/grentech/201611071754125468.jpg',
-            url:'/goods?goods_id=62&item_index=0',
-            name:'NMS 网管',
-            cat:'基站',
-            desc:'简单管理网络设备'
-          }
+          
         ]
       },
       hot_sales:{
@@ -157,35 +133,7 @@ export default {
           img:'/static/grentech/20170116185915616-(1).jpg',
         },
         data:[
-          {
-            img:'/static/grentech/201611071754125468.jpg',
-            url:'/goods?goods_id=62&item_index=0',
-            name:'NMS 网管',
-            cat:'基站',
-            desc:'简单管理网络设备',
-            price:'1209.00'
-          },{
-            img:'/static/grentech/201611231413171562.jpg',
-            url:'/goods?goods_id=62&item_index=0',
-            name:'NMS 网管',
-            cat:'基站',
-            desc:'简单管理网络设备',
-            price:'1209.00'
-          },{
-            img:'/static/grentech/201611221355144218.jpg',
-            url:'/goods?goods_id=62&item_index=0',
-            name:'NMS 网管',
-            cat:'基站',
-            desc:'简单管理网络设备',
-            price:'1209.00'
-          },{
-            img:'/static/grentech/201611051243571562.jpg',
-            url:'/goods?goods_id=62&item_index=0',
-            name:'NMS 网管',
-            cat:'基站',
-            desc:'简单管理网络设备',
-            price:'1209.00'
-          }
+          
         ]
       },
       scroller_data:{
@@ -242,7 +190,7 @@ export default {
     },
     get_home_list:function(query,callback){
       var self=this;
-       api.getGoodsData({relations: ["images","image_attach"], parameters:query, per_page: 10 }).then(res=>{
+       api.getGoodsData({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"], parameters:query, per_page: 10 }).then(res=>{
             if(res.data.data&&res.data.data.length>0){
               self.handle_res_data(res.data)
               // self.
