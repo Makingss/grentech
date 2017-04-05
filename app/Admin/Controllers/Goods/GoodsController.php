@@ -23,8 +23,10 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Form\NestedForm;
 use Encore\Admin\Grid;
+use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
+use Encore\Admin\Widgets\Box;
 use Encore\Admin\Widgets\Table;
 use Illuminate\Http\Request;
 
@@ -37,6 +39,17 @@ class GoodsController extends Controller
 		return Admin::content(function (Content $content) {
 			$content->header(trans('admin::lang.goods.goods') . trans('admin::lang.headers.header'));
 			$content->description(trans('admin::lang.goods.goods') . trans('admin::lang.headers.description'));
+//			$content = new Content();
+			$content->row(function (Row $row) {
+				$row->column(6, function (Column $column) {
+					$form = new \Encore\Admin\Widgets\Form();
+					$form->text();
+					$box = new Box('dsdggggfffffffffffffffffff', $form);
+					$box->style('danger');
+					$box->solid();
+					return $column->append($box);
+				});
+			});
 			$content->body($this->grid());
 		});
 	}
@@ -55,7 +68,7 @@ class GoodsController extends Controller
 			$grid->filter(function ($filter) {
 //				$filter->useModal();
 				$filter->like('bn', 'SAP');
-				$filter->is('marketable','上下架')->select(['1'=>'已上架','0'=>'下架']);
+				$filter->is('marketable', '上下架')->select(['1' => '已上架', '0' => '下架']);
 				$filter->disableIdFilter();
 			});
 //			$grid->products('产品货号')->pluck('bn')->map(function ($bn) {
@@ -183,6 +196,7 @@ class GoodsController extends Controller
 			$getAssemblieColumns = $goodObj->getTableColumns('assemblies');
 			$getGoodsprotColumns = $goodObj->getTableColumns('goods_ports');
 			$getMechanicsColumns = $goodObj->getTableColumns('mechanics');
+			$getAspect_picColumns = $goodObj->getTableColumns('aspect_pics');
 			$electrics = $form->model()->electrics;
 			$form->tab(trans('admin::lang.goods.basedate'), function ($form) use (
 				$getGoodColumns,
@@ -226,33 +240,30 @@ class GoodsController extends Controller
 				});
 				$form->switch('marketable', $getGoodColumns['marketable'])->states($states);
 				$form->text('p_order', $getGoodColumns['p_order'])->default(30);
-
-				$form->hasMany('goods_ports', '端口说明', function ($form) use ($getGoodsprotColumns) {
-					$form->number('ports_1', $getGoodsprotColumns['ports_1']);
-					$form->number('ports_2', $getGoodsprotColumns['ports_2']);
-					$form->number('ports_3', $getGoodsprotColumns['ports_3']);
-					$form->number('ports_4', $getGoodsprotColumns['ports_4']);
-					$form->number('ports_5', $getGoodsprotColumns['ports_5']);
-					$form->number('ports_6', $getGoodsprotColumns['ports_6']);
-					$form->number('ports_7', $getGoodsprotColumns['ports_7']);
-					$form->number('ports_8', $getGoodsprotColumns['ports_8']);
-					$form->number('ports_9', $getGoodsprotColumns['ports_9']);
-					$form->number('ports_10', $getGoodsprotColumns['ports_10']);
-					$form->number('ports_11', $getGoodsprotColumns['ports_11']);
-					$form->number('ports_12', $getGoodsprotColumns['ports_12']);
-					$form->number('ports_13', $getGoodsprotColumns['ports_13']);
+				/*
+			$form->hasMany('goods_ports', '端口说明', function ($form) use ($getGoodsprotColumns) {
+				$form->number('ports_1', $getGoodsprotColumns['ports_1']);
+				$form->number('ports_2', $getGoodsprotColumns['ports_2']);
+				$form->number('ports_3', $getGoodsprotColumns['ports_3']);
+				$form->number('ports_4', $getGoodsprotColumns['ports_4']);
+				$form->number('ports_5', $getGoodsprotColumns['ports_5']);
+				$form->number('ports_6', $getGoodsprotColumns['ports_6']);
+				$form->number('ports_7', $getGoodsprotColumns['ports_7']);
+				$form->number('ports_8', $getGoodsprotColumns['ports_8']);
+				$form->number('ports_9', $getGoodsprotColumns['ports_9']);
+				$form->number('ports_10', $getGoodsprotColumns['ports_10']);
+				$form->number('ports_11', $getGoodsprotColumns['ports_11']);
+				$form->number('ports_12', $getGoodsprotColumns['ports_12']);
+				$form->number('ports_13', $getGoodsprotColumns['ports_13']);
 //					$form->number('ports_14', $getGoodsprotColumns['ports_14']);
-					$form->number('ports_15', $getGoodsprotColumns['ports_15']);
-					$form->number('ports_16', $getGoodsprotColumns['ports_16']);
-					$form->number('ports_17', $getGoodsprotColumns['ports_17']);
-					$form->number('ports_18', $getGoodsprotColumns['ports_18']);
-					$form->number('ports_19', $getGoodsprotColumns['ports_19']);
-					$form->number('ports_20', $getGoodsprotColumns['ports_20']);
-				});
-				$form->html('', '<h4>组件(可选)</h4>');
-				$form->divide();
-				$form->multipleSelect('assemblie_versions', $getAssemblieColumns['asse_version'])->options(Assemblie_version::all()->pluck('asse_version', 'id'));
-				$form->multipleSelect('assemblie_highs', $getAssemblieColumns['asse_high'])->options(Assemblie_high::all()->pluck('asse_high', 'id'));
+				$form->number('ports_15', $getGoodsprotColumns['ports_15']);
+				$form->number('ports_16', $getGoodsprotColumns['ports_16']);
+				$form->number('ports_17', $getGoodsprotColumns['ports_17']);
+				$form->number('ports_18', $getGoodsprotColumns['ports_18']);
+				$form->number('ports_19', $getGoodsprotColumns['ports_19']);
+				$form->number('ports_20', $getGoodsprotColumns['ports_20']);
+			});
+				*/
 
 
 //				$form->hasMany('assemblies', '组件(可选)', function (NestedForm $form) use ($getAssemblieColumns) {
@@ -261,12 +272,7 @@ class GoodsController extends Controller
 //					$form->text('asse_high', $getAssemblieColumns['asse_high'])->rules('required');
 //				});
 
-				$form->hasMany('standardfits', '标准配件', function (NestedForm $form) use ($getStandardfitColumns) {
-					$form->number('bracket', $getStandardfitColumns['bracket']);
-					$form->number('expansionbolt', $getStandardfitColumns['expansionbolt']);
-					$form->number('hexagonbolt', $getStandardfitColumns['hexagonbolt']);
-					$form->number('lightning', $getStandardfitColumns['lightning']);
-				});
+
 //				$form->hasMany('goods_keywords', trans('admin::lang.products.keyword'), function (NestedForm $form) use ($getGoodswordColumns) {
 //					$form->text('keyword', $getGoodswordColumns['keyword']);
 //				});
@@ -278,7 +284,7 @@ class GoodsController extends Controller
 				$form->display('created_at', trans('admin::lang.created_at'));
 				$form->display('updated_at', trans('admin::lang.updated_at'));
 			});
-			$form->tab('电性能指标', function ($form) use ($getElectricColumns) {
+			$form->tab('电性能指标', function ($form) use ($getElectricColumns,$getAspect_picColumns) {
 
 				$form->hasMany('electrics', '电性能指标(常规)', function (NestedForm $form) use ($getElectricColumns) {
 					$form->hidden('type')->default(1);
@@ -299,6 +305,7 @@ class GoodsController extends Controller
 					$form->text('capacity', $getElectricColumns['capacity']);
 
 				});
+
 				$form->hasMany('electrics_inte', '电性能指标(智能)', function (NestedForm $form) use ($getElectricColumns) {
 					$form->hidden('type')->default(2);
 					$form->html('', '<h4>通用参数</h4>');
@@ -363,6 +370,8 @@ class GoodsController extends Controller
 					$form->text('impedance', $getElectricColumns['impedance']);
 					$form->text('unitport', $getElectricColumns['unitport']);
 					$form->text('calibrationport', $getElectricColumns['calibrationport']);
+
+
 //					$form->multipleImage('pictures',$getElectricColumns['pictures']);
 					/*
 					$form->text('workingband', $getElectricColumns['workingband']);
@@ -382,10 +391,15 @@ class GoodsController extends Controller
 					$form->text('capacity', $getElectricColumns['capacity']);
 					*/
 				});
+				$form->hasMany('aspect_pics', '方向图', function (NestedForm $form) use ($getAspect_picColumns) {
+					$form->text('title',$getAspect_picColumns['title']);
+					$form->image('pic_url',$getAspect_picColumns['pic_url']);
+				});
 			});
-			$form->tab('机械性指标', function (Form $form) use ($getMechanicsColumns, $getGoodsprotColumns) {
+			$form->tab('机械性能指标', function (Form $form) use ($getAssemblieColumns, $getMechanicsColumns, $getGoodsprotColumns, $getStandardfitColumns) {
 //				$form->hasMany('mechanics','',function(NestedForm $form)use ($getMechanicsColumns,$getGoodsprotColumns){
-				$form->select('mechanics.jointtype', $getMechanicsColumns['jointtype'])->options($getGoodsprotColumns);
+				//$form->select('mechanics.jointtype', $getMechanicsColumns['jointtype'])->options($getGoodsprotColumns);
+				$form->text('mechanics.jointtype', $getMechanicsColumns['jointtype']);
 				$form->text('mechanics.antennasize', $getMechanicsColumns['antennasize'])->help('φ315*H(H=1900)');
 				$form->text('mechanics.antennanumber', $getMechanicsColumns['antennanumber'])->help('面');
 				$form->text('mechanics.x_range', $getMechanicsColumns['x_range']);
@@ -429,11 +443,20 @@ class GoodsController extends Controller
 				$form->text('mechanics.protect', $getMechanicsColumns['protect']);
 				$form->text('mechanics.other', $getMechanicsColumns['other']);
 				$form->text('mechanics.exposed', $getMechanicsColumns['exposed']);
+				$form->hasMany('standardfits', '标准配件', function (NestedForm $form) use ($getStandardfitColumns) {
+					$form->number('bracket', $getStandardfitColumns['bracket']);
+					$form->number('expansionbolt', $getStandardfitColumns['expansionbolt']);
+					$form->number('hexagonbolt', $getStandardfitColumns['hexagonbolt']);
+					$form->number('lightning', $getStandardfitColumns['lightning']);
+				});
+				$form->html('', '<h4>可选配件</h4>');
+				$form->divide();
+				$form->multipleSelect('assemblie_versions', $getAssemblieColumns['asse_version'])->options(Assemblie_version::all()->pluck('asse_version', 'id'));
+				$form->multipleSelect('assemblie_highs', $getAssemblieColumns['asse_high'])->options(Assemblie_high::all()->pluck('asse_high', 'id'));
 
 
 			});
 //				});
-
 
 
 			$form->tab(trans('admin::lang.goods.images'), function ($form) {
@@ -446,6 +469,7 @@ class GoodsController extends Controller
 				$form->textarea('serviceword', '文本说明')->rows(10);
 				$form->multipleImage('servicepic', '图片');
 			});
+
 
 			/**
 			 * $form->tab(trans('admin::lang.products.keyword'), function ($form) use ($getGoodswordColumns) {

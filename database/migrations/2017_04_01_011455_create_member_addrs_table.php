@@ -15,7 +15,7 @@ class CreateMemberAddrsTable extends Migration {
 		Schema::create('member_addrs', function(Blueprint $table)
 		{
 			$table->engine='InnoDB';
-			$table->increments('addr_id', true)->comment('会员地址ID');
+			$table->increments('id', true)->comment('会员地址ID');
 			$table->integer('member_id')->unsigned()->default(0)->comment('会员ID');
 			$table->string('name', 50)->nullable()->comment('会员地址名称');
 			$table->string('lastname', 50)->nullable()->comment('姓名');
