@@ -71,6 +71,14 @@ class Good extends Model
 	];
 
 	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function aspect_pics()
+	{
+		return $this->hasMany(Aspect_pic::class, 'goods_id');
+	}
+
+	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
 	 */
 	public function assemblie_highs()
@@ -276,7 +284,7 @@ class Good extends Model
 				'product_model' => $goods['product_model'],
 				'product_desc' => $goods['product_desc'],
 				'image_default_id' => $imagePaths['image_id'],
-				'serviceword'=>$goods['serviceword'],
+				'serviceword' => $goods['serviceword'],
 //				'servicepic'=>$goods['servicepic'],
 			]);
 			$goodsObj = Good::findOrFail($id);
