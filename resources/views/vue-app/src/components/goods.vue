@@ -49,7 +49,12 @@
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
                <group class="margin-0" v-for="(item,index) in goods_data_list.new_electrics" v-show="collapse1">
-                <cell class="font-normal" :title="parms_table.electrics[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+                <cell class="font-normal" :title="parms_table.electrics[index]||index" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'">
+                  <flexbox :gutter="0" slot="value" class="text-center">
+                    <flexbox-item v-for="(_item,_index) in item">
+                     {{_item}}
+                    </flexbox-item>
+                  </flexbox>
                 </cell>
               </group>
                <div @click="collapse(2)" v-if="goods_data_list.mechanics.constructor!=Array" :class="{'border-1px-b':!collapse2}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
@@ -58,7 +63,7 @@
                   <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                 </div>
                <group class="margin-0" v-show="collapse2">
-                <cell v-for="(item,index) in goods_data_list.mechanics" class="font-normal" :title="parms_table.mechanics[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+                <cell v-for="(item,index) in goods_data_list.mechanics" class="font-normal" :title="parms_table.mechanics[index]||index" :value="item" v-if="!!item&&index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
               <div @click="collapse(3)"  :class="{'border-1px-b':!collapse3}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
@@ -198,18 +203,23 @@ import api from '../api/index.js'
             for(var i=0;i<data[key].length;i++){
               //遍历 key 值,相同做数据合并
               for(var k in data[key][i]){
-                if(k=="created_at"||k=="id"||k=="updated_at"){
+                if(k=="created_at"||k=="id"||k=="updated_at"||k=="type"){
                   continue;
                 }
                 if(!!data[key][i][k]){
-                  if(!!new_obj[k]){
-                    if(new_obj[k]==data[key][i][k]){
-                      continue;
-                    }
-                    new_obj[k]=new_obj[k]+'  '+data[key][i][k];
-                  }else{
-                    new_obj[k]=data[key][i][k];
+                  // if(!!new_obj[k]){
+                  //   if(new_obj[k]==data[key][i][k]){
+                  //     continue;
+                  //   }
+                  //   new_obj[k]=new_obj[k]+'  '+data[key][i][k];
+                  // }else{
+                  //   new_obj[k]=data[key][i][k];
+                  // } 
+                  if(!new_obj[k]){
+                    new_obj[k]=[];
                   } 
+                   new_obj[k].push(data[key][i][k]);
+                  // new_obj[i]=data[key][i][k];
                 }
               }
             }
