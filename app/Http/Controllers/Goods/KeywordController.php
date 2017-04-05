@@ -66,8 +66,9 @@ class KeywordController extends Controller
 //		$wheres = $filtered->all();
 		$withRelations = collect($relations);
 		$filteredRelations = $withRelations->except(['Goods_types', 'mechanics', 'goods_ports', 'assemblies', 'standardfits', 'electrics',
-				'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images', 'goods_cats']
-		);
+				'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images',
+			'goods_cats','aspect_pics'
+			]);
 		$with = $filteredRelations->all();
 
 		$goods = Good::with($with)->whereIn($keys[0], $multiplied)->orderBy('updated_at', 'DESC')->paginate($per_page)->toArray();
@@ -80,7 +81,7 @@ class KeywordController extends Controller
 
 			}
 		}
-		return $goods;
+//		return $goods;
 		return json_encode($goods);
 	}
 
