@@ -19,20 +19,7 @@
           <vue-q-art v-if="false" :config="config" class="qrcode-content"></vue-q-art>
         </flexbox-item>
       </flexbox>
-      <div class="padding-10 margin-tb-10 bg-white" v-if="false">
-        <flexbox :gutter="0" wrap="nowrap">
-          <flexbox-item :span="11">
-            <p>颜色: <span>红色</span><span>藏蓝</span><span>黑色</span><span>粉红</span></p>
-            <p>尺码: <span>38</span><span>39</span><span>40</span><span>42</span></p>
-          </flexbox-item>
-          <flexbox-item :span="1">
-            <span class="iconfont">&#xe65f;</span>
-          </flexbox-item>
-        </flexbox>
-      </div>
-      <div class="margin-t-10 padding-rl-10 bg-white">
-        <x-button v-if="false" mini plain type="warn">优惠</x-button>
-      </div>
+      
       <div class="goods-desc" style="height:100%;padding-bottom:3rem;box-sizing:border-box">
         <tab v-model="index" active-color="#FB4F5B">
           <tab-item>商品详情</tab-item>
@@ -63,7 +50,7 @@
                   <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                 </div>
                <group class="margin-0" v-show="collapse2">
-                <cell v-for="(item,index) in goods_data_list.mechanics" class="font-normal" :title="parms_table.mechanics[index]||index" :value="item" v-if="!!item&&index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+                <cell v-for="(item,index) in goods_data_list.mechanics" class="font-mini" :title="parms_table.mechanics[index]||index" :value="item" v-if="!!item&&index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
               <div @click="collapse(3)"  :class="{'border-1px-b':!collapse3}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
@@ -72,7 +59,7 @@
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
               <group class="margin-0" v-for="(item,index) in goods_data_list.new_standardfits" v-show="collapse3">
-                <cell class="font-normal" :title="parms_table.standardfits[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+                <cell class="font-mini" :title="parms_table.standardfits[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
                <div @click="collapse(4)"  :class="{'border-1px-b':!collapse4}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
@@ -81,7 +68,7 @@
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
               <group class="margin-0" v-for="(item,index) in goods_data_list.new_assemblies" v-show="collapse4">
-                <cell class="font-normal" :title="parms_table.assemblies[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+                <cell class="font-mini" :title="parms_table.assemblies[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
         </div>
@@ -313,11 +300,14 @@ import api from '../api/index.js'
   width:4rem;
   height:4rem;
 }
+.params-cell .weui-cell{
+  padding:10px 5px;
+}
 .params-cell .vux-cell-primary{
   flex:0.5
 }
 .params-cell .weui-cell__ft{
-  flex:1.2;
+  flex:1.4;
   text-align:center;
 }
 </style>
