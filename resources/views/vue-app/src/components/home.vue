@@ -85,7 +85,7 @@
         </flexbox-item>
       </flexbox>
        <card-list 
-              v-for="(item,index) in scroller_data.data">
+              v-for="(item,index) in scroller_data.data"  class="border-1px-b">
               <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  class="block" slot="card-media">
                 <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
               </router-link>
