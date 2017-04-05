@@ -40,6 +40,7 @@ class GoodsController extends Controller
 			$content->header(trans('admin::lang.goods.goods') . trans('admin::lang.headers.header'));
 			$content->description(trans('admin::lang.goods.goods') . trans('admin::lang.headers.description'));
 //			$content = new Content();
+			/*
 			$content->row(function (Row $row) {
 				$row->column(6, function (Column $column) {
 					$form = new \Encore\Admin\Widgets\Form();
@@ -50,6 +51,7 @@ class GoodsController extends Controller
 					return $column->append($box);
 				});
 			});
+			*/
 			$content->body($this->grid());
 		});
 	}
