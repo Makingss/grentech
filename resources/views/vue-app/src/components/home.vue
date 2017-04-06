@@ -277,5 +277,6 @@ export default {
 <style scoped>
   .scroll-content{
     width:100%;
+    overflow:hidden;
   }
 </style>
