@@ -7,7 +7,7 @@
         </swiper-item>
       </swiper>
       <flexbox :gutter="0" wrap="nowrap" class="bg-white">
-        <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="9">
+        <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="12">
           <p class="line-ellispse-2">{{goods_data_list.name}}</p>
            <div class="item-title line-ellispse-2 font-bold">
             频段:  <span v-for="(_item,_index) in goods_data_list.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics[_index+1].workingband">/</i></span> M
@@ -24,7 +24,7 @@
             <s>{{goods_data_list.mktprice||'暂无'}}</s>
           </p>
         </flexbox-item>
-        <flexbox-item :span="3" class="link-img padding-rl-6 border-box">
+        <flexbox-item :span="3" class="link-img padding-rl-6 border-box" v-if="false">
           <vue-q-art v-if="false" :config="config" class="qrcode-content"></vue-q-art>
         </flexbox-item>
       </flexbox>
