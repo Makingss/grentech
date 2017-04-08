@@ -41,16 +41,16 @@ class GoodsController extends Controller
 			$content->description(trans('admin::lang.goods.goods') . trans('admin::lang.headers.description'));
 //			$content = new Content();
 
-			$content->row(function (Row $row) {
-				$row->column(6, function (Column $column) {
-					$form = new \Encore\Admin\Widgets\Form();
-					$form->text();
-					$box = new Box('dsdggggfffffffffffffffffff', $form);
-					$box->style('danger');
-					$box->solid();
-					return $column->append($box);
-				});
-			});
+//			$content->row(function (Row $row) {
+//				$row->column(6, function (Column $column) {
+//					$form = new \Encore\Admin\Widgets\Form();
+//					$form->text();
+//					$box = new Box('dsdggggfffffffffffffffffff', $form);
+//					$box->style('danger');
+//					$box->solid();
+//					return $column->append($box);
+//				});
+//			});
 
 			$content->body($this->grid());
 		});
@@ -455,6 +455,7 @@ class GoodsController extends Controller
 				});
 				$form->html('', '<h4>可选配件</h4>');
 				$form->divide();
+				$form->text('mechanics.partsdesc',$getMechanicsColumns['partsdesc']);
 				$form->multipleSelect('assemblie_versions', $getAssemblieColumns['asse_version'])->options(Assemblie_version::all()->pluck('asse_version', 'id'));
 				$form->multipleSelect('assemblie_highs', $getAssemblieColumns['asse_high'])->options(Assemblie_high::all()->pluck('asse_high', 'id'));
 
