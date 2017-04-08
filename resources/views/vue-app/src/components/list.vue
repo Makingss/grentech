@@ -173,8 +173,8 @@ export default {
     handler_query:function(params){
        var self=this;
        var query=this.$route.query;
-        if(!!params&&params.search){
-          query={search:self.search_input};
+        if(!!params&&params.id){
+          query={id:self.search_input};
         }
         console.log(query);
         query.relations=["images","image_attach"];
