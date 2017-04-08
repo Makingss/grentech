@@ -181,7 +181,7 @@ export default {
         var loading=false;
         if(query["id"]&&!loading){
           loading=true;
-           api.get_similar_by_kwd({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"],search:query.search,per_page:10}).then(res=>{
+           api.get_similar_by_kwd({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"],id:query.search,per_page:10}).then(res=>{
                console.log(res);
                loading=false;
                self.commit_resdata(res.data,params);
