@@ -108,6 +108,7 @@
             is_show: false,
             show_search_bar: false,
             navbar_active: 2,
+            hide_tabbar:true,
           },
           'vchart': {
             title: '我的报表',
@@ -215,7 +216,7 @@
       }
       Vue.prototype.get_sessionStorage_user_info=function(){
         return !!window.sessionStorage.user_info?JSON.parse(window.sessionStorage.user_info):null;
-      } 
+      }
 
       /****************正则转驼峰式命名********************/
       Vue.prototype.trans_camel = function (str) {
