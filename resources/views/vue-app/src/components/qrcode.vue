@@ -63,7 +63,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .myqrcode button{
   display:none;
 }
