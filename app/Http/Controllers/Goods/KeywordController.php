@@ -30,7 +30,13 @@ class KeywordController extends Controller
 	 */
 	public function similarByKeys(Request $request)
 	{
-		$goods_ids = Goods_keyword::where('keyword_id', $request->get('id'))->get(['good_id'])->toArray();
+		if (is_numeric($request->get('id'))) {
+			$goods_ids = Goods_keyword::where('keyword_id', $request->get('id'))->get(['good_id'])->toArray();
+		} else {
+			$keyids = Keyword::where('keyname', 'like', '%' . $request->get('id') . '%')->get(['id'])->toArray();
+			$goods_ids = Goods_keyword::whereIn('keyword_id', $keyids)->get(['good_id'])->toArray();
+		}
+
 		$collect = collect($goods_ids)->map(function ($goods_id) {
 			foreach ($goods_id as $key => $id)
 				$goods_id['goods_id'] = $id;
@@ -66,9 +72,9 @@ class KeywordController extends Controller
 //		$wheres = $filtered->all();
 		$withRelations = collect($relations);
 		$filteredRelations = $withRelations->except(['Goods_types', 'mechanics', 'goods_ports', 'assemblies', 'standardfits', 'electrics',
-				'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images',
-			'goods_cats','aspect_pics'
-			]);
+			'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images',
+			'goods_cats', 'aspect_pics'
+		]);
 		$with = $filteredRelations->all();
 
 		$goods = Good::with($with)->whereIn($keys[0], $multiplied)->orderBy('updated_at', 'DESC')->paginate($per_page)->toArray();
