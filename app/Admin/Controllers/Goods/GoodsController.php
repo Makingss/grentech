@@ -404,7 +404,7 @@ class GoodsController extends Controller
 
 				$form->hasMany('mechanics', '美化天线', function (NestedForm $form) use ($getMechanicsColumns) {
 
-					$form->text('type', $getMechanicsColumns['type'])->default('1');
+					$form->hidden('type', $getMechanicsColumns['type'])->default('1');
 					$form->text('jointtype', $getMechanicsColumns['jointtype']);
 					$form->text('antennasize', $getMechanicsColumns['antennasize'])->help('φ315*H(H=1900)');
 					$form->text('antennanumber', $getMechanicsColumns['antennanumber'])->help('面');
@@ -436,14 +436,14 @@ class GoodsController extends Controller
 					$form->text('antennasize', $getMechanicsColumns['antennasize'])->help('φ315*H(H=1900)');
 					$form->number('antennanweight', $getMechanicsColumns['antennanweight']);
 
-					$form->text('adjustmentrange',$getMechanicsColumns['adjustmentrange']);
+					$form->text('adjustmentrange', $getMechanicsColumns['adjustmentrange']);
 
 					$form->text('speed', $getMechanicsColumns['speed'])->default('0-0');
 					$form->text('limitspeed', $getMechanicsColumns['limitspeed'])->default('0-0');
 					$form->text('antennandata', $getMechanicsColumns['antennandata']);
 
-					$form->text('workingtemperature',$getMechanicsColumns['workingtemperature'])->default('0-0');
-					$form->text('gripdiameter',$getMechanicsColumns['gripdiameter'])->default('0-0');
+					$form->text('workingtemperature', $getMechanicsColumns['workingtemperature'])->default('0-0');
+					$form->text('gripdiameter', $getMechanicsColumns['gripdiameter'])->default('0-0');
 				});
 
 				/*
@@ -495,7 +495,7 @@ class GoodsController extends Controller
 				$form->fileinput('image_default_id', trans('admin::lang.goods.images'));
 				$form->divide();
 				$form->html('', $label = '商品详细介绍');
-				$form->wangeditor('intro');	//'详细介绍'
+				$form->wangeditor('intro');    //'详细介绍'
 			});
 			$form->tab('服务信息', function ($form) {
 				$form->textarea('serviceword', '文本说明')->rows(10);
