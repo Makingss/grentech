@@ -143,7 +143,7 @@ export default {
     submit_search:function(){
       console.log("搜索测试");
       var self=this;
-      this.$router.push({name:'list',query:{search:self.search_input}});
+      this.$router.push({name:'list',query:{id:self.search_input}});
       self.goods_data=[];//清空记录
       self.next_page_url=null;
       this.handler_query({loading:true});
@@ -179,9 +179,9 @@ export default {
         console.log(query);
         query.relations=["images","image_attach"];
         var loading=false;
-        if(query["search"]&&!loading){
+        if(query["id"]&&!loading){
           loading=true;
-           api.get_search_result({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"],search:query.search,per_page:10}).then(res=>{
+           api.get_similar_by_kwd({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"],search:query.search,per_page:10}).then(res=>{
                console.log(res);
                loading=false;
                self.commit_resdata(res.data,params);
