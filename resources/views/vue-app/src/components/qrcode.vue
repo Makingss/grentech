@@ -63,7 +63,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
 .myqrcode button{
   display:none;
 }
@@ -85,10 +85,8 @@ export default {
   width:7rem;
   height:7rem;
 }
-.qrcode-content button{
-  display:none;
-}
-.card-qrcode{
+
+.myqrcode .card-qrcode{
   height:90%;
   position:absolute;
   top:5%;
@@ -97,7 +95,7 @@ export default {
   overflow:hidden;
   box-shadow:3px 3px 10px #444;
 }
-.card-qrcode-header{
+.myqrcode .card-qrcode-header{
   // padding:20px 0;
   height:57%;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f75154+0,f0a66d+100 */
@@ -108,12 +106,12 @@ export default {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f75154', endColorstr='#f0a66d',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 }
-.brand-footer{
+.myqrcode .brand-footer{
   position:absolute;
   bottom:1rem;
   width:100%;
 }
-.user-logo{
+.myqrcode  .user-logo{
   width:4rem;
   height:4rem;
   box-shadow:0 0  10px #f0a66d;
