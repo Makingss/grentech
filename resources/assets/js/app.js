@@ -15,7 +15,7 @@ import App from './App.vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
 Vue.use(ElementUI);
-
+Vue.component('header-section',require('./components/home/Header-section.vue'));
 Vue.component('app',require('./App.vue'));
 Vue.component('user-login', require('./components/Login.vue'));
 Vue.component('question-follow-button', require('./components/QuestionFollowBotton.vue'));
