@@ -110,9 +110,12 @@ class Good extends Model
 	 */
 	public function mechanics()
 	{
-		return $this->hasOne(Mechanic::class, 'goods_id');
+		return $this->hasMany(Mechanic::class, 'goods_id')->where('type',1);
 	}
-
+	public function mechanics_inte()
+    {
+        return $this->hasMany(Mechanic::class, 'goods_id')->where('type',2);
+    }
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */

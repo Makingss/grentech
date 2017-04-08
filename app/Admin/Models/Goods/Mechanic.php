@@ -31,7 +31,8 @@ class Mechanic extends Model
 		'PH',
 		'protect',
 		'other',
-		'exposed'
+		'exposed',
+        'type'
 	];
 	protected $table = 'mechanics';
 
