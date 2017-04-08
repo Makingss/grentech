@@ -31,7 +31,12 @@ class Mechanic extends Model
 		'PH',
 		'protect',
 		'other',
-		'exposed'
+		'exposed',
+		'type',
+		'partsdesc',
+		'adjustmentrange',
+		'workingtemperature',
+		'gripdiameter'
 	];
 	protected $table = 'mechanics';
 

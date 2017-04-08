@@ -398,9 +398,55 @@ class GoodsController extends Controller
 					$form->image('pic_url', $getAspect_picColumns['pic_url']);
 				});
 			});
-			$form->tab('机械性能指标', function (Form $form) use ($getAssemblieColumns, $getMechanicsColumns, $getGoodsprotColumns, $getStandardfitColumns) {
+			$form->tab('机械性能指标', function ($form) use ($getAssemblieColumns, $getMechanicsColumns, $getGoodsprotColumns, $getStandardfitColumns) {
 //				$form->hasMany('mechanics','',function(NestedForm $form)use ($getMechanicsColumns,$getGoodsprotColumns){
 				//$form->select('mechanics.jointtype', $getMechanicsColumns['jointtype'])->options($getGoodsprotColumns);
+
+				$form->hasMany('mechanics', '美化天线', function (NestedForm $form) use ($getMechanicsColumns) {
+
+					$form->text('type', $getMechanicsColumns['type'])->default('1');
+					$form->text('jointtype', $getMechanicsColumns['jointtype']);
+					$form->text('antennasize', $getMechanicsColumns['antennasize'])->help('φ315*H(H=1900)');
+					$form->text('antennanumber', $getMechanicsColumns['antennanumber'])->help('面');
+					$form->text('x_range', $getMechanicsColumns['x_range']);
+					$form->number('antennanweight', $getMechanicsColumns['antennanweight']);
+					$form->text('guardmode', $getMechanicsColumns['guardmode']);
+					$form->text('installmodel', $getMechanicsColumns['installmodel']);
+					$form->text('maintainmodel', $getMechanicsColumns['maintainmodel']);
+					$form->text('antennandata', $getMechanicsColumns['antennandata']);
+					$form->text('surfacing', $getMechanicsColumns['surfacing']);
+					$form->text('antennanageing', $getMechanicsColumns['antennanageing']);
+					$form->text('temperature', $getMechanicsColumns['temperature'])->default('0-0');
+					$form->text('limittemperature', $getMechanicsColumns['limittemperature'])->default('0-0');
+					$form->text('relativehumidity', $getMechanicsColumns['relativehumidity'])->default('0-0');
+					$form->text('atmos', $getMechanicsColumns['atmos'])->default('0-0');
+					$form->text('speed', $getMechanicsColumns['speed'])->default('0-0');
+					$form->text('limitspeed', $getMechanicsColumns['limitspeed'])->default('0-0');
+					$form->number('thickness', $getMechanicsColumns['thickness'])->help('mm不被破坏');
+					$form->text('flameretardant', $getMechanicsColumns['flameretardant']);
+					$form->text('ultraviolet', $getMechanicsColumns['ultraviolet']);
+					$form->text('PH', $getMechanicsColumns['PH']);
+					$form->text('protect', $getMechanicsColumns['protect']);
+					$form->text('other', $getMechanicsColumns['other']);
+					$form->text('exposed', $getMechanicsColumns['exposed']);
+				});
+				$form->hasMany('mechanics_inte', '基站/室分天线', function (NestedForm $form) use ($getMechanicsColumns) {
+					$form->hidden('type', $getMechanicsColumns['type'])->default('2');
+					$form->text('jointtype', $getMechanicsColumns['jointtype']);
+					$form->text('antennasize', $getMechanicsColumns['antennasize'])->help('φ315*H(H=1900)');
+					$form->number('antennanweight', $getMechanicsColumns['antennanweight']);
+
+					$form->text('adjustmentrange',$getMechanicsColumns['adjustmentrange']);
+
+					$form->text('speed', $getMechanicsColumns['speed'])->default('0-0');
+					$form->text('limitspeed', $getMechanicsColumns['limitspeed'])->default('0-0');
+					$form->text('antennandata', $getMechanicsColumns['antennandata']);
+
+					$form->text('workingtemperature',$getMechanicsColumns['workingtemperature'])->default('0-0');
+					$form->text('gripdiameter',$getMechanicsColumns['gripdiameter'])->default('0-0');
+				});
+
+				/*
 				$form->text('mechanics.jointtype', $getMechanicsColumns['jointtype']);
 				$form->text('mechanics.antennasize', $getMechanicsColumns['antennasize'])->help('φ315*H(H=1900)');
 				$form->text('mechanics.antennanumber', $getMechanicsColumns['antennanumber'])->help('面');
@@ -419,26 +465,6 @@ class GoodsController extends Controller
 				$form->text('mechanics.atmos', $getMechanicsColumns['atmos'])->default('0-0');
 				$form->text('mechanics.speed', $getMechanicsColumns['speed'])->default('0-0');
 				$form->text('mechanics.limitspeed', $getMechanicsColumns['limitspeed'])->default('0-0');
-				/*
-				$form->slider('mechanics.temperature', $getMechanicsColumns['temperature'])->options(
-					['type' => 'double', 'max' => 100, 'min' => -100, 'step' => 1, 'postfix' => '°']
-				);
-				$form->slider('mechanics.limittemperature', $getMechanicsColumns['limittemperature'])->options(
-					['type' => 'double', 'max' => 100, 'min' => -100, 'step' => 1, 'postfix' => '°']
-				);
-				$form->slider('mechanics.relativehumidity', $getMechanicsColumns['relativehumidity'])->options(
-					['type' => 'double', 'max' => 200, 'min' => 1, 'step' => 1, 'postfix' => '°']
-				);
-				$form->slider('mechanics.atmos', $getMechanicsColumns['atmos'])->options(
-					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'kpa']
-				);
-				$form->slider('mechanics.speed', $getMechanicsColumns['speed'])->options(
-					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'km/h']
-				);
-				$form->slider('mechanics.limitspeed', $getMechanicsColumns['limitspeed'])->options(
-					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'km/h']
-				);
-				*/
 				$form->number('mechanics.thickness', $getMechanicsColumns['thickness'])->help('mm不被破坏');
 
 				$form->text('mechanics.flameretardant', $getMechanicsColumns['flameretardant']);
@@ -447,6 +473,7 @@ class GoodsController extends Controller
 				$form->text('mechanics.protect', $getMechanicsColumns['protect']);
 				$form->text('mechanics.other', $getMechanicsColumns['other']);
 				$form->text('mechanics.exposed', $getMechanicsColumns['exposed']);
+				*/
 				$form->hasMany('standardfits', '标准配件', function (NestedForm $form) use ($getStandardfitColumns) {
 					$form->number('bracket', $getStandardfitColumns['bracket']);
 					$form->number('expansionbolt', $getStandardfitColumns['expansionbolt']);
@@ -455,7 +482,7 @@ class GoodsController extends Controller
 				});
 				$form->html('', '<h4>可选配件</h4>');
 				$form->divide();
-				$form->text('mechanics.partsdesc',$getMechanicsColumns['partsdesc']);
+//				$form->text('mechanics.partsdesc',$getMechanicsColumns['partsdesc']);
 				$form->multipleSelect('assemblie_versions', $getAssemblieColumns['asse_version'])->options(Assemblie_version::all()->pluck('asse_version', 'id'));
 				$form->multipleSelect('assemblie_highs', $getAssemblieColumns['asse_high'])->options(Assemblie_high::all()->pluck('asse_high', 'id'));
 
