@@ -21,6 +21,7 @@ use Encore\Admin\Widgets\Chart\Pie;
 use Encore\Admin\Widgets\Chart\PolarArea;
 use Encore\Admin\Widgets\Chart\Radar;
 use Encore\Admin\Widgets\Collapse;
+use Encore\Admin\Widgets\Form;
 use Encore\Admin\Widgets\InfoBox;
 use Encore\Admin\Widgets\Tab;
 use Encore\Admin\Widgets\Table;
@@ -103,6 +104,16 @@ class IndexController extends Controller
 
                     $column->append((new Box('Line', new Line()))->removable()->collapsable()->style('danger'));
                 });
+                $row->column(6,function(Column $column){
+                    $form = new Form();
+                    $form->text();
+                    $box = new Box('dsd',$form);
+                    $box->style('danger');
+                    $box->solid();
+                    $column->append($box);
+                });
+
+
 
             });
 
@@ -114,8 +125,8 @@ class IndexController extends Controller
                 [4, 'xet@yahoo.com', 'William Koss', 'Becker-Raynor', '1988-09-07 23:57:45', 'open'],
                 [5, 'ipsa.aut@gmail.com', 'Ms. Antonietta Kozey Jr.', 'Braun Ltd', '2013-10-16 10:00:01', 'open'],
             ];
-
             $content->row((new Box('Table', new Table($headers, $rows)))->style('info')->solid());
+
         });
     }
 }

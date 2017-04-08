@@ -11,17 +11,24 @@ require('./bootstrap');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+import App from './App.vue';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-default/index.css';
+Vue.use(ElementUI);
 
-// Vue.component('app', require('./vue-app/src/App.vue'));
+Vue.component('app',require('./App.vue'));
 Vue.component('user-login', require('./components/Login.vue'));
 Vue.component('question-follow-button', require('./components/QuestionFollowBotton.vue'));
 Vue.component('send-code-field', require('./components/SendCodeField.vue'));
 Vue.component('example', require('./components/Example.vue'));
+
 Vue.component('passport-clients', require('./components/passport/Clients.vue'));
 
 Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue'));
 
 Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue'));
+
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    // render:h=>h(App)
 });

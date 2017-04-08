@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Admin\Models\Members\Member_data;
 use App\Events\UserSignUp;
 use Naux\Mail\SendCloudTemplate;
 use Mail;
@@ -74,6 +75,9 @@ class RegisterController extends Controller
 			'password' => bcrypt($data['password']),
 			'api_token' => str_random(60),
 			'is_admin' => 'N',
+		]);
+		Member_data::create([
+			'member_id' => $user->id,
 		]);
 		$this->sendVerifyEmailTo($user);
 		return $user;

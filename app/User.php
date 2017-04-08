@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Admin\Models\Members\Member_data;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +19,7 @@ class User extends Authenticatable
 	 * @var array
 	 */
 	protected $fillable = [
-		'name', 'email', 'password', 'is_admin', 'avatar', 'confirmation_token','api_token',
+		'name', 'email', 'password', 'is_admin', 'avatar', 'confirmation_token', 'api_token',
 	];
 
 	/**
@@ -30,6 +31,17 @@ class User extends Authenticatable
 		'password', 'remember_token',
 	];
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function member_datas()
+	{
+		return $this->hasOne(Member_data::class, 'member_id');
+	}
+
+	/**
+	 * @return bool
+	 */
 	public function isAdmin()
 	{
 		return $this->is_admin === 'Y';
@@ -49,7 +61,7 @@ class User extends Authenticatable
 	{
 		// 模板变量
 		$bind_data = ['url' => url('/password/reset', $token),
-		'name'=>$this->name,
+			'name' => $this->name,
 		];
 		$template = new SendCloudTemplate('app_reset', $bind_data);
 
@@ -58,6 +70,6 @@ class User extends Authenticatable
 			$message->to($this->email);
 		});
 	}
-	
-	
+
+
 }

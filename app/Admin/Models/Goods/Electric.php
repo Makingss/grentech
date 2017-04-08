@@ -18,6 +18,13 @@ class Electric extends Model
 
 	];
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function aspect_pics(){
+		return $this->hasMany(Aspect_pic::class,'electric_id');
+	}
+
 	public function products()
 	{
 		return $this->hasOne(Product::class, 'product_id');

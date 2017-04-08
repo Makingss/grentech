@@ -8,8 +8,8 @@ Route::group([
 	'middleware' => ['web', 'admin'],
 ], function (Router $router) {
 	$router->get('/', 'IndexController@index');
-	$router->get('/goods/getgoods', 'GoodsController@getgoods');
-	$router->get('/goods/getindex', 'GoodsController@getindex');
+	$router->get('/goods/getgoods', 'Goods\GoodsController@getgoods');
+	$router->get('/goods/getindex', 'Goods\GoodsController@getindex');
 	$router->post('/fileupload', 'Ectools\ToolsbaseController@fileUpload');
 	$router->post('/fileupload/remove', 'Ectools\ToolsbaseController@remove');
 	
@@ -23,11 +23,11 @@ Route::group([
 	$router->resource('/product', 'Products\ProductController');
 	$router->resource('/brand', 'Goods\BrandController');
 	$router->resource('/spec', 'Products\SpecificationController');
-	$router->get('/product/{product}/create', 'ProductController@create');
-	$router->get('/specvalue/values/{spec_id}', 'SpecvaluesController@spec_value');
-	$router->post('/specvalue/specvalueeditor', 'SpecvaluesController@specvalue_editor');
-	$router->get('/electric/getindex/{id}', 'ElectricController@getIndex');
-	$router->post('/electric/setajax', 'ElectricController@setAjax');
+	$router->get('/product/{product}/create', 'Products\ProductController@create');
+	$router->get('/specvalue/values/{spec_id}', 'Products\SpecvaluesController@spec_value');
+	$router->post('/specvalue/specvalueeditor', 'Products\SpecvaluesController@specvalue_editor');
+	$router->get('/electric/getindex/{id}', 'Goods\ElectricController@getIndex');
+	$router->post('/electric/setajax', 'Goods\ElectricController@setAjax');
 
 //	$router->get('/products/{key?}', 'DatatablesController@index');
 //	$router->get('/products/data/{goods_id}', 'DatatablesController@anyData');

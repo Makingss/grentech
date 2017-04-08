@@ -16,8 +16,6 @@ class CreateOrdersTable extends Migration {
 		{
 			$table->engine='InnoDB';
 			$table->bigInteger('order_id')->unsigned()->default(0)->primary()->comment('订单号');
-			$table->bigInteger('porderid')->unsigned()->nullable()->default(0)->comment('母订单号');
-			$table->bigInteger('parent_order_id')->unsigned()->nullable()->default(0)->comment('父订单号,该字段值大于0 表示该订单是子订单');
 			$table->decimal('total_amount', 20)->default(0.00)->comment('商品默认货币总值');
 			$table->decimal('final_amount', 20)->default(0.00)->comment('订单货币总值, 包含支付价格,税等');
 			$table->enum('pay_status', array('0','1','2','3','4','5'))->default('0')->index('ind_pay_status')->comment('付款状态');
@@ -26,7 +24,6 @@ class CreateOrdersTable extends Migration {
 			$table->enum('delivery_sign_status', array('0','1','2'))->nullable()->default('0')->comment('发货签收状态');
 			$table->enum('received_status', array('0','1'))->default('0')->comment('收货状态');
 			$table->enum('is_delivery', array('Y','N'))->default('Y')->comment('是否需要发货');
-			$table->integer('createtime')->unsigned()->nullable()->index('ind_createtime')->comment('下单时间');
 			$table->integer('received_time')->unsigned()->nullable()->comment('收货时间');
 			$table->integer('last_modified')->unsigned()->nullable()->index('ind_last_modified')->comment('最后更新时间');
 			$table->string('payment', 100)->nullable()->comment('支付方式');
@@ -34,7 +31,7 @@ class CreateOrdersTable extends Migration {
 			$table->string('shipping', 100)->nullable()->comment('配送方式');
 			$table->integer('member_id')->unsigned()->nullable()->index('ind_member_id')->comment('会员用户名');
 			$table->enum('promotion_type', array('normal','prepare'))->default('normal')->index('ind_promotion_type')->comment('销售类型');
-			$table->enum('status', array('active','dead','finish','cancel'))->default('active')->index('ind_status')->comment('订单状态');
+			$table->enum('status', array('active','dead','finish'))->default('active')->index('ind_status')->comment('订单状态');
 			$table->enum('confirm', array('Y','N'))->default('N')->comment('确认状态');
 			$table->string('ship_area')->nullable()->comment('收货地区');
 			$table->string('ship_name', 50)->nullable()->comment('收货人');
@@ -42,12 +39,13 @@ class CreateOrdersTable extends Migration {
 			$table->text('tostr')->nullable()->comment('订单文字描述');
 			$table->integer('itemnum')->unsigned()->nullable()->comment('订单子订单数量');
 			$table->string('ip', 15)->nullable()->comment('IP地址');
-			$table->text('ship_addr', 65535)->nullable()->comment('收货地址');
-			$table->string('ship_zip', 20)->nullable()->comment('收货人邮编');
-			$table->string('ship_tel', 50)->nullable()->comment('收货电话');
+			$table->integer('addr_id')->comment('收货地址');
+//			$table->text('ship_addr', 65535)->nullable()->comment('收货地址');
+//			$table->string('ship_zip', 20)->nullable()->comment('收货人邮编');
+//			$table->string('ship_tel', 50)->nullable()->comment('收货电话');
 			$table->string('ship_email', 200)->nullable()->comment('收货人email');
 			$table->string('ship_time', 50)->nullable()->comment('配送时间');
-			$table->string('ship_mobile', 50)->nullable()->comment('收货人手机');
+//			$table->string('ship_mobile', 50)->nullable()->comment('收货人手机');
 			$table->decimal('cost_item', 20)->default(0.00)->comment('订单商品总价格');
 			$table->enum('is_tax', array('true','false'))->default('false')->comment('是否要开发票');
 			$table->enum('tax_type', array('false','personal','company'))->default('false')->comment('发票类型');
@@ -93,11 +91,7 @@ class CreateOrdersTable extends Migration {
 			$table->integer('another_member_id')->unsigned()->nullable()->comment('代付会员ID');
 			$table->text('another_payinfo')->nullable()->comment('代付信息');
 			$table->enum('is_send_customs', array('0','1','2'))->nullable()->default('0')->comment('是否发送海关');
-			$table->enum('sync_lijing', array('0','1'))->nullable()->default('0')->comment('同步丽晶');
-			$table->enum('sync_refund', array('0','1'))->nullable()->default('0')->comment('退货同步丽晶');
-			$table->bigInteger('temp_refund_id')->unsigned()->nullable()->default(0)->comment('售后单ID');
-			$table->enum('not_shipped', array('0','1'))->nullable()->default('0')->comment('售前退货');
-			$table->integer('delivery_time')->unsigned()->nullable()->comment('发货时间');$table->timestamps();
+			$table->timestamps();
 		});
 	}
 

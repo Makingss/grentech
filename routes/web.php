@@ -24,7 +24,7 @@ Route::get('/articles/create','ArticleController@create');
 Route::get('/articles/{id}','ArticleController@show');
 Route::post('/articles','ArticleController@store');
 */
-Route::get('/email/verify/{token}', ['as' => 'email.verify', 'uses' => 'Email\EmailCont			roller@verify']);
+Route::get('/email/verify/{token}', ['as' => 'email.verify', 'uses' => 'Email\EmailController@verify']);
 Route::resource('articles', 'ArticleController');
 
 Auth::routes();
@@ -57,8 +57,17 @@ Route::get('/goods/cat', 'GoodsCatController@index');
 Route::resource('/goods/type', 'GoodsTypeController');
 Route::group(['namespace' => 'Goods'], function () {
 	Route::get('/getkeywords', 'KeywordController@getKeywords');
-		Route::get('/similar', 'KeywordController@similarByKeys');
+	Route::get('/similar', 'KeywordController@similarByKeys');
 });
+
+Route::group(['namespace' => 'Members'], function () {
+	Route::resource('addr', 'MemberaddrsController');
+});
+
+Route::group(['namespace' => 'Carts'], function () {
+	Route::resource('cart', 'CartObjectController');
+});
+
 //Route::resource('datatables', 'DatatablesController', [
 //    'anyData'  => 'datatables.data',
 //    'getIndex' => 'datatables',

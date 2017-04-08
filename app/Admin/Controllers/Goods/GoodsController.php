@@ -40,7 +40,7 @@ class GoodsController extends Controller
 			$content->header(trans('admin::lang.goods.goods') . trans('admin::lang.headers.header'));
 			$content->description(trans('admin::lang.goods.goods') . trans('admin::lang.headers.description'));
 //			$content = new Content();
-			/*
+
 			$content->row(function (Row $row) {
 				$row->column(6, function (Column $column) {
 					$form = new \Encore\Admin\Widgets\Form();
@@ -51,7 +51,7 @@ class GoodsController extends Controller
 					return $column->append($box);
 				});
 			});
-			*/
+
 			$content->body($this->grid());
 		});
 	}
@@ -257,7 +257,7 @@ class GoodsController extends Controller
 				$form->number('ports_11', $getGoodsprotColumns['ports_11']);
 				$form->number('ports_12', $getGoodsprotColumns['ports_12']);
 				$form->number('ports_13', $getGoodsprotColumns['ports_13']);
-//					$form->number('ports_14', $getGoodsprotColumns['ports_14']);
+				$form->number('ports_14', $getGoodsprotColumns['ports_14']);
 				$form->number('ports_15', $getGoodsprotColumns['ports_15']);
 				$form->number('ports_16', $getGoodsprotColumns['ports_16']);
 				$form->number('ports_17', $getGoodsprotColumns['ports_17']);
@@ -265,28 +265,28 @@ class GoodsController extends Controller
 				$form->number('ports_19', $getGoodsprotColumns['ports_19']);
 				$form->number('ports_20', $getGoodsprotColumns['ports_20']);
 			});
+
+
+
+				$form->hasMany('assemblies', '组件(可选)', function (NestedForm $form) use ($getAssemblieColumns) {
+
+					$form->text('asse_version', $getAssemblieColumns['asse_version'])->rules('required');
+					$form->text('asse_high', $getAssemblieColumns['asse_high'])->rules('required');
+				});
+
+
+				$form->hasMany('goods_keywords', trans('admin::lang.products.keyword'), function (NestedForm $form) use ($getGoodswordColumns) {
+					$form->text('keyword', $getGoodswordColumns['keyword']);
+				});
+
+
+				$form->multipleSelect('goodsKeywords')->options(Goods_keyword::all()->pluck('keyword', 'id'));
 				*/
-
-
-//				$form->hasMany('assemblies', '组件(可选)', function (NestedForm $form) use ($getAssemblieColumns) {
-
-//					$form->text('asse_version', $getAssemblieColumns['asse_version'])->rules('required');
-//					$form->text('asse_high', $getAssemblieColumns['asse_high'])->rules('required');
-//				});
-
-
-//				$form->hasMany('goods_keywords', trans('admin::lang.products.keyword'), function (NestedForm $form) use ($getGoodswordColumns) {
-//					$form->text('keyword', $getGoodswordColumns['keyword']);
-//				});
-
-
-//				$form->multipleSelect('goodsKeywords')->options(Goods_keyword::all()->pluck('keyword', 'id'));
-
 				$form->multipleSelect('keywords', '产品关键字')->options(Keyword::all()->pluck('keyname', 'id'));
 				$form->display('created_at', trans('admin::lang.created_at'));
 				$form->display('updated_at', trans('admin::lang.updated_at'));
 			});
-			$form->tab('电性能指标', function ($form) use ($getElectricColumns,$getAspect_picColumns) {
+			$form->tab('电性能指标', function ($form) use ($getElectricColumns, $getAspect_picColumns) {
 
 				$form->hasMany('electrics', '电性能指标(常规)', function (NestedForm $form) use ($getElectricColumns) {
 					$form->hidden('type')->default(1);
@@ -321,6 +321,7 @@ class GoodsController extends Controller
 					$form->text('calibration_1', $getElectricColumns['calibration_1']);
 					$form->text('calibration_2', $getElectricColumns['calibration_2']);
 					$form->text('calibration_3', $getElectricColumns['calibration_3']);
+
 					$form->text('calibration_4', $getElectricColumns['calibration_4']);
 					$form->divider();
 					$form->html('', '<h4>同极化辐射端口间的隔离度(dB)</h4>');
@@ -374,7 +375,6 @@ class GoodsController extends Controller
 					$form->text('calibrationport', $getElectricColumns['calibrationport']);
 
 
-//					$form->multipleImage('pictures',$getElectricColumns['pictures']);
 					/*
 					$form->text('workingband', $getElectricColumns['workingband']);
 					$form->text('polarization', $getElectricColumns['polarization']);
@@ -394,8 +394,8 @@ class GoodsController extends Controller
 					*/
 				});
 				$form->hasMany('aspect_pics', '方向图', function (NestedForm $form) use ($getAspect_picColumns) {
-					$form->text('title',$getAspect_picColumns['title']);
-					$form->image('pic_url',$getAspect_picColumns['pic_url']);
+					$form->text('title', $getAspect_picColumns['title']);
+					$form->image('pic_url', $getAspect_picColumns['pic_url']);
 				});
 			});
 			$form->tab('机械性能指标', function (Form $form) use ($getAssemblieColumns, $getMechanicsColumns, $getGoodsprotColumns, $getStandardfitColumns) {
@@ -419,24 +419,26 @@ class GoodsController extends Controller
 				$form->text('mechanics.atmos', $getMechanicsColumns['atmos'])->default('0-0');
 				$form->text('mechanics.speed', $getMechanicsColumns['speed'])->default('0-0');
 				$form->text('mechanics.limitspeed', $getMechanicsColumns['limitspeed'])->default('0-0');
-//				$form->slider('mechanics.temperature', $getMechanicsColumns['temperature'])->options(
-//					['type' => 'double', 'max' => 100, 'min' => -100, 'step' => 1, 'postfix' => '°']
-//				);
-//				$form->slider('mechanics.limittemperature', $getMechanicsColumns['limittemperature'])->options(
-//					['type' => 'double', 'max' => 100, 'min' => -100, 'step' => 1, 'postfix' => '°']
-//				);
-//				$form->slider('mechanics.relativehumidity', $getMechanicsColumns['relativehumidity'])->options(
-//					['type' => 'double', 'max' => 200, 'min' => 1, 'step' => 1, 'postfix' => '°']
-//				);
-//				$form->slider('mechanics.atmos', $getMechanicsColumns['atmos'])->options(
-//					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'kpa']
-//				);
-//				$form->slider('mechanics.speed', $getMechanicsColumns['speed'])->options(
-//					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'km/h']
-//				);
-//				$form->slider('mechanics.limitspeed', $getMechanicsColumns['limitspeed'])->options(
-//					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'km/h']
-//				);
+				/*
+				$form->slider('mechanics.temperature', $getMechanicsColumns['temperature'])->options(
+					['type' => 'double', 'max' => 100, 'min' => -100, 'step' => 1, 'postfix' => '°']
+				);
+				$form->slider('mechanics.limittemperature', $getMechanicsColumns['limittemperature'])->options(
+					['type' => 'double', 'max' => 100, 'min' => -100, 'step' => 1, 'postfix' => '°']
+				);
+				$form->slider('mechanics.relativehumidity', $getMechanicsColumns['relativehumidity'])->options(
+					['type' => 'double', 'max' => 200, 'min' => 1, 'step' => 1, 'postfix' => '°']
+				);
+				$form->slider('mechanics.atmos', $getMechanicsColumns['atmos'])->options(
+					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'kpa']
+				);
+				$form->slider('mechanics.speed', $getMechanicsColumns['speed'])->options(
+					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'km/h']
+				);
+				$form->slider('mechanics.limitspeed', $getMechanicsColumns['limitspeed'])->options(
+					['type' => 'double', 'max' => 500, 'min' => 1, 'step' => 1, 'postfix' => 'km/h']
+				);
+				*/
 				$form->number('mechanics.thickness', $getMechanicsColumns['thickness'])->help('mm不被破坏');
 
 				$form->text('mechanics.flameretardant', $getMechanicsColumns['flameretardant']);
@@ -465,7 +467,7 @@ class GoodsController extends Controller
 				$form->fileinput('image_default_id', trans('admin::lang.goods.images'));
 				$form->divide();
 				$form->html('', $label = '商品详细介绍');
-				$form->wangeditor('intro');//'详细介绍'
+				$form->wangeditor('intro');	//'详细介绍'
 			});
 			$form->tab('服务信息', function ($form) {
 				$form->textarea('serviceword', '文本说明')->rows(10);
@@ -581,7 +583,6 @@ class GoodsController extends Controller
 
 	public function normailzeKeywords(array $keywords)
 	{
-
 		foreach ($keywords as $k => $v) {
 			if (!$v)
 				unset($keywords[$k]);
@@ -590,16 +591,9 @@ class GoodsController extends Controller
 			if (is_numeric($keyword)) {
 				return (int)$keyword;
 			} elseif (!empty($keyword)) {
-//				$key_exists = Keyword::where('keyname', trim($keyword))->get()->toArray();
-//				if(empty($key_exists)){
 				$newKeyword = Keyword::create(['keyname' => trim($keyword)]);
 				return $newKeyword->id;
-//				}else{
-//					return [];
-//				}
-
 			}
-
 		})->toArray();
 	}
 
