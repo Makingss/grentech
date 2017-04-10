@@ -63,7 +63,7 @@
                     <flexbox-item v-for="(item,index) in goods_data_list.aspect_pics" :span="1/2">
                       <div class="font-mini">{{item.title}}</div>
                       <div class="link-img">
-                        <img :src="item.pic_url" alt="">
+                        <img :src="'/uploads/'+item.pic_url" alt="">
                       </div>
                     </flexbox-item>
                   </flexbox>
