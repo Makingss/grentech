@@ -395,7 +395,7 @@ class GoodsController extends Controller
 				});
 				$form->hasMany('aspect_pics', '方向图', function (NestedForm $form) use ($getAspect_picColumns) {
 					$form->text('title', $getAspect_picColumns['title']);
-					$form->image('pic_url', $getAspect_picColumns['pic_url'])->move('public/uploads');
+					$form->image('pic_url', $getAspect_picColumns['pic_url']);
 				});
 			});
 			$form->tab('机械性能指标', function ($form) use ($getAssemblieColumns, $getMechanicsColumns, $getGoodsprotColumns, $getStandardfitColumns) {
