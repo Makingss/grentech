@@ -33,7 +33,7 @@ class GoodsController extends Controller
 		$withRelations = collect($relations);
 		$filteredRelations = $withRelations->except(['Goods_types', 'mechanics', 'goods_ports', 'assemblies', 'standardfits', 'electrics',
 				'goods_keywords', 'products', 'brands', 'goods_lv_price', 'member_goods', 'image_attach', 'images', 'goods_cats', 'assemblie_highs',
-				'assemblie_versions','aspect_pics'
+				'assemblie_versions','aspect_pics','mechanics_inte'
 			]);
 		$with = $filteredRelations->all();
 		$goods = Good::with($with)->where($where)->orderBy('updated_at', 'DESC')->paginate($per_page)->toArray();
