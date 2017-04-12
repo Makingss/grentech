@@ -31,8 +31,9 @@
                     <div class="item-title line-ellispse-2 color-gray">
                       SAP: {{item.bn}}
                     </div>
-                    <div class="item-subtitle color-danger padding-t-4">
-                      ￥{{item.price}}
+                    <div class="item-subtitle padding-t-4">
+                      <b class="color-danger">￥{{item.price}}</b>
+                      <s class="color-gray padding-rl-10">¥{{item.mktprice||"暂无"}}</s>
                     </div>
                   </div>
                 </router-link>
@@ -58,7 +59,10 @@
                       SAP: {{item.bn}}
                     </div>
               </router-link>
-                <div class="item-subtitle color-danger padding-t-4" slot="card-subtitle">¥{{item.price}}</div>
+                <div class="item-subtitle color-danger padding-t-4" slot="card-subtitle">
+                  <b>¥{{item.price}}</b>
+                  <span class="color-gray padding-rl-10">¥{{item.mktprice||"暂无"}}</span>
+                </div>
             </card-list>
             
        <div class="load-more text-center" v-show="loading">
