@@ -27,6 +27,7 @@ use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
 use Encore\Admin\Widgets\Box;
+use Encore\Admin\Widgets\Tab;
 use Encore\Admin\Widgets\Table;
 use Illuminate\Http\Request;
 
@@ -141,6 +142,20 @@ class GoodsController extends Controller
 				$ele = new Table($headers, $electric_data);
 				return $ele;
 			}, '电性能');
+
+
+
+//			$grid->electrics('电性能')->electric(function () use ($getElectricColumns) {
+//				$form = new \Encore\Admin\Widgets\Form();
+//				$tab=new Tab();
+//				$form->date('date');
+//				$form->text();
+//				$box = new Box('第二个容器', '<p>Lorem ipsum dolor sit amet</p><p>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>');
+//				$tab->add('我的地址', $box);
+//				$ele=$tab->add('我的简介',$form);
+//
+//				return $ele;
+//			}, '电性能');
 //			$grid->images()->pluck('url')->map(function ($url) {
 //				return $_SERVER['HTTP_HOST'] . $url;
 //			})->implode('</br>')->urlwrapper();
@@ -233,6 +248,7 @@ class GoodsController extends Controller
 				$form->text('name', $getGoodColumns['name'])->rules('required|min:3');
 				$form->text('product_model', $getGoodColumns['product_model']);
 				$form->text('product_desc', $getGoodColumns['product_desc']);
+				$form->currency('mktprice',$getGoodColumns['mktprice'])->symbol('￥');
 				$form->select('brand_id', $getGoodColumns['brand_id'])->options(function () {
 					$brands = Brand::all();
 					foreach ($brands as $brandK => $brandV) {
