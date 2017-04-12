@@ -36,7 +36,7 @@ class GoodsController extends Controller
 				'assemblie_versions','aspect_pics','mechanics_inte','electrics_inte'
 			]);
 		$with = $filteredRelations->all();
-		$goods = Good::with('electrics_inte','image_attach')->where($where)->orderBy('updated_at', 'DESC')->paginate($per_page)->toArray();
+		$goods = Good::with($with)->where($where)->orderBy('updated_at', 'DESC')->paginate($per_page)->toArray();
 		foreach ($goods['data'] as $dataK => $data) {
 			foreach ($data['image_attach'] as $itemK => $item) {
 				$image_attach = Image_attach::with('images')->where('image_id', $item['image_id'])->get()->toArray();
