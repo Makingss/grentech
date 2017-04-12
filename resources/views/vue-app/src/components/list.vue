@@ -33,7 +33,7 @@
                     </div>
                     <div class="item-subtitle padding-t-4">
                       <b class="color-danger">￥{{item.price}}</b>
-                      <s class="color-gray padding-rl-10">¥{{item.mktprice||"暂无"}}</s>
+                      <s class="color-gray padding-rl-10 font-slim">{{'¥'+item.mktprice||"暂无"}}</s>
                     </div>
                   </div>
                 </router-link>
@@ -61,7 +61,7 @@
               </router-link>
                 <div class="item-subtitle color-danger padding-t-4" slot="card-subtitle">
                   <b>¥{{item.price}}</b>
-                  <span class="color-gray padding-rl-10">¥{{item.mktprice||"暂无"}}</span>
+                  <s class="color-gray font-slim padding-rl-10">{{'¥'+item.mktprice||"暂无"}}</s>
                 </div>
             </card-list>
             
