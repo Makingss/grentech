@@ -39,7 +39,7 @@
             <div v-html="goods_data_list.content"></div>
         </div>
         <div v-if="index==1" class="params-cell">
-              <div @click="collapse(1)" v-if="goods_data_list.new_electrics.length"  :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+              <div @click="collapse(1)" :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                 电性能
                 <span class="iconfont padding-rl-10" v-if="!collapse1">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
@@ -53,7 +53,7 @@
                   </flexbox>
                 </cell>
               </group>
-              <div @click="collapse(6)" v-if="goods_data_list.new_electrics_inte.length"  :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+              <div @click="collapse(6)" :class="{'border-1px-b':!collapse6}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                 电性能指标（智能）
                 <span class="iconfont padding-rl-10" v-if="!collapse6">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
@@ -67,12 +67,12 @@
                   </flexbox>
                 </cell>
               </group>
-              <div @click="collapse(6)" v-if="goods_data_list.new_mechanics_inte.length"  :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+              <div @click="collapse(7)" :class="{'border-1px-b':!collapse7}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                 机械性能(基站/室分天线)
-                <span class="iconfont padding-rl-10" v-if="!collapse6">&#xe772;</span>
+                <span class="iconfont padding-rl-10" v-if="!collapse7">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
-               <group class="margin-0" v-for="(item,index) in goods_data_list.new_mechanics_inte" v-show="collapse6">
+               <group class="margin-0" v-for="(item,index) in goods_data_list.new_mechanics_inte" v-show="collapse7">
                 <cell class="font-mini" :title="parms_table.electrics[index]||index" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'">
                   <flexbox :gutter="0" slot="value" class="text-center">
                     <flexbox-item v-for="(_item,_index) in item">
@@ -96,7 +96,7 @@
                     </flexbox-item>
                   </flexbox>
               </group>
-               <div @click="collapse(2)" v-if="goods_data_list.new_mechanics.length" :class="{'border-1px-b':!collapse2}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+               <div @click="collapse(2)" :class="{'border-1px-b':!collapse2}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                   机械性能
                   <span class="iconfont padding-rl-10" v-if="!collapse2">&#xe772;</span>
                   <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
@@ -178,7 +178,8 @@ import api from '../api/index.js'
         collapse4:true,
         collapse5:true,
         collapse6:true,
-         list: [],
+        collapse7:true,
+        list: [],
         options: {
           getThumbBoundsFn (index) {
             // find thumbnail element
