@@ -39,7 +39,7 @@
             <div v-html="goods_data_list.content"></div>
         </div>
         <div v-if="index==1" class="params-cell">
-              <div @click="collapse(1)"  :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+              <div @click="collapse(1)" v-if="goods_data_list.new_electrics.length"  :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                 电性能
                 <span class="iconfont padding-rl-10" v-if="!collapse1">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
@@ -96,7 +96,7 @@
                     </flexbox-item>
                   </flexbox>
               </group>
-               <div @click="collapse(2)" :class="{'border-1px-b':!collapse2}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+               <div @click="collapse(2)" v-if="goods_data_list.new_mechanics.length" :class="{'border-1px-b':!collapse2}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                   机械性能
                   <span class="iconfont padding-rl-10" v-if="!collapse2">&#xe772;</span>
                   <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
