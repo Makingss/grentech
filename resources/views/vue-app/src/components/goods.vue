@@ -88,7 +88,7 @@
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
                <group class="margin-0" v-for="(item,index) in goods_data_list.new_mechanics_inte" v-show="collapse7">
-                <cell class="font-mini" :title="parms_table.electrics[index]||index" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'">
+                <cell class="font-mini" :title="parms_table.mechanics [index]||index" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'">
                   <flexbox :gutter="0" slot="value" class="text-center">
                     <flexbox-item v-for="(_item,_index) in item">
                      {{_item}}
