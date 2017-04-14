@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Admin\Models;
+namespace App\Admin\Models\Orders;
 
 use App\Admin\Models\Members\Member_addr;
 use App\Admin\Models\Members\Member_advance;
@@ -20,10 +20,10 @@ class Order extends Model
 		'is_fetch', 'another_pay', 'another_member_id', 'another_payinfo', 'is_send_customs'
 	];
 
-	public function __construct(array $attributes)
-	{
-		parent::__construct($attributes);
-	}
+//	public function __construct(array $attributes)
+//	{
+//		parent::__construct($attributes);
+//	}
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -38,12 +38,14 @@ class Order extends Model
 	 */
 	public function member_addrs()
 	{
-		return $this->belongsTo(Member_addr::class);
+		return $this->belongsTo(Member_addr::class, 'addr_id');
 	}
 
 	public function order_items()
 	{
 		return $this->hasMany(Order_itme::class, 'order_id');
 	}
+
+	
 
 }

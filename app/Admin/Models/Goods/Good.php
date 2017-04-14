@@ -9,6 +9,7 @@ use App\Admin\Models\Images\Image_attach;
 use App\Admin\Models\Images\Image;
 use App\Admin\Models\Members\Member_good;
 use App\Admin\Models\Products\Product;
+use App\Models\Carts\CartObject;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Nicolaslopezj\Searchable\SearchableTrait;
@@ -50,11 +51,13 @@ class Good extends Model
 		'columns' => [
 			'goods.bn' => 10,
 			'goods.name' => 10,
+//			'keywords.keyname'=>10,
 //			'goods.product_model'=>10,
 //			'goods.product_desc'=>10,
 			'goods.content' => 2,
 		],
 		'joins' => [
+//			'keywords'=>['id','good_keyword.keyword_id'],
 			'goods_keywords' => ['goods.goods_id', 'goods_keywords.goods_id'],
 			'goods_types' => ['goods.type_id', 'goods_types.type_id'],
 			'mechanics' => ['goods.goods_id', 'mechanics.goods_id'],
@@ -69,6 +72,14 @@ class Good extends Model
 			'goods_cats' => ['goods.cat_id', 'goods_cats.cat_id']
 		],
 	];
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function cartObjects()
+	{
+		return $this->belongsTo(CartObject::class, 'goods_id');
+	}
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -147,13 +158,13 @@ class Good extends Model
 	 */
 	public function electrics()
 	{
-		$hasMany = $this->hasMany(Electric::class, 'goods_id')->where('electrics.type', 1);
+		$hasMany = $this->hasMany(Electric::class, 'goods_id')->where('electrics . type', 1);
 		return $hasMany;
 	}
 
 	public function electrics_inte()
 	{
-		return $this->hasMany(Electric::class, 'goods_id')->where('electrics.type', 2);
+		return $this->hasMany(Electric::class, 'goods_id')->where('electrics . type', 2);
 	}
 
 	/**

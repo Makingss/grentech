@@ -157,7 +157,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * 获取oauth授权基本新
+     * 获取oauth授权基本信息
      * @param integer $client_id 客户端ID
      * @param string $client_secret 客户端secret_id
      * @param string $username 用户名

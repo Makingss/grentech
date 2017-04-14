@@ -14,15 +14,16 @@ class CartObjectController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-//	public function __construct()
-//	{
-//		$this->middleware('auth');
-//	}
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 
 	public function index()
 	{
-		$cartObject = CartObject::where('member_id', Auth::id());
+		$cartObject = CartObject::with('goods', 'products')->where('member_id', Auth::id())->get();
 
+//		dd($cartObject->toArray());
 		return view('carts.index', compact('cartObject'));
 	}
 
@@ -46,26 +47,36 @@ class CartObjectController extends Controller
 	{
 		//$this->validate($request,['']);
 		$input = $request->all();
+		$input['obj_ident'] = '';
+		$input['member_ident'] = '';
+		$input['store_id'] = '-1';
+		$input['obj_type'] = '';
+		$input['params'] = ['goods_id' => 2];
+		$input['goods_id'] = 2;
+		$input['product_id'] = '';
+		$input['quantity'] = 1;
+		$input['time'] = time();
 		$input['member_id'] = Auth::id();
 		CartObject::create($input);
-		return redirect();
+		return redirect('/');
 	}
 
 	/**
 	 * Display the specified resource.
-	 *
+	 * http://grentech.app/cart/1
 	 * @param  int $id
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show($id)
 	{
+
 		$cartObject = CartObject::findOrFail($id);
 		return view('', compact('cartObject'));
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 *
+	 * http://grentech.app/cart/1/edit
 	 * @param  int $id
 	 * @return \Illuminate\Http\Response
 	 */

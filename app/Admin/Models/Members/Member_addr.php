@@ -2,7 +2,7 @@
 
 namespace App\Admin\Models\Members;
 
-use App\Admin\Models\Order;
+use App\Admin\Models\Orders\Order;
 use Illuminate\Database\Eloquent\Model;
 
 class Member_addr extends Model

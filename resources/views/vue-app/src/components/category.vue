@@ -452,7 +452,7 @@ export default {
     },
     submit_search:function(){
       var self=this;
-      self.$router.push({name:'list',query:{id:self.search_input}});
+      self.$router.push({name:'list',query:{search:self.search_input}});
       
     },
     clear_history:function(){

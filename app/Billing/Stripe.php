@@ -6,10 +6,12 @@
  * Time: 19:29
  */
 
-namespace App\Stripe;
+namespace App\Billing;
 
 
 class Stripe
 {
-
+	public function charge(){
+		dd('我是向IOC 容器添加自己的测试类！');
+	}
 }

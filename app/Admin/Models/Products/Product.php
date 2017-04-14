@@ -42,9 +42,17 @@ class Product extends Model
 		return $this->hasMany(Member_good::class, 'product_id');
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
 	public function electrics()
 	{
 		return $this->belongsTo(Electric::class, 'product_id');
 	}
+
+//	public function cartObjects()
+//	{
+//
+//	}
 
 }

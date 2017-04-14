@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Apis;
 
 use App\User;
+use Encore\Admin\Facades\Admin;
 use GuzzleHttp\Client as GClient;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class AdminLoginController extends Controller
 {
     use AuthenticatesUsers;
     protected $http;
@@ -98,17 +100,15 @@ class LoginController extends Controller
         $validator = Validator::make($credentials, [
             'username' => 'required', 'password' => 'required',
         ]);
-
-        if ($validator->fails()) {
-            return Redirect::back()->withInput()->withErrors($validator);
+        $error = $validator->validate();
+        if ($error) {
+            return response()->json($error);
         }
 
         if (Auth::guard('admin')->attempt($credentials)) {
-            admin_toastr(trans('admin::lang.login_successful'));
 
-            return redirect()->intended(config('admin.prefix'));
+            return response()->json(['res' => true,'data'=>Admin::user(), 'req' => '登录成功']);
         }
-
-        return Redirect::back()->withInput()->withErrors(['username' => $this->getFailedLoginMessage()]);
+        return response()->json(['res' => false, 'req' => '账号或密码错误']);
     }
 }

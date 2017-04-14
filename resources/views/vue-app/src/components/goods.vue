@@ -39,7 +39,7 @@
             <div v-html="goods_data_list.content"></div>
         </div>
         <div v-if="index==1" class="params-cell">
-              <div @click="collapse(1)"  :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+              <div @click="collapse(1)" :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                 电性能
                 <span class="iconfont padding-rl-10" v-if="!collapse1">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
@@ -53,7 +53,21 @@
                   </flexbox>
                 </cell>
               </group>
-              <div @click="collapse(5)" :class="{'border-1px-b':!collapse5}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+              <div @click="collapse(6)" :class="{'border-1px-b':!collapse6}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+                电性能指标（智能）
+                <span class="iconfont padding-rl-10" v-if="!collapse6">&#xe772;</span>
+                <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
+               </div>
+               <group class="margin-0" v-for="(item,index) in goods_data_list.new_electrics_inte" v-show="collapse6">
+                <cell class="font-mini" :title="parms_table.electrics[index]||index" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'">
+                  <flexbox :gutter="0" slot="value" class="text-center">
+                    <flexbox-item v-for="(_item,_index) in item">
+                     {{_item}}
+                    </flexbox-item>
+                  </flexbox>
+                </cell>
+              </group>
+              <div @click="collapse(5)" v-if="goods_data_list.aspect_pics.length" :class="{'border-1px-b':!collapse5}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                 方向图
                 <span class="iconfont padding-rl-10" v-if="!collapse5">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
@@ -61,12 +75,26 @@
                <group class="margin-0" v-show="collapse5">
                   <flexbox :gutter="0" class="text-center">
                     <flexbox-item v-for="(item,index) in goods_data_list.aspect_pics" :span="1/2">
-                      <div class="font-mini">{{item.title}}</div>
+                      <div class="font-mini padding-tb-6">{{item.title}}</div>
                       <div class="link-img">
                         <img :src="'/uploads/'+item.pic_url" alt="">
                       </div>
                     </flexbox-item>
                   </flexbox>
+              </group>
+              <div @click="collapse(7)" :class="{'border-1px-b':!collapse7}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+                机械性能(基站/室分天线)
+                <span class="iconfont padding-rl-10" v-if="!collapse7">&#xe772;</span>
+                <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
+               </div>
+               <group class="margin-0" v-for="(item,index) in goods_data_list.new_mechanics_inte" v-show="collapse7">
+                <cell class="font-mini" :title="parms_table.electrics[index]||index" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'">
+                  <flexbox :gutter="0" slot="value" class="text-center">
+                    <flexbox-item v-for="(_item,_index) in item">
+                     {{_item}}
+                    </flexbox-item>
+                  </flexbox>
+                </cell>
               </group>
                <div @click="collapse(2)" :class="{'border-1px-b':!collapse2}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                   机械性能
@@ -82,7 +110,7 @@
                   </flexbox>
                 </cell>
               </group>
-              <div @click="collapse(3)"  :class="{'border-1px-b':!collapse3}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+              <div @click="collapse(3)" :class="{'border-1px-b':!collapse3}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                 标准配件
                 <span class="iconfont padding-rl-10" v-if="!collapse3">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
@@ -91,7 +119,7 @@
                 <cell class="font-mini" :title="parms_table.standardfits[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
                 </cell>
               </group>
-               <div @click="collapse(4)"  :class="{'border-1px-b':!collapse4}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+               <div @click="collapse(4)" :class="{'border-1px-b':!collapse4}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
                 可选组件
                 <span class="iconfont padding-rl-10" v-if="!collapse4">&#xe772;</span>
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
@@ -149,7 +177,9 @@ import api from '../api/index.js'
         collapse3:true,
         collapse4:true,
         collapse5:true,
-         list: [],
+        collapse6:true,
+        collapse7:true,
+        list: [],
         options: {
           getThumbBoundsFn (index) {
             // find thumbnail element
@@ -204,7 +234,7 @@ import api from '../api/index.js'
       init_goods_page: function (query) {
          var self=this;
           // this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
-          api.getGoodsData({relations: ["image_attach", "images","mechanics","goods_ports","assemblies","standardfits","electrics","aspect_pics"], parameters:query}).then((res)=>{
+          api.getGoodsData({relations: ["image_attach", "images","mechanics","goods_ports","assemblies","standardfits","electrics","aspect_pics","mechanics_inte","electrics_inte"], parameters:query}).then((res)=>{
             // self.goods_data_list=res.data.data[0];
             self.handle_goods_data(res.data.data[0]);
             console.log(res);
@@ -214,7 +244,7 @@ import api from '../api/index.js'
         console.log(data);
         var self=this;
         for(var key in data){
-          if(key=="electrics"||key=="assemblies"||key=="goods_ports"||key=="standardfits"||key=="mechanics"){
+          if(key=="electrics"||key=="assemblies"||key=="goods_ports"||key=="standardfits"||key=="mechanics"||key=="mechanics_inte"||key=="electrics_inte"){
             var new_obj={};
             for(var i=0;i<data[key].length;i++){
               //遍历 key 值,相同做数据合并
@@ -253,7 +283,7 @@ import api from '../api/index.js'
       },  
       get_parms_data:function(){
         var self=this;
-        api.get_trans_params_table({relations: ['mechanics','goods_ports','assemblies','standardfits','electrics',]}).then((res)=>{
+        api.get_trans_params_table({relations: ['mechanics','goods_ports','assemblies','standardfits','electrics']}).then((res)=>{
           self.parms_table=res.data;
         });
       },
