@@ -139,8 +139,8 @@
   </div>
 </template>
 <script>
-import VueQArt from 'vue-qart'
-import QArt from 'qartjs'
+// import VueQArt from 'vue-qart'
+// import QArt from 'qartjs'
 // v-if="!!goods_data_list.new_assemblies.goods_id"
 import api from '../api/index.js'
 // import {mapState,mapActions} from 'vuex'
@@ -249,7 +249,7 @@ import api from '../api/index.js'
             for(var i=0;i<data[key].length;i++){
               //遍历 key 值,相同做数据合并
               for(var k in data[key][i]){
-                if(k=="created_at"||k=="id"||k=="updated_at"||k=="type"){
+                if(k=="created_at"||k=="id"||k=="updated_at"||k=="type"||k=="goods_id"){
                   continue;
                 }
                 if(!!data[key][i][k]){
@@ -261,6 +261,7 @@ import api from '../api/index.js'
                   // }else{
                   //   new_obj[k]=data[key][i][k];
                   // } 
+                  new_obj["has_item"]=true;
                   if(!new_obj[k]){
                     new_obj[k]=[];
                   } 
