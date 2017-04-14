@@ -139,8 +139,8 @@
   </div>
 </template>
 <script>
-// import VueQArt from 'vue-qart'
-// import QArt from 'qartjs'
+import VueQArt from 'vue-qart'
+import QArt from 'qartjs'
 // v-if="!!goods_data_list.new_assemblies.goods_id"
 import api from '../api/index.js'
 // import {mapState,mapActions} from 'vuex'
