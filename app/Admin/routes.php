@@ -20,7 +20,6 @@ Route::group([
     $router->resource('goodscat', 'Goods\GoodsCatController');
     $router->resource('/articles', 'ArticleController');
 //	$router->resource('/wangeditor', 'WangEditorController');
-//	$router->resource('/orders',);
     $router->resource('/product', 'Products\ProductController');
     $router->resource('/brand', 'Goods\BrandController');
     $router->resource('/spec', 'Products\SpecificationController');
@@ -29,7 +28,10 @@ Route::group([
     $router->post('/specvalue/specvalueeditor', 'Products\SpecvaluesController@specvalue_editor');
     $router->get('/electric/getindex/{id}', 'Goods\ElectricController@getIndex');
     $router->post('/electric/setajax', 'Goods\ElectricController@setAjax');
-    //$router->resource('auth/users', UserController::class);
+    Route::group(['namespace'=>'Orders'],function(){
+        Route::resource('/orders','OrderController');
+    });
+//	$router->resource('/orders',);
 //	$router->get('/products/{key?}', 'DatatablesController@index');
 //	$router->get('/products/data/{goods_id}', 'DatatablesController@anyData');
 //	$router->post('/products/editor', 'DatatablesController@editor');
