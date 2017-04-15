@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="cart content">
-        <swipeout v-for="item in 5">
+        <swipeout v-for="(item,index) in cart_data" :key="index">
           <swipeout-item @on-close="handleEvents('on-close')" @on-open="handleEvents('on-open')" transition-mode="follow" :right-menu-width="80">
             <div slot="right-menu">
               <swipeout-button @click="handle_delete($event)" type="warn">
@@ -8,7 +8,7 @@
               </swipeout-button>
             </div>
             <div slot="content">
-                <panel-cart></panel-cart>
+                <panel-cart :item="item"></panel-cart>
             </div>
           </swipeout-item>
         </swipeout>
@@ -45,26 +45,7 @@ export default {
   data: function() {
     return {
       type: '1',
-      list: [{
-          src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
-          title: '标题一',
-          desc: '2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882',
-          url: '/home',
-          num: '1',
-        },
-        {
-          src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
-          title: '标题一',
-          desc: '2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882',
-          url: '/home'
-        },
-        {
-          src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
-          title: '标题一',
-          desc: '2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882',
-          url: '/home'
-        }
-      ]
+      cart_data:[],
     }
   },
   created:function(){
@@ -79,9 +60,12 @@ export default {
 
     },
     fetch_data:function(){
+      var self=this;
       api.get_cart_data().then(res=>{
         console.log(res);
-        console.log(">>>>>>>>>>>");
+        if(res.ok){
+          self.cart_data=res.data;
+        }
       })
     }
   },

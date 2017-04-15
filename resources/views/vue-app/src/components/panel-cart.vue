@@ -29,6 +29,12 @@ export default {
       max:10,
     }
   },
+  props:{
+    item:Object
+  },
+  created:function(){
+    console.log(this.item);
+  },
   components:{
     Flexbox,
     FlexboxItem,
