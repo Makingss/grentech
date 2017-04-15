@@ -75,7 +75,7 @@ export default {
 
     },
     handle_delete:function(){
-      
+
     },
     fetch_data:function(){
       api.get_cart_data().then(res=>{
@@ -102,6 +102,5 @@ export default {
 }
 .page-cart .cart .bar-secondary{
   bottom: 0;
-  /*top:inherit;*/
 }
 </style>
