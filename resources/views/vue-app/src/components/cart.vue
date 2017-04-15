@@ -35,7 +35,9 @@ import {
   Swipeout,
   SwipeoutItem,
   SwipeoutButton,
-  Sticky
+  Sticky,
+  Tabbar,
+  TabbarItem
 } from 'vux'
 export default {
   name: 'cart',
@@ -74,7 +76,9 @@ export default {
     Swipeout,
     SwipeoutItem,
     SwipeoutButton,
-    Sticky
+    Sticky,
+    Tabbar,
+    TabbarItem
   }
 }
 </script>
