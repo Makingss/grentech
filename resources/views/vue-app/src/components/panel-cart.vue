@@ -5,10 +5,15 @@
     </flexbox-item>
     <flexbox-item class="item-content":spam="9/12">
       <div class="item-title padding-rl-10">
-        2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882
+        {{item.goods.name}}
       </div>
       <div class="item-subtitle padding-rl-10">
-        颜色:红色/尺码:36
+        SAP:{{item.goods.bn}}
+      </div>
+      <div class="item-subtitle padding-rl-10">
+        产品描述:{{item.goods.product_desc}}
+        <p>市场价: <span class="color-danger font-bold">¥{{item.goods.price}}</span></p>
+        <s class="color-gray" v-if="item.goods.mktprice">¥{{item.goods.mktprice}}</s>
       </div>
       <div class="item-subtitle">
         <x-number :title="quantity" :min="1" :value="1" class="padding-rl-10 padding-tb-6 font-normal" width="40px">

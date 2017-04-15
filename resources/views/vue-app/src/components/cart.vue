@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="cart content">
-        <swipeout v-for="(item,index) in cart_data" :key="index">
+        <swipeout v-for="(item,index) in cart_data" :key="index" class="border-1px-b">
           <swipeout-item @on-close="handleEvents('on-close')" @on-open="handleEvents('on-open')" transition-mode="follow" :right-menu-width="80">
             <div slot="right-menu">
               <swipeout-button @click="handle_delete($event)" type="warn">
