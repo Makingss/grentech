@@ -23,8 +23,9 @@ class CartObjectController extends Controller
 	{
 		$cartObject = CartObject::with('goods', 'products')->where('member_id', Auth::id())->get();
 
+		return $cartObject;
 //		dd($cartObject->toArray());
-		return view('carts.index', compact('cartObject'));
+//		return view('carts.index', compact('cartObject'));
 	}
 
 	/**
