@@ -45,7 +45,6 @@
   </div>
 </template>
 <script>
-// <keep-alive> </keep-alive>
 import * as config from './config/config.js'
 import api from './api'
   import {
@@ -143,8 +142,7 @@ import api from './api'
          setTimeout(function(){
             self.popup_login=config.app_config.intercept;
             self.intercept_closeable=config.app_config.intercept_closeable;
-            console.log(self.popup_login);
-            console.log("登陆拦截");
+            
          },config.app_config.intercept_time)
        }
       },
