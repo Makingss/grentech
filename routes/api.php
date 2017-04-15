@@ -42,7 +42,7 @@ Route::group(['namespace' => 'Apis'], function () {
 
     Route::post('/register', 'RegisterController@register');
     Route::post('/verify', 'RegisterController@registerVerify')->name('api.email.verify');
-//    Route::post('/login', 'LoginController@login');
-
-    Route::post('/login', 'AdminLoginController@postLogin');
+    Route::post('/login', 'LoginController@login');
+    Route::get('/nice','LoginController@nice')->middleware('auth:api');
+//    Route::post('/login', 'AdminLoginController@postLogin');
 });

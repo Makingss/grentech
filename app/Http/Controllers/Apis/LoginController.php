@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Apis;
 
 use App\User;
+use Encore\Admin\Auth\Database\Administrator;
 use GuzzleHttp\Client as GClient;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -28,7 +30,7 @@ class LoginController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'email' => 'required|email|max:255',
+            'username' => 'required|max:255',
             'password' => 'required|min:6',
         ]);
     }
@@ -40,7 +42,8 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        $email = $request->input('email');
+        $credentials = $request->only(['username', 'password']);
+        $username = $request->input('username');
         $password = $request->input('password');
         $this->validator($request->all())->validate();
         if ($this->hasTooManyLoginAttempts($request)) {
@@ -48,18 +51,24 @@ class LoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
-        if ($this->attemptLogin($request)) {
-            $user = User::where('email', $email)->where('is_active', 1)->first();
+        if (Auth::guard('admin')->attempt($credentials)) {
+            $user = Administrator::where('username', $username)->first();
             $oauth_clients = DB::table('oauth_clients')->where('user_id', $user->id)->first();
             if (empty($oauth_clients)) {
                 return response()->json(['res' => false, 'req' => '邮箱不存在或者尚未激活']);
             }
-            $data = $this->getOauth($oauth_clients->id, md5($user->email . $user->id), $user->email, $password);
+//            return json_encode([$oauth_clients->id, md5($user->username . $user->id), $user->username, $password]);
+            $data = $this->getOauth($oauth_clients->id, md5($user->username . $user->id), $user->username, $password);
             $data['client_id'] = $oauth_clients->id;
             $data['client_secret'] = $oauth_clients->secret;
             return response()->json(['res' => true, 'data' => $data, 'req' => '登录成功']);
         }
         return response()->json(['res' => false, 'req' => '账号或密码错误']);
+    }
+
+    public function nice()
+    {
+        return response()->json(Auth::user());
     }
 
     /**
@@ -73,6 +82,7 @@ class LoginController extends Controller
      */
     public function getOauth($client_id, $client_secret, $username, $password, $scope = '')
     {
+
         $response = $this->http->post(url('/oauth/token'), [
             'form_params' => [
                 'grant_type' => 'password',

@@ -12,12 +12,20 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
-use Laravel\Passport\Client;
+use GuzzleHttp\Client;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
     use ModelForm;
+    protected $http;
+
+    public function __construct(Client $http)
+    {
+        $this->http = $http;
+    }
 
     /**
      * Index interface.
@@ -132,16 +140,41 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        return $this->form()->store($request);
+//        $this->form()->store();
+        $form = $this->form();
+
+        $data = $request->all();
+        // Handle validation errors.
+        if ($validationMessages = $form->validationMessages($data)) {
+            return back()->withInput()->withErrors($validationMessages);
+        }
+        if (($response = $form->prepare($data)) instanceof Response) {
+            return $response;
+        }
+        DB::transaction(function () use ($form) {
+            $inserts = $form->prepareInsert($form->updates);
+
+            foreach ($inserts as $column => $value) {
+                $form->model->setAttribute($column, $value);
+            }
+
+            $form->model->save();
+            $user = $form->model;
+            $this->oauthClientCreate($user->id, $user->username, $user->username, '');
+            $form->updateRelation($this->form()->relations);
+        });
+
+        if (($response = $form->complete($form->saved)) instanceof Response) {
+            return $response;
+        }
+
+        if ($response = $form->ajaxResponse(trans('admin::lang.save_succeeded'))) {
+            return $response;
+        }
+
+        return $form->redirectAfterStore();
     }
 
-    public function update(Request $request, $id)
-    {
-//        dd($request->all());
-//        $store=$this->form()->update($request);
-//        dd($request->all());
-        return $this->form()->update($id);
-    }
 
     /**
      * 重写Oauth的客户端创建
@@ -155,7 +188,7 @@ class UserController extends Controller
      */
     public function oauthClientCreate($userId, $name, $secret, $redirect, $personalAccess = false, $password = true)
     {
-        $client = (new Client())->forceFill([
+        $client = (new \Laravel\Passport\Client())->forceFill([
             'user_id' => $userId,
             'name' => $name,
             'secret' => md5($secret . $userId),
