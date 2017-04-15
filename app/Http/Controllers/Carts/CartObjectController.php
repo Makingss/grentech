@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Carts;
 
+use App\Admin\Models\Goods\Good;
+use App\Admin\Models\Images\Image_attach;
+use App\Http\Controllers\GoodsController;
 use App\Models\Carts\CartObject;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Passport\Bridge\User;
 
 class CartObjectController extends Controller
 {
@@ -22,11 +26,21 @@ class CartObjectController extends Controller
 	public function index()
 	{
 //			dd(Auth::id());
-		$cartObject = CartObject::with('goods', 'products')->where('member_id', '2')->get();
-
-		return $cartObject;
+		$cartObject = CartObject::where('member_id', '24')->get();
+		$goods = Good::with('image_attach', 'images', 'mechanics', 'goods_ports',
+			'assemblies', 'standardfits', 'electrics', 'aspect_pics', 'mechanics_inte', 'electrics_inte'
+		)->whereIn('goods_id', $cartObject->pluck('goods_id'))->get()->toArray();
+		foreach ($goods as $dataK => $data) {
+			foreach ($data['image_attach'] as $itemK => $item) {
+				$image_attach = Image_attach::with('images')->where('image_id', $item['image_id'])->get()->toArray();
+				$collects = collect($image_attach);
+				$collapse = $collects->collapse();
+				$goods['image_attach'][$itemK] = $collapse->toArray();
+			}
+			return $goods;
 //		dd($cartObject->toArray());
 //		return view('carts.index', compact('cartObject'));
+		}
 	}
 
 	/**
