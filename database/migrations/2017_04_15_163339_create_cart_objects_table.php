@@ -29,7 +29,7 @@ class CreateCartObjectsTable extends Migration {
 			$table->increments('id');
 			$table->integer('goods_id')->nullable()->comment('商品ID');
 			$table->integer('product_id')->nullable()->comment('产品ID');
-			$table->primary(['id','obj_ident','member_ident','member_id']);
+			$table->primary(['id']);
 		});
 	}
 
