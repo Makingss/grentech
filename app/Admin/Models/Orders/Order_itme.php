@@ -6,13 +6,14 @@
  * Time: 10:13
  */
 
-namespace App\Admin\Models;
+namespace App\Admin\Models\Orders;
 
 
 use Illuminate\Database\Eloquent\Model;
 
 class Order_itme extends Model
 {
+	protected $table='order_items';
 	protected $primaryKey = 'item_id';
 	protected $fillable = ['order_id', 'parent_order_id', 'obj_id', 'product_id', 'goods_id', 'type_id', 'bn', 'name',
 		'cost', 'price', 'g_price', 'amount', 'score', 'weight', 'nums', 'sendnum', 'addon', 'is_opinions', 'is_comment', 'item_type',

@@ -66,13 +66,16 @@
                 {{item.name}}
               </div>
                <div class="item-title line-ellispse-2 font-bold" v-if="!!item.electrics">
-                  频段: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span> M
+                  频段: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span>
+                  <span v-if="item.electrics.length">M</span>
               </div>
               <div class="item-title line-ellispse-2 font-bold">
-                  增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span> dBi
+                  增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span>
+                  <span v-if="item.electrics.length">dBi</span>
               </div>
               <div class="item-title line-ellispse-2 font-bold">
-                 电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span> °
+                 电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span>
+                 <span v-if="item.electrics.length">°</span>
               </div>
              <div class="item-title line-ellispse-2 color-gray">
                SAP: {{item.bn}}
@@ -92,13 +95,16 @@
               <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  slot="card-title">
                    <div class="item-title">{{item.name}}</div>
                     <div class="item-title line-ellispse-2 font-bold">
-                       频段:  <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span> M
+                       频段:  <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span>
+                       <span v-if="item.electrics.length">M</span>
                     </div>
                     <div class="item-title line-ellispse-2 font-bold">
-                       增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span> dBi
+                       增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span>
+                       <span v-if="item.electrics.length">dBi</span>
                     </div>
                     <div class="item-title line-ellispse-2 font-bold">
-                       电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span> °
+                       电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span>
+                       <span v-if="item.electrics.length">°</span>
                     </div>
                     <div class="item-title line-ellispse-2 color-gray">
                       SAP: {{item.bn}}
@@ -110,6 +116,8 @@
       <div class="load-more text-center" v-show="loading">
         <spinner type="circles"></spinner>
       </div>
+      <div class="padding-tb-20 text-center" v-show="load_all" style="padding-bottom:3.3rem"><span class="iconfont">&#xe62b;</span>已加载完毕...</div>
+
     </div>
 
   </div>
@@ -126,6 +134,7 @@ export default {
     return {
       loading: false,
       scrollTop:0,
+      load_all:false,
       swiper_list:[
         {
           url:'/list?type_id=3',
@@ -237,7 +246,8 @@ export default {
                     type:'text',
                     text:'已加载完毕...'
                   });
-                }
+                  self.load_all=true;
+              }
     },
     loadMore:function(){
       var self=this;

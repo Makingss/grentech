@@ -11,24 +11,35 @@ require('./bootstrap');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-import App from './App.vue';
+
+// import Vue from 'vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
 Vue.use(ElementUI);
+
 Vue.component('header-section',require('./components/home/Header-section.vue'));
-Vue.component('app',require('./App.vue'));
-Vue.component('user-login', require('./components/Login.vue'));
-Vue.component('question-follow-button', require('./components/QuestionFollowBotton.vue'));
-Vue.component('send-code-field', require('./components/SendCodeField.vue'));
-Vue.component('example', require('./components/Example.vue'));
 
-Vue.component('passport-clients', require('./components/passport/Clients.vue'));
+Vue.component('navbar',require('./components/home/Navbar.vue'));
+Vue.component('banner-section',require('./components/home/Banner-section.vue'));
+Vue.component('content-section',require('./components/home/Content-section.vue'));
+Vue.component('slogen',require('./components/home/Slogen.vue'));
+Vue.component('footer-section',require('./components/home/Footer-section.vue'));
+Vue.component('about-us',require('./components/home/About-us.vue'));
 
-Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue'));
+//购物车页面
+Vue.component('shopcart',require('./components/shopcart/Shopcart.vue'));
 
-Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue'));
+//商品详情页面
+Vue.component('goods-detail',require('./components/goods/Goods-detail.vue'));
+
+//search 搜索页
+Vue.component('search',require('./components/search/Search.vue'));
+
+//登陆界面
+Vue.component("login",require("./components/passport/Login.vue"));
+Vue.component("register",require("./components/passport/Register.vue"));
 
 const app = new Vue({
     el: '#app',
-    // render:h=>h(App)
-});
+}).$mount("#app");
+

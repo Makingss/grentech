@@ -212,8 +212,23 @@
         } else if (result == 3) {
           //token状态正常--- 不执行任何动作
         }
-
       }
+      Vue.prototype.get_user_info=function(storage){
+        var name=!!window.localStorage.name?window.localStorage.name:null;
+        var avatar=!!window.localStorage.avatar?window.localStorage.avatar:null;
+        var username=!!window.localStorage.username?window.localStorage.username:null;
+        if(name){
+            return {
+              name:name,
+              avatar:avatar,
+              username:username
+            };
+        }else{
+          return false;
+        }
+        
+      }
+
       Vue.prototype.get_sessionStorage_user_info=function(){
         return !!window.sessionStorage.user_info?JSON.parse(window.sessionStorage.user_info):null;
       }

@@ -186,6 +186,11 @@ return [
 		Yajra\Datatables\DatatablesServiceProvider::class,
 		Naux\Mail\SendCloudServiceProvider::class,
 		Laracasts\Flash\FlashServiceProvider::class,
+
+		/*
+		 * 向Ioc 容器填加自己的类 测试用例
+		 */
+		App\Providers\BillingServiceProvider::class,
 	],
 
 

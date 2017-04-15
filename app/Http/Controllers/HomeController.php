@@ -16,10 +16,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -31,6 +31,6 @@ class HomeController extends Controller
         #$user=Auth::User();
         #$user->notify(new UserMailPublished($user));
         #event(new UserSignUp($user));
-        return view('home');
+        return view('mall.home');
     }
 }

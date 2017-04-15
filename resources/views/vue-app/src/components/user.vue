@@ -2,13 +2,13 @@
   <div class="user content bg-white">
     <div class="content-box">
  <div class="text-center user-bg">
-     <p class="center user-avatar">
-        <img :src="avatar" alt="" class="circle">
-      </p>
+      <router-link :to="loading_status?'/loginout':'/login'" class="block link-img user-avatar block-center">
+          <img :src="avatar" alt="" class="circle">
+      </router-link>
       <div class="user-login">
         <p class="padding-tb-10">
           <router-link to="/loginout" v-if="loading_status" class="color-white">
-            {{name}}
+            {{username}}
           </router-link>
           <router-link to="/login" v-else class="color-white">
             登录
@@ -65,7 +65,7 @@ export default {
   data:function(){
     return {
       loading_status:false,
-      name:'',
+      username:'',
       email:'',
       user_avatar_bg:'/static/slice/a1.jpg',
       avatar:'/static/slice/user_logo.jpg',
@@ -156,12 +156,12 @@ export default {
   },
   methods:{
     render_user_info:function(){
-      var user_info=this.get_sessionStorage_user_info();
+      var user_info=this.get_user_info();
       if(user_info){
         this.loading_status=true;
-        this.name=user_info.name;
-        this.email=user_info.email;
-        // this.avatar=user_info.avatar;
+        this.username=user_info.username;
+        this.email=user_info.email||'';
+        // this.avatar='/static/slice/user_logo.jpg';
       }
     },
     check_locl_token:function(){
@@ -185,21 +185,23 @@ export default {
           //拉取用户信息
           console.log("拉取用户信息");
           var self=this;
-           api.get_user_info({
-                headers:{
-                  'Accept':'application/json',
-                  'Authorization':"Bearer "+window.localStorage.access_token,
-                }
-            }).then(res=>{
-               console.log(res.data);
-               if(res.data.id){
-                  self.loading_status=true;
-                  self.name=res.data.name;
-                  // self.avatar=res.data.avatar;
-                  self.email=res.data.email;
-                  window.sessionStorage.user_info=JSON.stringify(res.data);
-               }
-            })
+          //关闭获取用户信息
+          //  api.get_user_info({
+          //       headers:{
+          //         'Accept':'application/json',
+          //         'Authorization':"Bearer "+window.localStorage.access_token,
+          //       }
+          //   }).then(res=>{
+          //      console.log(res.data);
+          //      if(res.data.id){
+          //         self.loading_status=true;
+          //         self.name=res.data.name;
+          //         // self.avatar=res.data.avatar;
+          //         self.email=res.data.email;
+          //         window.sessionStorage.user_info=JSON.stringify(res.data);
+          //      }
+          //   })
+
     }
   },
   components:{
@@ -221,7 +223,8 @@ export default {
   z-index:88;
   padding-top:15px;
 }
-.user-avatar img{
+
+.user-avatar{
   width: 4rem;
   height: 4rem;
 }

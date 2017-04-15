@@ -28,9 +28,20 @@ Route::get('/email/verify/{token}', ['as' => 'email.verify', 'uses' => 'Email\Em
 Route::resource('articles', 'ArticleController');
 
 Auth::routes();
-
+/*
+	********************以下为 pc mall路由控制**************
+*/
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
-Route::resource('/', 'Mall\MallController');
+Route::get('/shopcart', 'ShopcartController@index');
+Route::get('/passport_login','Passport_loginController@index');
+Route::get('/passport_register','Passport_registerController@index');
+Route::get('/mall_goodsdetail','Mall_goodsdetailController@index');
+Route::get('/mall_search','Mall_searchController@index');
+
+/*
+	***************************end*************************
+*/
 
 Route::get('oauth/redirect', 'OauthController@redirect');
 Route::get('callback', 'OauthController@oauth');
@@ -64,9 +75,6 @@ Route::group(['namespace' => 'Members'], function () {
 	Route::resource('addr', 'MemberaddrsController');
 });
 
-Route::group(['namespace' => 'Carts'], function () {
-	Route::resource('cart', 'CartObjectController');
-});
 
 //Route::resource('datatables', 'DatatablesController', [
 //    'anyData'  => 'datatables.data',

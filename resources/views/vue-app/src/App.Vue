@@ -16,14 +16,14 @@
 
     <popup v-model="popup_login" class="popup-login" height="100%">
       <div class="popup-login-close pull-left" v-if="intercept_closeable">
-        <span @click="popup" class="iconfont padding-rl-10 padding-tb-6 color-danger inline-block">&#xe606;</span>
+        <span @click="popup" class="iconfont padding-rl-10 padding-tb-6 font-3x color-danger inline-block">&#xe606;</span>
       </div>
       <div class="login-logo block-center link-img" style="margin-top:30%">
         <img :src="logo_image" alt="" class="margin-tb-20">
       </div>
       <div class="login-form">
         <group label-width="4rem" label-margin-right="2rem" label-align="left">
-          <x-input class="font-normal" placeholder="邮箱" is-type="email" v-model="email"></x-input>
+          <x-input class="font-normal" placeholder="用户名" v-model="username"></x-input>
           <x-input class="font-normal" placeholder="密码" type="password" v-model="password"></x-input>
         </group>
       </div>
@@ -64,7 +64,7 @@ import api from './api'
     data: function () {
       return {
         logo_image:config.app_config.logo_image,
-        email:'',
+        username:'',
         password:'',
         popup_login: false,
         page_name: '',
@@ -87,9 +87,9 @@ import api from './api'
     methods: {
       submit_login:function(){
           var self=this;
-          if(this.email==""){
+          if(this.username==""){
             this.$vux.toast.show({
-              text:'<span class="font-normal">邮箱不能为空</span>',
+              text:'<span class="font-normal">用户名不能为空</span>',
               type:"warn"
             })
             return;
@@ -101,7 +101,7 @@ import api from './api'
             return;
           };
           api.user_login({
-            email:self.email,
+            username:self.username,
             password:self.password
           }).then(res=>{
             console.log(res);
@@ -136,14 +136,17 @@ import api from './api'
         var header_conf = this.handler_xheader(this.$route.name);
         this.header_conf = header_conf;
         this.navbar=config.app_config.navbar;
-
-         //3s后启用登陆拦截
-        setTimeout(function(){
-            self.popup_login=self.$store.state.popuplogin.popup_login;
+       //判断当前是否存在用户信息
+       var user_info=this.get_user_info();
+       if(!user_info){
+          //3s后启用登陆拦截
+         setTimeout(function(){
+            self.popup_login=config.app_config.intercept;
             self.intercept_closeable=config.app_config.intercept_closeable;
             console.log(self.popup_login);
             console.log("登陆拦截");
          },config.app_config.intercept_time)
+       }
       },
       popup: function () {
         this.popup_login = !this.popup_login;
