@@ -21,7 +21,8 @@ class CartObjectController extends Controller
 
 	public function index()
 	{
-		$cartObject = CartObject::with('goods', 'products')->where('member_id', Auth::id())->get();
+//			dd(Auth::id());
+		$cartObject = CartObject::with('goods', 'products')->where('member_id', '2')->get();
 
 		return $cartObject;
 //		dd($cartObject->toArray());
