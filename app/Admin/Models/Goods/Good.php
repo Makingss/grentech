@@ -158,13 +158,13 @@ class Good extends Model
 	 */
 	public function electrics()
 	{
-		$hasMany = $this->hasMany(Electric::class, 'goods_id')->where('electrics . type', 1);
+		$hasMany = $this->hasMany(Electric::class, 'goods_id')->where('electrics.type', 1);
 		return $hasMany;
 	}
 
 	public function electrics_inte()
 	{
-		return $this->hasMany(Electric::class, 'goods_id')->where('electrics . type', 2);
+		return $this->hasMany(Electric::class, 'goods_id')->where('electrics.type', 2);
 	}
 
 	/**
