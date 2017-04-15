@@ -14,7 +14,7 @@
         </swipeout>
         <flexbox :gutter="0" wrap="nowrap" class="bar bar-secondary">
           <flexbox-item :span="8/12" class="bar-item">
-            <div class="padding-rl-10">
+            <div class="padding-rl-10" v-if="false">
                 <span class="font-1x">合计:</span>
                 <span class="color-danger font-2x">￥</span>
                 <span class="color-danger font-3x">1099.00</span>
@@ -22,7 +22,7 @@
           </flexbox-item>
           <flexbox-item :span="4/12">
             <x-button type="warn" class="bar-item font-1x">
-              立即结算
+              提交订单
             </x-button>
           </flexbox-item>
         </flexbox>
