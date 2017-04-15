@@ -69,6 +69,7 @@ export default {
   },
   created:function(){
     this.fetch_data();
+    //拉取数据
   },
   methods: {
     handleEvents:function(){
@@ -80,6 +81,7 @@ export default {
     fetch_data:function(){
       api.get_cart_data().then(res=>{
         console.log(res);
+        console.log(">>>>>>>>>>>");
       })
     }
   },
