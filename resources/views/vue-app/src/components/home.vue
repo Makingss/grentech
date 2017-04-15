@@ -116,7 +116,7 @@
       <div class="load-more text-center" v-show="loading">
         <spinner type="circles"></spinner>
       </div>
-      <div class="padding-tb-20 text-center" v-show="load_all" style="padding-bottom:3.3rem"><span class="iconfont">&#xe62b;</span>已加载完毕...</div>
+      <div class="padding-tb-20 text-center" v-show="load_all"><span class="iconfont">&#xe62b;</span>已加载完毕...</div>
 
     </div>
 
