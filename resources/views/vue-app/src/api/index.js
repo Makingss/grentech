@@ -76,6 +76,9 @@ export default {
     },
     get_similar_by_kwd:function(data){
         return Vue.http.get(API_ROOT+'similar',{params:data})
+    },
+    get_cart_data:function(data){
+        return Vue.http.get(API_ROOT+'cart',data);
     }
 
 

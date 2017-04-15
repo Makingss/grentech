@@ -5,7 +5,7 @@
     </flexbox-item>
     <flexbox-item class="item-content":spam="9/12">
       <div class="item-title padding-rl-10">
-        YINER音儿2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882
+        2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882
       </div>
       <div class="item-subtitle padding-rl-10">
         颜色:红色/尺码:36

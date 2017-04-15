@@ -30,7 +30,7 @@
 </template>
 <script>
 import PanelCart from './panel-cart.vue'
-
+import api from '../api/index.js'
 import {
   Flexbox,
   FlexboxItem,
@@ -48,31 +48,39 @@ export default {
       list: [{
           src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
           title: '标题一',
-          desc: 'YINER音儿2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882',
+          desc: '2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882',
           url: '/home',
           num: '1',
         },
         {
           src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
           title: '标题一',
-          desc: 'YINER音儿2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882',
+          desc: '2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882',
           url: '/home'
         },
         {
           src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
           title: '标题一',
-          desc: 'YINER音儿2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882',
+          desc: '2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882',
           url: '/home'
         }
       ]
     }
+  },
+  created:function(){
+    this.fetch_data();
   },
   methods: {
     handleEvents:function(){
 
     },
     handle_delete:function(){
-
+      
+    },
+    fetch_data:function(){
+      api.get_cart_data().then(res=>{
+        console.log(res);
+      })
     }
   },
   components: {

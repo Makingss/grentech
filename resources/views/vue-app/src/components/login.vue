@@ -6,7 +6,7 @@
     </div>
     <div class="login-form">
       <group label-width="4rem" label-margin-right="2rem" label-align="left">
-        <x-input placeholder="邮箱" is-type="email" class="font-normal" v-model="email"></x-input>
+        <x-input placeholder="用户名"  class="font-normal" v-model="username"></x-input>
         <x-input placeholder="密码" class="font-normal" type="password" v-model="password"></x-input>
       </group>
     </div>
@@ -37,16 +37,16 @@ export default {
   data:function(){
     return {
       logo_image:config.app_config.logo_image,
-      email:'',
+      username:'',
       password:''
     }
   },
   methods:{
     submit_login:function(){
       var self=this;
-      if(this.email==""){
+      if(this.username==""){
         this.$vux.toast.show({
-          text:'<span class="font-normal">邮箱不能为空</span>',
+          text:'<span class="font-normal">用户名不能为空</span>',
           type:"warn"
         })
         return;
@@ -58,7 +58,7 @@ export default {
         return;
       };
       api.user_login({
-        email:self.email,
+        username:self.username,
         password:self.password
       }).then(res=>{
         console.log(res);
