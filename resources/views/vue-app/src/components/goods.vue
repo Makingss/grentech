@@ -139,7 +139,7 @@
     <tabbar class="bar bar-secondary">
        <tabbar-item class="bg-white">
           <flexbox slot="label" class="text-center color-dark" :gutter="0">
-            <flexbox-item class="vertical-flex border-1px-r"><span class="iconfont">&#xe6b8;</span><span>商城</span></flexbox-item>
+            <flexbox-item class="vertical-flex border-1px-r"><span class="iconfont">&#xe61e;</span><span>收藏</span></flexbox-item>
             <flexbox-item class="vertical-flex"><span class="iconfont">&#xe634;</span><span>需求清单</span></flexbox-item>
           </flexbox>
        </tabbar-item>
