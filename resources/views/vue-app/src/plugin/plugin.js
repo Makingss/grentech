@@ -80,6 +80,7 @@
             is_show: false,
             show_search_bar: false,
             navbar_active: 1,
+            hide_tabbar:true,
           },
           'address': {
             title: '地址管理',
