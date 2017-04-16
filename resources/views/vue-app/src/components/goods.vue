@@ -136,6 +136,17 @@
      <img class="previewer-demo-img" v-if="false" v-for="(item, index) in list" :src="item.src" width="100" @click="show(index)">
        <previewer :list="list" ref="previewer" :options="options"></previewer>
     </div>
+    <tabbar class="bar bar-secondary">
+       <tabbar-item class="bg-white">
+          <flexbox slot="label" class="text-center color-dark" :gutter="0">
+            <flexbox-item class="vertical-flex border-1px-r"><span class="iconfont">&#xe6b8;</span><span>商城</span></flexbox-item>
+            <flexbox-item class="vertical-flex"><span class="iconfont">&#xe634;</span><span>需求清单</span></flexbox-item>
+          </flexbox>
+       </tabbar-item>
+       <tabbar-item class="bg-danger">
+         <span slot="label" class="color-white">提交需求</span>
+       </tabbar-item>
+    </tabbar>
   </div>
 </template>
 <script>
@@ -155,7 +166,9 @@ import api from '../api/index.js'
     SwiperItem,
     Group,
     Cell,
-    Previewer
+    Previewer,
+    Tabbar,
+    TabbarItem
   } from 'vux'
   export default {
     name: 'goods',
@@ -331,7 +344,9 @@ import api from '../api/index.js'
       Group,
       Cell,
       VueQArt,
-      Previewer
+      Previewer,
+      Tabbar,
+      TabbarItem
     }
   }
 
