@@ -385,4 +385,7 @@ import api from '../api/index.js'
   flex:1.4;
   text-align:center;
 }
+#app>.goods .bar-secondary{
+  bottom:0;
+}
 </style>
