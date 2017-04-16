@@ -143,8 +143,8 @@
             <flexbox-item class="vertical-flex"><span class="iconfont">&#xe634;</span><span>需求清单</span></flexbox-item>
           </flexbox>
        </tabbar-item>
-       <tabbar-item class="bg-danger">
-         <span slot="label" class="color-white">提交需求</span>
+       <tabbar-item class="bg-danger" @click.native="add_cart">
+          <span  class="color-white" slot="label">提交需求</span>
        </tabbar-item>
     </tabbar>
   </div>
@@ -323,6 +323,10 @@ import api from '../api/index.js'
         })
         console.log(self.list);
        
+      },
+      add_cart:function(){
+        console.log("加入购物车");
+        this.$router.push("order_confirm");
       }
     },
     created: function () {

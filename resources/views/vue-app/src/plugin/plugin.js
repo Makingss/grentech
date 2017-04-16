@@ -74,6 +74,14 @@
             show_search_bar: false,
             navbar_active: 2,
           },
+          'order_confirm': {
+            title: '订单',
+            show_back: false,
+            is_show: true,
+            show_search_bar: false,
+            navbar_active: 2,
+            hide_tabbar:true,
+          },
           'goods': {
             title: '商品详情',
             show_back: false,

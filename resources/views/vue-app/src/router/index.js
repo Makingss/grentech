@@ -9,6 +9,7 @@ import List from 'components/list'
 import Activity from 'components/activity'
 import Register from 'components/register'
 import Order from 'components/order'
+import OrderConfirm from 'components/order-confirm'
 import Goods from 'components/goods'
 import Address from 'components/address'
 import Setting from 'components/setting'
@@ -81,6 +82,10 @@ export default new Router({
       name:'order',
       path:'/order',
       component:Order,
+    },{
+      name:'order_confirm',
+      path:'/order_confirm',
+      component:OrderConfirm,
     },{
       name:'goods',
       path:'/goods',
