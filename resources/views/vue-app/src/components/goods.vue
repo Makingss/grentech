@@ -375,6 +375,9 @@ import api from '../api/index.js'
   width:4rem;
   height:4rem;
 }
+.params-cell{
+  padding-bottom:2.3rem;
+}
 .params-cell .weui-cell{
   padding:10px 5px;
 }
