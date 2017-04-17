@@ -3,16 +3,16 @@
 export const app_config = {
   //广告配置
   ad: {
-    is_show: false,
-    src: '/static/images/update_sys.jpg',
-    show_time: 2750,
-    text: '广告文字',
+    is_show: true,
+    src: '/static/images/index_con2.jpg',
+    show_time: 3300,//广告展示时间----->intercept_time  
+    text: '<div class="brand-logo margin-tb-20"><img src="/static/slice/logo_300.png" /></div><p class="margin-tb-10 color-success">中国领先的无线通信与信息网络服务提供商</p>',
     desc: '',
     url: '#/home',
   },
   logo_image: "/static/slice/logo_300.png", //logo 图片设置
   intercept: true, //是否启用登陆拦截
-  intercept_time: 2000, //登陆拦截时间
+  intercept_time: 3000, //登陆拦截时间
   intercept_closeable: true, //登陆拦截是否可关闭
   /* 
     storage配置项

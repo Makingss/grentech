@@ -104,8 +104,8 @@ import api from './api'
             password:self.password
           }).then(res=>{
             console.log(res);
-            var res_data=res.data;
-            if(res_data.res){
+            if(res.ok){
+              var res_data=res.data;
               self.$vux.toast.show({
                 text:'<span class="font-normal">'+res_data.req+'</span>',
                 type:'success'
@@ -116,7 +116,7 @@ import api from './api'
               },500)
             }else{
                 self.$vux.toast.show({
-                text:'<span class="font-normal">'+res_data.req+'</span>',
+                text:'<span class="font-normal">'+res.statusText+'</span>',
                 type:'warn'
               })
             }
@@ -138,7 +138,7 @@ import api from './api'
        //判断当前是否存在用户信息
        var user_info=this.get_user_info();
        if(!user_info){
-          //3s后启用登陆拦截
+          //intercept_time后启用登陆拦截
          setTimeout(function(){
             self.popup_login=config.app_config.intercept;
             self.intercept_closeable=config.app_config.intercept_closeable;
@@ -175,15 +175,7 @@ import api from './api'
 </script>
 
 <style lang="less">
-  // .slide-enter,
-  // .slide-leave {
-  //   opacity: 0;
-  // }
   
-  // .slide-enter-active,
-  // .slide-leave-active {
-  //   transition: opacity 0.5s ease;
-  // }
   .slide-transition { 
    transition: all 0.1s ease;
   }

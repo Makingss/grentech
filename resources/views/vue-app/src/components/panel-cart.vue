@@ -5,13 +5,13 @@
     </flexbox-item>
     <flexbox-item class="item-content":spam="9/12">
       <div class="item-title padding-l-10">
-        {{item.goods.name}}
+        {{item.name}}
       </div>
       <div class="item-subtitle padding-l-10">
-        SAP:{{item.goods.bn}}
+        SAP:{{item.bn}}
       </div>
       <div class="item-subtitle padding-l-10">
-        <p>产品描述:{{item.goods.product_desc}}</p>
+        <p>产品描述:{{item.product_desc}}</p>
         <p>市场价: <span class="color-danger font-bold">¥{{item.goods.price}}</span></p>
         <s class="color-gray" v-if="item.goods.mktprice">¥{{item.goods.mktprice}}</s>
       </div>
