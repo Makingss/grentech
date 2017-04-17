@@ -135,17 +135,29 @@ import api from './api'
         var header_conf = this.handler_xheader(this.$route.name);
         this.header_conf = header_conf;
         this.navbar=config.app_config.navbar;
-       //判断当前是否存在用户信息
-       var user_info=this.get_user_info();
-       if(!user_info){
-          //intercept_time后启用登陆拦截
-         setTimeout(function(){
-            self.popup_login=config.app_config.intercept;
-            self.intercept_closeable=config.app_config.intercept_closeable;
-            
-         },config.app_config.intercept_time)
-       }
+       //判断当前是否存在用户信息,启用登陆拦截
+       var result=null;
+       
+       if (config.app_config.intercept) {
+         //如果已存在用户信息,重新拉取授权,否则进行登陆拦截
+         if(!!window.localStorage.refresh_token&&!!window.localStorage.client_id&&window.localStorage.client_secret){
+          result=this.refresh_token();
+          console.log("]]]]]]]]]]]]]]]");
+          console.log(result);
+         }else{
+           //登陆拦截
+          setTimeout(function(){
+              self.popup_login=config.app_config.intercept;
+              self.intercept_closeable=config.app_config.intercept_closeable;
+           },config.app_config.intercept_time);
+         }
+          var user_info=this.get_user_info();
+          console.log(user_info);
+         
+          
+        }
       },
+       
       popup: function () {
         this.popup_login = !this.popup_login;
       },

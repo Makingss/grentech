@@ -220,6 +220,7 @@
           }
         } else if (result == 3) {
           //token状态正常--- 不执行任何动作
+          return status=3;
         }
       }
       Vue.prototype.get_user_info=function(storage){

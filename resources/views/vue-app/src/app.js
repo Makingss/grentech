@@ -87,10 +87,6 @@ const app = new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-//检查登陆拦截
-if (config.app_config.intercept) {
-   app.refresh_token();
-}
 
 // --- get_user_info
 if (!!window.localStorage.access_token) {
