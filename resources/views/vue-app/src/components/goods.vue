@@ -143,12 +143,12 @@
     <tabbar class="bar bar-secondary">
        <tabbar-item class="bg-white">
           <flexbox slot="label" class="text-center color-dark" :gutter="0">
-            <flexbox-item class="vertical-flex border-1px-r"><span class="iconfont">&#xe61e;</span><span>收藏</span></flexbox-item>
-            <flexbox-item class="vertical-flex"><span class="iconfont">&#xe634;</span><span>需求清单</span></flexbox-item>
+            <flexbox-item class="vertical-flex border-1px-r"><span class="iconfont">&#xe67b;</span>购物车</flexbox-item>
+            <flexbox-item class="vertical-flex"><span class="iconfont">&#xe634;</span>需求清单</flexbox-item>
           </flexbox>
        </tabbar-item>
        <tabbar-item class="bg-danger" @click.native="add_cart">
-          <span  class="color-white" slot="label">提交需求</span>
+          <span  class="color-white" slot="label">加入购物车</span>
        </tabbar-item>
     </tabbar>
   </div>
@@ -334,10 +334,16 @@ import api from '../api/index.js'
         api.add_cart({ 
             goods_id:goods_id,
             quantity:1,
-            fastbuy:true
+            // fastbuy:true
           }).then(res=>{
           console.log("+++++++++++");
           console.log(res);
+          if(res.ok){
+             self.$vux.toast.show({
+                text:'<span class="font-normal">'+'加入购物车成功'+'</span>',
+                type:'success'
+             });
+          }
         })
         //this.$router.push("order_confirm");
       },
