@@ -150,8 +150,9 @@ export default {
     }
   },
   created:function(){
-    //先执行判断
+    //先执行判断,拉取新数据
     this.check_locl_token();
+    //有本地数据,先使用本地数据,
     this.render_user_info();
   },
   methods:{
@@ -161,7 +162,7 @@ export default {
         this.loading_status=true;
         this.username=user_info.username;
         this.email=user_info.email||'';
-        // this.avatar='/static/slice/user_logo.jpg';
+        this.avatar='/static/slice/user_logo.jpg';
       }
     },
     check_locl_token:function(){
@@ -183,25 +184,23 @@ export default {
     },
     fetch_user_info:function(){
           //拉取用户信息
-          console.log("拉取用户信息");
           var self=this;
-          //关闭获取用户信息
-          //  api.get_user_info({
-          //       headers:{
-          //         'Accept':'application/json',
-          //         'Authorization':"Bearer "+window.localStorage.access_token,
-          //       }
-          //   }).then(res=>{
-          //      console.log(res.data);
-          //      if(res.data.id){
-          //         self.loading_status=true;
-          //         self.name=res.data.name;
-          //         // self.avatar=res.data.avatar;
-          //         self.email=res.data.email;
-          //         window.sessionStorage.user_info=JSON.stringify(res.data);
-          //      }
-          //   })
-
+          console.log("拉取用户信息");
+          api.get_user_info({
+                headers:{
+                  'Accept':'application/json',
+                  'Authorization':"Bearer "+window.localStorage.access_token,
+                }
+            }).then(res=>{
+               console.log(res.data);
+               if(res.data.id){
+                  self.loading_status=true;
+                  self.name=res.data.name;
+                  // self.avatar=res.data.avatar;
+                  self.email=res.data.email;
+                  window.sessionStorage.user_info=JSON.stringify(res.data);
+               }
+            })
     }
   },
   components:{
