@@ -152,9 +152,7 @@
 <script>
 import VueQArt from 'vue-qart'
 import QArt from 'qartjs'
-// v-if="!!goods_data_list.new_assemblies.goods_id"
 import api from '../api/index.js'
-// import {mapState,mapActions} from 'vuex'
 
   import {
     Swiper,
@@ -243,7 +241,6 @@ import api from '../api/index.js'
       collapse:function(index){
         this["collapse"+index]=!this["collapse"+index];
       },
-      // ...mapActions(['GETGOODSLIST']),
       init_goods_page: function (query) {
          var self=this;
           // this.GETGOODSLIST({relations: ["image_attach", "images"], parameters:{goods_id:39}});
@@ -326,8 +323,19 @@ import api from '../api/index.js'
       },
       add_cart:function(){
         console.log("加入购物车");
-        this.$router.push("order_confirm");
-      }
+        var self=this;
+        var goods_id=self.goods_data_list.goods_id;
+        api.add_cart({params:{
+          goods_id:goods_id,
+          quantity:1,
+          fastbuy:true,
+        }}).then(res=>{
+          console.log("+++++++++++");
+          console.log(res);
+        })
+        //this.$router.push("order_confirm");
+      },
+
     },
     created: function () {
       var query = this.$route.query;
