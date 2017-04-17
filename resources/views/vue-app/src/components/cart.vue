@@ -12,6 +12,9 @@
             </div>
           </swipeout-item>
         </swipeout>
+        <div class="margin-tb-20 text-center">
+          <span class="iconfont font-6x">&#xe67b;</span>
+        </div>
         <tabbar class="color-white">
             <tabbar-item class="bg-white">
               <flexbox slot="label" class="text-center color-dark" :gutter="0">
@@ -63,7 +66,15 @@ export default {
       api.get_cart_data().then(res=>{
         console.log(res);
         if(res.ok){
-          self.cart_data=res.data;
+          if(res.data.data.length){
+            self.cart_data=res.data;
+          }else{
+            self.$vux.toast.show({
+                text:'<span class="font-normal">购物车为空</span>',
+                type:'text'
+            });
+          }
+          
         }
       })
     }
