@@ -30,7 +30,7 @@
       </flexbox>
 
       <group class="margin-tb-4">
-        <x-number class="font-mini" title="数量" :min="1" :max="10" v-model="quantity"></x-number>
+        <x-number class="font-mini" title="数量" :min="1" :max="99" v-model="quantity"></x-number>
       </group>
       
       <div class="goods-desc" style="height:100%;padding-bottom:3rem;box-sizing:border-box">
@@ -143,8 +143,16 @@
     <tabbar class="bar bar-secondary">
        <tabbar-item class="bg-white">
           <flexbox slot="label" class="text-center color-dark" :gutter="0">
-            <flexbox-item class="vertical-flex border-1px-r"><span class="iconfont">&#xe67b;</span>购物车</flexbox-item>
-            <flexbox-item class="vertical-flex"><span class="iconfont">&#xe634;</span>需求清单</flexbox-item>
+            <flexbox-item class="vertical-flex border-1px-r">
+              <router-link to="cart" class="block">
+                <span class="iconfont">&#xe67b;</span>购物车
+              </router-link>
+            </flexbox-item>
+            <flexbox-item class="vertical-flex">
+              <router-link to="order" class="block">
+                 <span class="iconfont">&#xe634;</span>需求清单
+              </router-link>
+            </flexbox-item>
           </flexbox>
        </tabbar-item>
        <tabbar-item class="bg-danger" @click.native="add_cart">
@@ -333,7 +341,7 @@ import api from '../api/index.js'
         var goods_id=self.goods_data_list.goods_id;
         api.add_cart({ 
             goods_id:goods_id,
-            quantity:1,
+            quantity:self.quantity,
             // fastbuy:true
           }).then(res=>{
           console.log("+++++++++++");
