@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="cart content">
-        <swipeout v-for="(item,index) in cart_data" :key="index" class="border-1px-b">
+        <swipeout v-for="(item,index) in cart_data" v-if="cart_data.length" :key="index" class="border-1px-b">
           <swipeout-item @on-close="handleEvents('on-close')" @on-open="handleEvents('on-open')" transition-mode="follow" :right-menu-width="80">
             <div slot="right-menu">
               <swipeout-button @click="handle_delete($event)" type="warn">
@@ -12,8 +12,8 @@
             </div>
           </swipeout-item>
         </swipeout>
-        <div class="margin-tb-20 text-center">
-          <span class="iconfont font-6x">&#xe67b;</span>
+        <div class="margin-tb-20 text-center" v-if="!cart_data.length">
+          <span class="iconfont font-5x">&#xe67b;</span>
         </div>
         <tabbar class="color-white">
             <tabbar-item class="bg-white">
@@ -67,7 +67,7 @@ export default {
         console.log(res);
         if(res.ok){
           if(res.data.data.length){
-            self.cart_data=res.data;
+            self.cart_data=res.data.data;
           }else{
             self.$vux.toast.show({
                 text:'<span class="font-normal">购物车为空</span>',
