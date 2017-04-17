@@ -16,12 +16,24 @@ class CartObjectController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\Response;
 	 */
 //	public function __construct()
 //	{
-//		$this->middleware('auth');
+//		$this->isUserId();
+//
 //	}
+	public function isUserId()
+	{
+		if (!Auth::user()->id) {
+			return [
+				"status" => false,
+				"code" => "401",
+				"msg" => "失败",
+				"data" => []
+			];
+		}
+	}
 
 	public function index()
 	{
@@ -72,19 +84,27 @@ class CartObjectController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		//$this->validate($request,['']);
+//		$this->validate($request,['']);
+		if ($request->get('fastbuy')=="true") {
+			return '我要快速购买,请实现我！';
+		}
 		$input = $request->all();
 		$input['obj_ident'] = '';
 		$input['member_ident'] = '';
 		$input['store_id'] = '-1';
 		$input['obj_type'] = '';
-//		$input['params'] = ['goods_id' => 2];
+		$input['params'] = ['goods_id' => 0];
 //		$input['goods_id'] = 2;
-		$input['product_id'] = '';
+		$input['product_id'] = 0;
 //		$input['quantity'] = 1;
 		$input['time'] = time();
 		$input['member_id'] = Auth::user()->id;
-		return CartObject::create($input);
+		return [
+			"status" => true,
+			"code" => "200",
+			"msg" => "成功",
+			'data' => CartObject::create($input)
+		];
 //		return redirect('/');
 	}
 
