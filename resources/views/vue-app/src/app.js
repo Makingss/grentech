@@ -53,8 +53,8 @@ router.afterEach(transition => {
       $(".init-ad").addClass("init-ad-leave");
       setTimeout(function () {
         util.init_ad.hide();
-      }, 250);
-    }, ad.show_time - 250);
+      }, 550);
+    }, ad.show_time - 550);
   }
 });
 
