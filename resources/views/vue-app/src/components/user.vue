@@ -162,7 +162,7 @@ export default {
         this.loading_status=true;
         this.username=user_info.username;
         this.email=user_info.email||'';
-        this.avatar='/static/slice/user_logo.jpg';
+        this.avatar=user_info.avatar||'/static/slice/user_logo.jpg';
       }
     },
     check_locl_token:function(){
@@ -174,7 +174,7 @@ export default {
        }else if(result==2){
           //token过期用户
           self.refresh_token(function(){
-            console.log("回调执行");
+             console.log("回调执行");
              self.fetch_user_info();
           });
        }else if(result==3){
