@@ -331,11 +331,11 @@ import api from '../api/index.js'
         console.log("加入购物车");
         var self=this;
         var goods_id=self.goods_data_list.goods_id;
-        api.add_cart({params:{
-          goods_id:goods_id,
-          quantity:1,
-          fastbuy:true,
-        }}).then(res=>{
+        api.add_cart({ 
+            goods_id:goods_id,
+            quantity:1,
+            fastbuy:true
+          }).then(res=>{
           console.log("+++++++++++");
           console.log(res);
         })
