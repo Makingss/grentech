@@ -46,7 +46,7 @@
                         </div>
                     </flexbox-item>
                 </flexbox>
-                 <div>
+                 <div class="padding-10" v-if="false">
                      <span class="color-danger">总价:¥{{order_data[0].ttl_price}}</span>
                  </div>
             </div>
