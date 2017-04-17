@@ -83,7 +83,10 @@ export default {
     },
     get_cart_data:function(data){
         console.log(headers);
-        return Vue.http.get(API_ROOT+'/api/cart',{params:data},{
+        return Vue.http({
+            url:API_ROOT+'/api/cart',
+            method:'GET',
+            data,
             headers:headers
         });
     },
