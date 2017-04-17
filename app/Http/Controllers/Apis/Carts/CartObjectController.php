@@ -38,7 +38,7 @@ class CartObjectController extends Controller
 	public function index()
 	{
 		if (Auth::user()->id) {
-			$cartObject = CartObject::where('member_id', '24')->get();
+			$cartObject = CartObject::where('member_id', Auth::user()->id)->get();
 			$goods = Good::with('image_attach', 'images', 'mechanics', 'goods_ports',
 				'assemblies', 'standardfits', 'electrics', 'aspect_pics', 'mechanics_inte', 'electrics_inte'
 			)->whereIn('goods_id', $cartObject->pluck('goods_id'))->get();//->toArray();
