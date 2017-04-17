@@ -12,8 +12,8 @@
       </div>
       <div class="item-subtitle padding-l-10">
         <p>产品描述:{{item.product_desc}}</p>
-        <p>市场价: <span class="color-danger font-bold">¥{{item.goods.price}}</span></p>
-        <s class="color-gray" v-if="item.goods.mktprice">¥{{item.goods.mktprice}}</s>
+        <p>市场价: <span class="color-danger font-bold">¥{{item.price}}</span></p>
+        <s class="color-gray" v-if="item.mktprice">¥{{item.mktprice}}</s>
       </div>
       <div class="item-subtitle">
         <x-number :title="quantity" :min="1" :value="item.quantity" class="padding-rl-10 padding-tb-6 font-normal" width="40px">
