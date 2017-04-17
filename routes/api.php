@@ -13,7 +13,7 @@
 use Illuminate\Http\Request;
 
 Route::get('/user', function (Request $request) {
-    return $request->user();
+	return $request->user();
 })->middleware('auth:api');
 
 
@@ -40,9 +40,20 @@ Route::get('/goods', 'GoodsController@getGoods')->middleware('api');
 ##########################################################################
 Route::group(['namespace' => 'Apis'], function () {
 
-    Route::post('/register', 'RegisterController@register');
-    Route::post('/verify', 'RegisterController@registerVerify')->name('api.email.verify');
-    Route::post('/login', 'LoginController@login');
-    Route::get('/nice','LoginController@nice')->middleware('auth:api');
+	Route::post('/register', 'RegisterController@register');
+	Route::post('/verify', 'RegisterController@registerVerify')->name('api.email.verify');
+	Route::post('/login', 'LoginController@login');
+	Route::get('/nice', 'LoginController@nice')->middleware('auth:api');
 //    Route::post('/login', 'AdminLoginController@postLogin');
+});
+
+Route::group(['namespace' => 'Apis\Carts'], function () {
+	Route::get('/cart', 'CartObjectController@index')->middleware('auth:api');
+	Route::Post('/cartAdd','CartObjectController@store')->middleware('auth:api');
+});
+
+Route::group(['namespace' => 'Apis\Orders'], function () {
+	Route::get('/order', 'OrderController@index')->middleware('auth:api');
+	Route::post('/orderAdd', 'OrderController@store')->middleware('auth:api');
+//	Route::get('cart/store','CartObjectController@store');
 });
