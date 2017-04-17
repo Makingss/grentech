@@ -78,7 +78,7 @@ class Good extends Model
 	 */
 	public function cartObjects()
 	{
-		return $this->belongsTo(CartObject::class, 'goods_id');
+		return $this->belongsTo(CartObject::class, 'goods_id','goods_id');
 	}
 
 	/**
