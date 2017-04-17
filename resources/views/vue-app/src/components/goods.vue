@@ -45,7 +45,7 @@
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
                <group class="margin-0" v-for="(item,index) in goods_data_list.new_electrics" v-show="collapse1">
-                <cell class="font-mini" :title="parms_table.electrics[index]||index" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'">
+                <cell class="font-mini" :title="parms_table.electrics[index]||index" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'&&index!='has_item'">
                   <flexbox :gutter="0" slot="value" class="text-center">
                     <flexbox-item v-for="(_item,_index) in item">
                      {{_item}}
@@ -59,7 +59,7 @@
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
                <group class="margin-0" v-for="(item,index) in goods_data_list.new_electrics_inte" v-show="collapse6">
-                <cell class="font-mini" :title="parms_table.electrics[index]||index" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'">
+                <cell class="font-mini" :title="parms_table.electrics[index]||index" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'&&index!='has_item'">
                   <flexbox :gutter="0" slot="value" class="text-center">
                     <flexbox-item v-for="(_item,_index) in item">
                      {{_item}}
@@ -88,7 +88,7 @@
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
                <group class="margin-0" v-for="(item,index) in goods_data_list.new_mechanics_inte" v-show="collapse7">
-                <cell class="font-mini" :title="parms_table.mechanics [index]||index" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'">
+                <cell class="font-mini" :title="parms_table.mechanics [index]||index" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'&&index!='has_item'">
                   <flexbox :gutter="0" slot="value" class="text-center">
                     <flexbox-item v-for="(_item,_index) in item">
                      {{_item}}
@@ -102,7 +102,7 @@
                   <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                 </div>
                <group class="margin-0" v-show="collapse2" v-for="(item,index) in goods_data_list.new_mechanics">
-                 <cell class="font-mini" :title="parms_table.mechanics[index]||index" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'">
+                 <cell class="font-mini" :title="parms_table.mechanics[index]||index" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'&&index!='has_item'">
                   <flexbox :gutter="0" slot="value" class="text-center">
                     <flexbox-item v-for="(_item,_index) in item">
                      {{_item}}
@@ -116,7 +116,7 @@
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
               <group class="margin-0" v-for="(item,index) in goods_data_list.new_standardfits" v-show="collapse3">
-                <cell class="font-mini" :title="parms_table.standardfits[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+                <cell class="font-mini" :title="parms_table.standardfits[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'&&index!='has_item'">
                 </cell>
               </group>
                <div @click="collapse(4)" v-if="goods_data_list.new_mechanics.new_assemblies"  :class="{'border-1px-b':!collapse4}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
@@ -125,7 +125,7 @@
                 <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
                </div>
               <group class="margin-0" v-for="(item,index) in goods_data_list.new_assemblies" v-show="collapse4">
-                <cell class="font-mini" :title="parms_table.assemblies[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'">
+                <cell class="font-mini" :title="parms_table.assemblies[index]||index" :value="item" v-if="index!='created_at'&&index!='updated_at'&&index!='goods_id'&&index!='id'&&index!='type'&&index!='has_item'">
                 </cell>
               </group>
         </div>
@@ -136,6 +136,17 @@
      <img class="previewer-demo-img" v-if="false" v-for="(item, index) in list" :src="item.src" width="100" @click="show(index)">
        <previewer :list="list" ref="previewer" :options="options"></previewer>
     </div>
+    <tabbar class="bar bar-secondary">
+       <tabbar-item class="bg-white">
+          <flexbox slot="label" class="text-center color-dark" :gutter="0">
+            <flexbox-item class="vertical-flex border-1px-r"><span class="iconfont">&#xe61e;</span><span>收藏</span></flexbox-item>
+            <flexbox-item class="vertical-flex"><span class="iconfont">&#xe634;</span><span>需求清单</span></flexbox-item>
+          </flexbox>
+       </tabbar-item>
+       <tabbar-item class="bg-danger" @click.native="add_cart">
+          <span  class="color-white" slot="label">提交需求</span>
+       </tabbar-item>
+    </tabbar>
   </div>
 </template>
 <script>
@@ -155,7 +166,9 @@ import api from '../api/index.js'
     SwiperItem,
     Group,
     Cell,
-    Previewer
+    Previewer,
+    Tabbar,
+    TabbarItem
   } from 'vux'
   export default {
     name: 'goods',
@@ -310,6 +323,10 @@ import api from '../api/index.js'
         })
         console.log(self.list);
        
+      },
+      add_cart:function(){
+        console.log("加入购物车");
+        this.$router.push("order_confirm");
       }
     },
     created: function () {
@@ -331,7 +348,9 @@ import api from '../api/index.js'
       Group,
       Cell,
       VueQArt,
-      Previewer
+      Previewer,
+      Tabbar,
+      TabbarItem
     }
   }
 
@@ -360,6 +379,9 @@ import api from '../api/index.js'
   width:4rem;
   height:4rem;
 }
+.params-cell{
+  padding-bottom:2.3rem;
+}
 .params-cell .weui-cell{
   padding:10px 5px;
 }
@@ -369,5 +391,8 @@ import api from '../api/index.js'
 .params-cell .weui-cell__ft{
   flex:1.4;
   text-align:center;
+}
+#app>.goods .bar-secondary{
+  bottom:0;
 }
 </style>

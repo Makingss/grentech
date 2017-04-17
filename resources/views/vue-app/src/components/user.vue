@@ -7,11 +7,8 @@
       </router-link>
       <div class="user-login">
         <p class="padding-tb-10">
-          <router-link to="/loginout" v-if="loading_status" class="color-white">
-            {{username}}
-          </router-link>
-          <router-link to="/login" v-else class="color-white">
-            登录
+          <router-link :to="loading_status?'/loginout':'/login'" class="color-white">
+             {{loading_status?username:'登录'}}
           </router-link>
         </p>
         <p class="padding-tb-10" v-if="false">
@@ -150,18 +147,19 @@ export default {
     }
   },
   created:function(){
-    //先执行判断
+    //先执行判断,拉取新数据
     this.check_locl_token();
+    //有本地数据,先使用本地数据,
     this.render_user_info();
   },
   methods:{
     render_user_info:function(){
       var user_info=this.get_user_info();
       if(user_info){
-        this.loading_status=true;
+       
         this.username=user_info.username;
         this.email=user_info.email||'';
-        // this.avatar='/static/slice/user_logo.jpg';
+        this.avatar=user_info.avatar||'/static/slice/user_logo.jpg';
       }
     },
     check_locl_token:function(){
@@ -173,35 +171,36 @@ export default {
        }else if(result==2){
           //token过期用户
           self.refresh_token(function(){
-            console.log("回调执行");
+             console.log("回调执行");
              self.fetch_user_info();
           });
        }else if(result==3){
           //正常状态
           self.fetch_user_info();
+          this.loading_status=true;
        }
     },
     fetch_user_info:function(){
           //拉取用户信息
-          console.log("拉取用户信息");
           var self=this;
-          //关闭获取用户信息
-          //  api.get_user_info({
-          //       headers:{
-          //         'Accept':'application/json',
-          //         'Authorization':"Bearer "+window.localStorage.access_token,
-          //       }
-          //   }).then(res=>{
-          //      console.log(res.data);
-          //      if(res.data.id){
-          //         self.loading_status=true;
-          //         self.name=res.data.name;
-          //         // self.avatar=res.data.avatar;
-          //         self.email=res.data.email;
-          //         window.sessionStorage.user_info=JSON.stringify(res.data);
-          //      }
-          //   })
-
+          console.log("拉取用户信息");
+          api.get_user_info({
+                headers:{
+                  'Accept':'application/json',
+                  'Authorization':"Bearer "+window.localStorage.access_token,
+                }
+          }).then(res=>{
+               console.log(res.data);
+               if(res.data.id){
+                  self.loading_status=true;
+                  self.name=res.data.name;
+                  self.avatar=res.data.avatar;
+                  self.email=res.data.email;
+                  window.sessionStorage.user_info=JSON.stringify(res.data);
+                  console.log("+++++++");
+                  console.log(self.loading_status);
+               }
+          })
     }
   },
   components:{

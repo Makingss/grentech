@@ -45,7 +45,6 @@
   </div>
 </template>
 <script>
-// <keep-alive> </keep-alive>
 import * as config from './config/config.js'
 import api from './api'
   import {
@@ -105,8 +104,8 @@ import api from './api'
             password:self.password
           }).then(res=>{
             console.log(res);
-            var res_data=res.data;
-            if(res_data.res){
+            if(res.ok){
+              var res_data=res.data;
               self.$vux.toast.show({
                 text:'<span class="font-normal">'+res_data.req+'</span>',
                 type:'success'
@@ -117,7 +116,7 @@ import api from './api'
               },500)
             }else{
                 self.$vux.toast.show({
-                text:'<span class="font-normal">'+res_data.req+'</span>',
+                text:'<span class="font-normal">'+res.statusText+'</span>',
                 type:'warn'
               })
             }
@@ -136,17 +135,31 @@ import api from './api'
         var header_conf = this.handler_xheader(this.$route.name);
         this.header_conf = header_conf;
         this.navbar=config.app_config.navbar;
-       //判断当前是否存在用户信息
-       var user_info=this.get_user_info();
-       if(!user_info){
-          //3s后启用登陆拦截
-         setTimeout(function(){
-            self.popup_login=config.app_config.intercept;
-            self.intercept_closeable=config.app_config.intercept_closeable;
-            console.log(self.popup_login);
-            console.log("登陆拦截");
-         },config.app_config.intercept_time)
-       }
+       //判断当前是否存在用户信息,启用登陆拦截
+       var result=null;
+       
+       if (config.app_config.intercept) {
+         //如果已存在用户信息,重新拉取授权,否则进行登陆拦截
+         if(!!window.localStorage.refresh_token&&!!window.localStorage.client_id&&window.localStorage.client_secret){
+          result=this.refresh_token();
+          if(result==1){
+            self.intercept_login();
+          }
+          console.log("]]]]]]]]]]]]]]]");
+          console.log(result);
+         }else{
+           //登陆拦截
+           self.intercept_login();
+         }
+         
+        }
+      },
+      intercept_login:function(){
+        var self=this;
+        setTimeout(function(){
+              self.popup_login=config.app_config.intercept;
+              self.intercept_closeable=config.app_config.intercept_closeable;
+        },config.app_config.intercept_time);
       },
       popup: function () {
         this.popup_login = !this.popup_login;
@@ -177,15 +190,7 @@ import api from './api'
 </script>
 
 <style lang="less">
-  // .slide-enter,
-  // .slide-leave {
-  //   opacity: 0;
-  // }
   
-  // .slide-enter-active,
-  // .slide-leave-active {
-  //   transition: opacity 0.5s ease;
-  // }
   .slide-transition { 
    transition: all 0.1s ease;
   }

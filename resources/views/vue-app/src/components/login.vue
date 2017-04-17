@@ -62,8 +62,9 @@ export default {
         password:self.password
       }).then(res=>{
         console.log(res);
-        var res_data=res.data;
-        if(res_data.res){
+        
+        if(res.ok){
+          var res_data=res.data;
           self.$vux.toast.show({
             text:'<span class="font-normal">'+res_data.req+'</span>',
             type:'success'
@@ -74,7 +75,7 @@ export default {
           },2000)
         }else{
             self.$vux.toast.show({
-            text:'<span class="font-normal">'+res_data.req+'</span>',
+            text:'<span class="font-normal">'+res.statusText+'</span>',
             type:'warn'
           })
         }

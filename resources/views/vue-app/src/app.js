@@ -53,14 +53,13 @@ router.afterEach(transition => {
       $(".init-ad").addClass("init-ad-leave");
       setTimeout(function () {
         util.init_ad.hide();
-      }, 750);
-    }, ad.show_time - 750);
+      }, 550);
+    }, ad.show_time - 550);
   }
 });
 
 FastClick.attach(document.body)
 //引入资源文件
-// import YingerVue from './js/yinger-vue.js'
 import Style from './styles/style.css'
 import Reset from './styles/reset.css'
 
@@ -88,14 +87,4 @@ const app = new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-//检查登陆拦截
-if (config.app_config.intercept) {
-   app.refresh_token();
-}
 
-// --- get_user_info
-if (!!window.localStorage.access_token) {
-  
-} else {
-  
-}

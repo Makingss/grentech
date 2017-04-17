@@ -75,6 +75,26 @@ Route::group(['namespace' => 'Members'], function () {
 	Route::resource('addr', 'MemberaddrsController');
 });
 
+Route::group(['namespace' => 'Carts'], function () {
+	Route::resource('cart', 'CartObjectController');
+//	Route::get('cart/store','CartObjectController@store');
+});
+/*
+ * 向Ioc 容器填加自己的类 测试用例
+ */
+Route::get('/billing',function(){
+	$billing=app('billing');
+	dd($billing->charge());
+});
+/**
+ * 契约的测试用例
+ */
+Route::get('/contract',function(){
+//	dd(app('Illuminate\Contracts\Config\Repository')['database']['redis']);
+//	dd(Config::get('database.redis'));
+//	dd(app('config')['database']['redis']);
+	dd(app('Illuminate\Contracts\Config\Repository'));
+});
 
 //Route::resource('datatables', 'DatatablesController', [
 //    'anyData'  => 'datatables.data',

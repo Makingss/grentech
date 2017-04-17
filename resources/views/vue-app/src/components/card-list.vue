@@ -1,11 +1,11 @@
 <template lang="html">
-  <flexbox wrap="nowrap" :gutter="6" class="padding-tb-6">
+  <flexbox wrap="nowrap" :gutter="0" class="padding-tb-6">
     <flexbox-item :span="3" class="link-img padding-l-4 border-box">
       <!-- aaa -->
       <slot name="card-media"></slot>
       <!-- <img :src="item.img" alt=""> -->
     </flexbox-item>
-    <flexbox-item :span="9" class="border-box padding-r-6">
+    <flexbox-item :span="9" class="border-box padding-l-6">
       <slot name="card-title"></slot>
       <slot name="card-subtitle"></slot>
     </flexbox-item>

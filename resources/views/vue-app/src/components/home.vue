@@ -116,7 +116,7 @@
       <div class="load-more text-center" v-show="loading">
         <spinner type="circles"></spinner>
       </div>
-      <div class="padding-tb-20 text-center" v-show="load_all" style="padding-bottom:3.3rem"><span class="iconfont">&#xe62b;</span>已加载完毕...</div>
+      <div class="padding-tb-20 text-center" v-show="load_all"><span class="iconfont">&#xe62b;</span>已加载完毕...</div>
 
     </div>
 
@@ -258,7 +258,7 @@ export default {
       this.loading=true;
       let scroller=$(".container");
       if(!!self.scroller_data.next_page_url){
-        api.get_page_data(self.scroller_data.next_page_url,{relations: ["images","image_attach"],per_page: 10 }).then(res=>{
+        api.get_page_data(self.scroller_data.next_page_url,{relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"],per_page: 10 }).then(res=>{
           console.log(res);
           self.loading=false;
            if(res.data.data&&res.data.data.length>0){

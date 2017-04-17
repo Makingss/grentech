@@ -74,12 +74,21 @@
             show_search_bar: false,
             navbar_active: 2,
           },
+          'order_confirm': {
+            title: '订单',
+            show_back: false,
+            is_show: true,
+            show_search_bar: false,
+            navbar_active: 2,
+            hide_tabbar:true,
+          },
           'goods': {
             title: '商品详情',
             show_back: false,
             is_show: false,
             show_search_bar: false,
             navbar_active: 1,
+            hide_tabbar:true,
           },
           'address': {
             title: '地址管理',
@@ -206,11 +215,13 @@
                   text: '<span class="font-normal">请重新登录</span>',
                   type: 'warn'
                 });
+                return status=1;
               }
             })
           }
         } else if (result == 3) {
           //token状态正常--- 不执行任何动作
+          return status=3;
         }
       }
       Vue.prototype.get_user_info=function(storage){
@@ -224,7 +235,7 @@
               username:username
             };
         }else{
-          return false;
+          return null;
         }
         
       }
