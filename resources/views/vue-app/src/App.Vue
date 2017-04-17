@@ -142,22 +142,25 @@ import api from './api'
          //如果已存在用户信息,重新拉取授权,否则进行登陆拦截
          if(!!window.localStorage.refresh_token&&!!window.localStorage.client_id&&window.localStorage.client_secret){
           result=this.refresh_token();
+          if(result==1){
+            self.intercept_login();
+          }
           console.log("]]]]]]]]]]]]]]]");
           console.log(result);
          }else{
            //登陆拦截
-          setTimeout(function(){
-              self.popup_login=config.app_config.intercept;
-              self.intercept_closeable=config.app_config.intercept_closeable;
-           },config.app_config.intercept_time);
+           self.intercept_login();
          }
-          var user_info=this.get_user_info();
-          console.log(user_info);
          
-          
         }
       },
-       
+      intercept_login:function(){
+        var self=this;
+        setTimeout(function(){
+              self.popup_login=config.app_config.intercept;
+              self.intercept_closeable=config.app_config.intercept_closeable;
+        },config.app_config.intercept_time);
+      },
       popup: function () {
         this.popup_login = !this.popup_login;
       },

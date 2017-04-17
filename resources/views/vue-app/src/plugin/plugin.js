@@ -215,6 +215,7 @@
                   text: '<span class="font-normal">请重新登录</span>',
                   type: 'warn'
                 });
+                return status=1;
               }
             })
           }
@@ -234,7 +235,7 @@
               username:username
             };
         }else{
-          return false;
+          return null;
         }
         
       }

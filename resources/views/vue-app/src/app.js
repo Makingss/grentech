@@ -88,9 +88,3 @@ const app = new Vue({
 }).$mount('#app')
 
 
-// --- get_user_info
-if (!!window.localStorage.access_token) {
-  
-} else {
-  
-}
