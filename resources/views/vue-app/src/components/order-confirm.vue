@@ -44,12 +44,11 @@
                         <div class="item-subtitle color-dark">
                             <span>单价:¥{{item.price}}</span><span class="pull-right padding-r-10">数量: ×{{item.ordernum}}</span>
                         </div>
-                       
                     </flexbox-item>
-                    <div class="">
-                        <span class="color-danger">总价:¥{{order_data[0].ttl_price}}</span>
-                    </div>
                 </flexbox>
+                 <div>
+                     <span class="color-danger">总价:¥{{order_data[0].ttl_price}}</span>
+                 </div>
             </div>
             <div class="margin-tb-4 bg-white padding-10" v-if="false">
                配送方式 <x-button mini plain type="warn">送货上门</x-button>
