@@ -1,6 +1,6 @@
 <template>
     <div class="order_confirm bg-light content">
-        <div class="content-box" style="padding-bottom:2.5rem;">
+        <div class="content-box">
             <div class="border-box padding-l-6 bg-white">
                 <flexbox :gutter="0" class="padding-tb-6">
                     <flexbox-item :span="11">
