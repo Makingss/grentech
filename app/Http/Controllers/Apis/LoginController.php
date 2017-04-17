@@ -55,7 +55,7 @@ class LoginController extends Controller
             $user = Administrator::where('username', $username)->first();
             $oauth_clients = DB::table('oauth_clients')->where('user_id', $user->id)->first();
             if (empty($oauth_clients)) {
-                return response()->json(['res' => false, 'req' => '邮箱不存在或者尚未激活']);
+                return response()->json(['res' => false, 'req' => '用户不存在或者尚未激活']);
             }
 //            return json_encode([$oauth_clients->id, md5($user->username . $user->id), $user->username, $password]);
             $data = $this->getOauth($oauth_clients->id, md5($user->username . $user->id), $user->username, $password);

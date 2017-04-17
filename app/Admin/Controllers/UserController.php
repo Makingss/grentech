@@ -34,6 +34,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->update_member_oauth();
         return Admin::content(function (Content $content) {
             $content->header(trans('admin::lang.administrator'));
             $content->description(trans('admin::lang.list'));
@@ -200,5 +201,16 @@ class UserController extends Controller
 
         $client->save();
         return $client;
+    }
+
+    
+    public function update_member_oauth()
+    {
+        $res = DB::table('admin_users')->leftJoin('oauth_clients', 'oauth_clients.user_id', '=', 'admin_users.id')->get(['admin_users.id', 'admin_users.username', 'oauth_clients.user_id'])->where('user_id', '=', null)->toArray();
+        if (!empty($res)) {
+            foreach ($res as $key => $val) {
+                $this->oauthClientCreate($val->id, $val->username, $val->username, '');
+            }
+        }
     }
 }
