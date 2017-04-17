@@ -1,7 +1,7 @@
 <template lang="html">
   <flexbox class="panel-cart padding-tb-6">
     <flexbox-item class="item-media text-center link-img" :span="3/12">
-      <img src="http://mall.yingerfashion.com/public/images/30/75/7f/002cc761ab5a577585d67c853181b0630cc46057.jpg?1478140161#h" alt="">
+      <img :src="item.images.url" alt="">
     </flexbox-item>
     <flexbox-item class="item-content":spam="9/12">
       <div class="item-title padding-l-10">
