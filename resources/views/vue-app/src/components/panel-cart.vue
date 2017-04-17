@@ -9,9 +9,7 @@
       </div>
       <div class="item-title font-mini padding-l-10 line-ellispse-2" v-if="!!item.electrics">
         频段:
-        <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">
-            {{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i>
-           </span>
+        <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span>
         <span v-if="item.electrics.length">M</span>
       </div>
       <div class="item-title font-mini padding-l-10 line-ellispse-2">
@@ -22,7 +20,7 @@
         电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span>
         <span v-if="item.electrics.length">°</span>
       </div>
-      <div class="item-subtitle color-gray padding-l-10">
+      <div class="item-subtitle color-gray padding-l-10 font-mini">
         SAP:{{item.bn}}
       </div>
       <div class="item-subtitle padding-l-10">
@@ -31,7 +29,7 @@
         <s class="color-gray" v-if="item.mktprice">¥{{item.mktprice}}</s>
       </div>
       <div class="item-subtitle">
-        <x-number :title="quantity" :min="1" :value="item.quantity" class="padding-rl-10 padding-tb-6 font-normal" width="40px">
+        <x-number :title="quantity" :min="1" :max="99" :value="item.cart_objects.quantity" class="padding-rl-10 padding-tb-6 font-normal" width="40px">
         </x-number>
       </div>
     </flexbox-item>
