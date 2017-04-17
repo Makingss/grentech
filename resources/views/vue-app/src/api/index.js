@@ -86,7 +86,7 @@ export default {
         return Vue.http({
             url:API_ROOT+'/api/cart',
             method:'GET',
-            data,
+            // data,
             headers:headers
         });
     },
