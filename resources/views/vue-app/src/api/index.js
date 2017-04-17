@@ -85,8 +85,11 @@ export default {
         return Vue.http.get(API_ROOT+'cart',data);
     },
     add_cart:function(data){
-        data.headers=headers;
-        return Vue.http.post(API_ROOT+'/api/cartAdd',data);
+        
+        return Vue.http.post(API_ROOT+'/api/cartAdd',{
+            headers:headers,
+            params:data,
+        });
     }
 
 
