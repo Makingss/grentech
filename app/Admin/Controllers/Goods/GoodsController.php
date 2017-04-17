@@ -171,7 +171,7 @@ class GoodsController extends Controller
 			$grid->cat_id($getGoodColumns['cat_id'])->value(function ($cat_id) {
 				return Goods_cat::find($cat_id)->cat_name;
 			});
-			$grid->keywords(trans('admin::lang.products.keyword'))->pluck('keyname')->label()->implode('</br>');
+			$grid->keywords(trans('admin::lang.products.keyword'))->pluck('keyname')->label();
 //			$grid->actions(function ($actions) {
 			// 当前行的数据数组
 			//$actions->row;
