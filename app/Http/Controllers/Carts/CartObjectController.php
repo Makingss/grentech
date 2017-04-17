@@ -25,17 +25,17 @@ class CartObjectController extends Controller
 
 	public function index()
 	{
-//			dd(Auth::id());
-		$cartObject = CartObject::where('member_id', '2')->get();
+		$cartObject = CartObject::where('member_id', '24')->get();
 		$goods = Good::with('image_attach', 'images', 'mechanics', 'goods_ports',
 			'assemblies', 'standardfits', 'electrics', 'aspect_pics', 'mechanics_inte', 'electrics_inte'
 		)->whereIn('goods_id', $cartObject->pluck('goods_id'))->get()->toArray();
+
 		foreach ($goods as $dataK => $data) {
 			foreach ($data['image_attach'] as $itemK => $item) {
 				$image_attach = Image_attach::with('images')->where('image_id', $item['image_id'])->get()->toArray();
 				$collects = collect($image_attach);
 				$collapse = $collects->collapse();
-				$goods['image_attach'][$itemK] = $collapse->toArray();
+				$goods[$dataK]['image_attach'][$itemK] = $collapse->toArray();
 			}
 			return $goods;
 //		dd($cartObject->toArray());
