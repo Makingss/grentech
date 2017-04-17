@@ -29,8 +29,8 @@
         </flexbox-item>
       </flexbox>
 
-      <group class="margin-tb-4 padding-rl-10">
-        <x-number title="数量" :min="1" :max="10" v-model="quantity"></x-number>
+      <group class="margin-tb-4">
+        <x-number class="font-mini" title="数量" :min="1" :max="10" v-model="quantity"></x-number>
       </group>
       
       <div class="goods-desc" style="height:100%;padding-bottom:3rem;box-sizing:border-box">
