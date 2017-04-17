@@ -28,6 +28,10 @@
           <vue-q-art v-if="false" :config="config" class="qrcode-content"></vue-q-art>
         </flexbox-item>
       </flexbox>
+
+      <group class="margin-tb-4 padding-rl-10">
+        <x-number title="数量" :min="1" :max="10" v-model="quantity"></x-number>
+      </group>
       
       <div class="goods-desc" style="height:100%;padding-bottom:3rem;box-sizing:border-box">
         <tab v-model="index" active-color="#FB4F5B">
@@ -166,7 +170,8 @@ import api from '../api/index.js'
     Cell,
     Previewer,
     Tabbar,
-    TabbarItem
+    TabbarItem,
+    XNumber
   } from 'vux'
   export default {
     name: 'goods',
@@ -178,6 +183,7 @@ import api from '../api/index.js'
           filter: 'color'
         },
         index: 0,
+        quantity:1,
         goods_id: 0,
         item_index: 0,
         page_goods_data: {},
@@ -358,7 +364,8 @@ import api from '../api/index.js'
       VueQArt,
       Previewer,
       Tabbar,
-      TabbarItem
+      TabbarItem,
+      XNumber
     }
   }
 
