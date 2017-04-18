@@ -159,7 +159,7 @@ export default {
        
         this.username=user_info.username;
         this.email=user_info.email||'';
-        this.avatar=user_info.avatar||'/static/slice/user_logo.jpg';
+        this.avatar='/uploads/'+user_info.avatar||'/static/slice/user_logo.jpg';
       }
     },
     check_locl_token:function(){
