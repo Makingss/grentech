@@ -39,7 +39,7 @@ class CartObjectController extends Controller
 	{
 		if (Auth::user()->id) {
 			$cartObject = CartObject::where('member_id', Auth::user()->id)->get();
-			$goods = Good::with('cartObjects','image_attach', 'images', 'mechanics', 'goods_ports',
+			$goods = Good::with('cartObjects', 'image_attach', 'images', 'mechanics', 'goods_ports',
 				'assemblies', 'standardfits', 'electrics', 'aspect_pics', 'mechanics_inte', 'electrics_inte'
 			)->whereIn('goods_id', $cartObject->pluck('goods_id'))->get();//->toArray();
 			foreach ($goods as $dataK => $data) {
@@ -49,7 +49,7 @@ class CartObjectController extends Controller
 					$collapse = $collects->collapse();
 					$goods[$dataK]['image_attach'][$itemK] = $collapse->toArray();
 				}
-				
+
 				return [
 					"status" => true,
 					"code" => "200",
@@ -58,12 +58,12 @@ class CartObjectController extends Controller
 				];
 			}
 		}
-		return [
-			"status" => false,
-			"code" => "401",
-			"msg" => "失败",
-			"data" => []
-		];
+//		return [
+//			"status" => false,
+//			"code" => "401",
+//			"msg" => "失败",
+//			"data" => []
+//		];
 	}
 
 	/**
@@ -85,7 +85,7 @@ class CartObjectController extends Controller
 	public function store(Request $request)
 	{
 //		$this->validate($request,['']);
-		if ($request->get('fastbuy')=="true") {
+		if ($request->get('fastbuy') == "true") {
 			return '我要快速购买,请实现我！';
 		}
 		$input = $request->all();
@@ -141,11 +141,24 @@ class CartObjectController extends Controller
 	 * @param  int $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update(Request $request)
 	{
-		$cartObject = CartObject::findOrFail($id);
-		$cartObject->update($request->all());
-		return redirect();
+		$cartObject = CartObject::findOrFail($request->get('id'));
+		$datas['quantity'] = $request->get('quantity');
+		$responses = $cartObject->update($datas);
+		if (!$responses) {
+			return response()->json([
+				"status" => $responses,
+				"code" => "400",
+				"msg" => "更新失败"
+			]);
+		}
+		return response()->json([
+			'quantity' => $datas['quantity'],
+			"status" => $responses,
+			"code" => "200",
+			"msg" => "成功",
+		]);
 	}
 
 	/**
@@ -154,8 +167,20 @@ class CartObjectController extends Controller
 	 * @param  int $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	public function destroy(Request $request)
 	{
-		CartObject::destroy($id);
+		$responses = CartObject::destroy($request->get('id'));
+		if (!$responses) {
+			return response()->json([
+				"status" => false,
+				"code" => "400",
+				"msg" => "删除失败"
+			]);
+		}
+		return response()->json([
+			"status" => true,
+			"code" => "200",
+			"msg" => "成功",
+		]);
 	}
 }
