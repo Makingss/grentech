@@ -1,19 +1,15 @@
 <template lang="html">
   <div class="order content">
-    <sticky class="order-sticky">
+    <sticky class="order-sticky" v-if="false">
       <tab active-color="#1ABC9C" v-model="index">
         <tab-item :selected="actived===item" v-for="(item,index) in list">{{item}}
         </tab-item>
       </tab>
     </sticky>
-    <swiper v-model="index" :show-dots="false" class="tab-swiper-content" height="100%">
-      <swiper-item v-for="(item,index) in list" class="order-swiper">
-        <div class="tab-swiper vux-center">
+    <div class="tab-swiper vux-center">
           <card-order :data="item_order" v-for="(item_order,index_order) in order_list" class="margin-b-10">
           </card-order>
-        </div>
-      </swiper-item>
-    </swiper>
+    </div>
   </div>
 </template>
 <script>
@@ -29,7 +25,8 @@ export default {
       },
       index:0,
       actived:"待付款",
-      list:["待付款","待发货","待收货","待收货","售后"],
+      //list:["待付款","待发货","待收货","待收货","售后"],
+      list:["待付款"],
       order_list:[
         {
           order_id:'170108173832357',
