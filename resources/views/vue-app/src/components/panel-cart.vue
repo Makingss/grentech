@@ -25,7 +25,7 @@
       </div>
       <div class="item-subtitle padding-l-10">
         <p v-if="false">产品描述:{{item.product_desc}}</p>
-        <p>市场价: <span class="color-danger font-bold">¥{{item.price}}</span><s class="color-gray" v-if="item.mktprice">¥{{item.mktprice}}</s></p>
+        <p>市场价: <span class="color-danger font-bold">¥{{item.price}}</span>  <s class="color-gray font-mini" v-if="item.mktprice">¥{{item.mktprice}}</s></p>
       </div>
       <div class="item-subtitle">
         <x-number :title="quantity" :min="1" :max="99" :value="item.cart_objects.quantity" @on-change="update_cart" class="padding-rl-10 padding-tb-6 font-normal" width="40px">
