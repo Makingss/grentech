@@ -27,9 +27,9 @@
     </div>
     <div class="card-second-footer padding-rl-10 padding-tb-6 border-1px-t color-dark" v-if="collapse_footer">
       <p><label>订单: </label>170108173832357</p>
-      <p><label>收件人: </label>王小明</p>
-      <p><label>联系方式: </label>18503009595</p>
-      <p><label>地址: </label>广东省 深圳市 龙华新区 XX 街道 XX 号</p>
+      <p><label>收件人: </label>王**</p>
+      <p><label>联系方式: </label>1850300****</p>
+      <p><label>地址: </label>广东省 深圳市 XX 区 </p>
       <p><label>运费 </label> ¥0.00</p>
       <p><label>创建时间: </label>2017-02-19 23:57:20</p>
     </div>
