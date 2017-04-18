@@ -119,6 +119,7 @@ export default {
           if(res.data.data.length){
             self.cart_data=res.data.data;
           }else{
+            self.cart_data=res.data.data;
             self.$vux.toast.show({
                 text:'<span class="font-normal">购物车为空</span>',
                 type:'text'
