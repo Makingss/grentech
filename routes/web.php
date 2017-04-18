@@ -39,6 +39,7 @@ Route::get('/passport_register','Passport_registerController@index');
 Route::get('/mall_goodsdetail','Mall_goodsdetailController@index');
 Route::get('/mall_search','Mall_searchController@index');
 Route::get('/app_link','App_linkController@index');
+Route::get('/footer','Mall_footerController@index');
 
 /*
 	***************************end*************************
