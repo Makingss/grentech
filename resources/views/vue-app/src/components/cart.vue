@@ -12,8 +12,8 @@
             </div>
           </swipeout-item>
         </swipeout>
-        <div class="margin-tb-20 text-center" v-if="!cart_data.length">
-          <span class="iconfont font-5x">&#xe67b;</span>
+        <div class="text-center" style="margin-top:40%;" v-if="!cart_data.length">
+          <span class="iconfont color-gray" style="font-size:60px;">&#xe67b;</span>
         </div>
         <tabbar class="color-white">
             <tabbar-item class="bg-white">
