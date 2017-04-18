@@ -35,6 +35,9 @@ Vue.component('goods-detail',require('./components/goods/Goods-detail.vue'));
 //search 搜索页
 Vue.component('search',require('./components/search/Search.vue'));
 
+//search 搜索页
+Vue.component('app-link',require('./components/app/App-link.vue'));
+
 //登陆界面
 Vue.component("login",require("./components/passport/Login.vue"));
 Vue.component("register",require("./components/passport/Register.vue"));
@@ -42,4 +45,3 @@ Vue.component("register",require("./components/passport/Register.vue"));
 const app = new Vue({
     el: '#app',
 }).$mount("#app");
-
