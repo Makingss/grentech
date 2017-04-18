@@ -32,7 +32,6 @@
       <p><label>地址: </label>广东省 深圳市 龙华新区 XX 街道 XX 号</p>
       <p><label>运费 </label> ¥0.00</p>
       <p><label>创建时间: </label>2017-02-19 23:57:20</p>
-      <p><label>支付方式: </label>微信支付</p>
     </div>
   </div>
 </template>
@@ -72,5 +71,9 @@ export default {
   }
   .card-order .item-media{
     box-sizing: border-box;
+  }
+  .card-second-footer label{
+    width:70px;
+    display:inline-block;
   }
 </style>
