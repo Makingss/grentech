@@ -25,7 +25,7 @@
       查看订单明细
       <span class="pull-right iconfont color-primary" @click.prevent="collapse_change">&#xe772;</span>
     </div>
-    <div class="card-second-footer padding-rl-10 padding-tb-6 border-1px-t color-gray" v-if="collapse_footer">
+    <div class="card-second-footer padding-rl-10 padding-tb-6 border-1px-t color-dark" v-if="collapse_footer">
       <p><label>订单: </label>170108173832357</p>
       <p><label>收件人: </label>王小明</p>
       <p><label>联系方式: </label>18503009595</p>
