@@ -60,9 +60,11 @@
     methods:{
       update_cart:function(val){
         var self=this;
-        if(self.item.cart_objects.quantity==val) return;
-        console.log(this.index);
         console.log(val);
+        console.log("}}}}}}}}}}");
+        if(self.item.cart_objects.quantity==val) return;
+        if(val==0) return;
+       
         api.update_cart({
           quantity:val,
           goods_id:self.item.cart_objects.goods_id,
