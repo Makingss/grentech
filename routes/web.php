@@ -40,6 +40,7 @@ Route::get('/mall_goodsdetail','Mall_goodsdetailController@index');
 Route::get('/mall_search','Mall_searchController@index');
 Route::get('/app_link','App_linkController@index');
 Route::get('/footer','Mall_footerController@index');
+Route::get('/goods_detail','Goods_detailController@index');
 
 /*
 	***************************end*************************
