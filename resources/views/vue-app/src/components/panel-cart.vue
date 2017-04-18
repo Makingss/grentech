@@ -60,13 +60,11 @@
     methods:{
       update_cart:function(val){
         var self=this;
-
         if(self.item.cart_objects.quantity==val) return;
-       
         console.log(this.index);
         console.log(val);
         api.update_cart({
-          quantity:self.item.cart_objects.quantity,
+          quantity:val,
           goods_id:self.item.cart_objects.goods_id,
           id:self.item.cart_objects.id
         }).then(res=>{
