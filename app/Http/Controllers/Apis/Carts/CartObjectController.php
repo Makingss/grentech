@@ -18,11 +18,11 @@ class CartObjectController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response;
 	 */
-//	public function __construct()
+//	public function __construct(Auth $auth)
 //	{
-//		$this->isUserId();
-//
+//		$this->middleware('auth');
 //	}
+
 	public function isUserId()
 	{
 		if (!Auth::user()->id) {
@@ -39,6 +39,14 @@ class CartObjectController extends Controller
 	{
 		if (Auth::user()->id) {
 			$cartObject = CartObject::where('member_id', Auth::user()->id)->get();
+			if (Empty($cartObject->toArray())) {
+				return [
+					"status" => true,
+					"code" => "200",
+					"msg" => "成功",
+					"data" => []
+				];
+			}
 			$goods = Good::with('cartObjects', 'image_attach', 'images', 'mechanics', 'goods_ports',
 				'assemblies', 'standardfits', 'electrics', 'aspect_pics', 'mechanics_inte', 'electrics_inte'
 			)->whereIn('goods_id', $cartObject->pluck('goods_id'))->get();//->toArray();
@@ -93,11 +101,11 @@ class CartObjectController extends Controller
 		$input['member_ident'] = '';
 		$input['store_id'] = '-1';
 		$input['obj_type'] = '';
-		$input['params'] = ['goods_id' => 0];
 //		$input['goods_id'] = 2;
 		$input['product_id'] = 0;
 //		$input['quantity'] = 1;
 		$input['time'] = time();
+		$input['params'] = ['goods_id' => $request->get('goods_id'), 'product_id' => $input['product_id']];
 		$input['member_id'] = Auth::user()->id;
 		return [
 			"status" => true,

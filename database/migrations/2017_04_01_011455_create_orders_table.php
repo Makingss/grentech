@@ -40,12 +40,12 @@ class CreateOrdersTable extends Migration {
 			$table->integer('itemnum')->unsigned()->nullable()->comment('订单子订单数量');
 			$table->string('ip', 15)->nullable()->comment('IP地址');
 			$table->integer('addr_id')->comment('收货地址');
-//			$table->text('ship_addr', 65535)->nullable()->comment('收货地址');
-//			$table->string('ship_zip', 20)->nullable()->comment('收货人邮编');
-//			$table->string('ship_tel', 50)->nullable()->comment('收货电话');
+			$table->text('ship_addr', 65535)->nullable()->comment('收货地址');
+			$table->string('ship_zip', 20)->nullable()->comment('收货人邮编');
+			$table->string('ship_tel', 50)->nullable()->comment('收货电话');
 			$table->string('ship_email', 200)->nullable()->comment('收货人email');
 			$table->string('ship_time', 50)->nullable()->comment('配送时间');
-//			$table->string('ship_mobile', 50)->nullable()->comment('收货人手机');
+			$table->string('ship_mobile', 50)->nullable()->comment('收货人手机');
 			$table->decimal('cost_item', 20)->default(0.00)->comment('订单商品总价格');
 			$table->enum('is_tax', array('true','false'))->default('false')->comment('是否要开发票');
 			$table->enum('tax_type', array('false','personal','company'))->default('false')->comment('发票类型');
