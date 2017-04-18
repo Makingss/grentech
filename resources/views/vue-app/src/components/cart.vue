@@ -39,6 +39,7 @@
 <script>
 import PanelCart from './panel-cart.vue'
 import api from '../api/index.js'
+import * as config from '../config/config.js'
 import {
   Flexbox,
   FlexboxItem,
@@ -82,7 +83,8 @@ export default {
                 type:'text'
             });
           }
-          
+        }else if(res.status=="401"&&!!window.localStorage.refresh_token&&!!window.localStorage.client_id&&window.localStorage.client_secret){
+          self.$router.push('cart');
         }
       })
     },

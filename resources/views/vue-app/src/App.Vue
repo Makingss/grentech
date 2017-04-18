@@ -151,7 +151,6 @@ import api from './api'
            //登陆拦截
            self.intercept_login();
          }
-         
         }
       },
       intercept_login:function(){
