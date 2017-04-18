@@ -12,10 +12,13 @@ const API_ROOT = '';
 const TEST_ROOT="http://119.22.23.185"
 var root_host='';
 
-var headers={
-     'Accept':'application/json',
-     'Authorization':"Bearer "+window.localStorage.access_token,
-};
+
+function get_headers(){
+    return {
+        'Accept':'application/json',
+        'Authorization':"Bearer "+window.localStorage.access_token,
+    };
+}
 
 // if(window.location.host=="127.0.0.1"||window.location.host=="localhost:8080"){
 //     root_host=TEST_ROOT
@@ -90,12 +93,12 @@ export default {
             url:API_ROOT+'/api/cart',
             method:'GET',
             // data,
-            headers:headers
+            headers:get_headers()
         });
     },
     add_cart:function(data){
         return Vue.http.post(API_ROOT+'/api/cartAdd',data,{
-            headers:headers
+            headers:get_headers()
         });
     }
 
