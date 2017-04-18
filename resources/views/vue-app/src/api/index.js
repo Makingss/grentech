@@ -87,8 +87,10 @@ export default {
         return Vue.http.get(API_ROOT+'similar',{params:data})
     },
     get_cart_data:function(data){
+       
+        var headers=get_headers();
+        console.log("************");
         console.log(headers);
-        
         return Vue.http({
             url:API_ROOT+'/api/cart',
             method:'GET',
@@ -97,6 +99,9 @@ export default {
         });
     },
     add_cart:function(data){
+        var headers=get_headers();
+        console.log("************");
+        console.log(headers);
         return Vue.http.post(API_ROOT+'/api/cartAdd',data,{
             headers:get_headers()
         });
