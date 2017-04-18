@@ -7,16 +7,16 @@
       <div class="item-title padding-l-10">
         {{item.name}}
       </div>
-      <div class="item-title font-mini padding-l-10 line-ellispse-2" v-if="!!item.electrics">
+      <div class="item-title font-mini padding-l-10 line-ellispse-2" v-if="!!item.electrics&&item.electrics.length">
         频段:
         <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span>
         <span v-if="item.electrics.length">M</span>
       </div>
-      <div class="item-title font-mini padding-l-10 line-ellispse-2">
+      <div class="item-title font-mini padding-l-10 line-ellispse-2" v-if="!!item.electrics&&item.electrics.length">
         增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span>
         <span v-if="item.electrics.length">dBi</span>
       </div>
-      <div class="item-title  font-mini line-ellispse-2 padding-l-10">
+      <div class="item-title  font-mini line-ellispse-2 padding-l-10" v-if="!!item.electrics&&item.electrics.length">
         电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span>
         <span v-if="item.electrics.length">°</span>
       </div>
@@ -29,7 +29,7 @@
         <s class="color-gray" v-if="item.mktprice">¥{{item.mktprice}}</s>
       </div>
       <div class="item-subtitle">
-        <x-number :title="quantity" :min="1" :max="99" :value="item.cart_objects.quantity" class="padding-rl-10 padding-tb-6 font-normal" width="40px">
+        <x-number :title="quantity" :min="1" :max="99" :value="item.cart_objects.quantity" @on-change="update_cart" class="padding-rl-10 padding-tb-6 font-normal" width="40px">
         </x-number>
       </div>
     </flexbox-item>
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+  import api from '../api'
   import {
     Flexbox,
     FlexboxItem,
@@ -47,16 +48,47 @@
     data: function() {
       return {
         quantity: '数量',
-        value: 2,
-        min: 1,
-        max: 10,
+        init:true,
       }
     },
     props: {
-      item: Object
+      item: Object,
+      index:Number
     },
     created: function() {
       console.log(this.item);
+    },
+    methods:{
+      update_cart:function(val){
+        var self=this;
+
+        if(self.item.cart_objects.quantity==val) return;
+       
+        console.log(this.index);
+        console.log(val);
+        api.update_cart({
+          quantity:self.item.cart_objects.quantity,
+          goods_id:self.item.cart_objects.goods_id,
+          id:self.item.cart_objects.id
+        }).then(res=>{
+          console.log(res);
+          if(res.ok){
+            if(res.status){
+              //什么也不做
+            }else{
+              self.$vux.toast.show({
+                text:'<span class="font-normal">'+res.data.msg+'</span>',
+                type:'warn'
+              })
+            }
+          } else{
+            self.$vux.toast.show({
+                text:'<span class="font-normal">'+res.statusText+'</span>',
+                type:'warn'
+            })
+          }
+        })
+      }
     },
     components: {
       Flexbox,

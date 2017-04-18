@@ -64,17 +64,25 @@ export default {
         console.log(res);
         
         if(res.ok){
-          var res_data=res.data;
-          self.$vux.toast.show({
-            text:'<span class="font-normal">'+res_data.req+'</span>',
-            type:'success'
-          });
-          self.save_token(res_data.data);
-          setTimeout(function(){
-            self.$router.push("/user");
-          },2000)
-        }else{
+          if(res.data.res){
+              var res_data=res.data;
+              self.$vux.toast.show({
+                text:'<span class="font-normal">'+res_data.req+'</span>',
+                type:'success'
+              });
+              self.save_token(res_data.data);
+              setTimeout(function(){
+                self.$router.push("/user");
+              },2000)
+          }else{
             self.$vux.toast.show({
+              text:'<span class="font-normal">'+res.data.req+'</span>',
+              type:'warn'
+            })
+          }
+         
+        }else{
+          self.$vux.toast.show({
             text:'<span class="font-normal">'+res.statusText+'</span>',
             type:'warn'
           })

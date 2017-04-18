@@ -105,6 +105,23 @@ export default {
         return Vue.http.post(API_ROOT+'/api/cartAdd',data,{
             headers:get_headers()
         });
+    },
+    update_cart:function(data){
+        var headers=get_headers();
+        /*
+            quantity:'',数量
+            goods_id:'288',
+            id:'',
+         */
+        return Vue.http.post(API_ROOT+'/api/cartUpdate',data,{
+            headers:get_headers()
+        })
+    },
+    del_cart:function(data){
+        var headers=get_headers();
+        return Vue.http.post(API_ROOT+'/api/cartDelete',data,{
+            headers:get_headers()
+        })
     }
 
 

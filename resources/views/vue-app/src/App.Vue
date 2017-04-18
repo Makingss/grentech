@@ -105,20 +105,29 @@ import api from './api'
           }).then(res=>{
             console.log(res);
             if(res.ok){
-              var res_data=res.data;
-              self.$vux.toast.show({
-                text:'<span class="font-normal">'+res_data.req+'</span>',
-                type:'success'
-              });
-              self.save_token(res_data.data);
-              setTimeout(function(){
-                self.popup_login=false;
-              },500)
-            }else{
+              if(res.data.res){
+                var res_data=res.data;
                 self.$vux.toast.show({
+                  text:'<span class="font-normal">'+res_data.req+'</span>',
+                  type:'success'
+                });
+                self.save_token(res_data.data);
+                setTimeout(function(){
+                  self.popup_login=false;
+                },500)
+              }else{
+                self.$vux.toast.show({
+                  text:'<span class="font-normal">'+res.data.req+'</span>',
+                  type:'warn'
+                })
+                self.popup_login=true;
+              }
+            }else{
+              self.$vux.toast.show({
                 text:'<span class="font-normal">'+res.statusText+'</span>',
                 type:'warn'
               })
+              self.popup_login=true;
             }
           })
       },

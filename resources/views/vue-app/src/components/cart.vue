@@ -3,19 +3,19 @@
         <swipeout v-for="(item,index) in cart_data" v-if="cart_data.length" :key="index" class="border-1px-b">
           <swipeout-item @on-close="handleEvents('on-close')" @on-open="handleEvents('on-open')" transition-mode="follow" :right-menu-width="80">
             <div slot="right-menu">
-              <swipeout-button @click="handle_delete($event)" type="warn">
+              <swipeout-button @click.native="handle_delete(index)" type="warn">
                 删除
               </swipeout-button>
             </div>
             <div slot="content">
-                <panel-cart :item="item"></panel-cart>
+                <panel-cart :item="item" :index="index"></panel-cart>
             </div>
           </swipeout-item>
         </swipeout>
         <div class="text-center" style="margin-top:40%;" v-if="!cart_data.length">
           <span class="iconfont color-gray" style="font-size:60px;">&#xe67b;</span>
         </div>
-        <tabbar class="color-white">
+        <tabbar class="color-white bar bar-secondary">
             <tabbar-item class="bg-white">
               <flexbox slot="label" class="text-center color-dark" :gutter="0">
                 <flexbox-item class="vertical-flex border-1px-r">
@@ -67,8 +67,49 @@ export default {
     handleEvents:function(){
 
     },
-    handle_delete:function(){
-      
+    handle_delete:function(index){
+        console.log(index);
+        var self=this;
+        //执行确认操作
+        self.$vux.confirm.show({
+          title:'提示',
+          content:'确认从购物车删除?',
+          onCancel:function(){
+            self.$vux.confirm.hide();
+          },
+          onConfirm:function(){
+            console.log("确认删除");
+            self.$vux.confirm.hide();
+            self.del_cart(index);
+          }
+        })
+    },
+    del_cart:function(index){
+       var self=this;
+       api.del_cart({
+          id:self.cart_data[index].cart_objects.id
+        }).then(res=>{
+          console.log(res);
+          if(res.ok){
+            if(res.data.status){
+              self.$vux.toast.show({
+                text:'<span class="font-normal">'+res.data.msg+'</span>',
+                type:'text'
+              })
+              self.fetch_data();
+            }else{
+               self.$vux.toast.show({
+                text:'<span class="font-normal">'+res.data.msg+'</span>',
+                type:'warn'
+               })
+            }
+          }else{
+            self.$vux.toast.show({
+                text:'<span class="font-normal">'+res.statusText+'</span>',
+                type:'warn'
+            })
+          }
+        })
     },
     fetch_data:function(){
       var self=this;
@@ -84,7 +125,7 @@ export default {
             });
           }
         }else{
-          
+
         }
       })
     },
