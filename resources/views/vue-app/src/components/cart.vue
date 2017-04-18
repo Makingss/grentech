@@ -13,7 +13,7 @@
           </div>
         </swipeout-item>
       </swipeout>
-      <div class="text-center" style="padding-top:40%;" v-if="!cart_data.length">
+      <div class="text-center" style="padding-top:50%;" v-if="!cart_data.length">
         <span class="iconfont color-gray" style="font-size:60px;">&#xe67b;</span>
       </div>
     </div>
