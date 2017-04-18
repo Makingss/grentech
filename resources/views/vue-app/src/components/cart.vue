@@ -83,8 +83,8 @@ export default {
                 type:'text'
             });
           }
-        }else if(res.status=="401"&&!!window.localStorage.refresh_token&&!!window.localStorage.client_id&&window.localStorage.client_secret){
-          self.$router.push('cart');
+        }else{
+          
         }
       })
     },

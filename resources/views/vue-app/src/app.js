@@ -37,7 +37,7 @@ router.beforeEach((to, from, next) => {
     console.log("首次进入");
     router.app.isIndex = true;
     if (ad.is_show) {
-      util.init_ad.show(ad.url, ad.src, ad.show_time, ad.text);
+      util.init_ad.show(ad);
     }
   } else {
     util.loading.show();

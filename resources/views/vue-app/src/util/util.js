@@ -13,12 +13,18 @@ export const loading={
   }
 }
 export const init_ad={
-  show:function(url,src,show_time,text){
+  show:function(ad){
     if($(".init-ad")[0]){
       return;
     }
     let modalContainer=document.body;
-    $(modalContainer).append('<div class="init-ad"><div class="link-img"><a href="'+url+'"><img src="'+src+'" alt=""></a></div><div class="font-normal padding-10 text-center">'+text+'</div></div>');
+    var html="";
+    if(ad.use_bg_image){
+      html='<div class="init-ad"><div class="link-img"><a class="block" href="'+ad.url+'"><img src="'+ad.src+'" alt=""></a></div><div class="font-normal padding-10 text-center">'+ad.text+'</div></div>'
+    }else{
+      html='<div class="init-ad ad-linear-grendient" style="background-color:'+ad.bg_color+';height:100%"><div class="link-img"  style="margin-top:50%"><img src="'+ad.brand_banner+'" /></div><div class="link-img text-center slogen-content"><div class="block-center slogen">________________________</div><p class="font-4x slogen">'+ad.slogen+'</p></div></div>'
+    }
+    $(modalContainer).append(html);
   },
   hide:function(){
     $(".init-ad").remove();
