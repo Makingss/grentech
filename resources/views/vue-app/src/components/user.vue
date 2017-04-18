@@ -184,17 +184,12 @@ export default {
           //拉取用户信息
           var self=this;
           console.log("拉取用户信息");
-          api.get_user_info({
-                headers:{
-                  'Accept':'application/json',
-                  'Authorization':"Bearer "+window.localStorage.access_token,
-                }
-          }).then(res=>{
+          api.get_user_info().then(res=>{
                console.log(res.data);
                if(res.data.id){
                   self.loading_status=true;
                   self.name=res.data.name;
-                  self.avatar=res.data.avatar;
+                  self.avatar='/uploads/'+res.data.avatar;
                   self.email=res.data.email;
                   window.sessionStorage.user_info=JSON.stringify(res.data);
                   console.log("+++++++");

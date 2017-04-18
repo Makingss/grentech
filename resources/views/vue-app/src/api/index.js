@@ -34,7 +34,9 @@ export default {
         return Vue.http.post(API_ROOT+"/api/login",data);
     },
     get_user_info:function(data){
-        return Vue.http.get(API_ROOT+'/api/user',data);
+        return Vue.http.get(API_ROOT+'/api/user',{
+            headers:get_headers()
+        });
     },
     getGoodsData: function(data) {
         // filtered:[brand_id, goods_id, type_id, cat_id, bn]  
