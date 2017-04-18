@@ -156,7 +156,6 @@ export default {
     render_user_info:function(){
       var user_info=this.get_user_info();
       if(user_info){
-       
         this.username=user_info.username;
         this.email=user_info.email||'';
         this.avatar='/uploads/'+user_info.avatar||'/static/slice/user_logo.jpg';
@@ -189,8 +188,9 @@ export default {
                if(res.data.id){
                   self.loading_status=true;
                   self.name=res.data.name;
+                  self.username=res.data.username;
                   self.avatar='/uploads/'+res.data.avatar;
-                  self.email=res.data.email;
+                  self.email=res.data.email||'';
                   window.sessionStorage.user_info=JSON.stringify(res.data);
                   console.log("+++++++");
                   console.log(self.loading_status);
