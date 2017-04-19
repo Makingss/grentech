@@ -1,10 +1,14 @@
 <?php
 namespace App\Http\Controllers\Apis\Orders;
 
+use App\Admin\Models\Goods\Good;
+use App\Admin\Models\Members\Member_addr;
 use App\Admin\Models\Orders\Order;
 use App\Admin\Models\Orders\Order_itme;
 use App\Http\Controllers\Controller;
+use App\Models\Carts\CartObject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 /**
  * Created by PhpStorm.
@@ -57,17 +61,38 @@ class OrderController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		if ($request->get('fastbuy')) {
-
-		}
-		$input = $request->all();
+//		$carts = ['cart_id' => ['8,9']];
+//		dd(json_encode($carts));
+		$cartId = json_decode($request->get('cart_id'));
+		$orders = new Order();
+		$goods = new Good();
 		//创建 订单主数据
-		$input['order_id'] = static::generateOrderId();
+		$input['order_id'] = $this->generateOrderId();
+		$input['member_id'] = \Auth::user()->id;
+		$input['addr_id'] = $request->get('addr_id');
+		$input['ship_area'] = $request->get('ship_area');
+		$input['ship_addr'] = $request->get('ship_addr');
+		$input['ship_mobile'] = $request->get('ship_mobile');
+		$input['ship_name'] = $request->get('ship_name');
+		$input['shipping_id'] = '1';
+		$input['shipping'] = '快递';
+		$input['ip'] = $_SERVER['REMOTE_ADDR'];
+		$input['itemnum'] = (int)$orders->getSumQuantity($cartId)->map(function ($sumQuantity) {
+			return $sumQuantity->quantity;
+		})->sum();
+		$input['total_amount'] = $orders->getTotalAmounts($cartId);
+		$input['final_amount'] = $input['total_amount'];
+		$input['memo'] = $request->get('memo');
 		$order = Order::create($input);
 		//创建 订单明细数据
-		$order_items['order_id'] = $order->order_id;
-		$order_items = Order_itme::create($order_items);
-		return view('/order', compact('order_items'));
+		$orderItems = $orders->getOrderItems($cartId);
+		$order_items = $orderItems->map(function ($orderItem) use ($order) {
+			return $order->order_items()->create($orderItem);
+		});
+		$goodsData = $goods->getGoods($order_items->pluck('goods_id')->toArray());
+		$orderDate = $order->with('order_items')->where('order_id',$input['order_id'])->get()->toArray();
+		$orderDate['goods'] = $goodsData->toArray();
+		return $orderDate;
 	}
 
 	/**
@@ -122,8 +147,17 @@ class OrderController extends Controller
 		return view('/order');
 	}
 
-	public static function generateOrderId()
+	public function generateOrderId()
 	{
 		return date('ymdhis') . str_pad(mt_rand(1, 999), 3, '0', STR_PAD_LEFT);
+	}
+
+	/**
+	 * 计算子订单数量
+	 */
+	protected function number_plus(Collection $collection)
+	{
+		return $collection->pluck('itemnum')->sum('itemnum');
+
 	}
 }
