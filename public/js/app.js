@@ -78654,7 +78654,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\footer\\App-link.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/footer/App-link.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] App-link.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -78688,7 +78688,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\goods\\Goods-detail.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/goods/Goods-detail.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Goods-detail.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -78726,7 +78726,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\home\\About-us.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/home/About-us.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] About-us.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -78764,7 +78764,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\home\\Banner-section.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/home/Banner-section.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Banner-section.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -78802,7 +78802,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\home\\Content-section.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/home/Content-section.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Content-section.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -78840,7 +78840,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\home\\Footer-section.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/home/Footer-section.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Footer-section.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -78878,7 +78878,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\home\\Header-section.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/home/Header-section.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Header-section.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -78916,7 +78916,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\home\\Navbar.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/home/Navbar.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Navbar.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -78954,7 +78954,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\home\\Slogen.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/home/Slogen.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Slogen.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -78992,7 +78992,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\passport\\Login.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/passport/Login.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Login.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -79030,7 +79030,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\passport\\Register.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/passport/Register.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Register.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -79068,7 +79068,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\search\\Search.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/search/Search.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Search.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -79106,7 +79106,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\shopcart\\Shopcart.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/shopcart/Shopcart.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Shopcart.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80007,7 +80007,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "contains block-center"
   }, [_c('div', {
     staticClass: "crumbs"
-  }, [_vm._v("\r\n            网易考拉海购 > landou 兰多纯色大容量百搭双肩手提妈咪包\r\n        ")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n            网易考拉海购 > landou 兰多纯色大容量百搭双肩手提妈咪包\n        ")]), _vm._v(" "), _c('div', {
     staticClass: "PInfoWrap"
   }, [_c('el-row', [_c('el-col', {
     attrs: {
