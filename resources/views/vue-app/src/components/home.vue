@@ -81,7 +81,7 @@
                SAP: {{item.bn}}
              </div>
               <div class="item-subtitle color-danger">
-                ￥{{item.price}}
+                ￥{{item.mktprice}}
               </div>
             </div>
           </router-link>
@@ -111,7 +111,7 @@
                     </div>
               </router-link>
                     
-                <div class="item-subtitle color-danger padding-t-4" slot="card-subtitle">¥{{item.price}}</div>
+                <div class="item-subtitle color-danger padding-t-4" slot="card-subtitle">¥{{item.mktprice}}</div>
             </card-list>
       <div class="load-more text-center" v-show="loading">
         <spinner type="circles"></spinner>

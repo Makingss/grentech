@@ -42,7 +42,7 @@
                             {{item.spec_info2}}
                         </div>
                         <div class="item-subtitle color-dark">
-                            <span>单价:¥{{item.price}}</span><span class="pull-right padding-r-10">数量: ×{{item.ordernum}}</span>
+                            <span>单价:¥{{item.mktprice}}</span><span class="pull-right padding-r-10">数量: ×{{item.ordernum}}</span>
                         </div>
                     </flexbox-item>
                 </flexbox>

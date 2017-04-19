@@ -37,9 +37,9 @@
                         SAP: {{item.bn}}
                       </div>
                       <div class="item-subtitle padding-t-4">
-                        <b class="color-danger">￥{{item.price}}</b>
-                        <s class="padding-r-10 font-slim color-gray" v-if="item.mktprice">¥</s>
-                        <s class="color-gray font-slim">{{item.mktprice||"暂无"}}</s>
+                        <b class="color-danger" v-if="false">￥{{item.mktprice}}</b>
+                        <b class="padding-r-10 font-slim color-danger">¥</b>
+                        <b class="color-danger font-slim">{{item.mktprice||"暂无"}}</b>
                       </div>
                     </div>
                   </router-link>
@@ -69,9 +69,9 @@
                       </div>
                 </router-link>
                   <div class="item-subtitle color-danger padding-t-4" slot="card-subtitle">
-                    <b>¥{{item.price}}</b>
-                    <s class="padding-r-10 font-slim color-gray" v-if="item.mktprice">¥</s>
-                    <s class="color-gray font-slim">{{item.mktprice||"暂无"}}</s>
+                    <b v-if="false">¥{{item.mktprice}}</b>
+                    <b class="padding-r-10 font-slim color-danger">¥</b>
+                    <b class="color-danger font-slim">{{item.mktprice||"暂无"}}</b>
                   </div>
               </card-list>
             <div class="load-more text-center" v-show="loading">

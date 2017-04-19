@@ -19,9 +19,9 @@
             电下倾: <span v-for="(_item,_index) in goods_data_list.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics[_index+1].dipangle">/</i></span> °
            </div>
           <p class="color-gray">SAP:{{goods_data_list.bn}}</p>
-          <p class="color-danger">¥{{goods_data_list.price}}</p>
-          <p class="color-gray" v-if="false">市场价:
-            <s>{{goods_data_list.mktprice||'暂无'}}</s>
+          <p class="color-danger" v-if="false">¥{{goods_data_list.price}}</p>
+          <p class="color-danger">市场价:
+            {{goods_data_list.mktprice||'暂无'}}
           </p>
         </flexbox-item>
         <flexbox-item :span="3" class="link-img padding-rl-6 border-box" v-if="false">
