@@ -294,20 +294,16 @@
                   continue;
                 }
                 if (!!data[key][i][k]) {
-                  // if(!!new_obj[k]){
-                  //   if(new_obj[k]==data[key][i][k]){
-                  //     continue;
-                  //   }
-                  //   new_obj[k]=new_obj[k]+'  '+data[key][i][k];
-                  // }else{
-                  //   new_obj[k]=data[key][i][k];
-                  // } 
                   new_obj["has_item"] = true;
                   if (!new_obj[k]) {
                     new_obj[k] = [];
                   }
-                  new_obj[k].push(data[key][i][k]);
-                  // new_obj[i]=data[key][i][k];
+                  if(k=="asse_high"||k=="asse_version"){
+                    new_obj[k].push(data[key][i][k].split(" "));
+                  }else{
+                    new_obj[k].push(data[key][i][k]);
+                  }
+                
                 }
               }
             }
