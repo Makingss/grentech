@@ -210,6 +210,7 @@ export default {
 .user-login{
   position: relative;
   z-index:88;
+  height:40px;
 }
 .user-avatar{
   // margin-top:.8rem;
