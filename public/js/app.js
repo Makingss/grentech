@@ -26700,13 +26700,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             activeName: "cart_all",
             cart_choose_all: false,
-            num1: 1
+            num1: 1,
+            choose_shopitems: false
         };
     }
 });
@@ -28944,7 +28979,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, "\n.cart .cart-header[data-v-f98d0c3e] {\n  height: 170px;\n}\n.cart .cart-logo[data-v-f98d0c3e] {\n  width: 170px;\n  height: 170px;\n}\n.cart .cart-search[data-v-f98d0c3e] {\n  width: 340px;\n  margin-top: 66px;\n}\n.cart .cart-list-item[data-v-f98d0c3e] {\n  position: relative;\n}\n.cart .cart-list-item-media[data-v-f98d0c3e] {\n  width: 80px;\n  height: 80px;\n}\n.cart .cart-list-item-content[data-v-f98d0c3e] {\n  padding-left: 90px;\n}\n.cart .cart-empty[data-v-f98d0c3e] {\n  width: 330px;\n  padding: 80px 0 140px;\n}\n.cart .cart-empty-icon .iconfont[data-v-f98d0c3e] {\n  font-size: 70px;\n  color: #fec8c9;\n}\n.cart .cart-empty-msg[data-v-f98d0c3e] {\n  margin-top: 28px;\n  padding-left: 15px;\n}\n.cart .suggest-tabs-item[data-v-f98d0c3e] {\n  height: 24px;\n  line-height: 24px;\n}\n.cart .suggest-tabs-item[data-v-f98d0c3e]:hover {\n  cursor: pointer;\n  color: #e4393c;\n  font-weight: bold;\n}\n.cart .suggest-card[data-v-f98d0c3e] {\n  width: 25%;\n  box-sizing: border-box;\n}\n.cart .suggest-card img[data-v-f98d0c3e] {\n  height: 160px;\n  width: 160px;\n}\n", ""]);
+exports.push([module.i, "\n.cart .cart-header[data-v-f98d0c3e] {\n  height: 170px;\n}\n.cart .cart-logo[data-v-f98d0c3e] {\n  width: 170px;\n  height: 170px;\n}\n.cart .cart-search[data-v-f98d0c3e] {\n  width: 340px;\n  margin-top: 66px;\n}\n.cart .cart-list-item[data-v-f98d0c3e] {\n  position: relative;\n  height: 24px;\n  line-height: 24px;\n  font-weight: bold;\n}\n.cart .cart-list-item .el-checkbox[data-v-f98d0c3e] {\n  height: 24px;\n  line-height: 24px;\n}\n.cart .cart-list-item-media[data-v-f98d0c3e] {\n  width: 80px;\n  height: 80px;\n}\n.cart .cart-list-item-content[data-v-f98d0c3e] {\n  padding-left: 90px;\n}\n.cart .cart-empty[data-v-f98d0c3e] {\n  width: 330px;\n  padding: 80px 0 140px;\n}\n.cart .cart-empty-icon .iconfont[data-v-f98d0c3e] {\n  font-size: 70px;\n  color: #fec8c9;\n}\n.cart .cart-empty-msg[data-v-f98d0c3e] {\n  margin-top: 28px;\n  padding-left: 15px;\n}\n.cart .suggest-tabs-item[data-v-f98d0c3e] {\n  height: 24px;\n  line-height: 24px;\n}\n.cart .suggest-tabs-item[data-v-f98d0c3e]:hover {\n  cursor: pointer;\n  color: #e4393c;\n  font-weight: bold;\n}\n.cart .suggest-card[data-v-f98d0c3e] {\n  width: 25%;\n  box-sizing: border-box;\n}\n.cart .suggest-card img[data-v-f98d0c3e] {\n  height: 160px;\n  width: 160px;\n}\n.cart .cart-item-header .el-checkbox[data-v-f98d0c3e] {\n  color: #FB4F5B;\n}\n", ""]);
 
 // exports
 
@@ -81411,7 +81446,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": "#"
     }
   }, [_vm._v("去购物")])], 1)])]) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "cart-content container block-center"
+    staticClass: "cart-content container block-center margin-b-20"
   }, [_c('el-tabs', {
     model: {
       value: (_vm.activeName),
@@ -81432,7 +81467,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "span": 2
     }
   }, [_c('div', {
-    staticClass: "cart-list-item"
+    staticClass: "cart-list-item padding-l-4"
   }, [_c('el-checkbox', {
     model: {
       value: (_vm.cart_choose_all),
@@ -81468,10 +81503,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', [_vm._v("操作")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "border-1px-b"
-  }, _vm._l((5), function(item, index) {
+  }, [_c('div', {
+    staticClass: "cart-item-header padding-10 border-1px-b"
+  }, [_c('el-checkbox', {
+    staticClass: "padding-l-4",
+    model: {
+      value: (_vm.choose_shopitems),
+      callback: function($$v) {
+        _vm.choose_shopitems = $$v
+      },
+      expression: "choose_shopitems"
+    }
+  }, [_vm._v("官方直营")])], 1), _vm._v(" "), _vm._l((2), function(item, index) {
     return _c('el-row', {
       key: index,
-      staticClass: "padding-tb-10 border-1px-t"
+      staticClass: "padding-tb-10"
     }, [_c('el-col', {
       staticClass: "cart-list-item text-center",
       attrs: {
@@ -81535,7 +81581,87 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "span": 3
       }
     }, [_c('div', [_vm._v("删除")])])], 1)
-  }))], 1), _vm._v(" "), _c('el-tab-pane', {
+  })], 2), _vm._v(" "), _c('div', {
+    staticClass: "border-1px-b"
+  }, [_c('div', {
+    staticClass: "cart-item-header padding-10 border-1px-b"
+  }, [_c('el-checkbox', {
+    staticClass: "padding-l-4",
+    model: {
+      value: (_vm.choose_shopitems),
+      callback: function($$v) {
+        _vm.choose_shopitems = $$v
+      },
+      expression: "choose_shopitems"
+    }
+  }, [_vm._v("海信官方旗舰店")])], 1), _vm._v(" "), _vm._l((2), function(item, index) {
+    return _c('el-row', {
+      key: index,
+      staticClass: "padding-tb-10"
+    }, [_c('el-col', {
+      staticClass: "cart-list-item text-center",
+      attrs: {
+        "span": 1
+      }
+    }, [_c('el-checkbox', {
+      model: {
+        value: (_vm.cart_choose_all),
+        callback: function($$v) {
+          _vm.cart_choose_all = $$v
+        },
+        expression: "cart_choose_all"
+      }
+    })], 1), _vm._v(" "), _c('el-col', {
+      staticClass: "clear-float item-desc",
+      attrs: {
+        "span": 10
+      }
+    }, [_c('div', {
+      staticClass: "cart-list-item-media link-img pull-left"
+    }, [_c('img', {
+      attrs: {
+        "src": "//img10.360buyimg.com/cms/s80x80_jfs/t3298/53/166852873/143086/13a3b389/57a940b5N89a88cda.jpg",
+        "alt": ""
+      }
+    })]), _vm._v(" "), _c('div', {
+      staticClass: "cart-list-item-content"
+    }, [_c('p', {
+      staticClass: "padding-tb-5"
+    }, [_vm._v("海信（Hisense）LED55EC520UA 55英寸 VIDAA3 14核 炫彩4K智能电视(黑色)\n                                ")])])]), _vm._v(" "), _c('el-col', {
+      staticClass: "cart-list-item",
+      attrs: {
+        "span": 3
+      }
+    }, [_c('div', [_vm._v("¥99.00")])]), _vm._v(" "), _c('el-col', {
+      staticClass: "cart-list-item",
+      attrs: {
+        "span": 4
+      }
+    }, [_c('el-input-number', {
+      attrs: {
+        "size": "small",
+        "min": 1,
+        "max": 10
+      },
+      model: {
+        value: (_vm.num1),
+        callback: function($$v) {
+          _vm.num1 = $$v
+        },
+        expression: "num1"
+      }
+    })], 1), _vm._v(" "), _c('el-col', {
+      staticClass: "cart-list-item",
+      attrs: {
+        "span": 3
+      }
+    }, [_c('div', [_vm._v("¥99.00")])]), _vm._v(" "), _c('el-col', {
+      staticClass: "cart-list-item",
+      attrs: {
+        "span": 3
+      }
+    }, [_c('div', [_vm._v("删除")])])], 1)
+  })], 2)], 1), _vm._v(" "), _c('el-tab-pane', {
     attrs: {
       "label": "已失效",
       "name": "lose_efficacy"
