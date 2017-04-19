@@ -299,7 +299,9 @@
                     new_obj[k] = [];
                   }
                   if(k=="asse_high"||k=="asse_version"){
-                    new_obj[k].push(data[key][i][k].split(" "));
+                    for(var m=0;m<data[key][i][k].length;m++){
+                      new_obj[k].push(data[key][i][k][m].split(" "));
+                    }
                   }else{
                     new_obj[k].push(data[key][i][k]);
                   }
