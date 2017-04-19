@@ -227,13 +227,11 @@ export default {
   padding:.5rem 0;
 }
 .user-bg{
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#169a85+0,1abc9c+100 */
   background: #169a85; /* Old browsers */
   background: -moz-linear-gradient(45deg,  #169a85 0%, #1abc9c 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(45deg,  #169a85 0%,#1abc9c 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(45deg,  #169a85 0%,#1abc9c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#169a85', endColorstr='#1abc9c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
 }
 // .user-bg{
 //   background: #5184bc; /* Old browsers */

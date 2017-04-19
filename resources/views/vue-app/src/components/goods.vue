@@ -113,7 +113,7 @@
               </flexbox>
             </cell>
           </group>
-          <div @click="collapse(3)" v-if="goods_data_list.new_standardfits" :class="{'border-1px-b':!collapse3}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+          <div @click="collapse(3)" v-if="goods_data_list.new_standardfits.has_item" :class="{'border-1px-b':!collapse3}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
             标准配件
             <span class="iconfont padding-rl-10" v-if="!collapse3">&#xe772;</span>
             <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
@@ -127,7 +127,7 @@
               </flexbox>
             </cell>
           </group>
-          <div @click="collapse(4)" v-if="goods_data_list.new_assemblies" :class="{'border-1px-b':!collapse4}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
+          <div @click="collapse(4)" v-if="goods_data_list.new_assemblies.has_item" :class="{'border-1px-b':!collapse4}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
             可选组件
             <span class="iconfont padding-rl-10" v-if="!collapse4">&#xe772;</span>
             <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
