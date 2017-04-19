@@ -27,6 +27,9 @@
           <x-input class="font-normal" placeholder="密码" type="password" v-model="password"></x-input>
         </group>
       </div>
+      <div style="height:36px;line-height:36px" class="login-msg padding-rl-10 color-danger">
+        {{login_msg}}
+      </div>
       <div class="margin-tb-20 tab-80 block-center">
         <x-button type="warn" class="block-center login-btn btn-80" @click.native="submit_login">登陆</x-button>
       </div>
@@ -65,6 +68,7 @@ import api from './api'
         logo_image:config.app_config.logo_image,
         username:'',
         password:'',
+        login_msg:"",
         popup_login: false,
         page_name: '',
         search_input: '',
@@ -105,8 +109,9 @@ import api from './api'
           }).then(res=>{
             console.log(res);
             if(res.ok){
+              var res_data=res.data;
               if(res.data.res){
-                var res_data=res.data;
+                
                 self.$vux.toast.show({
                   text:'<span class="font-normal">'+res_data.req+'</span>',
                   type:'success'
@@ -116,17 +121,16 @@ import api from './api'
                   self.popup_login=false;
                 },500)
               }else{
-                self.$vux.toast.show({
-                  text:'<span class="font-normal">'+res.data.req+'</span>',
-                  type:'warn'
-                })
                 self.popup_login=true;
+                self.login_msg=res_data.req;
+                // self.$vux.toast.show({
+                //   text:'<span class="font-normal">'+res.data.req+'</span>',
+                //   type:'warn'
+                // })
+                
               }
             }else{
-              self.$vux.toast.show({
-                text:'<span class="font-normal">'+res.statusText+'</span>',
-                type:'warn'
-              })
+              self.login_msg=res.data.req;
               self.popup_login=true;
             }
           })
