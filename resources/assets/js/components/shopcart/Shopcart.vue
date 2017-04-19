@@ -186,15 +186,15 @@
 <style lang="less" scoped>
     .cart {
         .cart-header {
-            height: 170px;
+            height: 140px;
         }
         .cart-logo {
-            width: 170px;
-            height: 170px;
+            width: 140px;
+            height: 140px;
         }
         .cart-search {
             width: 340px;
-            margin-top: 66px;
+            margin-top: 51px;
         }
         .cart-list-item {
             position: relative;
