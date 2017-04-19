@@ -65,21 +65,21 @@
               <div class="item-title line-ellispse-2">
                 {{item.name}}
               </div>
-               <div class="item-title line-ellispse-2 font-bold" v-if="!!item.electrics">
-                  频段: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span>
-                  <span v-if="item.electrics.length">M</span>
+              <div class="item-title line-ellispse-2 font-bold" v-if="!!item.electrics">
+                频段: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span>
+                <span v-if="item.electrics.length">M</span>
               </div>
               <div class="item-title line-ellispse-2 font-bold">
-                  增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span>
-                  <span v-if="item.electrics.length">dBi</span>
+                增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span>
+                <span v-if="item.electrics.length">dBi</span>
               </div>
               <div class="item-title line-ellispse-2 font-bold">
-                 电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span>
-                 <span v-if="item.electrics.length">°</span>
+                电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span>
+                <span v-if="item.electrics.length">°</span>
               </div>
-             <div class="item-title line-ellispse-2 color-gray">
-               SAP: {{item.bn}}
-             </div>
+              <div class="item-title line-ellispse-2 color-gray">
+                SAP: {{item.bn}}
+              </div>
               <div class="item-subtitle color-danger">
                 ￥{{item.mktprice}}
               </div>
@@ -87,206 +87,216 @@
           </router-link>
         </flexbox-item>
       </flexbox>
-       <card-list 
-              v-for="(item,index) in scroller_data.data"  class="border-1px-b">
-              <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  class="block" slot="card-media">
-                <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
-              </router-link>
-              <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}"  slot="card-title">
-                   <div class="item-title">{{item.name}}</div>
-                    <div class="item-title line-ellispse-2 font-bold">
-                       频段:  <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span>
-                       <span v-if="item.electrics.length">M</span>
-                    </div>
-                    <div class="item-title line-ellispse-2 font-bold">
-                       增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span>
-                       <span v-if="item.electrics.length">dBi</span>
-                    </div>
-                    <div class="item-title line-ellispse-2 font-bold">
-                       电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span>
-                       <span v-if="item.electrics.length">°</span>
-                    </div>
-                    <div class="item-title line-ellispse-2 color-gray">
-                      SAP: {{item.bn}}
-                    </div>
-              </router-link>
-                    
-                <div class="item-subtitle color-danger padding-t-4" slot="card-subtitle">¥{{item.mktprice}}</div>
-            </card-list>
+      <card-list v-for="(item,index) in scroller_data.data" class="border-1px-b">
+        <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block" slot="card-media">
+          <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
+        </router-link>
+        <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" slot="card-title">
+          <div class="item-title">{{item.name}}</div>
+          <div class="item-title line-ellispse-2 font-bold">
+            频段: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span>
+            <span v-if="item.electrics.length">M</span>
+          </div>
+          <div class="item-title line-ellispse-2 font-bold">
+            增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span>
+            <span v-if="item.electrics.length">dBi</span>
+          </div>
+          <div class="item-title line-ellispse-2 font-bold">
+            电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span>
+            <span v-if="item.electrics.length">°</span>
+          </div>
+        </router-link>
+        <div class="item-title line-ellispse-2 color-gray">
+          SAP: {{item.bn}}
+        </div>
+        <div class="item-subtitle color-danger padding-t-4" slot="card-subtitle">¥{{item.mktprice||'暂无'}}</div>
+      </card-list>
       <div class="load-more text-center" v-show="loading">
         <spinner type="circles"></spinner>
       </div>
       <div class="padding-tb-20 text-center" v-show="load_all"><span class="iconfont">&#xe62b;</span>已加载完毕...</div>
-
+  
     </div>
-
+  
   </div>
 </template>
 
 <script>
-//import {loader} from '../util/util.js'
-import api from '../api'
-import CardList from './card-list'
-import {Swiper,Flexbox,FlexboxItem,Scroller,Spinner,Divider} from 'vux'
-export default {
-  name: 'home',
-  data () {
-    return {
-      loading: false,
-      scrollTop:0,
-      load_all:false,
-      swiper_list:[
-        {
-          url:'/list?type_id=3',
-          img:'https://static.vux.li/demo/1.jpg',
-          title:'测试轮播标题1'
-        },{
-          url:'/list?type_id=3',
-          img:'https://static.vux.li/demo/2.jpg',
-          title:'测试轮播标题2'
-        },{
-          url:'/list?type_id=3',
-          img:'https://static.vux.li/demo/3.jpg',
-          title:'测试轮播标题3'
-        },
-      ],
-      uuid:'',
-      category:{
-        cover:{
-          url:'',
-          img:'/static/grentech/20161118174329771.jpg',
-        },
-        data:[
-          
-        ]
-      },
-      hot_sales:{
-        cover:{
-          url:'/goods?goods_id=62&item_index=0',
-          img:'/static/grentech/20170116185915616-(1).jpg',
-        },
-        data:[
-          
-        ]
-      },
-      scroller_data:{
-        cover:{
-          url:'',
-          img:'/static/grentech/201612070950019218.jpg'
-        },
-        current_page:0,
-        from:0,
-        last_page:0,
-        per_page:0,
-        to:0,
-        total:0,
-        data:[
-          
-        ]
-      }
-    }
-  },
-  computed:{
-    length:function(){
-      return this.scroller_data.data.length;
-    }
-  },
-  mounted:function(){
-    var self=this;
-    $(".content").on('scroll',function(){
-      //计算位置关系
-      //console.log(this);
-      self.handle_scroll($(this));
-    })
-  },
-  created:function(){
-    this.get_home_list({});
-   
-  },
-  methods:{
-    handle_scroll:function(el){
-      //console.log(el);
-      var self=this;
-      let height=parseFloat(el.height());
-      let scrollTop=parseFloat(el.scrollTop());
-      //console.log(height,scrollTop);
-      var view_height=height+scrollTop;
-      var scrollHeight=el[0].scrollHeight;
-
-      // console.log(view_height,el[0].scrollHeight);
-      if(scrollHeight-view_height<40){
-        // console.log(scrollHeight-view_height);
-        //调用加载功能
-        self.loadMore();
-        return;
-      }
-    },
-    get_home_list:function(query,callback){
-      var self=this;
-       api.getGoodsData({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"], parameters:query, per_page: 10 }).then(res=>{
-            if(res.data.data&&res.data.data.length>0){
-              self.handle_res_data(res.data)
-              // self.
-            }
-            // callback();
-      })
-    },
-    handle_res_data:function(res_data){
-              var self=this;
-              self.scroller_data.data=self.scroller_data.data.concat(res_data.data);
-              self.scroller_data.current_page=res_data.current_page;
-              self.scroller_data.from=res_data.from;
-              self.scroller_data.last_page=res_data.last_page;
-              self.scroller_data.per_page=res_data.per_page;
-              self.scroller_data.next_page_url=res_data.next_page_url;
-              self.scroller_data.to=res_data.to;
-              self.scroller_data.total=res_data.total;
-               if(!res_data.next_page_url){
-                  self.$vux.toast.show({
-                    type:'text',
-                    text:'已加载完毕...'
-                  });
-                  self.load_all=true;
-              }
-    },
-    loadMore:function(){
-      var self=this;
-      if(this.loading){
-        return
-      }
-      console.log("触发加载");
-      this.loading=true;
-      let scroller=$(".container");
-      if(!!self.scroller_data.next_page_url){
-        api.get_page_data(self.scroller_data.next_page_url,{relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"],per_page: 10 }).then(res=>{
-          console.log(res);
-          self.loading=false;
-           if(res.data.data&&res.data.data.length>0){
-              self.handle_res_data(res.data)
-              // self.
-            }
-        }); 
-      }else{
-         self.loading=false;
-      }
-    }
-  },
-  components:{
+  //import {loader} from '../util/util.js'
+  import api from '../api'
+  import CardList from './card-list'
+  import {
     Swiper,
     Flexbox,
     FlexboxItem,
     Scroller,
     Spinner,
-    Divider,
-    CardList
+    Divider
+  } from 'vux'
+  export default {
+    name: 'home',
+    data() {
+      return {
+        loading: false,
+        scrollTop: 0,
+        load_all: false,
+        swiper_list: [{
+          url: '/list?type_id=3',
+          img: 'https://static.vux.li/demo/1.jpg',
+          title: '测试轮播标题1'
+        }, {
+          url: '/list?type_id=3',
+          img: 'https://static.vux.li/demo/2.jpg',
+          title: '测试轮播标题2'
+        }, {
+          url: '/list?type_id=3',
+          img: 'https://static.vux.li/demo/3.jpg',
+          title: '测试轮播标题3'
+        }, ],
+        uuid: '',
+        category: {
+          cover: {
+            url: '',
+            img: '/static/grentech/20161118174329771.jpg',
+          },
+          data: [
+  
+          ]
+        },
+        hot_sales: {
+          cover: {
+            url: '/goods?goods_id=62&item_index=0',
+            img: '/static/grentech/20170116185915616-(1).jpg',
+          },
+          data: [
+  
+          ]
+        },
+        scroller_data: {
+          cover: {
+            url: '',
+            img: '/static/grentech/201612070950019218.jpg'
+          },
+          current_page: 0,
+          from: 0,
+          last_page: 0,
+          per_page: 0,
+          to: 0,
+          total: 0,
+          data: [
+  
+          ]
+        }
+      }
+    },
+    computed: {
+      length: function() {
+        return this.scroller_data.data.length;
+      }
+    },
+    mounted: function() {
+      var self = this;
+      $(".content").on('scroll', function() {
+        //计算位置关系
+        //console.log(this);
+        self.handle_scroll($(this));
+      })
+    },
+    created: function() {
+      this.get_home_list({});
+  
+    },
+    methods: {
+      handle_scroll: function(el) {
+        //console.log(el);
+        var self = this;
+        let height = parseFloat(el.height());
+        let scrollTop = parseFloat(el.scrollTop());
+        //console.log(height,scrollTop);
+        var view_height = height + scrollTop;
+        var scrollHeight = el[0].scrollHeight;
+  
+        // console.log(view_height,el[0].scrollHeight);
+        if (scrollHeight - view_height < 40) {
+          // console.log(scrollHeight-view_height);
+          //调用加载功能
+          self.loadMore();
+          return;
+        }
+      },
+      get_home_list: function(query, callback) {
+        var self = this;
+        api.getGoodsData({
+          relations: ["images", "image_attach", "mechanics", "goods_ports", "assemblies", "standardfits", "electrics"],
+          parameters: query,
+          per_page: 10
+        }).then(res => {
+          if (res.data.data && res.data.data.length > 0) {
+            self.handle_res_data(res.data)
+            // self.
+          }
+          // callback();
+        })
+      },
+      handle_res_data: function(res_data) {
+        var self = this;
+        self.scroller_data.data = self.scroller_data.data.concat(res_data.data);
+        self.scroller_data.current_page = res_data.current_page;
+        self.scroller_data.from = res_data.from;
+        self.scroller_data.last_page = res_data.last_page;
+        self.scroller_data.per_page = res_data.per_page;
+        self.scroller_data.next_page_url = res_data.next_page_url;
+        self.scroller_data.to = res_data.to;
+        self.scroller_data.total = res_data.total;
+        if (!res_data.next_page_url) {
+          self.$vux.toast.show({
+            type: 'text',
+            text: '已加载完毕...'
+          });
+          self.load_all = true;
+        }
+      },
+      loadMore: function() {
+        var self = this;
+        if (this.loading) {
+          return
+        }
+        console.log("触发加载");
+        this.loading = true;
+        let scroller = $(".container");
+        if (!!self.scroller_data.next_page_url) {
+          api.get_page_data(self.scroller_data.next_page_url, {
+            relations: ["images", "image_attach", "mechanics", "goods_ports", "assemblies", "standardfits", "electrics"],
+            per_page: 10
+          }).then(res => {
+            console.log(res);
+            self.loading = false;
+            if (res.data.data && res.data.data.length > 0) {
+              self.handle_res_data(res.data)
+              // self.
+            }
+          });
+        } else {
+          self.loading = false;
+        }
+      }
+    },
+    components: {
+      Swiper,
+      Flexbox,
+      FlexboxItem,
+      Scroller,
+      Spinner,
+      Divider,
+      CardList
+    }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .scroll-content{
-    width:100%;
-    overflow:hidden;
+  .scroll-content {
+    width: 100%;
+    overflow: hidden;
   }
 </style>

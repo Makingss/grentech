@@ -38,8 +38,7 @@
                       </div>
                       <div class="item-subtitle padding-t-4">
                         <b class="color-danger" v-if="false">￥{{item.mktprice}}</b>
-                        <b class="padding-r-10 font-slim color-danger">¥</b>
-                        <b class="color-danger font-slim">{{item.mktprice||"暂无"}}</b>
+                        <b class="padding-r-10 font-slim color-danger">¥{{item.mktprice||"暂无"}}</b>
                       </div>
                     </div>
                   </router-link>
@@ -70,8 +69,7 @@
                 </router-link>
                   <div class="item-subtitle color-danger padding-t-4" slot="card-subtitle">
                     <b v-if="false">¥{{item.mktprice}}</b>
-                    <b class="padding-r-10 font-slim color-danger">¥</b>
-                    <b class="color-danger font-slim">{{item.mktprice||"暂无"}}</b>
+                    <b class="padding-r-10 font-slim color-danger">¥{{item.mktprice||"暂无"}}</b>
                   </div>
               </card-list>
             <div class="load-more text-center" v-show="loading">
