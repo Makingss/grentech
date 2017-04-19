@@ -36,7 +36,7 @@
       <p><label>收件人: </label>王**</p>
       <p><label>联系方式: </label>1850300****</p>
       <p><label>地址: </label>广东省 深圳市 XX 区 </p>
-      <p><label>运费 </label> ¥0.00</p>
+      <p><label>运费 </label>¥0.00</p>
       <p><label>创建时间: </label>2017-02-19 23:57:20</p>
     </div>
   </div>

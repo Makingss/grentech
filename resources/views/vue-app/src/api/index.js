@@ -89,7 +89,7 @@ export default {
         return Vue.http.get(API_ROOT+'similar',{params:data})
     },
     get_cart_data:function(data){
-       
+        if(!window.localStorage.access_token) return;
         var headers=get_headers();
         console.log("************");
         console.log(headers);
@@ -101,6 +101,7 @@ export default {
         });
     },
     add_cart:function(data){
+        if(!window.localStorage.access_token) return;
         var headers=get_headers();
         console.log("************");
         console.log(headers);
@@ -109,6 +110,7 @@ export default {
         });
     },
     update_cart:function(data){
+        if(!window.localStorage.access_token) return;
         var headers=get_headers();
         /*
             quantity:'',数量
@@ -120,6 +122,7 @@ export default {
         })
     },
     del_cart:function(data){
+        if(!window.localStorage.access_token) return;
         var headers=get_headers();
         return Vue.http.post(API_ROOT+'/api/cartDelete',data,{
             headers:get_headers()

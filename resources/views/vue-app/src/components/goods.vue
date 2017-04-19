@@ -303,7 +303,6 @@
                   }else{
                     new_obj[k].push(data[key][i][k]);
                   }
-                
                 }
               }
             }
