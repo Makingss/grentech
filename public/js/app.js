@@ -26734,6 +26734,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -81666,7 +81720,128 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label": "已失效",
       "name": "lose_efficacy"
     }
-  }, [_vm._v("已失效")])], 1)], 1), _vm._v(" "), _c('div', {
+  }, [_c('el-row', {
+    staticClass: "cart-edit-bar bg-gray padding-10"
+  }, [_c('el-col', {
+    attrs: {
+      "span": 2
+    }
+  }, [_c('div', {
+    staticClass: "cart-list-item padding-l-4"
+  }, [_c('el-checkbox', {
+    model: {
+      value: (_vm.cart_choose_all),
+      callback: function($$v) {
+        _vm.cart_choose_all = $$v
+      },
+      expression: "cart_choose_all"
+    }
+  }, [_vm._v("全选")])], 1)]), _vm._v(" "), _c('el-col', {
+    staticClass: "cart-list-item",
+    attrs: {
+      "span": 9
+    }
+  }, [_c('div', [_vm._v("商品")])]), _vm._v(" "), _c('el-col', {
+    staticClass: "cart-list-item",
+    attrs: {
+      "span": 3
+    }
+  }, [_c('div', [_vm._v("单价")])]), _vm._v(" "), _c('el-col', {
+    staticClass: "cart-list-item",
+    attrs: {
+      "span": 4
+    }
+  }, [_c('div', [_vm._v("数量")])]), _vm._v(" "), _c('el-col', {
+    staticClass: "cart-list-item",
+    attrs: {
+      "span": 3
+    }
+  }, [_c('div', [_vm._v("小计")])]), _vm._v(" "), _c('el-col', {
+    staticClass: "cart-list-item",
+    attrs: {
+      "span": 3
+    }
+  }, [_c('div', [_vm._v("操作")])])], 1), _vm._v(" "), _c('div', {
+    staticClass: "border-1px-b"
+  }, [_c('div', {
+    staticClass: "cart-item-header padding-10 border-1px-b"
+  }, [_c('el-checkbox', {
+    staticClass: "padding-l-4",
+    model: {
+      value: (_vm.choose_shopitems),
+      callback: function($$v) {
+        _vm.choose_shopitems = $$v
+      },
+      expression: "choose_shopitems"
+    }
+  }, [_vm._v("海信官方旗舰店")])], 1), _vm._v(" "), _vm._l((2), function(item, index) {
+    return _c('el-row', {
+      key: index,
+      staticClass: "padding-tb-10"
+    }, [_c('el-col', {
+      staticClass: "cart-list-item text-center",
+      attrs: {
+        "span": 1
+      }
+    }, [_c('el-checkbox', {
+      model: {
+        value: (_vm.cart_choose_all),
+        callback: function($$v) {
+          _vm.cart_choose_all = $$v
+        },
+        expression: "cart_choose_all"
+      }
+    })], 1), _vm._v(" "), _c('el-col', {
+      staticClass: "clear-float item-desc",
+      attrs: {
+        "span": 10
+      }
+    }, [_c('div', {
+      staticClass: "cart-list-item-media link-img pull-left"
+    }, [_c('img', {
+      attrs: {
+        "src": "//img10.360buyimg.com/cms/s80x80_jfs/t3298/53/166852873/143086/13a3b389/57a940b5N89a88cda.jpg",
+        "alt": ""
+      }
+    })]), _vm._v(" "), _c('div', {
+      staticClass: "cart-list-item-content"
+    }, [_c('p', {
+      staticClass: "padding-tb-5"
+    }, [_vm._v("海信（Hisense）LED55EC520UA 55英寸 VIDAA3 14核 炫彩4K智能电视(黑色)\n                                ")])])]), _vm._v(" "), _c('el-col', {
+      staticClass: "cart-list-item",
+      attrs: {
+        "span": 3
+      }
+    }, [_c('div', [_vm._v("¥99.00")])]), _vm._v(" "), _c('el-col', {
+      staticClass: "cart-list-item",
+      attrs: {
+        "span": 4
+      }
+    }, [_c('el-input-number', {
+      attrs: {
+        "size": "small",
+        "min": 1,
+        "max": 10
+      },
+      model: {
+        value: (_vm.num1),
+        callback: function($$v) {
+          _vm.num1 = $$v
+        },
+        expression: "num1"
+      }
+    })], 1), _vm._v(" "), _c('el-col', {
+      staticClass: "cart-list-item",
+      attrs: {
+        "span": 3
+      }
+    }, [_c('div', [_vm._v("¥99.00")])]), _vm._v(" "), _c('el-col', {
+      staticClass: "cart-list-item",
+      attrs: {
+        "span": 3
+      }
+    }, [_c('div', [_vm._v("删除")])])], 1)
+  })], 2)], 1)], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "suggest-products container block-center"
   }, [_vm._m(2), _vm._v(" "), _c('div', {
     staticClass: "suggest-cards-list text-center  margin-tb-10 border-box clear-float border-1px-t border-1px-b"

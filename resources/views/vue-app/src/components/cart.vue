@@ -135,6 +135,7 @@
       },
       submit_order: function() {
         console.log("提交订单需求");
+        this.$router.push("order_confirm");
       }
     },
     components: {

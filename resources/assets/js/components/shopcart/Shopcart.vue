@@ -113,7 +113,61 @@
     
                 </el-tab-pane>
     
-                <el-tab-pane label="已失效" name="lose_efficacy">已失效</el-tab-pane>
+                <el-tab-pane label="已失效" name="lose_efficacy">
+                     <el-row class="cart-edit-bar bg-gray padding-10">
+                        <el-col :span="2">
+                            <div class="cart-list-item padding-l-4">
+                                <el-checkbox v-model="cart_choose_all">全选</el-checkbox>
+                            </div>
+                        </el-col>
+                        <el-col :span="9" class="cart-list-item">
+                            <div>商品</div>
+                        </el-col>
+                        <el-col :span="3" class="cart-list-item">
+                            <div>单价</div>
+                        </el-col>
+                        <el-col :span="4" class="cart-list-item">
+                            <div>数量</div>
+                        </el-col>
+                        <el-col :span="3" class="cart-list-item">
+                            <div>小计</div>
+                        </el-col>
+                        <el-col :span="3" class="cart-list-item">
+                            <div>操作</div>
+                        </el-col>
+                    </el-row>
+                    <div class="border-1px-b">
+                        <div class="cart-item-header padding-10 border-1px-b">
+                            <el-checkbox class="padding-l-4" v-model="choose_shopitems">海信官方旗舰店</el-checkbox>
+                        </div>
+                        <el-row v-for="(item,index) in 2" :key="index" class="padding-tb-10">
+                            <el-col :span="1" class="cart-list-item text-center">
+                                <el-checkbox v-model="cart_choose_all"></el-checkbox>
+                            </el-col>
+                            <el-col :span="10" class="clear-float item-desc">
+                                <div class="cart-list-item-media link-img pull-left">
+                                    <img src="//img10.360buyimg.com/cms/s80x80_jfs/t3298/53/166852873/143086/13a3b389/57a940b5N89a88cda.jpg" alt="">
+                                </div>
+                                <div class="cart-list-item-content">
+                                    <p class="padding-tb-5">海信（Hisense）LED55EC520UA 55英寸 VIDAA3 14核 炫彩4K智能电视(黑色)
+                                    </p>
+                                </div>
+                            </el-col>
+                            <el-col :span="3" class="cart-list-item">
+                                <div>¥99.00</div>
+                            </el-col>
+                            <el-col :span="4" class="cart-list-item">
+                                <el-input-number size="small" v-model="num1" :min="1" :max="10"></el-input-number>
+                            </el-col>
+                            <el-col :span="3" class="cart-list-item">
+                                <div>¥99.00</div>
+                            </el-col>
+                            <el-col :span="3" class="cart-list-item">
+                                <div>删除</div>
+                            </el-col>
+                        </el-row>
+                    </div>
+                </el-tab-pane>
             </el-tabs>
         </div>
         <div class="suggest-products container block-center">
