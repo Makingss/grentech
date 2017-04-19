@@ -6,17 +6,23 @@
     <div class="card-content border-1px-t">
       <flexbox :gutter="0" wrap='nowrap'class="padding-tb-10">
         <flexbox-item :span="3/12" class="item-media link-img padding-rl-6">
-          <img :src="'http://mall.yingerfashion.com/'+data.s_url" alt="">
+          <img :src="data.s_url" alt="">
         </flexbox-item>
         <flexbox-item :span="9/12" class="padding-r-6 border-box">
           <div class="item-title line-ellispse-2">
             {{data.name}}
           </div>
           <div class="item-subtitle color-primary">
-            {{data.spec_info}}
+            频段: {{data.spec_info1}}M
+          </div>
+          <div class="item-subtitle color-primary">
+            增益: {{data.spec_info2}} dbi
+          </div>
+           <div class="item-subtitle color-primary">
+            电下倾: {{data.spec_info2}} °
           </div>
           <div class="item-subtitle color-danger">
-            数量:×{{data.ordernum}}
+            数量:×{{data.quantity}}
           </div>
         </flexbox-item>
       </flexbox>
