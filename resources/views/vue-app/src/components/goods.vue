@@ -300,7 +300,7 @@
                   }
                   if(k=="asse_high"||k=="asse_version"){
                     for(var m=0;m<data[key][i][k].length;m++){
-                      new_obj[k].push(data[key][i][k][m].split(" "));
+                      new_obj[k].push(data[key][i][k][m].split("	"));
                     }
                   }else{
                     new_obj[k].push(data[key][i][k]);
