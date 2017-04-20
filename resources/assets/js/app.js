@@ -7,30 +7,38 @@ Vue.use(ElementUI);
 
 
 //首页相关组件
-Vue.component('header-section',require('./components/home/Header-section.vue'));
-Vue.component('navbar',require('./components/home/Navbar.vue'));
-Vue.component('banner-section',require('./components/home/Banner-section.vue'));
-Vue.component('content-section',require('./components/home/Content-section.vue'));
-Vue.component('slogen',require('./components/home/Slogen.vue'));
-Vue.component('footer-section',require('./components/home/Footer-section.vue'));
-Vue.component('about-us',require('./components/home/About-us.vue'));
+Vue.component('header-section', require('./components/home/Header-section.vue'));
+Vue.component('navbar', require('./components/home/Navbar.vue'));
+Vue.component('banner-section', require('./components/home/Banner-section.vue'));
+Vue.component('content-section', require('./components/home/Content-section.vue'));
+Vue.component('slogen', require('./components/home/Slogen.vue'));
+Vue.component('footer-section', require('./components/home/Footer-section.vue'));
+Vue.component('about-us', require('./components/home/About-us.vue'));
 
 //购物车页面
-Vue.component('shopcart',require('./components/shopcart/Shopcart.vue'));
+Vue.component('shopcart', require('./components/shopcart/Shopcart.vue'));
 
 //商品详情页面
-Vue.component('goods-detail',require('./components/goods/Goods-detail.vue'));
+Vue.component('goods-detail', require('./components/goods/Goods-detail.vue'));
 
 //search 搜索页
-Vue.component('search',require('./components/search/Search.vue'));
+Vue.component('search', require('./components/search/Search.vue'));
 
 //app-link app 引导页
-Vue.component('app-link',require('./components/footer/App-link.vue'));
+Vue.component('app-link', require('./components/footer/App-link.vue'));
 
 //登陆界面
-Vue.component("login",require("./components/passport/Login.vue"));
-Vue.component("register",require("./components/passport/Register.vue"));
+Vue.component("login", require("./components/passport/Login.vue"));
+Vue.component("register", require("./components/passport/Register.vue"));
 
+//测试方法
+Vue.component('follow-botton', require('./components/QuestionFollowBotton.vue'));
+Vue.component('example', require('./components/Example.vue'));
+Vue.component('passport-clients', require('./components/passport/Clients.vue'));
+
+Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue'));
+
+Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue'));
 const app = new Vue({
     el: '#app',
 }).$mount("#app");

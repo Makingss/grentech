@@ -28,8 +28,8 @@ class MemberaddrsController extends Controller
 
 	public function show($id)
 	{
-		$memberaddrs=Member_addr::findOrFail($id);
-		return view('members.addrs.show',compact('memberaddrs'));
+		$memberaddrs = Member_addr::findOrFail($id);
+		return view('members.addrs.show', compact('memberaddrs'));
 	}
 
 	public function store(Request $request)
@@ -37,7 +37,9 @@ class MemberaddrsController extends Controller
 		//接收POST数据
 		//保存到数据库
 		//重定向
-		$this->validate($request, ['area' => 'required|min:3', 'addr' => 'required']);
+		
+		$this->validate($request, ['area' => 'required|min:3', 'addr' => 'required', 'name' => 'required|min3', 'mobile' => 'required|min:11']);
+		
 		$input = $request->all();
 		$input['member_id'] = Auth::id();
 		Member_addr::create($input);
@@ -46,10 +48,10 @@ class MemberaddrsController extends Controller
 
 	public function create()
 	{
-	   return view('members.addrs.create');
+		return view('members.addrs.create');
 	}
 
-	public function update(Request $request,$id)
+	public function update(Request $request, $id)
 	{
 		$this->validate($request, ['area' => 'required|min:3', 'addr' => 'required']);
 		$article = Member_addr::findOrFail($id);
@@ -65,7 +67,7 @@ class MemberaddrsController extends Controller
 
 	public function edit($id)
 	{
-		$memberaddrs=Member_addr::findOrFail($id);
-		return view('members.addrs.edit',compact('memberaddrs'));
+		$memberaddrs = Member_addr::findOrFail($id);
+		return view('members.addrs.edit', compact('memberaddrs'));
 	}
 }

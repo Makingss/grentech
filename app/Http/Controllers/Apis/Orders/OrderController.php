@@ -91,7 +91,7 @@ class OrderController extends Controller
 		});
 		$goodsData = $goods->getGoods($order_items->pluck('goods_id')->toArray());
 		$orderDate = $order->with('order_items')->where('order_id',$input['order_id'])->get()->toArray();
-		$orderDate['goods'] = $goodsData->toArray();
+		$orderDate[0]['goods'] = $goodsData->toArray();
 		return $orderDate;
 	}
 

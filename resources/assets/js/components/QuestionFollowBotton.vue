@@ -6,10 +6,11 @@
 </template>
 <script>
     export default {
-        props:['question','user'],
+        props:['quantity','goods_id'],
         mounted() {
-        this.$http.post('/api/question/follower',{'question':this.question,'user':this.user}).then(response=>{
+        this.$http.post('/api/cartUpdate',{'quantity':3,'goods_id':100,'id':9}).then(response=>{
         this.followed=response.data.followed
+
         })
         },
         data(){
@@ -23,4 +24,6 @@
             }
         }
     }
+
+
 </script>

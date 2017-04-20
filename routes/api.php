@@ -36,7 +36,7 @@ Route::get('/goods', 'GoodsController@getGoods')->middleware('api');
 //	dd($request->all());
 //})->middleware('api');
 
-##########################################################################
+/******************************会员登录路由**************************/
 Route::group(['namespace' => 'Apis'], function () {
 
 	Route::post('/register', 'RegisterController@register');
@@ -45,14 +45,14 @@ Route::group(['namespace' => 'Apis'], function () {
 	Route::get('/nice', 'LoginController@nice')->middleware('auth:api');
 //    Route::post('/login', 'AdminLoginController@postLogin');
 });
-
+/******************************购物车路由****************************/
 Route::group(['namespace' => 'Apis\Carts'], function () {
 	Route::get('/cart', 'CartObjectController@index')->middleware('auth:api');
 	Route::Post('/cartAdd', 'CartObjectController@store')->middleware('auth:api');
 	Route::Post('/cartUpdate', 'CartObjectController@update')->middleware('auth:api');//
 	Route::post('/cartDelete', 'CartObjectController@destroy');
 });
-
+/******************************订单路由******************************/
 Route::group(['namespace' => 'Apis\Orders'], function () {
 	Route::get('/order', 'OrderController@index')->middleware('auth:api');
 	Route::post('/orderAdd', 'OrderController@store')->middleware('auth:api');
@@ -60,4 +60,11 @@ Route::group(['namespace' => 'Apis\Orders'], function () {
 		dd('fdfdfdfs');
 	})->middleware('auth:api');
 //	Route::get('cart/store','CartObjectController@store');
+});
+/******************************会员数据路由******************************/
+Route::group(['namespace' => 'Apis\Members'], function () {
+	Route::get('/addrs', 'MemberaddrsController@index')->middleware('auth:api');
+	Route::post('/addrAdd', 'MemberaddrsController@store')->middleware('auth:api');
+	Route::post('/addrUpdate', 'MemberaddrsController@update')->middleware('auth:api');
+	Route::post('/addrDelete', 'MemberaddrsController@destroy')->middleware('auth:api');
 });
