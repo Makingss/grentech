@@ -114,6 +114,7 @@ return [
             'password' => env('REDIS_PASSWORD', ''),
             'port' => env('REDIS_PORT', 6379),
             'database' => 0,
+            'timeout'=>env('REDIS_TIMEOUT',30),
         ],
 
     ],

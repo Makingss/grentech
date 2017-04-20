@@ -29,8 +29,6 @@ Route::group([
     $router->get('/electric/getindex/{id}', 'Goods\ElectricController@getIndex');
     $router->post('/electric/setajax', 'Goods\ElectricController@setAjax');
 
-    $router->resource('/auth/users',UserController::class);
-
     Route::group(['namespace'=>'Orders'],function(){
         Route::resource('/orders','OrderController');
     });
@@ -38,6 +36,17 @@ Route::group([
 //	$router->get('/products/{key?}', 'DatatablesController@index');
 //	$router->get('/products/data/{goods_id}', 'DatatablesController@anyData');
 //	$router->post('/products/editor', 'DatatablesController@editor');
+
 });
 
-
+Route::group([
+    'prefix' => config('admin.prefix'),
+    'namespace' => 'App\Admin\Controllers\Members',
+    'middleware' => ['web', 'admin'],
+],function (Router $router){
+    #################### User #############################
+    $router->resource('user/info', UserController::class);
+    $router->resource('user/level', UserLevelController::class);
+    $router->resource('user/permission', UserPermissionController::class);
+    $router->resource('user/point', UserPointController::class);
+});

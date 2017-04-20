@@ -70,3 +70,23 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0)
         return $keyc . str_replace('=', '', base64_encode($result));
     }
 }
+/**
+ * 根据生日生成对应的年龄
+ * @param string $date 生日
+ * @param string $tag 时间格式
+ * @return bool|int
+ */
+function Birthday($date, $tag = '/')
+{
+    if (strtotime($date)) {
+        list($b_year, $b_month, $b_day) = explode($tag, $date);
+        list($year, $month, $day) = explode('-', date('Y-m-d H:i:s'));
+        $age = $year - $b_year;
+
+        if ((int)($b_month . $b_day) > (int)($month . $day)) {
+            $age -= 1;
+        }
+        return $age;
+    }
+    return false;
+}
