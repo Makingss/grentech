@@ -4,58 +4,72 @@
             <div class="border-box padding-l-6 bg-white">
                 <flexbox :gutter="0" class="padding-tb-6">
                     <flexbox-item :span="11">
-                    <flexbox>
-                        <flexbox-item :span="2">
-                        <div class="bg-gray circle address-header font-3x text-center">
-                            {{ship_name.slice(0,1)}}
-                        </div>
-                        </flexbox-item>
-                        <flexbox-item :span="10" class="padding-tb-6">
-                        <p>联系人:{{ship_name}}</p>
-                        <p>联系方式:{{ship_mobile}}</p>
-                        <p>{{ship_area.join(" ")}}</p>
-                        <p v-if="false">{{ship_addr}}</p>
-                        </flexbox-item>
-                    </flexbox>
+                        <flexbox>
+                            <flexbox-item :span="2">
+                                <div class="bg-gray circle address-header font-3x text-center">
+                                    {{address_data.ship_name.slice(0,1)}}
+                                </div>
+                            </flexbox-item>
+                            <flexbox-item :span="10" class="padding-tb-6">
+                                <p>联系人:{{address_data.ship_name}}</p>
+                                <p>联系方式:{{address_data.ship_mobile}}</p>
+                                <p>{{ship_area.join(" ")}}</p>
+                                <p v-if="false">{{address_data.ship_addr}}</p>
+                            </flexbox-item>
+                        </flexbox>
                     </flexbox-item>
                     <flexbox-item :span="1" @click.native="edit_address">
-                        <span class="iconfont">&#xe627;</span>
+                        <span class="iconfont edit-address-icon">&#xe627;</span>
                     </flexbox-item>
                 </flexbox>
+    
             </div>
             <div class="margin-tb-4 bg-white">
-                 <flexbox v-for="(item,index) in order_data" :gutter="0" wrap='nowrap' class="padding-tb-10" :class="{'border-1px-b':index<order_data.length-1}">
-                    <flexbox-item :span="3/12" class="item-media link-img">
-                        <img :src="item.s_url" alt="">
+                <flexbox class="padding-tb-10" :gutter="0" wrap='nowrap' v-for="(item,index) in cart_data" :class="{'border-1px-b':index<order_data.length-1}">
+                    <flexbox-item class="item-media text-center link-img" :span="3/12">
+                        <img :src="item.images.url" alt="">
                     </flexbox-item>
-                    <flexbox-item :span="9/12" class="border-box padding-l-6">
-                        <div class="item-title color-primary line-ellispse-2">
+                    <flexbox-item class="item-content" :spam="9/12">
+                        <div class="item-title padding-l-10">
                             {{item.name}}
                         </div>
-                        <div class="item-subtitle color-dark line-ellispse-2">
-                            {{item.spec_info}}
+                        <div class="item-title font-mini padding-l-10 line-ellispse-2" v-if="!!item.electrics&&item.electrics.length">
+                            频段:
+                            <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span>
+                            <span v-if="item.electrics.length">M</span>
                         </div>
-                        <div class="item-subtitle color-dark line-ellispse-2">
-                            {{item.spec_info1}}
+                        <div class="item-title font-mini padding-l-10 line-ellispse-2" v-if="!!item.electrics&&item.electrics.length">
+                            增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span>
+                            <span v-if="item.electrics.length">dBi</span>
                         </div>
-                        <div class="item-subtitle color-dark line-ellispse-2">
-                            {{item.spec_info2}}
+                        <div class="item-title  font-mini line-ellispse-2 padding-l-10" v-if="!!item.electrics&&item.electrics.length">
+                            电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span>
+                            <span v-if="item.electrics.length">°</span>
                         </div>
-                        <div class="item-subtitle color-dark">
-                            <span>单价:¥{{item.mktprice}}</span><span class="pull-right padding-r-10">数量: ×{{item.ordernum}}</span>
+                        <div class="item-subtitle color-gray padding-l-10 font-mini">
+                            SAP:{{item.bn}}
+                        </div>
+                        <div class="item-subtitle padding-l-10">
+                            <p v-if="false">产品描述:{{item.product_desc}}</p>
+                            <p>市场价: <span class="color-danger font-bold">¥{{item.mktprice}}</span></p>
+                        </div>
+                        <div class="item-subtitle">
+                            <x-number :title="quantity" :min="1" :max="99" :value="item.cart_objects.quantity" @on-change="update_cart" class="padding-rl-10 padding-tb-6 font-normal" width="40px">
+                            </x-number>
                         </div>
                     </flexbox-item>
                 </flexbox>
-                 <div class="padding-10" v-if="false">
-                     <span class="color-danger">总价:¥{{order_data[0].ttl_price}}</span>
-                 </div>
+                <div class="padding-10" v-if="false">
+                    <span class="color-danger">总价:¥{{order_data[0].ttl_price}}</span>
+                </div>
             </div>
             <div class="margin-tb-4 bg-white padding-10" v-if="false">
-               配送方式 <x-button mini plain type="warn">送货上门</x-button>
+                配送方式
+                <x-button mini plain type="warn">送货上门</x-button>
             </div>
             <div class="margin-tb-4 bg-white padding-tb-10">
                 <div class="padding-b-4 padding-rl-10">备注留言</div>
-                 <x-textarea :show-counter="true" placeholder="请输入备注/留言信息"></x-textarea> 
+                <x-textarea v-model="memo" :show-counter="true" placeholder="请输入备注/留言信息"></x-textarea>
             </div>
             <div class="margin-tb-4 bg-white padding-tb-10 clear-float" v-if="false">
                 <flexbox :gutter="0">
@@ -67,88 +81,212 @@
                     <flexbox-item class="text-left padding-l-10" :span="9">微信支付/支付宝/银联支付</flexbox-item>
                 </flexbox>
             </div>
-             <div class="margin-tb-4 bg-white padding-10 clear-float">
+            <div class="margin-tb-4 bg-white padding-10 clear-float">
                 <p>流程说明:</p>
-                <step v-model="step" class="padding-tb-10 font-mini" >
+                <step v-model="step" class="padding-tb-10 font-mini">
                     <step-item title="提交" description="提交需求"></step-item>
                     <step-item title="审核" description="需求审核"></step-item>
                     <step-item title="操作" description="生成订单"></step-item>
                 </step>
-             </div>
+            </div>
         </div>
-       
-         <tabbar class="bar-secondary bar order-confirm-bar">
-                <tabbar-item style="background-color:transparent">
-                    <div slot="label" class="color-dark">
-                        合计: <span class="color-danger">¥ </span><span class="font-2x color-danger">2695.00</span>
-                    </div>
-                </tabbar-item>
-                <tabbar-item class="bg-danger">
-                    <div slot="label" class="color-white">提交订单</div>
-                </tabbar-item>
+    
+        <tabbar class="bar-secondary bar order-confirm-bar">
+            <tabbar-item style="background-color:transparent">
+                <div slot="label" class="color-dark">
+                    合计: <span class="color-danger">¥ </span><span class="font-2x color-danger">2695.00</span>
+                </div>
+            </tabbar-item>
+            <tabbar-item class="bg-danger" @click.native="submit_order_data">
+                <div slot="label" class="color-white">提交订单</div>
+            </tabbar-item>
         </tabbar>
-        <popup v-model="popup_address" height="50%" :hide-on-blur="true">
+        <popup v-model="popup_address" height="55%" :hide-on-blur="true">
             <div class="padding-rl-10"><span @click="edit_address" class="iconfont text-center circle pull-right popup-close-btn font-2x bg-danger color-white">&#xe606;</span></div>
             <group class="edit_address_content" title="修改地址">
-            <x-input title="姓名" class="font-normal" :value="address_data.ship_name" placeholder="收件人姓名" :show-clear="false"></x-input>
-            <x-input title="手机" class="font-normal" :value="address_data.ship_mobile" plaplaceholderce="收件人手机" :show-clear="false"></x-input>
-            <x-input title="电话" class="font-normal" :value="address_data.ship_tel" placeholder="可选" :show-clear="false"></x-input>
-            <x-input title="邮编" class="font-normal" :value="address_data.ship_zip" placeholder="可选" :show-clear="false"></x-input>
-            <x-address title="区域" class="font-normal" placeholder="请选择地址" raw-value v-model="address_data.ship_area" :list="addressData"></x-address>
-            <x-input title="详细地址" class="font-normal" :value="address_data.ship_addr" placeholder="详细地址" :show-clear="false"></x-input>
-            <tabbar class="bar bar-secondary">
-                <tabbar-item class="bg-danger">
-                    <span slot="label" class="color-white">取消</span>
-                </tabbar-item>
-                 <tabbar-item class="bg-primary">
-                    <span slot="label" class="color-white">保存</span>
-                </tabbar-item>
-            </tabbar>
-        </group>
-    </popup>
+                <x-input title="姓名" class="font-normal" :value="address_data.ship_name" placeholder="收件人姓名" :show-clear="false"></x-input>
+                <x-input title="手机" class="font-normal" :value="address_data.ship_mobile" plaplaceholderce="收件人手机" :show-clear="false"></x-input>
+                <x-input title="电话" class="font-normal" :value="address_data.ship_tel" placeholder="可选" :show-clear="false"></x-input>
+                <x-input title="邮编" class="font-normal" :value="address_data.ship_zip" placeholder="可选" :show-clear="false"></x-input>
+                <x-address title="区域" class="font-normal" placeholder="请选择地址" raw-value v-model="address_data.ship_area" :list="addressData"></x-address>
+                <x-input title="详细地址" class="font-normal" v-if="false" :value="address_data.ship_addr" placeholder="详细地址" :show-clear="false"></x-input>
+                <tabbar class="bar bar-secondary">
+                    <tabbar-item class="bg-danger" @click.native="cancel_address_edit">
+                        <span slot="label" class="color-white">取消</span>
+                    </tabbar-item>
+                    <tabbar-item class="bg-primary" @click.native="save_address_data">
+                        <span slot="label" class="color-white">保存</span>
+                    </tabbar-item>
+                </tabbar>
+            </group>
+        </popup>
     </div>
 </template>
+
 <script>
-    import {Flexbox,FlexboxItem,Group,Cell,XButton,XTextarea,Tabbar,TabbarItem,XAddress,ChinaAddressData,Popup,XInput,Step,StepItem} from 'vux'
+    import api from '../api'
+    import {
+        Flexbox,
+        FlexboxItem,
+        Group,
+        Cell,
+        XButton,
+        XTextarea,
+        Tabbar,
+        TabbarItem,
+        XAddress,
+        ChinaAddressData,
+        Popup,
+        XInput,
+        Step,
+        StepItem,
+        Value2nameFilter as value2name
+    } from 'vux'
     export default {
-        name:"order_confirm",
-        data:function() {
+        name: "order_confirm",
+        data: function() {
             return {
-                step:0,
-                popup_address:false,
-                addressData:ChinaAddressData,
-                ship_name:'张三',
-                ship_mobile:'1850300XXXX',
-                ship_addr:"测试街道XX",
-                ship_area:["广东省","深圳市","福田区"],
-                order_data:[
-                    {
-                        name:"街道站低增益超宽频双通道（小型化)",
-                        spec_info:'频段:1710~1920/1920~2170/2200~2500/2500~2690',
-                        spec_info1:'增益:11.5/11.5/12/13 dBi',
-                        spec_info2:'电下倾:0/0/0 °',
-                        s_url:'/static/grentech/201611071844501875.jpg',
-                        ordernum:1
-                    }
-                ],
-                address_data:{
-                    ship_name:'',
-                    ship_mobile:'',
-                    zip:'',
-                    ship_tel:'',
-                    ship_area:['广东省', '深圳市', '南山区'],
-                    ship_addr:'',
+                step: 0,
+                popup_address: false,
+                addressData: ChinaAddressData,
+                ship_name: '张三',
+                ship_mobile: '1850300XXXX',
+                ship_addr: "测试街道XX",
+                ship_area: ["广东省", "深圳市", "福田区"], //缓存选中地区
+                order_data: [{
+                    name: "街道站低增益超宽频双通道（小型化)",
+                    spec_info: '频段:1710~1920/1920~2170/2200~2500/2500~2690',
+                    spec_info1: '增益:11.5/11.5/12/13 dBi',
+                    spec_info2: '电下倾:0/0/0 °',
+                    s_url: '/static/grentech/201611071844501875.jpg',
+                    ordernum: 1
+                }],
+                cart_data: [],
+                memo: '',
+                address_data: {
+                    ship_name: '张三',
+                    ship_mobile: '1850300XXXX',
+                    zip: '',
+                    ship_tel: '',
+                    ship_area: ['广东省', '深圳市', '南山区'],
+                    ship_addr: '测试街道XX',
                 },
-                
             }
         },
-        methods:{
-            edit_address:function(){
+        created: function() {
+            //拉取购物车数据
+            this.fetch_cart_data();
+        },
+        methods: {
+            edit_address: function() {
                 // console.log("click");
-                this.popup_address=!this.popup_address;
+                this.popup_address = !this.popup_address;
+            },
+            fetch_cart_data: function() {
+                var self = this;
+                api.get_cart_data().then(res => {
+                    console.log(res);
+                    if (res.ok) {
+                        if (res.data.data.length) {
+                            self.cart_data = res.data.data;
+                        } else {
+                            self.cart_data = res.data.data;
+                            self.$vux.toast.show({
+                                text: '<span class="font-normal">购物车为空</span>',
+                                type: 'text'
+                            });
+                        }
+                    } else {
+    
+                    }
+                })
+            },
+            getName: function(val) {
+    
+                return value2name(val, ChinaAddressData)
+            },
+            submit_order_data: function() {
+                var self = this;
+                console.log(this.cart_data);
+                console.log(this.memo);
+    
+                var cart_id = [];
+                for (var i = 0; i < this.cart_data.length; i++) {
+                    cart_id.push(this.cart_data[i].cart_objects.id);
+                }
+                console.log(cart_id);
+                //检查数据完整程度
+    
+                if (this.ship_area == "") {
+                    this.$vux.toast.show({
+                        text: '<span class="font-normal">区域不能为空</span>',
+                        type: 'warn'
+                    })
+                    return;
+                }
+                if (this.ship_name == "") {
+                    this.$vux.toast.show({
+                        text: '<span class="font-normal">姓名不能为空</span>',
+                        type: 'warn'
+                    })
+                    return;
+                }
+                if (this.ship_mobile == "") {
+                    this.$vux.toast.show({
+                        text: '<span class="font-normal">手机号不能为空</span>',
+                        type: 'warn'
+                    })
+                    return;
+                }
+                var order_data = {
+                    ship_area: self.ship_area.join("/"),
+                    ship_addr: self.address_data.ship_addr,
+                    ship_name: self.address_data.ship_name,
+                    ship_mobile: self.address_data.ship_mobile,
+                    addr_id: 0,
+                    memo: self.memo,
+                    //addr_id:self.address_data.ship_area,//暂时不传
+                    cart_id: JSON.stringify({
+                        cart_id: cart_id
+                    })
+                }
+                console.log(order_data);
+    
+                api.add_order(order_data).then(res => {
+                    if (res.ok) {
+                        if (res.data.length) {
+                            this.$vux.toast.show({
+                                text: '<span class="font-normal">需求已提交,请等待审核</span>',
+                                type: 'success'
+                            })
+                            setTimeout(function() {
+                                self.$router.push("user");
+                            }, 2000)
+    
+                        } else {
+                            this.$vux.toast.show({
+                                text: '<span class="font-normal">' + res.data.req + '</span>',
+                                type: 'warn'
+                            })
+                        }
+                    }
+                    console.log(res);
+                })
+            },
+            save_address_data: function() {
+                var ship_area = $(".vux-popup-picker-value").text();
+                console.log(ship_area);
+                if (ship_area != "") {
+                    this.ship_area = ship_area.split(" ");
+                }
+                console.log(this.ship_area);
+                this.popup_address = false;
+            },
+            cancel_address_edit: function() {
+                this.popup_address = false;
             }
         },
-        components:{
+        components: {
             Flexbox,
             FlexboxItem,
             Group,
@@ -166,9 +304,15 @@
         }
     }
 </script>
+
 <style lang="less">
-    #app .order_confirm .bar-secondary{
-        bottom:1px;
+    #app .order_confirm .bar-secondary {
+        bottom: 1px;
     }
-   
+    
+    .edit-address-icon {
+        display: block;
+        height: 52px;
+        line-height: 52px;
+    }
 </style>
