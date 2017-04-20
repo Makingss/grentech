@@ -168,15 +168,14 @@ class UserController extends Controller
             });//外键等级表
             $grid->column('advance', '余额');//外键预支付表
             $grid->member_login('登录记录')->sortByDesc('id')->values()->pluck('location')->first()->badge('danger');//登录记录表
-            #$grid->column('', '登录IP');//登录记录IP表
+
             $collection = collect();
-            $count = $collection->count();
-//            dd($collection);
             $grid->column('expand', '详情')->electric(function () {
 
                 $memberExperience = collect($this->member_experience)->sortByDesc('id')->forPage(1, 5)->map(function ($map) {
                     return array_only($map, ['experience', 'change', 'remark', 'source', 'created_at']);
                 });
+
                 $memberPoint = collect($this->member_point)->sortByDesc('id')->forPage(1, 5)->map(function ($map) {
                     return array_only($map, ['created_at', 'change_point', 'reason', 'point', 'remark']);
                 });
@@ -186,19 +185,28 @@ class UserController extends Controller
                 });
 
                 $tab = new Tab();
-//                $memberExperience=$memberExperience->all();
-//                dd($memberExperience->values()->all());
-                $experienceBox = new Box('经验收入明细', new Table(['经验总数', '支出/收入', '备注', '来源', '日期'], $memberExperience->values()->all() ? $memberExperience->values()->all() : 0));
+                if ($memberExperience->values()->all()) {
+                    $tableExperience = new Table(['经验总数', '支出/收入', '备注', '来源', '日期'], $memberExperience->values()->all());
+                } else {
+                    $tableExperience = "无数据";
+                }
+                $experienceBox = new Box('经验收入明细', $tableExperience);
                 $experienceBox->style('info');
 
-//                $gradeBox = new Box('等级增长明细',new Profile([123]));
-//                $gradeBox->style('info');
-//                $tab->add('等级', $gradeBox);
-
-                $pointBox = new Box('积分明细', new Table(['积分总额', '收入/支出', '来源', '备注', '日期 '], $memberPoint->values()->all() ? $memberPoint->values()->all() : 0));
+                if ($memberPoint->values()->all()) {
+                    $pointTable = new Table(['积分总额', '收入/支出', '来源', '备注', '日期 '], $memberPoint->values()->all());
+                } else {
+                    $pointTable = "无数据";
+                }
+                $pointBox = new Box('积分明细', $pointTable);
                 $pointBox->style('info');
 
-                $loginBox = new Box('登录记录', new Table(['登录记录', '位置', '日期'], $memberLogin->values()->all() ? $memberLogin->values()->all() : 0));
+                if ($memberLogin->values()->all()) {
+                    $tableLogin = new Table(['登录记录', '位置', '日期'], $memberLogin->values()->all());
+                } else {
+                    $tableLogin = "无数据";
+                }
+                $loginBox = new Box('登录记录', $tableLogin);
                 $loginBox->style('info');
 
 
