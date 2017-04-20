@@ -12,25 +12,21 @@
                         <img src="//pop.nosdn.127.net/e8f8dd83-8b75-4362-86a3-4bbd3aa2cdda?imageView&thumbnail=400x0&quality=85" alt="">
                         <span class="iconfont magnifiter font-2x color-dark">&#xe621;</span>
                     </div>
-                    <div class="Carousel margin-t-10">
-                      <div class="scrollBtn leftClick">
-                        <a href="#">
+                    <div class="Carousel clear-float margin-t-10">
+                      <div class="scrollBtn leftClick" @click="leftClick()">
                           <i class="iconfont">&#xe8ef;</i>
-                        </a>
                       </div>
                       <div class="litimg_box">
                         <ul>
-                          <li class="pull-left" style="border:4px solid red;" v-for="item in 4">
+                          <li class="pull-left border-1px" v-on:mouseover="showBorder()" v-for="item in 4">
                             <a href="#">
-                            <img src="//pop.nosdn.127.net/e0b96563-ec69-4942-b41c-efd3a52de5c6?imageView&thumbnail=64x0&quality=85" alt="">
+                            <img class="link-img" src="//pop.nosdn.127.net/e0b96563-ec69-4942-b41c-efd3a52de5c6?imageView&thumbnail=64x0&quality=85" alt="">
                             </a>
                           </li>
                         </ul>
                       </div>
-                      <div class="scrollBtn rightClick">
-                        <a href="#">
+                      <div class="scrollBtn rightClick" @click="rightClick()">
                           <i class="iconfont">&#xe8f1;</i>
-                        </a>
                       </div>
                     </div>
                 </el-col>
@@ -115,11 +111,11 @@
                     </dd>
                     <dd>
                       <form class="" action="index.html" method="post">
-                        <span class="line-title">数量</span>
+                        <span class="line-title padding-t-6">数量</span>
                         <span>
-                        <el-input-number size="small" v-model="num6"></el-input-number>
-                        <span>库存充足</span>
+                        <el-input-number size="small" :min="1" v-model="num6"></el-input-number>
                         </span>
+                        <span>库存充足</span>
                         <div class="margin-tb-10">
                           <span class="line-title">说明</span>
                           <span><i class="iconfont font-mini">&#xe8e5;</i>支持7天无忧退货</span>
@@ -462,6 +458,15 @@ export default {
     methods:{
       handleClick(tab,event){
          console.log(tab, event);
+      },
+      leftClick(){
+        alert("left")
+      },
+      rightClick(){
+        alert("right")
+      },
+      showBorder:function(){
+        var vm=this;
       }
     }
 }
@@ -485,24 +490,26 @@ a:hover{
   position: relative;
 }
 .litimg_box{
-    height: 48px;
     float:left;
-    top:0;
 }
 .litimg_box li{
-  width: 64px;
-  height: 62px;
+  height: 68px;
   overflow: hidden;
-  margin-left: 7px;
+  margin:0 7px;
 }
 .scrollBtn{
   border:1px solid #ddd;
   padding:10px 6px;
-  width: 28px;
+  width: 26px;
   height: 48px;
   text-align: center;
   line-height: 48px;
 }
+.scrollBtn:hover{
+  border:1px solid #f00;
+  color:#f00;
+}
+
 .leftClick{
   float:left;
 }

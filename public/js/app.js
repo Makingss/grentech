@@ -24897,10 +24897,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -24951,6 +24947,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     handleClick: function handleClick(tab, event) {
       console.log(tab, event);
+    },
+    leftClick: function leftClick() {
+      alert("left");
+    },
+    rightClick: function rightClick() {
+      alert("right");
+    },
+
+    showBorder: function showBorder() {
+      var vm = this;
     }
   }
 });
@@ -29363,7 +29369,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\na[data-v-44e4117f]:hover{\r\n    text-decoration: underline;\n}\n.border-1px-t-d[data-v-44e4117f]{\r\n  border-top:1px dotted #ddd;\n}\n.border-1px-b-d[data-v-44e4117f]{\r\n  border-bottom: 1px dotted #ddd;\n}\n.showImgBox[data-v-44e4117f]{\r\n  position:relative;\r\n  width: 400px;\r\n  height: 400px;\n}\n.Carousel[data-v-44e4117f]{\r\n  position: relative;\n}\n.litimg_box[data-v-44e4117f]{\r\n    height: 48px;\r\n    float:left;\r\n    top:0;\n}\n.litimg_box li[data-v-44e4117f]{\r\n  width: 64px;\r\n  height: 62px;\r\n  overflow: hidden;\r\n  margin-left: 7px;\n}\n.scrollBtn[data-v-44e4117f]{\r\n  border:1px solid #ddd;\r\n  padding:10px 6px;\r\n  width: 28px;\r\n  height: 48px;\r\n  text-align: center;\r\n  line-height: 48px;\n}\n.leftClick[data-v-44e4117f]{\r\n  float:left;\n}\n.rightClick[data-v-44e4117f]{\r\n  float:right;\r\n  right: 0;\r\n  top:0;\n}\n.magnifiter[data-v-44e4117f] {\r\n  position:absolute;\r\n  bottom: 0;\r\n  right: 10px;\n}\n.country>img[data-v-44e4117f]{\r\n width: 24px;\r\n height: 24px;\r\n vertical-align: middle;\n}\n.line-title[data-v-44e4117f]{\r\n  width: 75px;\r\n  height: 18px;\r\n  float:left;\r\n  padding-left: 10px;\n}\n.priceBox[data-v-44e4117f]{\r\n  border-top:1px dotted #ddd;\r\n  border-bottom:1px dotted #ddd;\r\n  background-color:#f9f9f9;\n}\n.SLabel[data-v-44e4117f]{\r\n  background-color: #F68587;\r\n  width: 26px;\r\n  padding:2px;\r\n  margin-left: 5px;\r\n  vertical-align:5px;\r\n  color:#fff;\n}\n.marketPrice[data-v-44e4117f]{\r\n  vertical-align: 5px;\n}\n.newListWrap[data-v-44e4117f] {\r\n  width: 206px;\r\n  height: 306px;\r\n  border: 1px solid #eee;\r\n  margin: 0 0 10px 10px;\n}\n.popBox[data-v-44e4117f]{\r\n  border:1px solid #eaeaea;\n}\n.goods_parameter[data-v-44e4117f]{\r\n  width: 100%;\n}\n.goods_parameter li[data-v-44e4117f]{\r\n  float: left;\r\n  width: 30%;\n}\n.IntroText[data-v-44e4117f]{\r\n  width: 90%;\n}\n.tab-90[data-v-44e4117f]{\r\n  width: 90%;\n}\n.comwrapIcon[data-v-44e4117f]{\r\n  border-radius: 50%;\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\na[data-v-44e4117f]:hover{\r\n    text-decoration: underline;\n}\n.border-1px-t-d[data-v-44e4117f]{\r\n  border-top:1px dotted #ddd;\n}\n.border-1px-b-d[data-v-44e4117f]{\r\n  border-bottom: 1px dotted #ddd;\n}\n.showImgBox[data-v-44e4117f]{\r\n  position:relative;\r\n  width: 400px;\r\n  height: 400px;\n}\n.Carousel[data-v-44e4117f]{\r\n  position: relative;\n}\n.litimg_box[data-v-44e4117f]{\r\n    float:left;\n}\n.litimg_box li[data-v-44e4117f]{\r\n  height: 68px;\r\n  overflow: hidden;\r\n  margin:0 7px;\n}\n.scrollBtn[data-v-44e4117f]{\r\n  border:1px solid #ddd;\r\n  padding:10px 6px;\r\n  width: 26px;\r\n  height: 48px;\r\n  text-align: center;\r\n  line-height: 48px;\n}\n.scrollBtn[data-v-44e4117f]:hover{\r\n  border:1px solid #f00;\r\n  color:#f00;\n}\n.leftClick[data-v-44e4117f]{\r\n  float:left;\n}\n.rightClick[data-v-44e4117f]{\r\n  float:right;\r\n  right: 0;\r\n  top:0;\n}\n.magnifiter[data-v-44e4117f] {\r\n  position:absolute;\r\n  bottom: 0;\r\n  right: 10px;\n}\n.country>img[data-v-44e4117f]{\r\n width: 24px;\r\n height: 24px;\r\n vertical-align: middle;\n}\n.line-title[data-v-44e4117f]{\r\n  width: 75px;\r\n  height: 18px;\r\n  float:left;\r\n  padding-left: 10px;\n}\n.priceBox[data-v-44e4117f]{\r\n  border-top:1px dotted #ddd;\r\n  border-bottom:1px dotted #ddd;\r\n  background-color:#f9f9f9;\n}\n.SLabel[data-v-44e4117f]{\r\n  background-color: #F68587;\r\n  width: 26px;\r\n  padding:2px;\r\n  margin-left: 5px;\r\n  vertical-align:5px;\r\n  color:#fff;\n}\n.marketPrice[data-v-44e4117f]{\r\n  vertical-align: 5px;\n}\n.newListWrap[data-v-44e4117f] {\r\n  width: 206px;\r\n  height: 306px;\r\n  border: 1px solid #eee;\r\n  margin: 0 0 10px 10px;\n}\n.popBox[data-v-44e4117f]{\r\n  border:1px solid #eaeaea;\n}\n.goods_parameter[data-v-44e4117f]{\r\n  width: 100%;\n}\n.goods_parameter li[data-v-44e4117f]{\r\n  float: left;\r\n  width: 30%;\n}\n.IntroText[data-v-44e4117f]{\r\n  width: 90%;\n}\n.tab-90[data-v-44e4117f]{\r\n  width: 90%;\n}\n.comwrapIcon[data-v-44e4117f]{\r\n  border-radius: 50%;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -80548,42 +80554,47 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('span', {
     staticClass: "iconfont magnifiter font-2x color-dark"
   }, [_vm._v("")])]), _vm._v(" "), _c('div', {
-    staticClass: "Carousel margin-t-10"
+    staticClass: "Carousel clear-float margin-t-10"
   }, [_c('div', {
-    staticClass: "scrollBtn leftClick"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
+    staticClass: "scrollBtn leftClick",
+    on: {
+      "click": function($event) {
+        _vm.leftClick()
+      }
     }
   }, [_c('i', {
     staticClass: "iconfont"
-  }, [_vm._v("")])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("")])]), _vm._v(" "), _c('div', {
     staticClass: "litimg_box"
   }, [_c('ul', _vm._l((4), function(item) {
     return _c('li', {
-      staticClass: "pull-left",
-      staticStyle: {
-        "border": "4px solid red"
+      staticClass: "pull-left border-1px",
+      on: {
+        "mouseover": function($event) {
+          _vm.showBorder()
+        }
       }
     }, [_c('a', {
       attrs: {
         "href": "#"
       }
     }, [_c('img', {
+      staticClass: "link-img",
       attrs: {
         "src": "//pop.nosdn.127.net/e0b96563-ec69-4942-b41c-efd3a52de5c6?imageView&thumbnail=64x0&quality=85",
         "alt": ""
       }
     })])])
   }))]), _vm._v(" "), _c('div', {
-    staticClass: "scrollBtn rightClick"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
+    staticClass: "scrollBtn rightClick",
+    on: {
+      "click": function($event) {
+        _vm.rightClick()
+      }
     }
   }, [_c('i', {
     staticClass: "iconfont"
-  }, [_vm._v("")])])])])]), _vm._v(" "), _c('el-col', {
+  }, [_vm._v("")])])])]), _vm._v(" "), _c('el-col', {
     attrs: {
       "span": 15
     }
@@ -80709,10 +80720,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "method": "post"
     }
   }, [_c('span', {
-    staticClass: "line-title"
+    staticClass: "line-title padding-t-6"
   }, [_vm._v("数量")]), _vm._v(" "), _c('span', [_c('el-input-number', {
     attrs: {
-      "size": "small"
+      "size": "small",
+      "min": 1
     },
     model: {
       value: (_vm.num6),
@@ -80721,7 +80733,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "num6"
     }
-  }), _vm._v(" "), _c('span', [_vm._v("库存充足")])], 1), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), _c('span', [_vm._v("库存充足")]), _vm._v(" "), _c('div', {
     staticClass: "margin-tb-10"
   }, [_c('span', {
     staticClass: "line-title"
