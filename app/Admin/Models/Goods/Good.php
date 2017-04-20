@@ -50,11 +50,12 @@ class Good extends Model
 		 */
 		'columns' => [
 			'goods.bn' => 10,
+			'goods.content' => 10,
 			'goods.name' => 10,
 //			'keywords.keyname'=>10,
 //			'goods.product_model'=>10,
 //			'goods.product_desc'=>10,
-			'goods.content' => 2,
+
 		],
 		'joins' => [
 //			'keywords'=>['id','good_keyword.keyword_id'],
