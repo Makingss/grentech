@@ -11,27 +11,27 @@
           <p class="line-ellispse-2">{{goods_data_list.name}}</p>
           <div v-if="goods_data_list.electrics.length">
             <div class="item-title line-ellispse-2 font-bold">
-              频段: <span v-for="(_item,_index) in goods_data_list.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics[_index+1].workingband">/</i></span> M
+              频段: <span>{{goods_data_list.new_electrics_inte.workingband.join("/")}}/</span> M
             </div>
             <div class="item-title line-ellispse-2 font-bold">
-              增益: <span v-for="(_item,_index) in goods_data_list.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics[_index+1].beamgain">/</i></span> dBi
+              增益: <span>{{goods_data_list.new_electrics_inte.beamgain.join("/")}}/</span> dBi
             </div>
             <div class="item-title line-ellispse-2 font-bold">
-              电下倾: <span v-for="(_item,_index) in goods_data_list.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics[_index+1].dipangle">/</i></span> °
+              电下倾: <span>{{goods_data_list.new_electrics_inte.dipangle.join("/")}}/</span> °
             </div>
           </div>
           <div v-if="goods_data_list.electrics_inte.length">
             <div class="item-title line-ellispse-2 font-bold">
-              频段: <span v-for="(_item,_index) in goods_data_list.electrics_inte" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=goods_data_list.electrics_inte.length-1)&&!!goods_data_list.electrics_inte[_index+1].workingband">/</i></span>            M
+              频段: <span>{{goods_data_list.new_electrics_inte.workingband.join("/")}}/</span> M
             </div>
             <div class="item-title line-ellispse-2 font-bold">
-              增益: <span v-for="(_item,_index) in goods_data_list.electrics_inte" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=goods_data_list.electrics_inte.length-1)&&!!goods_data_list.electrics_inte[_index+1].beamgain">/</i></span> dBi
+              增益: <span>{{goods_data_list.new_electrics_inte.beamgain.join("/")}}/</span> dBi
             </div>
             <div class="item-title line-ellispse-2 font-bold">
-              电下倾: <span v-for="(_item,_index) in goods_data_list.electrics_inte" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=goods_data_list.electrics_inte.length-1)&&!!goods_data_list.electrics_inte[_index+1].dipangle">/</i></span> °
+              电下倾: <span>{{goods_data_list.new_electrics_inte.dipangle.join("/")}}/</span> °
             </div>
           </div>
-
+  
           <p class="color-gray">SAP:{{goods_data_list.bn}}</p>
           <p class="color-danger" v-if="false">¥{{goods_data_list.price}}</p>
           <p class="color-danger">市场价: {{goods_data_list.mktprice||'暂无'}}
@@ -265,6 +265,7 @@
           new_electrics: {},
           new_goods_ports: {},
           new_standardfits: {},
+          electrics_inte: [],
         },
         from: 0,
         last_page: 0,
