@@ -10,24 +10,24 @@
         <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="12">
           <p class="line-ellispse-2">{{goods_data_list.name}}</p>
           <div v-if="goods_data_list.electrics.length">
-            <div class="item-title line-ellispse-2 font-bold">
+            <div class="item-title line-ellispse-2 font-bold" v-if="goods_data_list.new_electrics_inte.workingband.length">
               频段: <span>{{goods_data_list.new_electrics_inte.workingband.join("/")}}/</span> M
             </div>
-            <div class="item-title line-ellispse-2 font-bold">
+            <div class="item-title line-ellispse-2 font-bold" v-if="goods_data_list.new_electrics_inte.beamgain.length">
               增益: <span>{{goods_data_list.new_electrics_inte.beamgain.join("/")}}/</span> dBi
             </div>
-            <div class="item-title line-ellispse-2 font-bold">
+            <div class="item-title line-ellispse-2 font-bold" v-if="goods_data_list.new_electrics_inte.dipangle.length">
               电下倾: <span>{{goods_data_list.new_electrics_inte.dipangle.join("/")}}/</span> °
             </div>
           </div>
           <div v-if="goods_data_list.electrics_inte.length">
-            <div class="item-title line-ellispse-2 font-bold">
+            <div class="item-title line-ellispse-2 font-bold" v-if="goods_data_list.new_electrics_inte.workingband.length">
               频段: <span>{{goods_data_list.new_electrics_inte.workingband.join("/")}}/</span> M
             </div>
-            <div class="item-title line-ellispse-2 font-bold">
+            <div class="item-title line-ellispse-2 font-bold" v-if="goods_data_list.new_electrics_inte.beamgain.length">
               增益: <span>{{goods_data_list.new_electrics_inte.beamgain.join("/")}}/</span> dBi
             </div>
-            <div class="item-title line-ellispse-2 font-bold">
+            <div class="item-title line-ellispse-2 font-bold" v-if="goods_data_list.new_electrics_inte.dipangle.length">
               电下倾: <span>{{goods_data_list.new_electrics_inte.dipangle.join("/")}}/</span> °
             </div>
           </div>
