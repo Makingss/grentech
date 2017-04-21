@@ -91,16 +91,17 @@ class OrderController extends Controller
                 return shipStatus($ship_status);
             })->badge('danger');
             $grid->column('final_amount', $getOrderColumns['final_amount'])->display(function ($price) {
-                return "￥:$price";
+                return "￥$price";
             });
             $grid->column('memo', $getOrderColumns['memo']);
             $grid->column('ip', $getOrderColumns['ip']);
-            $grid->column('created_at', $getOrderColumns['created_at']);
+            #$grid->column('created_at', $getOrderColumns['created_at']);
 
             $grid->disableCreation();
             $grid->disableActions();
             $grid->disableFilter();
             $grid->disableExport();
+			$grid->perPages([20]);
         });
     }
 

@@ -7,6 +7,7 @@ use App\Admin\Models\Members\Member_addr;
 use App\Admin\Models\Members\Member_advance;
 use App\Models\Carts\CartObject;
 use App\User;
+use Encore\Admin\Auth\Database\Administrator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -63,7 +64,7 @@ class Order extends Model
 	}
     public function getMember()
     {
-        return $this->hasone(User::class,'id','member_id');
+        return $this->hasone(Administrator::class,'id','member_id');
     }
 	/**
 	 * @return mixed
