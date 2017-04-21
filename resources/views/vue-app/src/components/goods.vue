@@ -9,18 +9,18 @@
       <flexbox :gutter="0" wrap="nowrap" class="bg-white">
         <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="12">
           <p class="line-ellispse-2">{{goods_data_list.name}}</p>
-          <div v-if="goods_data_list.electrics.length">
-            <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.workingband&&goods_data_list.new_electrics_inte.workingband.length">
-              频段: <span>{{goods_data_list.new_electrics_inte.workingband.join("/")}}/</span> M
+          <div v-if="!!goods_data_list.electrics&&goods_data_list.electrics.length">
+            <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics.workingband&&goods_data_list.new_electrics.workingband.length">
+              频段: <span>{{goods_data_list.new_electrics.workingband.join("/")}}/</span> M
             </div>
-            <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.beamgain&&goods_data_list.new_electrics_inte.beamgain.length">
-              增益: <span>{{goods_data_list.new_electrics_inte.beamgain.join("/")}}/</span> dBi
+            <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics.beamgain&&goods_data_list.new_electrics.beamgain.length">
+              增益: <span>{{goods_data_list.new_electrics.beamgain.join("/")}}/</span> dBi
             </div>
-            <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.dipangle&&goods_data_list.new_electrics_inte.dipangle.length">
-              电下倾: <span>{{goods_data_list.new_electrics_inte.dipangle.join("/")}}/</span> °
+            <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics.dipangle&&goods_data_list.new_electrics.dipangle.length">
+              电下倾: <span>{{goods_data_list.new_electrics.dipangle.join("/")}}/</span> °
             </div>
           </div>
-          <div v-if="goods_data_list.electrics_inte.length">
+          <div v-if="!!goods_data_list.electrics_inte&&goods_data_list.electrics_inte.length">
             <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.workingband&&goods_data_list.new_electrics_inte.workingband.length">
               频段: <span>{{goods_data_list.new_electrics_inte.workingband.join("/")}}/</span> M
             </div>
@@ -34,7 +34,7 @@
   
           <p class="color-gray">SAP:{{goods_data_list.bn}}</p>
           <p class="color-danger" v-if="false">¥{{goods_data_list.price}}</p>
-          <p class="color-danger">市场价: {{goods_data_list.mktprice||'暂无'}}
+          <p class="color-danger">市场价: <span class="font-bold">¥{{goods_data_list.mktprice||'暂无'}}</span>
           </p>
         </flexbox-item>
         <flexbox-item :span="3" class="link-img padding-rl-6 border-box" v-if="false">
