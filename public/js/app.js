@@ -30397,7 +30397,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.banner[data-v-4c5fb1e8] {\r\n    background-color: #B60730;\r\n    height: 440px;\r\n    z-index: 1;\n}\n.pic[data-v-4c5fb1e8] {\r\n    position: relative;\r\n    height: 497px;\r\n    background: url(//haitao.nos.netease.com/e2e84290-b43a-498a-bc33-d972e208a26b.jpg?imageView&thumbnail=1000x0&quality=90) no-repeat left top;\r\n    z-index: 10;\n}\n.qrcode[data-v-4c5fb1e8] {\r\n  position: absolute;\r\n  right:0;\r\n  bottom:0;\r\n  margin:0 250px 120px 0;\n}\n.downbtn[data-v-4c5fb1e8] {\r\n    background-color: rgba(255,255,255,0.3);\r\n    width: 184px;\r\n    height: 51px;\r\n    text-align: center;\r\n    line-height: 51px;\r\n    font-size: 14px;\n}\n.downbtn a[data-v-4c5fb1e8]{\r\n  color:#fff;\n}\n.downbtn a[data-v-4c5fb1e8]:hover{\r\n    background-color: rgba(255,255,255,0.5);\r\n    border-radius: 3px;\n}\n.intro[data-v-4c5fb1e8]{\r\n  background:url(//mm.bst.126.net/images/footer/downloads/intro.jpg?191224b536dfdae9fb53d8f085ec60a9) top left no-repeat;\r\n  width:350px;\r\n  height: 350px;\r\n  display: block;\r\n  background-position:0 -350px;\n}\n.pci[data-v-4c5fb1e8]{\r\n  background:url(//mm.bst.126.net/images/footer/downloads/intro.jpg?191224b536dfdae9fb53d8f085ec60a9) top left no-repeat;\r\n  width: 80px;\r\n  height: 80px;\r\n  background-position:0 -1050px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.banner[data-v-4c5fb1e8] {\r\n    background-color: #B60730;\r\n    height: 440px;\r\n    z-index: 1;\n}\n.tab-70[data-v-4c5fb1e8]{\r\n  width: 70%;\n}\n.pic[data-v-4c5fb1e8] {\r\n    position: relative;\r\n    height: 497px;\r\n    background: url(//haitao.nos.netease.com/e2e84290-b43a-498a-bc33-d972e208a26b.jpg?imageView&thumbnail=1000x0&quality=90) no-repeat left top;\r\n    z-index: 10;\n}\n.qrcode[data-v-4c5fb1e8] {\r\n  position: absolute;\r\n  right:0;\r\n  bottom:0;\r\n  margin:0 150px 120px 0;\n}\n.downbtn[data-v-4c5fb1e8] {\r\n    background-color: rgba(255,255,255,0.3);\r\n    width: 184px;\r\n    height: 51px;\r\n    text-align: center;\r\n    line-height: 51px;\r\n    font-size: 14px;\n}\n.downbtn a[data-v-4c5fb1e8]{\r\n  color:#fff;\n}\n.downbtn a[data-v-4c5fb1e8]:hover{\r\n    background-color: rgba(255,255,255,0.5);\r\n    border-radius: 3px;\n}\n.intro[data-v-4c5fb1e8]{\r\n  background:url(//mm.bst.126.net/images/footer/downloads/intro.jpg?191224b536dfdae9fb53d8f085ec60a9) top left no-repeat;\r\n  width:350px;\r\n  height: 350px;\r\n  display: block;\r\n  background-position:0 -350px;\n}\n.pci[data-v-4c5fb1e8]{\r\n  background:url(//mm.bst.126.net/images/footer/downloads/intro.jpg?191224b536dfdae9fb53d8f085ec60a9) top left no-repeat;\r\n  width: 80px;\r\n  height: 80px;\r\n  background-position:0 -1050px;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -83050,7 +83050,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "banner"
   }, [_c('div', {
-    staticClass: "container block-center tab-80 "
+    staticClass: "container block-center tab-70"
   }, [_c('div', {
     staticClass: "pic "
   }, [_c('div', {

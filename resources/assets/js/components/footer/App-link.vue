@@ -1,7 +1,7 @@
 <template>
 <div class="app-link">
     <div class="banner">
-        <div class="container block-center tab-80 ">
+        <div class="container block-center tab-70">
             <div class="pic ">
                 <div class="qrcode">
                     <ul>
@@ -65,7 +65,9 @@ export default {
     height: 440px;
     z-index: 1;
 }
-
+.tab-70{
+  width: 70%;
+}
 .pic {
     position: relative;
     height: 497px;
@@ -77,7 +79,7 @@ export default {
   position: absolute;
   right:0;
   bottom:0;
-  margin:0 250px 120px 0;
+  margin:0 150px 120px 0;
 }
 
 .downbtn {
