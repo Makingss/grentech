@@ -104,12 +104,12 @@
         <popup v-model="popup_address" height="55%" :hide-on-blur="true">
             <div class="padding-rl-10"><span @click="edit_address" class="iconfont text-center circle pull-right popup-close-btn font-2x bg-danger color-white">&#xe606;</span></div>
             <group class="edit_address_content" title="修改地址">
-                <x-input title="姓名" class="font-normal" :value="address_data.ship_name" placeholder="收件人姓名" :show-clear="false"></x-input>
-                <x-input title="手机" class="font-normal" :value="address_data.ship_mobile" plaplaceholderce="收件人手机" :show-clear="false"></x-input>
-                <x-input title="电话" class="font-normal" :value="address_data.ship_tel" placeholder="可选" :show-clear="false"></x-input>
-                <x-input title="邮编" class="font-normal" :value="address_data.ship_zip" placeholder="可选" :show-clear="false"></x-input>
+                <x-input title="姓名" class="font-normal" v-model="address_data.ship_name" placeholder="收件人姓名" :show-clear="false"></x-input>
+                <x-input title="手机" class="font-normal" v-model="address_data.ship_mobile" plaplaceholderce="收件人手机" :show-clear="false"></x-input>
+                <x-input title="电话" class="font-normal" v-model="address_data.ship_tel" placeholder="可选" :show-clear="false"></x-input>
+                <x-input title="邮编" class="font-normal" v-model="address_data.ship_zip" placeholder="可选" :show-clear="false"></x-input>
                 <x-address title="区域" class="font-normal" placeholder="请选择地址" raw-value v-model="address_data.ship_area" :list="addressData"></x-address>
-                <x-input title="详细地址" class="font-normal" v-if="false" :value="address_data.ship_addr" placeholder="详细地址" :show-clear="false"></x-input>
+                <x-input title="详细地址" class="font-normal" v-if="false" v-model="address_data.ship_addr" placeholder="详细地址" :show-clear="false"></x-input>
                 <tabbar class="bar bar-secondary">
                     <tabbar-item class="bg-danger" @click.native="cancel_address_edit">
                         <span slot="label" class="color-white">取消</span>

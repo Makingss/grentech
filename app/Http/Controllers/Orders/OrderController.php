@@ -1,5 +1,5 @@
 <?php
-namespace App\Admin\Controllers\Orders;
+namespace App\Http\Controllers\Orders;
 
 use App\Admin\Models\Orders\Order;
 use App\Admin\Models\Orders\Order_itme;
