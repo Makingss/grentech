@@ -9,15 +9,29 @@
       <flexbox :gutter="0" wrap="nowrap" class="bg-white">
         <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="12">
           <p class="line-ellispse-2">{{goods_data_list.name}}</p>
-          <div class="item-title line-ellispse-2 font-bold">
-            频段: <span v-for="(_item,_index) in goods_data_list.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics[_index+1].workingband">/</i></span> M
+          <div v-if="goods_data_list.electrics.length">
+            <div class="item-title line-ellispse-2 font-bold">
+              频段: <span v-for="(_item,_index) in goods_data_list.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics[_index+1].workingband">/</i></span> M
+            </div>
+            <div class="item-title line-ellispse-2 font-bold">
+              增益: <span v-for="(_item,_index) in goods_data_list.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics[_index+1].beamgain">/</i></span> dBi
+            </div>
+            <div class="item-title line-ellispse-2 font-bold">
+              电下倾: <span v-for="(_item,_index) in goods_data_list.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics[_index+1].dipangle">/</i></span> °
+            </div>
           </div>
-          <div class="item-title line-ellispse-2 font-bold">
-            增益: <span v-for="(_item,_index) in goods_data_list.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics[_index+1].beamgain">/</i></span> dBi
+          <div v-if="goods_data_list.electrics_inte.length">
+            <div class="item-title line-ellispse-2 font-bold">
+              频段: <span v-for="(_item,_index) in goods_data_list.electrics_inte" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics_inte[_index+1].workingband">/</i></span>            M
+            </div>
+            <div class="item-title line-ellispse-2 font-bold">
+              增益: <span v-for="(_item,_index) in goods_data_list.electrics_inte" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics_inte[_index+1].beamgain">/</i></span> dBi
+            </div>
+            <div class="item-title line-ellispse-2 font-bold">
+              电下倾: <span v-for="(_item,_index) in goods_data_list.electrics_inte" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics_inte[_index+1].dipangle">/</i></span> °
+            </div>
           </div>
-          <div class="item-title line-ellispse-2 font-bold">
-            电下倾: <span v-for="(_item,_index) in goods_data_list.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=goods_data_list.electrics.length-1)&&!!goods_data_list.electrics[_index+1].dipangle">/</i></span> °
-          </div>
+
           <p class="color-gray">SAP:{{goods_data_list.bn}}</p>
           <p class="color-danger" v-if="false">¥{{goods_data_list.price}}</p>
           <p class="color-danger">市场价: {{goods_data_list.mktprice||'暂无'}}
@@ -298,9 +312,9 @@
                   if (!new_obj[k]) {
                     new_obj[k] = [];
                   }
-                  if(k=="asse_high"||k=="asse_version"){
-                     new_obj[k]=data[key][i][k].split("	");
-                  }else{
+                  if (k == "asse_high" || k == "asse_version") {
+                    new_obj[k] = data[key][i][k].split("	");
+                  } else {
                     new_obj[k].push(data[key][i][k]);
                   }
                 }
