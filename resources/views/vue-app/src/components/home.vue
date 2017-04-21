@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="scroll-content infinite-scroll container padding-b-20">
-     
+  
       <card-list v-for="(item,index) in scroller_data.data" class="border-1px-b">
         <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block" slot="card-media">
           <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
@@ -251,8 +251,9 @@
         }
         console.log("+++++++++++++++");
         console.log(new_arr);
-  
-        self.scroller_data.data = self.scroller_data.data.concat(res_data.data);
+        
+        // self.scroller_data.data = self.scroller_data.data.concat(res_data.data);
+        self.scroller_data.data = self.scroller_data.data.concat(new_arr);
         self.scroller_data.current_page = res_data.current_page;
         self.scroller_data.from = res_data.from;
         self.scroller_data.last_page = res_data.last_page;
