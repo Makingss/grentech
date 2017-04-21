@@ -96,6 +96,12 @@ export default {
       ],
       others_data:[
         {
+          title:'地址管理',
+          icon:"&#xe620;",
+          url:'/address',
+          show_badge:false
+        },
+        {
           title:'我的收益',
           icon:"&#xe612;",
           url:'/wallet',
@@ -113,12 +119,6 @@ export default {
           url:'/qrcode',
           show_badge:false
         },
-        // {
-        //   title:'地址管理',
-        //   icon:"&#xe620;",
-        //   url:'/address',
-        //   show_badge:false
-        // },
         // {
         //   title:'个人设置',
         //   icon:"&#xe61d;",

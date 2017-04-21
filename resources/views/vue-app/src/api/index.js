@@ -140,7 +140,7 @@ export default {
     return Vue.http.post(API_ROOT + '/api/cartAdd', data);
   },
   update_cart: function (data) {
-   if (!window.localStorage.access_token) return login_intercept;
+    if (!window.localStorage.access_token) return login_intercept;
     /*
         quantity:'',数量
         goods_id:'288',
@@ -153,7 +153,7 @@ export default {
     // var headers=get_headers();
     return Vue.http.post(API_ROOT + '/api/cartDelete', data)
   },
-  add_order:function(data){
+  add_order: function (data) {
     /* 
       ship_area:'',
       ship_addr:'',
@@ -163,9 +163,41 @@ export default {
       addr_id:'',//暂时不传
       cart_id:''
     */
-   if (!window.localStorage.access_token) return login_intercept;
-     return Vue.http.post(API_ROOT+"/api/orderAdd",data)    
+    if (!window.localStorage.access_token) return login_intercept;
+    return Vue.http.post(API_ROOT + "/api/orderAdd", data)
+  },
+  get_addrs: function (data) {
+    if (!window.localStorage.access_token) return login_intercept;
+    return Vue.http.get(API_ROOT+'/api/addrs',data)
+  },
+  add_addr:function(data){
+    /*
+      area:'',
+      addr:'',
+      name:'',
+      mobile:''
+     */
+    if (!window.localStorage.access_token) return login_intercept;
+    return Vue.http.post(API_ROOT+'/api/addrAdd',data)
+  },
+  del_addr:function(data){
+    /**
+     * addr_id:''
+     * 
+     */
+    if (!window.localStorage.access_token) return login_intercept;
+    return Vue.http.post(API_ROOT+'/api/addrDelete',data)
+  },
+  update_addr:function(data){
+    /**
+     * area:'',
+     * addr:'',
+     * name:'',
+     * mobile:'',
+     * addr_id:''
+     */
+     if (!window.localStorage.access_token) return login_intercept;
+     return Vue.http.post(API_ROOT+'/api/addrUpdate',data)
   }
-
 
 }

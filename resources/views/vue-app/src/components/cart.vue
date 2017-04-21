@@ -26,9 +26,10 @@
             </router-link>
           </flexbox-item>
           <flexbox-item class="vertical-flex">
-            <router-link class="block" to="order">
+            <router-link class="block" to="order" v-if="false">
               <span class="iconfont">&#xe634;</span><span>需求清单</span>
             </router-link>
+             <span class="iconfont">&#xe634;</span><span>需求清单</span>
           </flexbox-item>
         </flexbox>
       </tabbar-item>

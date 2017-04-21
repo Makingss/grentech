@@ -2,27 +2,27 @@
     <div class="order_confirm bg-light content">
         <div class="content-box">
             <div class="border-box padding-l-6 bg-white">
-                <flexbox :gutter="0" class="padding-tb-6">
+                <flexbox :gutter="0" class="padding-tb-6" v-for="(item,index) in address_list">
                     <flexbox-item :span="11">
                         <flexbox>
                             <flexbox-item :span="2">
                                 <div class="bg-gray circle address-header font-3x text-center">
-                                    {{address_data.ship_name.slice(0,1)}}
+                                    {{item.name.slice(0,1)}}
                                 </div>
                             </flexbox-item>
                             <flexbox-item :span="10" class="padding-tb-6">
-                                <p>联系人:{{address_data.ship_name}}</p>
-                                <p>联系方式:{{address_data.ship_mobile}}</p>
-                                <p>{{ship_area.join(" ")}}</p>
-                                <p v-if="false">{{address_data.ship_addr}}</p>
+                                <p>{{item.name}}</p>
+                                <p>{{item.mobile}}</p>
+                                <p>{{item.area}}</p>
+                                <p v-if="false">{{item.area}}</p>
+                                <p v-if="false">{{item.addr}}</p>
                             </flexbox-item>
                         </flexbox>
                     </flexbox-item>
-                    <flexbox-item :span="1" @click.native="edit_address">
-                        <span class="iconfont edit-address-icon">&#xe627;</span>
+                    <flexbox-item :span="1" @click.native="edit_address(index)">
+                        <span class="iconfont">&#xe627;</span>
                     </flexbox-item>
                 </flexbox>
-    
             </div>
             <div class="margin-tb-4 bg-white">
                 <flexbox class="padding-tb-10" :gutter="0" wrap='nowrap' v-for="(item,index) in cart_data" :class="{'border-1px-b':index<order_data.length-1}">
@@ -104,21 +104,21 @@
         <popup v-model="popup_address" height="55%" :hide-on-blur="true">
             <div class="padding-rl-10"><span @click="edit_address" class="iconfont text-center circle pull-right popup-close-btn font-2x bg-danger color-white">&#xe606;</span></div>
             <group class="edit_address_content" title="修改地址">
-                <x-input title="姓名" class="font-normal" v-model="address_data.ship_name" placeholder="收件人姓名" :show-clear="false"></x-input>
-                <x-input title="手机" class="font-normal" v-model="address_data.ship_mobile" plaplaceholderce="收件人手机" :show-clear="false"></x-input>
-                <x-input title="电话" class="font-normal" v-model="address_data.ship_tel" placeholder="可选" :show-clear="false"></x-input>
-                <x-input title="邮编" class="font-normal" v-model="address_data.ship_zip" placeholder="可选" :show-clear="false"></x-input>
-                <x-address title="区域" class="font-normal" placeholder="请选择地址" raw-value v-model="address_data.ship_area" :list="addressData"></x-address>
-                <x-input title="详细地址" class="font-normal" v-if="false" v-model="address_data.ship_addr" placeholder="详细地址" :show-clear="false"></x-input>
-                <tabbar class="bar bar-secondary">
-                    <tabbar-item class="bg-danger" @click.native="cancel_address_edit">
-                        <span slot="label" class="color-white">取消</span>
-                    </tabbar-item>
-                    <tabbar-item class="bg-primary" @click.native="save_address_data">
-                        <span slot="label" class="color-white">保存</span>
-                    </tabbar-item>
-                </tabbar>
+                <x-input title="姓名" class="font-normal" v-model="address_data.name" placeholder="收件人姓名" :show-clear="false"></x-input>
+                <x-input title="手机" class="font-normal" v-model="address_data.mobile" plaplaceholderce="收件人手机" :show-clear="false"></x-input>
+                <x-input title="电话" v-if="false" class="font-normal" v-model="address_data.tel" placeholder="可选" :show-clear="false"></x-input>
+                <x-input title="邮编" v-if="false" class="font-normal" v-model="address_data.zip" placeholder="可选" :show-clear="false"></x-input>
+                <x-address title="区域" class="font-normal" placeholder="请选择地址" v-model="address_data.code" :list="addressData"></x-address>
+                <x-input title="详细地址" v-if="false" class="font-normal" v-model="address_data.addr" placeholder="详细地址" :show-clear="false"></x-input>
             </group>
+            <tabbar class="bar bar-secondary">
+                <tabbar-item class="bg-danger" @click.native="cancel_address_edit">
+                    <span slot="label" class="color-white">取消</span>
+                </tabbar-item>
+                <tabbar-item class="bg-primary" @click.native="save_address_data">
+                    <span slot="label" class="color-white">保存</span>
+                </tabbar-item>
+            </tabbar>
         </popup>
     </div>
 </template>
@@ -153,29 +153,30 @@
                 ship_mobile: '1850300XXXX',
                 ship_addr: "测试街道XX",
                 ship_area: ["广东省", "深圳市", "福田区"], //缓存选中地区
-                order_data: [{
-                    name: "街道站低增益超宽频双通道（小型化)",
-                    spec_info: '频段:1710~1920/1920~2170/2200~2500/2500~2690',
-                    spec_info1: '增益:11.5/11.5/12/13 dBi',
-                    spec_info2: '电下倾:0/0/0 °',
-                    s_url: '/static/grentech/201611071844501875.jpg',
-                    ordernum: 1
-                }],
+                order_data: [],
                 cart_data: [],
                 memo: '',
+                popup_address: false,
+                edit_status: false,
+                edit_index: null,
                 address_data: {
-                    ship_name: '张三',
-                    ship_mobile: '1850300XXXX',
+                    name: '',
+                    mobile: '',
                     zip: '',
-                    ship_tel: '',
-                    ship_area: ['广东省', '深圳市', '南山区'],
-                    ship_addr: '测试街道XX',
+                    tel: '',
+                    area: [],
+                    addr: '',
+                    addr_id: null,
+                    area_name: '',
                 },
+                address_list: []
             }
         },
         created: function() {
             //拉取购物车数据
             this.fetch_cart_data();
+            //拉取地址信息
+            this.fetch_addrs();
         },
         methods: {
             edit_address: function() {
@@ -201,10 +202,7 @@
                     }
                 })
             },
-            getName: function(val) {
     
-                return value2name(val, ChinaAddressData)
-            },
             submit_order_data: function() {
                 var self = this;
                 console.log(this.cart_data);
@@ -273,17 +271,201 @@
                     console.log(res);
                 })
             },
-            save_address_data: function() {
-                var ship_area = $(".vux-popup-picker-value").text();
-                console.log(ship_area);
-                if (ship_area != "") {
-                    this.ship_area = ship_area.split(" ");
+            getName: function(value) {
+                return value2name(value, ChinaAddressData)
+            },
+            edit_address: function($index) {
+                var self = this;
+                console.log("+++++++++++++++++++");
+                console.log(this.popup_address);
+                if (!this.popup_address) {
+                    //关闭状态-->打开
+                    this.edit_status = true;
+    
+                    this.address_data = this.address_list[$index];
+                } else {
+                    //打开状态->关闭
+                    this.edit_status = false;
+                    this.fix_origin_data();
                 }
-                console.log(this.ship_area);
-                this.popup_address = false;
+                //切换
+                // console.log
+                this.popup_address = !this.popup_address;
+            },
+            fetch_addrs: function() {
+                var self = this;
+                api.get_addrs().then(res => {
+                    console.log(res);
+                    if (res.ok) {
+                        if (res.data.constructor == Array) {
+                            this.address_list = res.data;
+                            for (var i = 0; i < res.data.length; i++) {
+                                // this.address_list[i].area = res.data[i].area.split("/");
+                                this.address_list[i].code = res.data[i].code.split("/");
+                            }
+                        }
+                    } else {
+                        self.$vux.toast.show({
+                            text: '<span class="font-normal">' + res.statusText + '</span>'
+                        })
+                    }
+                })
+            },
+            add_addr: function() {
+                this.popup_address = true;
             },
             cancel_address_edit: function() {
                 this.popup_address = false;
+            },
+            save_address_data: function() {
+                var self = this;
+                this.popup_address = false;
+                //判断当前处于更新状态还是新增状态
+                var area = self.getName(self.address_data.code);
+                console.log(area);
+                if (area != '') area = area.split(" ").join("/");
+    
+                //校验数据完整程度
+                if (self.address_data.mobile == "") {
+                    self.$vux.toast.show({
+                        text: '<span class="font-normal>手机号不能为空</span>',
+                        type: 'warn'
+                    })
+                    return;
+                }
+                if (self.address_data.name == "") {
+                    self.$vux.toast.show({
+                        text: '<span class="font-normal>联系人不能为空</span>',
+                        type: 'warn'
+                    })
+                    return;
+                }
+                if (self.address_data.area == "") {
+                    self.$vux.toast.show({
+                        text: '<span class="font-normal>区域不能为空</span>',
+                        type: 'warn'
+                    })
+                    return;
+                }
+    
+                // if(addr==""){
+                //   self.$vux.toast.show({
+                //     text:'<span class="font-normal>详细地址不能为空</span>'
+                //   })
+                //   return;
+                // }
+                if (this.edit_status) {
+                    //update 方法
+                    self.edit_status = false;
+                    api.update_addr({
+                        area: area,
+                        addr: '*暂无*',
+                        name: self.address_data.name,
+                        mobile: self.address_data.mobile,
+                        addr_id: self.address_data.id,
+                        code: self.address_data.code.join("/"),
+                    }).then(res => {
+                        console.log(res);
+    
+                        if (res.ok) {
+                            if (res.data.status) {
+                                self.$vux.toast.show({
+                                    text: '<span class="font-normal">更新成功</span>',
+                                    type: "success"
+                                })
+                                self.fetch_addrs();
+                            } else {
+                                self.$vux.toast.show({
+                                    text: '<span class="font-normal">' + res.data.msg + '</span>',
+                                    type: "warn"
+                                })
+                                self.addredd_data.area = self.temp_area;
+                            }
+                        } else {
+                            self.$vux.toast.show({
+                                text: '<span class="font-normal">' + res.statusText + '</span>',
+                                type: "warn"
+                            })
+                            self.addredd_data.area = self.temp_area
+                        }
+                    })
+                } else {
+                    //add 方法
+                    api.add_addr({
+                        area: area,
+                        addr: '*暂无*',
+                        name: self.address_data.name,
+                        mobile: self.address_data.mobile,
+                        code: self.address_data.area.join("/")
+                    }).then(res => {
+                        console.log(res);
+                        if (res.ok) {
+                            if (res.data.status) {
+                                self.$vux.toast.show({
+                                    text: '<span class="font-normal">保存成功</span>',
+                                    type: 'success'
+                                })
+                                //重新拉取数据
+                                self.fetch_addrs();
+                            } else {
+                                self.$vux.toast.show({
+                                    text: '<span class="font-normal">' + res.data.msg + '</span>',
+                                    type: 'warn'
+                                })
+                            }
+                        } else {
+                            self.$vux.toast.show({
+                                text: '<span class="font-normal">' + res.statusText + '</span>',
+                                type: 'warn'
+                            })
+                        }
+                    })
+                }
+    
+            },
+            update_addr: function() {
+                var self = this;
+            },
+            del_addr: function(index) {
+                var self = this;
+                console.log(index);
+                //弹窗确认
+                self.$vux.confirm.show({
+                    title: '确定删除改地址',
+                    onCancel: function() {
+    
+                    },
+                    onConfirm: function() {
+                        api.del_addr({
+                            addr_id: self.address_list[index].id,
+                        }).then(res => {
+                            console.log(res);
+                            if (res.ok) {
+                                if (res.data.code == "200") {
+                                    self.$vux.toast.show({
+                                        text: '<span class="font-normal">删除成功</span>',
+                                        type: 'success'
+                                    })
+                                    self.fetch_addrs();
+                                } else {
+                                    self.$vux.toast.show({
+                                        text: '<span class="font-normal">' + res.data.msg + '</span>',
+                                        type: 'warn'
+                                    })
+                                }
+                            } else {
+                                self.$vux.toast.show({
+                                    text: '<span class="font-normal">' + res.statusText + '</span>',
+                                    type: 'warn'
+                                })
+                            }
+                        })
+                    }
+                })
+    
+            },
+            fix_origin_data: function() {
+                $(".vux-popup-mask").removeClass(".vux-popup-show").addClass(".vux-popup-show");
             }
         },
         components: {
