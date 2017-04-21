@@ -93,7 +93,7 @@
         </router-link>
         <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" slot="card-title">
           <div class="item-title">{{item.name}}</div>
-          <div v-if="item.new_electrics.has_item">
+          <div v-if="!!item.new_electrics.has_item">
             <div class="item-title line-ellispse-2 font-bold">
               频段: <span>{{item.new_electrics.workingband.join("/")}}/</span> M
             </div>
@@ -104,7 +104,7 @@
               电下倾: <span>{{item.new_electrics.dipangle.join("/")}}/</span> °
             </div>
           </div>
-          <div v-if="item.new_electrics_inte.has_item">
+          <div v-if="!!item.new_electrics_inte.has_item">
             <div class="item-title line-ellispse-2 font-bold">
               频段: <span>{{item.new_electrics_inte.workingband.join("/")}}/</span> M
             </div>
