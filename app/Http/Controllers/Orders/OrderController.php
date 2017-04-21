@@ -101,7 +101,8 @@ class OrderController extends Controller
             $grid->disableActions();
             $grid->disableFilter();
             $grid->disableExport();
-			$grid->perPages([20]);
+            $grid->paginate(10);
+			$grid->perPages([10]);
         });
     }
 
