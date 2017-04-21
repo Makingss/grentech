@@ -93,32 +93,26 @@
         </router-link>
         <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" slot="card-title">
           <div class="item-title">{{item.name}}</div>
-          <div v-if="!!item.electrics&&item.electrics.length">
+          <div v-if="!!item.new_electrics&&item.new_electrics.length">
             <div class="item-title line-ellispse-2 font-bold">
-              频段: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span>
-              <span v-if="item.electrics.length">M</span>
+              频段: <span>{{item.new_electrics.workingband.join("/")}}/</span> M
             </div>
             <div class="item-title line-ellispse-2 font-bold">
-              增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span>
-              <span v-if="item.electrics.length">dBi</span>
+              增益: <span>{{item.new_electrics.beamgain.join("/")}}/</span> dBi
             </div>
             <div class="item-title line-ellispse-2 font-bold">
-              电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span>
-              <span v-if="item.electrics.length">°</span>
+              电下倾: <span>{{item.new_electrics.dipangle.join("/")}}/</span> °
             </div>
           </div>
-          <div v-if="!!item.electrics_inte&&item.electrics_inte.length">
+          <div v-if="!!item.new_electrics_inte&&item.new_electrics_inte.length">
             <div class="item-title line-ellispse-2 font-bold">
-              频段: <span v-for="(_item,_index) in item.electrics_inte" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics_inte.length-1)&&!!item.electrics_inte[_index+1].workingband">/</i></span>
-              <span v-if="item.electrics_inte.length">M</span>
+              频段: <span>{{item.new_electrics_inte.workingband.join("/")}}/</span> M
             </div>
             <div class="item-title line-ellispse-2 font-bold">
-              增益: <span v-for="(_item,_index) in item.electrics_inte" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics_inte.length-1)&&!!item.electrics_inte[_index+1].beamgain">/</i></span>
-              <span v-if="item.electrics_inte.length">dBi</span>
+              增益: <span>{{item.new_electrics_inte.beamgain.join("/")}}/</span> dBi
             </div>
             <div class="item-title line-ellispse-2 font-bold">
-              电下倾: <span v-for="(_item,_index) in item.electrics_inte" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics_inte.length-1)&&!!item.electrics_inte[_index+1].dipangle">/</i></span>
-              <span v-if="item.electrics_inte.length">°</span>
+              电下倾: <span>{{item.new_electrics_inte.dipangle.join("/")}}/</span> °
             </div>
           </div>
   
@@ -257,34 +251,34 @@
       },
       handle_res_data: function(res_data) {
         var self = this;
-        var new_arr=[];
+        var new_arr = [];
         // console.log
         for (var n = 0; n < res_data.data.length; n++) {
           var new_obj = {};
           for (var key in res_data.data[n]) {
-            if (key == "electrics" || key == "assemblies" || key == "goods_ports" || key == "standardfits" || key == "mechanics" || key == "mechanics_inte" || key == "electrics_inte") {
-              new_obj['new_'+key]={};
+            if (key == "electrics" || key == "electrics_inte") {
+              new_obj['new_' + key] = {};
               for (var i = 0; i < res_data.data[n][key].length; i++) {
                 //遍历 key 值,相同做数据合并
                 for (var k in res_data.data[n][key][i]) {
                   if (k == "created_at" || k == "id" || k == "updated_at" || k == "type" || k == "goods_id") {
                     continue;
                   }
-                  console.log(res_data.data[n][key][i][k]);
+  
                   if (!!res_data.data[n][key][i][k]) {
-                    new_obj['new_'+key]["has_item"] = true;
-                    if (!new_obj['new_'+key][k]) {
-                      new_obj['new_'+key][k] = [];
+                    new_obj['new_' + key]["has_item"] = true;
+                    if (!new_obj['new_' + key][k]) {
+                      new_obj['new_' + key][k] = [];
                     }
-                    new_obj['new_'+key][k].push(res_data.data[n][key][i][k]);
+                    new_obj['new_' + key][k].push(res_data.data[n][key][i][k]);
                   }
                 }
               }
-            }else{
-              new_obj[key]=res_data.data[n][key];
+            } else {
+              new_obj[key] = res_data.data[n][key];
             }
           }
-           new_arr.push(new_obj);
+          new_arr.push(new_obj);
         }
         console.log("+++++++++++++++");
         console.log(new_arr);
