@@ -340,9 +340,16 @@
                     })
                     return;
                 }
-                if (self.address_data.area == "") {
+                if (!self.address_data.code.length) {
                     self.$vux.toast.show({
-                        text: '<span class="font-normal>区域不能为空</span>',
+                        text: '<span class="font-normal">区域不能为空</span>',
+                        type: 'warn'
+                    })
+                    return;
+                }
+                if (area == "") {
+                    self.$vux.toast.show({
+                        text: '<span class="font-normal">区域不能为空</span>',
                         type: 'warn'
                     })
                     return;
@@ -396,7 +403,7 @@
                         addr: '*暂无*',
                         name: self.address_data.name,
                         mobile: self.address_data.mobile,
-                        code: self.address_data.area.join("/")
+                        code:self.address_data.code.join("/")
                     }).then(res => {
                         console.log(res);
                         if (res.ok) {
