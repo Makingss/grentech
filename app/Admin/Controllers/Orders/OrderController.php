@@ -2,112 +2,121 @@
 namespace App\Admin\Controllers\Orders;
 
 use App\Admin\Models\Orders\Order;
-use App\Admin\Models\Orders\Order_itme;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
-/**
- * Created by PhpStorm.
- * User: Making
- * Date: 2017/4/13
- * Time: 11:05
- */
+use Encore\Admin\Form;
+use Encore\Admin\Grid;
+use Encore\Admin\Facades\Admin;
+use Encore\Admin\Layout\Content;
+use App\Http\Controllers\Controller;
+use Encore\Admin\Controllers\ModelForm;
+
 class OrderController extends Controller
 {
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
+    use ModelForm;
 
-	public function index()
-	{
-		$orders = Order::with('member_addrs', 'order_items')->where('member_id', \Auth::id())->get()->toArray();
-		return view('admin.order.index', compact('orders'));
-	}
+    /**
+     * Index interface.
+     *
+     * @return Content
+     */
+    public function index()
+    {
+        return Admin::content(function (Content $content) {
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
-	{
-		return view();
-	}
+            $content->header('订单');
+//            $content->description('description');
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(Request $request)
-	{
-		$input = $request->all();
-		//创建 订单主数据
-		$input['order_id'] = static::generateOrderId();
-		$order = Order::create($input);
-		//创建 订单明细数据
-		$order_items['order_id'] = $order->order_id;
-		$order_items=Order_itme::create($order_items);
-		return view('/order',compact('order_items'));
+            $content->body($this->grid());
+        });
+    }
 
-	}
+    /**
+     * Edit interface.
+     *
+     * @param $id
+     * @return Content
+     */
+    public function edit($id)
+    {
+        return Admin::content(function (Content $content) use ($id) {
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id)
-	{
-		$order = Order::findOrFail($id);
-		return view('admin.order.show', compact('order'));
-	}
+            $content->header('header');
+            $content->description('description');
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit($id)
-	{
-		$order = Order::findOrFail($id);
-		return view('admin.order.edit', compact('order'));
-	}
+            $content->body($this->form()->edit($id));
+        });
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, $id)
-	{
-		$order = Order::findOrFail($id);
-		$input = $request->all();
-		$input['member_id'] = \Auth::id();
-		$order->update($input);
-		return view('/order');
-	}
+    /**
+     * Create interface.
+     *
+     * @return Content
+     */
+    public function create()
+    {
+        return Admin::content(function (Content $content) {
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy($id)
-	{
-		Order::destroy($id);
-		return view('/order');
-	}
+            $content->header('header');
+            $content->description('description');
 
-	public static function generateOrderId()
-	{
-		return date('ymdhis') . str_pad(mt_rand(1, 999), 3, '0', STR_PAD_LEFT);
-	}
+            $content->body($this->form());
+        });
+    }
+
+    /**
+     * Make a grid builder.
+     *
+     * @return Grid
+     */
+    protected function grid()
+    {
+        return Admin::grid(Order::class, function (Grid $grid) {
+            $order = new Order();
+            $getOrderColumns = $order->getTableColumns('orders');
+            $getMemberColumns=$order->getTableColumns('users');
+            $grid->column('order_id', $getOrderColumns['order_id']);
+            $grid->column('itemnum', $getOrderColumns['itemnum']);
+            $grid->column('getMember.name', $getMemberColumns['name']);
+            $grid->column('ship_mobile', $getOrderColumns['ship_mobile']);
+
+            $grid->column('shipAddress', $getOrderColumns['ship_addr'])->display(function () {
+                return $this->ship_area . $this->ship_addr;
+            })->limit(9);
+            $grid->column('shipping', $getOrderColumns['shipping']);
+            $grid->column('ship_name', $getOrderColumns['ship_name']);
+            $grid->column('pay_status', $getOrderColumns['pay_status'])->display(function ($pay_status) {
+                return payStatus($pay_status);
+            })->badge('danger');
+            $grid->column('ship_status', $getOrderColumns['ship_status'])->display(function ($ship_status) {
+                return shipStatus($ship_status);
+            })->badge('danger');
+            $grid->column('final_amount', $getOrderColumns['final_amount'])->display(function ($price) {
+                return "￥:$price";
+            });
+            $grid->column('memo', $getOrderColumns['memo']);
+            $grid->column('ip', $getOrderColumns['ip']);
+            $grid->column('created_at', $getOrderColumns['created_at']);
+
+            $grid->disableCreation();
+            $grid->disableActions();
+            $grid->disableFilter();
+            $grid->disableExport();
+        });
+    }
+
+    /**
+     * Make a form builder.
+     *
+     * @return Form
+     */
+    protected function form()
+    {
+        return Admin::form(Order::class, function (Form $form) {
+
+            $form->display('id', 'ID');
+
+            $form->display('created_at', 'Created At');
+            $form->display('updated_at', 'Updated At');
+        });
+    }
 }

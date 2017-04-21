@@ -20,7 +20,7 @@ class MemberDataModel extends Model
      */
     public function member_datas()
     {
-        return $this->hasOne(AdminUserModel::class, 'id', 'member_id');
+        return $this->hasOne(User::class, 'id', 'member_id');
     }
 
     /**

@@ -29,9 +29,6 @@ Route::group([
     $router->get('/electric/getindex/{id}', 'Goods\ElectricController@getIndex');
     $router->post('/electric/setajax', 'Goods\ElectricController@setAjax');
 
-    Route::group(['namespace'=>'Orders'],function(){
-        Route::resource('/orders','OrderController');
-    });
 //	$router->resource('/orders',);
 //	$router->get('/products/{key?}', 'DatatablesController@index');
 //	$router->get('/products/data/{goods_id}', 'DatatablesController@anyData');
@@ -39,14 +36,28 @@ Route::group([
 
 });
 
+#################### User|member 用户路由 #############################
+
 Route::group([
     'prefix' => config('admin.prefix'),
     'namespace' => 'App\Admin\Controllers\Members',
     'middleware' => ['web', 'admin'],
-],function (Router $router){
-    #################### User #############################
+], function (Router $router) {
+
     $router->resource('user/info', UserController::class);
     $router->resource('user/level', UserLevelController::class);
     $router->resource('user/permission', UserPermissionController::class);
     $router->resource('user/point', UserPointController::class);
 });
+
+#################### User|member 用户路由 #############################
+
+#################### order 订单路由 #############################
+Route::group([
+    'prefix' => config('admin.prefix'),
+    'namespace' => 'App\Admin\Controllers\Orders',
+    'middleware' => ['web', 'admin'],
+], function () {
+    Route::resource('/orders', OrderController::class);
+});
+#################### order 订单路由 #############################

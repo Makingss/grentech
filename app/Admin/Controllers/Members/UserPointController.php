@@ -120,7 +120,7 @@ class UserPointController extends Controller
                 $endToTime = strtotime($form->endDate);
                 $expires_in = (int)($endToTime - $startToTime);
                 $form->expires_in = $expires_in;
-                if ($expires_in > 0 && $form->status == 1) {
+                if ($expires_in > 0 && $form->status == 'on') {
                     Redis::setex("point_configure_{$form->id}", $expires_in, $expires_in);
                 }
             });

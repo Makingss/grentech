@@ -6,7 +6,9 @@ use App\Admin\Models\Goods\Good;
 use App\Admin\Models\Members\Member_addr;
 use App\Admin\Models\Members\Member_advance;
 use App\Models\Carts\CartObject;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Order extends Model
 {
@@ -59,7 +61,10 @@ class Order extends Model
 		$cartObject = CartObject::whereIn('id', $sumQuantity->cart_id)->get();
 		return $cartObject;
 	}
-
+    public function getMember()
+    {
+        return $this->hasone(User::class,'id','member_id');
+    }
 	/**
 	 * @return mixed
 	 * 通过购物车信息，获取商品数据。
@@ -103,4 +108,19 @@ class Order extends Model
 		});
 
 	}
+    public function getTableColumns($table = null)
+    {
+        $table = $table ?: $this->table;
+        $getTableArrbs = [];
+        $getTables = DB::select('show full columns from ' . $table);
+        foreach ($getTables as $key => $getTable) {
+            if (is_object($getTable)) {
+                $getTable = (array)$getTable;
+                $getTableArrbs[$getTable['Field']] = $getTable['Comment'];
+            } else {
+                $getTableArrbs[] = $getTable;
+            }
+        }
+        return $getTableArrbs;
+    }
 }

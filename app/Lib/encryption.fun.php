@@ -70,6 +70,7 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0)
         return $keyc . str_replace('=', '', base64_encode($result));
     }
 }
+
 /**
  * 根据生日生成对应的年龄
  * @param string $date 生日
@@ -89,4 +90,67 @@ function Birthday($date, $tag = '/')
         return $age;
     }
     return false;
+}
+
+/**
+ * @param int $key 支付状态码
+ * @return null|string 返回支付结果字符串
+ */
+function payStatus($key)
+{
+    $msg = null;
+    switch ($key) {
+        case '0':
+            $msg = "待支付";
+            break;
+        case '1':
+            $msg = "已支付";
+            break;
+        case '2':
+            $msg = "已付款至到担保方";
+            break;
+        case '3':
+            $msg = "部分付款";
+            break;
+        case '4':
+            $msg = "部分退款";
+            break;
+        case '5':
+            $msg = "全额退款";
+            break;
+        default:
+            $msg = "待支付";
+            break;
+    }
+    return $msg;
+}
+
+/**
+ * @param int $key 收货状态码
+ * @return null|string 返回收货字符串
+ */
+function shipStatus($key)
+{
+    $msg = null;
+    switch ($key) {
+        case '0':
+            $msg = "未发货";
+            break;
+        case '1':
+            $msg = "已发货";
+            break;
+        case '2':
+            $msg = "部分发货";
+            break;
+        case '3':
+            $msg = "部分退货";
+            break;
+        case '4':
+            $msg = "已退货";
+            break;
+        default:
+            $msg = "未发货";
+            break;
+    }
+    return $msg;
 }
