@@ -90,9 +90,9 @@ class OrderController extends Controller
             $grid->column('ship_status', $getOrderColumns['ship_status'])->display(function ($ship_status) {
                 return shipStatus($ship_status);
             })->badge('danger');
-            $grid->column('final_amount', $getOrderColumns['final_amount'])->display(function ($price) {
+            $grid->column('total_amount', $getOrderColumns['total_amount'])->display(function ($price) {
                 return "￥$price";
-            });
+            })->badge('green');
             $grid->column('memo', $getOrderColumns['memo']);
             $grid->column('ip', $getOrderColumns['ip']);
             #$grid->column('created_at', $getOrderColumns['created_at']);
