@@ -55,7 +55,7 @@ Route::group([
 #################### order 订单路由 #############################
 Route::group([
     'prefix' => config('admin.prefix'),
-    'namespace' => 'App\Admin\Controllers\Orders',
+    'namespace' => 'App\Http\Controllers\Orders',
     'middleware' => ['web', 'admin'],
 ], function () {
     Route::resource('/orders', OrderController::class);
