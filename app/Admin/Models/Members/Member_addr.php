@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Member_addr extends Model
 {
-	protected $fillable = ['member_id', 'name', 'lastname', 'firstname', 'area', 'addr', 'zip', 'tel', 'mobile', 'day', 'time', 'def_addr', 'local_id', 'card_num'];
+	protected $fillable = ['member_id', 'code','name', 'lastname', 'firstname', 'area', 'addr', 'zip', 'tel', 'mobile', 'day', 'time', 'def_addr', 'local_id', 'card_num'];
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

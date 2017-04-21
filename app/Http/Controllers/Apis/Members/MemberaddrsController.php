@@ -44,7 +44,7 @@ class MemberaddrsController extends Controller
 				"data" => []
 			];
 		}
-		$this->validate($request, ['area' => 'required|min:3', 'addr' => 'required', 'name' => 'required|min:3', 'mobile' => 'required|min:11']);
+		$this->validate($request, ['code' => 'required|min:3','area' => 'required|min:3', 'addr' => 'required', 'name' => 'required|min:3', 'mobile' => 'required|min:11']);
 
 		$input = $request->all();
 		$input['member_id'] = Auth::user()->id;
