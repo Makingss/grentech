@@ -93,18 +93,35 @@
         </router-link>
         <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" slot="card-title">
           <div class="item-title">{{item.name}}</div>
-          <div class="item-title line-ellispse-2 font-bold">
-            频段: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span>
-            <span v-if="item.electrics.length">M</span>
+          <div v-if="!!item.electrics&&item.electrics.length">
+            <div class="item-title line-ellispse-2 font-bold">
+              频段: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span>
+              <span v-if="item.electrics.length">M</span>
+            </div>
+            <div class="item-title line-ellispse-2 font-bold">
+              增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span>
+              <span v-if="item.electrics.length">dBi</span>
+            </div>
+            <div class="item-title line-ellispse-2 font-bold">
+              电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span>
+              <span v-if="item.electrics.length">°</span>
+            </div>
           </div>
-          <div class="item-title line-ellispse-2 font-bold">
-            增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span>
-            <span v-if="item.electrics.length">dBi</span>
+          <div v-if="!!item.electrics_inte&&item.electrics_inte.length">
+            <div class="item-title line-ellispse-2 font-bold">
+              频段: <span v-for="(_item,_index) in item.electrics_inte" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics_inte.length-1)&&!!item.electrics_inte[_index+1].workingband">/</i></span>
+              <span v-if="item.electrics_inte.length">M</span>
+            </div>
+            <div class="item-title line-ellispse-2 font-bold">
+              增益: <span v-for="(_item,_index) in item.electrics_inte" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics_inte.length-1)&&!!item.electrics_inte[_index+1].beamgain">/</i></span>
+              <span v-if="item.electrics_inte.length">dBi</span>
+            </div>
+            <div class="item-title line-ellispse-2 font-bold">
+              电下倾: <span v-for="(_item,_index) in item.electrics_inte" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics_inte.length-1)&&!!item.electrics_inte[_index+1].dipangle">/</i></span>
+              <span v-if="item.electrics_inte.length">°</span>
+            </div>
           </div>
-          <div class="item-title line-ellispse-2 font-bold">
-            电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span>
-            <span v-if="item.electrics.length">°</span>
-          </div>
+  
         </router-link>
         <div class="item-title line-ellispse-2 color-gray">
           SAP: {{item.bn}}
@@ -227,7 +244,7 @@
       get_home_list: function(query, callback) {
         var self = this;
         api.getGoodsData({
-          relations: ["images", "image_attach", "mechanics", "goods_ports", "assemblies", "standardfits", "electrics"],
+          relations: ["images", "image_attach", "mechanics", "goods_ports", "assemblies", "standardfits", "electrics","electrics_inte"],
           parameters: query,
           per_page: 10
         }).then(res => {
@@ -266,7 +283,7 @@
         let scroller = $(".container");
         if (!!self.scroller_data.next_page_url) {
           api.get_page_data(self.scroller_data.next_page_url, {
-            relations: ["images", "image_attach", "mechanics", "goods_ports", "assemblies", "standardfits", "electrics"],
+            relations: ["images", "image_attach", "mechanics", "goods_ports", "assemblies", "standardfits", "electrics","electrics_inte"],
             per_page: 10
           }).then(res => {
             console.log(res);

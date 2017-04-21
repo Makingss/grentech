@@ -171,7 +171,7 @@ export default {
       let scroller=$(".container");
       console.log(self.next_page_url);
       if(!!self.next_page_url){
-        api.get_page_data(self.next_page_url,{relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"],per_page: 10 }).then(res=>{
+        api.get_page_data(self.next_page_url,{relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics","electrics_inte"],per_page: 10 }).then(res=>{
           console.log(res);
           self.loading=false;
            if(res.data.data&&res.data.data.length>0){
@@ -196,19 +196,19 @@ export default {
         console.log("---------------------");
         if(query["search"]&&!loading){
           loading=true;
-           api.get_search_result({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"],search:query.search,per_page:10}).then(res=>{
+           api.get_search_result({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics","electrics_inte"],search:query.search,per_page:10}).then(res=>{
                console.log(res);
                loading=false;
                self.commit_resdata(res.data,params);
            })
         }else if(query["keyword"]){
-          api.get_similar_by_kwd({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"],id:query.keyword,per_page:10}).then(res=>{
+          api.get_similar_by_kwd({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics","electrics_inte"],id:query.keyword,per_page:10}).then(res=>{
             console.log("查询关键字商品");
             console.log(res);
             self.commit_resdata(res.data,params);
           })
         }else{
-          api.getGoodsData({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics"], parameters:query,per_page:10}).then(res=>{
+          api.getGoodsData({relations: ["images","image_attach","mechanics","goods_ports","assemblies","standardfits","electrics","electrics_inte"], parameters:query,per_page:10}).then(res=>{
               console.log(res);
                self.commit_resdata(res.data);
            })
