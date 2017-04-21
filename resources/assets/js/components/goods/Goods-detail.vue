@@ -18,7 +18,7 @@
                       </div>
                       <div class="litimg_box">
                         <ul>
-                          <li class="pull-left border-1px" v-on:mouseover="showBorder()" v-for="item in 4">
+                          <li class="pull-left border-1px"  @mouseover="change(index)" v-for="item in 4">
                             <a href="#">
                             <img class="link-img" src="//pop.nosdn.127.net/e0b96563-ec69-4942-b41c-efd3a52de5c6?imageView&thumbnail=64x0&quality=85" alt="">
                             </a>
@@ -467,7 +467,10 @@ export default {
       },
       showBorder:function(){
         var vm=this;
-      }
+      },
+      change(index) {
+        this.currentIndex = index;
+      },
     }
 }
 </script>
@@ -578,5 +581,7 @@ a:hover{
   border-radius: 50%;
 }
 
-
+.active {
+  background-color: red;
+ }
 </style>
