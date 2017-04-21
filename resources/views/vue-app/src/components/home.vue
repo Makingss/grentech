@@ -55,45 +55,14 @@
       </div>
     </div>
     <div class="scroll-content infinite-scroll container padding-b-20">
-      <flexbox wrap="wrap" :gutter="0" class="scroll-content" v-if="false">
-        <flexbox-item v-for="(item,index) in scroller_data.data" :span="1/2" class="link-img padding-tb-6 border-box cell-list-2" :class="{'padding-r-2':index%2==0,'padding-l-2':index%2==1}" :data-i="index%2">
-          <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block">
-            <div>
-              <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
-            </div>
-            <div class="padding-rl-10">
-              <div class="item-title line-ellispse-2">
-                {{item.name}}
-              </div>
-              <div class="item-title line-ellispse-2 font-bold" v-if="!!item.electrics">
-                频段: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span>
-                <span v-if="item.electrics.length">M</span>
-              </div>
-              <div class="item-title line-ellispse-2 font-bold">
-                增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span>
-                <span v-if="item.electrics.length">dBi</span>
-              </div>
-              <div class="item-title line-ellispse-2 font-bold">
-                电下倾: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.dipangle">{{_item.dipangle}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].dipangle">/</i></span>
-                <span v-if="item.electrics.length">°</span>
-              </div>
-              <div class="item-title line-ellispse-2 color-gray">
-                SAP: {{item.bn}}
-              </div>
-              <div class="item-subtitle color-danger">
-                ￥{{item.mktprice}}
-              </div>
-            </div>
-          </router-link>
-        </flexbox-item>
-      </flexbox>
+     
       <card-list v-for="(item,index) in scroller_data.data" class="border-1px-b">
         <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block" slot="card-media">
           <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
         </router-link>
         <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" slot="card-title">
           <div class="item-title">{{item.name}}</div>
-          <div v-if="!!item.new_electrics.has_item">
+          <div v-if="!!item.new_electrics&&item.new_electrics.has_item">
             <div class="item-title line-ellispse-2 font-bold">
               频段: <span>{{item.new_electrics.workingband.join("/")}}/</span> M
             </div>
@@ -104,7 +73,7 @@
               电下倾: <span>{{item.new_electrics.dipangle.join("/")}}/</span> °
             </div>
           </div>
-          <div v-if="!!item.new_electrics_inte.has_item">
+          <div v-if="!!item.new_electrics_inte&&item.new_electrics_inte.has_item">
             <div class="item-title line-ellispse-2 font-bold">
               频段: <span>{{item.new_electrics_inte.workingband.join("/")}}/</span> M
             </div>
