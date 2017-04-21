@@ -248,7 +248,7 @@ class GoodsController extends Controller
 				$form->text('name', $getGoodColumns['name'])->rules('required|min:3');
 				$form->text('product_model', $getGoodColumns['product_model']);
 				$form->text('product_desc', $getGoodColumns['product_desc']);
-				$form->currency('mktprice',$getGoodColumns['mktprice'])->symbol('￥');
+				$form->currency('mktprice',$getGoodColumns['mktprice'])->symbol('￥')->default(0);
 				$form->select('brand_id', $getGoodColumns['brand_id'])->options(function () {
 					$brands = Brand::all();
 					foreach ($brands as $brandK => $brandV) {
