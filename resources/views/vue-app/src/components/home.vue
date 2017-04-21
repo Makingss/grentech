@@ -244,7 +244,7 @@
       get_home_list: function(query, callback) {
         var self = this;
         api.getGoodsData({
-          relations: ["images", "image_attach", "mechanics", "goods_ports", "assemblies", "standardfits", "electrics","electrics_inte"],
+          relations: ["images", "image_attach", "mechanics", "goods_ports", "assemblies", "standardfits", "electrics", "electrics_inte"],
           parameters: query,
           per_page: 10
         }).then(res => {
@@ -257,6 +257,38 @@
       },
       handle_res_data: function(res_data) {
         var self = this;
+        var new_arr=[];
+        // console.log
+        for (var n = 0; n < res_data.data.length; n++) {
+          var new_obj = {};
+          for (var key in res_data.data[n]) {
+            if (key == "electrics" || key == "assemblies" || key == "goods_ports" || key == "standardfits" || key == "mechanics" || key == "mechanics_inte" || key == "electrics_inte") {
+              new_obj['new_'+key]={};
+              for (var i = 0; i < res_data.data[n][key].length; i++) {
+                //遍历 key 值,相同做数据合并
+                for (var k in res_data.data[n][key][i]) {
+                  if (k == "created_at" || k == "id" || k == "updated_at" || k == "type" || k == "goods_id") {
+                    continue;
+                  }
+                  console.log(res_data.data[n][key][i][k]);
+                  if (!!res_data.data[n][key][i][k]) {
+                    new_obj['new_'+key]["has_item"] = true;
+                    if (!new_obj['new_'+key][k]) {
+                      new_obj['new_'+key][k] = [];
+                    }
+                    new_obj['new_'+key][k].push(res_data.data[n][key][i][k]);
+                  }
+                }
+              }
+            }else{
+              new_obj[key]=res_data.data[n][key];
+            }
+          }
+           new_arr.push(new_obj);
+        }
+        console.log("+++++++++++++++");
+        console.log(new_arr);
+  
         self.scroller_data.data = self.scroller_data.data.concat(res_data.data);
         self.scroller_data.current_page = res_data.current_page;
         self.scroller_data.from = res_data.from;
@@ -283,7 +315,7 @@
         let scroller = $(".container");
         if (!!self.scroller_data.next_page_url) {
           api.get_page_data(self.scroller_data.next_page_url, {
-            relations: ["images", "image_attach", "mechanics", "goods_ports", "assemblies", "standardfits", "electrics","electrics_inte"],
+            relations: ["images", "image_attach", "mechanics", "goods_ports", "assemblies", "standardfits", "electrics", "electrics_inte"],
             per_page: 10
           }).then(res => {
             console.log(res);
