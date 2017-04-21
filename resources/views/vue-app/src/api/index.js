@@ -52,7 +52,7 @@ export default {
     return Vue.http.post(API_ROOT + '/oauth/token', data);
   },
   refresh_token: function (data) {
-    return Vue.http.post(API_ROOT + 'oauth/token', data);
+    return Vue.http.post(API_ROOT + '/oauth/token', data);
   },
   user_login: function (data) {
     return Vue.http.post(API_ROOT + "/api/login", data);
