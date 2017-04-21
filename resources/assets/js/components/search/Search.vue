@@ -238,10 +238,10 @@
     create: {},
     methods: {
       handleChange: function() {
-  
+
       }
     }
-  
+
   }
 </script>
 
@@ -249,7 +249,7 @@
   a:hover {
     text-decoration: underline;
   }
-  
+
   .order-tab {
     >dd {
       height: 36px;
@@ -260,11 +260,11 @@
       cursor: pointer;
     }
   }
-  
+
   .icon-middle {
     vertical-align: middle
   }
-  
+
   .Pagination {
     .pag-Btn {
       background-color: transparent;
@@ -283,11 +283,11 @@
       border: none;
     }
   }
-  
+
   h2 {
     font-weight: normal;
   }
-  
+
   .goods {
     width: 100%;
     overflow: hidden;
@@ -362,7 +362,7 @@
       }
     }
   }
-  
+
   .newListWrap {
     width: 206px;
     height: 306px;

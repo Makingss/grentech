@@ -61,6 +61,7 @@ Route::resource('/search', 'SearchController');
 //Route::get('mall/login','');
 
 Route::get('/demo', function () {
+	Auth::loginUsingId(24);
 	$question = \App\Models\Comment::find(1);
 	return view('demo', compact('question'));
 });
@@ -75,6 +76,7 @@ Route::group(['namespace' => 'Goods'], function () {
 });
 
 Route::group(['namespace' => 'Members'], function () {
+	Auth::loginUsingId(4);
 	Route::resource('addr', 'MemberaddrsController');
 });
 

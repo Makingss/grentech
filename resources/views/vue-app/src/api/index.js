@@ -152,6 +152,19 @@ export default {
     if (!window.localStorage.access_token) return login_intercept;
     // var headers=get_headers();
     return Vue.http.post(API_ROOT + '/api/cartDelete', data)
+  },
+  add_order:function(data){
+    /* 
+      ship_area:'',
+      ship_addr:'',
+      ship_name:'',
+      ship_mobile:'',
+      memo:'',
+      addr_id:'',//暂时不传
+      cart_id:''
+    */
+   if (!window.localStorage.access_token) return login_intercept;
+     return Vue.http.post(API_ROOT+"/api/orderAdd",data)    
   }
 
 

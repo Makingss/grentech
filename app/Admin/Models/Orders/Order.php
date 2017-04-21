@@ -82,6 +82,12 @@ class Order extends Model
 		})->sum();
 	}
 
+	/**
+	 * @param $sumQuantity
+	 * @return mixed
+	 * 通过购物车信息，获取商品数据
+	 * 返回訂单明细信息
+	 */
 	public function getOrderItems($sumQuantity)
 	{
 		$cartObject = $this->getSumQuantity($sumQuantity);
