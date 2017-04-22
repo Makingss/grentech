@@ -30383,7 +30383,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\na[data-v-44e4117f]:hover{\r\n    text-decoration: underline;\n}\n.border-1px-t-d[data-v-44e4117f]{\r\n  border-top:1px dotted #ddd;\n}\n.border-1px-b-d[data-v-44e4117f]{\r\n  border-bottom: 1px dotted #ddd;\n}\n.showImgBox[data-v-44e4117f]{\r\n  position:relative;\r\n  width: 400px;\r\n  height: 400px;\n}\n.Carousel[data-v-44e4117f]{\r\n  position: relative;\n}\n.litimg_box[data-v-44e4117f]{\r\n    float:left;\n}\n.litimg_box li[data-v-44e4117f]{\r\n  height: 68px;\r\n  overflow: hidden;\r\n  margin:0 7px;\n}\n.scrollBtn[data-v-44e4117f]{\r\n  border:1px solid #ddd;\r\n  padding:10px 6px;\r\n  width: 26px;\r\n  height: 48px;\r\n  text-align: center;\r\n  line-height: 48px;\n}\n.scrollBtn[data-v-44e4117f]:hover{\r\n  border:1px solid #f00;\r\n  color:#f00;\n}\n.leftClick[data-v-44e4117f]{\r\n  float:left;\n}\n.rightClick[data-v-44e4117f]{\r\n  float:right;\r\n  right: 0;\r\n  top:0;\n}\n.magnifiter[data-v-44e4117f] {\r\n  position:absolute;\r\n  bottom: 0;\r\n  right: 10px;\n}\n.country>img[data-v-44e4117f]{\r\n width: 24px;\r\n height: 24px;\r\n vertical-align: middle;\n}\n.line-title[data-v-44e4117f]{\r\n  width: 75px;\r\n  height: 18px;\r\n  float:left;\r\n  padding-left: 10px;\n}\n.priceBox[data-v-44e4117f]{\r\n  border-top:1px dotted #ddd;\r\n  border-bottom:1px dotted #ddd;\r\n  background-color:#f9f9f9;\n}\n.SLabel[data-v-44e4117f]{\r\n  background-color: #F68587;\r\n  width: 26px;\r\n  padding:2px;\r\n  margin-left: 5px;\r\n  vertical-align:5px;\r\n  color:#fff;\n}\n.marketPrice[data-v-44e4117f]{\r\n  vertical-align: 5px;\n}\n.newListWrap[data-v-44e4117f] {\r\n  width: 206px;\r\n  height: 306px;\r\n  border: 1px solid #eee;\r\n  margin: 0 0 10px 10px;\n}\n.popBox[data-v-44e4117f]{\r\n  border:1px solid #eaeaea;\n}\n.goods_parameter[data-v-44e4117f]{\r\n  width: 100%;\n}\n.goods_parameter li[data-v-44e4117f]{\r\n  float: left;\r\n  width: 30%;\n}\n.IntroText[data-v-44e4117f]{\r\n  width: 90%;\n}\n.tab-90[data-v-44e4117f]{\r\n  width: 90%;\n}\n.comwrapIcon[data-v-44e4117f]{\r\n  border-radius: 50%;\n}\n.active[data-v-44e4117f] {\r\n  background-color: red;\n}\r\n", ""]);
+exports.push([module.i, "\na[data-v-44e4117f]:hover{\n    text-decoration: underline;\n}\n.border-1px-t-d[data-v-44e4117f]{\n  border-top:1px dotted #ddd;\n}\n.border-1px-b-d[data-v-44e4117f]{\n  border-bottom: 1px dotted #ddd;\n}\n.showImgBox[data-v-44e4117f]{\n  position:relative;\n  width: 400px;\n  height: 400px;\n}\n.Carousel[data-v-44e4117f]{\n  position: relative;\n}\n.litimg_box[data-v-44e4117f]{\n    float:left;\n}\n.litimg_box li[data-v-44e4117f]{\n  height: 68px;\n  overflow: hidden;\n  margin:0 7px;\n}\n.scrollBtn[data-v-44e4117f]{\n  border:1px solid #ddd;\n  padding:10px 6px;\n  width: 26px;\n  height: 48px;\n  text-align: center;\n  line-height: 48px;\n}\n.scrollBtn[data-v-44e4117f]:hover{\n  border:1px solid #f00;\n  color:#f00;\n}\n.leftClick[data-v-44e4117f]{\n  float:left;\n}\n.rightClick[data-v-44e4117f]{\n  float:right;\n  right: 0;\n  top:0;\n}\n.magnifiter[data-v-44e4117f] {\n  position:absolute;\n  bottom: 0;\n  right: 10px;\n}\n.country>img[data-v-44e4117f]{\n width: 24px;\n height: 24px;\n vertical-align: middle;\n}\n.line-title[data-v-44e4117f]{\n  width: 75px;\n  height: 18px;\n  float:left;\n  padding-left: 10px;\n}\n.priceBox[data-v-44e4117f]{\n  border-top:1px dotted #ddd;\n  border-bottom:1px dotted #ddd;\n  background-color:#f9f9f9;\n}\n.SLabel[data-v-44e4117f]{\n  background-color: #F68587;\n  width: 26px;\n  padding:2px;\n  margin-left: 5px;\n  vertical-align:5px;\n  color:#fff;\n}\n.marketPrice[data-v-44e4117f]{\n  vertical-align: 5px;\n}\n.newListWrap[data-v-44e4117f] {\n  width: 206px;\n  height: 306px;\n  border: 1px solid #eee;\n  margin: 0 0 10px 10px;\n}\n.popBox[data-v-44e4117f]{\n  border:1px solid #eaeaea;\n}\n.goods_parameter[data-v-44e4117f]{\n  width: 100%;\n}\n.goods_parameter li[data-v-44e4117f]{\n  float: left;\n  width: 30%;\n}\n.IntroText[data-v-44e4117f]{\n  width: 90%;\n}\n.tab-90[data-v-44e4117f]{\n  width: 90%;\n}\n.comwrapIcon[data-v-44e4117f]{\n  border-radius: 50%;\n}\n.active[data-v-44e4117f] {\n  background-color: red;\n}\n", ""]);
 
 // exports
 
@@ -30397,7 +30397,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.banner[data-v-4c5fb1e8] {\r\n    background-color: #B60730;\r\n    height: 440px;\r\n    z-index: 1;\n}\n.tab-70[data-v-4c5fb1e8]{\r\n  width: 70%;\n}\n.pic[data-v-4c5fb1e8] {\r\n    position: relative;\r\n    height: 497px;\r\n    background: url(//haitao.nos.netease.com/e2e84290-b43a-498a-bc33-d972e208a26b.jpg?imageView&thumbnail=1000x0&quality=90) no-repeat left top;\r\n    z-index: 10;\n}\n.qrcode[data-v-4c5fb1e8] {\r\n  position: absolute;\r\n  right:0;\r\n  bottom:0;\r\n  margin:0 150px 120px 0;\n}\n.downbtn[data-v-4c5fb1e8] {\r\n    background-color: rgba(255,255,255,0.3);\r\n    width: 184px;\r\n    height: 51px;\r\n    text-align: center;\r\n    line-height: 51px;\r\n    font-size: 14px;\n}\n.downbtn a[data-v-4c5fb1e8]{\r\n  color:#fff;\n}\n.downbtn a[data-v-4c5fb1e8]:hover{\r\n    background-color: rgba(255,255,255,0.5);\r\n    border-radius: 3px;\n}\n.intro[data-v-4c5fb1e8]{\r\n  background:url(//mm.bst.126.net/images/footer/downloads/intro.jpg?191224b536dfdae9fb53d8f085ec60a9) top left no-repeat;\r\n  width:350px;\r\n  height: 350px;\r\n  display: block;\r\n  background-position:0 -350px;\n}\n.pci[data-v-4c5fb1e8]{\r\n  background:url(//mm.bst.126.net/images/footer/downloads/intro.jpg?191224b536dfdae9fb53d8f085ec60a9) top left no-repeat;\r\n  width: 80px;\r\n  height: 80px;\r\n  background-position:0 -1050px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.banner[data-v-4c5fb1e8] {\n    background-color: #B60730;\n    height: 440px;\n    z-index: 1;\n}\n.tab-70[data-v-4c5fb1e8]{\n  width: 70%;\n}\n.pic[data-v-4c5fb1e8] {\n    position: relative;\n    height: 497px;\n    background: url(//haitao.nos.netease.com/e2e84290-b43a-498a-bc33-d972e208a26b.jpg?imageView&thumbnail=1000x0&quality=90) no-repeat left top;\n    z-index: 10;\n}\n.qrcode[data-v-4c5fb1e8] {\n  position: absolute;\n  right:0;\n  bottom:0;\n  margin:0 150px 120px 0;\n}\n.downbtn[data-v-4c5fb1e8] {\n    background-color: rgba(255,255,255,0.3);\n    width: 184px;\n    height: 51px;\n    text-align: center;\n    line-height: 51px;\n    font-size: 14px;\n}\n.downbtn a[data-v-4c5fb1e8]{\n  color:#fff;\n}\n.downbtn a[data-v-4c5fb1e8]:hover{\n    background-color: rgba(255,255,255,0.5);\n    border-radius: 3px;\n}\n.intro[data-v-4c5fb1e8]{\n  background:url(//mm.bst.126.net/images/footer/downloads/intro.jpg?191224b536dfdae9fb53d8f085ec60a9) top left no-repeat;\n  width:350px;\n  height: 350px;\n  display: block;\n  background-position:0 -350px;\n}\n.pci[data-v-4c5fb1e8]{\n  background:url(//mm.bst.126.net/images/footer/downloads/intro.jpg?191224b536dfdae9fb53d8f085ec60a9) top left no-repeat;\n  width: 80px;\n  height: 80px;\n  background-position:0 -1050px;\n}\n\n", ""]);
 
 // exports
 
@@ -30411,7 +30411,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.header[data-v-4d61f11c] {\r\n    background-color: white;\r\n    box-shadow: 1px 1px 10px #bbb;\r\n    padding-top: 10px;\r\n    padding-left: 10px;\n}\n.login-icon[data-v-4d61f11c] {\r\n    width: 181px;\r\n    height: 64px\n}\n.login-info[data-v-4d61f11c] {\r\n    line-height: 64px\n}\n.login-link[data-v-4d61f11c] {\r\n    height: 64px;\r\n    vertical-align: bottom;\r\n    display: table-cell;\n}\n.el-row[data-v-4d61f11c] {\r\n    margin-bottom: 20px;\n&:last-child {\r\n        margin-bottom: 0;\n}\n}\n.el-left-box[data-v-4d61f11c] {\r\n    width: 70%;\n}\n.el-input[data-v-4d61f11c] {\r\n    height: 36px;\r\n    width: 100%;\r\n    border: none;\n}\r\n", ""]);
+exports.push([module.i, "\n.header[data-v-4d61f11c] {\n    background-color: white;\n    box-shadow: 1px 1px 10px #bbb;\n    padding-top: 10px;\n    padding-left: 10px;\n}\n.login-icon[data-v-4d61f11c] {\n    width: 181px;\n    height: 64px\n}\n.login-info[data-v-4d61f11c] {\n    line-height: 64px\n}\n.login-link[data-v-4d61f11c] {\n    height: 64px;\n    vertical-align: bottom;\n    display: table-cell;\n}\n.el-row[data-v-4d61f11c] {\n    margin-bottom: 20px;\n&:last-child {\n        margin-bottom: 0;\n}\n}\n.el-left-box[data-v-4d61f11c] {\n    width: 70%;\n}\n.el-input[data-v-4d61f11c] {\n    height: 36px;\n    width: 100%;\n    border: none;\n}\n", ""]);
 
 // exports
 
@@ -80219,7 +80219,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\Example.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/Example.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80253,7 +80253,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\QuestionFollowBotton.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/QuestionFollowBotton.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] QuestionFollowBotton.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80291,7 +80291,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\footer\\App-link.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/footer/App-link.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] App-link.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80329,7 +80329,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\goods\\Goods-detail.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/goods/Goods-detail.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Goods-detail.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80367,7 +80367,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\home\\About-us.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/home/About-us.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] About-us.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80405,7 +80405,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\home\\Banner-section.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/home/Banner-section.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Banner-section.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80443,7 +80443,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\home\\Content-section.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/home/Content-section.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Content-section.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80481,7 +80481,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\home\\Footer-section.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/home/Footer-section.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Footer-section.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80519,7 +80519,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\home\\Header-section.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/home/Header-section.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Header-section.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80557,7 +80557,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\home\\Navbar.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/home/Navbar.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Navbar.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80595,7 +80595,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\home\\Slogen.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/home/Slogen.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Slogen.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80633,7 +80633,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\passport\\AuthorizedClients.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/passport/AuthorizedClients.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AuthorizedClients.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80671,7 +80671,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\passport\\Clients.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/passport/Clients.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Clients.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80709,7 +80709,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\passport\\Login.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/passport/Login.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Login.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80747,7 +80747,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\passport\\PersonalAccessTokens.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/passport/PersonalAccessTokens.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] PersonalAccessTokens.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80785,7 +80785,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\passport\\Register.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/passport/Register.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Register.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80823,7 +80823,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\search\\Search.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/search/Search.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Search.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80861,7 +80861,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\shopcart\\Shopcart.vue"
+Component.options.__file = "/data/www/grentech/resources/assets/js/components/shopcart/Shopcart.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Shopcart.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -82402,7 +82402,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "font-bold font-1x"
   }, [_vm._v("landou 兰多纯色大容量百搭双肩手提妈咪包")])]), _vm._v(" "), _c('dt', [_c('span', {
     staticClass: "font-mini"
-  }, [_vm._v("\r\n                          时尚轻便妈咪包 多功能大容量 可双肩手提 背面设安全防盗拉链设计 让妈妈们用着舒心也放心")])]), _vm._v(" "), _c('dd', {}, [_c('div', {
+  }, [_vm._v("\n                          时尚轻便妈咪包 多功能大容量 可双肩手提 背面设安全防盗拉链设计 让妈妈们用着舒心也放心")])]), _vm._v(" "), _c('dd', {}, [_c('div', {
     staticClass: "priceBox clear-float"
   }, [_c('span', {
     staticClass: "font-mini pull-left margin-10 text-left",
@@ -82440,7 +82440,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "color-dark"
   }, [_c('span', {
     staticClass: "color-danger"
-  }, [_vm._v("[本商品包税]")]), _vm._v(" 无需额外交税\r\n                      ")])]), _vm._v(" "), _c('dd', [_c('span', {
+  }, [_vm._v("[本商品包税]")]), _vm._v(" 无需额外交税\n                      ")])]), _vm._v(" "), _c('dd', [_c('span', {
     staticClass: "line-title"
   }, [_vm._v("运费")]), _vm._v(" "), _c('div', {}, [_c('span', {
     staticClass: "address "
@@ -82463,7 +82463,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "margin-tb-10"
   }, [_c('span', {
     staticClass: "line-title"
-  }, [_vm._v("服务")]), _vm._v(" "), _c('span', [_vm._v("\r\n                          本商品由  landou 兰多品牌方\r\n                        ")])]), _vm._v(" "), _c('dd', {
+  }, [_vm._v("服务")]), _vm._v(" "), _c('span', [_vm._v("\n                          本商品由  landou 兰多品牌方\n                        ")])]), _vm._v(" "), _c('dd', {
     staticClass: "margin-tb-10"
   }, [_c('span', {
     staticClass: "line-title"
@@ -82536,11 +82536,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     staticClass: "iconfont font-mini"
-  }, [_vm._v("")]), _vm._v("\r\n                              加入购物\r\n                            ")]), _vm._v(" "), _c('span', {
+  }, [_vm._v("")]), _vm._v("\n                              加入购物\n                            ")]), _vm._v(" "), _c('span', {
     staticClass: "padding-l-15"
   }, [_c('i', {
     staticClass: "iconfont"
-  }, [_vm._v("")]), _vm._v("\r\n                              收藏\r\n                            ")])], 1)])]), _vm._v(" "), _c('dd', [_c('div', {
+  }, [_vm._v("")]), _vm._v("\n                              收藏\n                            ")])], 1)])]), _vm._v(" "), _c('dd', [_c('div', {
     staticClass: "pull-left"
   }, [_c('el-rate', {
     attrs: {
@@ -82578,9 +82578,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     staticClass: "iconfont font-mini"
-  }, [_vm._v("\r\n                        \r\n                        ")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                        \n                        ")]), _vm._v(" "), _c('div', {
     staticClass: "iconfont font-mini"
-  }, [_vm._v("\r\n                        \r\n                        ")])])])])])])], 1)], 1), _vm._v(" "), _c('div', {}, [_c('div', {
+  }, [_vm._v("\n                        \n                        ")])])])])])])], 1)], 1), _vm._v(" "), _c('div', {}, [_c('div', {
     staticClass: "container block-center"
   }, [_vm._m(1), _vm._v(" "), _c('div', {
     staticClass: "margin-tb-20 clear-float"
@@ -82685,13 +82685,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("\r\n                            收起 "), _c('i', {
+  }, [_vm._v("\n                            收起 "), _c('i', {
     staticClass: "iconfont font-mini"
   }, [_vm._v("")])])]), _vm._v(" "), _c('div', {
     staticClass: "tips border-1px-t border-1px-b padding-tb-4"
   }, [_c('div', {
     staticClass: "iconfont color-danger font-3x padding-rl-15 padding-tb-6 pull-left"
-  }, [_vm._v("\r\n                            \r\n                          ")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                            \n                          ")]), _vm._v(" "), _c('div', {
     staticClass: "cont"
   }, [_c('p', {
     staticClass: "cont-title font-2x color-dark"
@@ -82878,7 +82878,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "margin-tb-10"
     }, [_c('span', {
       staticClass: "SLabel"
-    }, [_vm._v("精华评论")]), _vm._v("\r\n                                            质量很好，自重有点重，貌似红蓝款和米色不同料子，应该防水，内部五个分格，其中一个保温的，可以放奶瓶或者焖烧杯，个人觉得分格不是太合理，除了保温隔其他都比较小，放放纸巾口水巾小湿巾还行，至少应该再有一到2个大隔袋会更好，可以放放尿不湿隔尿垫大包湿巾等。。\r\n                                            ")])]), _vm._v(" "), _c('li', [_c('div', {}, [_c('a', {
+    }, [_vm._v("精华评论")]), _vm._v("\n                                            质量很好，自重有点重，貌似红蓝款和米色不同料子，应该防水，内部五个分格，其中一个保温的，可以放奶瓶或者焖烧杯，个人觉得分格不是太合理，除了保温隔其他都比较小，放放纸巾口水巾小湿巾还行，至少应该再有一到2个大隔袋会更好，可以放放尿不湿隔尿垫大包湿巾等。。\n                                            ")])]), _vm._v(" "), _c('li', [_c('div', {}, [_c('a', {
       attrs: {
         "href": "#",
         "title": "点击预览"
@@ -82903,7 +82903,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v("点赞")])], 1), _vm._v(" "), _c('div', {
       staticClass: "padding-tb-20"
-    }, [_vm._v("\r\n                                        来自iOS手机版\r\n                                      ")]), _vm._v(" "), _c('div', [_vm._v("\r\n                                        04.20\r\n                                      ")])])])], 1)], 1)])
+    }, [_vm._v("\n                                        来自iOS手机版\n                                      ")]), _vm._v(" "), _c('div', [_vm._v("\n                                        04.20\n                                      ")])])])], 1)], 1)])
   }))])]), _vm._v(" "), _c('div', {
     staticClass: "text-right margin-t-10",
     attrs: {
@@ -82961,7 +82961,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("网易考拉海购")]), _vm._v("\r\n          >   landou 兰多纯色大容量百搭双肩手提妈咪包\r\n        ")])
+  }, [_vm._v("网易考拉海购")]), _vm._v("\n          >   landou 兰多纯色大容量百搭双肩手提妈咪包\n        ")])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('h4', [_c('span', {
     staticClass: "font-2x"
@@ -83066,7 +83066,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "iconfont"
-  }, [_vm._v("")]), _vm._v("IPhone版下载\r\n                                ")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("")]), _vm._v("IPhone版下载\n                                ")])]), _vm._v(" "), _c('div', {
     staticClass: "downbtn margin-tb-10 border-radius-3 "
   }, [_c('a', {
     staticClass: "block font-1x",
@@ -83075,7 +83075,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "iconfont"
-  }, [_vm._v("")]), _vm._v("Android版下载\r\n                                ")])])]), _vm._v(" "), _c('li', {
+  }, [_vm._v("")]), _vm._v("Android版下载\n                                ")])])]), _vm._v(" "), _c('li', {
     staticClass: "pull-left"
   }, [_c('div', {
     staticClass: "margin-10"
@@ -83094,7 +83094,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('p', {
     staticClass: "font-1x padding-tb-10 margin-t-10"
-  }, [_vm._v("\r\n              在全球精选真正好用、有用的口碑商品，"), _c('br'), _vm._v("提升你的生活品质，节省你的挑选时间。\r\n            ")])
+  }, [_vm._v("\n              在全球精选真正好用、有用的口碑商品，"), _c('br'), _vm._v("提升你的生活品质，节省你的挑选时间。\n            ")])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -83539,10 +83539,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "target": "_blank",
         "href": link.usrl
       }
-    }, [_vm._v("\r\n                  " + _vm._s(link.cont) + "\r\n                  "), _c('span', [_vm._v("|")])])
+    }, [_vm._v("\n                  " + _vm._s(link.cont) + "\n                  "), _c('span', [_vm._v("|")])])
   })), _vm._v(" "), _c('div', {
     staticClass: "copyright"
-  }, [_vm._v("\r\n            Copyright © 2004-2017  京东JD.com 版权所有\r\n        ")])])])
+  }, [_vm._v("\n            Copyright © 2004-2017  京东JD.com 版权所有\n        ")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
