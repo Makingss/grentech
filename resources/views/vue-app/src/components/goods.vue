@@ -2,7 +2,7 @@
   <div class="goods content">
     <div style="height:100%">
       <swiper style="width:100%;margin:0 auto;" :aspect-ratio="375/375" dots-position="center">
-        <swiper-item v-for="(item,index) in goods_data_list.image_attach" class="link-img">
+        <swiper-item v-for="(item,index) in goods_data_list.image_attach" class="link-img previewer-demo-img">
           <img :src="item.images.url" alt="">
         </swiper-item>
       </swiper>
@@ -41,7 +41,6 @@
           <vue-q-art v-if="false" :config="config" class="qrcode-content"></vue-q-art>
         </flexbox-item>
       </flexbox>
-  
       <group class="margin-tb-4">
         <x-number class="font-mini" title="数量" :min="1" :max="99" v-model="quantity"></x-number>
       </group>
