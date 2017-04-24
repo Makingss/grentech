@@ -346,7 +346,7 @@
         console.log("________________________");
         console.log($(".goods-desc img"));
         self.list = [];
-        if($(".goods-desc img").length){
+        if($(".goods-desc img").length==0){
           var timer=null;
           timer=setTimeout(function(){
             self.show_previewer();
