@@ -346,13 +346,20 @@
         console.log("________________________");
         console.log($(".goods-desc img"));
         self.list = [];
+        if($(".goods-desc img").length){
+          var timer=null;
+          timer=setTimeout(function(){
+            self.show_previewer();
+          },2000);
+          return;
+        }
+        console.log("加载完成***************");
         $(".goods-desc img").addClass("previewer-demo-img");
         $.each($(".goods-desc img"), function(i, n) {
           var obj = {
             src: $(this).attr("src"),
             w: ($(this).width() + 8) * 2,
             h: $(this).height() * 2
-  
           };
           self.list.push(obj);
           // $(this).addClass("previewer-demo-img");
@@ -460,6 +467,6 @@
     bottom: 0;
   }
   .goods-desc-content{
-    padding-bottom:1.5rem;
+    padding-bottom:1rem;
   }
 </style>
