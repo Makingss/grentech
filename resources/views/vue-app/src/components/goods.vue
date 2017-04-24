@@ -53,7 +53,7 @@
           <tab-item v-if="false">服务信息</tab-item>
         </tab>
         <div v-if="index==0" class="padding-tb-6 padding-rl-4">
-          <div v-html="goods_data_list.content"></div>
+          <div v-html="goods_data_list.content" class="goods-desc-content"></div>
         </div>
         <div v-if="index==1" class="params-cell">
           <div @click="collapse(1)" v-if="goods_data_list.new_electrics.has_item" :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
@@ -458,5 +458,8 @@
   
   #app>.goods .bar-secondary {
     bottom: 0;
+  }
+  .goods-desc-content{
+    padding-bottom:1.5rem;
   }
 </style>
