@@ -18,7 +18,7 @@
                 </div>
                 <div v-if="!!item.new_electrics&&item.new_electrics.has_item">
                   <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics.workingband&&item.new_electrics.workingband.length">
-                    频段: <span>{{item.new_electrics.workingband.join("/")}}</span> M
+                    频段: <span>{{item.new_electrics.workingband.join("/")}}</span>
                   </div>
                   <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics.beamgain&&item.new_electrics.beamgain.length">
                     增益: <span>{{item.new_electrics.beamgain.join("/")}}</span> dBi
@@ -29,7 +29,7 @@
                 </div>
                 <div v-if="!!item.new_electrics_inte&&item.new_electrics_inte.has_item">
                   <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.workingband&&item.new_electrics_inte.workingband.length">
-                    频段: <span>{{item.new_electrics_inte.workingband.join("/")}}</span> M
+                    频段: <span>{{item.new_electrics_inte.workingband.join("/")}}</span>
                   </div>
                   <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.beamgain&&item.new_electrics_inte.beamgain.length">
                     增益: <span>{{item.new_electrics_inte.beamgain.join("/")}}</span> dBi
@@ -57,7 +57,7 @@
             <div class="item-title">{{item.name}}</div>
             <div v-if="!!item.new_electrics&&item.new_electrics.has_item">
               <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics.workingband&&item.new_electrics.workingband.length">
-                频段: <span>{{item.new_electrics.workingband.join("/")}}</span> M
+                频段: <span>{{item.new_electrics.workingband.join("/")}}</span>
               </div>
               <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics.beamgain&&item.new_electrics.beamgain.length">
                 增益: <span>{{item.new_electrics.beamgain.join("/")}}</span> dBi
@@ -68,7 +68,7 @@
             </div>
             <div v-if="!!item.new_electrics_inte&&item.new_electrics_inte.has_item">
               <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.workingband&&item.new_electrics_inte.workingband.length">
-                频段: <span>{{item.new_electrics_inte.workingband.join("/")}}</span> M
+                频段: <span>{{item.new_electrics_inte.workingband.join("/")}}</span>
               </div>
               <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.beamgain&&item.new_electrics_inte.beamgain.length">
                 增益: <span>{{item.new_electrics_inte.beamgain.join("/")}}</span> dBi
