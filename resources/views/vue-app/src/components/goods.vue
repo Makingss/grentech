@@ -11,24 +11,24 @@
           <p class="line-ellispse-2">{{goods_data_list.name}}</p>
           <div v-if="!!goods_data_list.electrics&&goods_data_list.electrics.length">
             <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics.workingband&&goods_data_list.new_electrics.workingband.length">
-              频段: <span>{{goods_data_list.new_electrics.workingband.join("/")}}/</span> M
+              频段: <span>{{goods_data_list.new_electrics.workingband.join("/")}}</span> M
             </div>
             <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics.beamgain&&goods_data_list.new_electrics.beamgain.length">
-              增益: <span>{{goods_data_list.new_electrics.beamgain.join("/")}}/</span> dBi
+              增益: <span>{{goods_data_list.new_electrics.beamgain.join("/")}}</span> dBi
             </div>
             <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics.dipangle&&goods_data_list.new_electrics.dipangle.length">
-              电下倾: <span>{{goods_data_list.new_electrics.dipangle.join("/")}}/</span> °
+              电下倾: <span>{{goods_data_list.new_electrics.dipangle.join("/")}}</span> °
             </div>
           </div>
           <div v-if="!!goods_data_list.electrics_inte&&goods_data_list.electrics_inte.length">
             <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.workingband&&goods_data_list.new_electrics_inte.workingband.length">
-              频段: <span>{{goods_data_list.new_electrics_inte.workingband.join("/")}}/</span> M
+              频段: <span>{{goods_data_list.new_electrics_inte.workingband.join("/")}}</span> M
             </div>
             <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.beamgain&&goods_data_list.new_electrics_inte.beamgain.length">
-              增益: <span>{{goods_data_list.new_electrics_inte.beamgain.join("/")}}/</span> dBi
+              增益: <span>{{goods_data_list.new_electrics_inte.beamgain.join("/")}}</span> dBi
             </div>
             <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.dipangle&&goods_data_list.new_electrics_inte.dipangle.length">
-              电下倾: <span>{{goods_data_list.new_electrics_inte.dipangle.join("/")}}/</span> °
+              电下倾: <span>{{goods_data_list.new_electrics_inte.dipangle.join("/")}}</span> °
             </div>
           </div>
   
