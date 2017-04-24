@@ -2,8 +2,8 @@
   <div class="goods content">
     <div style="height:100%">
       <swiper style="width:100%;margin:0 auto;" :aspect-ratio="375/375" dots-position="center">
-        <swiper-item v-for="(item,index) in goods_data_list.image_attach" class="link-img previewer-demo-img">
-          <img :src="item.images.url" alt="">
+        <swiper-item v-for="(item,index) in goods_data_list.image_attach" class="link-img">
+          <img :src="item.images.url" alt="" class="previewer-demo-img">
         </swiper-item>
       </swiper>
       <flexbox :gutter="0" wrap="nowrap" class="bg-white">
@@ -354,7 +354,7 @@
         }
         console.log("加载完成***************");
         $(".goods-desc img").addClass("previewer-demo-img");
-        $.each($(".goods-desc img"), function(i, n) {
+        $.each($(".previewer-demo-img"), function(i, n) {
           var obj = {
             src: $(this).attr("src"),
             w: ($(this).width() + 8) * 2,
