@@ -54,7 +54,7 @@ router.afterEach(transition => {
       setTimeout(function () {
         util.init_ad.hide();
       }, 550);
-    }, ad.show_time - 550);
+    }, ad.show_time - 550);//550
   }
 });
 
@@ -86,5 +86,3 @@ const app = new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
-
-

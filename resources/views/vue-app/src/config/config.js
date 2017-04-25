@@ -3,7 +3,7 @@
 export const app_config = {
   //广告配置
   ad: {
-    is_show: true,
+    is_show: false,
     src: '/static/add/bg-image.jpg',
     bg_color:'#040000',
     use_bg_image:false,
