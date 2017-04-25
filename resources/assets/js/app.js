@@ -26,6 +26,15 @@ Vue.component('search', require('./components/search/Search.vue'));
 
 //app-link app 引导页
 Vue.component('app-link', require('./components/footer/App-link.vue'));
+//mall_user用户界面
+Vue.component("mall-user", require("./components/user/Mall-user.vue"));
+
+//用户相关组件
+Vue.component("myorder", require("./components/user/Myorder.vue"));
+Vue.component("user-info", require("./components/user/User-info.vue"));
+Vue.component("banner-carousel", require("./components/user/Banner-carousel.vue"));
+Vue.component("plug-in", require("./components/user/Plug-in.vue"));
+Vue.component("circle-friends", require("./components/user/Circle-friends.vue"));
 
 //登陆界面
 Vue.component("login", require("./components/passport/Login.vue"));
