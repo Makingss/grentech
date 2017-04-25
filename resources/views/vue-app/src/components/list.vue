@@ -284,6 +284,8 @@
           }
           new_arr.push(new_obj);
         }
+        console.log("*+++++++++**+++++++++++++++++++");
+        console.log(new_arr);
         // self.$store.state.goods.goods_list=res_data;
         // self.goods_data=self.goods_data.concat(res_data.data);
         self.goods_data = self.goods_data.concat(new_arr);
