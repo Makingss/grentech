@@ -3,7 +3,7 @@
 export const app_config = {
   //广告配置
   ad: {
-    is_show: false,
+    is_show: true,
     src: '/static/add/bg-image.jpg',
     bg_color:'#040000',
     use_bg_image:false,
@@ -18,7 +18,7 @@ export const app_config = {
   },
   logo_image: "/static/slice/logo_300.png", //logo 图片设置
   intercept: true, //是否启用登陆拦截
-  intercept_time: 500, //登陆拦截时间  3000
+  intercept_time: 4000, //登陆拦截时间  3000
   intercept_closeable: false, //登陆拦截是否可关闭
   /*
     storage配置项
