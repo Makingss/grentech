@@ -24,14 +24,14 @@
             <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.workingband&&goods_data_list.new_electrics_inte.workingband.length">
               频段: <span>{{goods_data_list.new_electrics_inte.workingband.join("/")}}</span>
             </div>
-            <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.beamgain&&goods_data_list.new_electrics_inte.beamgain.length">
-              增益: <span>{{goods_data_list.new_electrics_inte.beamgain.join("/")}}</span> dBi
+            <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.cellbeam_2&&goods_data_list.new_electrics_inte.cellbeam_2.length">
+              增益: <span>{{goods_data_list.new_electrics_inte.cellbeam_2.join("/")}}</span> dBi
             </div>
             <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.dipangle&&goods_data_list.new_electrics_inte.dipangle.length">
               电下倾: <span>{{goods_data_list.new_electrics_inte.dipangle.join("/")}}</span> °
             </div>
           </div>
-  
+
           <p class="color-gray">SAP:{{goods_data_list.bn}}</p>
           <p class="color-danger" v-if="false">¥{{goods_data_list.price}}</p>
           <p class="color-danger">市场价: <span class="font-bold">¥{{goods_data_list.mktprice||'暂无'}}</span>
@@ -44,7 +44,7 @@
       <group class="margin-tb-4">
         <x-number class="font-mini" title="数量" :min="1" :max="99" v-model="quantity"></x-number>
       </group>
-  
+
       <div class="goods-desc" style="height:100%;padding-bottom:3rem;box-sizing:border-box">
         <tab v-model="index" active-color="#FB4F5B">
           <tab-item>商品详情</tab-item>
@@ -188,7 +188,7 @@
   import VueQArt from 'vue-qart'
   import QArt from 'qartjs'
   import api from '../api/index.js'
-  
+
   import {
     Swiper,
     Flexbox,
@@ -273,7 +273,7 @@
         total: 0,
       }
     },
-  
+
     methods: {
       show: function(index) {
         console.log("展示");
@@ -321,7 +321,7 @@
               }
             }
             data['new_' + key] = new_obj;
-  
+
             self.goods_data_list = data;
           }
         }
@@ -368,7 +368,7 @@
           })
         })
         console.log(self.list);
-  
+
       },
       add_cart: function() {
         console.log("加入购物车");
@@ -390,7 +390,7 @@
         })
         //this.$router.push("order_confirm");
       },
-  
+
     },
     created: function() {
       var query = this.$route.query;
@@ -423,45 +423,45 @@
   .page-goods .content {
     background-color: #f7f7f7;
   }
-  
+
   .goods-content-swiper {
     height: 100%;
     padding-bottom: 2rem;
     box-sizing: border-box;
   }
-  
+
   .goods-content-swiper>.vux-swiper {
     height: 100%!important;
     overflow-y: scroll;
     box-sizing: border-box;
   }
-  
+
   .goods-content-swiper>.vux-swiper .vux-swiper-item {
     box-sizing: border-box;
   }
-  
+
   .goods .qrcode-content canvas {
     width: 4rem;
     height: 4rem;
   }
-  
+
   .params-cell {
     padding-bottom: 2.3rem;
   }
-  
+
   .params-cell .weui-cell {
     padding: 10px 5px;
   }
-  
+
   .params-cell .vux-cell-primary {
     flex: 0.5
   }
-  
+
   .params-cell .weui-cell__ft {
     flex: 1.4;
     text-align: center;
   }
-  
+
   #app>.goods .bar-secondary {
     bottom: 0;
   }
