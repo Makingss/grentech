@@ -20,8 +20,8 @@
                   <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics.workingband&&item.new_electrics.workingband.length">
                     频段: <span>{{item.new_electrics.workingband.join("/")}}</span>
                   </div>
-                  <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics.beamgain&&item.new_electrics.beamgain.length">
-                    增益: <span>{{item.new_electrics.beamgain.join("/")}}</span> dBi
+                  <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics.cellbeam_2&&item.new_electrics.cellbeam_2.length">
+                    增益: <span>{{item.new_electrics.cellbeam_2.join("/")}}</span> dBi
                   </div>
                   <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics.dipangle&&item.new_electrics.dipangle.length">
                     电下倾: <span>{{item.new_electrics.dipangle.join("/")}}</span> °
