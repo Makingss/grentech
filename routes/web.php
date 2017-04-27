@@ -41,7 +41,8 @@ Route::get('/mall_search','Mall_searchController@index');
 Route::get('/app_link','App_linkController@index');
 Route::get('/footer','Mall_footerController@index');
 Route::get('/goods_detail','Goods_detailController@index');
-Route::get('/mall_user','Mall_UserController@index');
+Route::get('/mall_user','Mall_userController@index');
+Route::get('/orders_detail','Orders_detailController@index');
 /*
 	***************************end*************************
 */

@@ -1,6 +1,5 @@
 <template lang="html">
   <div class="user-info">
-    <span class="left-icon"></span>
     <div class="u-leftcontBox">
       <div class="u-icon pull-left">
         <a href="#" class="link-img">

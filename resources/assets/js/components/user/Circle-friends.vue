@@ -5,41 +5,45 @@
     <el-tab-pane label="微信推荐">
       <div class="">
         <div class="clear-float">
-          <h2 class="pull-left padding-l-10">以下内容来自微信购物圈</h2>
+          <h4 class="pull-left padding-l-10 color-gray">以下内容来自微信购物圈</h4>
           <div  class="pull-right padding-r-10">
               <el-button size="small" type="danger">去微信晒单</el-button>
           </div>
         </div>
-        <div style="width:200px;padding:10px; margin:5px;"class="border-1px">
-          <div class="">
-            <div class="">
-              <div class="" style="background:url(//misc.360buyimg.com/user/myjd-2015/widget/show-2016/i/mask.png) 0 0;width:52px;height:52px"></div>
+        <ul class="clear-float">
+          <li v-for="item in 4" class="pull-left margin-10">
+            <div class="recomInfo border-1px" v-for="(item,index) in webChat">
+                <div class="clear-float">
+                  <div class="pull-left"><img :src="item.headerImg" class="headerImg" alt=""></div>
+                  <div class="padding-10" style="text-indent:12px">
+                    <h4>{{item.name}}</h4>
+                    <div class="color-gray">{{item.defInfo}}</div>
+                  </div>
+                </div>
+                <div class="text">
+                {{item.content}}
+                </div>
               <div class="">
-                <span>桃子</span>
-                <span>来自微信精选</span>
+                <el-carousel trigger="click" height="260px">
+                  <el-carousel-item v-for="item2 in item.carousel">
+                    <img :src="item2.img" alt="">
+                  </el-carousel-item>
+                </el-carousel>
+              </div>
+              <div class="clear-float margin-t-4" v-for="item3 in item.goodsImg">
+                <div class="pull-left" style="width:60px;height:60px">
+                  <a :href="item3.url" class="link-img">
+                    <img :src="item3.simg" alt="">
+                  </a>
+                </div>
+                <div class="">
+                  <div>{{item3.name}}</div>
+                  <div class="color-gray">￥{{item3.prict}}</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="">
-            二入乐高深深深过海，为何说二入，因为乐高永远不会让你只剁一次手。我发现最不难挑的礼物就是送给小朋友的，乐高系列众多，什么城市款，什么公主城堡款的，不同年龄段都有适合的，色彩鲜艳，做工细致，让小朋友们在一堆小零件中创造出属于自己的大大世界！
-          </div>
-          <div class="">
-            <el-carousel trigger="click" height="280px">
-              <el-carousel-item v-for="item in 2">
-                <img src="//img10.360buyimg.com/shaidan/s220x800_jfs/t5353/280/330842728/174466/d8f9e9e6/58fd5cd5Nd595a931.jpg" alt="">
-              </el-carousel-item>
-            </el-carousel>
-          </div>
-          <div class="">
-            <div class="">
-              <img src="//img10.360buyimg.com/n2/jfs/t4540/222/2215014706/24143/ce703620/58ec867aN5bbe0096.jpg" alt="">
-            </div>
-            <div class="">
-              <span>生命的富足</span>
-              <span>￥25.84</span>
-            </div>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </el-tab-pane>
     <el-tab-pane label="京东推荐">
@@ -76,10 +80,32 @@
 </template>
 
 <script>
-export default {}
+export default {
+    data:function(){
+    return{
+      webChat:[
+        {
+          headerImg:"//storage.jd.com/i.imageUpload/31333634303333393833375f7031343932383433353033333236_mid.jpg",
+          name:"小栋",
+          defInfo:"来自微信推荐",
+          content:"二入乐高深深深过海，为何说二入，因为乐高永远不会让你只剁一次手。我发现最不难挑的礼物就是送给小朋友的，乐高系列众多，什么城市款，什么公主城堡款的，不同年龄段都有适合的，色彩鲜艳，做工细致，让小朋友们在一堆小零件中创造出属于自己的大大世界！",
+          carousel:[{
+            img:'//img10.360buyimg.com/shaidan/s220x800_jfs/t5353/280/330842728/174466/d8f9e9e6/58fd5cd5Nd595a931.jpg'
+          }],
+          goodsImg:[{
+            url:"",
+            simg:"//img10.360buyimg.com/n2/jfs/t4540/222/2215014706/24143/ce703620/58ec867aN5bbe0096.jpg",
+            name:"生命周期",
+            prict:"243"
+          }]
+        }
+      ]
+    }
+  }
+}
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .el-tabs__nav-scroll .el-tabs__nav{
 left:40%;
 }
@@ -89,4 +115,13 @@ left:40%;
 .el-tabs__item.is-active{
   color: #f00;
 }
+.recomInfo{
+  width:200px;padding:10px; margin:5px;
+}
+.headerImg{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+}
+
 </style>

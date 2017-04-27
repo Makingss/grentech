@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="mall_user">
-    <header-section></header-section>
+  <header-user></header-user>
     <div class="container block-center" style="width:85%">
-      <div class="" style="margin-top:80px">
+      <div class="">
         <el-row>
           <el-col :span="3">
             <div class="margin-t-10">
@@ -22,8 +22,23 @@
               <user-info></user-info>
               <el-row class="margin-t-20">
                 <el-col :span="18">
+                  <div class="myorder">
+                    <div class="model-main">
+                      <div class="clear-float" style="height:20px;line-height:20px;">
+                        <h3 class="pull-left padding-l-10 font-1x color-dark">我的订单</h3>
+                        <span class="pull-right padding-r-10"><a href="#">查看全部订单</a></span>
+                      </div>
+                      <div class="tab-80">
+                        <div class="block-center container" style="background:#fff url(//mm.bst.126.net/images/order/noOrder.png?20141216);width:140px;height:160px;position:relative">
+                          <div class="font-2x color-gray" style="position:absolute;right:-120px;top:50%;">
+                              当前没有订单
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <myorder></myorder>
-                <banner-carousel></banner-carousel>
+                <!-- <banner-carousel></banner-carousel> -->
                 <circle-friends></circle-friends>
                 </el-col>
                 <el-col :span="6">
@@ -76,7 +91,7 @@ export default {
                     text: "小白条",
                     path: ""
                 }]
-            },{
+            }, {
                 title: '特色业务',
                 children: [{
                     text: "我的营业厅",
@@ -85,7 +100,7 @@ export default {
                     text: "定期送",
                     path: ""
                 }]
-            },{
+            }, {
                 title: '客服中心',
                 children: [{
                     text: "返修退换货",
@@ -93,29 +108,30 @@ export default {
                 }, {
                     text: "意见建议",
                     path: "#"
-                },{
-                  text:"我的问答",
-                  path:"#"
+                }, {
+                    text: "我的问答",
+                    path: "#"
                 }]
-            },{
-              title:"设置",
-              children:[{
-                text:"个人信息",
-                path:"#"
-              },{
-                text:"收货地址",
-                path:"#"
-              }
-            ]
-            }
-          ]
+            }, {
+                title: "设置",
+                children: [{
+                    text: "个人信息",
+                    path: "#"
+                }, {
+                    text: "收货地址",
+                    path: "#"
+                }]
+            }]
         }
     }
 }
 </script>
 
 <style lang="less" scoped>
-.margin-l-20{
-  margin-left:20px;
+.margin-l-20 {
+    margin-left: 20px;
 }
+
+
+
 </style>
