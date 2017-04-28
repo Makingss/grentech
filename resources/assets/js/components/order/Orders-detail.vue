@@ -3,7 +3,9 @@
       <header-user></header-user>
       <div class="container block-center">
         <div class="padding-tb-10">
-          我的京东>订单中心>订单:499861744
+          <span><a href="/home">我的京东</a>></span>
+          <span><a href="/mall_user">订单中心</a>></span>
+          <span>订单:499861744</span>
         </div>
         <div class="order-state  clear-float padding-10">
           <el-row>
@@ -46,6 +48,23 @@
                         </div>
                       </div>
                     </li>
+                    <li class="pull-left">
+                      <div class="process clear-float">
+                          <div class="process-item">
+                            <div class="node text-center">
+                              <i class="node-icon iconfont font-4x color-primary">&#xe8b4;</i>
+                              <ul class="margin-t-10 font-mini">
+                                <li>支付成功</li>
+                                <li>2017-03-04</li>
+                                <li>17:22:10</li>
+                              </ul>
+                            </div>
+                            <div class="proce padding-tb-4" style="">
+                              <i class="iconfont color-primary point">&#xe62d;</i>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
                     <li class="pull-left">
                       <div class="process clear-float">
                           <div class="process-item">
@@ -242,8 +261,10 @@
         </div>
         </div>
       </div>
-  </div>
+      <slogen></slogen>
+      <footer-section></footer-section>
 
+  </div>
 </template>
 
 <script>

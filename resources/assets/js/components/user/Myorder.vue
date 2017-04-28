@@ -70,7 +70,7 @@
                  <el-col :span="2">
                    <div class="">已完成</div>
                    <div class="">积分  +7</div>
-                   <div class="">订单详情</div>
+                   <div class=""><a href="/orders_detail">订单详情</a></div>
                  </el-col>
                  <el-col :span="3" class="text-center">
                    <div class="">评价|晒单</div>
@@ -146,7 +146,7 @@
                <el-col :span="2">
                  <div class="">已完成</div>
                  <div class="">积分  +7</div>
-                 <div class="">订单详情</div>
+                 <div class=""><a href="/orders_detail">订单详情</a></div>
                </el-col>
                <el-col :span="3" class="text-center">
                  <div class="">评价|晒单</div>

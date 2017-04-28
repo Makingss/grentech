@@ -43,6 +43,7 @@ Route::get('/footer','Mall_footerController@index');
 Route::get('/goods_detail','Goods_detailController@index');
 Route::get('/mall_user','Mall_userController@index');
 Route::get('/orders_detail','Orders_detailController@index');
+Route::get('/user_info','User_infoController@index');
 /*
 	***************************end*************************
 */

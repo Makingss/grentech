@@ -26782,6 +26782,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -27412,61 +27433,53 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 var md5 = __webpack_require__(132);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      activeName: 'second',
-      bgimg: "background: url(//img14.360buyimg.com/da/jfs/t4801/42/913388643/164704/de206047/58ea6cc4Ne702102a.jpg) 0px 0px no-repeat;background-color: #73848C;height:475px;",
-      form: {
-        userName: "",
-        userPwd: ""
-      },
-      error: {
-        text: "用户名或密码不正确",
-        value: false
-      }
-    };
-  },
-  methods: {
-    submit: function submit() {
-      console.log(1111);
-      var vm = this;
-      var form = {
-        user_name: vm.form.userName,
-        user_pwd: vm.form.userPwd,
-        method: ''
-      };
-      $.post("", form, function (response) {
-        try {
-          var json = Json.parse(response);
-          if (!json.res) {
-            vm.error.value = true;
-            window.sessionStorage.uname = "";
-            window.sessionStorage.upwd = '';
-            window.sessionStorage.l_status = "false";
-          } else {
-            form.user_pwd = md5(form.user_pwd);
-            form.user_id = json.user_id;
-            form.method = '';
-            window.sessionStorage.admin_info = JSON.stringify(form);
-            window.sessionStorage.l_status = "true";
-            vm.$root.actions = null;
-            vm.$route.push("/home");
-          }
-        } catch (e) {}
-      });
+    data: function data() {
+        return {
+            activeName: 'second',
+            bgimg: "background: url(//img14.360buyimg.com/da/jfs/t4801/42/913388643/164704/de206047/58ea6cc4Ne702102a.jpg) 0px 0px no-repeat;background-color: #73848C;height:475px;",
+            form: {
+                userName: "",
+                userPwd: ""
+            },
+            error: {
+                text: "用户名或密码不正确",
+                value: false
+            }
+        };
+    },
+    methods: {
+        submit: function submit() {
+            console.log(1111);
+            var vm = this;
+            var form = {
+                user_name: vm.form.userName,
+                user_pwd: vm.form.userPwd,
+                method: ''
+            };
+            $.post("", form, function (response) {
+                try {
+                    var json = Json.parse(response);
+                    if (!json.res) {
+                        vm.error.value = true;
+                        window.sessionStorage.uname = "";
+                        window.sessionStorage.upwd = '';
+                        window.sessionStorage.l_status = "false";
+                    } else {
+                        form.user_pwd = md5(form.user_pwd);
+                        form.user_id = json.user_id;
+                        form.method = '';
+                        window.sessionStorage.admin_info = JSON.stringify(form);
+                        window.sessionStorage.l_status = "true";
+                        vm.$root.actions = null;
+                        vm.$route.push("/home");
+                    }
+                } catch (e) {}
+            });
+        }
     }
-  }
 });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(8)))
 
@@ -28879,6 +28892,94 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -29275,8 +29376,165 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      form: {
+        name: "13640339837_p",
+        loginName: "",
+        nickName: "",
+        sex: "",
+        date: "",
+        type: "",
+        userName: ""
+      },
+      dialogVisible: false,
+      dialogImageUrl: '',
+      action: "https://jsonplaceholder.typicode.com/posts/",
+      form2: {
+        status: ""
+      },
+      navLeftBox: [{
+        title: '设置',
+        children: [{
+          text: "个人信息",
+          path: '#'
+        }, {
+          text: "账户安全",
+          path: '#'
+        }, {
+          text: '账号绑定',
+          path: '#'
+        }, {
+          text: "我的级别",
+          path: '#'
+        }, {
+          text: "收货地址",
+          path: "#"
+        }, {
+          text: "分享绑定",
+          path: ""
+        }, {
+          text: "邮件订阅",
+          path: ""
+        }, {
+          text: "消费记录"
+        }]
+      }]
+    };
+  },
+  methods: {
+    handlePreview: function handlePreview(file) {
+      this.dialogImageUrl = file.url;
+      this.dialogVisible = true;
+    },
+    handleSuccess: function handleSuccess(response) {
+      console.log(response);
+    }
+  }
+});
 
 /***/ }),
 /* 79 */
@@ -31567,7 +31825,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.margin-l-20[data-v-665292c4] {\n  margin-left: 20px;\n}\n", ""]);
+exports.push([module.i, "\n.margin-l-20[data-v-665292c4] {\n  margin-left: 20px;\n}\na[data-v-665292c4]:hover {\n  color: #f00;\n}\n.user-info[data-v-665292c4] {\n  background: url(\"//misc.360buyimg.com/user/myjd-2015/widget/userinfo/i/userinfo-bg.png\") right top repeat-y #fff;\n  height: 150px;\n  padding: 15px 20px 15px 319px;\n}\n.user-info .left-icon[data-v-665292c4] {\n  background: url(\"//misc.360buyimg.com/user/myjd-2015/widget/userinfo/i/info-left.png\") 0 0 no-repeat;\n  left: 160px;\n  width: 88px;\n  height: 180px;\n  position: absolute;\n  top: 0;\n}\n.u-leftcontBox[data-v-665292c4] {\n  height: 126px;\n  position: relative;\n  left: -319px;\n  padding: 22px 0 0;\n  float: left;\n}\n.u-icon[data-v-665292c4] {\n  width: 104px;\n  height: 104px;\n}\n.u-icon > a[data-v-665292c4] {\n  border: 3px solid #ddd;\n  border-radius: 50%;\n  display: block;\n}\n.u-pic[data-v-665292c4] {\n  float: left;\n  width: 180px;\n  border-right: 1px dotted #888;\n}\n.u-rightcontBox[data-v-665292c4] {\n  float: left;\n  padding: 16px 0;\n  margin-left: -319px;\n  width: 100%;\n}\n.u-counts[data-v-665292c4] {\n  width: 180px;\n}\n.u-counts ul[data-v-665292c4] {\n  width: 100%;\n}\n.u-counts ul > li[data-v-665292c4] {\n  width: 50%;\n  text-align: center;\n  float: left;\n  margin-bottom: 10px;\n}\n.info-line[data-v-665292c4] {\n  position: absolute;\n  height: 100%;\n  top: 0;\n  right: 0;\n}\n.info-line .circle[data-v-665292c4] {\n  width: 15px;\n  height: 15px;\n  background: #f5f5f5;\n  display: block;\n}\n.info-line .topCircle[data-v-665292c4] {\n  position: absolute;\n  right: 0;\n}\n.info-line .bottomCircle[data-v-665292c4] {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n}\n.credit-info[data-v-665292c4] {\n  background: #f5f5f5;\n}\n.credit-info .fore[data-v-665292c4] {\n  width: 119px;\n  padding: 0 4px;\n  border-right: 1px dotted #bbb;\n}\n.credit-info .fore[data-v-665292c4]:last-child {\n  border: none;\n}\n", ""]);
 
 // exports
 
@@ -31657,7 +31915,20 @@ exports.push([module.i, "\n.promotion-section-header[data-v-ba72f142] {\n  heigh
 
 
 /***/ }),
-/* 105 */,
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.order-state[data-v-da32f02c] {\n  background-color: #f5f5f5;\n  border-top: 2px solid #71b247;\n  margin-bottom: 20px;\n}\n.order-info[data-v-da32f02c],\n.order-track[data-v-da32f02c] {\n  background-color: #f5f5f5;\n  margin-bottom: 20px;\n}\n.order-info .info-item[data-v-da32f02c] {\n  width: 250px;\n  border-right: 1px solid #ddd;\n}\n.order-info .info-item[data-v-da32f02c]:last-child {\n  border: none;\n}\n.process[data-v-da32f02c] {\n  width: 140px;\n}\n.process .process-item[data-v-da32f02c] {\n  position: relative;\n}\n.process .node[data-v-da32f02c] {\n  width: 80px;\n}\n.process .proce[data-v-da32f02c] {\n  position: absolute;\n  top: -40px;\n  left: 60px;\n}\n.process .point[data-v-da32f02c] {\n  font-size: 80px;\n}\n.o-item[data-v-da32f02c] {\n  height: 102px;\n  margin: 20px 0;\n}\n.o-item[data-v-da32f02c]:after {\n  content: '.';\n  height: 0;\n  display: block;\n  clear: both;\n  visibility: hidden;\n}\n.o-item .o-img[data-v-da32f02c] {\n  border: 1px solid #eee;\n}\n.o-item .o-info[data-v-da32f02c] {\n  margin: 20px 10px;\n  text-align: left;\n}\n.circle-icon[data-v-da32f02c] {\n  position: relative;\n  display: inline-block;\n  border-radius: 50%;\n  width: 4px;\n  height: 4px;\n  background-color: #888;\n  border: 2px solid #ccc;\n}\n.circle-icon[data-v-da32f02c]:before {\n  position: absolute;\n  content: '';\n  left: 0;\n  height: 100%;\n  width: 3px;\n  background: #f00;\n}\n.circle-icon-action[data-v-da32f02c] {\n  background-color: #f00;\n  box-shadow: 0 0 10px #f00;\n}\n.track-list[data-v-da32f02c] {\n  border-left: 1px solid #ddd;\n  height: 200px;\n  overflow-y: scroll;\n  padding: 10px 0 0 30px;\n}\n.track-list .tranck-info[data-v-da32f02c] {\n  display: inline-block;\n  padding: 10px 0 0 20px;\n}\n.track-list .tranck-info[data-v-da32f02c]:first-child {\n  padding: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
 /* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31666,7 +31937,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\na[data-v-e53cc3ac]:hover {\n  color: #f00;\n}\n.user-info[data-v-e53cc3ac] {\n  background: url(\"//misc.360buyimg.com/user/myjd-2015/widget/userinfo/i/userinfo-bg.png\") right top repeat-y #fff;\n  height: 150px;\n  padding: 15px 20px 15px 319px;\n}\n.user-info .left-icon[data-v-e53cc3ac] {\n  background: url(//misc.360buyimg.com/user/myjd-2015/widget/userinfo/i/info-left.png) 0 0 no-repeat;\n  left: 160px;\n  width: 88px;\n  height: 180px;\n  position: absolute;\n  top: 0;\n}\n.u-leftcontBox[data-v-e53cc3ac] {\n  height: 126px;\n  position: relative;\n  left: -319px;\n  padding: 22px 0 0;\n  float: left;\n}\n.u-icon[data-v-e53cc3ac] {\n  width: 104px;\n  height: 104px;\n}\n.u-icon > a[data-v-e53cc3ac] {\n  border: 3px solid #ddd;\n  border-radius: 50%;\n  display: block;\n}\n.u-pic[data-v-e53cc3ac] {\n  float: left;\n  width: 180px;\n  border-right: 1px dotted #888;\n}\n.u-rightcontBox[data-v-e53cc3ac] {\n  float: left;\n  padding: 16px 0;\n  margin-left: -319px;\n  width: 100%;\n}\n.u-counts[data-v-e53cc3ac] {\n  width: 180px;\n}\n.u-counts ul[data-v-e53cc3ac] {\n  width: 100%;\n}\n.u-counts ul > li[data-v-e53cc3ac] {\n  width: 50%;\n  text-align: center;\n  float: left;\n  margin-bottom: 10px;\n}\n.info-line[data-v-e53cc3ac] {\n  position: absolute;\n  height: 100%;\n  top: 0;\n  right: 0;\n}\n.info-line .circle[data-v-e53cc3ac] {\n  width: 15px;\n  height: 15px;\n  background: #f5f5f5;\n  display: block;\n}\n.info-line .topCircle[data-v-e53cc3ac] {\n  position: absolute;\n  right: 0;\n}\n.info-line .bottomCircle[data-v-e53cc3ac] {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n}\n.credit-info[data-v-e53cc3ac] {\n  background: #f5f5f5;\n}\n.credit-info .fore[data-v-e53cc3ac] {\n  width: 119px;\n  padding: 0 4px;\n  border-right: 1px dotted #bbb;\n}\n.credit-info .fore[data-v-e53cc3ac]:last-child {\n  border: none;\n}\n", ""]);
+exports.push([module.i, "\n.inputWhite[data-v-e53cc3ac] {\n  width: 320px;\n}\n", ""]);
 
 // exports
 
@@ -81792,7 +82063,7 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(224)
+__webpack_require__(210)
 
 var Component = __webpack_require__(0)(
   /* script */
@@ -82546,9 +82817,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   })]), _vm._v(" "), _c('div', {
-    staticClass: "text-right"
+    staticClass: "text-right padding-r-20 padding-b-20"
   }, [_c('a', {
-    staticClass: "padding-r-15 padding-b-20 color-dark",
+    staticClass: " color-dark",
     attrs: {
       "href": "#"
     }
@@ -82588,57 +82859,57 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "target": "_blank",
       "href": "//www.jd.com/intro/about.aspx"
     }
-  }, [_vm._v("\n                关于我们\n            ")]), _vm._v("\n            |\n            "), _c('a', {
+  }, [_vm._v("\n                关于我们\n            ")]), _vm._v(" |\n            "), _c('a', {
     attrs: {
       "rel": "nofollow",
       "target": "_blank",
       "href": "//www.jd.com/contact/"
     }
-  }, [_vm._v("\n                联系我们\n            ")]), _vm._v("\n            |\n            "), _c('a', {
+  }, [_vm._v("\n                联系我们\n            ")]), _vm._v(" |\n            "), _c('a', {
     attrs: {
       "rel": "nofollow",
       "target": "_blank",
       "href": "//zhaopin.jd.com/"
     }
-  }, [_vm._v("\n                人才招聘\n            ")]), _vm._v("\n            |\n            "), _c('a', {
+  }, [_vm._v("\n                人才招聘\n            ")]), _vm._v(" |\n            "), _c('a', {
     attrs: {
       "rel": "nofollow",
       "target": "_blank",
       "href": "//www.jd.com/contact/joinin.aspx"
     }
-  }, [_vm._v("\n                商家入驻\n            ")]), _vm._v("\n            |\n            "), _c('a', {
+  }, [_vm._v("\n                商家入驻\n            ")]), _vm._v(" |\n            "), _c('a', {
     attrs: {
       "rel": "nofollow",
       "target": "_blank",
       "href": "//www.jd.com/intro/service.aspx"
     }
-  }, [_vm._v("\n                广告服务\n            ")]), _vm._v("\n            |\n            "), _c('a', {
+  }, [_vm._v("\n                广告服务\n            ")]), _vm._v(" |\n            "), _c('a', {
     attrs: {
       "rel": "nofollow",
       "target": "_blank",
       "href": "//app.jd.com/"
     }
-  }, [_vm._v("\n                手机京东\n            ")]), _vm._v("\n            |\n            "), _c('a', {
+  }, [_vm._v("\n                手机京东\n            ")]), _vm._v(" |\n            "), _c('a', {
     attrs: {
       "target": "_blank",
       "href": "//club.jd.com/links.aspx"
     }
-  }, [_vm._v("\n                友情链接\n            ")]), _vm._v("\n            |\n            "), _c('a', {
+  }, [_vm._v("\n                友情链接\n            ")]), _vm._v(" |\n            "), _c('a', {
     attrs: {
       "target": "_blank",
       "href": "//media.jd.com/"
     }
-  }, [_vm._v("\n                销售联盟\n            ")]), _vm._v("\n            |\n            "), _c('a', {
+  }, [_vm._v("\n                销售联盟\n            ")]), _vm._v(" |\n            "), _c('a', {
     attrs: {
       "href": "//club.jd.com/",
       "target": "_blank"
     }
-  }, [_vm._v("\n                京东社区\n            ")]), _vm._v("\n            |\n            "), _c('a', {
+  }, [_vm._v("\n                京东社区\n            ")]), _vm._v(" |\n            "), _c('a', {
     attrs: {
       "href": "//gongyi.jd.com",
       "target": "_blank"
     }
-  }, [_vm._v("\n                京东公益\n            ")]), _vm._v("\n            |\n            "), _c('a', {
+  }, [_vm._v("\n                京东公益\n            ")]), _vm._v(" |\n            "), _c('a', {
     attrs: {
       "target": "_blank",
       "href": "//en.jd.com/",
@@ -85489,7 +85760,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "span": 2
       }
-    }, [_c('div', {}, [_vm._v("已完成")]), _vm._v(" "), _c('div', {}, [_vm._v("积分  +7")]), _vm._v(" "), _c('div', {}, [_vm._v("订单详情")])]), _vm._v(" "), _c('el-col', {
+    }, [_c('div', {}, [_vm._v("已完成")]), _vm._v(" "), _c('div', {}, [_vm._v("积分  +7")]), _vm._v(" "), _c('div', {}, [_c('a', {
+      attrs: {
+        "href": "/orders_detail"
+      }
+    }, [_vm._v("订单详情")])])]), _vm._v(" "), _c('el-col', {
       staticClass: "text-center",
       attrs: {
         "span": 3
@@ -85595,7 +85870,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "span": 2
       }
-    }, [_c('div', {}, [_vm._v("已完成")]), _vm._v(" "), _c('div', {}, [_vm._v("积分  +7")]), _vm._v(" "), _c('div', {}, [_vm._v("订单详情")])]), _vm._v(" "), _c('el-col', {
+    }, [_c('div', {}, [_vm._v("已完成")]), _vm._v(" "), _c('div', {}, [_vm._v("积分  +7")]), _vm._v(" "), _c('div', {}, [_c('a', {
+      attrs: {
+        "href": "/orders_detail"
+      }
+    }, [_vm._v("订单详情")])])]), _vm._v(" "), _c('el-col', {
       staticClass: "text-center",
       attrs: {
         "span": 3
@@ -85679,9 +85958,144 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     staticClass: "margin-l-20"
-  }, [_c('user-info'), _vm._v(" "), _c('el-row', {
+  }, [_c('div', {
+    staticClass: "user-info"
+  }, [_c('div', {
+    staticClass: "u-leftcontBox"
+  }, [_c('div', {
+    staticClass: "u-icon pull-left"
+  }, [_c('a', {
+    staticClass: "link-img",
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "//storage.jd.com/i.imageUpload/31333634303333393833375f7031343932383433353033333236_mid.jpg",
+      "alt": ""
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "u-pic pull-left margin-rl-6"
+  }, [_c('div', {
+    staticClass: "u-name font-2x "
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("jd136403lny")])]), _vm._v(" "), _c('div', {
+    staticClass: "padding-b-4"
+  }, [_c('span', {
+    staticClass: "iconfont color-primary"
+  }, [_vm._v("")]), _vm._v(" "), _c('span', {
+    staticClass: "iconfont color-gray"
+  }, [_vm._v("")]), _vm._v(" "), _c('img', {
+    attrs: {
+      "src": "//img30.360buyimg.com/uba/jfs/t3094/311/8608955278/3086/1d425635/58c6511aN1f50050a.png",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "padding-b-4"
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("账户安全:")]), _vm._v("较高\n                  ")]), _vm._v(" "), _c('div', {}, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("我的勋章")])])]), _vm._v(" "), _c('div', {
+    staticClass: "info-line"
+  }, [_c('span', {
+    staticClass: "circle topCircle"
+  }), _vm._v(" "), _c('span', {
+    staticClass: "circle bottomCircle"
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "u-rightcontBox"
+  }, [_c('div', {
+    staticClass: "u-counts pull-left clear-float"
+  }, [_c('ul', [_c('li', [_c('i', {
+    staticClass: "iconfont"
+  }, [_vm._v("")]), _vm._v(" "), _c('div', {}, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("待付款 "), _c('i', {
+    staticClass: "num"
+  }, [_vm._v("0")])])])]), _vm._v(" "), _c('li', [_c('i', {
+    staticClass: "iconfont"
+  }, [_vm._v("")]), _vm._v(" "), _c('div', {}, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("待收货"), _c('i', {
+    staticClass: "num"
+  }, [_vm._v("0")])])])]), _vm._v(" "), _c('li', [_c('i', {
+    staticClass: "iconfont"
+  }, [_vm._v("")]), _vm._v(" "), _c('div', {}, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("待自提"), _c('i', {
+    staticClass: "num"
+  }, [_vm._v("0")])])])]), _vm._v(" "), _c('li', [_c('i', {
+    staticClass: "iconfont"
+  }, [_vm._v("")]), _vm._v(" "), _c('div', {}, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("待评价"), _c('i', {
+    staticClass: "num"
+  }, [_vm._v("0")])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "credit-info pull-left color-dark"
+  }, [_c('ul', _vm._l((3), function(item) {
+    return _c('li', {
+      staticClass: "fore pull-left"
+    }, [_c('div', {
+      staticClass: "credit-item"
+    }, [_c('div', {
+      staticClass: "margin-tb-4"
+    }, [_vm._v("\n                        余额:\n                        "), _c('a', {
+      staticClass: "padding-l-4",
+      attrs: {
+        "href": "#"
+      }
+    }, [_vm._v("0.00")])]), _vm._v(" "), _c('div', {
+      staticClass: "margin-tb-4"
+    }, [_vm._v("\n                        京豆:"), _c('a', {
+      staticClass: "padding-l-4",
+      attrs: {
+        "href": "#"
+      }
+    }, [_vm._v("242")])]), _vm._v(" "), _c('div', {
+      staticClass: "margin-tb-4"
+    }, [_vm._v("\n                        京卡/E卡:"), _c('a', {
+      staticClass: "padding-l-4",
+      attrs: {
+        "href": "#"
+      }
+    }, [_vm._v("0")])]), _vm._v(" "), _c('div', {
+      staticClass: "margin-tb-4"
+    }, [_vm._v("\n                        优惠券:\n                        "), _c('a', {
+      staticClass: "padding-l-4",
+      attrs: {
+        "href": "#"
+      }
+    }, [_vm._v("0")]), _vm._v(" "), _c('a', {
+      staticClass: "padding-l-4",
+      attrs: {
+        "href": "#"
+      }
+    }, [_vm._v("领券")])]), _vm._v(" "), _c('div', {
+      staticClass: "margin-tb-4"
+    }, [_vm._v("\n                        通信B:"), _c('a', {
+      staticClass: "padding-l-4",
+      attrs: {
+        "href": "#"
+      }
+    }, [_vm._v("0")])])])])
+  }))])])]), _vm._v(" "), _c('div', {
     staticClass: "margin-t-20"
-  }, [_c('el-col', {
+  }, [_c('el-row', [_c('el-col', {
     attrs: {
       "span": 18
     }
@@ -85720,13 +86134,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "right": "-120px",
       "top": "50%"
     }
-  }, [_vm._v("\n                            当前没有订单\n                        ")])])])])]), _vm._v(" "), _c('myorder'), _vm._v(" "), _c('circle-friends')], 1), _vm._v(" "), _c('el-col', {
+  }, [_vm._v("\n                              当前没有订单\n                          ")])])])])]), _vm._v(" "), _c('myorder'), _vm._v(" "), _c('circle-friends')], 1), _vm._v(" "), _c('el-col', {
     attrs: {
       "span": 6
     }
   }, [_c('div', {
     staticClass: "padding-l-10"
-  }, [_c('plug-in')], 1)])], 1)], 1)])], 1)], 1)]), _vm._v(" "), _c('slogen'), _vm._v(" "), _c('footer-section')], 1)
+  }, [_c('plug-in')], 1)])], 1)], 1)])])], 1)], 1)]), _vm._v(" "), _c('slogen'), _vm._v(" "), _c('footer-section')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -86802,9 +87216,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "orders-detail"
   }, [_c('header-user'), _vm._v(" "), _c('div', {
     staticClass: "container block-center"
-  }, [_c('div', {
-    staticClass: "padding-tb-10"
-  }, [_vm._v("\n        我的京东>订单中心>订单:499861744\n      ")]), _vm._v(" "), _c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "order-state  clear-float padding-10"
   }, [_c('el-row', [_c('el-col', {
     staticClass: "text-center  text-center border-1px-r",
@@ -86859,6 +87271,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("")]), _vm._v(" "), _c('ul', {
     staticClass: "margin-t-10 font-mini"
   }, [_c('li', [_vm._v("提交订单")]), _vm._v(" "), _c('li', [_vm._v("2017-03-03")]), _vm._v(" "), _c('li', [_vm._v("17:22:00")])])]), _vm._v(" "), _c('div', {
+    staticClass: "proce padding-tb-4"
+  }, [_c('i', {
+    staticClass: "iconfont color-primary point"
+  }, [_vm._v("")])])])])]), _vm._v(" "), _c('li', {
+    staticClass: "pull-left"
+  }, [_c('div', {
+    staticClass: "process clear-float"
+  }, [_c('div', {
+    staticClass: "process-item"
+  }, [_c('div', {
+    staticClass: "node text-center"
+  }, [_c('i', {
+    staticClass: "node-icon iconfont font-4x color-primary"
+  }, [_vm._v("")]), _vm._v(" "), _c('ul', {
+    staticClass: "margin-t-10 font-mini"
+  }, [_c('li', [_vm._v("支付成功")]), _vm._v(" "), _c('li', [_vm._v("2017-03-04")]), _vm._v(" "), _c('li', [_vm._v("17:22:10")])])]), _vm._v(" "), _c('div', {
     staticClass: "proce padding-tb-4"
   }, [_c('i', {
     staticClass: "iconfont color-primary point"
@@ -86987,7 +87415,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n            收货人信息\n          ")]), _vm._v(" "), _c('div', {}, [_c('ul', _vm._l((2), function(item) {
       return _c('li', {
         staticClass: "padding-l-15"
-      }, [_vm._m(0, true)])
+      }, [_vm._m(1, true)])
     }))])])
   })), _vm._v(" "), _c('div', {
     staticClass: "border-1px margin-b-20"
@@ -87066,8 +87494,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "size": "mini"
     }
-  }, [_vm._v("立即购买")])], 1)])], 1)], 1)]), _vm._v(" "), _vm._m(1)])])], 1)
+  }, [_vm._v("立即购买")])], 1)])], 1)], 1)]), _vm._v(" "), _vm._m(2)])]), _vm._v(" "), _c('slogen'), _vm._v(" "), _c('footer-section')], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "padding-tb-10"
+  }, [_c('span', [_c('a', {
+    attrs: {
+      "href": "/home"
+    }
+  }, [_vm._v("我的京东")]), _vm._v(">")]), _vm._v(" "), _c('span', [_c('a', {
+    attrs: {
+      "href": "/mall_user"
+    }
+  }, [_vm._v("订单中心")]), _vm._v(">")]), _vm._v(" "), _c('span', [_vm._v("订单:499861744")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "margin-tb-4"
   }, [_c('div', {
@@ -87127,147 +87567,458 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "user-info"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "u-rightcontBox"
-  }, [_vm._m(1), _vm._v(" "), _c('div', {
-    staticClass: "credit-info pull-left color-dark"
-  }, [_c('ul', _vm._l((3), function(item) {
-    return _c('li', {
-      staticClass: "fore pull-left"
-    }, [_vm._m(2, true)])
-  }))])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "u-leftcontBox"
+  }, [_c('header-user'), _vm._v(" "), _c('div', {
+    staticClass: "contains block-center tab-80"
+  }, [_c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 3
+    }
   }, [_c('div', {
-    staticClass: "u-icon pull-left"
-  }, [_c('a', {
-    staticClass: "link-img",
+    staticClass: "padding-t-10"
+  }, [_c('ul', _vm._l((_vm.navLeftBox), function(item) {
+    return _c('li', {
+      staticClass: "margin-b-10"
+    }, [_c('dl', [_c('dt', {
+      staticClass: "font-bold padding-b-4 border-1px-b-x font-1x"
+    }, [_c('a', {
+      attrs: {
+        "href": "#"
+      },
+      domProps: {
+        "textContent": _vm._s(item.title)
+      }
+    })]), _vm._v(" "), _vm._l((item.children), function(item2) {
+      return _c('dd', {
+        staticClass: "padding-tb-6"
+      }, [_c('a', {
+        attrs: {
+          "href": "#",
+          "to": item2.path
+        },
+        domProps: {
+          "textContent": _vm._s(item2.text)
+        }
+      })])
+    })], 2)])
+  }))])]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 21
+    }
+  }, [_c('div', {}, [_c('el-tabs', [_c('el-tab-pane', {
+    attrs: {
+      "label": "基础信息"
+    }
+  }, [_c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 16
+    }
+  }, [_c('div', {}, [_c('el-form', {
+    ref: "form",
+    attrs: {
+      "model": _vm.form,
+      "label-width": "80px"
+    }
+  }, [_c('el-form-item', {
+    staticClass: "inputWhite",
+    attrs: {
+      "label": "用户名"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "disabled": ""
+    },
+    model: {
+      value: (_vm.form.name),
+      callback: function($$v) {
+        _vm.form.name = $$v
+      },
+      expression: "form.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticClass: "inputWhite",
+    attrs: {
+      "label": "登录名"
+    }
+  }, [_c('el-input', {
+    staticClass: "input",
+    attrs: {
+      "disabled": ""
+    },
+    model: {
+      value: (_vm.form.loginName),
+      callback: function($$v) {
+        _vm.form.loginName = $$v
+      },
+      expression: "form.loginName"
+    }
+  }), _vm._v(" "), _c('span', [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        _vm.cleraDis()
+      }
+    }
+  }, [_vm._v("修改")]), _vm._v(" 可用于登录，请牢记哦~")])], 1), _vm._v(" "), _c('el-form-item', {
+    staticClass: "inputWhite",
+    attrs: {
+      "label": "呢称"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.form.nickName),
+      callback: function($$v) {
+        _vm.form.nickName = $$v
+      },
+      expression: "form.nickName"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "性别"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.form.sex),
+      callback: function($$v) {
+        _vm.form.sex = $$v
+      },
+      expression: "form.sex"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": "男"
+    }
+  }), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "女"
+    }
+  }), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "保密"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "生日"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "选择日期时间"
+    },
+    model: {
+      value: (_vm.form.date),
+      callback: function($$v) {
+        _vm.form.date = $$v
+      },
+      expression: "form.date"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "性趣爱好"
+    }
+  }, [_c('el-checkbox-group', {
+    model: {
+      value: (_vm.form.type),
+      callback: function($$v) {
+        _vm.form.type = $$v
+      },
+      expression: "form.type"
+    }
+  }, [_c('el-checkbox', {
+    attrs: {
+      "label": "图书/音像/数字商品",
+      "name": "type"
+    }
+  }), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "电脑/办公",
+      "name": "type"
+    }
+  }), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "家用电器",
+      "name": "type"
+    }
+  }), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "手机/数码",
+      "name": "type"
+    }
+  }), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "个护化妆",
+      "name": "type"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "邮箱"
+    }
+  }, [_c('div', {}, [_c('a', {
     attrs: {
       "href": "#"
     }
+  }, [_vm._v("立即验证")])])]), _vm._v(" "), _c('el-form-item', {
+    staticClass: "inputWhite",
+    attrs: {
+      "label": "真实签名"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.form.userName),
+      callback: function($$v) {
+        _vm.form.userName = $$v
+      },
+      expression: "form.userName"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        _vm.submitForm()
+      }
+    }
+  }, [_vm._v("保存")]), _vm._v(" "), _c('el-button', {
+    on: {
+      "click": function($event) {
+        _vm.resetForm()
+      }
+    }
+  }, [_vm._v("重置")])], 1)], 1)], 1)]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('div', {
+    staticClass: "border-1px clear-float margin-rl-6 padding-10"
+  }, [_c('div', {
+    staticClass: "pull-left circle clear-float"
   }, [_c('img', {
     attrs: {
       "src": "//storage.jd.com/i.imageUpload/31333634303333393833375f7031343932383433353033333236_mid.jpg",
       "alt": ""
     }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "u-pic pull-left margin-rl-6"
-  }, [_c('div', {
-    staticClass: "u-name font-2x "
-  }, [_c('a', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "pull-left padding-10"
+  }, [_c('ul', [_c('li', {
+    staticClass: "font-bold padding-tb-4"
+  }, [_vm._v("用户名: "), _c('span', [_vm._v("13640339837_p")])]), _vm._v(" "), _c('li', [_c('i', {
+    staticClass: "iconfont font-mini color-success"
+  }, [_vm._v("")]), _vm._v(" "), _c('span', [_vm._v("钻石会员")])]), _vm._v(" "), _c('li', [_vm._v("信用积分:"), _c('span', [_vm._v("85")])]), _vm._v(" "), _c('li', [_vm._v("会员类型:"), _c('span', [_vm._v("个人用户")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "text-right padding-r-10 padding-tb-6"
+  }, [_vm._v("\n                    注：修改手机和邮箱请到 "), _c('a', {
+    staticClass: "color-primary",
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("jd136403lny")])]), _vm._v(" "), _c('div', {
-    staticClass: "padding-b-4"
-  }, [_c('span', {
-    staticClass: "iconfont color-primary"
-  }, [_vm._v("")]), _vm._v(" "), _c('span', {
-    staticClass: "iconfont color-gray"
-  }, [_vm._v("")]), _vm._v(" "), _c('img', {
+  }, [_vm._v("账户安全")])])])], 1)], 1), _vm._v(" "), _c('el-tab-pane', {
     attrs: {
-      "src": "//img30.360buyimg.com/uba/jfs/t3094/311/8608955278/3086/1d425635/58c6511aN1f50050a.png",
+      "label": "头像照片"
+    }
+  }, [_c('el-row', [_c('el-col', {
+    staticClass: "padding-10 border-1px-r",
+    attrs: {
+      "span": 14
+    }
+  }, [_c('div', {}, [_c('el-upload', {
+    staticClass: "upload-demo",
+    attrs: {
+      "action": _vm.action,
+      "on-preview": _vm.handlePreview,
+      "on-success": _vm.handleSuccess,
+      "multiple": false,
+      "show-upload-list": false
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "size": "small",
+      "type": "primary"
+    }
+  }, [_vm._v("点击上传")]), _vm._v(" "), _c('div', {
+    staticClass: "el-upload__tip margin-tb-10",
+    slot: "tip"
+  }, [_vm._v("只能上传jpg/png文件，且不超过500kb")])], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "border-1px"
+  }, [_c('div', {
+    staticClass: "padding-tb-20 text-center"
+  }, [_c('img', {
+    attrs: {
+      "width": "150px",
+      "height": "150px",
+      "src": "//storage.jd.com/i.imageUpload/31333634303333393833375f7031343933333538353836383432_big.jpg",
       "alt": ""
     }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "padding-b-4"
-  }, [_c('a', {
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "margin-tb-20 clear-float"
+  }, [_c('h2', [_vm._v("推荐头像")]), _vm._v(" "), _c('div', {
+    staticClass: "padding-t-6"
+  }, [_c('ul', _vm._l((10), function(item) {
+    return _c('li', {
+      staticClass: "pull-left padding-rl-4"
+    }, [_c('img', {
+      attrs: {
+        "src": "https://i.jd.com/defaultImgs/1.jpg",
+        "width": "50px",
+        "height": "50px",
+        "alt": ""
+      }
+    })])
+  }))])]), _vm._v(" "), _c('div', {}, [_c('el-button', {
     attrs: {
-      "href": "#"
+      "plain": true,
+      "type": "primary",
+      "size": "small"
     }
-  }, [_vm._v("账户安全:")]), _vm._v("较高\n      ")]), _vm._v(" "), _c('div', {}, [_c('a', {
+  }, [_vm._v("保存")])], 1)]), _vm._v(" "), _c('el-col', {
     attrs: {
-      "href": "#"
+      "span": 10
     }
-  }, [_vm._v("我的勋章")])])]), _vm._v(" "), _c('div', {
-    staticClass: "info-line"
-  }, [_c('span', {
-    staticClass: "circle topCircle"
-  }), _vm._v(" "), _c('span', {
-    staticClass: "circle bottomCircle"
-  })])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "u-counts pull-left clear-float"
-  }, [_c('ul', [_c('li', [_c('i', {
-    staticClass: "iconfont"
-  }, [_vm._v("")]), _vm._v(" "), _c('div', {}, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("待付款 "), _c('i', {
-    staticClass: "num"
-  }, [_vm._v("0")])])])]), _vm._v(" "), _c('li', [_c('i', {
-    staticClass: "iconfont"
-  }, [_vm._v("")]), _vm._v(" "), _c('div', {}, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("待收货"), _c('i', {
-    staticClass: "num"
-  }, [_vm._v("0")])])])]), _vm._v(" "), _c('li', [_c('i', {
-    staticClass: "iconfont"
-  }, [_vm._v("")]), _vm._v(" "), _c('div', {}, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("待自提"), _c('i', {
-    staticClass: "num"
-  }, [_vm._v("0")])])])]), _vm._v(" "), _c('li', [_c('i', {
-    staticClass: "iconfont"
-  }, [_vm._v("")]), _vm._v(" "), _c('div', {}, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("待评价"), _c('i', {
-    staticClass: "num"
-  }, [_vm._v("0")])])])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "credit-item"
   }, [_c('div', {
-    staticClass: "margin-tb-4"
-  }, [_vm._v("\n            余额:\n            "), _c('a', {
-    staticClass: "padding-l-4",
+    staticClass: "margin-10"
+  }, [_c('h2', [_vm._v("效果预览")]), _vm._v(" "), _c('div', {
+    staticClass: "color-gray"
+  }, [_vm._v("你上传的图片会自动生成2种尺寸，请注意小尺寸的头像是否清晰")]), _vm._v(" "), _c('div', {
+    staticClass: "smallImg padding-t-6"
+  }, [_c('img', {
     attrs: {
-      "href": "#"
+      "width": "100px",
+      "height": "100px",
+      "src": "//storage.jd.com/i.imageUpload/31333634303333393833375f7031343933333538353836383432_big.jpg",
+      "alt": ""
     }
-  }, [_vm._v("0.00")])]), _vm._v(" "), _c('div', {
-    staticClass: "margin-tb-4"
-  }, [_vm._v("\n            京豆:"), _c('a', {
-    staticClass: "padding-l-4",
+  }), _vm._v(" "), _c('div', {
+    staticClass: "color-gray"
+  }, [_vm._v("\n                          100*100像素\n                      ")])]), _vm._v(" "), _c('div', {
+    staticClass: "miniImg padding-t-6"
+  }, [_c('img', {
     attrs: {
-      "href": "#"
+      "width": "50px",
+      "height": "50px",
+      "src": "//storage.jd.com/i.imageUpload/31333634303333393833375f7031343933333538353836383432_big.jpg",
+      "alt": ""
     }
-  }, [_vm._v("242")])]), _vm._v(" "), _c('div', {
-    staticClass: "margin-tb-4"
-  }, [_vm._v("\n            京卡/E卡:"), _c('a', {
-    staticClass: "padding-l-4",
+  }), _vm._v(" "), _c('div', {
+    staticClass: "color-gray"
+  }, [_vm._v("\n                            50*50像素\n                        ")])])])])], 1)], 1), _vm._v(" "), _c('el-tab-pane', {
     attrs: {
-      "href": "#"
+      "label": "更多个人信息"
     }
-  }, [_vm._v("0")])]), _vm._v(" "), _c('div', {
-    staticClass: "margin-tb-4"
-  }, [_vm._v("\n            优惠券:\n            "), _c('a', {
-    staticClass: "padding-l-4",
+  }, [_c('div', {}, [_c('el-form', {
+    ref: "form2",
     attrs: {
-      "href": "#"
+      "model": _vm.form,
+      "label-width": "100px"
     }
-  }, [_vm._v("0")]), _vm._v(" "), _c('a', {
-    staticClass: "padding-l-4",
+  }, [_c('el-form-item', {
     attrs: {
-      "href": "#"
+      "label": "婚姻状况"
     }
-  }, [_vm._v("领券")])]), _vm._v(" "), _c('div', {
-    staticClass: "margin-tb-4"
-  }, [_vm._v("\n            通信B:"), _c('a', {
-    staticClass: "padding-l-4",
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.form2.status),
+      callback: function($$v) {
+        _vm.form2.status = $$v
+      },
+      expression: "form2.status"
+    }
+  }, [_c('el-radio', {
     attrs: {
-      "href": "#"
+      "label": "未婚"
     }
-  }, [_vm._v("0")])])])
-}]}
+  }), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "已婚"
+    }
+  }), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "保密"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "月收入"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.form.prict),
+      callback: function($$v) {
+        _vm.form.prict = $$v
+      },
+      expression: "form.prict"
+    }
+  }, [_c('el-option', {
+    attrs: {
+      "label": "10000以下",
+      "value": ""
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    staticClass: "inputWhite",
+    attrs: {
+      "label": "身份证号码"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.form.idCard),
+      callback: function($$v) {
+        _vm.form.idCard = $$v
+      },
+      expression: "form.idCard"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "教育程度"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.form.region),
+      callback: function($$v) {
+        _vm.form.region = $$v
+      },
+      expression: "form.region"
+    }
+  }, [_c('el-option', {
+    attrs: {
+      "label": "初中",
+      "value": ""
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "所在行业"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.form.region),
+      callback: function($$v) {
+        _vm.form.region = $$v
+      },
+      expression: "form.region"
+    }
+  }, [_c('el-option', {
+    attrs: {
+      "label": "计算机",
+      "value": ""
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "tab-30",
+    staticStyle: {
+      "margin-left": "100px"
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "type": "primary",
+      "plain": true
+    }
+  }, [_vm._v("保存")])], 1)], 1)])], 1)], 1)])], 1)], 1)], 1)
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -89847,7 +90598,32 @@ if(false) {
 }
 
 /***/ }),
-/* 210 */,
+/* 210 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(105);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("f79a5864", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-da32f02c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/less-loader/index.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Orders-detail.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-da32f02c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/less-loader/index.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Orders-detail.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
 /* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -89973,52 +90749,6 @@ module.exports = function(module) {
 __webpack_require__(29);
 module.exports = __webpack_require__(30);
 
-
-/***/ }),
-/* 217 */,
-/* 218 */,
-/* 219 */,
-/* 220 */,
-/* 221 */,
-/* 222 */,
-/* 223 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.order-state[data-v-da32f02c] {\n  background-color: #f5f5f5;\n  border-top: 2px solid #71b247;\n  margin-bottom: 20px;\n}\n.order-info[data-v-da32f02c],\n.order-track[data-v-da32f02c] {\n  background-color: #f5f5f5;\n  margin-bottom: 20px;\n}\n.order-info .info-item[data-v-da32f02c] {\n  width: 250px;\n  border-right: 1px solid #ddd;\n}\n.order-info .info-item[data-v-da32f02c]:last-child {\n  border: none;\n}\n.process[data-v-da32f02c] {\n  width: 140px;\n}\n.process .process-item[data-v-da32f02c] {\n  position: relative;\n}\n.process .node[data-v-da32f02c] {\n  width: 80px;\n}\n.process .proce[data-v-da32f02c] {\n  position: absolute;\n  top: -40px;\n  left: 60px;\n}\n.process .point[data-v-da32f02c] {\n  font-size: 80px;\n}\n.o-item[data-v-da32f02c] {\n  height: 102px;\n  margin: 20px 0;\n}\n.o-item[data-v-da32f02c]:after {\n  content: '.';\n  height: 0;\n  display: block;\n  clear: both;\n  visibility: hidden;\n}\n.o-item .o-img[data-v-da32f02c] {\n  border: 1px solid #eee;\n}\n.o-item .o-info[data-v-da32f02c] {\n  margin: 20px 10px;\n  text-align: left;\n}\n.circle-icon[data-v-da32f02c] {\n  position: relative;\n  display: inline-block;\n  border-radius: 50%;\n  width: 4px;\n  height: 4px;\n  background-color: #888;\n  border: 2px solid #ccc;\n}\n.circle-icon[data-v-da32f02c]:before {\n  position: absolute;\n  content: '';\n  left: 0;\n  height: 100%;\n  width: 3px;\n  background: #f00;\n}\n.circle-icon-action[data-v-da32f02c] {\n  background-color: #f00;\n  box-shadow: 0 0 10px #f00;\n}\n.track-list[data-v-da32f02c] {\n  border-left: 1px solid #ddd;\n  height: 200px;\n  overflow-y: scroll;\n  padding: 10px 0 0 30px;\n}\n.track-list .tranck-info[data-v-da32f02c] {\n  display: inline-block;\n  padding: 10px 0 0 20px;\n}\n.track-list .tranck-info[data-v-da32f02c]:first-child {\n  padding: 0;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 224 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(223);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("f79a5864", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-da32f02c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/less-loader/index.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Orders-detail.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-da32f02c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/less-loader/index.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Orders-detail.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
 
 /***/ })
 /******/ ]);

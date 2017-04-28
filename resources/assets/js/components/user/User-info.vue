@@ -1,183 +1,256 @@
 <template lang="html">
   <div class="user-info">
-    <div class="u-leftcontBox">
-      <div class="u-icon pull-left">
-        <a href="#" class="link-img">
-          <img src="//storage.jd.com/i.imageUpload/31333634303333393833375f7031343932383433353033333236_mid.jpg" alt="">
-        </a>
-      </div>
-      <div class="u-pic pull-left margin-rl-6">
-        <div class="u-name font-2x ">
-          <a href="#">jd136403lny</a>
-        </div>
-        <div class="padding-b-4">
-          <span class="iconfont color-primary">&#xe88c;</span>
-          <span class="iconfont color-gray">&#xe8d3;</span>
-          <img src="//img30.360buyimg.com/uba/jfs/t3094/311/8608955278/3086/1d425635/58c6511aN1f50050a.png" alt="">
-        </div>
-        <div class="padding-b-4">
-          <a href="#">账户安全:</a>较高
-        </div>
-        <div class="">
-          <a href="#">我的勋章</a>
-        </div>
-      </div>
-      <div class="info-line">
-        <span class="circle topCircle">
-        </span>
-        <span class="circle bottomCircle">
-        </span>
-      </div>
-    </div>
-    <div class="u-rightcontBox">
-    <div class="u-counts pull-left clear-float">
-      <ul>
-        <li>
-          <i class="iconfont">&#xe61e;</i>
+    <header-user></header-user>
+    <div class="contains block-center tab-80">
+      <el-row>
+        <el-col :span="3">
+          <div class="padding-t-10">
+            <ul>
+              <li v-for="item in navLeftBox" class="margin-b-10">
+                <dl>
+                  <dt class="font-bold padding-b-4 border-1px-b-x font-1x">
+                  <a href="#" v-text="item.title"></a></dt>
+                  <dd v-for="item2  in item.children" class="padding-tb-6"><a href="#" :to="item2.path" v-text="item2.text"></a></dd>
+                </dl>
+              </li>
+            </ul>
+          </div>
+        </el-col>
+        <el-col :span="21">
           <div class="">
-            <a href="#">待付款 <i class="num">0</i></a>
+            <el-tabs>
+              <el-tab-pane label="基础信息">
+                <el-row>
+                  <el-col :span="16">
+                    <div class="">
+                      <el-form ref="form" :model="form" label-width="80px">
+                        <el-form-item label="用户名" class="inputWhite">
+                          <el-input v-model="form.name" disabled></el-input>
+                        </el-form-item>
+                        <el-form-item label="登录名" class="inputWhite">
+                          <el-input v-model="form.loginName" disabled class="input"></el-input>
+                          <span><a href="#" @click="cleraDis()">修改</a>&nbsp;可用于登录，请牢记哦~</span>
+                        </el-form-item>
+                        <el-form-item label="呢称" class="inputWhite">
+                          <el-input v-model="form.nickName"></el-input>
+                        </el-form-item>
+                        <el-form-item label="性别">
+                          <el-radio-group v-model="form.sex">
+                            <el-radio label="男"></el-radio>
+                            <el-radio label="女"></el-radio>
+                            <el-radio label="保密"></el-radio>
+                          </el-radio-group>
+                        </el-form-item>
+                        <el-form-item label="生日">
+                          <el-date-picker
+                          v-model="form.date"
+                          type="datetime"
+                          placeholder="选择日期时间">
+                        </el-date-picker>
+                        </el-form-item>
+                        <el-form-item label="性趣爱好">
+                          <el-checkbox-group v-model="form.type">
+                            <el-checkbox label="图书/音像/数字商品" name="type"></el-checkbox>
+                            <el-checkbox label="电脑/办公" name="type"></el-checkbox>
+                            <el-checkbox label="家用电器" name="type"></el-checkbox>
+                            <el-checkbox label="手机/数码" name="type"></el-checkbox>
+                            <el-checkbox label="个护化妆" name="type"></el-checkbox>
+                          </el-checkbox-group>
+                        </el-form-item>
+                        <el-form-item label="邮箱">
+                          <div class="">
+                              <a href="#">立即验证</a>
+                          </div>
+                        </el-form-item>
+                        <el-form-item label="真实签名" class="inputWhite">
+                          <el-input v-model="form.userName"></el-input>
+                        </el-form-item>
+                        <el-form-item>
+                          <el-button type="primary" @click="submitForm()">保存</el-button>
+                          <el-button @click="resetForm()">重置</el-button>
+                        </el-form-item>
+                      </el-form>
+                    </div>
+                  </el-col>
+                  <el-col :span="8">
+                    <div class="border-1px clear-float margin-rl-6 padding-10">
+                      <div class="pull-left circle clear-float">
+                        <img src="//storage.jd.com/i.imageUpload/31333634303333393833375f7031343932383433353033333236_mid.jpg" alt="">
+                      </div>
+                      <div class="pull-left padding-10">
+                        <ul>
+                          <li class="font-bold padding-tb-4">用户名: <span>13640339837_p</span></li>
+                          <li><i class="iconfont font-mini color-success">&#xe614;</i> <span>钻石会员</span></li>
+                          <li>信用积分:<span>85</span></li>
+                          <li>会员类型:<span>个人用户</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="text-right padding-r-10 padding-tb-6">
+                      注：修改手机和邮箱请到 <a href="#" class="color-primary">账户安全</a>
+                    </div>
+                  </el-col>
+                </el-row>
+                </form>
+              </el-tab-pane>
+              <el-tab-pane label="头像照片">
+                <el-row>
+                  <el-col :span="14" class="padding-10 border-1px-r">
+                    <div class="">
+                      <el-upload
+                      class="upload-demo"
+                      :action="action"
+                      :on-preview="handlePreview"
+                      :on-success="handleSuccess"
+                      :multiple="false"
+                      :show-upload-list="false">
+                      <el-button size="small" type="primary">点击上传</el-button>
+                      <div slot="tip" class="el-upload__tip margin-tb-10">只能上传jpg/png文件，且不超过500kb</div>
+                      </el-upload>
+                    </div>
+                    <div class="border-1px">
+                      <div class="padding-tb-20 text-center">
+                        <img width="150px" height="150px" src="//storage.jd.com/i.imageUpload/31333634303333393833375f7031343933333538353836383432_big.jpg" alt="">
+                      </div>
+                    </div>
+                    <div class="margin-tb-20 clear-float">
+                    <h2>推荐头像</h2>
+                    <div class="padding-t-6">
+                      <ul>
+                        <li class="pull-left padding-rl-4" v-for="item in 10"><img src="https://i.jd.com/defaultImgs/1.jpg" width="50px" height="50px" alt=""></li>
+                      </ul>
+                    </div>
+                    </div>
+                    <div class="">
+                      <el-button :plain="true" type="primary" size="small">保存</el-button>
+                    </div>
+                  </el-col>
+                  <el-col :span="10">
+                    <div class="margin-10">
+                      <h2>效果预览</h2>
+                      <div class="color-gray">你上传的图片会自动生成2种尺寸，请注意小尺寸的头像是否清晰</div>
+                      <div class="smallImg padding-t-6">
+                        <img width="100px" height="100px" src="//storage.jd.com/i.imageUpload/31333634303333393833375f7031343933333538353836383432_big.jpg" alt="">
+                        <div class="color-gray">
+                            100*100像素
+                        </div>
+                      </div>
+                      <div class="miniImg padding-t-6">
+                          <img width="50px" height="50px" src="//storage.jd.com/i.imageUpload/31333634303333393833375f7031343933333538353836383432_big.jpg" alt="">
+                          <div class="color-gray">
+                              50*50像素
+                          </div>
+                      </div>
+                    </div>
+                  </el-col>
+                </el-row>
+              </el-tab-pane>
+              <el-tab-pane label="更多个人信息">
+                <div class="">
+                  <el-form ref="form2" :model="form" label-width="100px">
+                    <el-form-item label="婚姻状况">
+                      <el-radio-group v-model="form2.status">
+                        <el-radio label="未婚"></el-radio>
+                        <el-radio label="已婚"></el-radio>
+                        <el-radio label="保密"></el-radio>
+                      </el-radio-group>
+                    </el-form-item>
+                    <el-form-item label="月收入">
+                      <el-select v-model="form.prict" placeholder="请选择">
+                        <el-option label="10000以下" value=""></el-option>
+                      </el-select>
+                    </el-form-item>
+                    <el-form-item label="身份证号码" class="inputWhite">
+                      <el-input v-model="form.idCard"></el-input>
+                    </el-form-item>
+                    <el-form-item label="教育程度">
+                      <el-select v-model="form.region" placeholder="请选择">
+                        <el-option label="初中" value=""></el-option>
+                      </el-select>
+                    </el-form-item>
+                    <el-form-item label="所在行业">
+                      <el-select v-model="form.region" placeholder="请选择">
+                        <el-option label="计算机" value=""></el-option>
+                      </el-select>
+                    </el-form-item>
+                  </el-form>
+                  <div class="tab-30" style="margin-left:100px">
+                    <el-button type="primary" :plain="true">保存</el-button>
+                  </div>
+                </div>
+              </el-tab-pane>
+            </el-tabs>
           </div>
-        </li>
-        <li>
-          <i class="iconfont">&#xe68b;</i>
-          <div class="">
-            <a href="#">待收货<i class="num">0</i></a>
-          </div>
-        </li>
-        <li>
-          <i class="iconfont">&#xe6bb;</i>
-          <div class="">
-            <a href="#">待自提<i class="num">0</i></a>
-          </div>
-        </li>
-        <li>
-          <i class="iconfont">&#xe620;</i>
-          <div class="">
-            <a href="#">待评价<i class="num">0</i></a>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="credit-info pull-left color-dark">
-      <ul>
-        <li class="fore pull-left" v-for="item in 3">
-          <div class="credit-item">
-            <div class="margin-tb-4">
-              余额:
-              <a href="#" class="padding-l-4">0.00</a>
-            </div>
-            <div class="margin-tb-4">
-              京豆:<a href="#" class="padding-l-4">242</a>
-            </div>
-            <div class="margin-tb-4">
-              京卡/E卡:<a href="#" class="padding-l-4">0</a>
-            </div>
-            <div class="margin-tb-4">
-              优惠券:
-              <a href="#" class="padding-l-4">0</a>
-              <a href="#" class="padding-l-4">领券</a>
-            </div>
-            <div class="margin-tb-4">
-              通信B:<a href="#" class="padding-l-4">0</a>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
+
+        </el-col>
+      </el-row>
+
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data:function(){
+    return{
+      form:{
+        name:"13640339837_p",
+        loginName:"",
+        nickName:"",
+        sex:"",
+        date:"",
+        type:"",
+        userName:""
+      },
+      dialogVisible:false,
+      dialogImageUrl: '',
+      action:"https://jsonplaceholder.typicode.com/posts/",
+      form2:{
+        status:""
+      },
+      navLeftBox: [{
+          title: '设置',
+          children: [{
+              text: "个人信息",
+              path: '#',
+          }, {
+              text: "账户安全",
+              path: '#'
+          }, {
+              text: '账号绑定',
+              path: '#'
+          },{
+            text: "我的级别",
+            path: '#'
+          },{
+            text:"收货地址",
+            path:"#"
+          },{
+            text:"分享绑定",
+            path:""
+          },{
+            text:"邮件订阅",
+            path:""
+          },{
+            text:"消费记录"
+          }]
+      }]
+    }
+  },
+  methods: {
+    handlePreview(file) {
+      this.dialogImageUrl=file.url;
+      this.dialogVisible=true;
+    },
+    handleSuccess(response){
+      console.log(response)
+    },
+  }
+}
 </script>
 
-<style lang="less" scoped>a:hover {
-    color: #f00;
-}
-.user-info {
-    background: url("//misc.360buyimg.com/user/myjd-2015/widget/userinfo/i/userinfo-bg.png") right top repeat-y #fff;
-    height: 150px;
-    padding: 15px 20px 15px 319px;
-    .left-icon{
-      background: url(//misc.360buyimg.com/user/myjd-2015/widget/userinfo/i/info-left.png) 0 0 no-repeat;
-      left:160px;
-      width: 88px;
-      height: 180px;
-      position: absolute;
-      top:0;
-    }
-}
-.u-leftcontBox {
-    height: 126px;
-    position: relative;
-    left: -319px;
-    padding: 22px 0 0;
-    float: left;
-}
-.u-icon {
-    width: 104px;
-    height: 104px;
-    > a {
-        border: 3px solid #ddd;
-        border-radius: 50%;
-        display: block;
-    }
-}
-.u-pic {
-    float: left;
-    width: 180px;
-    border-right: 1px dotted #888;
-}
-.u-rightcontBox {
-    float: left;
-    padding: 16px 0;
-    margin-left: -319px;
-    width: 100%;
-}
-.u-counts {
-    width: 180px;
-    ul {
-        width: 100%;
-        > li {
-            width: 100%/2;
-            text-align: center;
-            float: left;
-            margin-bottom: 10px;
-        }
-    }
-}
-.info-line{
-  position: absolute;
-  height: 100%;
-  top:0;
-  right: 0;
-  .circle{
-    width: 15px;
-    height: 15px;
-    background: #f5f5f5;
-    display: block;
-  }
-  .topCircle{
-    position: absolute;
-    right: 0;
-  }
-  .bottomCircle{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-  }
-}
-
-.credit-info{
-background: #f5f5f5;
-.fore{
-  width: 119px;
-  padding: 0 4px;
-  border-right:1px dotted #bbb;
-  &:last-child{
-    border:none;
-  }
-}
+<style lang="less" scoped>
+.inputWhite{
+  width: 320px;
 }
 </style>
