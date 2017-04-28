@@ -23168,6 +23168,7 @@ Vue.component("banner-carousel", __webpack_require__(155));
 Vue.component("plug-in", __webpack_require__(160));
 Vue.component("circle-friends", __webpack_require__(156));
 Vue.component("header-user", __webpack_require__(157));
+Vue.component("safety-center", __webpack_require__(225));
 
 //订单详情页
 Vue.component("orders-detail", __webpack_require__(147));
@@ -29286,6 +29287,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -87796,7 +87798,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "pull-left circle clear-float"
   }, [_c('img', {
     attrs: {
-      "src": "//storage.jd.com/i.imageUpload/31333634303333393833375f7031343932383433353033333236_mid.jpg",
+      "src": "//storage.jd.com/i.imageUpload/31333634303333393833375f7031343933333538353836383432_mid.jpg",
       "alt": ""
     }
   })]), _vm._v(" "), _c('div', {
@@ -88017,7 +88019,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "primary",
       "plain": true
     }
-  }, [_vm._v("保存")])], 1)], 1)])], 1)], 1)])], 1)], 1)], 1)
+  }, [_vm._v("保存")])], 1)], 1)])], 1)], 1)])], 1)], 1), _vm._v(" "), _c('safety-center')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -90749,6 +90751,632 @@ module.exports = function(module) {
 __webpack_require__(29);
 module.exports = __webpack_require__(30);
 
+
+/***/ }),
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            SafetyList: [{
+                icon: "&#xe8e7;",
+                iconColor: "color-success",
+                title: " 登录密码 ",
+                text: "互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。",
+                textColor: "color-danger",
+                html: "<a href='#'>修改</a>"
+            }, {
+                icon: "&#xe6cc;",
+                iconColor: "color-yellow",
+                title: " 邮箱验证 ",
+                text: "验证后，可用于快速找回登录密码，接收账户余额变动提醒。",
+                textColor: "",
+                html: "<button>立即认证</button>"
+            }, {
+                icon: "&#xe8e7;",
+                iconColor: "color-success",
+                title: " 手机验证 ",
+                text: "您验证的手机： 136*****837  若已丢失或停用，请立即更换，避免账户被盗",
+                textColor: "",
+                html: "<a href='#'>修改</a>"
+            }, {
+                icon: "&#xe88c;",
+                iconColor: "color-blue",
+                title: " 支付密码 ",
+                text: "建议您定期更换新的支付密码，提高安全性。",
+                textColor: "",
+                html: "<a href='#'>修改</a>"
+            }, {
+                icon: "&#xe8e7;",
+                iconColor: "color-success",
+                title: " 实名认证 ",
+                text: "您认证的实名信息： **潮 44***************",
+                textColor: "",
+                html: "<a href='#'>查看</a>"
+            }],
+            dialogTableVisible: false,
+            dialogFormVisible: false,
+            form: {
+                name: '',
+                region: '',
+                date1: '',
+                date2: '',
+                delivery: false,
+                type: [],
+                resource: '',
+                desc: ''
+            },
+            formLabelWidth: '120px',
+            options: [{
+                value: 'shenzhe',
+                label: '深圳',
+                children: [{
+                    value: 'longhua',
+                    label: '龙华新区',
+                    children: [{
+                        value: 'dalan',
+                        label: '大浪'
+                    }, {
+                        value: 'dalan2',
+                        label: '大浪2'
+                    }]
+                }, {
+                    value: 'luohu',
+                    label: '罗湖区',
+                    children: [{
+                        value: 'luohu1',
+                        label: '罗湖1'
+                    }, {
+                        value: 'luohu2',
+                        label: '罗湖2'
+                    }]
+                }]
+            }],
+            tableData2: [{
+                Consignee: "严海潮",
+                address: "深圳哪条村",
+                contactNumber: "13640339837"
+            }]
+        };
+    }
+});
+
+/***/ }),
+/* 224 */,
+/* 225 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(229)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(223),
+  /* template */
+  __webpack_require__(226),
+  /* scopeId */
+  "data-v-a4e8f92c",
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\user\\Safety-center.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Safety-center.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a4e8f92c", Component.options)
+  } else {
+    hotAPI.reload("data-v-a4e8f92c", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 226 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "safety-center"
+  }, [_c('div', {
+    staticClass: "container block-center margin-tb-20"
+  }, [_c('h2', [_vm._v("安全中心")]), _vm._v(" "), _c('div', {
+    staticClass: "bg-gray padding-10 margin-tb-20"
+  }, [_vm._v("\n    安全级别\n  ")]), _vm._v(" "), _vm._l((_vm.SafetyList), function(item) {
+    return _c('div', {
+      staticClass: "text-center border-1px-b safe-item"
+    }, [_c('el-row', [_c('el-col', {
+      staticClass: "border-1px-r",
+      attrs: {
+        "span": 6
+      }
+    }, [_c('div', {
+      staticClass: "fore1 font-2x"
+    }, [_c('i', {
+      staticClass: "iconfont font-4x font-bold",
+      class: item.iconColor,
+      domProps: {
+        "innerHTML": _vm._s(item.icon)
+      }
+    }), _vm._v(" "), _c('span', {
+      staticClass: "font-bold color-dark",
+      domProps: {
+        "innerHTML": _vm._s(item.title)
+      }
+    }), _vm._v(" "), _c('span', {
+      staticClass: "iconfont"
+    })])]), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 14
+      }
+    }, [_c('div', {
+      staticClass: "fore2 text-left",
+      class: item.textColor ? item.textColor : 'color-gray',
+      domProps: {
+        "textContent": _vm._s(item.text)
+      }
+    })]), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 4
+      }
+    }, [_c('div', {
+      staticClass: "fore3",
+      domProps: {
+        "innerHTML": _vm._s(item.html)
+      }
+    })])], 1)], 1)
+  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('div', {
+    staticClass: "margin-tb-20"
+  }, [_c('div', {}, [_c('el-button', {
+    attrs: {
+      "type": "text"
+    },
+    on: {
+      "click": function($event) {
+        _vm.dialogFormVisible = true
+      }
+    }
+  }, [_vm._v("新建收货地址")]), _vm._v(" "), _c('span', [_vm._v(" 您已创建2 个收货地址，最多可创建20个")])], 1), _vm._v(" "), _c('div', {}, [_c('el-dialog', {
+    attrs: {
+      "title": "新建收货地址"
+    },
+    model: {
+      value: (_vm.dialogFormVisible),
+      callback: function($$v) {
+        _vm.dialogFormVisible = $$v
+      },
+      expression: "dialogFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "form",
+    attrs: {
+      "model": _vm.form,
+      "label-width": "100px"
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "所在地区"
+    }
+  }, [_c('el-cascader', {
+    attrs: {
+      "options": _vm.options
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "详细地址"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "textarea"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "收货人姓名"
+    }
+  }, [_c('el-input')], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "手机号码"
+    }
+  }, [_c('el-input')], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "电话号码"
+    }
+  }, [_c('el-input')], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "邮箱"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "接受订单提醒邮件，便于您及时了解订单状态"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    on: {
+      "click": function($event) {
+        _vm.dialogFormVisible = false
+      }
+    }
+  }, [_vm._v("取 消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        _vm.dialogFormVisible = false
+      }
+    }
+  }, [_vm._v("确 定")])], 1)], 1)], 1), _vm._v(" "), _c('div', {}, [_c('el-table', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.tableData2,
+      "row-class-name": _vm.tableRowClassName
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "Consignee",
+      "label": "收货人",
+      "width": "180"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "address",
+      "label": "收货地址",
+      "width": "180"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "contactNumber",
+      "label": "联系电话"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作"
+    },
+    scopedSlots: _vm._u([
+      ["default", function(scope) {
+        return [_c('el-button', {
+          attrs: {
+            "type": "text",
+            "size": "small"
+          },
+          nativeOn: {
+            "click": function($event) {
+              $event.preventDefault();
+              _vm.deleteRow(scope.$index, _vm.tableData4)
+            }
+          }
+        }, [_vm._v("\n      编辑\n    ")]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "type": "text",
+            "size": "small"
+          },
+          nativeOn: {
+            "click": function($event) {
+              $event.preventDefault();
+              _vm.deleteRow(scope.$index, _vm.tableData4)
+            }
+          }
+        }, [_vm._v("\n    删除\n  ")])]
+      }]
+    ])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "设置"
+    },
+    scopedSlots: _vm._u([
+      ["default", function(scope) {
+        return [_c('el-button', {
+          attrs: {
+            "type": "success",
+            "size": "small"
+          },
+          nativeOn: {
+            "click": function($event) {
+              $event.preventDefault();
+              _vm.deleteRow(scope.$index, _vm.tableData4)
+            }
+          }
+        }, [_vm._v("\n      默认地址\n    ")])]
+      }]
+    ])
+  })], 1)], 1)])], 2)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "bg-light padding-10 margin-tb-10"
+  }, [_c('h3', {
+    staticClass: "padding-tb-6"
+  }, [_vm._v("安全服务提示")]), _vm._v(" "), _c('ol', {
+    staticClass: "padding-l-15"
+  }, [_c('li', [_vm._v("确认您登录的是京东网址http://www.jd.com，注意防范进入钓鱼网站，不要轻信各种即时通讯工具发送的商品或支付链接，谨防网购诈骗。")]), _vm._v(" "), _c('li', [_vm._v("建议您安装杀毒软件，并定期更新操作系统等软件补丁，确保账户及交易安全。")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "bg-light padding-10 margin-tb-10"
+  }, [_c('h3', {
+    staticClass: "padding-tb-6"
+  }, [_vm._v("常见问题")]), _vm._v(" "), _c('ol', {
+    staticClass: "padding-l-15"
+  }, [_c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("支付密码如何开启？")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("如何验证/绑定手机？")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "bg-light padding-10 margin-tb-10"
+  }, [_c('div', {}, [_c('h3', {
+    staticClass: "padding-tb-6"
+  }, [_vm._v("账号绑定")]), _vm._v(" "), _c('div', {
+    staticClass: "bg-white margin-tb-4\n      ",
+    staticStyle: {
+      "position": "relative"
+    }
+  }, [_c('div', {
+    staticClass: "padding-l-10"
+  }, [_c('i', {
+    staticClass: "iconfont color-danger"
+  }, [_vm._v("")]), _vm._v("\n          绑定QQ账号\n          "), _c('span', {
+    staticClass: "color-yellow"
+  }, [_vm._v("未绑定")])]), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "position": "absolute",
+      "top": "10px",
+      "right": "30px"
+    }
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("绑定")])])]), _vm._v(" "), _c('div', {
+    staticClass: "bg-white",
+    staticStyle: {
+      "position": "relative"
+    }
+  }, [_c('div', {
+    staticClass: "padding-l-10"
+  }, [_c('i', {
+    staticClass: "iconfont color-success"
+  }, [_vm._v("")]), _vm._v("\n          绑定微信\n          "), _c('span', {
+    staticClass: "color-yellow"
+  }, [_vm._v("未绑定")])]), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "position": "absolute",
+      "top": "10px",
+      "right": "30px"
+    }
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("绑定")])])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-a4e8f92c", module.exports)
+  }
+}
+
+/***/ }),
+/* 227 */,
+/* 228 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.safe-item[data-v-a4e8f92c] {\n  padding: 10px;\n}\n.safe-item .fore2[data-v-a4e8f92c],\n.safe-item .fore3[data-v-a4e8f92c] {\n  height: auto;\n  line-height: 40px;\n  padding: 5px 0 5px 10px;\n}\n.color-blue[data-v-a4e8f92c] {\n  color: #109EFF;\n}\n.color-yellow[data-v-a4e8f92c] {\n  color: #FFCC00;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 229 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(228);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("7377e6c4", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-a4e8f92c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/less-loader/index.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Safety-center.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-a4e8f92c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/less-loader/index.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Safety-center.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);

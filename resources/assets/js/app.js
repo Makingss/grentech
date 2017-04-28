@@ -36,6 +36,7 @@ Vue.component("banner-carousel", require("./components/user/Banner-carousel.vue"
 Vue.component("plug-in", require("./components/user/Plug-in.vue"));
 Vue.component("circle-friends", require("./components/user/Circle-friends.vue"));
 Vue.component("header-user", require("./components/user/Header-user.vue"));
+Vue.component("safety-center", require("./components/user/Safety-center.vue"));
 
 //订单详情页
 Vue.component("orders-detail", require("./components/order/Orders-detail.vue"));

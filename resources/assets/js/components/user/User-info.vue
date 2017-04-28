@@ -75,7 +75,7 @@
                   <el-col :span="8">
                     <div class="border-1px clear-float margin-rl-6 padding-10">
                       <div class="pull-left circle clear-float">
-                        <img src="//storage.jd.com/i.imageUpload/31333634303333393833375f7031343932383433353033333236_mid.jpg" alt="">
+                        <img src="//storage.jd.com/i.imageUpload/31333634303333393833375f7031343933333538353836383432_mid.jpg" alt="">
                       </div>
                       <div class="pull-left padding-10">
                         <ul>
@@ -186,6 +186,7 @@
       </el-row>
 
     </div>
+    <safety-center></safety-center>
   </div>
 </template>
 
