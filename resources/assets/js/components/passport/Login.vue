@@ -17,7 +17,7 @@
                 </el-col>
                 <el-col :span="4">
                     <div class="login-link font-mini">
-                        <i class="iconfont">&#xe635;</i>
+                        <i class="iconfont">&#xe61c;</i>
                         <span class="">登录页面?</span><a href="/login" class="color-danger">调查问答</a>
                     </div>
                 </el-col>
@@ -33,10 +33,15 @@
                     <el-tab-pane label="扫码登录" name="first" style="margin-left:10px">
                         <div class="qr-login">
                             <div class="qr-main">
-                                <img src="/images/demo/1.jpg" alt="" class="padding-10" style="width:147px;height:147px;border:1px solid #888;">
-                                <div class="qr-error hide">
-                                    <div class="">二维码失效</div>
-                                    <el-button>刷新</el-button>
+                                <img src="/images/demo/1.jpg" alt="" class="padding-10 qr-img" style="">
+                                <div class="qr-error">
+                                  <div class="qr-item">
+                                    <div class="qr-text">
+                                      <div>二维码失效</div>
+                                      <el-button>刷新</el-button>
+                                    </div>
+                                    <a href="#" class="qr-bg"></a>
+                                  </div>
                                 </div>
                             </div>
 
@@ -57,16 +62,22 @@
                             <el-alert :title="error.text" type="error" show-icon @click="clear()"></el-alert>
                         </div>
                         <div>
-                            <div class="block-center login-laber">
-                                <i class="iconfont font-3x border-1px-r padding-r-6">&#xe8ca;</i>
-                                <input type="text" name="user" placeholder="请输入用户名" v-model="form.userName">
+                            <div class="block-center tab-80 border-1px login-laber">
+                                <i class="iconfont font-2x border-1px-r padding-rl-6">&#xe8ca;</i>
+                                <div class="login-laber-item">
+                                    <input type="text" name="user" placeholder="请输入用户名" v-model="form.userName">
+                                </div>
+
                             </div>
-                            <div class="block-center margin-tb-10 login-laber">
-                                <i class="iconfont font-3x border-1px-r padding-r-6">&#xe8ca;</i>
-                                <input type="text" name="loginpwd" placeholder="请输入密码" v-model="form.userPwd">
+                            <div class="block-center border-1px tab-80 login-laber">
+                                <i class="iconfont font-2x border-1px-r padding-rl-6">&#xe61d;</i>
+                                <div class="login-laber-item">
+                                    <input type="text" name="userPwd" placeholder="请输入密码" v-model="form.userPwd">
+                                </div>
+
                             </div>
-                            <div class="text-right padding-r-20 padding-b-20">
-                                <a href="#" class=" color-dark">忘记密码</a>
+                            <div class="text-right block-center tab-80">
+                                <a href="#" class="color-dark">忘记密码</a>
                             </div>
                             <div class="block-center text-center padding-10">
                                 <el-button type="danger" style="width:90%;" @click="submit">登录</el-button>
@@ -75,11 +86,25 @@
                     </el-tab-pane>
                     <div class="border-1px-t">
                         <div class="pull-left padding-10">
-                            <i class="iconfont color-primary ">&#xe627;</i> QQ |
-                            <i class="iconfont color-primary ">&#xe64c;</i>微信
+                          <span>
+                            <a href="#" class="clear-float">
+                                <i class="iconfont color-primary font-2x icon-center">&#xe627;</i>
+                                <span class="font-mini">QQ</span>
+                            </a>
+                          </span>
+                          <span>|</span>
+                          <span>
+                            <a href="#" class="clear-float">
+                                <i class="iconfont color-primary font-2x icon-center">&#xe64c;</i>
+                                <span class="font-mini">微信</span>
+                            </a>
+                          </span>
                         </div>
                         <div class="pull-right padding-10">
-                            <i class="iconfont color-primary">&#xe8f1;</i>立即注册
+                          <a href="#">
+                            <i class="iconfont color-primary icon-center">&#xe8f1;</i>
+                            <span>立即注册</span>
+                          </a>
                         </div>
                     </div>
                 </el-tabs>
@@ -215,21 +240,24 @@ export default {
         border: 1px solid red;
     }
     .qr-main {
-        width: 90%;
         margin: 0 auto;
         text-align: center;
         position: relative;
         padding: 10px;
+        .qr-img{
+          width:147px;height:147px;border:1px solid #888;
+        }
         .qr-error {
-            position: absolute;
-            top: 50%;
-            left: 48%;
-            margin: -15% 0 0 -25%;
-            width: 160px;
-            height: 60px;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            line-height: 20px;
+            width:93%;position:absolute;top:10px;text-align:center;
+        }
+        .qr-item{
+          margin:0 auto;padding:10px;height:147px;width:147px;line-height:70px;position:relative;
+        }
+        .qr-text{
+          color:#fff;
+        }
+        .qr-bg{
+          background:black;width:100%;height:100%;opacity:0.6;position:absolute;top:1px;left:1px;
         }
     }
     .qr-panel {
@@ -244,13 +272,21 @@ export default {
             border: none;
         }
         .login-laber {
-            border: 1px solid #bbb;
-            width: 80%;
-            text-align: center;
+            position: relative;
+            height: 30px;
+            line-height: 30px;
+            margin-bottom: 20px;
+        }
+        .login-laber-item {
+            position: absolute;
+            top: 0;
+            left: 35px;
+            width: 100%;
         }
     }
-    .footer {
-        }
+    .icon-center{
+      vertical-align:middle;
+    }
 
 }
 </style>
