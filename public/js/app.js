@@ -28764,7 +28764,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       webChat: [{
-        headerImg: "//storage.jd.com/i.imageUpload/31333634303333393833375f7031343932383433353033333236_mid.jpg",
+        headerImg: "http://i.jd.com/defaultImgs/12.jpg",
         name: "小栋",
         defInfo: "来自微信推荐",
         content: "二入乐高深深深过海，为何说二入，因为乐高永远不会让你只剁一次手。我发现最不难挑的礼物就是送给小朋友的，乐高系列众多，什么城市款，什么公主城堡款的，不同年龄段都有适合的，色彩鲜艳，做工细致，让小朋友们在一堆小零件中创造出属于自己的大大世界！",
@@ -28859,6 +28859,90 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -32098,7 +32182,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.margin-l-20[data-v-665292c4] {\n  margin-left: 20px;\n}\na[data-v-665292c4]:hover {\n  color: #f00;\n}\n.user-info[data-v-665292c4] {\n  background: url(\"//misc.360buyimg.com/user/myjd-2015/widget/userinfo/i/userinfo-bg.png\") right top repeat-y #fff;\n  height: 150px;\n  padding: 15px 20px 15px 319px;\n}\n.user-info .left-icon[data-v-665292c4] {\n  background: url(\"//misc.360buyimg.com/user/myjd-2015/widget/userinfo/i/info-left.png\") 0 0 no-repeat;\n  left: 160px;\n  width: 88px;\n  height: 180px;\n  position: absolute;\n  top: 0;\n}\n.u-leftcontBox[data-v-665292c4] {\n  height: 126px;\n  position: relative;\n  left: -319px;\n  padding: 22px 0 0;\n  float: left;\n}\n.u-icon[data-v-665292c4] {\n  width: 104px;\n  height: 104px;\n}\n.u-icon > a[data-v-665292c4] {\n  border: 3px solid #ddd;\n  border-radius: 50%;\n  display: block;\n}\n.u-pic[data-v-665292c4] {\n  float: left;\n  width: 180px;\n  border-right: 1px dotted #888;\n}\n.u-rightcontBox[data-v-665292c4] {\n  float: left;\n  padding: 16px 0;\n  margin-left: -319px;\n  width: 100%;\n}\n.u-counts[data-v-665292c4] {\n  width: 180px;\n}\n.u-counts ul[data-v-665292c4] {\n  width: 100%;\n}\n.u-counts ul > li[data-v-665292c4] {\n  width: 50%;\n  text-align: center;\n  float: left;\n  margin-bottom: 10px;\n}\n.info-line[data-v-665292c4] {\n  position: absolute;\n  height: 100%;\n  top: 0;\n  right: 0;\n}\n.info-line .circle[data-v-665292c4] {\n  width: 15px;\n  height: 15px;\n  background: #f5f5f5;\n  display: block;\n}\n.info-line .topCircle[data-v-665292c4] {\n  position: absolute;\n  right: 0;\n}\n.info-line .bottomCircle[data-v-665292c4] {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n}\n.credit-info[data-v-665292c4] {\n  background: #f5f5f5;\n}\n.credit-info .fore[data-v-665292c4] {\n  width: 119px;\n  padding: 0 4px;\n  border-right: 1px dotted #bbb;\n}\n.credit-info .fore[data-v-665292c4]:last-child {\n  border: none;\n}\n", ""]);
+exports.push([module.i, "\n.margin-l-20[data-v-665292c4] {\n  margin-left: 20px;\n}\na[data-v-665292c4]:hover {\n  color: #f00;\n}\n.user-info[data-v-665292c4] {\n  background: url(\"//misc.360buyimg.com/user/myjd-2015/widget/userinfo/i/userinfo-bg.png\") right top repeat-y #fff;\n  height: 150px;\n  padding: 15px 20px 15px 319px;\n}\n.user-info .left-icon[data-v-665292c4] {\n  background: url(\"//misc.360buyimg.com/user/myjd-2015/widget/userinfo/i/info-left.png\") 0 0 no-repeat;\n  left: 160px;\n  width: 88px;\n  height: 180px;\n  position: absolute;\n  top: 0;\n}\n.u-leftcontBox[data-v-665292c4] {\n  height: 126px;\n  position: relative;\n  left: -319px;\n  padding: 22px 0 0;\n  float: left;\n}\n.u-icon[data-v-665292c4] {\n  width: 104px;\n  height: 104px;\n}\n.u-icon > a[data-v-665292c4] {\n  border: 3px solid #ddd;\n  border-radius: 50%;\n  display: block;\n}\n.u-pic[data-v-665292c4] {\n  float: left;\n  width: 180px;\n  border-right: 1px dotted #888;\n}\n.u-rightcontBox[data-v-665292c4] {\n  float: left;\n  padding: 16px 0;\n  margin-left: -319px;\n  width: 100%;\n}\n.u-counts[data-v-665292c4] {\n  width: 180px;\n}\n.u-counts ul[data-v-665292c4] {\n  width: 100%;\n}\n.u-counts ul > li[data-v-665292c4] {\n  width: 50%;\n  text-align: center;\n  float: left;\n  margin-bottom: 10px;\n}\n.info-line[data-v-665292c4] {\n  position: absolute;\n  height: 100%;\n  top: 0;\n  right: 0;\n}\n.info-line .circle[data-v-665292c4] {\n  width: 15px;\n  height: 15px;\n  background: #f5f5f5;\n  display: block;\n}\n.info-line .topCircle[data-v-665292c4] {\n  position: absolute;\n  right: 0;\n}\n.info-line .bottomCircle[data-v-665292c4] {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n}\n.credit-info[data-v-665292c4] {\n  background: #f5f5f5;\n}\n.credit-info .fore[data-v-665292c4] {\n  width: 119px;\n  padding: 0 4px;\n  border-right: 1px dotted #bbb;\n}\n.credit-info .fore[data-v-665292c4]:last-child {\n  border: none;\n}\n.mini-btn[data-v-665292c4] {\n  padding: 0 4px;\n  font-size: 12px;\n  display: inline-block;\n  text-align: center;\n}\n.small-btn[data-v-665292c4] {\n  text-align: center;\n  font-size: 12px;\n  padding: 5px;\n  display: inline-block;\n}\n.large-btn[data-v-665292c4] {\n  display: inline-block;\n  text-align: center;\n  padding: 6px;\n  font-size: 12px;\n}\n.bc-header[data-v-665292c4] {\n  position: relative;\n  height: 40px;\n  line-height: 40px;\n}\n.bc-header .bc-tag[data-v-665292c4] {\n  position: absolute;\n  top: 0;\n  left: 120px;\n}\n.bc-header .bc-tabItem[data-v-665292c4] {\n  background: #eee;\n  padding: 5px 10px;\n}\n.bc-header .bc-move[data-v-665292c4] {\n  position: absolute;\n  top: 0;\n  right: 0;\n}\n.bc-info[data-v-665292c4] {\n  position: relative;\n  margin: 5px 0;\n}\n.bc-info .bc-creator[data-v-665292c4] {\n  height: 20px;\n  line-height: 20px;\n}\n.bc-info .bc-operate[data-v-665292c4] {\n  position: absolute;\n  top: 0;\n  right: 0;\n}\n.bc-goodsBox[data-v-665292c4] {\n  padding: 4px;\n  width: 305px;\n  margin: 0 10px;\n}\n.banner-carousel[data-v-665292c4] {\n  box-shadow: 0px 1px 15px #ddd;\n}\n.model-1[data-v-665292c4],\n.model-2[data-v-665292c4] {\n  width: 700px;\n  margin: 0 auto;\n}\n.bc-goods[data-v-665292c4] {\n  width: 100%;\n  height: 162px;\n  overflow: hidden;\n}\n.bc-goods .bc-goods-coves[data-v-665292c4] {\n  width: 140px;\n  height: 140px;\n  padding-bottom: 2px;\n  margin-left: 10px;\n  margin-right: 5px;\n}\n.bc-goods .bc-goods-list[data-v-665292c4] {\n  width: 148px;\n  height: 148px;\n}\n.bc-goods .bc-goods-ul[data-v-665292c4] {\n  width: 100%;\n  display: block;\n}\n.bc-goods .bc-goods-ul .bc-goods-item[data-v-665292c4] {\n  width: 69px;\n  float: left;\n  margin: 0 2px 2px 0;\n  box-sizing: border-box;\n  box-sizing: inherit;\n}\n", ""]);
 
 // exports
 
@@ -85244,7 +85328,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('span', {}, [_vm._v("已有账号?")]), _c('a', {
     staticClass: "color-danger",
     attrs: {
-      "href": "/login"
+      "href": "/passport_login"
     }
   }, [_vm._v("请登录")])])])], 1)], 1)]), _vm._v(" "), _c('div', {
     staticClass: "content "
@@ -86322,7 +86406,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('img', {
     attrs: {
-      "src": "//storage.jd.com/i.imageUpload/31333634303333393833375f7031343932383433353033333236_mid.jpg",
+      "src": "http://i.jd.com/defaultImgs/12.jpg",
       "alt": ""
     }
   })])]), _vm._v(" "), _c('div', {
@@ -86370,7 +86454,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("待付款 "), _c('i', {
+  }, [_vm._v("待付款"), _c('i', {
     staticClass: "num"
   }, [_vm._v("0")])])])]), _vm._v(" "), _c('li', [_c('i', {
     staticClass: "iconfont"
@@ -86397,12 +86481,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("待评价"), _c('i', {
     staticClass: "num"
   }, [_vm._v("0")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "credit-info pull-left color-dark"
+    staticClass: "credit-info pull-left color-dark padding-tb-6"
   }, [_c('ul', _vm._l((3), function(item) {
     return _c('li', {
       staticClass: "fore pull-left"
     }, [_c('div', {
-      staticClass: "credit-item"
+      staticClass: "credit-item padding-rl-6"
     }, [_c('div', {
       staticClass: "margin-tb-4"
     }, [_vm._v("\n                        余额:\n                        "), _c('a', {
@@ -86485,7 +86569,139 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "right": "-120px",
       "top": "50%"
     }
-  }, [_vm._v("\n                              当前没有订单\n                          ")])])])])]), _vm._v(" "), _c('myorder'), _vm._v(" "), _c('circle-friends')], 1), _vm._v(" "), _c('el-col', {
+  }, [_vm._v("\n                              当前没有订单\n                          ")])])])])]), _vm._v(" "), _c('myorder'), _vm._v(" "), _c('div', {
+    staticClass: "banner-carousel"
+  }, [_c('div', {
+    staticClass: "margin-tb-10 bc-header"
+  }, [_c('h2', {
+    staticClass: "padding-rl-10 bc-name"
+  }, [_vm._v("我关注的商品")]), _vm._v(" "), _c('ul', {
+    staticClass: "padding-rl-10 bc-tag"
+  }, [_c('li', {
+    staticClass: "pull-left  margin-rl-6"
+  }, [_c('a', {
+    staticClass: "bc-tabItem"
+  }, [_vm._v("降价通知")])])]), _vm._v(" "), _c('div', {
+    staticClass: "padding-r-15 bc-move"
+  }, [_c('a'), _vm._v("查看更多")])]), _vm._v(" "), _c('div', [_c('el-carousel', {
+    attrs: {
+      "trigger": "click",
+      "height": "150px",
+      "indicator-position": "none",
+      "arrow": "always"
+    }
+  }, [_c('el-carousel-item', [_c('div', {
+    staticClass: "model-1 default clear-float"
+  }, _vm._l((5), function(item) {
+    return _c('div', {
+      staticClass: "pull-left",
+      staticStyle: {
+        "width": "120px",
+        "margin-right": "20px"
+      }
+    }, [_c('a', {
+      staticClass: "link-img",
+      attrs: {
+        "href": "#"
+      }
+    }, [_c('img', {
+      attrs: {
+        "src": "//img12.360buyimg.com//n3/jfs/t4717/90/2194391209/230876/e45a190b/58fae6d4N72a86db7.jpg",
+        "alt": ""
+      }
+    })]), _vm._v(" "), _c('div', {
+      staticClass: "price margin-b-10 text-center"
+    }, [_vm._v("\n                              $1780.00\n                            ")])])
+  }))])], 1)], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "banner-carousel"
+  }, [_c('div', {
+    staticClass: "margin-tb-10 bc-header"
+  }, [_c('h2', {
+    staticClass: "padding-rl-10 bc-name"
+  }, [_vm._v("买什么")]), _vm._v(" "), _c('ul', {
+    staticClass: "padding-rl-10 bc-tag"
+  }, [_c('li', {
+    staticClass: "pull-left margin-rl-6"
+  }, [_c('a', {
+    staticClass: "bc-tabItem"
+  }, [_vm._v("降价不通知")])])]), _vm._v(" "), _c('div', {
+    staticClass: "padding-r-15 bc-move"
+  }, [_c('a'), _vm._v("查看更多")])]), _vm._v(" "), _c('div', [_c('el-carousel', {
+    attrs: {
+      "trigger": "click",
+      "height": "260px",
+      "indicator-position": "none",
+      "arrow": "always"
+    }
+  }, [_c('el-carousel-item', [_c('div', {
+    staticClass: "model-2"
+  }, [_c('ul', {
+    staticClass: "clear-float"
+  }, _vm._l((2), function(item) {
+    return _c('li', {
+      staticClass: "bc-goodsBox border-1px pull-left"
+    }, [_c('div', {
+      staticClass: "clear-float"
+    }, [_c('h2', {
+      staticClass: "bc-title color-gray padding-l-6"
+    }, [_vm._v("超级白菜日:19块9")]), _vm._v(" "), _c('div', {
+      staticClass: "bc-info"
+    }, [_c('div', {
+      staticClass: "bc-creator color-dark padding-l-6"
+    }, [_c('i', {
+      staticClass: "iconfont font-mini"
+    }, [_vm._v("")]), _vm._v("\n                                    潮流技术控\n                                  ")]), _vm._v(" "), _c('div', {
+      staticClass: "bc-operate"
+    }, [_c('a', {
+      attrs: {
+        "href": "#"
+      }
+    }, [_c('div', {
+      staticClass: "border-1px border-radius-3 mini-btn"
+    }, [_c('i', {
+      staticClass: "iconfont font-mini"
+    }, [_vm._v("")]), _vm._v("\n                                        69\n                                      ")])]), _vm._v(" "), _c('a', {
+      attrs: {
+        "href": "#"
+      }
+    }, [_c('div', {
+      staticClass: "border-1px border-radius-3 mini-btn"
+    }, [_c('i', {
+      staticClass: "iconfont font-mini"
+    }, [_vm._v("")]), _vm._v(" "), _c('span', [_vm._v("81")])])])])]), _vm._v(" "), _c('div', {
+      staticClass: "bc-goods"
+    }, [_c('div', {
+      staticClass: "bc-goods-coves pull-left border-1px"
+    }, [_c('a', {
+      staticClass: "link-img",
+      attrs: {
+        "href": "#"
+      }
+    }, [_c('img', {
+      attrs: {
+        "src": "//img11.360buyimg.com/n1/s250x250_jfs/t3151/114/8248417009/211084/5b76652e/58c264deN74b04f1c.jpg",
+        "alt": ""
+      }
+    })])]), _vm._v(" "), _c('div', {
+      staticClass: "bc-goods-list pull-left"
+    }, [_c('dl', {
+      staticClass: "bc-goods-ul"
+    }, _vm._l((4), function(item) {
+      return _c('dd', {
+        staticClass: "bc-goods-item border-1px"
+      }, [_c('a', {
+        staticClass: "link-img",
+        attrs: {
+          "href": "#"
+        }
+      }, [_c('img', {
+        attrs: {
+          "src": "//img12.360buyimg.com/n1/s76x76_jfs/t2083/137/1280141948/37781/9b871616/56526d68Nbb48195a.jpg",
+          "alt": ""
+        }
+      })])])
+    }))])])])])
+  }))])])], 1)], 1)]), _vm._v(" "), _c('circle-friends')], 1), _vm._v(" "), _c('el-col', {
     attrs: {
       "span": 6
     }

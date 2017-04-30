@@ -23,7 +23,7 @@
                 <div class="u-leftcontBox">
                   <div class="u-icon pull-left">
                     <a href="#" class="link-img">
-                      <img src="//storage.jd.com/i.imageUpload/31333634303333393833375f7031343932383433353033333236_mid.jpg" alt="">
+                      <img src="http://i.jd.com/defaultImgs/12.jpg" alt="">
                     </a>
                   </div>
                   <div class="u-pic pull-left margin-rl-6">
@@ -55,7 +55,7 @@
                     <li>
                       <i class="iconfont">&#xe61e;</i>
                       <div class="">
-                        <a href="#">待付款 <i class="num">0</i></a>
+                        <a href="#">待付款<i class="num">0</i></a>
                       </div>
                     </li>
                     <li>
@@ -78,10 +78,10 @@
                     </li>
                   </ul>
                 </div>
-                <div class="credit-info pull-left color-dark">
+                <div class="credit-info pull-left color-dark padding-tb-6">
                   <ul>
                     <li class="fore pull-left" v-for="item in 3">
-                      <div class="credit-item">
+                      <div class="credit-item padding-rl-6">
                         <div class="margin-tb-4">
                           余额:
                           <a href="#" class="padding-l-4">0.00</a>
@@ -125,7 +125,91 @@
                       </div>
                     </div>
                   <myorder></myorder>
-                  <!-- <banner-carousel></banner-carousel> -->
+                  <div class="banner-carousel">
+                    <div class="margin-tb-10 bc-header">
+                      <h2 class="padding-rl-10 bc-name">我关注的商品</h2>
+                        <ul class="padding-rl-10 bc-tag">
+                          <li class="pull-left  margin-rl-6"><a class="bc-tabItem">降价通知</a></li>
+                        </ul>
+                      <div class="padding-r-15 bc-move"><a></a>查看更多</div>
+                    </div>
+                    <div>
+                      <el-carousel trigger="click" height="150px" indicator-position="none" arrow="always">
+                        <el-carousel-item>
+                          <div class="model-1 default clear-float">
+                            <div class="pull-left" style="width:120px;margin-right:20px" v-for="item in 5">
+                              <a href="#" class='link-img'>
+                                  <img  src="//img12.360buyimg.com//n3/jfs/t4717/90/2194391209/230876/e45a190b/58fae6d4N72a86db7.jpg" alt="">
+                              </a>
+                              <div class="price margin-b-10 text-center">
+                                $1780.00
+                              </div>
+                            </div>
+                          </div>
+                        </el-carousel-item>
+                      </el-carousel>
+                    </div>
+                  </div>
+                  <div class="banner-carousel">
+                    <div class="margin-tb-10 bc-header">
+                      <h2 class="padding-rl-10 bc-name">买什么</h2>
+                        <ul class="padding-rl-10 bc-tag">
+                          <li class="pull-left margin-rl-6"><a class="bc-tabItem">降价不通知</a></li>
+                        </ul>
+                      <div class="padding-r-15 bc-move"><a></a>查看更多</div>
+                    </div>
+                    <div>
+                      <el-carousel trigger="click" height="260px" indicator-position="none" arrow="always">
+                        <el-carousel-item>
+                          <div class="model-2">
+                            <ul class="clear-float">
+                              <li class="bc-goodsBox border-1px pull-left" v-for="item in 2">
+                                <div class="clear-float">
+                                  <h2 class="bc-title color-gray padding-l-6">超级白菜日:19块9</h2>
+                                  <div class="bc-info">
+                                    <div class="bc-creator color-dark padding-l-6">
+                                      <i class="iconfont font-mini">&#xe8ca;</i>
+                                      潮流技术控
+                                    </div>
+                                    <div class="bc-operate">
+                                      <a href="#">
+                                        <div class="border-1px border-radius-3 mini-btn">
+                                          <i class="iconfont font-mini">&#xe8db;</i>
+                                          69
+                                        </div>
+                                      </a>
+                                      <a href="#">
+                                        <div class="border-1px border-radius-3 mini-btn">
+                                          <i class="iconfont font-mini">&#xe615;</i>
+                                          <span>81</span>
+                                        </div>
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="bc-goods">
+                                      <div class="bc-goods-coves pull-left border-1px">
+                                        <a href="#" class="link-img">
+                                          <img src="//img11.360buyimg.com/n1/s250x250_jfs/t3151/114/8248417009/211084/5b76652e/58c264deN74b04f1c.jpg" alt="">
+                                        </a>
+                                      </div>
+                                      <div class="bc-goods-list pull-left">
+                                        <dl class="bc-goods-ul">
+                                          <dd class="bc-goods-item border-1px" v-for="item in 4">
+                                          <a href="#" class="link-img">
+                                            <img src="//img12.360buyimg.com/n1/s76x76_jfs/t2083/137/1280141948/37781/9b871616/56526d68Nbb48195a.jpg" alt="">
+                                          </a>
+                                          </dd>
+                                        </dl>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </el-carousel-item>
+                      </el-carousel>
+                    </div>
+                  </div>
                   <circle-friends></circle-friends>
                   </el-col>
                   <el-col :span="6">
@@ -304,6 +388,99 @@ a:hover {
         border-right: 1px dotted #bbb;
         &:last-child {
             border: none;
+        }
+    }
+}
+
+.mini-btn {
+    padding: 0 4px;
+    font-size: 12px;
+    display: inline-block;
+    text-align: center;
+    text-align: center;
+}
+.small-btn {
+    text-align: center;
+    font-size: 12px;
+    padding: 5px;
+    display: inline-block;
+}
+.large-btn {
+    display: inline-block;
+    text-align: center;
+    padding: 6px;
+    font-size: 12px;
+}
+.bc-header{
+  position:relative;
+  height:40px;
+  line-height:40px;
+  .bc-tag{
+    position:absolute;
+    top:0;
+    left:120px;
+  }
+  .bc-tabItem{
+    background: #eee;
+    padding:5px 10px;
+  }
+  .bc-move{
+    position:absolute;
+    top:0;
+    right:0;
+  }
+}
+
+.bc-info{
+    position: relative;
+    margin: 5px 0;
+    .bc-creator {
+        height: 20px;
+        line-height: 20px;
+    }
+    .bc-operate {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+.bc-goodsBox {
+    padding:4px;
+    width: 305px;
+    margin:0 10px;
+}
+.banner-carousel{
+  box-shadow:0px 1px 15px #ddd;
+}
+.model-1,.model-2{
+  width: 700px;
+  margin:0 auto;
+}
+
+.bc-goods {
+    width: 100%;
+    height: 162px;
+    overflow: hidden;
+    .bc-goods-coves {
+        width: 140px;
+        height: 140px;
+        padding-bottom: 2px;
+        margin-left:10px;
+        margin-right:5px;
+    }
+    .bc-goods-list {
+        width: 148px;
+        height: 148px;
+    }
+    .bc-goods-ul {
+        width: 100%;
+        display: block;
+        .bc-goods-item {
+            width: 69px;
+            float: left;
+            margin:0 2px 2px 0;
+            box-sizing: border-box;
+            box-sizing: inherit;
         }
     }
 }

@@ -17,7 +17,7 @@
                 </el-col>
                 <el-col :span="4">
                     <div class="login-link font-1x">
-                        <span class="">已有账号?</span><a href="/login" class="color-danger">请登录</a>
+                        <span class="">已有账号?</span><a href="/passport_login" class="color-danger">请登录</a>
                     </div>
                 </el-col>
             </el-row>

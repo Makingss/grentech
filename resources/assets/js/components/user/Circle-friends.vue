@@ -85,7 +85,7 @@ export default {
     return{
       webChat:[
         {
-          headerImg:"//storage.jd.com/i.imageUpload/31333634303333393833375f7031343932383433353033333236_mid.jpg",
+          headerImg:"http://i.jd.com/defaultImgs/12.jpg",
           name:"小栋",
           defInfo:"来自微信推荐",
           content:"二入乐高深深深过海，为何说二入，因为乐高永远不会让你只剁一次手。我发现最不难挑的礼物就是送给小朋友的，乐高系列众多，什么城市款，什么公主城堡款的，不同年龄段都有适合的，色彩鲜艳，做工细致，让小朋友们在一堆小零件中创造出属于自己的大大世界！",
