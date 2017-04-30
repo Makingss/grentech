@@ -29149,7 +29149,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: "设置",
                 children: [{
                     text: "个人信息",
-                    path: "#"
+                    path: "/user_info"
                 }, {
                     text: "收货地址",
                     path: "#"
@@ -29549,6 +29549,84 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -29591,6 +29669,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }],
             dialogTableVisible: false,
             dialogFormVisible: false,
+            dialogVisible: false,
+            items: true,
+            active: 1,
+            status: false,
+            isSuccess: false,
             form: {
                 name: '',
                 region: '',
@@ -29633,6 +29716,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 contactNumber: "13640339837"
             }]
         };
+    },
+    methods: {
+        changeItme: function changeItme() {
+            return this.items = !this.items;
+        },
+        next: function next() {
+            if (this.active++ > 3) this.active = 0;
+            this.status = !this.status;
+        },
+        second: function second() {
+            if (this.active++ > 3) this.active = 0;
+            this.status = !this.status;
+            this.isSuccess = !this.isSuccess;
+        }
     }
 });
 
@@ -32308,7 +32405,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.inputWhite[data-v-e53cc3ac] {\n  width: 320px;\n}\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -86379,8 +86476,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         staticClass: "padding-tb-6"
       }, [_c('a', {
         attrs: {
-          "href": "#",
-          "to": item2.path
+          "href": item2.path
         },
         domProps: {
           "textContent": _vm._s(item2.text)
@@ -87183,7 +87279,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "container block-center margin-tb-20"
   }, [_c('h2', [_vm._v("安全中心")]), _vm._v(" "), _c('div', {
     staticClass: "bg-gray padding-10 margin-tb-20"
-  }, [_vm._v("\n    安全级别\n  ")]), _vm._v(" "), _vm._l((_vm.SafetyList), function(item) {
+  }, [_vm._v("\n      安全级别\n    ")]), _vm._v(" "), _vm._l((_vm.SafetyList), function(item) {
     return _c('div', {
       staticClass: "text-center border-1px-b safe-item"
     }, [_c('el-row', [_c('el-col', {
@@ -87224,9 +87320,242 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "fore3",
       domProps: {
         "innerHTML": _vm._s(item.html)
+      },
+      on: {
+        "click": function($event) {
+          _vm.dialogVisible = true
+        }
       }
     })])], 1)], 1)
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', {}, [_c('el-dialog', {
+    attrs: {
+      "title": "修改登录密码"
+    },
+    model: {
+      value: (_vm.dialogVisible),
+      callback: function($$v) {
+        _vm.dialogVisible = $$v
+      },
+      expression: "dialogVisible"
+    }
+  }, [_c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.isSuccess),
+      expression: "!isSuccess"
+    }]
+  }, [_c('div', {
+    staticClass: "text-center"
+  }, [_c('el-steps', {
+    attrs: {
+      "space": 100,
+      "active": _vm.active,
+      "align-center": "true",
+      "finish-status": "success"
+    }
+  }, [_c('el-step', {
+    attrs: {
+      "title": "验证身份"
+    }
+  }), _vm._v(" "), _c('el-step', {
+    attrs: {
+      "title": "修改登录密码"
+    }
+  }), _vm._v(" "), _c('el-step', {
+    attrs: {
+      "title": "完成"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "padding-left": "80px",
+      "padding-top": "20px"
+    }
+  }, [_c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.items),
+      expression: "items"
+    }]
+  }, [_c('el-form', {
+    attrs: {
+      "label-width": "140px",
+      "label-position": "right"
+    }
+  }, [_c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.status),
+      expression: "!status"
+    }]
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "已验证手机："
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "200px"
+    },
+    attrs: {
+      "placeholder": "13640339837",
+      "disabled": ""
+    }
+  }), _vm._v(" "), _c('a', {
+    on: {
+      "click": function($event) {
+        _vm.changeItme()
+      }
+    }
+  }, [_vm._v("通过支付密码验证")])], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "请填写手机校验码："
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "200px"
+    }
+  }), _vm._v(" "), _c('el-button', [_vm._v("获取短信校验码")])], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "验证码:"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "200px"
+    }
+  }), _vm._v(" "), _c('span', {}, [_c('span', [_vm._v("验证码")]), _vm._v(" "), _c('span', [_vm._v("看不清?"), _c('a', {
+    staticClass: "color-danger",
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("换一张")])])])], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "请填写手机校验码："
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "200px"
+    }
+  }), _vm._v(" "), _c('el-button', [_vm._v("获取短信校验码")])], 1), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "danger",
+      "size": "small"
+    },
+    on: {
+      "click": function($event) {
+        _vm.next()
+      }
+    }
+  }, [_vm._v("提交")])], 1), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.status),
+      expression: "status"
+    }],
+    attrs: {
+      "active": _vm.active
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "新的登录密码:"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "200px"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "请再输入一次密码:"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "200px"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "验证码:"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "200px"
+    }
+  }), _vm._v(" "), _c('span', {}, [_c('span', [_vm._v("验证码")]), _vm._v(" "), _c('span', [_vm._v("看不清?"), _c('a', {
+    staticClass: "color-danger",
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("换一张")])])])], 1), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "danger",
+      "size": "small"
+    },
+    on: {
+      "click": function($event) {
+        _vm.second()
+      }
+    }
+  }, [_vm._v("提交")])], 1)])], 1), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.items),
+      expression: "!items"
+    }]
+  }, [_c('el-form', {
+    attrs: {
+      "label-width": "140px",
+      "label-position": "right"
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "请输入支付密码"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "200px"
+    }
+  }), _vm._v(" "), _c('a', {
+    on: {
+      "click": function($event) {
+        _vm.changeItme()
+      }
+    }
+  }, [_vm._v("通过已验证手机验证")])], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "验证码:"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "200px"
+    }
+  }), _vm._v(" "), _c('span', {}, [_c('span', [_vm._v("验证码")]), _vm._v(" "), _c('span', [_vm._v("看不清?"), _c('a', {
+    staticClass: "color-danger",
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("换一张")])])])], 1)], 1)], 1)])]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.isSuccess),
+      expression: "isSuccess"
+    }]
+  }, [_c('div', {
+    staticClass: "text-center"
+  }, [_c('i', {
+    staticClass: "iconfont color-success icon-center",
+    staticStyle: {
+      "font-size": "56px"
+    }
+  }, [_vm._v("")]), _vm._v(" "), _c('div', {
+    staticClass: "color-primary"
+  }, [_vm._v("修改完成,请重新登录")]), _vm._v(" "), _c('div', {}, [_c('a', {
+    attrs: {
+      "href": "/passport_login"
+    }
+  }, [_vm._v("返回登录页")])])])])])], 1), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('div', {
     staticClass: "margin-tb-20"
   }, [_c('div', {}, [_c('el-button', {
     attrs: {
@@ -87313,8 +87642,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "width": "100%"
     },
     attrs: {
-      "data": _vm.tableData2,
-      "row-class-name": _vm.tableRowClassName
+      "data": _vm.tableData2
     }
   }, [_c('el-table-column', {
     attrs: {
@@ -87350,7 +87678,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.deleteRow(scope.$index, _vm.tableData4)
             }
           }
-        }, [_vm._v("\n      编辑\n    ")]), _vm._v(" "), _c('el-button', {
+        }, [_vm._v("\n        编辑\n      ")]), _vm._v(" "), _c('el-button', {
           attrs: {
             "type": "text",
             "size": "small"
@@ -87361,7 +87689,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.deleteRow(scope.$index, _vm.tableData4)
             }
           }
-        }, [_vm._v("\n    删除\n  ")])]
+        }, [_vm._v("\n      删除\n    ")])]
       }]
     ])
   }), _vm._v(" "), _c('el-table-column', {
@@ -87381,7 +87709,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.deleteRow(scope.$index, _vm.tableData4)
             }
           }
-        }, [_vm._v("\n      默认地址\n    ")])]
+        }, [_vm._v("\n    默认地址\n")])]
       }]
     ])
   })], 1)], 1)])], 2)])
@@ -87415,7 +87743,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {}, [_c('h3', {
     staticClass: "padding-tb-6"
   }, [_vm._v("账号绑定")]), _vm._v(" "), _c('div', {
-    staticClass: "bg-white margin-tb-4\n      ",
+    staticClass: "bg-white margin-tb-4\n        ",
     staticStyle: {
       "position": "relative"
     }
@@ -87423,7 +87751,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "padding-l-10"
   }, [_c('i', {
     staticClass: "iconfont color-danger"
-  }, [_vm._v("")]), _vm._v("\n          绑定QQ账号\n          "), _c('span', {
+  }, [_vm._v("")]), _vm._v("\n            绑定QQ账号\n            "), _c('span', {
     staticClass: "color-yellow"
   }, [_vm._v("未绑定")])]), _vm._v(" "), _c('span', {
     staticStyle: {
@@ -87444,7 +87772,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "padding-l-10"
   }, [_c('i', {
     staticClass: "iconfont color-success"
-  }, [_vm._v("")]), _vm._v("\n          绑定微信\n          "), _c('span', {
+  }, [_vm._v("")]), _vm._v("\n            绑定微信\n            "), _c('span', {
     staticClass: "color-yellow"
   }, [_vm._v("未绑定")])]), _vm._v(" "), _c('span', {
     staticStyle: {

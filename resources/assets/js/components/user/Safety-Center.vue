@@ -19,9 +19,90 @@
           </div>
         </el-col>
         <el-col :span="4">
-        <div class="fore3"  v-html="item.html"></div>
+        <div class="fore3"  v-html="item.html"  @click="dialogVisible = true"></div>
       </el-col>
       </el-row>
+    </div>
+    <div class="">
+      <el-dialog title="修改登录密码"  v-model="dialogVisible">
+        <div class="" v-show="!isSuccess">
+          <div class="text-center">
+            <el-steps :space="100" :active="active" align-center="true" finish-status="success">
+              <el-step title="验证身份"></el-step>
+              <el-step title="修改登录密码"></el-step>
+              <el-step title="完成"></el-step>
+            </el-steps>
+          </div>
+          <div style="padding-left:80px;padding-top:20px">
+            <div class="" v-show="items">
+              <el-form label-width="140px" label-position="right">
+                <div class="" v-show="!status">
+                  <el-form-item label="已验证手机：" >
+                    <el-input placeholder="13640339837"  style="width:200px" disabled></el-input>
+                    <a  @click="changeItme()">通过支付密码验证</a>
+                  </el-form-item>
+                  <el-form-item label="请填写手机校验码：">
+                    <el-input style="width:200px"></el-input>
+                    <el-button>获取短信校验码</el-button>
+                  </el-form-item>
+                  <el-form-item label="验证码:">
+                    <el-input style="width:200px"></el-input>
+                    <span class="">
+                      <span>验证码</span>
+                      <span>看不清?<a href="#" class="color-danger">换一张</a></span>
+                    </span>
+                  </el-form-item>
+                  <el-form-item label="请填写手机校验码：">
+                    <el-input style="width:200px"></el-input>
+                    <el-button>获取短信校验码</el-button>
+                  </el-form-item>
+                  <el-button type="danger" size="small" @click="next()">提交</el-button>
+                </div>
+                <div class="" v-show="status" :active="active" >
+                  <el-form-item label="新的登录密码:">
+                    <el-input style="width:200px"></el-input>
+                  </el-form-item>
+                  <el-form-item label="请再输入一次密码:">
+                    <el-input style="width:200px"></el-input>
+                  </el-form-item>
+                  <el-form-item label="验证码:">
+                    <el-input style="width:200px"></el-input>
+                    <span class="">
+                      <span>验证码</span>
+                      <span>看不清?<a href="#" class="color-danger">换一张</a></span>
+                    </span>
+                  </el-form-item>
+                  <el-button type="danger" size="small" @click="second()">提交</el-button>
+                </div>
+              </el-form>
+            </div>
+            <div class="" v-show="!items">
+              <el-form label-width="140px" label-position="right">
+                <el-form-item label="请输入支付密码">
+                  <el-input style="width:200px"></el-input>
+                  <a  @click="changeItme()">通过已验证手机验证</a>
+                </el-form-item>
+                <el-form-item label="验证码:">
+                  <el-input style="width:200px"></el-input>
+                  <span class="">
+                    <span>验证码</span>
+                    <span>看不清?<a href="#" class="color-danger">换一张</a></span>
+                  </span>
+                </el-form-item>
+              </el-form>
+            </div>
+          </div>
+        </div>
+        <div v-show="isSuccess">
+          <div class="text-center">
+                <i class="iconfont color-success icon-center" style='font-size:56px'>&#xe8e6;</i>
+                <div class="color-primary">修改完成,请重新登录</div>
+                <div class="">
+                  <a href="/passport_login">返回登录页</a>
+                </div>
+          </div>
+        </div>
+      </el-dialog>
     </div>
     <div class="bg-light padding-10 margin-tb-10">
       <h3 class="padding-tb-6">安全服务提示</h3>
@@ -101,7 +182,7 @@
           <el-table
           :data="tableData2"
           style="width: 100%"
-          :row-class-name="tableRowClassName">
+          >
           <el-table-column
           prop="Consignee"
           label="收货人"
@@ -136,13 +217,10 @@
       <el-table-column
       label="设置">
       <template scope="scope">
-        <el-button
-        @click.native.prevent="deleteRow(scope.$index, tableData4)"
-        type="success"
-        size="small">
-        默认地址
-      </el-button>
-      </template>
+<el-button @click.native.prevent="deleteRow(scope.$index, tableData4)" type="success" size="small">
+    默认地址
+</el-button>
+</template>
       </el-table-column>
       </el-table>
         </div>
@@ -191,50 +269,69 @@ export default {
                 textColor: "",
                 html: "<a href='#'>查看</a>"
             }, ],
-        dialogTableVisible: false,
-       dialogFormVisible: false,
-       form: {
-         name: '',
-         region: '',
-         date1: '',
-         date2: '',
-         delivery: false,
-         type: [],
-         resource: '',
-         desc: ''
-       },
-       formLabelWidth: '120px',
-       options: [{
-           value: 'shenzhe',
-           label: '深圳',
-           children: [{
-               value: 'longhua',
-               label: '龙华新区',
-               children: [{
-                   value: 'dalan',
-                   label: '大浪',
-               }, {
-                   value: 'dalan2',
-                   label: '大浪2',
-               }, ]
-           }, {
-               value: 'luohu',
-               label: '罗湖区',
-               children: [{
-                   value: 'luohu1',
-                   label: '罗湖1',
-               }, {
-                   value: 'luohu2',
-                   label: '罗湖2',
-               }, ]
-           }]
-       }],
-       tableData2:[{
-         Consignee:"严海潮",
-         address:"深圳哪条村",
-         contactNumber:"13640339837",
-       }]
-      }
+            dialogTableVisible: false,
+            dialogFormVisible: false,
+            dialogVisible: false,
+            items:true,
+            active:1,
+            status:false,
+            isSuccess:false,
+            form: {
+                name: '',
+                region: '',
+                date1: '',
+                date2: '',
+                delivery: false,
+                type: [],
+                resource: '',
+                desc: ''
+            },
+            formLabelWidth: '120px',
+            options: [{
+                value: 'shenzhe',
+                label: '深圳',
+                children: [{
+                    value: 'longhua',
+                    label: '龙华新区',
+                    children: [{
+                        value: 'dalan',
+                        label: '大浪',
+                    }, {
+                        value: 'dalan2',
+                        label: '大浪2',
+                    }, ]
+                }, {
+                    value: 'luohu',
+                    label: '罗湖区',
+                    children: [{
+                        value: 'luohu1',
+                        label: '罗湖1',
+                    }, {
+                        value: 'luohu2',
+                        label: '罗湖2',
+                    }, ]
+                }]
+            }],
+            tableData2: [{
+                Consignee: "严海潮",
+                address: "深圳哪条村",
+                contactNumber: "13640339837",
+            }]
+        }
+    },
+    methods:{
+      changeItme(){
+      return this.items=!this.items;
+      },
+      next(){
+      if (this.active++ > 3) this.active = 0;
+      this.status=!this.status;
+    },
+    second(){
+      if (this.active++ > 3) this.active = 0;
+      this.status=!this.status;
+      this.isSuccess=!this.isSuccess;
+    }
     }
 }
 </script>
@@ -256,4 +353,5 @@ export default {
 .color-yellow {
     color: #FFCC00;
 }
+
 </style>

@@ -251,7 +251,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.inputWhite{
-  width: 320px;
-}
+
 </style>

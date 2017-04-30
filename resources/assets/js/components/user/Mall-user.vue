@@ -11,7 +11,7 @@
                   <dl>
                     <dt class="font-bold padding-b-4 border-1px-b-x font-1x">
                     <a href="#" v-text="item.title"></a></dt>
-                    <dd v-for="item2  in item.children" class="padding-tb-6"><a href="#" :to="item2.path" v-text="item2.text"></a></dd>
+                    <dd v-for="item2  in item.children" class="padding-tb-6"><a :href="item2.path" v-text="item2.text"></a></dd>
                   </dl>
                 </li>
               </ul>
@@ -288,7 +288,7 @@ export default {
                 title: "设置",
                 children: [{
                     text: "个人信息",
-                    path: "#"
+                    path: "/user_info"
                 }, {
                     text: "收货地址",
                     path: "#"
