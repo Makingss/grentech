@@ -4,17 +4,7 @@
     <div class="contains block-center tab-80">
       <el-row>
         <el-col :span="3">
-          <div class="padding-t-10">
-            <ul>
-              <li v-for="item in navLeftBox" class="margin-b-10">
-                <dl>
-                  <dt class="font-bold padding-b-4 border-1px-b-x font-1x">
-                  <a href="#" v-text="item.title"></a></dt>
-                  <dd v-for="item2  in item.children" class="padding-tb-6"><a href="#" :to="item2.path" v-text="item2.text"></a></dd>
-                </dl>
-              </li>
-            </ul>
-          </div>
+        <navbar-user></navbar-user>
         </el-col>
         <el-col :span="21">
           <div class="">
@@ -181,15 +171,11 @@
               </el-tab-pane>
             </el-tabs>
           </div>
-
         </el-col>
       </el-row>
-
     </div>
-    <safety-center></safety-center>
   </div>
 </template>
-
 <script>
 export default {
   data:function(){
@@ -209,33 +195,6 @@ export default {
       form2:{
         status:""
       },
-      navLeftBox: [{
-          title: '设置',
-          children: [{
-              text: "个人信息",
-              path: '#',
-          }, {
-              text: "账户安全",
-              path: '#'
-          }, {
-              text: '账号绑定',
-              path: '#'
-          },{
-            text: "我的级别",
-            path: '#'
-          },{
-            text:"收货地址",
-            path:"#"
-          },{
-            text:"分享绑定",
-            path:""
-          },{
-            text:"邮件订阅",
-            path:""
-          },{
-            text:"消费记录"
-          }]
-      }]
     }
   },
   methods: {

@@ -12,7 +12,7 @@
         <el-row>
           <el-col :span="4">
             <div class="">
-              <a href="#">
+              <a href="/mall_user">
                 <span class="color-white" style="font-size:14px">首页</span>
               </a>
             </div>
@@ -23,7 +23,9 @@
                 账户设置<i class="el-icon-caret-bottom el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>个人设置</el-dropdown-item>
+                <el-dropdown-item><a href="/user_info">个人信息</a></el-dropdown-item>
+                <el-dropdown-item><a href="/safety_center">账户安全</a></el-dropdown-item>
+                <el-dropdown-item><a href="/address_list">收货地址</a></el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </el-col>

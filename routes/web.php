@@ -44,6 +44,8 @@ Route::get('/goods_detail','Goods_detailController@index');
 Route::get('/mall_user','Mall_userController@index');
 Route::get('/orders_detail','Orders_detailController@index');
 Route::get('/user_info','User_infoController@index');
+Route::get('/safety_center','Safety_centerController@index');
+Route::get('/address_list','Address_listController@index');
 /*
 	***************************end*************************
 */
