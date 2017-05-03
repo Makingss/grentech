@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="navbar-user">
-    <div class="padding-t-10">
+    <div class="margin-t-10">
       <ul>
         <li v-for="item in navLeftBox" class="margin-b-10">
           <dl>
@@ -19,30 +19,67 @@ export default {
   data:function(){
     return{
       navLeftBox: [{
-          title: '设置',
+          title: '订单中心',
+          children: [{
+              text: "我的订单",
+              path: '/myorder',
+          }, {
+              text: "团购订单",
+              path: '#'
+          }, {
+              text: '本地生活订单',
+              path: '#'
+          },{
+            text:"评价晒单",
+            path:"/myorder"
+          }]
+      }, {
+          title: '关注中心',
+          children: [{
+              text: "关注商品",
+              path: '#',
+          }, {
+              text: "关注店铺",
+              path: '#',
+          }, ]
+      }, {
+          title: '资产中心',
+          children: [{
+              text: "小金库",
+              path: '#'
+          }, {
+              text: "小白条",
+              path: ""
+          }]
+      }, {
+          title: '特色业务',
+          children: [{
+              text: "我的营业厅",
+              path: '#'
+          }, {
+              text: "定期送",
+              path: ""
+          }]
+      }, {
+          title: '客服中心',
+          children: [{
+              text: "返修退换货",
+              path: '#'
+          }, {
+              text: "意见建议",
+              path: "#"
+          }, {
+              text: "我的问答",
+              path: "#"
+          }]
+      }, {
+          title: "设置",
           children: [{
               text: "个人信息",
-              path: '/user_info',
+              path: "/user_info"
           }, {
-              text: "账户安全",
-              path: '/safety_center'
-          }, {
-              text: '账号绑定',
-              path: '/safety_center'
-          },{
-            text: "我的级别",
-            path: '#'
-          },{
-            text:"收货地址",
-            path:"/address_list"
-          },{
-            text:"分享绑定",
-            path:""
-          },{
-            text:"邮件订阅",
-            path:""
-          },{
-            text:"消费记录"
+              text: "收货地址",
+              path: "#"
           }]
       }]
     }

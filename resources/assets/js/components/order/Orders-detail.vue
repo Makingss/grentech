@@ -18,7 +18,9 @@
               <el-button size="small" :plain="true" type="success">查看发票详情</el-button>
             </div>
             <div class="margin-b-20">
-                <el-button size="small" :plain="true" type="danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评&nbsp;价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-button>
+                <el-button size="small" :plain="true" type="danger"><a href="/order_evaluate">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评&nbsp;价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </a></el-button>
             </div>
             <div class="margin-t-20 color-gray">
               <i class="iconfont font-mini">&#xe65e;</i>
@@ -219,7 +221,7 @@
                 <el-col :span="4">x1</el-col>
                 <el-col :span="2">7</el-col>
                 <el-col :span="2" class="text-center">
-                  <div class="">评价|晒单</div>
+                  <div class=""><a href="/order_evaluate">评价|晒单</a> </div>
                   <div class=""><el-button size="mini">立即购买</el-button></div>
                 </el-col>
               </el-row>

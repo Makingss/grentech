@@ -4,7 +4,7 @@
     <div class="contains block-center tab-80">
       <el-row>
         <el-col :span="3">
-        <navbar-user></navbar-user>
+        <navbar-personal></navbar-personal>
         </el-col>
         <el-col :span="21">
           <div class="">
