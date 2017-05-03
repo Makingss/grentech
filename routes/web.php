@@ -48,6 +48,7 @@ Route::get('/order_evaluate','Order_evaluateController@index');
 Route::get('/user_info','User_infoController@index');
 Route::get('/safety_center','Safety_centerController@index');
 Route::get('/address_list','Address_listController@index');
+Route::get('/after_service','After_serviceController@index');
 /*
 	***************************end*************************
 */

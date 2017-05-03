@@ -23175,6 +23175,9 @@ Vue.component("safety-center", __webpack_require__(175));
 //收货地址
 Vue.component("address-list", __webpack_require__(167));
 
+//售后服务
+Vue.component("after-service", __webpack_require__(252));
+
 //订单详情页
 Vue.component("myorder", __webpack_require__(157));
 Vue.component("orders-detail", __webpack_require__(159));
@@ -29697,7 +29700,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }]
             }]
         };
-    }
+    },
+    created: {},
+    computed: {},
+    methods: {}
+
 });
 
 /***/ }),
@@ -30207,6 +30214,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
     };
   },
+  created: {},
+  computed: {},
   methods: {
     handlePreview: function handlePreview(file) {
       this.dialogImageUrl = file.url;
@@ -32409,7 +32418,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -87311,7 +87320,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "margin-tb-10"
   }, [_c('h3', {
     staticClass: "bg-gray padding-tb-10 padding-l-15"
-  }, [_vm._v("订单评价")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("订单评价2")]), _vm._v(" "), _c('div', {
     staticClass: "margin-t-10"
   }, [_c('el-row', {
     staticClass: "bg-light text-center padding-10"
@@ -92775,6 +92784,499 @@ module.exports = function(module) {
 __webpack_require__(29);
 module.exports = __webpack_require__(30);
 
+
+/***/ }),
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    handleOpen: function handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose: function handleClose(key, keyPath) {
+      console.log(key, keyPath);
+    }
+  }
+});
+
+/***/ }),
+/* 251 */,
+/* 252 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(256)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(250),
+  /* template */
+  __webpack_require__(253),
+  /* scopeId */
+  "data-v-8eec4c16",
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\order\\After-service.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] After-service.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8eec4c16", Component.options)
+  } else {
+    hotAPI.reload("data-v-8eec4c16", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 253 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "after-service"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "container block-center margin-tb-20"
+  }, [_c('div', {
+    staticClass: "infor-wrap margin-b-20"
+  }, [_c('el-row', {
+    staticClass: "border-1px"
+  }, [_c('el-col', {
+    staticClass: "text-center",
+    attrs: {
+      "span": 6
+    }
+  }, [_c('ul', [_c('li', {
+    staticClass: "padding-tb-6"
+  }, [_c('p', {
+    staticClass: "font-1x font-bold"
+  }, [_vm._v("Hi! jd136403lny")])]), _vm._v(" "), _c('li', {
+    staticClass: "padding-tb-6"
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('img', {
+    staticClass: "circle icon-104",
+    attrs: {
+      "src": "http://i.jd.com/defaultImgs/12.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('i', {
+    staticClass: "iconfont"
+  })]), _vm._v(" "), _c('li', {
+    staticClass: "padding-tb-6"
+  }, [_vm._v("可尊享的特色服务")]), _vm._v(" "), _c('li', {
+    staticClass: "padding-tb-6"
+  }, [_c('span', [_vm._v("闪电退款额度600.00元")])])]), _vm._v(" "), _c('div', {
+    staticClass: "clear-float margin-tb-10"
+  }, [_c('div', {
+    staticClass: "block-center",
+    staticStyle: {
+      "width": "160px"
+    }
+  }, [_c('ul', _vm._l((6), function(item) {
+    return _c('li', {
+      staticClass: "font-mini padding-rl-4 color-danger pull-left"
+    }, [_c('i', {
+      staticClass: "iconfont font-min icon-center"
+    }, [_vm._v("")]), _vm._v("上门换新")])
+  }))])])]), _vm._v(" "), _c('el-col', {
+    staticClass: "text-center border-1px-r border-1px-l",
+    attrs: {
+      "span": 4
+    }
+  }, [_c('ul', [_c('li', {
+    staticClass: "margin-tb-20"
+  }, [_c('div', [_c('i', {
+    staticClass: "iconfont color-danger",
+    staticStyle: {
+      "font-size": "100px"
+    }
+  }, [_vm._v("")])]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "danger",
+      "size": "small"
+    }
+  }, [_vm._v("申请售后")])], 1), _vm._v(" "), _c('li', {
+    staticStyle: {
+      "margin-bottom": "22px"
+    }
+  }, [_c('div', {
+    staticClass: "fore"
+  }, [_c('i', {
+    staticClass: "iconfont"
+  }, [_vm._v("")]), _vm._v("返修/退换货记录\n              ")]), _vm._v(" "), _c('div', {
+    staticClass: "fore"
+  }, [_c('i', {
+    staticClass: "iconfont"
+  }, [_vm._v("")]), _vm._v("退款明细\n              ")]), _vm._v(" "), _c('div', {
+    staticClass: "fore"
+  }, [_c('i', {
+    staticClass: "iconfont"
+  }, [_vm._v("")]), _vm._v("维修明细\n              ")])])])]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('div', {
+    staticClass: "block-center"
+  }, [_c('ul', {}, _vm._l((4), function(item) {
+    return _c('li', {
+      staticClass: "pull-left text-center",
+      staticStyle: {
+        "width": "178px",
+        "height": "164px"
+      }
+    }, [_c('div', {
+      staticClass: "padding-tb-20"
+    }, [_c('b', {
+      staticClass: "font-gray",
+      staticStyle: {
+        "font-size": "60px"
+      }
+    }, [_vm._v("0")]), _vm._v(" "), _c('p', [_vm._v("处理中")])])])
+  }))])]), _vm._v(" "), _c('el-col', {
+    staticStyle: {
+      "box-shadow": "1px 1px 10px #ddd"
+    },
+    attrs: {
+      "span": 6
+    }
+  }, [_c('div', {
+    staticClass: "margin-10"
+  }, [_c('div', {
+    staticClass: "padding-l-10"
+  }, [_c('h3', {
+    staticClass: "color-dark"
+  }, [_vm._v("\n                公告\n              ")]), _vm._v(" "), _c('div', {
+    staticClass: "margin-t-10"
+  }, [_c('ul', _vm._l((5), function(item) {
+    return _c('li', {
+      staticClass: "padding-b-4"
+    }, [_vm._v("[上线] 京东自营生鲜优鲜赔服务上线啦！")])
+  }))])]), _vm._v(" "), _c('div', {
+    staticClass: "margin-tb-10 clear-float"
+  }, [_c('ul', _vm._l((2), function(item) {
+    return _c('li', {
+      staticClass: "pull-left margin-rl-6"
+    }, [_c('div', {
+      staticClass: "clear-float",
+      staticStyle: {
+        "width": "110px",
+        "height": "110px"
+      }
+    }, [_c('a', {
+      staticClass: "link-img",
+      attrs: {
+        "href": "#"
+      }
+    }, [_c('img', {
+      attrs: {
+        "src": "/images/demo/qr.png",
+        "alt": ""
+      }
+    })])]), _vm._v(" "), _c('p', {
+      staticClass: "clear-float line-ellispse-2 text-center padding-tb-6",
+      staticStyle: {
+        "width": "110px"
+      }
+    }, [_vm._v("\n                    服务+app内测享极速售后\n                  ")])])
+  }))])])])], 1)], 1), _vm._v(" "), _c('div', {}, [_c('el-row', {
+    staticClass: "border-1px"
+  }, [_c('el-col', {
+    attrs: {
+      "span": 6
+    }
+  }, [_c('div', {
+    staticClass: "clear-float",
+    staticStyle: {
+      "background": "url(//misc.360buyimg.com/user/shouhou/2.1.0/css/i/index-service-apply.jpg) 0 0 no-repeat",
+      "height": "469px"
+    }
+  }, [_c('div', {
+    staticClass: "color-white font-4x"
+  }, [_vm._v("\n              服务申请\n            ")]), _vm._v(" "), _c('div', {
+    staticClass: "color-white font-1x"
+  }, [_vm._v("\n              申请售后\n            ")])])]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 18
+    }
+  }, [_c('div', {}, [_c('ul', [_c('li', [_c('div', {}, [_c('div', {}, [_vm._v("\n                    订单编号：\n                    "), _c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("49881501848")])]), _vm._v(" "), _c('div', {}, [_vm._v("\n                    下单时间：\n                    "), _c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("2017-03-03 17:20:32")])]), _vm._v(" "), _c('div', {}, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "http://img10.360buyimg.com/N5/jfs/t3085/150/7220278772/137822/ab0a02d3/58b52fdcN76aa4f6a.jpg",
+      "alt": ""
+    }
+  })])]), _vm._v(" "), _c('div', {}, [_c('el-button', {
+    attrs: {
+      "type": "danger",
+      "plain": true,
+      "size": "mini"
+    }
+  }, [_vm._v("申请")])], 1)])]), _vm._v(" "), _c('li'), _vm._v(" "), _c('li')])])])], 1)], 1)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "header-user border-1px-b"
+  }, [_c('div', {
+    staticClass: "container block-center",
+    staticStyle: {
+      "position": "relative"
+    }
+  }, [_c('div', {}, [_c('a', {
+    staticStyle: {
+      "background": "url(//misc.360buyimg.com/user/shouhou/2.1.0/css/i/logo.png) no-repeat",
+      "display": "block",
+      "height": "80px",
+      "background-position": "10px"
+    },
+    attrs: {
+      "href": "#"
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "nav-list"
+  }, [_c('ul', [_c('li', [_c('a', {
+    staticClass: "nav-action",
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("首页")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("魔镜")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("特色服务")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("葵花宝典")])])])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-8eec4c16", module.exports)
+  }
+}
+
+/***/ }),
+/* 254 */,
+/* 255 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.header-user[data-v-8eec4c16] {\n  background-color: #fff;\n  width: 100%;\n}\n.nav-list[data-v-8eec4c16] {\n  position: absolute;\n  right: 0;\n  top: 0;\n  height: 100%;\n}\n.nav-list ul[data-v-8eec4c16] {\n  display: block;\n  overflow: hidden;\n}\n.nav-list ul > li[data-v-8eec4c16] {\n  float: left;\n  padding: 0 20px;\n  font-size: 18px;\n}\n.nav-list ul > li a[data-v-8eec4c16] {\n  height: 77px;\n  line-height: 77px;\n  color: #bbb;\n  display: block;\n  padding: 0 10px;\n}\n.nav-action[data-v-8eec4c16] {\n  border-bottom: 2px solid #f00;\n  color: #f00 !important;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 256 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(255);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("0e6413ca", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-8eec4c16\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/less-loader/index.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./After-service.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-8eec4c16\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/less-loader/index.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./After-service.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);

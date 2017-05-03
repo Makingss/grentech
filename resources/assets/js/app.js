@@ -43,6 +43,9 @@ Vue.component("safety-center", require("./components/user/Safety-center.vue"));
 //收货地址
 Vue.component("address-list", require("./components/user/Address.vue"));
 
+//售后服务
+Vue.component("after-service", require("./components/order/After-service.vue"));
+
 //订单详情页
 Vue.component("myorder", require("./components/order/Myorder.vue"));
 Vue.component("orders-detail", require("./components/order/Orders-detail.vue"));

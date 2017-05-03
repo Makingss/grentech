@@ -197,6 +197,8 @@ export default {
       },
     }
   },
+  created:{},
+  computed:{},
   methods: {
     handlePreview(file) {
       this.dialogImageUrl=file.url;
