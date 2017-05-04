@@ -49,6 +49,8 @@ Route::get('/user_info','User_infoController@index');
 Route::get('/safety_center','Safety_centerController@index');
 Route::get('/address_list','Address_listController@index');
 Route::get('/after_service','After_serviceController@index');
+Route::get('/after_orderlist','After_orderlistController@index');
+Route::get('/after_apply','After_applyController@index');
 /*
 	***************************end*************************
 */

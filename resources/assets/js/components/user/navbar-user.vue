@@ -84,10 +84,6 @@ export default {
       }]
     }
   },
-  created:{},
-  computed:{},
-  methods:{},
-
 }
 </script>
 

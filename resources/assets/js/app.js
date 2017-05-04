@@ -38,13 +38,17 @@ Vue.component("circle-friends", require("./components/user/Circle-friends.vue"))
 Vue.component("header-user", require("./components/user/Header-user.vue"));
 Vue.component("navbar-user", require("./components/user/Navbar-user.vue"));
 Vue.component("navbar-personal", require("./components/user/Navbar-personal.vue"));
+
 //安全中心
 Vue.component("safety-center", require("./components/user/Safety-center.vue"));
+
 //收货地址
 Vue.component("address-list", require("./components/user/Address.vue"));
 
 //售后服务
 Vue.component("after-service", require("./components/order/After-service.vue"));
+Vue.component("after-orderlist", require("./components/order/After-orderlist.vue"));
+Vue.component("after-apply", require("./components/order/After-apply.vue"));
 
 //订单详情页
 Vue.component("myorder", require("./components/order/Myorder.vue"));
