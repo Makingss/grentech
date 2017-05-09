@@ -54,6 +54,7 @@ Vue.component("after-apply", require("./components/order/After-apply.vue"));
 Vue.component("myorder", require("./components/order/Myorder.vue"));
 Vue.component("orders-detail", require("./components/order/Orders-detail.vue"));
 Vue.component("order-evaluate", require("./components/order/Order-evaluate.vue"));
+Vue.component('order-print', require('./components/order/Order-print.vue'));
 
 
 //登陆界面

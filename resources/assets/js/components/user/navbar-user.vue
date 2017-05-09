@@ -64,7 +64,7 @@ export default {
           title: '客服中心',
           children: [{
               text: "返修退换货",
-              path: '#'
+              path: '/after_service'
           }, {
               text: "意见建议",
               path: "#"

@@ -23186,6 +23186,7 @@ Vue.component("after-apply", __webpack_require__(163));
 Vue.component("myorder", __webpack_require__(166));
 Vue.component("orders-detail", __webpack_require__(168));
 Vue.component("order-evaluate", __webpack_require__(167));
+Vue.component('order-print', __webpack_require__(270));
 
 //登陆界面
 Vue.component("login", __webpack_require__(171));
@@ -26709,9 +26710,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -26779,7 +26777,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var maxlength = 2;
       console.log(textLength);
       $('.textNum').children('span').text(textLength);
-      if (textLength >= 5) {}
+      if (textLength >= 5) {
+        console.log('值大于5');
+      }
     }
   }
 });
@@ -30262,7 +30262,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: '客服中心',
                 children: [{
                     text: "返修退换货",
-                    path: '#'
+                    path: '/after_service'
                 }, {
                     text: "意见建议",
                     path: "#"
@@ -33331,7 +33331,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -85769,10 +85769,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       ["default", function(scope) {
         return [_c('el-button', {
           attrs: {
-            "type": "danger",
             "size": "mini"
           }
-        }, [_vm._v("申请")])]
+        }, [_c('a', {
+          attrs: {
+            "href": "/after_apply"
+          }
+        }, [_vm._v("申请")])])]
       }]
     ])
   }), _vm._v(" "), _c('el-table-column', {
@@ -88807,7 +88810,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "danger",
       "size": "small"
     }
-  }, [_vm._v("申请售后")])], 1), _vm._v(" "), _c('li', {
+  }, [_c('a', {
+    staticClass: "color-white",
+    attrs: {
+      "href": "/after_orderlist"
+    }
+  }, [_vm._v("申请售后")])])], 1), _vm._v(" "), _c('li', {
     staticStyle: {
       "margin-bottom": "22px"
     }
@@ -88980,7 +88988,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "plain": true,
         "size": "mini"
       }
-    }, [_vm._v("申请")])], 1)])])
+    }, [_c('a', {
+      attrs: {
+        "href": "/after_apply"
+      }
+    }, [_vm._v("申请")])])], 1)])])
   }))])]), _vm._v(" "), _c('div', {
     staticClass: "text-center border-1px-t padding-t-6"
   }, [_c('a', {
@@ -90220,7 +90232,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "span": 2
       }
-    }, [_vm._v("申请售后")]), _vm._v(" "), _c('el-col', {
+    }, [_c('a', {
+      attrs: {
+        "href": "/after_apply"
+      }
+    }, [_vm._v("申请售后")])]), _vm._v(" "), _c('el-col', {
       attrs: {
         "span": 2
       }
@@ -90334,7 +90350,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "span": 2
       }
-    }, [_vm._v("申请售后")]), _vm._v(" "), _c('el-col', {
+    }, [_c('a', {
+      attrs: {
+        "href": "/after_service"
+      }
+    }, [_vm._v("申请售后")])]), _vm._v(" "), _c('el-col', {
       attrs: {
         "span": 2
       }
@@ -91840,7 +91860,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "color-success padding-l-10",
     staticStyle: {
       "height": "25px",
-      "line-height": "25px"
+      "line-height": "25px",
+      "cursor": "pointer"
     },
     on: {
       "click": function($event) {
@@ -91982,7 +92003,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.onSubmit
     }
-  }, [_vm._v("确认提交")])], 1)], 1), _vm._v(" "), _c('div', {})])])], 1)])])], 1)], 1)], 1)
+  }, [_vm._v("确认提交")])], 1)], 1)])])], 1)])])], 1)], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -94449,6 +94470,251 @@ module.exports = function(module) {
 __webpack_require__(29);
 module.exports = __webpack_require__(30);
 
+
+/***/ }),
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {}
+});
+
+/***/ }),
+/* 269 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 270 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(272)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(268),
+  /* template */
+  __webpack_require__(271),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\WWW\\grentech\\resources\\assets\\js\\components\\order\\Order-print.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Order-print.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2b7a8edf", Component.options)
+  } else {
+    hotAPI.reload("data-v-2b7a8edf", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 271 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "print"
+  }, [_c('div', {
+    staticClass: "container block-center"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "margin-tb-10 border-1px"
+  }, [_c('div', {
+    staticClass: "bg-gray padding-10 clear-float"
+  }, [_c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 4
+    }
+  }, [_vm._v("商品编号")]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 14
+    }
+  }, [_vm._v("商品名称")]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 2
+    }
+  }, [_vm._v("数量")]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 2
+    }
+  }, [_vm._v("商品数量")])], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "padding-10 clear-float"
+  }, [_c('el-row', {
+    staticClass: "clear-float border-1px-b padding-tb-10"
+  }, [_c('el-col', {
+    attrs: {
+      "span": 4
+    }
+  }, [_vm._v("982043")]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 14
+    }
+  }, [_vm._v("爱国者（aigo）10000毫安 OL10400 双USB输出 通用便携迷你 移动电源/充电宝 黑色")]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 2
+    }
+  }, [_vm._v("1")]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 2
+    }
+  }, [_vm._v("￥68.90")])], 1), _vm._v(" "), _vm._m(1)], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "text-right padding-r-10"
+  }, [_c('el-button', {
+    attrs: {
+      "type": "danger"
+    }
+  }, [_vm._v("打印")])], 1)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "border-1px",
+    staticStyle: {
+      "padding": "10px 20px"
+    }
+  }, [_c('div', {
+    staticClass: "border-1px-b padding-tb-10"
+  }, [_c('span', {}, [_vm._v("订单编号:49881501848")]), _vm._v(" "), _c('span', {
+    staticClass: "margin-rl-6"
+  }, [_vm._v("订购时间：2017-03-03 17:20:32")])]), _vm._v(" "), _c('div', {
+    staticClass: "padding-tb-10"
+  }, [_c('ul', [_c('li', {
+    staticClass: "padding-tb-6"
+  }, [_vm._v("客户姓名:严**")]), _vm._v(" "), _c('li', {
+    staticClass: "padding-tb-6"
+  }, [_vm._v("联系方式:136*****")]), _vm._v(" "), _c('li', {
+    staticClass: "padding-tb-6"
+  }, [_vm._v("客户地址:广东深圳市龙华新区浪琴路9号")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "pull-right padding-tb-10 padding-r-10"
+  }, [_c('ul', [_c('li', [_vm._v("商品总额："), _c('span', {
+    staticClass: "padding-l-10"
+  }, [_vm._v("￥68.90")])]), _vm._v(" "), _c('li', [_vm._v("返　　现："), _c('span', {
+    staticClass: "padding-l-10"
+  }, [_vm._v("-¥0.00")])]), _vm._v(" "), _c('li', [_vm._v("运　　费："), _c('span', {
+    staticClass: "padding-l-10"
+  }, [_vm._v("¥6.00")])]), _vm._v(" "), _c('li', [_vm._v("应付总额："), _c('span', {
+    staticClass: "font-1x padding-l-10"
+  }, [_vm._v("¥74.90")])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-2b7a8edf", module.exports)
+  }
+}
+
+/***/ }),
+/* 272 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(269);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("1260b2f0", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-2b7a8edf\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Order-print.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-2b7a8edf\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Order-print.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);
