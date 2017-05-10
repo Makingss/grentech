@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Support\Facades\Redis;
+
 /*
  * |--------------------------------------------------------------------------
  * | Web Routes
@@ -34,13 +36,13 @@ Auth::routes();
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/shopcart', 'ShopcartController@index');
-Route::get('/passport_login','Passport_loginController@index');
-Route::get('/passport_register','Passport_registerController@index');
-Route::get('/mall_goodsdetail','Mall_goodsdetailController@index');
-Route::get('/mall_search','Mall_searchController@index');
-Route::get('/app_link','App_linkController@index');
-Route::get('/footer','Mall_footerController@index');
-Route::get('/goods_detail','Goods_detailController@index');
+Route::get('/passport_login', 'Passport_loginController@index');
+Route::get('/passport_register', 'Passport_registerController@index');
+Route::get('/mall_goodsdetail', 'Mall_goodsdetailController@index');
+Route::get('/mall_search', 'Mall_searchController@index');
+Route::get('/app_link', 'App_linkController@index');
+Route::get('/footer', 'Mall_footerController@index');
+Route::get('/goods_detail', 'Goods_detailController@index');
 
 /*
 	***************************end*************************
@@ -87,20 +89,45 @@ Route::group(['namespace' => 'Carts'], function () {
 /*
  * 向Ioc 容器填加自己的类 测试用例
  */
-Route::get('/billing',function(){
-	$billing=app('billing');
+Route::get('/billing', function () {
+	$billing = app('billing');
 	dd($billing->charge());
 });
 /**
  * 契约的测试用例
  */
-Route::get('/contract',function(){
+Route::get('/contract', function () {
 //	dd(app('Illuminate\Contracts\Config\Repository')['database']['redis']);
 //	dd(Config::get('database.redis'));
 //	dd(app('config')['database']['redis']);
 	dd(app('Illuminate\Contracts\Config\Repository'));
 });
-
+Route::group(['namespace' => 'Redis'], function () {
+	Route::get('/redis', 'RedisController@index');
+});
+//Route::get('/redis', function () {
+//redis 缓存
+#Cache::put('name','Making',30);
+#return Cache::get('name');
+//设置 redis 值
+#Redis::set($key,$value);
+#if(Redis::exists($key)){
+#	return Redis::get($key);
+#}
+//	$key = 'name:list1';
+//	Redis::sadd($key, ['Making', 'Master', 'wu', 'yan', 'ping']);
+//	Redis::Del($key);
+//	Redis::set('name', 'Making');
+//	$values = Redis::lrange('names', 2, 3);
+//	return $values;
+//获取集合元素总数(如果指定键不存在返回0)
+//	$nums = Redis::scard($key);
+//	Redis::setnx('wwww', 'fdsfdsfdsfdsfdsfdsaf');
+//	if ($nums > 0) {
+//		//从指定集合中随机获取
+//		return Redis::srandmember($key, 2);
+//	}
+//});
 //Route::resource('datatables', 'DatatablesController', [
 //    'anyData'  => 'datatables.data',
 //    'getIndex' => 'datatables',

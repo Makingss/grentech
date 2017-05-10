@@ -49,8 +49,9 @@ Route::group(['namespace' => 'Apis'], function () {
 Route::group(['namespace' => 'Apis\Carts'], function () {
 	Route::get('/cart', 'CartObjectController@index')->middleware('auth:api');
 	Route::Post('/cartAdd', 'CartObjectController@store')->middleware('auth:api');
-	Route::Post('/cartUpdate', 'CartObjectController@update')->middleware('auth:api');//
-	Route::post('/cartDelete', 'CartObjectController@destroy');
+	Route::Post('/cartUpdate', 'CartObjectController@update')->middleware('auth:api');
+	Route::get('/cartShow/{cartObject}', 'CartObjectController@show');
+	Route::post('/cartDelete', 'CartObjectController@destroy')->middleware('auth:api');
 });
 /******************************订单路由******************************/
 Route::group(['namespace' => 'Apis\Orders'], function () {

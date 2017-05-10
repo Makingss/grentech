@@ -18,10 +18,10 @@ class CartObjectController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response;
 	 */
-//	public function __construct(Auth $auth)
-//	{
-//		$this->middleware('auth');
-//	}
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 
 	public function isUserId()
 	{
@@ -56,15 +56,15 @@ class CartObjectController extends Controller
 					$collects = collect($image_attach);
 					$collapse = $collects->collapse();
 					$goods[$dataK]['image_attach'][$itemK] = $collapse->toArray();
+					$goods['total_amount'] = $goods->sum('mktprice');
 				}
-
-				return [
-					"status" => true,
-					"code" => "200",
-					"msg" => "成功",
-					"data" => $goods
-				];
 			}
+			return [
+				"status" => true,
+				"code" => "200",
+				"msg" => "成功",
+				"data" => $goods
+			];
 		}
 //		return [
 //			"status" => false,
@@ -122,10 +122,8 @@ class CartObjectController extends Controller
 	 * @param  int $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id)
+	public function show(CartObject $cartObject)
 	{
-
-		$cartObject = CartObject::findOrFail($id);
 		return view('', compact('cartObject'));
 	}
 

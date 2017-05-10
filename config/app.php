@@ -191,6 +191,10 @@ return [
 		 * 向Ioc 容器填加自己的类 测试用例
 		 */
 		App\Providers\BillingServiceProvider::class,
+		/*
+		 * Redis 基础类  基础方法
+		 */
+		App\Providers\RedisBasesProvider::class,
 	],
 
 
