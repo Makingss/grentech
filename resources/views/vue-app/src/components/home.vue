@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="scroll-content infinite-scroll container padding-b-20">
-  
+
       <card-list v-for="(item,index) in scroller_data.data" class="border-1px-b">
         <router-link :to="{name:'goods',query:{goods_id:item.goods_id,item_index:index}}" class="block" slot="card-media">
           <img :src="item.images?item.images.url:'/static/grentech/default.jpg'" alt="">
@@ -64,7 +64,7 @@
           <div class="item-title">{{item.name}}</div>
           <div v-if="!!item.new_electrics&&item.new_electrics.has_item">
             <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics.workingband&&item.new_electrics.workingband.length">
-              频段: <span>{{item.new_electrics.workingband.join("/")}}</span> M
+              频段: <span>{{item.new_electrics.workingband.join("/")}}</span>
             </div>
             <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics.beamgain&&item.new_electrics.beamgain.length">
               增益: <span>{{item.new_electrics.beamgain.join("/")}}</span> dBi
@@ -75,16 +75,16 @@
           </div>
           <div v-if="!!item.new_electrics_inte&&item.new_electrics_inte.has_item">
             <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.workingband&&item.new_electrics_inte.workingband.length">
-              频段: <span>{{item.new_electrics_inte.workingband.join("/")}}</span> M
+              频段: <span>{{item.new_electrics_inte.workingband.join("/")}}</span>
             </div>
-            <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.beamgain&&item.new_electrics_inte.beamgain.length">
-              增益: <span>{{item.new_electrics_inte.beamgain.join("/")}}</span> dBi
+            <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.cellbeam_2&&item.new_electrics_inte.cellbeam_2.length">
+              增益: <span>{{item.new_electrics_inte.cellbeam_2.join("/")}}</span> dBi
             </div>
             <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.dipangle&&item.new_electrics_inte.dipangle.length">
               电下倾: <span>{{item.new_electrics_inte.dipangle.join("/")}}</span> °
             </div>
           </div>
-  
+
         </router-link>
         <div class="item-title line-ellispse-2 color-gray">
           SAP: {{item.bn}}
@@ -95,9 +95,9 @@
         <spinner type="circles"></spinner>
       </div>
       <div class="padding-tb-20 text-center" v-show="load_all"><span class="iconfont">&#xe62b;</span>已加载完毕...</div>
-  
+
     </div>
-  
+
   </div>
 </template>
 
@@ -140,7 +140,7 @@
             img: '/static/grentech/20161118174329771.jpg',
           },
           data: [
-  
+
           ]
         },
         hot_sales: {
@@ -149,7 +149,7 @@
             img: '/static/grentech/20170116185915616-(1).jpg',
           },
           data: [
-  
+
           ]
         },
         scroller_data: {
@@ -164,7 +164,7 @@
           to: 0,
           total: 0,
           data: [
-  
+
           ]
         }
       }
@@ -184,7 +184,7 @@
     },
     created: function() {
       this.get_home_list({});
-  
+
     },
     methods: {
       handle_scroll: function(el) {
@@ -195,7 +195,7 @@
         //console.log(height,scrollTop);
         var view_height = height + scrollTop;
         var scrollHeight = el[0].scrollHeight;
-  
+
         // console.log(view_height,el[0].scrollHeight);
         if (scrollHeight - view_height < 40) {
           // console.log(scrollHeight-view_height);
@@ -233,7 +233,7 @@
                   if (k == "created_at" || k == "id" || k == "updated_at" || k == "type" || k == "goods_id") {
                     continue;
                   }
-  
+
                   if (!!res_data.data[n][key][i][k]) {
                     new_obj['new_' + key]["has_item"] = true;
                     if (!new_obj['new_' + key][k]) {
@@ -251,7 +251,7 @@
         }
         console.log("+++++++++++++++");
         console.log(new_arr);
-        
+
         // self.scroller_data.data = self.scroller_data.data.concat(res_data.data);
         self.scroller_data.data = self.scroller_data.data.concat(new_arr);
         self.scroller_data.current_page = res_data.current_page;

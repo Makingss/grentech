@@ -3,7 +3,7 @@
     <div style="height:100%">
       <swiper style="width:100%;margin:0 auto;" :aspect-ratio="375/375" dots-position="center">
         <swiper-item v-for="(item,index) in goods_data_list.image_attach" class="link-img">
-          <img :src="item.images.url" alt="">
+          <img :src="item.images.url" alt="" class="previewer-demo-img">
         </swiper-item>
       </swiper>
       <flexbox :gutter="0" wrap="nowrap" class="bg-white">
@@ -11,27 +11,27 @@
           <p class="line-ellispse-2">{{goods_data_list.name}}</p>
           <div v-if="!!goods_data_list.electrics&&goods_data_list.electrics.length">
             <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics.workingband&&goods_data_list.new_electrics.workingband.length">
-              频段: <span>{{goods_data_list.new_electrics.workingband.join("/")}}/</span> M
+              频段: <span>{{goods_data_list.new_electrics.workingband.join("/")}}</span>
             </div>
             <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics.beamgain&&goods_data_list.new_electrics.beamgain.length">
-              增益: <span>{{goods_data_list.new_electrics.beamgain.join("/")}}/</span> dBi
+              增益: <span>{{goods_data_list.new_electrics.beamgain.join("/")}}</span> dBi
             </div>
             <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics.dipangle&&goods_data_list.new_electrics.dipangle.length">
-              电下倾: <span>{{goods_data_list.new_electrics.dipangle.join("/")}}/</span> °
+              电下倾: <span>{{goods_data_list.new_electrics.dipangle.join("/")}}</span> °
             </div>
           </div>
           <div v-if="!!goods_data_list.electrics_inte&&goods_data_list.electrics_inte.length">
             <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.workingband&&goods_data_list.new_electrics_inte.workingband.length">
-              频段: <span>{{goods_data_list.new_electrics_inte.workingband.join("/")}}/</span> M
+              频段: <span>{{goods_data_list.new_electrics_inte.workingband.join("/")}}</span>
             </div>
-            <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.beamgain&&goods_data_list.new_electrics_inte.beamgain.length">
-              增益: <span>{{goods_data_list.new_electrics_inte.beamgain.join("/")}}/</span> dBi
+            <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.cellbeam_2&&goods_data_list.new_electrics_inte.cellbeam_2.length">
+              增益: <span>{{goods_data_list.new_electrics_inte.cellbeam_2.join("/")}}</span> dBi
             </div>
             <div class="item-title line-ellispse-2 font-bold" v-if="!!goods_data_list.new_electrics_inte.dipangle&&goods_data_list.new_electrics_inte.dipangle.length">
-              电下倾: <span>{{goods_data_list.new_electrics_inte.dipangle.join("/")}}/</span> °
+              电下倾: <span>{{goods_data_list.new_electrics_inte.dipangle.join("/")}}</span> °
             </div>
           </div>
-  
+
           <p class="color-gray">SAP:{{goods_data_list.bn}}</p>
           <p class="color-danger" v-if="false">¥{{goods_data_list.price}}</p>
           <p class="color-danger">市场价: <span class="font-bold">¥{{goods_data_list.mktprice||'暂无'}}</span>
@@ -41,11 +41,10 @@
           <vue-q-art v-if="false" :config="config" class="qrcode-content"></vue-q-art>
         </flexbox-item>
       </flexbox>
-  
       <group class="margin-tb-4">
         <x-number class="font-mini" title="数量" :min="1" :max="99" v-model="quantity"></x-number>
       </group>
-  
+
       <div class="goods-desc" style="height:100%;padding-bottom:3rem;box-sizing:border-box">
         <tab v-model="index" active-color="#FB4F5B">
           <tab-item>商品详情</tab-item>
@@ -53,7 +52,7 @@
           <tab-item v-if="false">服务信息</tab-item>
         </tab>
         <div v-if="index==0" class="padding-tb-6 padding-rl-4">
-          <div v-html="goods_data_list.content"></div>
+          <div v-html="goods_data_list.content" class="goods-desc-content"></div>
         </div>
         <div v-if="index==1" class="params-cell">
           <div @click="collapse(1)" v-if="goods_data_list.new_electrics.has_item" :class="{'border-1px-b':!collapse1}" class="collapse_title color-danger bg-sliver padding-rl-10 padding-tb-6">
@@ -189,7 +188,7 @@
   import VueQArt from 'vue-qart'
   import QArt from 'qartjs'
   import api from '../api/index.js'
-  
+
   import {
     Swiper,
     Flexbox,
@@ -274,7 +273,7 @@
         total: 0,
       }
     },
-  
+
     methods: {
       show: function(index) {
         console.log("展示");
@@ -322,7 +321,7 @@
               }
             }
             data['new_' + key] = new_obj;
-  
+
             self.goods_data_list = data;
           }
         }
@@ -346,13 +345,20 @@
         console.log("________________________");
         console.log($(".goods-desc img"));
         self.list = [];
+        if($(".goods-desc img").length==0){
+          var timer=null;
+          timer=setTimeout(function(){
+            self.show_previewer();
+          },2000);
+          return;
+        }
+        console.log("加载完成***************");
         $(".goods-desc img").addClass("previewer-demo-img");
-        $.each($(".goods-desc img"), function(i, n) {
+        $.each($(".previewer-demo-img"), function(i, n) {
           var obj = {
             src: $(this).attr("src"),
             w: ($(this).width() + 8) * 2,
             h: $(this).height() * 2
-  
           };
           self.list.push(obj);
           // $(this).addClass("previewer-demo-img");
@@ -362,7 +368,7 @@
           })
         })
         console.log(self.list);
-  
+
       },
       add_cart: function() {
         console.log("加入购物车");
@@ -384,7 +390,7 @@
         })
         //this.$router.push("order_confirm");
       },
-  
+
     },
     created: function() {
       var query = this.$route.query;
@@ -417,46 +423,49 @@
   .page-goods .content {
     background-color: #f7f7f7;
   }
-  
+
   .goods-content-swiper {
     height: 100%;
     padding-bottom: 2rem;
     box-sizing: border-box;
   }
-  
+
   .goods-content-swiper>.vux-swiper {
     height: 100%!important;
     overflow-y: scroll;
     box-sizing: border-box;
   }
-  
+
   .goods-content-swiper>.vux-swiper .vux-swiper-item {
     box-sizing: border-box;
   }
-  
+
   .goods .qrcode-content canvas {
     width: 4rem;
     height: 4rem;
   }
-  
+
   .params-cell {
     padding-bottom: 2.3rem;
   }
-  
+
   .params-cell .weui-cell {
     padding: 10px 5px;
   }
-  
+
   .params-cell .vux-cell-primary {
     flex: 0.5
   }
-  
+
   .params-cell .weui-cell__ft {
     flex: 1.4;
     text-align: center;
   }
-  
+
   #app>.goods .bar-secondary {
     bottom: 0;
+  }
+  .goods-desc-content{
+    padding-bottom:1rem;
   }
 </style>

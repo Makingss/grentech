@@ -11,16 +11,16 @@ export const app_config = {
     slogen_image:'/static/add/slogen.png',
     slogen:'国人通信荣誉出品',
     slogen_color:'#CEB567',
-    show_time: 3300,//广告展示时间----->intercept_time  
+    show_time: 3300,//广告展示时间----->intercept_time
     text: '<div class="brand-logo margin-tb-20"><img src="/static/slice/logo_300.png" /></div><p class="margin-tb-10 color-success">中国领先的无线通信与信息网络服务提供商</p>',
     desc: '',
     url: '#/home',
   },
   logo_image: "/static/slice/logo_300.png", //logo 图片设置
   intercept: true, //是否启用登陆拦截
-  intercept_time: 3000, //登陆拦截时间
-  intercept_closeable: true, //登陆拦截是否可关闭
-  /* 
+  intercept_time: 4000, //登陆拦截时间  3000
+  intercept_closeable: false, //登陆拦截是否可关闭
+  /*
     storage配置项
     localStorage,
     sessionStorage,

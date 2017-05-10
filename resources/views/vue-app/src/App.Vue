@@ -80,12 +80,12 @@ import api from './api'
           show_back: false
         },
         navbar: {
-          
+
         }
       }
     },
     computed:{
-      
+
     },
     methods: {
       submit_login:function(){
@@ -111,7 +111,7 @@ import api from './api'
             if(res.ok){
               var res_data=res.data;
               if(res.data.res){
-                
+
                 self.$vux.toast.show({
                   text:'<span class="font-normal">'+res_data.req+'</span>',
                   type:'success'
@@ -127,7 +127,7 @@ import api from './api'
                 //   text:'<span class="font-normal">'+res.data.req+'</span>',
                 //   type:'warn'
                 // })
-                
+
               }
             }else{
               self.login_msg=res.data.req;
@@ -150,7 +150,7 @@ import api from './api'
         this.navbar=config.app_config.navbar;
        //判断当前是否存在用户信息,启用登陆拦截
        var result=null;
-       
+
        if (config.app_config.intercept) {
          //如果已存在用户信息,重新拉取授权,否则进行登陆拦截
          if(!!window.localStorage.refresh_token&&!!window.localStorage.client_id&&window.localStorage.client_secret){
@@ -202,8 +202,8 @@ import api from './api'
 </script>
 
 <style lang="less">
-  
-  .slide-transition { 
+
+  .slide-transition {
    transition: all 0.1s ease;
   }
   .switch {
@@ -214,14 +214,14 @@ import api from './api'
     color: #fff;
     z-index: 100000;
   }
-  
+
   .popup-login-close~.login-logo {
     margin-top: 20%;
   }
-  
+
   #app .vux-popup-dialog {
     background-color: #fff;
     // background-color:#283852;
   }
-  
+
 </style>

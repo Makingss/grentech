@@ -121,7 +121,7 @@ export default {
           children:[]
         },
       category_list:[
-       
+
       ],
       // category_list:[
       //   {
@@ -395,7 +395,7 @@ export default {
     //初始化场景类别
     // this.init_scene_list();
     this.init_goods_category();
-   
+
   },
   methods:{
     jump_list:function(id){
@@ -453,7 +453,7 @@ export default {
     submit_search:function(){
       var self=this;
       self.$router.push({name:'list',query:{search:self.search_input}});
-      
+
     },
     clear_history:function(){
       console.log("清除历史记录");
@@ -464,7 +464,7 @@ export default {
       if(!!_children.children&&_children.children.length>0&&index!=0){
         this.choose_node=_children;
         this.node_index=index;
-        
+
       }else if(index==0){
         this.choose_node=this.category_list[0];
         this.node_index=0;
@@ -476,12 +476,12 @@ export default {
           // self.category_list=category_data;
           self.choose_node=self.category_list[0];
           window.sessionStorage.category_list=JSON.stringify(self.category_list);
-         
+
     },
     get_goods_keywords:function(){
       var self=this;
       if(!!window.sessionStorage.kwds&&window.sessionStorage.kwds!='undefined'){
-         
+
           try{
              self.history_data.kwds=JSON.parse(window.sessionStorage.kwds);
              console.log(self.history_data);
@@ -497,7 +497,7 @@ export default {
     handle_goods_kwds:function(){
       var self=this;
        api.get_keywords({}).then(res=>{
-          
+
             if(res.data.length){
               self.history_data.kwds=res.data;
               window.sessionStorage.kwds=JSON.stringify(res.data);

@@ -36,6 +36,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/shopcart', 'ShopcartController@index');
+<<<<<<< HEAD
 Route::get('/passport_login', 'Passport_loginController@index');
 Route::get('/passport_register', 'Passport_registerController@index');
 Route::get('/mall_goodsdetail', 'Mall_goodsdetailController@index');
@@ -44,6 +45,25 @@ Route::get('/app_link', 'App_linkController@index');
 Route::get('/footer', 'Mall_footerController@index');
 Route::get('/goods_detail', 'Goods_detailController@index');
 
+=======
+Route::get('/passport_login','Passport_loginController@index');
+Route::get('/passport_register','Passport_registerController@index');
+Route::get('/mall_goodsdetail','Mall_goodsdetailController@index');
+Route::get('/mall_search','Mall_searchController@index');
+Route::get('/app_link','App_linkController@index');
+Route::get('/footer','Mall_footerController@index');
+Route::get('/goods_detail','Goods_detailController@index');
+Route::get('/mall_user','Mall_userController@index');
+Route::get('/myorder','MyorderController@index');
+Route::get('/orders_detail','Orders_detailController@index');
+Route::get('/order_evaluate','Order_evaluateController@index');
+Route::get('/user_info','User_infoController@index');
+Route::get('/safety_center','Safety_centerController@index');
+Route::get('/address_list','Address_listController@index');
+Route::get('/after_service','After_serviceController@index');
+Route::get('/after_orderlist','After_orderlistController@index');
+Route::get('/after_apply','After_applyController@index');
+>>>>>>> 4c6e3a3a468073dcf500a16cd76ddf64ca162de0
 /*
 	***************************end*************************
 */

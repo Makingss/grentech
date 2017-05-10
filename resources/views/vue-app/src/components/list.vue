@@ -18,7 +18,7 @@
                 </div>
                 <div v-if="!!item.new_electrics&&item.new_electrics.has_item">
                   <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics.workingband&&item.new_electrics.workingband.length">
-                    频段: <span>{{item.new_electrics.workingband.join("/")}}</span> M
+                    频段: <span>{{item.new_electrics.workingband.join("/")}}</span>
                   </div>
                   <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics.beamgain&&item.new_electrics.beamgain.length">
                     增益: <span>{{item.new_electrics.beamgain.join("/")}}</span> dBi
@@ -29,10 +29,10 @@
                 </div>
                 <div v-if="!!item.new_electrics_inte&&item.new_electrics_inte.has_item">
                   <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.workingband&&item.new_electrics_inte.workingband.length">
-                    频段: <span>{{item.new_electrics_inte.workingband.join("/")}}</span> M
+                    频段: <span>{{item.new_electrics_inte.workingband.join("/")}}</span>
                   </div>
-                  <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.beamgain&&item.new_electrics_inte.beamgain.length">
-                    增益: <span>{{item.new_electrics_inte.beamgain.join("/")}}</span> dBi
+                  <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.cellbeam_2&&item.new_electrics_inte.cellbeam_2.length">
+                    增益: <span>{{item.new_electrics_inte.cellbeam_2.join("/")}}</span> dBi
                   </div>
                   <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.dipangle&&item.new_electrics_inte.dipangle.length">
                     电下倾: <span>{{item.new_electrics_inte.dipangle.join("/")}}</span> °
@@ -57,7 +57,7 @@
             <div class="item-title">{{item.name}}</div>
             <div v-if="!!item.new_electrics&&item.new_electrics.has_item">
               <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics.workingband&&item.new_electrics.workingband.length">
-                频段: <span>{{item.new_electrics.workingband.join("/")}}</span> M
+                频段: <span>{{item.new_electrics.workingband.join("/")}}</span>
               </div>
               <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics.beamgain&&item.new_electrics.beamgain.length">
                 增益: <span>{{item.new_electrics.beamgain.join("/")}}</span> dBi
@@ -68,10 +68,10 @@
             </div>
             <div v-if="!!item.new_electrics_inte&&item.new_electrics_inte.has_item">
               <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.workingband&&item.new_electrics_inte.workingband.length">
-                频段: <span>{{item.new_electrics_inte.workingband.join("/")}}</span> M
+                频段: <span>{{item.new_electrics_inte.workingband.join("/")}}</span>
               </div>
-              <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.beamgain&&item.new_electrics_inte.beamgain.length">
-                增益: <span>{{item.new_electrics_inte.beamgain.join("/")}}</span> dBi
+              <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.cellbeam_2&&item.new_electrics_inte.cellbeam_2.length">
+                增益: <span>{{item.new_electrics_inte.cellbeam_2.join("/")}}</span> dBi
               </div>
               <div class="item-title line-ellispse-2 font-bold" v-if="!!item.new_electrics_inte.dipangle&&item.new_electrics_inte.dipangle.length">
                 电下倾: <span>{{item.new_electrics_inte.dipangle.join("/")}}</span> °
@@ -94,7 +94,7 @@
     </div>
   </div>
 </template>
-  
+
 <script>
   import api from '../api'
   import * as config from '../config/config.js'
@@ -147,7 +147,7 @@
       this.handler_query();
       console.log("创建111111111");
     },
-  
+
     methods: {
       handle_scroll: function(el) {
         el = $(el.target);
@@ -156,7 +156,7 @@
         let scrollTop = parseFloat(el.scrollTop());
         var view_height = height + scrollTop;
         var scrollHeight = el[0].scrollHeight;
-  
+
         if (scrollHeight - view_height < 40) {
           //调用加载功能
           console.log("上拉加载");
@@ -268,7 +268,7 @@
                   if (k == "created_at" || k == "id" || k == "updated_at" || k == "type" || k == "goods_id") {
                     continue;
                   }
-  
+
                   if (!!res_data.data[n][key][i][k]) {
                     new_obj['new_' + key]["has_item"] = true;
                     if (!new_obj['new_' + key][k]) {
@@ -284,11 +284,13 @@
           }
           new_arr.push(new_obj);
         }
+        console.log("*+++++++++**+++++++++++++++++++");
+        console.log(new_arr);
         // self.$store.state.goods.goods_list=res_data;
         // self.goods_data=self.goods_data.concat(res_data.data);
         self.goods_data = self.goods_data.concat(new_arr);
         // self.goods_data = self.goods_data.concat(res_data.data);
-        console.log(self.goods_data);
+      
         self.current_page = res_data.current_page;
         self.next_page_url = res_data.next_page_url;
         self.last_page = res_data.last_page;
@@ -306,7 +308,7 @@
         }
       }
     }
-  
+
   }
 </script>
 
@@ -319,26 +321,26 @@
     bottom: 2.3rem;
     box-sizing: border-box;
   }
-  
+
   .page-list .content-box {
     height: 100%;
     overflow-y: scroll;
   }
-  
+
   #app .list.content {
     overflow-y: scroll;
     height: 100%;
     margin-top: 2.2rem;
   }
-  
+
   .list-search {
     position: static!important;
   }
-  
+
   .list.content .scroll-content {
     padding-bottom: 0;
   }
-  
+
   .search-icon {
     width: 2.2rem;
     height: 2.2rem;
@@ -348,7 +350,7 @@
     z-index: 199;
     background-color: #EFEFF4;
   }
-  
+
   .list-search {
     padding-left: 2.2rem;
     background-color: #EFEFF4;
