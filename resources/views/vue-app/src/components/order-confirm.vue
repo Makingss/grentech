@@ -25,7 +25,7 @@
                 </flexbox>
             </div>
             <div class="margin-tb-4 bg-white">
-                <flexbox class="padding-tb-10" :gutter="0" wrap='nowrap' v-for="(item,index) in cart_data" :class="{'border-1px-b':index<order_data.length-1}">
+                <flexbox class="padding-tb-10" :gutter="0" wrap='nowrap' v-for="(item,index) in cart_data" :class="{'border-1px-b':index<cart_data.length-1}">
                     <flexbox-item class="item-media text-center link-img" :span="3/12">
                         <img :src="item.images.url" alt="">
                     </flexbox-item>
@@ -94,7 +94,7 @@
         <tabbar class="bar-secondary bar order-confirm-bar">
             <tabbar-item style="background-color:transparent">
                 <div slot="label" class="color-dark">
-                    合计: <span class="color-danger">¥ </span><span class="font-2x color-danger">2695.00</span>
+                    合计: <span class="color-danger">¥ </span><span class="font-2x color-danger">{{cart_data[0].total_amount}}</span>
                 </div>
             </tabbar-item>
             <tabbar-item class="bg-danger" @click.native="submit_order_data">
