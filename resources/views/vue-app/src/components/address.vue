@@ -113,8 +113,7 @@
       },
       edit_address: function($index) {
         var self = this;
-        console.log("+++++++++++++++++++");
-        console.log(this.popup_address);
+        //console.log(this.popup_address);
         if (!this.popup_address) {
           //关闭状态-->打开
           this.edit_status = true;
@@ -132,7 +131,7 @@
       fetch_addrs: function() {
         var self = this;
         api.get_addrs().then(res => {
-          console.log(res);
+          //console.log(res);
           if (res.ok) {
             if (res.data.constructor == Array) {
               this.address_list = res.data;
@@ -159,7 +158,7 @@
         this.popup_address = false;
         //判断当前处于更新状态还是新增状态
         var area = self.getName(self.address_data.code);
-        console.log(area);
+        //console.log(area);
         if (area!='') area = area.split(" ").join("/");
         
         //校验数据完整程度
@@ -209,7 +208,7 @@
             addr_id: self.address_data.id,
             code:self.address_data.code.join("/"),
           }).then(res => {
-            console.log(res);
+           // console.log(res);
             
             if(res.ok){
               if(res.data.status){
@@ -242,7 +241,7 @@
             mobile: self.address_data.mobile,
             code:self.address_data.code.join("/")
           }).then(res => {
-            console.log(res);
+            //console.log(res);
             if (res.ok) {
               if (res.data.status) {
                 self.$vux.toast.show({
@@ -272,7 +271,7 @@
       },
       del_addr: function(index) {
         var self = this;
-        console.log(index);
+        //console.log(index);
         //弹窗确认
         self.$vux.confirm.show({
           title:'确定删除改地址',
@@ -283,7 +282,7 @@
             api.del_addr({
               addr_id: self.address_list[index].id,
             }).then(res => {
-              console.log(res);
+              //console.log(res);
               if (res.ok) {
                 if (res.data.code == "200") {
                   self.$vux.toast.show({

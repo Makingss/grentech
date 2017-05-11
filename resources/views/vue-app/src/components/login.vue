@@ -69,7 +69,7 @@
           username: self.username,
           password: self.password
         }).then(res => {
-          console.log(res);
+          //console.log(res);
   
           if (res.ok) {
             if (res.data.res) {

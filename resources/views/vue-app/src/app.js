@@ -28,13 +28,13 @@ Vue.use(VueResource);
 // require('vue2-animate/dist/vue2-animate.min.css')
 let ad = config.app_config.ad;
 router.beforeEach((to, from, next) => {
-  console.log("路由切换");
+  //console.log("路由切换");
   //判断 token---登陆拦截
 
   // NProgress.start();
   if (!from.name && to.name == "home") {
     //init app
-    console.log("首次进入");
+    //console.log("首次进入");
     router.app.isIndex = true;
     if (ad.is_show) {
       util.init_ad.show(ad);

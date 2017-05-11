@@ -36,7 +36,6 @@
                         <div class="item-title font-mini padding-l-10 line-ellispse-2" v-if="!!item.electrics&&item.electrics.length">
                             频段:
                             <span v-for="(_item,_index) in item.electrics" v-if="!!_item.workingband">{{_item.workingband}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].workingband">/</i></span>
-                           
                         </div>
                         <div class="item-title font-mini padding-l-10 line-ellispse-2" v-if="!!item.electrics&&item.electrics.length">
                             增益: <span v-for="(_item,_index) in item.electrics" v-if="!!_item.beamgain">{{_item.beamgain}}<i v-if="(_index!=item.electrics.length-1)&&!!item.electrics[_index+1].beamgain">/</i></span>
@@ -51,11 +50,7 @@
                         </div>
                         <div class="item-subtitle padding-l-10">
                             <p v-if="false">产品描述:{{item.product_desc}}</p>
-                            <p>市场价: <span class="color-danger font-bold">¥{{item.mktprice}}</span></p>
-                        </div>
-                        <div class="item-subtitle">
-                            <x-number :title="quantity" :min="1" :max="99" :value="item.cart_objects.quantity" @on-change="update_cart" class="padding-rl-10 padding-tb-6 font-normal" width="40px">
-                            </x-number>
+                            <p>市场价: <span class="color-danger font-bold">¥{{item.mktprice}}</span> <span class="font-dark pull-right">×{{item.cart_objects.quantity}}</span></p>
                         </div>
                     </flexbox-item>
                 </flexbox>
@@ -154,7 +149,23 @@
                 ship_addr: "测试街道XX",
                 ship_area: ["广东省", "深圳市", "福田区"], //缓存选中地区
                 order_data: [],
-                cart_data: [],
+                cart_data: [{
+                    total_amount: 0,
+                    images: {
+                        url: '',
+                    },
+                    cart_objects:{
+                        quantity:1
+                    }
+                },{
+                    total_amount: 0,
+                    images: {
+                        url: '',
+                    },
+                    cart_objects:{
+                        quantity:1
+                    }
+                }],
                 memo: '',
                 popup_address: false,
                 edit_status: false,
@@ -186,7 +197,7 @@
             fetch_cart_data: function() {
                 var self = this;
                 api.get_cart_data().then(res => {
-                    console.log(res);
+                    //console.log(res);
                     if (res.ok) {
                         if (res.data.data.length) {
                             self.cart_data = res.data.data;
@@ -205,14 +216,14 @@
     
             submit_order_data: function() {
                 var self = this;
-                console.log(this.cart_data);
-                console.log(this.memo);
+                //console.log(this.cart_data);
+                //console.log(this.memo);
     
                 var cart_id = [];
                 for (var i = 0; i < this.cart_data.length; i++) {
                     cart_id.push(this.cart_data[i].cart_objects.id);
                 }
-                console.log(cart_id);
+                //console.log(cart_id);
                 //检查数据完整程度
     
                 if (this.ship_area == "") {
@@ -248,7 +259,7 @@
                         cart_id: cart_id
                     })
                 }
-                console.log(order_data);
+                //console.log(order_data);
     
                 api.add_order(order_data).then(res => {
                     if (res.ok) {
@@ -268,7 +279,7 @@
                             })
                         }
                     }
-                    console.log(res);
+                    //console.log(res);
                 })
             },
             getName: function(value) {
@@ -276,8 +287,7 @@
             },
             edit_address: function($index) {
                 var self = this;
-                console.log("+++++++++++++++++++");
-                console.log(this.popup_address);
+                //console.log(this.popup_address);
                 if (!this.popup_address) {
                     //关闭状态-->打开
                     this.edit_status = true;
@@ -295,7 +305,7 @@
             fetch_addrs: function() {
                 var self = this;
                 api.get_addrs().then(res => {
-                    console.log(res);
+                    //console.log(res);
                     if (res.ok) {
                         if (res.data.constructor == Array) {
                             this.address_list = res.data;
@@ -322,7 +332,7 @@
                 this.popup_address = false;
                 //判断当前处于更新状态还是新增状态
                 var area = self.getName(self.address_data.code);
-                console.log(area);
+                //console.log(area);
                 if (area != '') area = area.split(" ").join("/");
     
                 //校验数据完整程度
@@ -372,7 +382,7 @@
                         addr_id: self.address_data.id,
                         code: self.address_data.code.join("/"),
                     }).then(res => {
-                        console.log(res);
+                        //console.log(res);
     
                         if (res.ok) {
                             if (res.data.status) {
@@ -403,9 +413,9 @@
                         addr: '*暂无*',
                         name: self.address_data.name,
                         mobile: self.address_data.mobile,
-                        code:self.address_data.code.join("/")
+                        code: self.address_data.code.join("/")
                     }).then(res => {
-                        console.log(res);
+                        //console.log(res);
                         if (res.ok) {
                             if (res.data.status) {
                                 self.$vux.toast.show({
@@ -435,7 +445,7 @@
             },
             del_addr: function(index) {
                 var self = this;
-                console.log(index);
+                //console.log(index);
                 //弹窗确认
                 self.$vux.confirm.show({
                     title: '确定删除改地址',
@@ -446,7 +456,7 @@
                         api.del_addr({
                             addr_id: self.address_list[index].id,
                         }).then(res => {
-                            console.log(res);
+                            //console.log(res);
                             if (res.ok) {
                                 if (res.data.code == "200") {
                                     self.$vux.toast.show({

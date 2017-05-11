@@ -36,10 +36,10 @@
             get_access_token:function(){
                 var self=this;
                 var query=this.$route.query;
-                console.log(query);
+                //console.log(query);
                 alert("1111");
                 api.get_token(query).then(res=>{
-                    console.log(res);
+                    //console.log(res);
                     var res_data=res.data;
                     if(res_data.res){
                         self.res_msg=self.success_msg;

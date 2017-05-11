@@ -63,7 +63,7 @@ export default {
       }
     },
     clear_history:function(){
-      console.log("clear_history");
+      //console.log("clear_history");
     }
   },
   props:{

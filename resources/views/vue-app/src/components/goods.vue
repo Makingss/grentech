@@ -276,8 +276,8 @@
 
     methods: {
       show: function(index) {
-        console.log("展示");
-        console.log(this.list);
+        //console.log("展示");
+        //console.log(this.list);
         this.$refs.previewer.show(index);
       },
       collapse: function(index) {
@@ -292,7 +292,7 @@
         }).then((res) => {
           // self.goods_data_list=res.data.data[0];
           self.handle_goods_data(res.data.data[0]);
-          console.log(res);
+          //console.log(res);
         });
       },
       handle_goods_data: function(data) {
@@ -342,8 +342,8 @@
       },
       show_previewer: function() {
         var self = this;
-        console.log("________________________");
-        console.log($(".goods-desc img"));
+        //console.log("________________________");
+        //console.log($(".goods-desc img"));
         self.list = [];
         if($(".goods-desc img").length==0){
           var timer=null;
@@ -352,7 +352,7 @@
           },2000);
           return;
         }
-        console.log("加载完成***************");
+        //console.log("加载完成***************");
         $(".goods-desc img").addClass("previewer-demo-img");
         $.each($(".previewer-demo-img"), function(i, n) {
           var obj = {
@@ -363,15 +363,15 @@
           self.list.push(obj);
           // $(this).addClass("previewer-demo-img");
           $(this).on("click", function() {
-            console.log(i);
+            //console.log(i);
             self.show(i);
           })
         })
-        console.log(self.list);
+        //console.log(self.list);
 
       },
       add_cart: function() {
-        console.log("加入购物车");
+        //console.log("加入购物车");
         var self = this;
         var goods_id = self.goods_data_list.goods_id;
         api.add_cart({
@@ -379,8 +379,8 @@
           quantity: self.quantity,
           // fastbuy:true
         }).then(res => {
-          console.log("+++++++++++");
-          console.log(res);
+          //console.log("+++++++++++");
+          //console.log(res);
           if (res.ok) {
             self.$vux.toast.show({
               text: '<span class="font-normal">' + '加入购物车成功' + '</span>',
@@ -394,7 +394,7 @@
     },
     created: function() {
       var query = this.$route.query;
-      console.log("create good page");
+    //console.log("create good page");
       this.goods_id = query.goods_id;
       this.item_index = query.item_index;
       this.init_goods_page(query);

@@ -145,7 +145,7 @@
     },
     created: function() {
       this.handler_query();
-      console.log("创建111111111");
+      
     },
 
     methods: {
@@ -159,7 +159,7 @@
 
         if (scrollHeight - view_height < 40) {
           //调用加载功能
-          console.log("上拉加载");
+          //console.log("上拉加载");
           this.loadMore();
           return false;
         }
@@ -168,7 +168,7 @@
         this.type = this.type == 'medium' ? 'large' : 'medium';
       },
       submit_search: function() {
-        console.log("搜索测试");
+        
         var self = this;
         this.$router.push({
           name: 'list',
@@ -187,16 +187,16 @@
         if (this.loading) {
           return
         }
-        console.log("触发加载");
+       
         this.loading = true;
         let scroller = $(".container");
-        console.log(self.next_page_url);
+        //console.log(self.next_page_url);
         if (!!self.next_page_url) {
           api.get_page_data(self.next_page_url, {
             relations: ["images", "image_attach", "mechanics", "goods_ports", "assemblies", "standardfits", "electrics", "electrics_inte"],
             per_page: 10
           }).then(res => {
-            console.log(res);
+            //console.log(res);
             self.loading = false;
             if (res.data.data && res.data.data.length > 0) {
               self.commit_resdata(res.data)
@@ -215,11 +215,11 @@
             search: self.search_input
           };
         }
-        console.log(query);
+        //console.log(query);
         query.relations = ["images", "image_attach"];
         var loading = false;
-        console.log(query);
-        console.log("---------------------");
+        //console.log(query);
+        
         if (query["search"] && !loading) {
           loading = true;
           api.get_search_result({
@@ -227,7 +227,7 @@
             search: query.search,
             per_page: 10
           }).then(res => {
-            console.log(res);
+            //console.log(res);
             loading = false;
             self.commit_resdata(res.data, params);
           })
@@ -237,8 +237,8 @@
             id: query.keyword,
             per_page: 10
           }).then(res => {
-            console.log("查询关键字商品");
-            console.log(res);
+            //console.log("查询关键字商品");
+            //console.log(res);
             self.commit_resdata(res.data, params);
           })
         } else {
@@ -247,14 +247,14 @@
             parameters: query,
             per_page: 10
           }).then(res => {
-            console.log(res);
+            //console.log(res);
             self.commit_resdata(res.data);
           })
         }
       },
       commit_resdata: function(res_data, params) {
         var self = this;
-        console.log(params);
+        //console.log(params);
         var new_arr = [];
         // console.log
         for (var n = 0; n < res_data.data.length; n++) {
@@ -284,8 +284,8 @@
           }
           new_arr.push(new_obj);
         }
-        console.log("*+++++++++**+++++++++++++++++++");
-        console.log(new_arr);
+        
+        //console.log(new_arr);
         // self.$store.state.goods.goods_list=res_data;
         // self.goods_data=self.goods_data.concat(res_data.data);
         self.goods_data = self.goods_data.concat(new_arr);

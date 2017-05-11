@@ -24,7 +24,7 @@ export default {
   },
   methods:{
     collapse:function(){
-      console.log('col');
+      //console.log('col');
       this.is_show=!this.is_show;
     }
   }

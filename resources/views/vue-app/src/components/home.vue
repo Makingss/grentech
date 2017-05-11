@@ -249,8 +249,8 @@
           }
           new_arr.push(new_obj);
         }
-        console.log("+++++++++++++++");
-        console.log(new_arr);
+       
+        //console.log(new_arr);
 
         // self.scroller_data.data = self.scroller_data.data.concat(res_data.data);
         self.scroller_data.data = self.scroller_data.data.concat(new_arr);
@@ -274,7 +274,7 @@
         if (this.loading) {
           return
         }
-        console.log("触发加载");
+        //console.log("触发加载");
         this.loading = true;
         let scroller = $(".container");
         if (!!self.scroller_data.next_page_url) {
@@ -282,7 +282,7 @@
             relations: ["images", "image_attach", "mechanics", "goods_ports", "assemblies", "standardfits", "electrics", "electrics_inte"],
             per_page: 10
           }).then(res => {
-            console.log(res);
+            //console.log(res);
             self.loading = false;
             if (res.data.data && res.data.data.length > 0) {
               self.handle_res_data(res.data)

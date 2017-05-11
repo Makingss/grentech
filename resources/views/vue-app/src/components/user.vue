@@ -164,13 +164,13 @@ export default {
     check_locl_token:function(){
        var self=this;
        var result=this.check_token();
-       console.log(result);
+       //console.log(result);
        if(result==1){
          //未登录用户---不做任何操作
        }else if(result==2){
           //token过期用户
           self.refresh_token(function(){
-             console.log("回调执行");
+             //console.log("回调执行");
              self.fetch_user_info();
           });
        }else if(result==3){
@@ -182,9 +182,9 @@ export default {
     fetch_user_info:function(){
           //拉取用户信息
           var self=this;
-          console.log("拉取用户信息");
+          //console.log("拉取用户信息");
           api.get_user_info().then(res=>{
-               console.log(res.data);
+               //console.log(res.data);
                if(res.data.id){
                   self.loading_status=true;
                   self.name=res.data.name;
@@ -192,8 +192,8 @@ export default {
                   self.avatar='/uploads/'+res.data.avatar;
                   self.email=res.data.email||'';
                   window.sessionStorage.user_info=JSON.stringify(res.data);
-                  console.log("+++++++");
-                  console.log(self.loading_status);
+                  //console.log("+++++++");
+                  //console.log(self.loading_status);
                }
           })
     }

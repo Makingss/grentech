@@ -107,7 +107,7 @@ import api from './api'
             username:self.username,
             password:self.password
           }).then(res=>{
-            console.log(res);
+            //console.log(res);
             if(res.ok){
               var res_data=res.data;
               if(res.data.res){
@@ -158,8 +158,7 @@ import api from './api'
           if(result==1){
             self.intercept_login();
           }
-          console.log("]]]]]]]]]]]]]]]");
-          console.log(result);
+          //console.log(result);
          }else{
            //登陆拦截
            self.intercept_login();

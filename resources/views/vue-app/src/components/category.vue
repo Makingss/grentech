@@ -402,12 +402,12 @@ export default {
       this.$router.push({name:"list",query:{keyword:id}})
     },
     input_change:function(){
-      console.log("change");
+      //console.log("change");
     },
     init_scene_list:function(){
       var self=this;
       api.get_cat_list().then(res=>{
-        console.log(res);
+        //console.log(res);
         self.scene=res.data;
         for(var i=0;i<self.scene.length;i++){
           self.scene[i].img=self.scene_images[i].img;
@@ -422,7 +422,7 @@ export default {
             self.category_list=JSON.parse(window.sessionStorage.category_list);
             self.choose_node=self.category_list[0];
           }catch(e){
-            console.log(e);
+            //console.log(e);
             self.handle_goods_category();
           }
         }else{
@@ -443,8 +443,8 @@ export default {
           self.category_list=category_data;
           self.choose_node=this.category_list[0];
           self.node_index=0;
-          console.log(self.category_list);
-          console.log(self.choose_node);
+          //console.log(self.category_list);
+          //console.log(self.choose_node);
           window.sessionStorage.category_list=JSON.stringify(self.category_list);
            //获取关键字列表-----关闭
           // this.get_goods_keywords();
@@ -456,7 +456,7 @@ export default {
 
     },
     clear_history:function(){
-      console.log("清除历史记录");
+      //console.log("清除历史记录");
     },
     handle_folder:function(index){
       var self=this;
@@ -484,10 +484,10 @@ export default {
 
           try{
              self.history_data.kwds=JSON.parse(window.sessionStorage.kwds);
-             console.log(self.history_data);
+             //console.log(self.history_data);
              self.handle_data_concat();
           }catch(e){
-            console.log(e);
+            //console.log(e);
             self.handle_goods_kwds();
           }
       }else{

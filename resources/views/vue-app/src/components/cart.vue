@@ -72,7 +72,7 @@
   
       },
       handle_delete: function(index) {
-        console.log(index);
+        //console.log(index);
         var self = this;
         //执行确认操作
         self.$vux.confirm.show({
@@ -82,7 +82,7 @@
             self.$vux.confirm.hide();
           },
           onConfirm: function() {
-            console.log("确认删除");
+            //console.log("确认删除");
             self.$vux.confirm.hide();
             self.del_cart(index);
           }
@@ -93,7 +93,7 @@
         api.del_cart({
           id: self.cart_data[index].cart_objects.id
         }).then(res => {
-          console.log(res);
+          //console.log(res);
           if (res.ok) {
             if (res.data.status) {
               self.$vux.toast.show({
@@ -118,7 +118,7 @@
       fetch_data: function() {
         var self = this;
         api.get_cart_data().then(res => {
-          console.log(res);
+          //console.log(res);
           if (res.ok) {
             if (res.data.data.length) {
               self.cart_data = res.data.data;
@@ -135,7 +135,7 @@
         })
       },
       submit_order: function() {
-        console.log("提交订单需求");
+        //console.log("提交订单需求");
         this.$router.push("order_confirm");
       }
     },

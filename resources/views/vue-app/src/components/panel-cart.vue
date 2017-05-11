@@ -54,13 +54,13 @@
       index:Number
     },
     created: function() {
-      console.log(this.item);
+      //console.log(this.item);
     },
     methods:{
       update_cart:function(val){
         var self=this;
-        console.log(val);
-        console.log("}}}}}}}}}}");
+        //console.log(val);
+        //console.log("}}}}}}}}}}");
         if(self.item.cart_objects.quantity==val) return;
         if(val==0) return;
        
@@ -69,7 +69,7 @@
           goods_id:self.item.cart_objects.goods_id,
           id:self.item.cart_objects.id
         }).then(res=>{
-          console.log(res);
+          //console.log(res);
           if(res.ok){
             if(res.status){
               //什么也不做
