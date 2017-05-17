@@ -62,6 +62,11 @@ class Order extends Model
 		$cartObject = CartObject::whereIn('id', $sumQuantity->cart_id)->get();
 		return $cartObject;
 	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 * 订单与会员的关系
+	 */
     public function getMember()
     {
         return $this->hasone(Administrator::class,'id','member_id');

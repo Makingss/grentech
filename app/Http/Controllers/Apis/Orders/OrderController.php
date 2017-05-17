@@ -5,6 +5,7 @@ use App\Admin\Models\Goods\Good;
 use App\Admin\Models\Members\Member_addr;
 use App\Admin\Models\Orders\Order;
 use App\Admin\Models\Orders\Order_itme;
+use App\Http\Controllers\Apis\Carts\CartObjectController;
 use App\Http\Controllers\Controller;
 use App\Models\Carts\CartObject;
 use Illuminate\Http\Request;
@@ -77,9 +78,12 @@ class OrderController extends Controller
 		$input['shipping_id'] = '1';
 		$input['shipping'] = '快递';
 		$input['ip'] = $_SERVER['REMOTE_ADDR'];
-		$input['itemnum'] = (int)$orders->getSumQuantity($cartId)->map(function ($sumQuantity) {
+		$input['itemnum'] = (int)CartObject::carts($cartId)->map(function ($sumQuantity) {
 			return $sumQuantity->quantity;
 		})->sum();
+//		$input['itemnum'] = (int)$orders->getSumQuantity($cartId)->map(function ($sumQuantity) {
+//			return $sumQuantity->quantity;
+//		})->sum();
 		$input['total_amount'] = $orders->getTotalAmounts($cartId);
 		$input['final_amount'] = $input['total_amount'];
 		$input['memo'] = $request->get('memo');
@@ -90,8 +94,10 @@ class OrderController extends Controller
 			return $order->order_items()->create($orderItem);
 		});
 		$goodsData = $goods->getGoods($order_items->pluck('goods_id')->toArray());
-		$orderDate = $order->with('order_items')->where('order_id',$input['order_id'])->get()->toArray();
+		$orderDate = $order->with('order_items')->where('order_id', $input['order_id'])->get()->toArray();
 		$orderDate[0]['goods'] = $goodsData->toArray();
+		if ($orderDate)
+			CartObject::destroy($cartId->cart_id);
 		return $orderDate;
 	}
 
@@ -160,4 +166,6 @@ class OrderController extends Controller
 		return $collection->pluck('itemnum')->sum('itemnum');
 
 	}
+
+
 }

@@ -26,7 +26,7 @@ class CartObjectController extends Controller
 	public function index()
 	{
 		$cartObject = CartObject::where('member_id', '24')->get();
-		$goods = Good::with('cartObjects','image_attach', 'images', 'mechanics', 'goods_ports',
+		$goods = Good::with('cartObjects', 'image_attach', 'images', 'mechanics', 'goods_ports',
 			'assemblies', 'standardfits', 'electrics', 'aspect_pics', 'mechanics_inte', 'electrics_inte'
 		)->whereIn('goods_id', $cartObject->pluck('goods_id'))->get();//->toArray();
 		foreach ($goods as $dataK => $data) {
@@ -124,4 +124,6 @@ class CartObjectController extends Controller
 	{
 		CartObject::destroy($id);
 	}
+
+
 }

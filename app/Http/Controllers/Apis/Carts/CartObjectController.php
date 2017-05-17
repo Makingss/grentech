@@ -39,12 +39,12 @@ class CartObjectController extends Controller
 	{
 		if (Auth::user()->id) {
 			$cartObject = CartObject::where('member_id', Auth::user()->id)->get();
-			if (Empty($cartObject->toArray())) {
+			if (empty($cartObject->toArray())) {
 				return [
 					"status" => true,
-					"code" => "200",
+					"code" => "201",
 					"msg" => "成功",
-					"data" => []
+					"data" => ''
 				];
 			}
 			$goods = Good::with('cartObjects', 'image_attach', 'images', 'mechanics', 'goods_ports',
@@ -56,8 +56,8 @@ class CartObjectController extends Controller
 					$collects = collect($image_attach);
 					$collapse = $collects->collapse();
 					$goods[$dataK]['image_attach'][$itemK] = $collapse->toArray();
-					$goods['total_amount'] = $goods->sum('mktprice');
 				}
+				$goods[$dataK]['total_amount'] = $goods->sum('mktprice');
 			}
 			return [
 				"status" => true,

@@ -54,4 +54,15 @@ class CartObject extends Model
 		}
 		return $cartGoods;
 	}
+
+	/**
+	 * @param $query
+	 * @param $keyValues
+	 * @return mixed
+	 * 返回购物车数据
+	 */
+	public function scopeCarts($query, $keyValues)
+	{
+		return $query->whereIn('id', $keyValues->cart_id)->get();
+	}
 }
