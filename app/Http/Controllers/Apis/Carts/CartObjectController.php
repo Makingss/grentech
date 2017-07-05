@@ -57,13 +57,15 @@ class CartObjectController extends Controller
 					$collapse = $collects->collapse();
 					$goods[$dataK]['image_attach'][$itemK] = $collapse->toArray();
 				}
-				$goods[$dataK]['total_amount'] = $goods->sum('mktprice');
+				$total[] = $data['cartObjects']['quantity'] * $data['mktprice'];
+				$goods[$dataK]['total_amount'] = collect($total)->sum();
 			}
 			return [
 				"status" => true,
 				"code" => "200",
 				"msg" => "成功",
-				"data" => $goods
+				"data" => $goods,
+				"total" => $goods[$dataK]['total_amount']
 			];
 		}
 //		return [

@@ -194,7 +194,7 @@ return [
 		/*
 		 * Redis 基础类  基础方法
 		 */
-		#App\Providers\RedisBasesProvider::class,
+		App\Providers\RedisBasesProvider::class,
 	],
 
 

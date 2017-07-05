@@ -67,10 +67,11 @@ class Order extends Model
 	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
 	 * 订单与会员的关系
 	 */
-    public function getMember()
-    {
-        return $this->hasone(Administrator::class,'id','member_id');
-    }
+	public function getMember()
+	{
+		return $this->hasone(Administrator::class, 'id', 'member_id');
+	}
+
 	/**
 	 * @return mixed
 	 * 通过购物车信息，获取商品数据。
@@ -78,13 +79,11 @@ class Order extends Model
 	 */
 	public function getTotalAmounts($sumQuantity)
 	{
-		$cartObject = $this->getSumQuantity($sumQuantity);
-		$goods_ids = $cartObject->map(function ($carts) {
-			return $carts->goods_id;
-		});
-		$goods = Good::whereIn('goods_id', $goods_ids->toArray())->get();
-		return $goods->map(function ($good) {
-			return $good->mktprice;
+		$cartObjects = $this->getSumQuantity($sumQuantity);
+		return $cartObjects->map(function ($cartObject) {
+			$goods = Good::where('goods_id', $cartObject->goods_id)->get(['mktprice', 'price']);
+			$total = $goods->pluck('mktprice')->prepend($cartObject->quantity);
+			return $total->first() * $total->last();
 		})->sum();
 	}
 
@@ -120,19 +119,20 @@ class Order extends Model
 		});
 
 	}
-    public function getTableColumns($table = null)
-    {
-        $table = $table ?: $this->table;
-        $getTableArrbs = [];
-        $getTables = DB::select('show full columns from ' . $table);
-        foreach ($getTables as $key => $getTable) {
-            if (is_object($getTable)) {
-                $getTable = (array)$getTable;
-                $getTableArrbs[$getTable['Field']] = $getTable['Comment'];
-            } else {
-                $getTableArrbs[] = $getTable;
-            }
-        }
-        return $getTableArrbs;
-    }
+
+	public function getTableColumns($table = null)
+	{
+		$table = $table ?: $this->table;
+		$getTableArrbs = [];
+		$getTables = DB::select('show full columns from ' . $table);
+		foreach ($getTables as $key => $getTable) {
+			if (is_object($getTable)) {
+				$getTable = (array)$getTable;
+				$getTableArrbs[$getTable['Field']] = $getTable['Comment'];
+			} else {
+				$getTableArrbs[] = $getTable;
+			}
+		}
+		return $getTableArrbs;
+	}
 }

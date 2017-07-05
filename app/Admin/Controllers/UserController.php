@@ -19,200 +19,205 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
-    use ModelForm;
-    protected $http;
+	use ModelForm;
+	protected $http;
 
-    public function __construct(Client $http)
-    {
-        $this->http = $http;
-    }
+	public function __construct(Client $http)
+	{
+		$this->http = $http;
+	}
 
-    /**
-     * Index interface.
-     *
-     * @return Content
-     */
-    public function index()
-    {
+	/**
+	 * Index interface.
+	 *
+	 * @return Content
+	 */
+	public function index()
+	{
 //        $this->update_member_oauth();
-        return Admin::content(function (Content $content) {
-            $content->header(trans('admin::lang.administrator'));
-            $content->description(trans('admin::lang.list'));
-            $content->body($this->grid()->render());
-        });
-    }
+		return Admin::content(function (Content $content) {
+			$content->header(trans('admin::lang.administrator'));
+			$content->description(trans('admin::lang.list'));
+			$content->body($this->grid()->render());
+		});
+	}
 
-    /**
-     * Edit interface.
-     *
-     * @param $id
-     *
-     * @return Content
-     */
-    public function edit($id)
-    {
-        return Admin::content(function (Content $content) use ($id) {
-            $content->header(trans('admin::lang.administrator'));
-            $content->description(trans('admin::lang.edit'));
-            $content->body($this->form()->edit($id));
-        });
-    }
+	/**
+	 * Edit interface.
+	 *
+	 * @param $id
+	 *
+	 * @return Content
+	 */
+	public function edit($id)
+	{
+		return Admin::content(function (Content $content) use ($id) {
+			$content->header(trans('admin::lang.administrator'));
+			$content->description(trans('admin::lang.edit'));
+			$content->body($this->form()->edit($id));
+		});
+	}
 
-    /**
-     * Create interface.
-     *
-     * @return Content
-     */
-    public function create()
-    {
-        return Admin::content(function (Content $content) {
-            $content->header(trans('admin::lang.administrator'));
-            $content->description(trans('admin::lang.create'));
-            $content->body($this->form());
-        });
-    }
+	/**
+	 * Create interface.
+	 *
+	 * @return Content
+	 */
+	public function create()
+	{
+		return Admin::content(function (Content $content) {
+			$content->header(trans('admin::lang.administrator'));
+			$content->description(trans('admin::lang.create'));
+			$content->body($this->form());
+		});
+	}
 
-    /**
-     * Make a grid builder.
-     *
-     * @return Grid
-     */
-    protected function grid()
-    {
-        return Administrator::grid(function (Grid $grid) {
-            $grid->id('ID')->sortable();
-            $grid->username(trans('admin::lang.username'));
-            $grid->name(trans('admin::lang.name'));
-            $grid->roles(trans('admin::lang.roles'))->pluck('name')->label();
-            $grid->created_at(trans('admin::lang.created_at'));
-            $grid->updated_at(trans('admin::lang.updated_at'));
+	/**
+	 * Make a grid builder.
+	 *
+	 * @return Grid
+	 */
+	protected function grid()
+	{
+		return Administrator::grid(function (Grid $grid) {
+			$grid->filter(function ($filter) {
+				$filter->is('username',"用户名");
+				$filter->like('name','名称');
+				$filter->disableIdFilter();
+			});
+			$grid->id('ID')->sortable();
+			$grid->username(trans('admin::lang.username'));
+			$grid->name(trans('admin::lang.name'));
+			$grid->roles(trans('admin::lang.roles'))->pluck('name')->label();
+			$grid->created_at(trans('admin::lang.created_at'));
+			$grid->updated_at(trans('admin::lang.updated_at'));
 
-            $grid->actions(function (Grid\Displayers\Actions $actions) {
-                if ($actions->getKey() == 1) {
-                    $actions->disableDelete();
-                }
-            });
+			$grid->actions(function (Grid\Displayers\Actions $actions) {
+				if ($actions->getKey() == 1) {
+					$actions->disableDelete();
+				}
+			});
 
-            $grid->tools(function (Grid\Tools $tools) {
-                $tools->batch(function (Grid\Tools\BatchActions $actions) {
-                    $actions->disableDelete();
-                });
-            });
+			$grid->tools(function (Grid\Tools $tools) {
+				$tools->batch(function (Grid\Tools\BatchActions $actions) {
+					$actions->disableDelete();
+				});
+			});
 
-            $grid->disableExport();
-        });
-    }
+			$grid->disableExport();
+		});
+	}
 
-    /**
-     * Make a form builder.
-     *
-     * @return Form
-     */
-    public function form()
-    {
-        return Administrator::form(function (Form $form) {
-            $form->display('id', 'ID');
+	/**
+	 * Make a form builder.
+	 *
+	 * @return Form
+	 */
+	public function form()
+	{
+		return Administrator::form(function (Form $form) {
+			$form->display('id', 'ID');
 
-            $form->text('username', trans('admin::lang.username'))->rules('required');
-            $form->text('name', trans('admin::lang.name'))->rules('required');
-            $form->image('avatar', trans('admin::lang.avatar'));
-            $form->password('password', trans('admin::lang.password'))->rules('required|confirmed');
-            $form->password('password_confirmation', trans('admin::lang.password_confirmation'))->rules('required')
-                ->default(function ($form) {
-                    return $form->model()->password;
-                });
+			$form->text('username', trans('admin::lang.username'))->rules('required');
+			$form->text('name', trans('admin::lang.name'))->rules('required');
+			$form->image('avatar', trans('admin::lang.avatar'));
+			$form->password('password', trans('admin::lang.password'))->rules('required|confirmed');
+			$form->password('password_confirmation', trans('admin::lang.password_confirmation'))->rules('required')
+				->default(function ($form) {
+					return $form->model()->password;
+				});
 
-            $form->ignore(['password_confirmation']);
+			$form->ignore(['password_confirmation']);
 
-            $form->multipleSelect('roles', trans('admin::lang.roles'))->options(Role::all()->pluck('name', 'id'));
-            $form->multipleSelect('permissions', trans('admin::lang.permissions'))->options(Permission::all()->pluck('name', 'id'));
+			$form->multipleSelect('roles', trans('admin::lang.roles'))->options(Role::all()->pluck('name', 'id'));
+			$form->multipleSelect('permissions', trans('admin::lang.permissions'))->options(Permission::all()->pluck('name', 'id'));
 
-            $form->display('created_at', trans('admin::lang.created_at'));
-            $form->display('updated_at', trans('admin::lang.updated_at'));
+			$form->display('created_at', trans('admin::lang.created_at'));
+			$form->display('updated_at', trans('admin::lang.updated_at'));
 //            dd($form->text('username'));
 //            dd($form);
-            $form->saving(function (Form $form) {
-                if ($form->password && $form->model()->password != $form->password) {
-                    $form->password = bcrypt($form->password);
-                }
-            });
-        });
-    }
+			$form->saving(function (Form $form) {
+				if ($form->password && $form->model()->password != $form->password) {
+					$form->password = bcrypt($form->password);
+				}
+			});
+		});
+	}
 
-    public function store(Request $request)
-    {
+	public function store(Request $request)
+	{
 //        $this->form()->store();
-        $form = $this->form();
+		$form = $this->form();
 
-        $data = $request->all();
-        // Handle validation errors.
-        if ($validationMessages = $form->validationMessages($data)) {
-            return back()->withInput()->withErrors($validationMessages);
-        }
-        if (($response = $form->prepare($data)) instanceof Response) {
-            return $response;
-        }
-        DB::transaction(function () use ($form) {
-            $inserts = $form->prepareInsert($form->updates);
+		$data = $request->all();
+		// Handle validation errors.
+		if ($validationMessages = $form->validationMessages($data)) {
+			return back()->withInput()->withErrors($validationMessages);
+		}
+		if (($response = $form->prepare($data)) instanceof Response) {
+			return $response;
+		}
+		DB::transaction(function () use ($form) {
+			$inserts = $form->prepareInsert($form->updates);
 
-            foreach ($inserts as $column => $value) {
-                $form->model->setAttribute($column, $value);
-            }
+			foreach ($inserts as $column => $value) {
+				$form->model->setAttribute($column, $value);
+			}
 
-            $form->model->save();
-            $user = $form->model;
-            $this->oauthClientCreate($user->id, $user->username, $user->username, '');
-            $form->updateRelation($this->form()->relations);
-        });
+			$form->model->save();
+			$user = $form->model;
+			$this->oauthClientCreate($user->id, $user->username, $user->username, '');
+			$form->updateRelation($form->relations);
+		});
 
-        if (($response = $form->complete($form->saved)) instanceof Response) {
-            return $response;
-        }
+		if (($response = $form->complete($form->saved)) instanceof Response) {
+			return $response;
+		}
 
-        if ($response = $form->ajaxResponse(trans('admin::lang.save_succeeded'))) {
-            return $response;
-        }
+		if ($response = $form->ajaxResponse(trans('admin::lang.save_succeeded'))) {
+			return $response;
+		}
 
-        return $form->redirectAfterStore();
-    }
+		return $form->redirectAfterStore();
+	}
 
 
-    /**
-     * 重写Oauth的客户端创建
-     * @param integer $userId 用户ID
-     * @param string $name 用户名
-     * @param string $secret secret_id
-     * @param string $redirect 回调地址
-     * @param bool $personalAccess 是否私钥
-     * @param bool $password 是否公钥
-     * @return mixed
-     */
-    public function oauthClientCreate($userId, $name, $secret, $redirect, $personalAccess = false, $password = true)
-    {
-        $client = (new \Laravel\Passport\Client())->forceFill([
-            'user_id' => $userId,
-            'name' => $name,
-            'secret' => md5($secret . $userId),
-            'redirect' => $redirect,
-            'personal_access_client' => $personalAccess,
-            'password_client' => $password,
-            'revoked' => false,
-        ]);
+	/**
+	 * 重写Oauth的客户端创建
+	 * @param integer $userId 用户ID
+	 * @param string $name 用户名
+	 * @param string $secret secret_id
+	 * @param string $redirect 回调地址
+	 * @param bool $personalAccess 是否私钥
+	 * @param bool $password 是否公钥
+	 * @return mixed
+	 */
+	public function oauthClientCreate($userId, $name, $secret, $redirect, $personalAccess = false, $password = true)
+	{
+		$client = (new \Laravel\Passport\Client())->forceFill([
+			'user_id' => $userId,
+			'name' => $name,
+			'secret' => md5($secret . $userId),
+			'redirect' => $redirect,
+			'personal_access_client' => $personalAccess,
+			'password_client' => $password,
+			'revoked' => false,
+		]);
 
-        $client->save();
-        return $client;
-    }
+		$client->save();
+		return $client;
+	}
 
-    /**
-     * 临时方法用于同步更新admin_user和oauth_clients表的数据
-     */
-    private function update_member_oauth()
-    {
-        $res = DB::table('admin_users')->leftJoin('oauth_clients', 'oauth_clients.user_id', '=', 'admin_users.id')->get(['admin_users.id', 'admin_users.username', 'oauth_clients.user_id'])->where('user_id', '=', null)->toArray();
-        if (!empty($res)) {
-            foreach ($res as $key => $val) {
-                $this->oauthClientCreate($val->id, $val->username, $val->username, '');
-            }
-        }
-    }
+	/**
+	 * 临时方法用于同步更新admin_user和oauth_clients表的数据
+	 */
+	private function update_member_oauth()
+	{
+		$res = DB::table('admin_users')->leftJoin('oauth_clients', 'oauth_clients.user_id', '=', 'admin_users.id')->get(['admin_users.id', 'admin_users.username', 'oauth_clients.user_id'])->where('user_id', '=', null)->toArray();
+		if (!empty($res)) {
+			foreach ($res as $key => $val) {
+				$this->oauthClientCreate($val->id, $val->username, $val->username, '');
+			}
+		}
+	}
 }
