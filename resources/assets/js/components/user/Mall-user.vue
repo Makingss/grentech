@@ -142,17 +142,17 @@
                   <div class="banner-carousel">
                     <div class="margin-tb-10 bc-header">
                       <h2 class="padding-rl-10 bc-name">买什么</h2>
-                        <ul class="padding-rl-10 bc-tag">
-                          <li class="pull-left margin-rl-6"><a class="bc-tabItem">降价不通知</a></li>
+                        <ul class=" bc-tag">
+                          <li class="pull-left padding-rl-6"><a class="bc-tabItem">降价不通知</a></li>
                         </ul>
-                      <div class="padding-r-15 bc-move"><a></a>查看更多</div>
+                      <div class="padding-r-15 bc-move"><a>查看更多</a></div>
                     </div>
                     <div>
                       <el-carousel trigger="click" height="260px" indicator-position="none" arrow="always">
                         <el-carousel-item>
                           <div class="model-2">
                             <ul class="clear-float">
-                              <li class="bc-goodsBox border-1px pull-left" v-for="item in 2">
+                              <li class="bc-goodsBox border-1px margin-rl-6 pull-left" v-for="item in 2">
                                 <div class="clear-float">
                                   <h2 class="bc-title color-gray padding-l-6">超级白菜日:19块9</h2>
                                   <div class="bc-info">
@@ -371,9 +371,9 @@ a:hover {
     }
 }
 .bc-goodsBox {
+    width: 326px;
+    float:left;
     padding:4px;
-    width: 305px;
-    margin:0 10px;
 }
 .banner-carousel{
   box-shadow:0px 1px 15px #ddd;

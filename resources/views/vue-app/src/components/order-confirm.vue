@@ -89,7 +89,7 @@
         <tabbar class="bar-secondary bar order-confirm-bar">
             <tabbar-item style="background-color:transparent">
                 <div slot="label" class="color-dark">
-                    合计: <span class="color-danger">¥ </span><span class="font-2x color-danger">{{cart_data[0].total_amount}}</span>
+                    合计: <span class="color-danger">¥ </span><span class="font-2x color-danger">{{total_amount}}</span>
                 </div>
             </tabbar-item>
             <tabbar-item class="bg-danger" @click.native="submit_order_data">
@@ -143,6 +143,7 @@
             return {
                 step: 0,
                 popup_address: false,
+                total_amount:'',
                 addressData: ChinaAddressData,
                 ship_name: '张三',
                 ship_mobile: '1850300XXXX',
@@ -201,6 +202,7 @@
                     if (res.ok) {
                         if (res.data.data.length) {
                             self.cart_data = res.data.data;
+                            self.total_amount=res.data.total;
                         } else {
                             self.cart_data = res.data.data;
                             self.$vux.toast.show({

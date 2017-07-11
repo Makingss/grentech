@@ -89,7 +89,7 @@
             <span class="iconfont padding-rl-10" v-else>&#xe76e;</span>
           </div>
           <group class="margin-0" v-show="collapse5">
-            <flexbox :gutter="0" class="text-center">
+            <flexbox :gutter="0" wrap="wrap" class="text-center">
               <flexbox-item v-for="(item,index) in goods_data_list.aspect_pics" :span="1/2">
                 <div class="font-mini padding-tb-6">{{item.title}}</div>
                 <div class="link-img">

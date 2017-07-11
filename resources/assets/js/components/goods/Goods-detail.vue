@@ -11,23 +11,8 @@
                         <img src="//pop.nosdn.127.net/e8f8dd83-8b75-4362-86a3-4bbd3aa2cdda?imageView&thumbnail=400x0&quality=85" alt="">
                         <span class="iconfont magnifiter font-2x color-dark">&#xe621;</span>
                     </div>
-                    <div class="Carousel clear-float margin-t-10">
-                        <div class="scrollBtn leftClick" @click="prev()">
-                            <i class="iconfont">&#xe8ef;</i>
-                        </div>
-                        <div class="litimg_box">
-                                <ul>
-                                <li class="pull-left border-1px" @mouseover=""  v-for="(item,index) in 4">
-                                    <a href="#">
-                                        <img class="link-img" src="//pop.nosdn.127.net/e0b96563-ec69-4942-b41c-efd3a52de5c6?imageView&thumbnail=64x0&quality=85" alt="">
-                                    </a>
-                                </li>
-                              </ul>
-                        </div>
-                        <div class="scrollBtn rightClick" @click="next()">
-                            <i class="iconfont">&#xe8f1;</i>
-                        </div>
-                    </div>
+                   <Carousel></Carousel>
+                  
                 </el-col>
                 <el-col :span="15">
                     <div class="">
@@ -474,15 +459,6 @@ export default {
         handleClick(tab, event) {
             console.log(tab, event);
         },
-        prev() {
-            alert("left")
-            //图片向前移动
-            //复制图片
-        },
-        next() {
-            alert("right")
-            //图片向后移动
-        },
         showBorder: function() {
             var vm = this;
         },
@@ -508,43 +484,6 @@ a:hover {
     height: 400px;
 }
 
-.Carousel {
-    position: relative;
-}
-
-.litimg_box {
-    float: left;
-}
-
-.litimg_box li {
-    height: 68px;
-    overflow: hidden;
-    margin: 0 7px;
-}
-
-.scrollBtn {
-    border: 1px solid #ddd;
-    padding: 10px 6px;
-    width: 26px;
-    height: 48px;
-    text-align: center;
-    line-height: 48px;
-}
-
-.scrollBtn:hover {
-    border: 1px solid #f00;
-    color: #f00;
-}
-
-.leftClick {
-    float: left;
-}
-
-.rightClick {
-    float: right;
-    right: 0;
-    top: 0;
-}
 
 .magnifiter {
     position: absolute;

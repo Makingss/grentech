@@ -1,9 +1,8 @@
 <template>
   <div class="home content">
-    <swiper :list="swiper_list" dots-position="center"></swiper>
-    <router-link to="/test" class="color-danger" v-if="false">test 测试</router-link>
-    <div class="cat-goods">
-      <divider class="padding-10">产品分类</divider>
+    <swiper :list="swiper_list" v-if="false" dots-position="center"></swiper>
+    <div class="cat-goods" v-if="false">
+      <divider class="padding-10" v-if="false">产品分类</divider>
       <div class="cat-cover link-img" v-if="false">
         <img :src="category.cover.img" alt="">
       </div>

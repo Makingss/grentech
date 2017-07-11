@@ -18,7 +18,7 @@ export const app_config = {
   },
   logo_image: "/static/slice/logo_300.png", //logo 图片设置
   intercept: true, //是否启用登陆拦截
-  intercept_time: 4000, //登陆拦截时间  3000
+  intercept_time: 500, //登陆拦截时间  4000
   intercept_closeable: false, //登陆拦截是否可关闭
   /*
     storage配置项

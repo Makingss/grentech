@@ -2,9 +2,9 @@
   <div class="template-content">
    <div class="bar bar-header">
         <search v-model="search_input" :cancel-text="cancel_text" @on-submit="submit_search" position="absolute" top="0"  class="list-search"></search>
-        <tab active-color='#FB4F5B' v-model="index">
+        <tab active-color='#FB4F5B' v-if="false" v-model="index">
           <tab-item>分类</tab-item>
-          <tab-item>场景</tab-item>
+          <tab-item v-if="false">场景</tab-item>
           <tab-item v-if="false">范围</tab-item>
         </tab>
     </div>
@@ -599,7 +599,7 @@ export default {
   color:#1ABC9C;
 }
 #app.page-category .template-content>.content{
-  top:4.5rem;
+  top:2.2rem;
   bottom:2.3rem;
 }
 </style>
